@@ -1,6 +1,7 @@
 :root {
   --font: 'Helvetica Neue', 'Hanken Grotesk', Arial, sans-serif;
-  --gap: 10px;
+  --gap: 14px;
+  --pad: clamp(16px, 2vw, 32px);
   --radius: 10px;
   --status: #34c759;
   --ease: cubic-bezier(.2, .7, .2, 1);
@@ -38,14 +39,14 @@
 }
 
 * { box-sizing: border-box; }
-html { background: var(--bg); }
-body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); -webkit-font-smoothing: antialiased; }
+html { background: var(--bg); overflow-x: clip; }
+body { margin: 0; overflow-x: clip; background: var(--bg); color: var(--ink); font-family: var(--font); -webkit-font-smoothing: antialiased; }
 a { color: inherit; text-decoration: none; }
 h1, h2, p, ul { margin: 0; }
 ul { padding: 0; list-style: none; }
 
 .sheet {
-  padding: var(--gap);
+  padding: var(--pad);
   display: grid;
   gap: var(--gap);
   grid-template-columns: 1fr;
@@ -108,9 +109,11 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .turn:hover .curl { width: 72px; height: 72px; }
 
 /* hover tilt (pointer devices) */
-@media (hover: hover) {
-  a.tile:hover { transform: perspective(1100px) rotateX(2deg) rotateY(-4deg) scale(1.012); box-shadow: 0 0 0 1px var(--ink); }
-  [data-side='back'] a.tile:hover { transform: perspective(1100px) rotateX(2deg) rotateY(4deg) scale(1.012); }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  a.tile { --tilt: 1.2deg; }
+  a.tile.case-1 { --tilt: .7deg; }
+  a.tile:hover { transform: perspective(1400px) rotateX(calc(var(--tilt) * .6)) rotateY(calc(var(--tilt) * -1)); box-shadow: 0 0 0 1px var(--ink); }
+  [data-side='back'] a.tile:hover { transform: perspective(1400px) rotateX(calc(var(--tilt) * .6)) rotateY(var(--tilt)); }
 }
 @media (hover: none) { a.tile:active { transform: scale(.985); } }
 
@@ -153,18 +156,18 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
   .case.big h2 { font-size: 26px; }
 }
 
-/* flip between sides */
+/* switching sides: the other side is revealed from the page-curl corner */
 @view-transition { navigation: auto; }
-::view-transition { perspective: 1800px; }
-::view-transition-group(root) { animation-duration: .7s; }
-::view-transition-old(root), ::view-transition-new(root) { animation-duration: .7s; animation-timing-function: cubic-bezier(.65, 0, .25, 1); backface-visibility: hidden; mix-blend-mode: normal; }
-::view-transition-old(root) { animation-name: flip-out; }
-::view-transition-new(root) { animation-name: flip-in; }
-@keyframes flip-out { to { transform: rotateY(-90deg); opacity: 0; } }
-@keyframes flip-in { from { transform: rotateY(90deg); opacity: 0; } }
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-old(root) { z-index: 1; }
+::view-transition-new(root) { z-index: 2; animation: reveal .8s cubic-bezier(.65, 0, .2, 1) both; }
+@keyframes reveal {
+  from { clip-path: circle(0 at 100% 100%); }
+  to { clip-path: circle(150vmax at 100% 100%); }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .tile, .turn .curl { transition: none; }
   a.tile:hover { transform: none; }
-  ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+  ::view-transition-new(root) { animation: none; }
 }
