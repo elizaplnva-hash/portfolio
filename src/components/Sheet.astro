@@ -1,0 +1,53 @@
+---
+import { sides, type Side } from '../data/site';
+import Icon from './Icon.astro';
+interface Props { side: Side; }
+const { side } = Astro.props;
+const s = sides[side];
+---
+<main class="sheet">
+  <a href="#" class="tile photo" aria-label="About Eliza Popelinova">
+    <div class="chips">
+      <span class="pill light">Vancouver, BC</span>
+      <span class="pill dark"><span class="dot"></span>Open to work</span>
+    </div>
+    <h1 class="name">Eliza<br />Popelinova</h1>
+  </a>
+
+  <section class="tile pitch">
+    <p>{s.pitch}</p>
+    <nav class="socials" aria-label="Links">
+      {s.socials.map((l) => (
+        <a class="ico" href={l.href} aria-label={l.label}><Icon kind={l.kind} /></a>
+      ))}
+    </nav>
+  </section>
+
+  <section class="tile skills">
+    <h2>My superpowers</h2>
+    <ul>
+      {s.skills.map((k) => (
+        <li>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={k.svg} />
+          {k.label.trim()}
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  {s.cases.map((c, i) => (
+    <a href={c.href} class:list={['tile', 'case', `case-${i + 1}`, { big: c.big }]} style={`--c:${c.color}`}>
+      <div class="art">{c.image && <img src={c.image} alt="" loading="lazy" />}</div>
+      <div class="meta">
+        <div class="tags"><span>{c.name}</span>{c.tags.map((t) => <span>{t}</span>)}</div>
+        <h2>{c.headline}</h2>
+      </div>
+    </a>
+  ))}
+
+  <a href={s.turn.href} class="tile turn" aria-label={s.turn.label}>
+    <small>{s.turn.small}</small>
+    <h2>{s.turn.big}</h2>
+    <span class="curl" aria-hidden="true"></span>
+  </a>
+</main>
