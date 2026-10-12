@@ -1,0 +1,61 @@
+---
+import type { CaseData } from '../data/cases';
+import NextCase from './NextCase.astro';
+interface Props { c: CaseData; }
+const { c } = Astro.props;
+const sections = [
+  { id: 'context', n: '01', title: 'Context', text: ['[What the product is and who it is for.]', '[Your role and the team.]'], figs: 1 },
+  { id: 'problem', n: '02', title: 'Problem', text: ['[What was not working, in one or two sentences.]', '[How you found out: research, data, interviews.]'], figs: 2 },
+  { id: 'process', n: '03', title: 'Process', text: ['[Key decisions and why. Keep to the two or three that mattered.]'], figs: 2 },
+  { id: 'solution', n: '04', title: 'Solution', text: ['[What you shipped, in plain words.]'], figs: 2 },
+  { id: 'outcome', n: '05', title: 'Outcome', text: ['[What changed after launch.]', '[What you would do differently.]'], figs: 1 },
+];
+---
+<div class="cp cp-product">
+  <aside class="tile side">
+    <a href="/" class="home-link">Eliza<br />Popelinova</a>
+    <nav aria-label="Sections" data-sections>
+      {sections.map((s) => <a href={`#${s.id}`}><span>{s.n}</span>{s.title}</a>)}
+    </nav>
+    <p class="other"><a href="/">All product work</a><br /><a href="/visual">Brand &amp; visual work</a></p>
+  </aside>
+
+  <div class="main">
+    <header class="tile hero">
+      <div class="tags"><span>{c.name}</span>{c.tags.map((t) => <span>{t}</span>)}</div>
+      <h1>{c.headline}</h1>
+      <figure class="fig" style={`--c:${c.color}`}>{c.image && <img src={c.image} alt="" />}<figcaption>{c.name}, key screens</figcaption></figure>
+    </header>
+
+    <section class="tile facts-tile" aria-label="Facts">
+      <dl class="facts">{c.facts.map((f) => <div><dt>{f.label}</dt><dd>{f.value}</dd></div>)}</dl>
+    </section>
+
+    <section class="highlights" aria-label="Highlights">
+      {c.highlights.map((h, i) => <div class="tile"><span>0{i + 1}</span><p>{h}</p></div>)}
+    </section>
+
+    {sections.map((s) => (
+      <section class="tile sec" id={s.id}>
+        <div class="head"><span>{s.n}</span><h2>{s.title}</h2></div>
+        <div class="text">{s.text.map((t) => <p>{t}</p>)}</div>
+        <div class:list={['figs', { two: s.figs === 2 }]}>
+          {Array.from({ length: s.figs }).map(() => <figure class="fig" style={`--c:${c.color}`}></figure>)}
+        </div>
+      </section>
+    ))}
+
+    <NextCase current={c} />
+  </div>
+</div>
+
+<script>
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-sections] a')];
+  const secs = links.map((a) => document.querySelector(a.hash)).filter(Boolean) as Element[];
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) links.forEach((a) => a.setAttribute('aria-current', String(a.hash === '#' + e.target.id)));
+    });
+  }, { rootMargin: '-35% 0px -55% 0px' });
+  secs.forEach((s) => io.observe(s));
+</script>

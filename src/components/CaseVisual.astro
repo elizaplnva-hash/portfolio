@@ -1,0 +1,34 @@
+---
+import type { CaseData } from '../data/cases';
+import NextCase from './NextCase.astro';
+interface Props { c: CaseData; }
+const { c } = Astro.props;
+const rows = [
+  { two: false, figs: [''] },
+  { two: true, figs: ['', 'alt'] },
+  { two: true, figs: ['tall', 'tall alt'] },
+  { two: false, figs: [''] },
+  { two: true, figs: ['alt', ''] },
+];
+---
+<div class="cp cp-visual">
+  <aside class="tile side">
+    <a href="/visual" class="home-link">Eliza<br />Popelinova</a>
+    <div class="tags"><span>{c.name}</span>{c.tags.map((t) => <span>{t}</span>)}</div>
+    <h1>{c.headline}</h1>
+    <p>{c.summary}</p>
+    <dl class="facts">{c.facts.map((f) => <div><dt>{f.label}</dt><dd>{f.value}</dd></div>)}</dl>
+    <p class="other"><a href="/visual">All brand work</a><br /><a href="/">Product work</a></p>
+  </aside>
+
+  <div class="stack">
+    {rows.map((r, i) => (
+      <div class:list={['row', { two: r.two }]}>
+        {r.figs.map((cls) => (
+          <figure class={`fig ${cls}`} style={`--c:${c.color}`}>{i === 0 && c.image && <img src={c.image} alt="" />}</figure>
+        ))}
+      </div>
+    ))}
+    <NextCase current={c} />
+  </div>
+</div>

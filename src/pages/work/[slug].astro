@@ -1,0 +1,15 @@
+---
+import Base from '../../layouts/Base.astro';
+import CaseProduct from '../../components/CaseProduct.astro';
+import CaseVisual from '../../components/CaseVisual.astro';
+import { cases } from '../../data/cases';
+import '../../styles/case.css';
+
+export function getStaticPaths() {
+  return cases.map((c) => ({ params: { slug: c.slug }, props: { c } }));
+}
+const { c } = Astro.props;
+---
+<Base title={`${c.name} — Eliza Popelinova`} side={c.side}>
+  {c.side === 'front' ? <CaseProduct c={c} /> : <CaseVisual c={c} />}
+</Base>

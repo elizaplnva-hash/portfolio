@@ -156,18 +156,7 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
   .case.big h2 { font-size: 26px; }
 }
 
-/* switching sides: the other side is revealed from the page-curl corner */
-@view-transition { navigation: auto; }
-::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
-::view-transition-old(root) { z-index: 1; }
-::view-transition-new(root) { z-index: 2; animation: reveal .8s cubic-bezier(.65, 0, .2, 1) both; }
-@keyframes reveal {
-  from { clip-path: circle(0 at 100% 100%); }
-  to { clip-path: circle(150vmax at 100% 100%); }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .tile, .turn .curl { transition: none; }
   a.tile:hover { transform: none; }
-  ::view-transition-new(root) { animation: none; }
 }
