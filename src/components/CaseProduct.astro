@@ -3,13 +3,14 @@ import type { CaseData } from '../data/cases';
 import NextCase from './NextCase.astro';
 interface Props { c: CaseData; }
 const { c } = Astro.props;
-const sections = [
-  { id: 'context', n: '01', title: 'Context', text: ['[What the product is and who it is for.]', '[Your role and the team.]'], figs: 1 },
-  { id: 'problem', n: '02', title: 'Problem', text: ['[What was not working, in one or two sentences.]', '[How you found out: research, data, interviews.]'], figs: 2 },
-  { id: 'process', n: '03', title: 'Process', text: ['[Key decisions and why. Keep to the two or three that mattered.]'], figs: 2 },
-  { id: 'solution', n: '04', title: 'Solution', text: ['[What you shipped, in plain words.]'], figs: 2 },
-  { id: 'outcome', n: '05', title: 'Outcome', text: ['[What changed after launch.]', '[What you would do differently.]'], figs: 1 },
+const placeholder = [
+  { id: 'context', n: '01', title: 'Context', blocks: [{ type: 'text', paragraphs: ['[What the product is and who it is for.]', '[Your role and the team.]'] }, { type: 'figs', cols: 1, figs: [{ src: '', alt: '' }] }] },
+  { id: 'problem', n: '02', title: 'Problem', blocks: [{ type: 'text', paragraphs: ['[What was not working, in one or two sentences.]', '[How you found out: research, data, interviews.]'] }, { type: 'figs', cols: 2, figs: [{ src: '', alt: '' }, { src: '', alt: '' }] }] },
+  { id: 'process', n: '03', title: 'Process', blocks: [{ type: 'text', paragraphs: ['[Key decisions and why. Keep to the two or three that mattered.]'] }, { type: 'figs', cols: 2, figs: [{ src: '', alt: '' }, { src: '', alt: '' }] }] },
+  { id: 'solution', n: '04', title: 'Solution', blocks: [{ type: 'text', paragraphs: ['[What you shipped, in plain words.]'] }, { type: 'figs', cols: 2, figs: [{ src: '', alt: '' }, { src: '', alt: '' }] }] },
+  { id: 'outcome', n: '05', title: 'Outcome', blocks: [{ type: 'text', paragraphs: ['[What changed after launch.]', '[What you would do differently.]'] }] },
 ];
+const sections = c.sections ?? placeholder;
 ---
 <div class="cp cp-product">
   <aside class="tile side">
@@ -24,7 +25,7 @@ const sections = [
     <header class="tile hero">
       <div class="tags"><span>{c.name}</span>{c.tags.map((t) => <span>{t}</span>)}</div>
       <h1>{c.headline}</h1>
-      <figure class="fig" style={`--c:${c.color}`}>{c.image && <img src={c.image} alt="" />}<figcaption>{c.name}, key screens</figcaption></figure>
+      <figure class:list={['fig', { 'has-img': !!c.image }]} style={`--c:${c.color}`}>{c.image ? <img src={c.image} alt={`${c.name} landing page`} /> : <figcaption>{c.name}, key screens</figcaption>}</figure>
     </header>
 
     <section class="tile facts-tile" aria-label="Facts">
@@ -38,10 +39,21 @@ const sections = [
     {sections.map((s) => (
       <section class="tile sec" id={s.id}>
         <div class="head"><span>{s.n}</span><h2>{s.title}</h2></div>
-        <div class="text">{s.text.map((t) => <p>{t}</p>)}</div>
-        <div class:list={['figs', { two: s.figs === 2 }]}>
-          {Array.from({ length: s.figs }).map(() => <figure class="fig" style={`--c:${c.color}`}></figure>)}
-        </div>
+        {s.blocks.map((b) => b.type === 'text' ? (
+          <div class="text">
+            {b.heading && <h3>{b.heading}</h3>}
+            {b.paragraphs.map((t) => <p>{t}</p>)}
+          </div>
+        ) : (
+          <div class={`figs cols-${b.cols}`}>
+            {b.figs.map((f) => (
+              <figure class:list={['fig', { 'has-img': !!f.src }]} style={`--c:${c.color}`}>
+                {f.src && <img src={f.src} alt={f.alt} loading="lazy" />}
+                {f.caption && <figcaption class="cap">{f.caption}</figcaption>}
+              </figure>
+            ))}
+          </div>
+        ))}
       </section>
     ))}
 
