@@ -94,3 +94,28 @@ figure { margin: 0; }
   .sec .head { grid-column: 1; grid-row: 1; }
 }
 @media (max-width: 899px) { .sec .figs.cols-3 { grid-template-columns: 1fr; } }
+
+/* ---------- Product cases: light, no grey cards ---------- */
+.cp-product { --tile: #ffffff; --chip: #f1f0ee; --hair: #e9e7e4; }
+.cp-product .tile { box-shadow: inset 0 0 0 1px var(--hair); }
+.cp-product .side nav a:hover, .cp-product .side nav a[aria-current='true'] { background: var(--chip); }
+
+/* intro statement + stat tiles */
+.intro { padding: clamp(24px, 4vw, 56px) clamp(4px, 2vw, 28px); display: flex; flex-direction: column; gap: 28px; }
+.statement { font-size: clamp(30px, 4.4vw, 60px); font-weight: 500; line-height: 1.08; letter-spacing: -.035em; max-width: 17em; }
+.statement .t-ink { color: var(--ink); }
+.statement .t-dim { color: #b9b6b2; }
+.statement .t-accent { background: linear-gradient(90deg, #ff4fb8, #a927ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.statement .pig { display: inline-block; height: .95em; width: auto; vertical-align: -.12em; margin: 0 .08em; }
+.intro .note { font-size: clamp(16px, 1.6vw, 22px); line-height: 1.3; color: var(--muted); max-width: 30em; }
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; align-items: center; }
+.stat { display: flex; align-items: center; gap: 16px; padding: 18px 20px; border-radius: 20px; color: #7a2bd6;
+  border: .75px solid rgba(169, 39, 255, .23);
+  background: linear-gradient(56deg, rgba(242, 107, 242, .16) 18%, rgba(242, 107, 242, .03) 60%);
+  transition: transform .45s var(--ease); }
+.stat svg { flex: none; opacity: .75; }
+.stat b { display: block; font-size: clamp(24px, 2.6vw, 32px); font-weight: 600; letter-spacing: -.02em; text-transform: uppercase; color: var(--ink); line-height: 1.1; }
+.stat span { display: block; margin-top: 4px; font-size: 14px; text-transform: uppercase; color: var(--ink); opacity: .75; }
+.stat.tilt { transform: rotate(-3deg) scale(1.06); }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) { .stat:hover { transform: translateY(-3px); } .stat.tilt:hover { transform: rotate(-3deg) scale(1.06) translateY(-3px); } }
+@media (min-width: 900px) { .stats { grid-template-columns: repeat(4, 1fr); } }

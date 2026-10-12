@@ -1,0 +1,56 @@
+---
+import type { CaseData } from '../data/cases';
+interface Props { intro: NonNullable<CaseData['intro']>; stats: NonNullable<CaseData['stats']>; }
+const { intro, stats } = Astro.props;
+const icons = {
+  rocket: '<path d="M14.5 4.5c3-1.4 5.2-1 5.2-1s.4 2.2-1 5.2l-3.3 3.3-3.4-3.4zM9.2 8.8 5.6 9.4 3.5 12l3.4.3M15.2 14.8l-.6 3.6L12 20.5l-.3-3.4M10.5 13.5l-1.8-1.8M9 15c-1.5.2-2.7 1.2-3 3.5 2.3-.3 3.3-1.5 3.5-3z" stroke-linejoin="round"/>',
+  themes: '<circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17a8.5 8.5 0 0 0 0-17z" fill="currentColor"/>',
+  screens: '<rect x="3.5" y="4" width="17" height="16" rx="2.5"/><path d="M9.5 4v16"/><rect x="3.5" y="4" width="6" height="16" rx="2" fill="currentColor"/>',
+  flows: '<circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M8 6h3a4 4 0 0 1 4 4M8 18h3a4 4 0 0 0 4-4"/><path d="M19 3.5v3M17.5 5h3" />',
+};
+---
+<section class="intro" aria-label="Overview">
+  <p class="statement">
+    {intro.parts.map((p) =>
+      p.tone === 'pig'
+        ? <img class="pig" src={p.text} alt="" width="73" height="63" />
+        : <span class={`t-${p.tone}`}>{p.text}</span>
+    )}
+  </p>
+  <p class="note">{intro.note}</p>
+  <ul class="stats">
+    {stats.map((s) => (
+      <li class:list={['stat', { tilt: s.tilt }]}>
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true" set:html={icons[s.icon]} />
+        <div>
+          <b data-count={s.count} data-suffix={s.suffix ?? ''}>{s.value}</b>
+          <span>{s.label}</span>
+        </div>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<script>
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const els = document.querySelectorAll<HTMLElement>('.stat b[data-count]');
+  if (!reduce && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        const el = e.target as HTMLElement;
+        const to = Number(el.dataset.count), suf = el.dataset.suffix ?? '';
+        const t0 = performance.now(), dur = 1100;
+        const tick = (t: number) => {
+          const k = Math.min(1, (t - t0) / dur), v = Math.round(to * (1 - Math.pow(1 - k, 3)));
+          el.textContent = v + (k === 1 ? suf : '');
+          if (k < 1) requestAnimationFrame(tick);
+        };
+        el.textContent = '0';
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.6 });
+    els.forEach((el) => io.observe(el));
+  }
+</script>

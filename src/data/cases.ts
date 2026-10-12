@@ -18,6 +18,8 @@ export interface CaseData {
   facts: { label: string; value: string }[];   // role, timeline, platform...
   highlights: string[];       // selling points (Product pages)
   summary: string;            // short intro
+  intro?: { parts: { text: string; tone: 'ink' | 'dim' | 'accent' | 'pig' }[]; note: string };
+  stats?: { value: string; label: string; count?: number; suffix?: string; icon: 'rocket' | 'themes' | 'screens' | 'flows'; tilt?: boolean }[];
   sections?: Section[];       // Product pages; falls back to placeholders
 }
 
@@ -46,6 +48,23 @@ const pinkwallet: Partial<CaseData> = {
     'PIG, the AI assistant, prepares and explains transactions. The user makes the final tap',
   ],
   summary: 'A mobile crypto wallet for people who want to use crypto without becoming traders first.',
+  intro: {
+    parts: [
+      { text: 'PinkWallet ', tone: 'ink' },
+      { text: '/images/pinkwallet/pig-head.webp', tone: 'pig' },
+      { text: ' is a wallet ', tone: 'dim' },
+      { text: 'you can talk to', tone: 'accent' },
+      { text: ', designed to make digital finance simpler, more intuitive and more ', tone: 'dim' },
+      { text: 'approachable', tone: 'ink' },
+    ],
+    note: 'We redesigned the existing product and introduced PIG, an AI companion that gives users a new way to interact with their wallet.',
+  },
+  stats: [
+    { value: 'July', label: 'Launched', icon: 'rocket' },
+    { value: '2', label: 'Themes', count: 2, icon: 'themes' },
+    { value: '200+', label: 'Screens', count: 200, suffix: '+', icon: 'screens', tilt: true },
+    { value: '8', label: 'Core flows', count: 8, icon: 'flows' },
+  ],
   sections: [
     { id: 'context', n: '01', title: 'Context', blocks: [
       { type: 'text', paragraphs: [

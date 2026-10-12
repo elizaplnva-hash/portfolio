@@ -1,6 +1,7 @@
 ---
 import type { CaseData } from '../data/cases';
 import NextCase from './NextCase.astro';
+import IntroStats from './IntroStats.astro';
 interface Props { c: CaseData; }
 const { c } = Astro.props;
 const placeholder = [
@@ -27,6 +28,8 @@ const sections = c.sections ?? placeholder;
       <h1>{c.headline}</h1>
       <figure class:list={['fig', { 'has-img': !!c.image }]} style={`--c:${c.color}`}>{c.image ? <img src={c.image} alt={`${c.name} landing page`} /> : <figcaption>{c.name}, key screens</figcaption>}</figure>
     </header>
+
+    {c.intro && c.stats && <IntroStats intro={c.intro} stats={c.stats} />}
 
     <section class="tile facts-tile" aria-label="Facts">
       <dl class="facts">{c.facts.map((f) => <div><dt>{f.label}</dt><dd>{f.value}</dd></div>)}</dl>
