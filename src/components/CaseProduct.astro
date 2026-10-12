@@ -1,76 +1,89 @@
 ---
-import type { CaseData } from '../data/cases';
+import type { CaseData, Step } from '../data/cases';
 import NextCase from './NextCase.astro';
-import IntroStats from './IntroStats.astro';
 interface Props { c: CaseData; }
 const { c } = Astro.props;
-const placeholder = [
-  { id: 'context', n: '01', title: 'Context', blocks: [{ type: 'text', paragraphs: ['[What the product is and who it is for.]', '[Your role and the team.]'] }, { type: 'figs', cols: 1, figs: [{ src: '', alt: '' }] }] },
-  { id: 'problem', n: '02', title: 'Problem', blocks: [{ type: 'text', paragraphs: ['[What was not working, in one or two sentences.]', '[How you found out: research, data, interviews.]'] }, { type: 'figs', cols: 2, figs: [{ src: '', alt: '' }, { src: '', alt: '' }] }] },
-  { id: 'process', n: '03', title: 'Process', blocks: [{ type: 'text', paragraphs: ['[Key decisions and why. Keep to the two or three that mattered.]'] }, { type: 'figs', cols: 2, figs: [{ src: '', alt: '' }, { src: '', alt: '' }] }] },
-  { id: 'solution', n: '04', title: 'Solution', blocks: [{ type: 'text', paragraphs: ['[What you shipped, in plain words.]'] }, { type: 'figs', cols: 2, figs: [{ src: '', alt: '' }, { src: '', alt: '' }] }] },
-  { id: 'outcome', n: '05', title: 'Outcome', blocks: [{ type: 'text', paragraphs: ['[What changed after launch.]', '[What you would do differently.]'] }] },
+
+const generic: Step[] = [
+  { id: 'context', n: '01', title: 'Context', body: ['[What the product is and who it is for. Your role and the team.]'], table: { rows: [['Role', '[Role]'], ['Timeline', '[Timeline]'], ['Platform', '[Platform]'], ['Team', '[Team]']] }, visual: { label: 'Cover', spec: '[The product on its home screen.]' } },
+  { id: 'problem', n: '02', title: 'Problem', body: ['[What was not working, in one or two sentences, and how you found out.]'], visual: { label: 'The problem', spec: '[A screen or a quote that proves it.]' } },
+  { id: 'process', n: '03', title: 'Process', body: ['[The two or three decisions that mattered, and why.]'], table: { head: ['Decision', 'Why'], rows: [['[Decision]', '[Why]'], ['[Decision]', '[Why]']] }, visual: { label: 'Process', spec: '[Sketches, flows or the key screens.]' } },
+  { id: 'solution', n: '04', title: 'Solution', body: ['[What you shipped, in plain words.]'], visual: { label: 'Solution', spec: '[The final screens.]' } },
+  { id: 'outcome', n: '05', title: 'Outcome', body: ['[What changed after launch, and what you would do differently.]'], visual: { label: 'Outcome', spec: '[Results or a closing frame.]' } },
 ];
-const sections = c.sections ?? placeholder;
+const steps = c.story ?? generic;
 ---
-<div class="cp cp-product">
-  <aside class="tile side">
+<div class="cp-story">
+  <header class="screen hero">
     <a href="/" class="home-link">Eliza<br />Popelinova</a>
-    <nav aria-label="Sections" data-sections>
-      {sections.map((s) => <a href={`#${s.id}`}><span>{s.n}</span>{s.title}</a>)}
+    <div class="hero-body">
+      <div class="hero-text">
+        <div class="tags"><span>{c.name}</span>{c.tags.map((t) => <span>{t}</span>)}</div>
+        <h1>{c.headline}</h1>
+        <ol class="points">
+          {c.highlights.map((h, i) => <li><span>0{i + 1}</span><p>{h}</p></li>)}
+        </ol>
+      </div>
+      <figure class="ph hero-ph" aria-label="Placeholder: cover">
+        <b>Cover</b>
+        <small>4:5 · 1400×1750</small>
+        <p>The product’s main image: the light home screen, the strongest frame you have.</p>
+      </figure>
+    </div>
+  </header>
+
+  <div class="story">
+    <nav class="rail" aria-label="Steps">
+      <a href="/" class="home-link rail-home">Eliza<br />Popelinova</a>
+      <ol>
+        {steps.map((s) => <li><a href={`#${s.id}`} data-step={s.id}><span>{s.n}</span>{s.short ?? s.title}</a></li>)}
+      </ol>
+      <p class="other"><a href="/visual">Brand &amp; visual work</a></p>
     </nav>
-    <p class="other"><a href="/">All product work</a><br /><a href="/visual">Brand &amp; visual work</a></p>
-  </aside>
 
-  <div class="main">
-    <header class="tile hero">
-      <div class="tags"><span>{c.name}</span>{c.tags.map((t) => <span>{t}</span>)}</div>
-      <h1>{c.headline}</h1>
-      <figure class:list={['fig', { 'has-img': !!c.image }]} style={`--c:${c.color}`}>{c.image ? <img src={c.image} alt={`${c.name} landing page`} /> : <figcaption>{c.name}, key screens</figcaption>}</figure>
-    </header>
-
-    {c.intro && c.stats && <IntroStats intro={c.intro} stats={c.stats} />}
-
-    <section class="tile facts-tile" aria-label="Facts">
-      <dl class="facts">{c.facts.map((f) => <div><dt>{f.label}</dt><dd>{f.value}</dd></div>)}</dl>
-    </section>
-
-    <section class="highlights" aria-label="Highlights">
-      {c.highlights.map((h, i) => <div class="tile"><span>0{i + 1}</span><p>{h}</p></div>)}
-    </section>
-
-    {sections.map((s) => (
-      <section class="tile sec" id={s.id}>
-        <div class="head"><span>{s.n}</span><h2>{s.title}</h2></div>
-        {s.blocks.map((b) => b.type === 'text' ? (
-          <div class="text">
-            {b.heading && <h3>{b.heading}</h3>}
-            {b.paragraphs.map((t) => <p>{t}</p>)}
+    <div class="steps">
+      {steps.map((s) => (
+        <section class="step" id={s.id} data-step={s.id}>
+          <figure class="ph m-ph" aria-label={`Placeholder: ${s.visual.label}`}>
+            <b>{s.visual.label}</b><small>4:5 · 1400×1750</small><p>{s.visual.spec}</p>
+          </figure>
+          <div class="step-text">
+            <span class="num">{s.n}</span>
+            <h2>{s.title}</h2>
+            {s.body.map((t) => <p>{t}</p>)}
+            {s.table && (
+              <table class="tbl">
+                {s.table.head && <thead><tr>{s.table.head.map((h) => <th>{h}</th>)}</tr></thead>}
+                <tbody>{s.table.rows.map((r) => <tr>{r.map((cell, i) => (i === 0 && !s.table!.head ? <th scope="row">{cell}</th> : <td>{cell}</td>))}</tr>)}</tbody>
+              </table>
+            )}
+            {s.nums && <dl class="nums">{s.nums.map((n) => <div><dt>{n.label}</dt><dd>{n.value}</dd></div>)}</dl>}
           </div>
-        ) : (
-          <div class={`figs cols-${b.cols}`}>
-            {b.figs.map((f) => (
-              <figure class:list={['fig', { 'has-img': !!f.src }]} style={`--c:${c.color}`}>
-                {f.src && <img src={f.src} alt={f.alt} loading="lazy" />}
-                {f.caption && <figcaption class="cap">{f.caption}</figcaption>}
-              </figure>
-            ))}
-          </div>
-        ))}
-      </section>
-    ))}
+        </section>
+      ))}
+    </div>
 
-    <NextCase current={c} />
+    <div class="stage" aria-hidden="true">
+      {steps.map((s, i) => (
+        <figure class:list={['ph', { on: i === 0 }]} data-step={s.id}>
+          <b>{s.visual.label}</b><small>4:5 · 1400×1750</small><p>{s.visual.spec}</p>
+        </figure>
+      ))}
+    </div>
   </div>
+
+  <section class="screen end"><NextCase current={c} /></section>
 </div>
 
 <script>
-  const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-sections] a')];
-  const secs = links.map((a) => document.querySelector(a.hash)).filter(Boolean) as Element[];
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((e) => {
-      if (e.isIntersecting) links.forEach((a) => a.setAttribute('aria-current', String(a.hash === '#' + e.target.id)));
-    });
-  }, { rootMargin: '-35% 0px -55% 0px' });
-  secs.forEach((s) => io.observe(s));
+  const ids = [...document.querySelectorAll<HTMLElement>('.step')];
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('.rail a[data-step]')];
+  const figs = [...document.querySelectorAll<HTMLElement>('.stage figure')];
+  const set = (id: string) => {
+    links.forEach((a) => a.toggleAttribute('aria-current', a.dataset.step === id));
+    figs.forEach((f) => f.classList.toggle('on', f.dataset.step === id));
+  };
+  set(ids[0]?.id);
+  const io = new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && set(e.target.id)), { rootMargin: '-50% 0px -50% 0px' });
+  ids.forEach((s) => io.observe(s));
 </script>

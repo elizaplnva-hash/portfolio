@@ -1,10 +1,15 @@
 export type Side = 'front' | 'back';
 
-export interface Fig { src: string; alt: string; caption?: string; }
-export type Block =
-  | { type: 'text'; heading?: string; paragraphs: string[] }
-  | { type: 'figs'; cols: 1 | 2 | 3; figs: Fig[] };
-export interface Section { id: string; n: string; title: string; blocks: Block[]; }
+export interface Step {
+  id: string;
+  n: string;
+  title: string;
+  short?: string;            // label in the left step track
+  body: string[];
+  table?: { head?: string[]; rows: string[][] };
+  nums?: { value: string; label: string }[];
+  visual: { label: string; spec: string };   // placeholder: what the right-hand picture should be
+}
 
 export interface CaseData {
   slug: string;
@@ -18,9 +23,7 @@ export interface CaseData {
   facts: { label: string; value: string }[];   // role, timeline, platform...
   highlights: string[];       // selling points (Product pages)
   summary: string;            // short intro
-  intro?: { parts: { text: string; tone: 'ink' | 'dim' | 'accent' | 'pig' }[]; note: string };
-  stats?: { value: string; label: string; count?: number; suffix?: string; icon: 'rocket' | 'themes' | 'screens' | 'flows'; tilt?: boolean }[];
-  sections?: Section[];       // Product pages; falls back to placeholders
+  story?: Step[];            // Product pages; falls back to a generic skeleton
 }
 
 const facts = [
@@ -33,9 +36,7 @@ const highlights = ['[Selling point 1: what was hard and what you did]', '[Selli
 const summary = '[Two sentences: what the product or brand is, and your part in it.]';
 
 
-const img = (f: string) => `/images/pinkwallet/${f}.webp`;
 const pinkwallet: Partial<CaseData> = {
-  image: img('cover-light'),
   facts: [
     { label: 'Role', value: 'Product Designer' },
     { label: 'Timeline', value: '8 weeks' },
@@ -48,73 +49,41 @@ const pinkwallet: Partial<CaseData> = {
     'PIG, the AI assistant, prepares and explains transactions. The user makes the final tap',
   ],
   summary: 'A mobile crypto wallet for people who want to use crypto without becoming traders first.',
-  intro: {
-    parts: [
-      { text: 'PinkWallet ', tone: 'ink' },
-      { text: '/images/pinkwallet/pig-head.webp', tone: 'pig' },
-      { text: ' is a wallet ', tone: 'dim' },
-      { text: 'you can talk to', tone: 'accent' },
-      { text: ', designed to make digital finance simpler, more intuitive and more ', tone: 'dim' },
-      { text: 'approachable', tone: 'ink' },
-    ],
-    note: 'We redesigned the existing product and introduced PIG, an AI companion that gives users a new way to interact with their wallet.',
-  },
-  stats: [
-    { value: 'July', label: 'Launched', icon: 'rocket' },
-    { value: '2', label: 'Themes', count: 2, icon: 'themes' },
-    { value: '200+', label: 'Screens', count: 200, suffix: '+', icon: 'screens', tilt: true },
-    { value: '8', label: 'Core flows', count: 8, icon: 'flows' },
-  ],
-  sections: [
-    { id: 'context', n: '01', title: 'Context', blocks: [
-      { type: 'text', paragraphs: [
-        'PinkWallet is a mobile crypto wallet for people who want to use crypto without becoming traders first. It brings everyday wallet actions, financial education and an AI assistant, PIG, into one app.',
-        'I was the product designer in a two-person design team: architecture, UX/UI and the design system, over 8 weeks, for iOS.',
-      ] },
-      { type: 'figs', cols: 2, figs: [
-        { src: img('pig-intro'), alt: 'PIG, the AI assistant, greeting the user' },
-        { src: img('pig-wallet'), alt: 'The wallet home screen in dark theme' },
-      ] },
-    ] },
-    { id: 'problem', n: '02', title: 'Problem', blocks: [
-      { type: 'text', paragraphs: [
-        'How do you make crypto feel as familiar as a banking app without hiding the risks that can cost people money?',
-        'Typical wallets assume crypto fluency. PinkWallet’s users are beginners.',
-      ] },
-    ] },
-    { id: 'process', n: '03', title: 'Process', blocks: [
-      { type: 'text', heading: 'Inputs', paragraphs: [
-        'There was no budget for user interviews. Instead I ran a competitor audit, read App Store reviews, and borrowed conventions people already know from messaging and banking apps.',
-      ] },
-      { type: 'text', heading: 'Architecture', paragraphs: ['Five connected areas: Wallet, PIG, Contacts, Feed and Transactions.'] },
-      { type: 'figs', cols: 2, figs: [
-        { src: img('arch-wallet'), alt: 'Wallet and dashboard', caption: 'Wallet' },
-        { src: img('arch-pig'), alt: 'PIG assistant', caption: 'PIG' },
-      ] },
-      { type: 'figs', cols: 3, figs: [
-        { src: img('arch-contacts'), alt: 'Contacts', caption: 'Contacts' },
-        { src: img('arch-feed'), alt: 'Feed', caption: 'Feed' },
-        { src: img('arch-swap'), alt: 'Swap and transactions', caption: 'Transactions' },
-      ] },
-    ] },
-    { id: 'solution', n: '04', title: 'Solution', blocks: [
-      { type: 'text', heading: 'Familiar actions, visible risk', paragraphs: ['Sending crypto should feel like any other app, but transactions can’t be reversed. So there is a deliberate extra confirmation step before sending.'] },
-      { type: 'figs', cols: 1, figs: [{ src: img('decision-contacts'), alt: 'Contacts flow with saved wallets' }] },
-      { type: 'text', heading: 'An assistant that acts without taking control', paragraphs: ['PIG prepares transactions and explains them. The user always makes the final tap.'] },
-      { type: 'figs', cols: 1, figs: [{ src: img('decision-pig'), alt: 'PIG answering questions and preparing actions' }] },
-      { type: 'text', heading: 'What I cut', paragraphs: ['Trader-grade analytics, autonomous transactions and buy recommendations. The filter: does this reduce the chance someone loses money or gives up?'] },
-      { type: 'text', heading: 'System', paragraphs: ['A design system with light and dark themes on shared components: 200+ screens, states and theme variations. Both themes are built to WCAG AA contrast, with states shown by shape and label as well as colour.'] },
-      { type: 'figs', cols: 2, figs: [
-        { src: img('cover-light'), alt: 'Landing hero, light theme', caption: 'Light' },
-        { src: img('cover-dark'), alt: 'Landing hero, dark theme', caption: 'Dark' },
-      ] },
-      { type: 'figs', cols: 1, figs: [{ src: img('card-themes'), alt: 'Debit card screen in light and dark themes' }] },
-    ] },
-    { id: 'outcome', n: '05', title: 'What I’d test next', blocks: [
-      { type: 'text', paragraphs: [
-        'The design rests on convention and is untested. Next I would test the confirmation step, and whether people trust PIG more or less after it handles a transaction correctly.',
-      ] },
-    ] },
+  story: [
+    { id: 'context', n: '01', title: 'Context',
+      body: ['PinkWallet is a mobile crypto wallet for people who want to use crypto without becoming traders first. It brings everyday wallet actions, financial education and an AI assistant, PIG, into one app.'],
+      table: { rows: [['Role', 'Product Designer'], ['Timeline', '8 weeks'], ['Platform', 'iOS'], ['Team', 'Two-person design team']] },
+      visual: { label: 'Home screen, light and dark', spec: 'Two phones side by side: wallet home in the light theme and in the dark theme.' } },
+    { id: 'problem', n: '02', title: 'Problem',
+      body: ['How do you make crypto feel as familiar as a banking app without hiding the risks that can cost people money? Typical wallets assume crypto fluency. PinkWallet’s users are beginners.'],
+      table: { head: ['Typical wallet', 'PinkWallet'], rows: [['Technical language', 'Familiar actions'], ['Raw wallet addresses', 'Saved contacts'], ['No explanation', 'Explained as you go'], ['Irreversible, no warning', 'Visible confirmation']] },
+      visual: { label: 'The same send screen, before and after', spec: 'A typical wallet’s send screen next to PinkWallet’s, with short annotations.' } },
+    { id: 'inputs', n: '03', title: 'Inputs',
+      body: ['There was no budget for user interviews. I used three sources instead.'],
+      table: { head: ['Source', 'What I found', 'What I did'], rows: [['Competitor audit', '[Finding]', '[Decision]'], ['App Store reviews', '[Finding]', '[Decision]'], ['Banking and messaging apps', '[Pattern]', '[Decision]']] },
+      visual: { label: 'Evidence', spec: 'A collage: competitor screens or App Store review quotes, with your marks on them.' } },
+    { id: 'architecture', n: '04', title: 'Architecture',
+      body: ['Five connected areas.'],
+      table: { head: ['Area', 'Its job'], rows: [['Wallet', '[One line]'], ['PIG', '[One line]'], ['Contacts', '[One line]'], ['Feed', '[One line]'], ['Transactions', '[One line]']] },
+      visual: { label: 'Five areas', spec: 'Five screens in a row, labelled Wallet, PIG, Contacts, Feed, Transactions.' } },
+    { id: 'decision-1', n: '05', title: 'Familiar actions, visible risk', short: 'Visible risk',
+      body: ['Sending crypto should feel like any other app, but transactions can’t be reversed. So there is a deliberate extra confirmation step before sending.'],
+      visual: { label: 'The send flow', spec: 'Three phones: enter amount, review, confirm. The extra confirmation step is highlighted.' } },
+    { id: 'decision-2', n: '06', title: 'An assistant that acts without taking control', short: 'PIG',
+      body: ['PIG prepares transactions and explains them. The user always makes the final tap.'],
+      table: { head: ['PIG does', 'The user does'], rows: [['Prepares the transaction', 'Reviews it'], ['Explains what will happen', 'Decides'], ['Stops at the confirmation', 'Makes the final tap']] },
+      visual: { label: 'PIG in action', spec: 'Two phones: PIG proposes a transaction in chat, then the user confirms it.' } },
+    { id: 'cut', n: '07', title: 'What I cut',
+      body: ['The filter: does this reduce the chance someone loses money or gives up?'],
+      table: { head: ['Cut', 'Why'], rows: [['Trader-grade analytics', '[Why]'], ['Autonomous transactions', '[Why]'], ['Buy recommendations', '[Why]']] },
+      visual: { label: 'What was removed', spec: 'One trader-style analytics screen, greyed out and crossed through.' } },
+    { id: 'system', n: '08', title: 'System',
+      body: ['A design system with light and dark themes on shared components. Both themes are built to WCAG AA contrast, with states shown by shape and label as well as colour.'],
+      nums: [{ value: '200+', label: 'Screens' }, { value: '2', label: 'Themes' }, { value: '8', label: 'Core flows' }, { value: 'AA', label: 'WCAG contrast' }],
+      visual: { label: 'One screen, two themes', spec: 'The same screen in light and dark, identical size (it will become a theme switch).' } },
+    { id: 'next', n: '09', title: 'What I’d test next', short: 'Test next',
+      body: ['The design rests on convention and is untested. Next I would test the confirmation step, and whether people trust PIG more or less after it handles a transaction correctly.'],
+      visual: { label: 'Closing frame', spec: 'The wallet home screen on a clean background, as the last image.' } },
   ],
 };
 
