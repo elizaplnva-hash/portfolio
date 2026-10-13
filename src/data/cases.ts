@@ -232,10 +232,10 @@ const jam: Partial<CaseData> = {
     { id: 'problem', nav: 'Problem', title: ['Networking feels like', 'talking into a void.'],
       blocks: [
         { type: 'quote', text: 'I shared my card with 20 people. Did anyone actually look at it?', by: 'Interview participant' },
-        { type: 'cards', items: [
-          { title: 'No signal after the scan' },
-          { title: 'LinkedIn isn’t enough' },
-          { title: 'No reason to return' },
+        { type: 'list', items: [
+          { icon: 'signal-zero', title: 'No signal after the scan' },
+          { icon: 'link', title: 'LinkedIn isn’t enough' },
+          { icon: 'rotate-ccw', title: 'No reason to return' },
         ] },
       ],
       visual: { layout: 'single', items: [{ label: 'Before', spec: 'The scan-and-share flow as it was: share, close, forget.' }] } },
@@ -253,9 +253,9 @@ const jam: Partial<CaseData> = {
 
     { id: 'findings', nav: 'Findings', title: ['Three findings', 'changed the brief.'],
       blocks: [{ type: 'cards', items: [
-        { label: 'Interviews', title: 'Privacy is non-negotiable.', body: 'Control over who sees what came up unprompted in 7 of 10 interviews.' },
-        { label: 'Interviews', title: 'Interactions matter beyond the app.', body: 'People wanted to see what happened after the scan, wherever it happened.' },
-        { label: 'Focus group', title: 'Without a reason to return, Jam is a one-time tool.' },
+        { icon: 'lock', label: 'Interviews', title: 'Privacy is non-negotiable.', body: 'Control over who sees what came up unprompted in 7 of 10 interviews.' },
+        { icon: 'route', label: 'Interviews', title: 'Interactions matter beyond the app.', body: 'People wanted to see what happened after the scan, wherever it happened.' },
+        { icon: 'repeat', hi: true, label: 'Focus group', title: 'Without a reason to return, Jam is a one-time tool.' },
       ] }] ,
       visual: { layout: 'single', items: [{ label: 'Evidence', spec: 'Quotes or sticky notes behind the three findings.' }] } },
 
@@ -263,18 +263,18 @@ const jam: Partial<CaseData> = {
 
     { id: 'alignment', nav: 'Alignment', title: ['Two PMs,', 'two definitions of analytics.'],
       lede: 'An ideation workshop turned them into one definition and three questions.',
-      blocks: [{ type: 'cards', items: [
-        { label: 'How might we', title: 'Make analytics actionable, not just informational?' },
-        { label: 'How might we', title: 'Give people a reason to return between events?' },
-        { label: 'How might we', title: 'Surface insights without compromising privacy?' },
+      blocks: [{ type: 'list', items: [
+        { icon: 'zap', label: 'How might we', title: 'Make analytics actionable, not just informational?' },
+        { icon: 'calendar-clock', label: 'How might we', title: 'Give people a reason to return between events?' },
+        { icon: 'shield', label: 'How might we', title: 'Surface insights without compromising privacy?' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'Workshop', spec: 'The ideation board from the workshop.' }] } },
 
     { id: 'solution', nav: 'Solution', title: ['One feature,', 'three parts.'],
-      blocks: [{ type: 'table', head: ['Part', 'What it does'], rows: [
-        ['Weekly digest', 'Link clicks, top platforms and industries reached, built to skim'],
-        ['Smart follow-ups', 'Nudges tied to a person and an event: “Remember Alex from last Thursday?”'],
-        ['Connection profiles', 'Living contact cards with event history, talking points and notes'],
+      blocks: [{ type: 'bento', cells: [
+        { icon: 'bell', title: 'Smart follow-ups', body: 'Nudges tied to a person and an event: “Remember Alex from last Thursday?”', wide: true, fill: true },
+        { icon: 'chart-no-axes-column', title: 'Weekly digest', body: 'Link clicks, top platforms and industries reached, built to skim' },
+        { icon: 'contact', title: 'Connection profiles', body: 'Living contact cards with event history, talking points and notes' },
       ] }],
       visual: { layout: 'row', items: [
         { label: 'Digest', spec: 'The weekly analytics digest.' },
@@ -329,10 +329,10 @@ const lapunzel: Partial<CaseData> = {
       visual: { layout: 'single', items: [{ label: 'Product page', spec: 'The redesigned product page on a phone.' }] } },
 
     { id: 'problem', nav: 'Problem', title: ['Not the price.', 'The uncertainty.'],
-      blocks: [{ type: 'cards', items: [
-        { label: 'Discovery', title: 'Which product fits my pet?' },
-        { label: 'Checkout', title: 'A new brand at a premium price, with no proof at the moment of paying.' },
-        { label: 'Price', title: 'Value wasn’t visible, so the price felt unjustified.' },
+      blocks: [{ type: 'list', items: [
+        { icon: 'search', label: 'Discovery', title: 'Which product fits my pet?' },
+        { icon: 'credit-card', label: 'Checkout', title: 'A new brand at a premium price, with no proof at the moment of paying.' },
+        { icon: 'tag', label: 'Price', title: 'Value wasn’t visible, so the price felt unjustified.' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'Before', spec: 'The old catalogue or checkout screen.' }] } },
 
@@ -354,7 +354,11 @@ const lapunzel: Partial<CaseData> = {
           ['Chose', 'Proof in the flow, over an About page.'],
           ['Because', 'Reassurance only works at the right moment and place.'],
         ] },
-        { type: 'chips', items: ['Vet-approved tags', 'Photo and video reviews', 'Real-time availability'] },
+        { type: 'cards', items: [
+          { icon: 'badge-check', title: 'Vet-approved tags' },
+          { icon: 'camera', title: 'Photo and video reviews' },
+          { icon: 'clock', title: 'Real-time availability' },
+        ] },
       ],
       visual: { layout: 'stack', items: [
         { label: 'Vet-approved tag', spec: 'A close crop.' },
@@ -365,7 +369,7 @@ const lapunzel: Partial<CaseData> = {
     { id: 'categories', nav: 'Categories', title: ['Categories by use,', 'not by anatomy.'],
       blocks: [{ type: 'contrast',
         from: { label: 'Before', items: ['Fur', 'Eyes', 'Ears'] },
-        to: { label: 'After', items: ['Shampoos and conditioners', 'Balms and soaps', 'Tonics and foams'] } }],
+        to: { label: 'After', items: ['Shampoos and conditioners', 'Balms and soaps', 'Tonics and foams'], icons: ['droplets', 'bubbles', 'sparkles'] } }],
       visual: { layout: 'stack', items: [
         { label: 'Old menu', spec: 'Categories by body part.' },
         { label: 'New menu', spec: 'Categories by use.' },
@@ -374,14 +378,18 @@ const lapunzel: Partial<CaseData> = {
 
     { id: 'value', nav: 'Value', title: ['Value before', 'price.'],
       blocks: [
-        { type: 'chips', items: ['Ingredients', 'Origin', 'Purpose'] },
-        { type: 'note', text: 'Made scannable on every product, with guides linked from the products they explain.' },
+        { type: 'cards', items: [
+          { icon: 'flask-conical', title: 'Ingredients' },
+          { icon: 'map-pin', title: 'Origin' },
+          { icon: 'target', title: 'Purpose' },
+        ] },
+        { type: 'callout', text: 'Made scannable on every product, with guides linked from the products they explain.' },
       ],
       visual: { layout: 'single', items: [{ label: 'Ingredients', spec: 'The product page section with ingredients, origin and purpose.' }] } },
 
     { id: 'outcome', nav: 'Outcome', title: ['From “Should I trust this?”', 'to “This makes sense.”'],
       blocks: [
-        { type: 'note', text: 'Removing the reason someone hesitates mattered more than making it pretty.' },
+        { type: 'callout', text: 'Removing the reason someone hesitates mattered more than making it pretty.' },
       ],
       visual: { layout: 'row', items: [
         { label: 'Catalogue', spec: 'Final catalogue.' },
