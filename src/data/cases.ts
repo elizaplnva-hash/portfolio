@@ -198,7 +198,6 @@ const pinkwallet: Partial<CaseData> = {
       lede: 'One mobile experience that brings together a multi-chain wallet, AI-assisted interactions and everyday crypto tools.',
       blocks: [
         { type: 'facts', caption: 'Scope', items: [{ value: '200+', label: 'Screens' }, { value: '8', label: 'Core flows' }, { value: '5', label: 'Networks' }] },
-        { type: 'contact' },
       ],
       visual: { layout: 'stack', items: [
         { label: '3D icons', spec: 'A few of the custom 3D icons.' },
@@ -302,7 +301,6 @@ const jam: Partial<CaseData> = {
           ['I’d change', 'We tested with people who network easily, not with those who find it hard.'],
         ] },
         { type: 'chain', steps: ['Validate with shipped data', 'Test notification fatigue', 'Onboarding that builds the habit'] },
-        { type: 'contact' },
       ],
       visual: { layout: 'single', items: [{ label: 'Final frame', spec: 'The connection profile, on a clean background.' }] } },
   ],
@@ -384,7 +382,6 @@ const lapunzel: Partial<CaseData> = {
     { id: 'outcome', nav: 'Outcome', title: ['From “Should I trust this?”', 'to “This makes sense.”'],
       blocks: [
         { type: 'note', text: 'Removing the reason someone hesitates mattered more than making it pretty.' },
-        { type: 'contact' },
       ],
       visual: { layout: 'row', items: [
         { label: 'Catalogue', spec: 'Final catalogue.' },
@@ -447,7 +444,7 @@ const greenCredit: Partial<CaseData> = {
       ] } },
 
     { id: 'outcome', nav: 'Outcome', title: ['Concept to clickable', 'in hours, not weeks.'],
-      blocks: [{ type: 'contact' }],
+      
       visual: { layout: 'single', items: [{ label: 'Final frame', spec: 'The dashboard on a clean background.' }] } },
   ],
 };

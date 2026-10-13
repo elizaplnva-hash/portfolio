@@ -25,9 +25,9 @@ Green Credit Score and World of Colors headlines; verify Ben AI "first industry 
 
 ## Case pages (Product)
 - Grey ground (`#f3f3f1`). Importance = elevation: the key element is white with a soft shadow (`.l1`), supporting ones off-white (`.l2`), the rest slightly grey (`.l3`). Soft shadows are allowed here (only the shadow layers fade, via opacity). Black main text, grey secondary text (lede is grey too).
-- Rail on the left (home + photo circle, section list, active item white with shadow, Contact), content column, image panel to the right edge. Each section is one full screen (scroll-snap).
-- Each case has a pastel `tint` behind its images and on highlighted cards on hover. Case colour (`fill`) appears only in small icons (Lucide, inlined at build time from `lucide-static`, no arrows). Numbers and facts stay black. No dots.
+- Rail on the left (secondary Back pill with an arrow on top, section list with the active item white with shadow, photo circle + Contact button in the case colour at the bottom; the one arrow allowed is Back), content column, image panel to the right edge. Each section is one full screen (scroll-snap).
+- Each case has a pastel `tint` behind its images and on highlighted cards on hover. Case colour (`fill`) appears only in small icons (Lucide, inlined at build time from `lucide-static`, no arrows). Headlines are all black (no two-tone). Facts are a column of cards with numbers in the case colour. No dots. The last screen is the CTA (Let’s talk) on the left and the next-case and brand-work tiles on the right, rail stays.
 - Vary the form, do not use cards everywhere: icon row (meta), bento, divider lists (numbered only for a real sequence), grey-vs-white contrast panels, table, plain text, one tinted callout. Cards react on hover (lift, white/tint).
-- One screen answers one question. Headline = a claim, two-tone: second part grey. Small type (headings ~34px, body 15px). ≤90 words per screen.
+- One screen answers one question. Headline = a claim, all black. Small type (headings ~34px, body 15px). ≤90 words per screen.
 - Content in `src/data/cases.ts` as `screens` of blocks (meta, bento, contrast, table, decision, cards, list, callout, chain, chips, facts, quote, note, fromto, steps, theme, contact). Right panel = `visual` (single / stack / row), placeholders until real images arrive.
 - No gradients, eyebrow labels, hover-reveal text. Every fact appears once per case. No fabricated metrics; scope facts are labelled as scope. No agency name (Danart) on cases.

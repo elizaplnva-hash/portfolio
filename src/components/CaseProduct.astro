@@ -15,7 +15,7 @@ const generic: Screen[] = [
   { id: 'decisions', nav: 'Decisions', title: ['[The decision', 'that mattered.]'],
     blocks: [{ type: 'decision', rows: [['Decision', '[What you decided]'], ['Chose', '[X over Y]'], ['Because', '[Why]']] }],
     visual: { layout: 'stack', items: [{ label: 'Detail', spec: '' }, { label: 'Detail', spec: '' }, { label: 'Key screen', spec: '' }] } },
-  { id: 'outcome', nav: 'Outcome', title: ['[What shipped', 'and what changed.]'], blocks: [{ type: 'contact' }],
+  { id: 'outcome', nav: 'Outcome', title: ['[What shipped', 'and what changed.]'],
     visual: { layout: 'single', items: [{ label: 'Final frame', spec: '' }] } },
 ];
 const screens = c.screens ?? generic;
@@ -24,17 +24,17 @@ const mail = 'mailto:elizaplnva@gmail.com';
 ---
 <div class="cp-story" style={tone}>
   <header class="m-bar">
-    <a href="/" class="me"><span class="face" aria-hidden="true">EP</span><span>Eliza Popelinova</span></a>
-    <a href={mail} class="btn">Contact</a>
+    <a href="/" class="back"><span class="ar" aria-hidden="true" set:html={icon('arrow-left')} />Back</a>
+    <div class="me-row"><span class="face" aria-hidden="true">EP</span><a href={mail} class="btn contact">Contact</a></div>
   </header>
 
   <div class="story">
     <nav class="rail" aria-label="Case sections">
-      <a href="/" class="me"><span class="face" aria-hidden="true">EP</span><span class="roll"><span data-t="Home">Home</span></span></a>
+      <a href="/" class="back"><span class="ar" aria-hidden="true" set:html={icon('arrow-left')} /><span class="roll"><span data-t="Back">Back</span></span></a>
       <ol>
         {screens.map((s) => <li><a href={`#${s.id}`} data-step={s.id}><span class="roll"><span data-t={s.nav}>{s.nav}</span></span></a></li>)}
       </ol>
-      <a href={mail} class="btn"><span class="roll"><span data-t="Contact">Contact</span></span></a>
+      <div class="me-row"><span class="face" aria-hidden="true">EP</span><a href={mail} class="btn contact"><span class="roll"><span data-t="Contact">Contact</span></span></a></div>
     </nav>
 
     <div class="frame" aria-hidden="true"></div>
@@ -102,7 +102,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
                   <ul class="chips big rv">{b.items.map((t) => <li>{t}</li>)}</ul>);
                 case 'facts': return (
                   <div class="facts rv"><small>{b.caption}</small>
-                    <dl>{b.items.map((f) => <div><dd>{f.value}</dd><dt>{f.label}</dt></div>)}</dl>
+                    <dl>{b.items.map((f) => <div class="l2 lift"><dd>{f.value}</dd><dt>{f.label}</dt></div>)}</dl>
                   </div>);
                 case 'note': return <p class="note rv">{b.text}</p>;
                 case 'fromto': return (
@@ -115,21 +115,26 @@ const mail = 'mailto:elizaplnva@gmail.com';
                     <button type="button" aria-pressed="true" data-theme="light">Light</button>
                     <button type="button" aria-pressed="false" data-theme="dark">Dark</button>
                   </div>);
-                case 'contact': return (
-                  <a href={mail} class="cta rv"><span class="roll"><span data-t="Let’s talk">Let’s talk</span></span><small>elizaplnva@gmail.com</small></a>);
               }
             })}
           </div>
         </section>
       ))}
+      <section class="step cta-step" id="next" data-step="next">
+        <div class="step-text">
+          <h2 class="ttl rv">Let’s talk.</h2>
+          <a href={mail} class="cta rv"><span class="roll"><span data-t="elizaplnva@gmail.com">elizaplnva@gmail.com</span></span></a>
+        </div>
+      </section>
     </div>
 
-    <div class="stage" aria-hidden="true">
+    <div class="stage">
       {screens.map((s, i) => s.visual && (
-        <div class:list={['vis', `v-${s.visual.layout}`, { on: i === 0 }]} data-step={s.id}>
+        <div class:list={['vis', `v-${s.visual.layout}`, { on: i === 0 }]} data-step={s.id} aria-hidden="true">
           {s.visual.items.map((p) => <figure class="ph"><b>{p.label}</b>{p.spec && <p>{p.spec}</p>}</figure>)}
         </div>
       ))}
+      <div class="vis nx" data-step="next"><NextCase current={c} /></div>
     </div>
   </div>
 
