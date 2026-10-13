@@ -99,9 +99,10 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 /* skills */
 .skills { background: var(--tile-low); box-shadow: var(--ring); padding: 22px; display: flex; flex-direction: column; justify-content: space-between; gap: 18px; aspect-ratio: 1 / 1; }
 .skills h2 { font-size: 26px; font-weight: 500; line-height: .95; letter-spacing: -.05em; text-transform: uppercase; }
-.skills ul { display: flex; flex-wrap: wrap; gap: 5px; font-size: 12px; }
-.skills li { background: var(--chip-low); box-shadow: var(--ring);  color: var(--chip-ink); border-radius: 999px; padding: 5px 10px; display: inline-flex; align-items: center; gap: 6px; }
+.skills ul { display: flex; flex-wrap: wrap; gap: 6px; font-size: 12px; }
+.skills li { transform: rotate(var(--r, 0deg)) translateY(var(--y, 0)); transition: transform .4s cubic-bezier(.23, 1, .32, 1); background: var(--chip-low); box-shadow: var(--ring);  color: var(--chip-ink); border-radius: 999px; padding: 5px 10px; display: inline-flex; align-items: center; gap: 6px; }
 .skills svg { flex: none; }
+.skills li:hover { transform: none; }
 
 /* cases */
 .case { padding: 12px; display: flex; flex-direction: column; gap: 12px; box-shadow: var(--sh1); }
@@ -109,8 +110,8 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .case .art img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .case .meta { display: flex; flex-direction: column; gap: 10px; padding: 0 6px 6px; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.tags span { background: var(--chip); color: var(--chip-ink); border-radius: 999px; padding: 4px 10px; font-size: 12px; }
-.tags span:first-child { background: var(--name-chip); color: var(--name-chip-ink); font-weight: 500; }
+.tags span { background: color-mix(in srgb, var(--c) 22%, #fff); color: #111; border-radius: 999px; padding: 4px 10px; font-size: 12px; }
+.tags span:first-child { background: var(--c); color: #111; font-weight: 500; }
 .case h2 { font-size: 20px; font-weight: 500; line-height: 1.08; letter-spacing: -.03em; }
 .case.big .art { aspect-ratio: 4 / 3; }
 .case.big .meta { padding: 4px 14px 12px; gap: 12px; }
