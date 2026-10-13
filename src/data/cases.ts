@@ -5,7 +5,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string }
+export interface Ph { label: string; spec: string; src?: string; alt?: string }
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -84,7 +84,7 @@ const pinkwallet: Partial<CaseData> = {
         { label: 'Platform', value: 'iOS' },
         { label: 'Status', value: 'Launched July 2026' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Home screen', spec: 'The wallet home in the light theme. Your strongest frame, on a phone mockup.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Home screen', spec: '', src: '/images/pinkwallet-hero.webp', alt: 'PinkWallet on two phones: the wallet home with balances and the My card screen with recent transactions' }] } },
 
     { id: 'product', nav: 'Product', title: ['One wallet,', 'more ways to manage crypto.'],
       lede: 'PinkWallet brings asset management, AI assistance, crypto news and everyday wallet tools into one mobile experience.',

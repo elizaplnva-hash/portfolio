@@ -43,7 +43,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
         <section class:list={['step', { statement: s.statement }]} id={s.id} data-step={s.id}>
           {s.visual && (
             <div class:list={['m-vis', `v-${s.visual.layout}`]}>
-              {s.visual.items.map((p) => <figure class="ph"><b>{p.label}</b>{p.spec && <p>{p.spec}</p>}</figure>)}
+              {s.visual.items.map((p) => <figure class:list={['ph', { 'has-img': p.src }]}>{p.src ? <img src={p.src} alt={p.alt ?? p.label} decoding="async" /> : <><b>{p.label}</b>{p.spec && <p>{p.spec}</p>}</>}</figure>)}
             </div>
           )}
           <div class="step-text">
@@ -134,7 +134,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
     <div class="stage">
       {screens.map((s, i) => s.visual && (
         <div class:list={['vis', `v-${s.visual.layout}`, { on: i === 0 }]} data-step={s.id} aria-hidden="true">
-          {s.visual.items.map((p) => <figure class="ph"><b>{p.label}</b>{p.spec && <p>{p.spec}</p>}</figure>)}
+          {s.visual.items.map((p) => <figure class:list={['ph', { 'has-img': p.src }]}>{p.src ? <img src={p.src} alt={p.alt ?? p.label} decoding="async" /> : <><b>{p.label}</b>{p.spec && <p>{p.spec}</p>}</>}</figure>)}
         </div>
       ))}
       <div class="vis nx" data-step="next"><NextCase current={c} /></div>
