@@ -96,9 +96,9 @@ const pinkwallet: Partial<CaseData> = {
         { icon: 'key-round', title: 'Self-custody', body: 'Users keep control of their wallet and private keys.' },
       ] }],
       visual: { layout: 'stack', items: [
-        { label: 'Wallet card', spec: 'A crop of the wallet card component.' },
-        { label: 'PIG', spec: 'The PIG avatar on its own.' },
-        { label: 'Crypto feed', spec: 'The feed with a story opened in PIG.' },
+        { label: 'Crypto feed', spec: '', src: '/images/pw-feed.webp', alt: 'The crypto feed on a tilted phone: a story opened with an NFT card, and 3D icons for video, news and X' },
+        { label: 'App icon', spec: '', src: '/images/pw-app-icon.webp', alt: 'The PinkWallet app icon on an iPhone home screen' },
+        { label: 'Cards', spec: '', src: '/images/pw-cards.webp', alt: 'PinkWallet card designs, stacked' },
       ] } },
 
     { id: 'problem', nav: 'Problem', title: ['Crypto asks people to think', 'like a blockchain.'],
@@ -109,7 +109,7 @@ const pinkwallet: Partial<CaseData> = {
           to: { label: 'The user’s mental model', items: ['Send', 'Receive', 'Swap'], icons: ['send', 'inbox', 'blend'] } },
         { type: 'callout', text: 'The challenge was to bridge that gap without sacrificing transparency or control.' },
       ],
-      visual: { layout: 'single', items: [{ label: 'Before: the old send screen', spec: 'The send screen before the redesign.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Confirmation', spec: '', src: '/images/pw-confirmation.webp', alt: 'The Confirmation screen before sending Bitcoin, on a phone held in a hand' }] } },
 
     { id: 'insight', nav: 'Insight', statement: true, title: ['Users think in outcomes,', 'not interfaces.'],
       lede: 'People don’t open a wallet to navigate menus. They open it to do something with their money.',
@@ -125,7 +125,7 @@ const pinkwallet: Partial<CaseData> = {
         { icon: 'compass', title: 'Navigation', body: 'Let users say what they want through PIG, not only through menus.' },
         { icon: 'shield-check', title: 'Confirmation', body: 'Show the essential details before users approve an action.' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'The send flow', spec: 'The new send flow: amount, fee, summary.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Swap flow', spec: '', src: '/images/pw-swap.webp', alt: 'The swap flow on four phones: amount, token select, confirmation and swap completed, in dark and light themes' }] } },
 
     { id: 'pig', nav: 'PIG', title: ['AI built in,', 'not bolted on.'],
       lede: 'PIG isn’t a separate chatbot. It is another way to use the wallet itself, while the familiar controls stay where they are.',
@@ -136,7 +136,7 @@ const pinkwallet: Partial<CaseData> = {
         ] },
         { type: 'note', text: 'The way people interact can change without splitting the product in two.' },
       ],
-      visual: { layout: 'single', items: [{ label: 'PIG chat', spec: 'A conversation with PIG that ends in a ready transaction.' }] } },
+      visual: { layout: 'single', items: [{ label: 'PIG', spec: '', src: '/images/pw-pig.webp', alt: 'PIG, the AI companion, greeting the user, with example prompts around the phone' }] } },
 
     { id: 'trust', nav: 'Trust', title: ['Conversational doesn’t mean', 'casual.'],
       lede: 'When money is involved, a simple interface isn’t enough. People need to know what they approve, what is happening and how it ended.',
@@ -146,9 +146,9 @@ const pinkwallet: Partial<CaseData> = {
         { label: 'After', title: 'Close the loop', body: 'A clear result: done, or what needs attention.' },
       ] }],
       visual: { layout: 'stack', items: [
-        { label: 'Confirmation', spec: 'The summary before signing.' },
-        { label: 'Progress', spec: 'A transaction in progress.' },
-        { label: 'Result', spec: 'Success, or an error with the next step.' },
+        { label: 'Choose a wallet', spec: '', src: '/images/pw-chat-wallets.webp', alt: 'PIG chat asking which of two wallets to send to' },
+        { label: 'Send preview', spec: '', src: '/images/pw-chat-preview.webp', alt: 'PIG chat showing a send preview with recipient, amount and fee' },
+        { label: 'Sent', spec: '', src: '/images/pw-sent.webp', alt: 'The Sent receipt, with PIG waving next to it' },
       ] } },
 
     { id: 'onboarding', nav: 'Onboarding', title: ['More than a wallet,', 'from the first screen.'],
