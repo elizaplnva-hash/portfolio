@@ -1,14 +1,34 @@
 export type Side = 'front' | 'back';
 
-export interface Step {
+/* ---------- Product case: one screen = one question ---------- */
+export type Visual =
+  | { layout: 'single'; items: Ph[] }          // one big image
+  | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
+  | { layout: 'row'; items: Ph[] };            // three phones in a row
+export interface Ph { label: string; spec: string }
+
+export type Block =
+  | { type: 'meta'; items: { label: string; value: string; more?: string }[] }
+  | { type: 'bento'; cells: { title: string; body?: string; chips?: string[]; wide?: boolean; fill?: boolean }[] }
+  | { type: 'contrast'; from: { label: string; items: string[] }; to: { label: string; items: string[] } }
+  | { type: 'table'; head: [string, string]; rows: [string, string][] }
+  | { type: 'decision'; rows: [string, string][] }
+  | { type: 'cards'; items: { label?: string; title: string; body?: string }[] }
+  | { type: 'chain'; steps: string[] }
+  | { type: 'chips'; items: string[] }
+  | { type: 'facts'; caption: string; items: { value: string; label: string }[] }
+  | { type: 'note'; text: string }
+  | { type: 'theme' }
+  | { type: 'contact' };
+
+export interface Screen {
   id: string;
-  n: string;
-  title: string;
-  short?: string;            // label in the left step track
-  body: string[];
-  table?: { head?: string[]; rows: string[][] };
-  nums?: { value: string; label: string }[];
-  visual: { label: string; spec: string };   // placeholder: what the right-hand picture should be
+  nav: string;                     // label in the left track
+  title: [string, string?];        // second part is set in the case colour
+  lede?: string;
+  statement?: boolean;             // one huge line, no image
+  blocks?: Block[];
+  visual?: Visual;
 }
 
 export interface CaseData {
@@ -23,7 +43,9 @@ export interface CaseData {
   facts: { label: string; value: string }[];   // role, timeline, platform...
   highlights: string[];       // selling points (Product pages)
   summary: string;            // short intro
-  story?: Step[];            // Product pages; falls back to a generic skeleton
+  accent?: string;            // case colour, safe for text on white
+  fill?: string;              // case colour for filled cards
+  screens?: Screen[];         // Product pages; falls back to a generic skeleton
 }
 
 const facts = [
@@ -37,53 +59,116 @@ const summary = '[Two sentences: what the product or brand is, and your part in 
 
 
 const pinkwallet: Partial<CaseData> = {
+  accent: '#D3127A',
+  fill: '#FA5EB5',
   facts: [
     { label: 'Role', value: 'Product Designer' },
     { label: 'Timeline', value: '8 weeks' },
     { label: 'Platform', value: 'iOS' },
-    { label: 'Team', value: 'Two-person design team' },
+    { label: 'Status', value: 'Launched July' },
   ],
-  highlights: [
-    'No budget for interviews, so decisions came from a competitor audit, App Store reviews and conventions people already know',
-    'Familiar actions, visible risk: one deliberate extra step before an irreversible send',
-    'PIG, the AI assistant, prepares and explains transactions. The user makes the final tap',
-  ],
-  summary: 'A mobile crypto wallet for people who want to use crypto without becoming traders first.',
-  story: [
-    { id: 'context', n: '01', title: 'Context',
-      body: ['PinkWallet is a mobile crypto wallet for people who want to use crypto without becoming traders first. It brings everyday wallet actions, financial education and an AI assistant, PIG, into one app.'],
-      table: { rows: [['Role', 'Product Designer'], ['Timeline', '8 weeks'], ['Platform', 'iOS'], ['Team', 'Two-person design team']] },
-      visual: { label: 'Home screen, light and dark', spec: 'Two phones side by side: wallet home in the light theme and in the dark theme.' } },
-    { id: 'problem', n: '02', title: 'Problem',
-      body: ['How do you make crypto feel as familiar as a banking app without hiding the risks that can cost people money? Typical wallets assume crypto fluency. PinkWallet’s users are beginners.'],
-      table: { head: ['Typical wallet', 'PinkWallet'], rows: [['Technical language', 'Familiar actions'], ['Raw wallet addresses', 'Saved contacts'], ['No explanation', 'Explained as you go'], ['Irreversible, no warning', 'Visible confirmation']] },
-      visual: { label: 'The same send screen, before and after', spec: 'A typical wallet’s send screen next to PinkWallet’s, with short annotations.' } },
-    { id: 'inputs', n: '03', title: 'Inputs',
-      body: ['There was no budget for user interviews. I used three sources instead.'],
-      table: { head: ['Source', 'What I found', 'What I did'], rows: [['Competitor audit', '[Finding]', '[Decision]'], ['App Store reviews', '[Finding]', '[Decision]'], ['Banking and messaging apps', '[Pattern]', '[Decision]']] },
-      visual: { label: 'Evidence', spec: 'A collage: competitor screens or App Store review quotes, with your marks on them.' } },
-    { id: 'architecture', n: '04', title: 'Architecture',
-      body: ['Five connected areas.'],
-      table: { head: ['Area', 'Its job'], rows: [['Wallet', '[One line]'], ['PIG', '[One line]'], ['Contacts', '[One line]'], ['Feed', '[One line]'], ['Transactions', '[One line]']] },
-      visual: { label: 'Five areas', spec: 'Five screens in a row, labelled Wallet, PIG, Contacts, Feed, Transactions.' } },
-    { id: 'decision-1', n: '05', title: 'Familiar actions, visible risk', short: 'Visible risk',
-      body: ['Sending crypto should feel like any other app, but transactions can’t be reversed. So there is a deliberate extra confirmation step before sending.'],
-      visual: { label: 'The send flow', spec: 'Three phones: enter amount, review, confirm. The extra confirmation step is highlighted.' } },
-    { id: 'decision-2', n: '06', title: 'An assistant that acts without taking control', short: 'PIG',
-      body: ['PIG prepares transactions and explains them. The user always makes the final tap.'],
-      table: { head: ['PIG does', 'The user does'], rows: [['Prepares the transaction', 'Reviews it'], ['Explains what will happen', 'Decides'], ['Stops at the confirmation', 'Makes the final tap']] },
-      visual: { label: 'PIG in action', spec: 'Two phones: PIG proposes a transaction in chat, then the user confirms it.' } },
-    { id: 'cut', n: '07', title: 'What I cut',
-      body: ['The filter: does this reduce the chance someone loses money or gives up?'],
-      table: { head: ['Cut', 'Why'], rows: [['Trader-grade analytics', '[Why]'], ['Autonomous transactions', '[Why]'], ['Buy recommendations', '[Why]']] },
-      visual: { label: 'What was removed', spec: 'One trader-style analytics screen, greyed out and crossed through.' } },
-    { id: 'system', n: '08', title: 'System',
-      body: ['A design system with light and dark themes on shared components. Both themes are built to WCAG AA contrast, with states shown by shape and label as well as colour.'],
-      nums: [{ value: '200+', label: 'Screens' }, { value: '2', label: 'Themes' }, { value: '8', label: 'Core flows' }, { value: 'AA', label: 'WCAG contrast' }],
-      visual: { label: 'One screen, two themes', spec: 'The same screen in light and dark, identical size (it will become a theme switch).' } },
-    { id: 'next', n: '09', title: 'What I’d test next', short: 'Test next',
-      body: ['The design rests on convention and is untested. Next I would test the confirmation step, and whether people trust PIG more or less after it handles a transaction correctly.'],
-      visual: { label: 'Closing frame', spec: 'The wallet home screen on a clean background, as the last image.' } },
+  summary: 'A multi-chain crypto wallet, redesigned around PIG, an AI companion.',
+  screens: [
+    { id: 'overview', nav: 'Overview', title: ['Crypto,', 'without learning crypto.'],
+      lede: 'A multi-chain wallet, redesigned around PIG, an AI companion that lets people say what they want instead of learning how crypto works.',
+      blocks: [{ type: 'meta', items: [
+        { label: 'Role', value: 'Product Designer', more: 'Co-designed end to end with a second designer' },
+        { label: 'Timeline', value: '8 weeks' },
+        { label: 'Platform', value: 'iOS' },
+        { label: 'Status', value: 'Launched July' },
+      ] }],
+      visual: { layout: 'single', items: [{ label: 'Home screen', spec: 'The wallet home in the light theme. Your strongest frame, on a phone mockup.' }] } },
+
+    { id: 'product', nav: 'Product', title: ['One wallet,', 'five networks.'],
+      blocks: [{ type: 'bento', cells: [
+        { title: 'PIG', body: 'An AI companion for every transaction.', wide: true, fill: true },
+        { title: 'Built for newcomers', body: 'Women taking their first steps in crypto.' },
+        { title: 'Non-custodial', body: 'Your keys, your funds.' },
+        { title: 'Five networks', chips: ['BTC', 'ETH', 'SOL', 'TRX', 'XRP'], wide: true },
+      ] }],
+      visual: { layout: 'stack', items: [
+        { label: 'Wallet card', spec: 'A crop of the wallet card component.' },
+        { label: 'PIG', spec: 'The PIG avatar on its own.' },
+        { label: 'Light and dark', spec: 'The same home screen in both themes, side by side.' },
+      ] } },
+
+    { id: 'problem', nav: 'Problem', title: ['Crypto asks people to think', 'like a blockchain.'],
+      blocks: [{ type: 'contrast',
+        from: { label: 'Crypto makes you think in', items: ['Addresses', 'Networks', 'Gas', 'Transactions'] },
+        to: { label: 'People think in', items: ['Send', 'Receive', 'Swap'] } }],
+      visual: { layout: 'single', items: [{ label: 'Before: the old send screen', spec: 'The send screen before the redesign. Add one line on what was wrong with it.' }] } },
+
+    { id: 'insight', nav: 'Insight', statement: true, title: ['Users think in outcomes,', 'not interfaces.'],
+      lede: 'What if they didn’t have to learn the wallet?' },
+
+    { id: 'approach', nav: 'Approach', title: ['Every crypto concept got', 'a plain answer.'],
+      blocks: [{ type: 'table', head: ['Crypto concept', 'Our decision'], rows: [
+        ['Network fees', 'One fee, paid in the asset you send'],
+        ['Network choice', 'Handled behind the scenes'],
+        ['Navigation', 'Tell PIG what you want to do'],
+        ['Confirmation', 'A clear summary before every action'],
+      ] }],
+      visual: { layout: 'single', items: [{ label: 'The send flow', spec: 'The new send flow: amount, the one fee, summary.' }] } },
+
+    { id: 'pig', nav: 'PIG', title: ['AI built in,', 'not bolted on.'],
+      blocks: [{ type: 'decision', rows: [
+        ['Decision', 'PIG is a way into the wallet, not a chat tab.'],
+        ['Chose', 'AI alongside the classic wallet, over an AI-only app.'],
+        ['Because', 'The interface changes. The product doesn’t.'],
+      ] }],
+      visual: { layout: 'single', items: [{ label: 'PIG chat', spec: 'A conversation with PIG that ends in a ready transaction.' }] } },
+
+    { id: 'trust', nav: 'Trust', title: ['In finance, conversational', 'doesn’t mean casual.'],
+      lede: 'Simpler interaction never meant less control. We designed for the moments where trust matters most.',
+      blocks: [{ type: 'cards', items: [
+        { label: 'Before', title: 'Does the user understand what will happen?' },
+        { label: 'During', title: 'Does the user know what is happening?' },
+      ] }],
+      visual: { layout: 'stack', items: [
+        { label: 'Progress', spec: 'A transaction in progress.' },
+        { label: 'Error', spec: 'A failed transaction and what to do next.' },
+        { label: 'Confirmation', spec: 'The summary screen before signing.' },
+      ] } },
+
+    { id: 'onboarding', nav: 'Onboarding', title: ['Your keys, explained', 'before you need them.'],
+      blocks: [{ type: 'chain', steps: ['Create a wallet', 'Save your secret phrase', 'Confirm it'] }],
+      visual: { layout: 'row', items: [
+        { label: 'Welcome', spec: 'The first onboarding screen.' },
+        { label: 'Secret phrase', spec: 'The secret phrase screen.' },
+        { label: 'Confirm', spec: 'Confirming the phrase.' },
+      ] } },
+
+    { id: 'states', nav: 'Every state', title: ['Every state', 'is designed.'],
+      lede: 'For the wallet and for conversations with PIG.',
+      blocks: [{ type: 'chips', items: ['First balance', 'Confirmation', 'Errors', 'Empty screens'] }, { type: 'theme' }],
+      visual: { layout: 'row', items: [
+        { label: 'First balance', spec: 'The wallet right after the first deposit.' },
+        { label: 'Empty wallet', spec: 'The wallet before anything arrives.' },
+        { label: 'First chat', spec: 'PIG before the first question.' },
+      ] } },
+
+    { id: 'process', nav: 'Process', title: ['This wasn’t', 'a concept exercise.'],
+      blocks: [
+        { type: 'chain', steps: ['Early screens', 'Iteration', 'Testing', 'Development', 'Launch'] },
+        { type: 'note', text: 'PIG’s character and the custom 3D icons were made with generative AI, then refined by hand.' },
+      ],
+      visual: { layout: 'stack', items: [
+        { label: 'Early screen', spec: 'One early screen.' },
+        { label: 'Final screen', spec: 'The same screen, shipped.' },
+        { label: 'Early screens', spec: 'A wide strip of early explorations.' },
+      ] } },
+
+    { id: 'outcome', nav: 'Outcome', title: ['From first screen', 'to launch.'],
+      blocks: [
+        { type: 'facts', caption: 'Scope', items: [{ value: '100+', label: 'Screens' }, { value: '8', label: 'Core flows' }] },
+        { type: 'note', text: 'One component library and a set of custom 3D icons hold it together.' },
+        { type: 'contact' },
+      ],
+      visual: { layout: 'stack', items: [
+        { label: '3D icons', spec: 'A few of the custom 3D icons.' },
+        { label: 'Components', spec: 'A crop of the component sheet.' },
+        { label: 'Final frame', spec: 'The closing image: the app on a clean background.' },
+      ] } },
   ],
 };
 

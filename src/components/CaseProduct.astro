@@ -1,89 +1,153 @@
 ---
-import type { CaseData, Step } from '../data/cases';
+import type { CaseData, Screen } from '../data/cases';
 import NextCase from './NextCase.astro';
 interface Props { c: CaseData; }
 const { c } = Astro.props;
 
-const generic: Step[] = [
-  { id: 'context', n: '01', title: 'Context', body: ['[What the product is and who it is for. Your role and the team.]'], table: { rows: [['Role', '[Role]'], ['Timeline', '[Timeline]'], ['Platform', '[Platform]'], ['Team', '[Team]']] }, visual: { label: 'Cover', spec: '[The product on its home screen.]' } },
-  { id: 'problem', n: '02', title: 'Problem', body: ['[What was not working, in one or two sentences, and how you found out.]'], visual: { label: 'The problem', spec: '[A screen or a quote that proves it.]' } },
-  { id: 'process', n: '03', title: 'Process', body: ['[The two or three decisions that mattered, and why.]'], table: { head: ['Decision', 'Why'], rows: [['[Decision]', '[Why]'], ['[Decision]', '[Why]']] }, visual: { label: 'Process', spec: '[Sketches, flows or the key screens.]' } },
-  { id: 'solution', n: '04', title: 'Solution', body: ['[What you shipped, in plain words.]'], visual: { label: 'Solution', spec: '[The final screens.]' } },
-  { id: 'outcome', n: '05', title: 'Outcome', body: ['[What changed after launch, and what you would do differently.]'], visual: { label: 'Outcome', spec: '[Results or a closing frame.]' } },
+const generic: Screen[] = [
+  { id: 'overview', nav: 'Overview', title: [c.headline], lede: c.summary,
+    blocks: [{ type: 'meta', items: c.facts.map((f) => ({ label: f.label, value: f.value })) }],
+    visual: { layout: 'single', items: [{ label: 'Cover', spec: 'The product on its home screen.' }] } },
+  { id: 'problem', nav: 'Problem', title: ['[What was broken,', 'in one line.]'],
+    visual: { layout: 'single', items: [{ label: 'The problem', spec: 'A screen or a quote that proves it.' }] } },
+  { id: 'insight', nav: 'Insight', statement: true, title: ['[The one insight', 'everything rests on.]'] },
+  { id: 'decisions', nav: 'Decisions', title: ['[The decision', 'that mattered.]'],
+    blocks: [{ type: 'decision', rows: [['Decision', '[What you decided]'], ['Chose', '[X over Y]'], ['Because', '[Why]']] }],
+    visual: { layout: 'stack', items: [{ label: 'Detail', spec: '' }, { label: 'Detail', spec: '' }, { label: 'Key screen', spec: '' }] } },
+  { id: 'outcome', nav: 'Outcome', title: ['[What shipped', 'and what changed.]'], blocks: [{ type: 'contact' }],
+    visual: { layout: 'single', items: [{ label: 'Final frame', spec: '' }] } },
 ];
-const steps = c.story ?? generic;
+const screens = c.screens ?? generic;
+const tone = `--c:${c.fill ?? c.color};--a:${c.accent ?? `color-mix(in oklab, ${c.color} 70%, #000)`};--af:${c.fill ?? c.color}`;
+const mail = 'mailto:elizaplnva@gmail.com';
 ---
-<div class="cp-story">
-  <header class="screen hero">
-    <a href="/" class="home-link">Eliza<br />Popelinova</a>
-    <div class="hero-body">
-      <div class="hero-text">
-        <div class="tags"><span>{c.name}</span>{c.tags.map((t) => <span>{t}</span>)}</div>
-        <h1>{c.headline}</h1>
-        <ol class="points">
-          {c.highlights.map((h, i) => <li><span>0{i + 1}</span><p>{h}</p></li>)}
-        </ol>
-      </div>
-      <figure class="ph hero-ph" aria-label="Placeholder: cover">
-        <b>Cover</b>
-        <small>4:5 · 1400×1750</small>
-        <p>The product’s main image: the light home screen, the strongest frame you have.</p>
-      </figure>
-    </div>
+<div class="cp-story" style={tone}>
+  <header class="m-bar">
+    <a href="/" class="me"><span class="face" aria-hidden="true">EP</span><span>Eliza Popelinova</span></a>
+    <a href={mail} class="btn">Contact</a>
   </header>
 
   <div class="story">
-    <nav class="rail" aria-label="Steps">
-      <a href="/" class="home-link rail-home">Eliza<br />Popelinova</a>
+    <nav class="rail" aria-label="Case sections">
+      <a href="/" class="me"><span class="face" aria-hidden="true">EP</span><span class="roll"><span data-t="Home">Home</span></span></a>
       <ol>
-        {steps.map((s) => <li><a href={`#${s.id}`} data-step={s.id}><span>{s.n}</span>{s.short ?? s.title}</a></li>)}
+        {screens.map((s) => <li><a href={`#${s.id}`} data-step={s.id}><span class="roll"><span data-t={s.nav}>{s.nav}</span></span></a></li>)}
       </ol>
-      <p class="other"><a href="/visual">Brand &amp; visual work</a></p>
+      <a href={mail} class="btn"><span class="roll"><span data-t="Contact">Contact</span></span></a>
     </nav>
 
     <div class="steps">
-      {steps.map((s) => (
-        <section class="step" id={s.id} data-step={s.id}>
-          <figure class="ph m-ph" aria-label={`Placeholder: ${s.visual.label}`}>
-            <b>{s.visual.label}</b><small>4:5 · 1400×1750</small><p>{s.visual.spec}</p>
-          </figure>
+      {screens.map((s, si) => (
+        <section class:list={['step', { statement: s.statement }]} id={s.id} data-step={s.id}>
+          {s.visual && (
+            <div class:list={['m-vis', `v-${s.visual.layout}`]}>
+              {s.visual.items.map((p) => <figure class="ph"><b>{p.label}</b>{p.spec && <p>{p.spec}</p>}</figure>)}
+            </div>
+          )}
           <div class="step-text">
-            <span class="num">{s.n}</span>
-            <h2>{s.title}</h2>
-            {s.body.map((t) => <p>{t}</p>)}
-            {s.table && (
-              <table class="tbl">
-                {s.table.head && <thead><tr>{s.table.head.map((h) => <th>{h}</th>)}</tr></thead>}
-                <tbody>{s.table.rows.map((r) => <tr>{r.map((cell, i) => (i === 0 && !s.table!.head ? <th scope="row">{cell}</th> : <td>{cell}</td>))}</tr>)}</tbody>
-              </table>
-            )}
-            {s.nums && <dl class="nums">{s.nums.map((n) => <div><dt>{n.label}</dt><dd>{n.value}</dd></div>)}</dl>}
+            {si === 0 && <div class="tags rv"><span>{c.name}</span>{c.tags.map((t) => <span>{t}</span>)}</div>}
+            {si === 0
+              ? <h1 class="ttl rv">{s.title[0]} {s.title[1] && <em>{s.title[1]}</em>}</h1>
+              : s.statement
+                ? <h2 class="ttl"><span class="ln">{s.title[0]}</span> {s.title[1] && <em class="ln">{s.title[1]}</em>}</h2>
+                : <h2 class="ttl rv">{s.title[0]} {s.title[1] && <em>{s.title[1]}</em>}</h2>}
+            {s.lede && <p class="lede rv">{s.lede}</p>}
+
+            {s.blocks?.map((b) => {
+              switch (b.type) {
+                case 'meta': return (
+                  <dl class="meta rv">{b.items.map((m) => (
+                    <div class:list={['cell', { has: m.more }]} tabindex={m.more ? 0 : undefined}>
+                      <dt>{m.label}</dt><dd>{m.value}</dd>{m.more && <small>{m.more}</small>}
+                    </div>))}
+                  </dl>);
+                case 'bento': return (
+                  <div class="bento rv">{b.cells.map((x) => (
+                    <div class:list={['cell', { wide: x.wide, fill: x.fill }]}>
+                      <h3>{x.title}</h3>
+                      {x.body && <p>{x.body}</p>}
+                      {x.chips && <ul class="chips">{x.chips.map((t) => <li>{t}</li>)}</ul>}
+                    </div>))}
+                  </div>);
+                case 'contrast': return (
+                  <div class="contrast rv">
+                    <div class="from"><p>{b.from.label}</p><ul class="chips">{b.from.items.map((t) => <li><s>{t}</s></li>)}</ul></div>
+                    <div class="to"><p>{b.to.label}</p><ul class="chips">{b.to.items.map((t) => <li>{t}</li>)}</ul></div>
+                  </div>);
+                case 'table': return (
+                  <table class="tbl rv">
+                    <thead><tr><th>{b.head[0]}</th><th>{b.head[1]}</th></tr></thead>
+                    <tbody>{b.rows.map((r) => <tr><th scope="row">{r[0]}</th><td>{r[1]}</td></tr>)}</tbody>
+                  </table>);
+                case 'decision': return (
+                  <dl class="decision rv">{b.rows.map((r) => <div><dt>{r[0]}</dt><dd>{r[1]}</dd></div>)}</dl>);
+                case 'cards': return (
+                  <div class="cards rv">{b.items.map((x) => (
+                    <div class="cell">{x.label && <small>{x.label}</small>}<h3>{x.title}</h3>{x.body && <p>{x.body}</p>}</div>))}
+                  </div>);
+                case 'chain': return (
+                  <ol class="chain rv">{b.steps.map((t) => <li>{t}</li>)}</ol>);
+                case 'chips': return (
+                  <ul class="chips big rv">{b.items.map((t) => <li>{t}</li>)}</ul>);
+                case 'facts': return (
+                  <div class="facts rv"><small>{b.caption}</small>
+                    <dl>{b.items.map((f) => <div><dd>{f.value}</dd><dt>{f.label}</dt></div>)}</dl>
+                  </div>);
+                case 'note': return <p class="note rv">{b.text}</p>;
+                case 'theme': return (
+                  <div class="theme rv" role="group" aria-label="Screen theme">
+                    <button type="button" aria-pressed="true" data-theme="light">Light</button>
+                    <button type="button" aria-pressed="false" data-theme="dark">Dark</button>
+                  </div>);
+                case 'contact': return (
+                  <a href={mail} class="cta rv"><span class="roll"><span data-t="Let’s talk">Let’s talk</span></span><small>elizaplnva@gmail.com</small></a>);
+              }
+            })}
           </div>
         </section>
       ))}
     </div>
 
     <div class="stage" aria-hidden="true">
-      {steps.map((s, i) => (
-        <figure class:list={['ph', { on: i === 0 }]} data-step={s.id}>
-          <b>{s.visual.label}</b><small>4:5 · 1400×1750</small><p>{s.visual.spec}</p>
-        </figure>
+      {screens.map((s, i) => s.visual && (
+        <div class:list={['vis', `v-${s.visual.layout}`, { on: i === 0 }]} data-step={s.id}>
+          {s.visual.items.map((p) => <figure class="ph"><b>{p.label}</b>{p.spec && <p>{p.spec}</p>}</figure>)}
+        </div>
       ))}
     </div>
   </div>
 
-  <section class="screen end"><NextCase current={c} /></section>
+  <section class="end"><NextCase current={c} /></section>
 </div>
 
 <script>
-  const ids = [...document.querySelectorAll<HTMLElement>('.step')];
+  document.documentElement.classList.add('js');
+  const steps = [...document.querySelectorAll<HTMLElement>('.step')];
   const links = [...document.querySelectorAll<HTMLAnchorElement>('.rail a[data-step]')];
-  const figs = [...document.querySelectorAll<HTMLElement>('.stage figure')];
+  const vis = [...document.querySelectorAll<HTMLElement>('.stage .vis')];
+  const stage = document.querySelector<HTMLElement>('.stage');
   const set = (id: string) => {
     links.forEach((a) => a.toggleAttribute('aria-current', a.dataset.step === id));
-    figs.forEach((f) => f.classList.toggle('on', f.dataset.step === id));
+    let shown = false;
+    vis.forEach((v) => { const on = v.dataset.step === id; v.classList.toggle('on', on); shown ||= on; });
+    stage?.classList.toggle('empty', !shown);
   };
-  set(ids[0]?.id);
-  const io = new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && set(e.target.id)), { rootMargin: '-50% 0px -50% 0px' });
-  ids.forEach((s) => io.observe(s));
+  // reveal: a screen's blocks rise once it is a little in view
+  const rv = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); rv.unobserve(e.target); } }), { rootMargin: '0px 0px -15% 0px' });
+  steps.forEach((s) => rv.observe(s));
+  if (steps[0]) set(steps[0].id);
+  const io = new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && set((e.target as HTMLElement).id)), { rootMargin: '-45% 0px -45% 0px' });
+  steps.forEach((s) => io.observe(s));
+
+  // light / dark switch for the "every state" screens
+  document.querySelectorAll<HTMLElement>('.theme').forEach((g) => {
+    const step = g.closest<HTMLElement>('.step');
+    g.addEventListener('click', (ev) => {
+      const b = (ev.target as HTMLElement).closest<HTMLButtonElement>('button');
+      if (!b || !step) return;
+      g.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      const dark = b.dataset.theme === 'dark';
+      document.querySelectorAll<HTMLElement>(`[data-step="${step.id}"].vis, #${step.id} .m-vis`).forEach((v) => v.classList.toggle('dark', dark));
+    });
+  });
 </script>
