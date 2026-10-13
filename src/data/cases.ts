@@ -47,7 +47,8 @@ export interface CaseData {
   highlights: string[];       // selling points (Product pages)
   summary: string;            // short intro
   accent?: string;            // case colour, safe for text on white
-  fill?: string;              // case colour for filled cards
+  fill?: string;              // case colour for small dots and marks
+  tint?: string;              // pastel behind the case images
   screens?: Screen[];         // Product pages; falls back to a generic skeleton
 }
 
@@ -64,6 +65,7 @@ const summary = '[Two sentences: what the product or brand is, and your part in 
 const pinkwallet: Partial<CaseData> = {
   accent: '#E0408F',
   fill: '#E0408F',
+  tint: '#FFE6F1',
   facts: [
     { label: 'Role', value: 'Product Designer' },
     { label: 'Timeline', value: '8 weeks' },
@@ -207,6 +209,7 @@ const pinkwallet: Partial<CaseData> = {
 const jam: Partial<CaseData> = {
   accent: '#5B6EF0',
   fill: '#5B6EF0',
+  tint: '#E4E6FF',
   facts: [
     { label: 'Role', value: 'Product Designer' },
     { label: 'Team', value: '2 designers, 2 PMs' },
@@ -306,6 +309,7 @@ const jam: Partial<CaseData> = {
 const lapunzel: Partial<CaseData> = {
   accent: '#E58A1F',
   fill: '#E58A1F',
+  tint: '#FFEBD6',
   facts: [
     { label: 'Role', value: 'UX Lead' },
     { label: 'Scope', value: 'Mobile UX, research, flows' },
@@ -391,6 +395,7 @@ const lapunzel: Partial<CaseData> = {
 const greenCredit: Partial<CaseData> = {
   accent: '#22A55E',
   fill: '#22A55E',
+  tint: '#DDF7D0',
   facts: [
     { label: 'Role', value: 'Product Designer' },
     { label: 'Timeline', value: '1 month' },

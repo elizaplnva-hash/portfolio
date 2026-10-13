@@ -18,7 +18,7 @@ const generic: Screen[] = [
     visual: { layout: 'single', items: [{ label: 'Final frame', spec: '' }] } },
 ];
 const screens = c.screens ?? generic;
-const tone = `--c:${c.fill ?? c.color};--a:${c.accent ?? `color-mix(in oklab, ${c.color} 70%, #000)`};--af:${c.fill ?? c.color}`;
+const tone = `--c:${c.fill ?? c.color};--a:${c.accent ?? `color-mix(in oklab, ${c.color} 70%, #000)`};--af:${c.fill ?? c.color};--t:${c.tint ?? '#f1f1ef'}`;
 const mail = 'mailto:elizaplnva@gmail.com';
 ---
 <div class="cp-story" style={tone}>

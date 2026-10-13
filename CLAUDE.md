@@ -24,8 +24,8 @@ Green Credit Score and World of Colors headlines; verify Ben AI "first industry 
 `npm run dev` / `npm run build`. Work on a branch, push, review the Vercel preview URL, then merge to `main`.
 
 ## Case pages (Product)
-- White background, rail on the left (home + photo circle, section list, Contact), content column, image panel running to the right edge. Each section is one full screen (scroll-snap).
-- One screen answers one question. Headline = a claim, two-tone: second part in the case colour. ≤90 words per screen.
-- Content lives in `src/data/cases.ts` as `screens` built from blocks (meta, bento, contrast, table, decision, cards, chain, chips, facts, quote, note, theme, contact). Right panel = `visual` (single / stack / row) with placeholder specs until real images arrive.
-- Case colour (`fill` for cards, `accent` for text) is the brightest thing on the page: one filled card per screen, the headline accent, facts, active rail item. No gradients, shadows, numbering, eyebrow labels.
-- Every fact appears once per case. No fabricated metrics; scope facts are labelled as scope. No agency name (Danart) on cases.
+- White ground, light grey cards (`#f5f5f3`), black main text, grey secondary text. Rail on the left (home + photo circle, section list, Contact), content column, image panel running to the right edge. Each section is one full screen (scroll-snap).
+- Each case has a pastel `tint` behind its images (PinkWallet pink, Jam lavender, Lapunzel peach, Green Credit mint). The case colour (`fill`) is only for small dots and the active rail dot. Numbers and facts stay black.
+- One screen answers one question. Headline = a claim, two-tone: second part grey. Small type (headings ~34px, body 15px). ≤90 words per screen.
+- Content lives in `src/data/cases.ts` as `screens` built from blocks (meta, bento, contrast, table, decision, cards, chain, chips, facts, quote, note, fromto, steps, theme, contact). Right panel = `visual` (single / stack / row) with placeholder specs until real images arrive.
+- No gradients, shadows, eyebrow labels. Every fact appears once per case. No fabricated metrics; scope facts are labelled as scope. No agency name (Danart) on cases.
