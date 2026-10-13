@@ -6,7 +6,8 @@ const { side } = Astro.props;
 const s = sides[side];
 ---
 <main class="sheet">
-  <a href="#" class="tile photo" aria-label="About Eliza Popelinova">
+  <a href="#" class="tile photo has-img" aria-label="About Eliza Popelinova">
+    <img src="/images/eliza.webp" alt="Eliza Popelinova" width="1200" height="960" decoding="async" />
     <div class="chips">
       <span class="pill light">Vancouver, BC</span>
       <span class="pill dark"><span class="dot"></span>Open to work</span>
