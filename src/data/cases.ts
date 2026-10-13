@@ -19,6 +19,8 @@ export type Block =
   | { type: 'facts'; caption: string; items: { value: string; label: string }[] }
   | { type: 'note'; text: string }
   | { type: 'quote'; text: string; by: string }
+  | { type: 'fromto'; from: string; to: string }
+  | { type: 'steps'; items: { title: string; body: string }[] }
   | { type: 'theme' }
   | { type: 'contact' };
 
@@ -60,88 +62,116 @@ const summary = '[Two sentences: what the product or brand is, and your part in 
 
 
 const pinkwallet: Partial<CaseData> = {
-  accent: '#D3127A',
-  fill: '#FA5EB5',
+  accent: '#E0408F',
+  fill: '#E0408F',
   facts: [
     { label: 'Role', value: 'Product Designer' },
     { label: 'Timeline', value: '8 weeks' },
     { label: 'Platform', value: 'iOS' },
-    { label: 'Status', value: 'Launched July' },
+    { label: 'Status', value: 'Launched July 2026' },
   ],
   summary: 'A multi-chain crypto wallet, redesigned around PIG, an AI companion.',
   screens: [
     { id: 'overview', nav: 'Overview', title: ['Crypto,', 'without learning crypto.'],
-      lede: 'A multi-chain wallet, redesigned around PIG, an AI companion that lets people say what they want instead of learning how crypto works.',
+      lede: 'A multi-chain wallet redesigned around PIG, an AI companion that helps users manage crypto through natural conversation instead of complex navigation.',
       blocks: [{ type: 'meta', items: [
         { label: 'Role', value: 'Product Designer', more: 'Co-designed end to end with a second designer' },
         { label: 'Timeline', value: '8 weeks' },
         { label: 'Platform', value: 'iOS' },
-        { label: 'Status', value: 'Launched July' },
+        { label: 'Status', value: 'Launched July 2026' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'Home screen', spec: 'The wallet home in the light theme. Your strongest frame, on a phone mockup.' }] } },
 
-    { id: 'product', nav: 'Product', title: ['One wallet,', 'five networks.'],
-      blocks: [{ type: 'bento', cells: [
-        { title: 'PIG', body: 'An AI companion for every transaction.', wide: true, fill: true },
-        { title: 'Built for newcomers', body: 'Women taking their first steps in crypto.' },
-        { title: 'Non-custodial', body: 'Your keys, your funds.' },
-        { title: 'Five networks', chips: ['BTC', 'ETH', 'SOL', 'TRX', 'XRP'], wide: true },
+    { id: 'product', nav: 'Product', title: ['One wallet,', 'more ways to manage crypto.'],
+      lede: 'PinkWallet brings asset management, AI assistance, crypto news and everyday wallet tools into one mobile experience.',
+      blocks: [{ type: 'cards', items: [
+        { label: 'AI companion', title: 'Ask questions, explore crypto and start actions through PIG.' },
+        { label: 'Multi-chain wallet', title: 'Assets across five networks: BTC, ETH, SOL, TRX and XRP.' },
+        { label: 'Crypto feed', title: 'Market news, and a way to discuss stories with PIG.' },
+        { label: 'Everyday tools', title: 'Swap assets, manage contacts, reach wallet settings.' },
+        { label: 'Self-custody', title: 'Users keep control of their wallet and private keys.' },
       ] }],
       visual: { layout: 'stack', items: [
         { label: 'Wallet card', spec: 'A crop of the wallet card component.' },
         { label: 'PIG', spec: 'The PIG avatar on its own.' },
-        { label: 'Light and dark', spec: 'The same home screen in both themes, side by side.' },
+        { label: 'Crypto feed', spec: 'The feed with a story opened in PIG.' },
       ] } },
 
     { id: 'problem', nav: 'Problem', title: ['Crypto asks people to think', 'like a blockchain.'],
-      blocks: [{ type: 'contrast',
-        from: { label: 'Crypto makes you think in', items: ['Addresses', 'Networks', 'Gas', 'Transactions'] },
-        to: { label: 'People think in', items: ['Send', 'Receive', 'Swap'] } }],
-      visual: { layout: 'single', items: [{ label: 'Before: the old send screen', spec: 'The send screen before the redesign. Add one line on what was wrong with it.' }] } },
+      lede: 'Sending crypto can involve unfamiliar concepts before users even reach their goal. Networks, addresses, fees and transaction details add complexity to what should feel like a simple action.',
+      blocks: [
+        { type: 'contrast',
+          from: { label: 'The technical model', items: ['Addresses', 'Networks', 'Gas fees', 'Transactions'] },
+          to: { label: 'The user’s mental model', items: ['Send', 'Receive', 'Swap'] } },
+        { type: 'note', text: 'The challenge was to bridge that gap without sacrificing transparency or control.' },
+      ],
+      visual: { layout: 'single', items: [{ label: 'Before: the old send screen', spec: 'The send screen before the redesign.' }] } },
 
     { id: 'insight', nav: 'Insight', statement: true, title: ['Users think in outcomes,', 'not interfaces.'],
-      lede: 'What if they didn’t have to learn the wallet?' },
+      lede: 'People don’t open a wallet to navigate menus. They open it to do something with their money.',
+      blocks: [
+        { type: 'fromto', from: 'Finding features, navigating menus, understanding technical options.', to: 'Expressing an intention, reviewing the details, confirming the action.' },
+      ] },
 
-    { id: 'approach', nav: 'Approach', title: ['Every crypto concept got', 'a plain answer.'],
-      blocks: [{ type: 'table', head: ['Crypto concept', 'Our decision'], rows: [
-        ['Network fees', 'One fee, paid in the asset you send'],
-        ['Network choice', 'Handled behind the scenes'],
-        ['Navigation', 'Tell PIG what you want to do'],
-        ['Confirmation', 'A clear summary before every action'],
+    { id: 'approach', nav: 'Approach', title: ['Every crypto concept got', 'a simpler answer.'],
+      lede: 'The goal wasn’t to hide complexity. It was to remove unnecessary decisions while keeping important information visible.',
+      blocks: [{ type: 'cards', items: [
+        { label: 'Fees', title: 'Make transaction costs understandable before confirmation.' },
+        { label: 'Networks', title: 'Remove network decisions wherever the product can handle them.' },
+        { label: 'Navigation', title: 'Let users say what they want through PIG, not only through menus.' },
+        { label: 'Confirmation', title: 'Show the essential details before users approve an action.' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'The send flow', spec: 'The new send flow: amount, the one fee, summary.' }] } },
+      visual: { layout: 'single', items: [{ label: 'The send flow', spec: 'The new send flow: amount, fee, summary.' }] } },
 
     { id: 'pig', nav: 'PIG', title: ['AI built in,', 'not bolted on.'],
-      blocks: [{ type: 'decision', rows: [
-        ['Decision', 'PIG is a way into the wallet, not a chat tab.'],
-        ['Chose', 'AI alongside the classic wallet, over an AI-only app.'],
-        ['Because', 'The interface changes. The product doesn’t.'],
-      ] }],
+      lede: 'PIG isn’t a separate chatbot. It is another way to use the wallet itself, while the familiar controls stay where they are.',
+      blocks: [
+        { type: 'cards', items: [
+          { label: 'Conversational', title: 'Ask, explore and start actions in natural language.' },
+          { label: 'Traditional', title: 'Familiar wallet features and controls, one tap away.' },
+        ] },
+        { type: 'note', text: 'The way people interact can change without splitting the product in two.' },
+      ],
       visual: { layout: 'single', items: [{ label: 'PIG chat', spec: 'A conversation with PIG that ends in a ready transaction.' }] } },
 
-    { id: 'trust', nav: 'Trust', title: ['In finance, conversational', 'doesn’t mean casual.'],
-      lede: 'Simpler interaction never meant less control. We designed for the moments where trust matters most.',
+    { id: 'trust', nav: 'Trust', title: ['Conversational doesn’t mean', 'casual.'],
+      lede: 'When money is involved, a simple interface isn’t enough. People need to know what they approve, what is happening and how it ended.',
       blocks: [{ type: 'cards', items: [
-        { label: 'Before', title: 'Does the user understand what will happen?' },
-        { label: 'During', title: 'Does the user know what is happening?' },
+        { label: 'Before', title: 'Make the decision clear', body: 'Essential transaction details before confirmation.' },
+        { label: 'During', title: 'Keep the user informed', body: 'Progress and errors, never a guess.' },
+        { label: 'After', title: 'Close the loop', body: 'A clear result: done, or what needs attention.' },
       ] }],
       visual: { layout: 'stack', items: [
+        { label: 'Confirmation', spec: 'The summary before signing.' },
         { label: 'Progress', spec: 'A transaction in progress.' },
-        { label: 'Error', spec: 'A failed transaction and what to do next.' },
-        { label: 'Confirmation', spec: 'The summary screen before signing.' },
+        { label: 'Result', spec: 'Success, or an error with the next step.' },
       ] } },
 
-    { id: 'onboarding', nav: 'Onboarding', title: ['Your keys, explained', 'before you need them.'],
-      blocks: [{ type: 'chain', steps: ['Create a wallet', 'Save your secret phrase', 'Confirm it'] }],
+    { id: 'onboarding', nav: 'Onboarding', title: ['More than a wallet,', 'from the first screen.'],
+      lede: 'Onboarding introduces PinkWallet as an everyday crypto companion before asking anyone to create or import a wallet.',
+      blocks: [{ type: 'steps', items: [
+        { title: 'Welcome', body: 'PinkWallet and its promise of simpler crypto.' },
+        { title: 'Meet PIG', body: 'How an AI companion fits into the wallet.' },
+        { title: 'Explore', body: 'The crypto feed, and talking about news with PIG.' },
+        { title: 'Get started', body: 'Create a new wallet or import an existing one.' },
+      ] }],
       visual: { layout: 'row', items: [
         { label: 'Welcome', spec: 'The first onboarding screen.' },
-        { label: 'Secret phrase', spec: 'The secret phrase screen.' },
-        { label: 'Confirm', spec: 'Confirming the phrase.' },
+        { label: 'Meet PIG', spec: 'PIG introduces itself.' },
+        { label: 'Get started', spec: 'Create or import a wallet.' },
       ] } },
 
-    { id: 'states', nav: 'Every state', title: ['Every state', 'is designed.'],
-      lede: 'For the wallet and for conversations with PIG.',
-      blocks: [{ type: 'chips', items: ['First balance', 'Confirmation', 'Errors', 'Empty screens'] }, { type: 'theme' }],
+    { id: 'states', nav: 'Every state', title: ['Every state is part', 'of the experience.'],
+      lede: 'A wallet is more than its home screen. First use, empty balances, progress, errors and conversations with PIG all decide how reliable it feels.',
+      blocks: [
+        { type: 'cards', items: [
+          { label: 'First use', title: 'Empty wallet, first balance' },
+          { label: 'Transactions', title: 'Confirmation, progress' },
+          { label: 'Recovery', title: 'Errors, next steps' },
+          { label: 'Conversations', title: 'First chat, AI responses' },
+        ] },
+        { type: 'theme' },
+      ],
       visual: { layout: 'row', items: [
         { label: 'First balance', spec: 'The wallet right after the first deposit.' },
         { label: 'Empty wallet', spec: 'The wallet before anything arrives.' },
@@ -149,34 +179,34 @@ const pinkwallet: Partial<CaseData> = {
       ] } },
 
     { id: 'process', nav: 'Process', title: ['This wasn’t', 'a concept exercise.'],
+      lede: 'PinkWallet was designed for release: from early explorations through iteration and testing into development and launch.',
       blocks: [
-        { type: 'chain', steps: ['Early screens', 'Iteration', 'Testing', 'Development', 'Launch'] },
-        { type: 'note', text: 'PIG’s character and the custom 3D icons were made with generative AI, then refined by hand.' },
+        { type: 'chain', steps: ['Exploration', 'Iteration', 'Testing', 'Development', 'Launch'] },
+        { type: 'note', text: 'A shared component library kept the core flows and states consistent. PIG’s character and the custom 3D icons were made with generative AI, then refined by hand.' },
       ],
       visual: { layout: 'stack', items: [
         { label: 'Early screen', spec: 'One early screen.' },
         { label: 'Final screen', spec: 'The same screen, shipped.' },
-        { label: 'Early screens', spec: 'A wide strip of early explorations.' },
+        { label: 'Components', spec: 'The component library, wide.' },
       ] } },
 
     { id: 'outcome', nav: 'Outcome', title: ['From first screen', 'to launch.'],
+      lede: 'One mobile experience that brings together a multi-chain wallet, AI-assisted interactions and everyday crypto tools.',
       blocks: [
-        { type: 'facts', caption: 'Scope', items: [{ value: '200+', label: 'Screens' }, { value: '8', label: 'Core flows' }] },
-        { type: 'note', text: 'One component library and a set of custom 3D icons hold it together.' },
+        { type: 'facts', caption: 'Scope', items: [{ value: '200+', label: 'Screens' }, { value: '8', label: 'Core flows' }, { value: '5', label: 'Networks' }] },
         { type: 'contact' },
       ],
       visual: { layout: 'stack', items: [
         { label: '3D icons', spec: 'A few of the custom 3D icons.' },
-        { label: 'Components', spec: 'A crop of the component sheet.' },
+        { label: 'Dark theme', spec: 'Home in the dark theme.' },
         { label: 'Final frame', spec: 'The closing image: the app on a clean background.' },
       ] } },
   ],
 };
 
-
 const jam: Partial<CaseData> = {
-  accent: '#3550D4',
-  fill: '#8EA2FF',
+  accent: '#5B6EF0',
+  fill: '#5B6EF0',
   facts: [
     { label: 'Role', value: 'Product Designer' },
     { label: 'Team', value: '2 designers, 2 PMs' },
@@ -274,8 +304,8 @@ const jam: Partial<CaseData> = {
 };
 
 const lapunzel: Partial<CaseData> = {
-  accent: '#A85F00',
-  fill: '#FFB547',
+  accent: '#E58A1F',
+  fill: '#E58A1F',
   facts: [
     { label: 'Role', value: 'UX Lead' },
     { label: 'Scope', value: 'Mobile UX, research, flows' },
@@ -359,8 +389,8 @@ const lapunzel: Partial<CaseData> = {
 };
 
 const greenCredit: Partial<CaseData> = {
-  accent: '#17803F',
-  fill: '#3CCF7A',
+  accent: '#22A55E',
+  fill: '#22A55E',
   facts: [
     { label: 'Role', value: 'Product Designer' },
     { label: 'Timeline', value: '1 month' },
