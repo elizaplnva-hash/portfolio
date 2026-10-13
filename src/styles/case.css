@@ -76,7 +76,7 @@ html:has(.cp-story), body:has(.cp-story) { background: #f3f3f1; }
   a:hover .roll > span { transform: translateY(-100%); }
 }
 
-.frame { display: none; }
+.frame, .frame-sh { display: none; }
 
 /* elevation levels */
 .l1 { background: var(--white); box-shadow: var(--sh); }
@@ -210,7 +210,7 @@ h1.ttl { font-size: clamp(30px, 3vw, 46px); letter-spacing: -.045em; line-height
 .cta-row .addr { font-size: 14px; color: var(--muted); }
 
 /* statement */
-.statement .ttl { font-size: clamp(38px, 4.8vw, 76px); line-height: 1; letter-spacing: -.05em; }
+.statement .ttl { font-size: clamp(38px, min(4.8vw, 9dvh), 76px); line-height: 1; letter-spacing: -.05em; }
 .statement .ln { display: block; }
 .statement .lede { font-size: 17px; max-width: 30em; }
 
@@ -260,7 +260,12 @@ h1.ttl { font-size: clamp(30px, 3vw, 46px); letter-spacing: -.045em; line-height
   .cta-step { scroll-snap-align: start; }
   .rail { grid-column: 1; } .steps { grid-column: 2; } .stage { grid-column: 3; z-index: 1; }
   /* the near-white frame that holds the text and the images */
-  .frame { display: block; grid-column: 2 / 4; grid-row: 1; position: sticky; top: var(--pad); height: calc(100dvh - 2 * var(--pad)); align-self: start; background: #fdfdfc; border-radius: 20px; box-shadow: var(--sh2); }
+  .frame { display: block; grid-column: 2 / 4; grid-row: 1; position: sticky; top: var(--pad); height: calc(100dvh - 2 * var(--pad)); align-self: start; background: #fdfdfc; border-radius: 20px; }
+  /* shadow on its own layer above the text masks, so it is not cut */
+  .frame-sh { display: block; grid-column: 2 / 4; grid-row: 1; position: sticky; top: var(--pad); height: calc(100dvh - 2 * var(--pad)); align-self: start; border-radius: 20px; box-shadow: var(--sh2); pointer-events: none; z-index: 3; }
+  /* text never leaves the frame: ground-coloured bands above and below it */
+  .story::before, .story::after { content: ''; position: fixed; left: var(--rail); right: 0; height: var(--pad); background: var(--ground); z-index: 2; pointer-events: none; }
+  .story::before { top: 0; } .story::after { bottom: 0; }
   .rail, .stage { display: flex; position: sticky; top: 0; height: 100dvh; align-self: start; }
   .rail { flex-direction: column; justify-content: space-between; align-items: flex-start; padding: var(--pad); z-index: 2; }
   .rail ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1px; width: 100%; }
