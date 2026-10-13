@@ -97,7 +97,9 @@ const mail = 'mailto:elizaplnva@gmail.com';
                   </ol>);
                 case 'callout': return <p class="callout rv">{b.text}</p>;
                 case 'chain': return (
-                  <ol class="chain rv">{b.steps.map((t) => <li>{t}</li>)}</ol>);
+                  <ol class="chain rv">{b.steps.map((t, i) => (
+                    <li><span class:list={['pill', i === b.steps.length - 1 ? 'l1 last' : 'l2']}>{t}</span>{i < b.steps.length - 1 && <span class="ar" aria-hidden="true" set:html={icon('arrow-down')} />}</li>))}
+                  </ol>);
                 case 'chips': return (
                   <ul class="chips big rv">{b.items.map((t) => <li>{t}</li>)}</ul>);
                 case 'facts': return (
