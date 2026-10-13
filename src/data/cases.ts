@@ -96,9 +96,9 @@ const pinkwallet: Partial<CaseData> = {
         { icon: 'key-round', title: 'Self-custody', body: 'Users keep control of their wallet and private keys.' },
       ] }],
       visual: { layout: 'stack', items: [
-        { label: 'Crypto feed', spec: '', src: '/images/pw-feed.webp', alt: 'The crypto feed on a tilted phone: a story opened with an NFT card, and 3D icons for video, news and X' },
-        { label: 'App icon', spec: '', src: '/images/pw-app-icon.webp', alt: 'The PinkWallet app icon on an iPhone home screen' },
         { label: 'Cards', spec: '', src: '/images/pw-cards.webp', alt: 'PinkWallet card designs, stacked' },
+        { label: 'App icon', spec: '', src: '/images/pw-app-icon.webp', alt: 'The PinkWallet app icon on an iPhone home screen' },
+        { label: 'Crypto feed', spec: '', src: '/images/pw-feed.webp', alt: 'The crypto feed on a tilted phone: a story opened with an NFT card, and 3D icons for video, news and X' },
       ] } },
 
     { id: 'problem', nav: 'Problem', title: ['Crypto asks people to think', 'like a blockchain.'],
