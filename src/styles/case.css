@@ -217,7 +217,7 @@ h1.ttl { font-size: clamp(40px, 4.6vw, 76px); text-transform: none; letter-spaci
   .step { min-height: 100dvh; scroll-snap-align: start; justify-content: center; padding: var(--pad) clamp(24px, 3vw, 56px); }
   .step.statement .step-text { width: calc(100vw - var(--rail) - 2 * var(--pad)); }
   .meta { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .contrast { grid-template-columns: 1fr 1fr; }
+  .contrast { grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); }
   .stage { padding: var(--pad) 0 var(--pad) var(--pad); }
   .stage .vis { position: absolute; top: var(--pad); bottom: var(--pad); left: var(--pad); right: 0; display: grid; gap: var(--gap); opacity: 0; transform: scale(.98); transition: opacity .45s ease-out, transform .6s var(--out); pointer-events: none; }
   .stage .vis.on { opacity: 1; transform: none; }
@@ -234,3 +234,8 @@ h1.ttl { font-size: clamp(40px, 4.6vw, 76px); text-transform: none; letter-spaci
   .stage .vis { transform: none !important; transition: opacity .2s linear; }
   .roll > span, .meta .cell { transition: none; }
 }
+.quote { margin: 0; border-left: 3px solid var(--af); padding: 4px 0 4px 20px; }
+.quote blockquote { margin: 0; font-size: 26px; font-weight: 500; line-height: 1.15; letter-spacing: -.035em; }
+.quote figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); }
+.cards .cell:nth-child(3):last-child { grid-column: span 2; min-height: 0; }
+.cards .cell:only-child { grid-column: span 2; }

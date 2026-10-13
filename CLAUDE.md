@@ -12,7 +12,7 @@ Edit copy, tags, case order and links there, not in components. Each case = prod
 - Interface is grayscale. Colour appears only inside case images and the turn-tile accent. Never invent a new accent colour.
 - Font: Helvetica Neue, fallback Hanken Grotesk, Arial. Headings weight 500, uppercase, tight tracking (-0.05em); case headlines sentence case.
 - Tokens are CSS variables in `src/styles/global.css` (front on `:root`, back on `[data-side='back']`).
-- No arrows anywhere. Motion = tile hover tilt + sheet flip only. Always honour `prefers-reduced-motion`.
+- No arrows anywhere. Motion: tile hover tilt, sheet flip/reveal, and on case pages the image crossfade, 12px block rise, statement line reveal and rolling labels. Only transform/opacity, ease-out, under ~600ms. Always honour `prefers-reduced-motion`.
 - No top menu. Social links are plain icons, no circles. No repeated text between tiles.
 - Must not look "AI-made": no generic pill/card feeds, no gradients, no mono-caps labels, no filler copy.
 - Keep it fast: no UI frameworks, no client JS unless essential.
@@ -22,3 +22,10 @@ Green Credit Score and World of Colors headlines; verify Ben AI "first industry 
 
 ## Workflow
 `npm run dev` / `npm run build`. Work on a branch, push, review the Vercel preview URL, then merge to `main`.
+
+## Case pages (Product)
+- White background, rail on the left (home + photo circle, section list, Contact), content column, image panel running to the right edge. Each section is one full screen (scroll-snap).
+- One screen answers one question. Headline = a claim, two-tone: second part in the case colour. ≤90 words per screen.
+- Content lives in `src/data/cases.ts` as `screens` built from blocks (meta, bento, contrast, table, decision, cards, chain, chips, facts, quote, note, theme, contact). Right panel = `visual` (single / stack / row) with placeholder specs until real images arrive.
+- Case colour (`fill` for cards, `accent` for text) is the brightest thing on the page: one filled card per screen, the headline accent, facts, active rail item. No gradients, shadows, numbering, eyebrow labels.
+- Every fact appears once per case. No fabricated metrics; scope facts are labelled as scope. No agency name (Danart) on cases.

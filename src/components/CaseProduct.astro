@@ -94,6 +94,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
                     <dl>{b.items.map((f) => <div><dd>{f.value}</dd><dt>{f.label}</dt></div>)}</dl>
                   </div>);
                 case 'note': return <p class="note rv">{b.text}</p>;
+                case 'quote': return (<figure class="quote rv"><blockquote>“{b.text}”</blockquote><figcaption>{b.by}</figcaption></figure>);
                 case 'theme': return (
                   <div class="theme rv" role="group" aria-label="Screen theme">
                     <button type="button" aria-pressed="true" data-theme="light">Light</button>
