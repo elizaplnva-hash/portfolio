@@ -53,7 +53,7 @@ figure { margin: 0; }
    supporting ones are off-white (.l2), the rest slightly grey (.l3).
    Colour lives only in icons and in the pastel tint (--t) behind the images. */
 html:has(.cp-story), body:has(.cp-story) { background: #f3f3f1; }
-.cp-story { --ground: #f3f3f1; --white: #fff; --l2: #fbfbfa; --l3: #ebebe9; --card: var(--l2); --t: #f1f1ef; --ink: #111; --muted: #8a8a8a; --soft: #6f6f6f; --hair: #e2e2df;
+.cp-story { --ground: #f3f3f1; --white: #fff; --l2: #f6f6f4; --l3: #ebebe9; --card: var(--l2); --t: #f1f1ef; --ink: #111; --muted: #8a8a8a; --soft: #6f6f6f; --hair: #e2e2df;
   --sh: 0 1px 2px rgba(17,17,17,.05), 0 8px 24px rgba(17,17,17,.08); --sh2: 0 1px 2px rgba(17,17,17,.05), 0 3px 10px rgba(17,17,17,.06);
   --rail: 210px; --out: cubic-bezier(.23, 1, .32, 1); --r: 14px; background: var(--ground); }
 .cp-story h3 { margin: 0; }
@@ -70,6 +70,8 @@ html:has(.cp-story), body:has(.cp-story) { background: #f3f3f1; }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   a:hover .roll > span { transform: translateY(-100%); }
 }
+
+.frame { display: none; }
 
 /* elevation levels */
 .l1 { background: var(--white); box-shadow: var(--sh); }
@@ -237,7 +239,11 @@ h1.ttl { font-size: clamp(30px, 3vw, 46px); letter-spacing: -.045em; line-height
 @media (min-width: 900px) and (min-height: 620px) {
   html:has(.cp-story) { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
   .m-bar, .m-vis { display: none; }
-  .story { display: grid; grid-template-columns: var(--rail) minmax(380px, 520px) minmax(0, 1fr); }
+  .story { display: grid; grid-template-columns: var(--rail) minmax(380px, 520px) minmax(0, 1fr); padding-right: var(--pad); }
+  .rail, .steps, .stage { grid-row: 1; }
+  .rail { grid-column: 1; } .steps { grid-column: 2; } .stage { grid-column: 3; z-index: 1; }
+  /* the near-white frame that holds the text and the images */
+  .frame { display: block; grid-column: 2 / 4; grid-row: 1; position: sticky; top: var(--pad); height: calc(100dvh - 2 * var(--pad)); align-self: start; background: #fdfdfc; border-radius: 20px; box-shadow: var(--sh2); }
   .rail, .stage { display: flex; position: sticky; top: 0; height: 100dvh; align-self: start; }
   .rail { flex-direction: column; justify-content: space-between; align-items: flex-start; padding: var(--pad); z-index: 2; }
   .rail ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1px; width: 100%; }
@@ -246,16 +252,13 @@ h1.ttl { font-size: clamp(30px, 3vw, 46px); letter-spacing: -.045em; line-height
   .rail ol a[aria-current] { background: var(--white); box-shadow: var(--sh2); color: var(--ink); font-weight: 500; }
   .steps { position: relative; z-index: 1; }
   .step { min-height: 100dvh; scroll-snap-align: start; justify-content: center; padding: var(--pad) clamp(20px, 2.6vw, 44px); }
-  .step.statement .step-text { width: calc(100vw - var(--rail) - 2 * var(--pad)); }
+  .step.statement .step-text { width: calc(100vw - var(--rail) - 3 * var(--pad)); }
   .contrast { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); }
-  .stage { padding: var(--pad) 0 var(--pad) var(--pad); }
-  .stage .vis { position: absolute; top: var(--pad); bottom: var(--pad); left: var(--pad); right: 0; display: grid; gap: 6px; padding: 8px 0 8px 8px; background: var(--t); border-radius: var(--r) 0 0 var(--r); opacity: 0; transform: scale(.98); transition: opacity .45s ease-out, transform .6s var(--out); pointer-events: none; }
+  .stage .vis { position: absolute; top: calc(var(--pad) + 10px); bottom: calc(var(--pad) + 10px); left: 0; right: 10px; display: grid; gap: 6px; padding: 8px; background: var(--t); border-radius: 14px; opacity: 0; transform: scale(.98); transition: opacity .45s ease-out, transform .6s var(--out); pointer-events: none; }
   .stage .vis.on { opacity: 1; transform: none; }
   .stage .v-stack { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1.25fr; }
   .stage .v-stack .ph:nth-child(3) { grid-column: span 2; }
   .stage .v-row { grid-template-columns: repeat(3, 1fr); }
-  .stage .ph { border-radius: 10px 0 0 10px; }
-  .stage .v-stack .ph:nth-child(1) { border-radius: 10px; }
   .end { min-height: 100dvh; scroll-snap-align: start; display: flex; align-items: center; }
 }
 @media (prefers-reduced-motion: reduce) {
