@@ -227,7 +227,6 @@ const jam: Partial<CaseData> = {
 
     { id: 'research', nav: 'Research', title: ['What people said,', 'not what we assumed.'],
       blocks: [
-        { type: 'facts', caption: 'Research', items: [{ value: '10+', label: 'Interviews' }, { value: '1', label: 'Focus group' }] },
         { type: 'cards', items: [
           { icon: 'lock', label: 'Interviews', title: 'Privacy is non-negotiable.', body: 'Control over who sees what came up unprompted in 7 of 10 interviews.' },
           { icon: 'route', label: 'Interviews', title: 'Interactions matter beyond the app.', body: 'People wanted to see what happened after the scan, wherever it happened.' },
