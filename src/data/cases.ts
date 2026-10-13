@@ -159,11 +159,7 @@ const pinkwallet: Partial<CaseData> = {
         { title: 'Explore', body: 'The crypto feed, and talking about news with PIG.' },
         { title: 'Get started', body: 'Create a new wallet or import an existing one.' },
       ] }],
-      visual: { layout: 'row', items: [
-        { label: 'Welcome', spec: 'The first onboarding screen.' },
-        { label: 'Meet PIG', spec: 'PIG introduces itself.' },
-        { label: 'Get started', spec: 'Create or import a wallet.' },
-      ] } },
+      visual: { layout: 'single', items: [{ label: 'Onboarding', spec: '', src: '/images/pw-onboarding.webp', alt: 'Three onboarding screens: Meet PIG, Your crypto feed and Welcome to PinkWallet' }] } },
 
     { id: 'states', nav: 'Every state', title: ['Every state is part', 'of the experience.'],
       lede: 'A wallet is more than its home screen. First use, empty balances, progress, errors and conversations with PIG all decide how reliable it feels.',
@@ -176,11 +172,7 @@ const pinkwallet: Partial<CaseData> = {
         ] },
         { type: 'theme' },
       ],
-      visual: { layout: 'row', items: [
-        { label: 'First balance', spec: 'The wallet right after the first deposit.' },
-        { label: 'Empty wallet', spec: 'The wallet before anything arrives.' },
-        { label: 'First chat', spec: 'PIG before the first question.' },
-      ] } },
+      visual: { layout: 'single', items: [{ label: 'PIG conversations', spec: '', src: '/images/pw-states.webp', alt: 'PIG on a phone held in a hand, with a Bitcoin chart reply and a wallet choice when sending' }] } },
 
     { id: 'process', nav: 'Process', title: ['This wasn’t', 'a concept exercise.'],
       lede: 'PinkWallet was designed for release: from early explorations through iteration and testing into development and launch.',
@@ -188,22 +180,14 @@ const pinkwallet: Partial<CaseData> = {
         { type: 'chain', steps: ['Exploration', 'Iteration', 'Testing', 'Development', 'Launch'] },
         { type: 'note', text: 'A shared component library kept the core flows and states consistent. PIG’s character and the custom 3D icons were made with generative AI, then refined by hand.' },
       ],
-      visual: { layout: 'stack', items: [
-        { label: 'Early screen', spec: 'One early screen.' },
-        { label: 'Final screen', spec: 'The same screen, shipped.' },
-        { label: 'Components', spec: 'The component library, wide.' },
-      ] } },
+      visual: { layout: 'single', items: [{ label: 'Screens', spec: '', src: '/images/pw-process.webp', alt: 'A grid of PinkWallet screens: filters, history, swap, contacts and PIG chat' }] } },
 
     { id: 'outcome', nav: 'Outcome', title: ['From first screen', 'to launch.'],
       lede: 'One mobile experience that brings together a multi-chain wallet, AI-assisted interactions and everyday crypto tools.',
       blocks: [
         { type: 'facts', caption: 'Scope', items: [{ value: '200+', label: 'Screens' }, { value: '8', label: 'Core flows' }, { value: '5', label: 'Networks' }] },
       ],
-      visual: { layout: 'stack', items: [
-        { label: '3D icons', spec: 'A few of the custom 3D icons.' },
-        { label: 'Dark theme', spec: 'Home in the dark theme.' },
-        { label: 'Final frame', spec: 'The closing image: the app on a clean background.' },
-      ] } },
+      visual: { layout: 'single', items: [{ label: 'Final frame', spec: '', src: '/images/pw-outcome.webp', alt: 'The PinkWallet home and Dashboard on two phones in the dark theme' }] } },
   ],
 };
 
