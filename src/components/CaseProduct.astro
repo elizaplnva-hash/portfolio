@@ -163,6 +163,23 @@ const mail = 'mailto:elizaplnva@gmail.com';
   const io = new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && set((e.target as HTMLElement).id)), { rootMargin: '-45% 0px -45% 0px' });
   steps.forEach((s) => io.observe(s));
 
+  // images lean toward the cursor (mouse devices only, never with reduced motion)
+  if (matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)').matches) {
+    document.querySelectorAll<HTMLElement>('.stage .ph').forEach((el) => {
+      el.addEventListener('pointermove', (e) => {
+        const r = el.getBoundingClientRect();
+        el.style.setProperty('--rx', `${(-((e.clientY - r.top) / r.height - 0.5) * 6).toFixed(2)}deg`);
+        el.style.setProperty('--ry', `${(((e.clientX - r.left) / r.width - 0.5) * 6).toFixed(2)}deg`);
+        el.classList.add('lean');
+      });
+      el.addEventListener('pointerleave', () => {
+        el.classList.remove('lean');
+        el.style.removeProperty('--rx');
+        el.style.removeProperty('--ry');
+      });
+    });
+  }
+
   // light / dark switch for the "every state" screens
   document.querySelectorAll<HTMLElement>('.theme').forEach((g) => {
     const step = g.closest<HTMLElement>('.step');

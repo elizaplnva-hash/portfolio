@@ -275,6 +275,8 @@ h1.ttl { font-size: clamp(30px, 3vw, 46px); letter-spacing: -.045em; line-height
   .stage .v-row { grid-template-columns: repeat(3, 1fr); }
   .end { display: none; }
   .stage .ph { border-radius: 0; background: rgba(255,255,255,.5); }
+  .stage .ph { transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .6s var(--out); will-change: transform; }
+  .stage .ph.lean { transition: transform .15s ease-out; position: relative; z-index: 2; }
   .stage .vis.nx { top: calc(var(--pad) + 10px); bottom: calc(var(--pad) + 10px); right: 10px; background: transparent; padding: 0; border-radius: 0; overflow: visible; }
   .stage .vis.nx .next { display: grid; grid-template-columns: 1fr; grid-template-rows: minmax(0, 1.5fr) minmax(0, 1fr); gap: 10px; height: 100%; }
   .stage .vis.nx .tile { min-height: 0; overflow: hidden; }
