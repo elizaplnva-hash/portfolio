@@ -32,6 +32,7 @@ export interface Screen {
   title: [string, string?];        // second part is set in the case colour
   lede?: string;
   statement?: boolean;             // one huge line, no image
+  wide?: boolean;                  // text only, spans the frame
   blocks?: Block[];
   visual?: Visual;
 }
@@ -211,7 +212,7 @@ const jam: Partial<CaseData> = {
         { label: 'Timeline', value: '12 weeks' },
         { label: 'Scope', value: 'Research to hi-fi' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Jam home', spec: 'The connection screen with the QR card.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Jam', spec: '', src: '/images/jam-overview.webp', alt: 'Jam on two phones: the “Weekly report is ready” notification on the lock screen and the Analytics screen' }] } },
 
     { id: 'problem', nav: 'Problem', title: ['Networking feels like', 'talking into a void.'],
       blocks: [
@@ -222,37 +223,28 @@ const jam: Partial<CaseData> = {
           { icon: 'rotate-ccw', title: 'No reason to return' },
         ] },
       ],
-      visual: { layout: 'single', items: [{ label: 'Before', spec: 'The scan-and-share flow as it was: share, close, forget.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Problem', spec: 'An image that shows the problem. Coming soon.' }] } },
 
     { id: 'research', nav: 'Research', title: ['What people said,', 'not what we assumed.'],
       blocks: [
         { type: 'facts', caption: 'Research', items: [{ value: '10+', label: 'Interviews' }, { value: '1', label: 'Focus group' }] },
-        { type: 'chips', items: ['Competitor audit', 'Heuristic evaluation'] },
+        { type: 'cards', items: [
+          { icon: 'lock', label: 'Interviews', title: 'Privacy is non-negotiable.', body: 'Control over who sees what came up unprompted in 7 of 10 interviews.' },
+          { icon: 'route', label: 'Interviews', title: 'Interactions matter beyond the app.', body: 'People wanted to see what happened after the scan, wherever it happened.' },
+          { icon: 'repeat', hi: true, label: 'Focus group', title: 'Without a reason to return, Jam is a one-time tool.' },
+        ] },
       ],
-      visual: { layout: 'stack', items: [
-        { label: 'Interview notes', spec: 'A crop of your synthesis board.' },
-        { label: 'Persona', spec: 'Mark Baker, recent IT grad.' },
-        { label: 'Affinity map', spec: 'The clustered findings, wide.' },
-      ] } },
-
-    { id: 'findings', nav: 'Findings', title: ['Three findings', 'changed the brief.'],
-      blocks: [{ type: 'cards', items: [
-        { icon: 'lock', label: 'Interviews', title: 'Privacy is non-negotiable.', body: 'Control over who sees what came up unprompted in 7 of 10 interviews.' },
-        { icon: 'route', label: 'Interviews', title: 'Interactions matter beyond the app.', body: 'People wanted to see what happened after the scan, wherever it happened.' },
-        { icon: 'repeat', hi: true, label: 'Focus group', title: 'Without a reason to return, Jam is a one-time tool.' },
-      ] }] ,
-      visual: { layout: 'single', items: [{ label: 'Evidence', spec: 'Quotes or sticky notes behind the three findings.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Research', spec: 'Interview notes, persona or the findings board. Coming soon.' }] } },
 
     { id: 'insight', nav: 'Insight', statement: true, title: ['People didn’t want numbers.', 'They wanted a reason to come back.'] },
 
-    { id: 'alignment', nav: 'Alignment', title: ['Two PMs,', 'two definitions of analytics.'],
+    { id: 'alignment', nav: 'Alignment', wide: true, title: ['Two PMs,', 'two definitions of analytics.'],
       lede: 'An ideation workshop turned them into one definition and three questions.',
       blocks: [{ type: 'list', items: [
         { icon: 'zap', label: 'How might we', title: 'Make analytics actionable, not just informational?' },
         { icon: 'calendar-clock', label: 'How might we', title: 'Give people a reason to return between events?' },
         { icon: 'shield', label: 'How might we', title: 'Surface insights without compromising privacy?' },
-      ] }],
-      visual: { layout: 'single', items: [{ label: 'Workshop', spec: 'The ideation board from the workshop.' }] } },
+      ] }] },
 
     { id: 'solution', nav: 'Solution', title: ['One feature,', 'three parts.'],
       blocks: [{ type: 'bento', cells: [
@@ -260,33 +252,23 @@ const jam: Partial<CaseData> = {
         { icon: 'chart-no-axes-column', title: 'Weekly digest', body: 'Link clicks, top platforms and industries reached, built to skim' },
         { icon: 'contact', title: 'Connection profiles', body: 'Living contact cards with event history, talking points and notes' },
       ] }],
-      visual: { layout: 'row', items: [
-        { label: 'Digest', spec: 'The weekly analytics digest.' },
-        { label: 'Follow-up', spec: 'A follow-up reminder.' },
-        { label: 'Profile', spec: 'A connection profile.' },
-      ] } },
+      visual: { layout: 'single', items: [{ label: 'Solution', spec: '', src: '/images/jam-solution.webp', alt: 'Jam: the Instagram analytics screen, Notifications and a connection Profile' }] } },
 
-    { id: 'testing', nav: 'Testing', title: ['8 usability tests,', '3 changes.'],
+    { id: 'testing', nav: 'Testing', wide: true, title: ['8 usability tests,', '3 changes.'],
       blocks: [{ type: 'table', head: ['What we saw', 'What changed'], rows: [
         ['Icon-only navigation confused 5 of 8 testers', 'Text labels on the bottom navigation'],
         ['Clarity was rated 2', 'Dividers and colour: rated 4.5'],
         ['Contact details came before context', 'Event context first, then the person'],
-      ] }],
-      visual: { layout: 'stack', items: [
-        { label: 'Before', spec: 'A tested screen before the change.' },
-        { label: 'After', spec: 'The same screen after.' },
-        { label: 'Final flow', spec: 'The tested flow, wide.' },
-      ] } },
+      ] }] },
 
-    { id: 'reflection', nav: 'Reflection', title: ['The brief is rarely', 'the real problem.'],
+    { id: 'reflection', nav: 'Reflection', wide: true, title: ['The brief is rarely', 'the real problem.'],
       blocks: [
         { type: 'decision', rows: [
           ['My part', 'Aligning two PMs on one definition took as much work as the screens.'],
           ['I’d change', 'We tested with people who network easily, not with those who find it hard.'],
         ] },
         { type: 'chain', steps: ['Validate with shipped data', 'Test notification fatigue', 'Onboarding that builds the habit'] },
-      ],
-      visual: { layout: 'single', items: [{ label: 'Final frame', spec: 'The connection profile, on a clean background.' }] } },
+      ] },
   ],
 };
 

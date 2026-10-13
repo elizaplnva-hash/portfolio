@@ -274,7 +274,8 @@ h1.ttl { font-size: clamp(30px, 3vw, 46px); letter-spacing: -.045em; line-height
   .rail ol a[aria-current] { background: var(--white); box-shadow: var(--sh2); color: var(--ink); font-weight: 500; }
   .steps { position: relative; z-index: 1; }
   .step { min-height: 100dvh; scroll-snap-align: start; justify-content: center; padding: var(--pad) clamp(20px, 2.6vw, 44px); }
-  .step.statement .step-text { width: calc(100vw - var(--rail) - 3 * var(--pad)); }
+  .step.statement .step-text, .step.wide .step-text { width: calc(100vw - var(--rail) - 3 * var(--pad)); }
+  .step.wide .step-text > :not(.ttl) { max-width: 620px; }
   .contrast { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); }
   .stage .vis { position: absolute; top: var(--pad); bottom: var(--pad); left: 0; right: 0; display: grid; gap: 3px; padding: 0; background: var(--t); border-radius: 0 20px 20px 0; overflow: hidden; opacity: 0; transform: scale(.98); transition: opacity .45s ease-out, transform .6s var(--out); pointer-events: none; }
   .stage .vis.on { opacity: 1; transform: none; }
