@@ -112,7 +112,7 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .case .meta { display: flex; flex-direction: column; gap: 10px; padding: 0 6px 6px; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .tags span { background: color-mix(in srgb, var(--c) 22%, #fff); color: #111; border-radius: 999px; padding: 4px 10px; font-size: 12px; }
-.tags span:first-child { background: color-mix(in srgb, var(--c) 55%, #fff); color: #111; font-weight: 500; }
+.tags span:first-child { background: color-mix(in srgb, var(--c) 55%, #fff); color: #111; font-weight: 400; }
 .case h2 { font-size: 20px; font-weight: 500; line-height: 1.08; letter-spacing: -.03em; }
 .case.big .art { aspect-ratio: 4 / 3; }
 .case.big .meta { padding: 4px 14px 12px; gap: 12px; }
