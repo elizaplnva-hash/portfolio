@@ -8,12 +8,14 @@ export type Visual =
 export interface Ph { label: string; spec: string }
 
 export type Block =
-  | { type: 'meta'; items: { label: string; value: string; more?: string }[] }
-  | { type: 'bento'; cells: { title: string; body?: string; chips?: string[]; wide?: boolean; fill?: boolean }[] }
-  | { type: 'contrast'; from: { label: string; items: string[] }; to: { label: string; items: string[] } }
+  | { type: 'meta'; items: { label: string; value: string }[] }
+  | { type: 'bento'; cells: { title: string; body?: string; icon?: string; wide?: boolean; fill?: boolean }[] }
+  | { type: 'contrast'; from: { label: string; items: string[] }; to: { label: string; items: string[]; icons?: string[] } }
   | { type: 'table'; head: [string, string]; rows: [string, string][] }
   | { type: 'decision'; rows: [string, string][] }
-  | { type: 'cards'; items: { label?: string; title: string; body?: string }[] }
+  | { type: 'cards'; items: { label?: string; title: string; body?: string; icon?: string; hi?: boolean }[] }
+  | { type: 'list'; numbered?: boolean; items: { label?: string; title: string; body?: string; icon?: string }[] }
+  | { type: 'callout'; text: string }
   | { type: 'chain'; steps: string[] }
   | { type: 'chips'; items: string[] }
   | { type: 'facts'; caption: string; items: { value: string; label: string }[] }
@@ -77,7 +79,7 @@ const pinkwallet: Partial<CaseData> = {
     { id: 'overview', nav: 'Overview', title: ['Crypto,', 'without learning crypto.'],
       lede: 'A multi-chain wallet redesigned around PIG, an AI companion that helps users manage crypto through natural conversation instead of complex navigation.',
       blocks: [{ type: 'meta', items: [
-        { label: 'Role', value: 'Product Designer', more: 'Co-designed end to end with a second designer' },
+        { label: 'Role', value: 'Product Designer' },
         { label: 'Timeline', value: '8 weeks' },
         { label: 'Platform', value: 'iOS' },
         { label: 'Status', value: 'Launched July 2026' },
@@ -86,12 +88,12 @@ const pinkwallet: Partial<CaseData> = {
 
     { id: 'product', nav: 'Product', title: ['One wallet,', 'more ways to manage crypto.'],
       lede: 'PinkWallet brings asset management, AI assistance, crypto news and everyday wallet tools into one mobile experience.',
-      blocks: [{ type: 'cards', items: [
-        { label: 'AI companion', title: 'Ask questions, explore crypto and start actions through PIG.' },
-        { label: 'Multi-chain wallet', title: 'Assets across five networks: BTC, ETH, SOL, TRX and XRP.' },
-        { label: 'Crypto feed', title: 'Market news, and a way to discuss stories with PIG.' },
-        { label: 'Everyday tools', title: 'Swap assets, manage contacts, reach wallet settings.' },
-        { label: 'Self-custody', title: 'Users keep control of their wallet and private keys.' },
+      blocks: [{ type: 'bento', cells: [
+        { icon: 'sparkles', title: 'AI companion', body: 'Ask questions, explore crypto and start actions through PIG.', wide: true, fill: true },
+        { icon: 'wallet', title: 'Multi-chain wallet', body: 'Assets across five networks: BTC, ETH, SOL, TRX and XRP.' },
+        { icon: 'newspaper', title: 'Crypto feed', body: 'Market news, and a way to discuss stories with PIG.' },
+        { icon: 'layout-grid', title: 'Everyday tools', body: 'Swap assets, manage contacts, reach wallet settings.' },
+        { icon: 'key-round', title: 'Self-custody', body: 'Users keep control of their wallet and private keys.' },
       ] }],
       visual: { layout: 'stack', items: [
         { label: 'Wallet card', spec: 'A crop of the wallet card component.' },
@@ -104,8 +106,8 @@ const pinkwallet: Partial<CaseData> = {
       blocks: [
         { type: 'contrast',
           from: { label: 'The technical model', items: ['Addresses', 'Networks', 'Gas fees', 'Transactions'] },
-          to: { label: 'The user’s mental model', items: ['Send', 'Receive', 'Swap'] } },
-        { type: 'note', text: 'The challenge was to bridge that gap without sacrificing transparency or control.' },
+          to: { label: 'The user’s mental model', items: ['Send', 'Receive', 'Swap'], icons: ['send', 'inbox', 'blend'] } },
+        { type: 'callout', text: 'The challenge was to bridge that gap without sacrificing transparency or control.' },
       ],
       visual: { layout: 'single', items: [{ label: 'Before: the old send screen', spec: 'The send screen before the redesign.' }] } },
 
@@ -117,11 +119,11 @@ const pinkwallet: Partial<CaseData> = {
 
     { id: 'approach', nav: 'Approach', title: ['Every crypto concept got', 'a simpler answer.'],
       lede: 'The goal wasn’t to hide complexity. It was to remove unnecessary decisions while keeping important information visible.',
-      blocks: [{ type: 'cards', items: [
-        { label: 'Fees', title: 'Make transaction costs understandable before confirmation.' },
-        { label: 'Networks', title: 'Remove network decisions wherever the product can handle them.' },
-        { label: 'Navigation', title: 'Let users say what they want through PIG, not only through menus.' },
-        { label: 'Confirmation', title: 'Show the essential details before users approve an action.' },
+      blocks: [{ type: 'list', items: [
+        { icon: 'receipt', title: 'Fees', body: 'Make transaction costs understandable before confirmation.' },
+        { icon: 'network', title: 'Networks', body: 'Remove network decisions wherever the product can handle them.' },
+        { icon: 'compass', title: 'Navigation', body: 'Let users say what they want through PIG, not only through menus.' },
+        { icon: 'shield-check', title: 'Confirmation', body: 'Show the essential details before users approve an action.' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'The send flow', spec: 'The new send flow: amount, fee, summary.' }] } },
 
@@ -129,8 +131,8 @@ const pinkwallet: Partial<CaseData> = {
       lede: 'PIG isn’t a separate chatbot. It is another way to use the wallet itself, while the familiar controls stay where they are.',
       blocks: [
         { type: 'cards', items: [
-          { label: 'Conversational', title: 'Ask, explore and start actions in natural language.' },
-          { label: 'Traditional', title: 'Familiar wallet features and controls, one tap away.' },
+          { icon: 'message-circle', hi: true, label: 'Conversational', title: 'Ask, explore and start actions in natural language.' },
+          { icon: 'layout-dashboard', label: 'Traditional', title: 'Familiar wallet features and controls, one tap away.' },
         ] },
         { type: 'note', text: 'The way people interact can change without splitting the product in two.' },
       ],
@@ -138,7 +140,7 @@ const pinkwallet: Partial<CaseData> = {
 
     { id: 'trust', nav: 'Trust', title: ['Conversational doesn’t mean', 'casual.'],
       lede: 'When money is involved, a simple interface isn’t enough. People need to know what they approve, what is happening and how it ended.',
-      blocks: [{ type: 'cards', items: [
+      blocks: [{ type: 'list', numbered: true, items: [
         { label: 'Before', title: 'Make the decision clear', body: 'Essential transaction details before confirmation.' },
         { label: 'During', title: 'Keep the user informed', body: 'Progress and errors, never a guess.' },
         { label: 'After', title: 'Close the loop', body: 'A clear result: done, or what needs attention.' },
@@ -166,11 +168,11 @@ const pinkwallet: Partial<CaseData> = {
     { id: 'states', nav: 'Every state', title: ['Every state is part', 'of the experience.'],
       lede: 'A wallet is more than its home screen. First use, empty balances, progress, errors and conversations with PIG all decide how reliable it feels.',
       blocks: [
-        { type: 'cards', items: [
-          { label: 'First use', title: 'Empty wallet, first balance' },
-          { label: 'Transactions', title: 'Confirmation, progress' },
-          { label: 'Recovery', title: 'Errors, next steps' },
-          { label: 'Conversations', title: 'First chat, AI responses' },
+        { type: 'table', head: ['State', 'What is covered'], rows: [
+          ['First use', 'Empty wallet, first balance'],
+          ['Transactions', 'Confirmation, progress'],
+          ['Recovery', 'Errors, next steps'],
+          ['Conversations', 'First chat, AI responses'],
         ] },
         { type: 'theme' },
       ],
@@ -221,7 +223,7 @@ const jam: Partial<CaseData> = {
     { id: 'overview', nav: 'Overview', title: ['Analytics was the ask.', 'A reason to come back was the need.'],
       lede: 'Jam is a digital business card: scan a QR code, share your contact. The team asked whether Jam should add analytics, and what kind would matter.',
       blocks: [{ type: 'meta', items: [
-        { label: 'Role', value: 'Product Designer', more: 'Owned research and analytics' },
+        { label: 'Role', value: 'Product Designer' },
         { label: 'Team', value: '2 designers, 2 PMs' },
         { label: 'Timeline', value: '12 weeks' },
         { label: 'Scope', value: 'Research to hi-fi' },
@@ -322,7 +324,7 @@ const lapunzel: Partial<CaseData> = {
       lede: 'Lapunzel sells ethical pet cosmetics: vegan ingredients, premium price. People arrived ready to buy and left without buying.',
       blocks: [{ type: 'meta', items: [
         { label: 'Role', value: 'UX Lead' },
-        { label: 'Timeline', value: '4 weeks', more: 'Research to handoff' },
+        { label: 'Timeline', value: '4 weeks' },
         { label: 'Scope', value: 'Mobile UX, research, flows' },
         { label: 'Focus', value: 'Conversion, retention' },
       ] }],

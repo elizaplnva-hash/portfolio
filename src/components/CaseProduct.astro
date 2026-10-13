@@ -1,6 +1,7 @@
 ---
 import type { CaseData, Screen } from '../data/cases';
 import NextCase from './NextCase.astro';
+import { icon, metaIcon } from '../data/icons';
 interface Props { c: CaseData; }
 const { c } = Astro.props;
 
@@ -56,23 +57,21 @@ const mail = 'mailto:elizaplnva@gmail.com';
             {s.blocks?.map((b) => {
               switch (b.type) {
                 case 'meta': return (
-                  <dl class="meta rv">{b.items.map((m) => (
-                    <div class:list={['cell', { has: m.more }]} tabindex={m.more ? 0 : undefined}>
-                      <dt>{m.label}</dt><dd>{m.value}</dd>{m.more && <small>{m.more}</small>}
-                    </div>))}
-                  </dl>);
+                  <ul class="meta rv">{b.items.map((m) => (
+                    <li><span class="ic" aria-hidden="true" set:html={icon(metaIcon[m.label] ?? 'circle-check')} /><span><small>{m.label}</small><b>{m.value}</b></span></li>))}
+                  </ul>);
                 case 'bento': return (
                   <div class="bento rv">{b.cells.map((x) => (
-                    <div class:list={['cell', { wide: x.wide, fill: x.fill }]}>
+                    <div class:list={['cell', 'lift', x.fill ? 'l1 hi' : 'l2', { wide: x.wide }]}>
+                      {x.icon && <span class="ic" aria-hidden="true" set:html={icon(x.icon)} />}
                       <h3>{x.title}</h3>
                       {x.body && <p>{x.body}</p>}
-                      {x.chips && <ul class="chips">{x.chips.map((t) => <li>{t}</li>)}</ul>}
                     </div>))}
                   </div>);
                 case 'contrast': return (
                   <div class="contrast rv">
-                    <div class="from"><p>{b.from.label}</p><ul class="chips">{b.from.items.map((t) => <li><s>{t}</s></li>)}</ul></div>
-                    <div class="to"><p>{b.to.label}</p><ul class="chips">{b.to.items.map((t) => <li>{t}</li>)}</ul></div>
+                    <div class="from l3"><p>{b.from.label}</p><ul>{b.from.items.map((t) => <li>{t}</li>)}</ul></div>
+                    <div class="to l1 hi lift"><p>{b.to.label}</p><ul>{b.to.items.map((t, i) => <li>{b.to.icons?.[i] && <span class="ic" aria-hidden="true" set:html={icon(b.to.icons[i])} />}{t}</li>)}</ul></div>
                   </div>);
                 case 'table': return (
                   <table class="tbl rv">
@@ -83,8 +82,19 @@ const mail = 'mailto:elizaplnva@gmail.com';
                   <dl class="decision rv">{b.rows.map((r) => <div><dt>{r[0]}</dt><dd>{r[1]}</dd></div>)}</dl>);
                 case 'cards': return (
                   <div class="cards rv">{b.items.map((x) => (
-                    <div class="cell">{x.label && <small>{x.label}</small>}<h3>{x.title}</h3>{x.body && <p>{x.body}</p>}</div>))}
+                    <div class:list={['cell', 'lift', x.hi ? 'l1 hi' : 'l2']}>
+                      {x.icon && <span class="ic" aria-hidden="true" set:html={icon(x.icon)} />}
+                      {x.label && <small>{x.label}</small>}<h3>{x.title}</h3>{x.body && <p>{x.body}</p>}
+                    </div>))}
                   </div>);
+                case 'list': return (
+                  <ol class:list={['list rv', { num: b.numbered }]}>{b.items.map((x) => (
+                    <li>
+                      {x.icon ? <span class="ic" aria-hidden="true" set:html={icon(x.icon)} /> : b.numbered ? <span class="n" aria-hidden="true"></span> : null}
+                      <div>{x.label && <small>{x.label}</small>}<h3>{x.title}</h3>{x.body && <p>{x.body}</p>}</div>
+                    </li>))}
+                  </ol>);
+                case 'callout': return <p class="callout rv">{b.text}</p>;
                 case 'chain': return (
                   <ol class="chain rv">{b.steps.map((t) => <li>{t}</li>)}</ol>);
                 case 'chips': return (
@@ -95,9 +105,9 @@ const mail = 'mailto:elizaplnva@gmail.com';
                   </div>);
                 case 'note': return <p class="note rv">{b.text}</p>;
                 case 'fromto': return (
-                  <dl class="fromto rv"><div><dt>From</dt><dd>{b.from}</dd></div><div><dt>To</dt><dd>{b.to}</dd></div></dl>);
+                  <dl class="fromto rv"><div class="l3"><dt>From</dt><dd>{b.from}</dd></div><div class="l1 hi lift"><dt>To</dt><dd>{b.to}</dd></div></dl>);
                 case 'steps': return (
-                  <ol class="steps-list rv">{b.items.map((x) => <li><h3>{x.title}</h3><p>{x.body}</p></li>)}</ol>);
+                  <ol class="list num rv">{b.items.map((x) => <li><span class="n" aria-hidden="true"></span><div><h3>{x.title}</h3><p>{x.body}</p></div></li>)}</ol>);
                 case 'quote': return (<figure class="quote rv"><blockquote>“{b.text}”</blockquote><figcaption>{b.by}</figcaption></figure>);
                 case 'theme': return (
                   <div class="theme rv" role="group" aria-label="Screen theme">

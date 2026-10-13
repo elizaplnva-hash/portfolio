@@ -24,8 +24,10 @@ Green Credit Score and World of Colors headlines; verify Ben AI "first industry 
 `npm run dev` / `npm run build`. Work on a branch, push, review the Vercel preview URL, then merge to `main`.
 
 ## Case pages (Product)
-- White ground, light grey cards (`#f5f5f3`), black main text, grey secondary text. Rail on the left (home + photo circle, section list, Contact), content column, image panel running to the right edge. Each section is one full screen (scroll-snap).
-- Each case has a pastel `tint` behind its images (PinkWallet pink, Jam lavender, Lapunzel peach, Green Credit mint). The case colour (`fill`) is only for small dots and the active rail dot. Numbers and facts stay black.
+- Grey ground (`#f3f3f1`). Importance = elevation: the key element is white with a soft shadow (`.l1`), supporting ones off-white (`.l2`), the rest slightly grey (`.l3`). Soft shadows are allowed here (only the shadow layers fade, via opacity). Black main text, grey secondary text (lede is grey too).
+- Rail on the left (home + photo circle, section list, active item white with shadow, Contact), content column, image panel to the right edge. Each section is one full screen (scroll-snap).
+- Each case has a pastel `tint` behind its images and on highlighted cards on hover. Case colour (`fill`) appears only in small icons (Lucide, inlined at build time from `lucide-static`, no arrows). Numbers and facts stay black. No dots.
+- Vary the form, do not use cards everywhere: icon row (meta), bento, divider lists (numbered only for a real sequence), grey-vs-white contrast panels, table, plain text, one tinted callout. Cards react on hover (lift, white/tint).
 - One screen answers one question. Headline = a claim, two-tone: second part grey. Small type (headings ~34px, body 15px). ≤90 words per screen.
-- Content lives in `src/data/cases.ts` as `screens` built from blocks (meta, bento, contrast, table, decision, cards, chain, chips, facts, quote, note, fromto, steps, theme, contact). Right panel = `visual` (single / stack / row) with placeholder specs until real images arrive.
-- No gradients, shadows, eyebrow labels. Every fact appears once per case. No fabricated metrics; scope facts are labelled as scope. No agency name (Danart) on cases.
+- Content in `src/data/cases.ts` as `screens` of blocks (meta, bento, contrast, table, decision, cards, list, callout, chain, chips, facts, quote, note, fromto, steps, theme, contact). Right panel = `visual` (single / stack / row), placeholders until real images arrive.
+- No gradients, eyebrow labels, hover-reveal text. Every fact appears once per case. No fabricated metrics; scope facts are labelled as scope. No agency name (Danart) on cases.
