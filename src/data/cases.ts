@@ -161,7 +161,7 @@ const pinkwallet: Partial<CaseData> = {
 
     { id: 'outcome', nav: 'Outcome', title: ['From first screen', 'to launch.'],
       blocks: [
-        { type: 'facts', caption: 'Scope', items: [{ value: '100+', label: 'Screens' }, { value: '8', label: 'Core flows' }] },
+        { type: 'facts', caption: 'Scope', items: [{ value: '200+', label: 'Screens' }, { value: '8', label: 'Core flows' }] },
         { type: 'note', text: 'One component library and a set of custom 3D icons hold it together.' },
         { type: 'contact' },
       ],
@@ -302,6 +302,14 @@ const lapunzel: Partial<CaseData> = {
       ] }],
       visual: { layout: 'single', items: [{ label: 'Before', spec: 'The old catalogue or checkout screen.' }] } },
 
+    { id: 'research', nav: 'Research', title: ['We asked before', 'we redesigned.'],
+      blocks: [{ type: 'facts', caption: 'Research', items: [{ value: '50+', label: 'Survey responses' }, { value: '15', label: 'Interviews' }] }],
+      visual: { layout: 'stack', items: [
+        { label: 'Survey', spec: 'A crop of the survey results.' },
+        { label: 'Interviews', spec: 'Interview notes or quotes.' },
+        { label: 'Synthesis', spec: 'The findings board, wide.' },
+      ] } },
+
     { id: 'insight', nav: 'Insight', statement: true, title: ['Trust is a UX feature,', 'not a marketing claim.'],
       lede: 'People needed reassurance, not persuasion.' },
 
@@ -356,8 +364,8 @@ const greenCredit: Partial<CaseData> = {
   facts: [
     { label: 'Role', value: 'Product Designer' },
     { label: 'Timeline', value: '1 month' },
-    { label: 'Platform', value: 'Web' },
     { label: 'Scope', value: 'Landing and dashboard' },
+    { label: 'Status', value: 'In development' },
   ],
   summary: 'A consumer credit-score product: a landing page and a dashboard behind sign-in.',
   screens: [
@@ -366,8 +374,8 @@ const greenCredit: Partial<CaseData> = {
       blocks: [{ type: 'meta', items: [
         { label: 'Role', value: 'Product Designer' },
         { label: 'Timeline', value: '1 month' },
-        { label: 'Platform', value: 'Web' },
         { label: 'Scope', value: 'Landing, dashboard' },
+        { label: 'Status', value: 'In development' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'Dashboard', spec: 'The dashboard home.' }] } },
 
