@@ -235,6 +235,7 @@ h1.ttl { font-size: clamp(30px, 3vw, 46px); letter-spacing: -.045em; line-height
 .end { padding: 32px var(--pad); }
 .end .next { width: 100%; }
 .cp-story .next .tile:not(.turn) { background: var(--white); box-shadow: var(--sh); }
+.cp-story .next .tile:not(.turn) .art { background: color-mix(in srgb, var(--c) 30%, #fff); }
 
 /* reveal */
 .js .step .rv { opacity: 0; transform: translateY(12px); }

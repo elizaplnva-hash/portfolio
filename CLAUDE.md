@@ -9,6 +9,7 @@ One sheet that fits one screen (desktop 4×3 grid, 100dvh, min 780px). Front = P
 Edit copy, tags, case order and links there, not in components. Each case = product name (first tag) + 1–2 domain tags + ONE selling headline. No descriptions, no numbers on cards (facts go in the CV). Bobyard is a Visual case, never Product.
 
 ## Style rules (do not break)
+- Front (home + Product cases) share one system: grey ground `#f3f3f1`, work tiles white with soft shadow (`--sh1`), supporting tiles off-white, case previews in a pastel of the case colour. The back side stays dark with the same hierarchy (lighter = more important), no shadows.
 - Interface is grayscale. Colour appears only inside case images and the turn-tile accent. Never invent a new accent colour.
 - Font: Helvetica Neue, fallback Hanken Grotesk, Arial. Headings weight 500, uppercase, tight tracking (-0.05em); case headlines sentence case.
 - Tokens are CSS variables in `src/styles/global.css` (front on `:root`, back on `[data-side='back']`).
