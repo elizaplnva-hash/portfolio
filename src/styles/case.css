@@ -87,7 +87,8 @@ html:has(.cp-story), body:has(.cp-story) { background: #f3f3f1; }
 .lift::before { background: var(--white); }
 .lift::after { box-shadow: var(--sh); }
 .l1.lift::before { background: var(--t); }
-.l1.lift::after { display: none; }
+.l1.lift::after, .l3.lift::after { display: none; }
+.l3.lift::before { background: #f7f7f5; }
 @media (hover: hover) and (pointer: fine) {
   .lift:hover::before, .lift:hover::after { opacity: 1; }
 }
@@ -206,11 +207,11 @@ h1.ttl { font-size: clamp(30px, 3vw, 46px); letter-spacing: -.045em; line-height
 .statement .lede { font-size: 17px; max-width: 30em; }
 
 /* placeholders: white cards */
-.ph { margin: 0; border: 1px dashed rgba(0,0,0,.14); border-radius: 10px; background: rgba(255,255,255,.72); color: var(--muted);
+.ph { margin: 0; border: 0; border-radius: 10px; background: rgba(255,255,255,.6); color: var(--muted);
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-align: center; padding: 18px; min-height: 0; transition: background .3s ease, color .3s ease, border-color .3s ease; }
 .ph b { font-size: 13px; font-weight: 500; color: var(--ink); transition: color .3s ease; }
 .ph p { font-size: 12px; line-height: 1.4; max-width: 22em; }
-.dark .ph { background: #111; border-color: #333; color: #8a8a8a; }
+.dark .ph { background: #111; color: #8a8a8a; }
 .dark .ph b { color: #f2f2f2; }
 
 /* visuals on small screens */
@@ -259,13 +260,14 @@ h1.ttl { font-size: clamp(30px, 3vw, 46px); letter-spacing: -.045em; line-height
   .step { min-height: 100dvh; scroll-snap-align: start; justify-content: center; padding: var(--pad) clamp(20px, 2.6vw, 44px); }
   .step.statement .step-text { width: calc(100vw - var(--rail) - 3 * var(--pad)); }
   .contrast { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); }
-  .stage .vis { position: absolute; top: calc(var(--pad) + 10px); bottom: calc(var(--pad) + 10px); left: 0; right: 10px; display: grid; gap: 6px; padding: 8px; background: var(--t); border-radius: 14px; opacity: 0; transform: scale(.98); transition: opacity .45s ease-out, transform .6s var(--out); pointer-events: none; }
+  .stage .vis { position: absolute; top: var(--pad); bottom: var(--pad); left: 0; right: 0; display: grid; gap: 3px; padding: 0; background: var(--t); border-radius: 0 20px 20px 0; overflow: hidden; opacity: 0; transform: scale(.98); transition: opacity .45s ease-out, transform .6s var(--out); pointer-events: none; }
   .stage .vis.on { opacity: 1; transform: none; }
   .stage .v-stack { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1.25fr; }
   .stage .v-stack .ph:nth-child(3) { grid-column: span 2; }
   .stage .v-row { grid-template-columns: repeat(3, 1fr); }
   .end { display: none; }
-  .stage .vis.nx { background: transparent; padding: 0; border-radius: 0; }
+  .stage .ph { border-radius: 0; background: rgba(255,255,255,.5); }
+  .stage .vis.nx { top: calc(var(--pad) + 10px); bottom: calc(var(--pad) + 10px); right: 10px; background: transparent; padding: 0; border-radius: 0; overflow: visible; }
   .stage .vis.nx .next { display: grid; grid-template-columns: 1fr; grid-template-rows: minmax(0, 1.5fr) minmax(0, 1fr); gap: 10px; height: 100%; }
   .stage .vis.nx .tile { min-height: 0; overflow: hidden; }
   .stage .vis.nx .art { flex: 1; aspect-ratio: auto; min-height: 0; }

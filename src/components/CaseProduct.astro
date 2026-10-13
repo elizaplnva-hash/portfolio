@@ -71,7 +71,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
                   </div>);
                 case 'contrast': return (
                   <div class="contrast rv">
-                    <div class="from l3"><p>{b.from.label}</p><ul>{b.from.items.map((t) => <li>{t}</li>)}</ul></div>
+                    <div class="from l3 lift"><p>{b.from.label}</p><ul>{b.from.items.map((t) => <li>{t}</li>)}</ul></div>
                     <div class="to l1 hi lift"><p>{b.to.label}</p><ul>{b.to.items.map((t, i) => <li>{b.to.icons?.[i] && <span class="ic" aria-hidden="true" set:html={icon(b.to.icons[i])} />}{t}</li>)}</ul></div>
                   </div>);
                 case 'table': return (
@@ -106,7 +106,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
                   </div>);
                 case 'note': return <p class="note rv">{b.text}</p>;
                 case 'fromto': return (
-                  <dl class="fromto rv"><div class="l3"><dt>From</dt><dd>{b.from}</dd></div><div class="l1 hi lift"><dt>To</dt><dd>{b.to}</dd></div></dl>);
+                  <dl class="fromto rv"><div class="l3 lift"><dt>From</dt><dd>{b.from}</dd></div><div class="l1 hi lift"><dt>To</dt><dd>{b.to}</dd></div></dl>);
                 case 'steps': return (
                   <ol class="list num rv">{b.items.map((x) => <li><span class="n" aria-hidden="true"></span><div><h3>{x.title}</h3><p>{x.body}</p></div></li>)}</ol>);
                 case 'quote': return (<figure class="quote rv"><blockquote>“{b.text}”</blockquote><figcaption>{b.by}</figcaption></figure>);
