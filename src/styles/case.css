@@ -56,6 +56,7 @@ html:has(.cp-story), body:has(.cp-story) { background: #f3f3f1; }
 .cp-story { --ground: #f3f3f1; --white: #fff; --l2: #f6f6f4; --l3: #ebebe9; --card: var(--l2); --t: #f1f1ef; --ink: #111; --muted: #8a8a8a; --soft: #6f6f6f; --hair: #e2e2df;
   --sh: 0 1px 2px rgba(17,17,17,.05), 0 8px 24px rgba(17,17,17,.08); --sh2: 0 1px 2px rgba(17,17,17,.05), 0 3px 10px rgba(17,17,17,.06);
   --rail: 210px; --out: cubic-bezier(.23, 1, .32, 1); --r: 14px; background: var(--ground); }
+.cp-story { --l2: color-mix(in srgb, var(--t) 32%, #f8f8f7); --l3: color-mix(in srgb, var(--t) 78%, #f0f0ef); }
 .cp-story h3 { margin: 0; }
 .m-bar { position: sticky; top: 0; z-index: 5; display: flex; justify-content: space-between; align-items: center; padding: 10px var(--pad); background: rgba(243,243,241,.92); backdrop-filter: blur(10px); }
 .back { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px 7px 10px; border-radius: 999px; background: var(--white); box-shadow: var(--sh2); color: var(--soft); font-size: 13px; font-weight: 500; transition: transform .12s var(--out); }
