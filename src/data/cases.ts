@@ -204,70 +204,67 @@ const jam: Partial<CaseData> = {
   ],
   summary: 'Jam is a digital business card: scan a QR code, share your contact.',
   screens: [
-    { id: 'overview', nav: 'Overview', title: ['Analytics was the ask.', 'A reason to come back was the need.'],
-      lede: 'Jam is a digital business card: scan a QR code, share your contact. The team asked whether Jam should add analytics, and what kind would matter.',
+    { id: 'overview', nav: 'Overview', title: ['A digital card that', 'still feels personal.'],
+      lede: 'People share a QR code instead of a paper card. I worked with a small team from first interviews to final screens.',
       blocks: [{ type: 'meta', items: [
         { label: 'Role', value: 'Product Designer' },
         { label: 'Team', value: '2 designers, 2 PMs' },
         { label: 'Timeline', value: '12 weeks' },
         { label: 'Scope', value: 'Research to hi-fi' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Jam', spec: '', src: '/images/jam-overview.webp', alt: 'Jam on two phones: the “Weekly report is ready” notification on the lock screen and the Analytics screen' }] } },
+      visual: { layout: 'single', items: [{ label: 'Jam', spec: '', src: '/images/jam-overview.webp', alt: 'Jam on two phones: the weekly report notification on the lock screen and the Analytics screen' }] } },
 
-    { id: 'problem', nav: 'Problem', title: ['Networking feels like', 'talking into a void.'],
+    { id: 'problem', nav: 'Problem', title: ['A digital card is fast,', 'but a name on a screen is easy to forget.'],
       blocks: [
-        { type: 'quote', text: 'I shared my card with 20 people. Did anyone actually look at it?', by: 'Interview participant' },
-        { type: 'list', items: [
-          { icon: 'signal-zero', title: 'No signal after the scan' },
-          { icon: 'link', title: 'LinkedIn isn’t enough' },
-          { icon: 'rotate-ccw', title: 'No reason to return' },
-        ] },
+        { type: 'contrast',
+          from: { label: 'Paper card', items: ['Personal', 'Gets lost'] },
+          to: { label: 'Digital card', items: ['Fast to share', 'Easy to forget', 'Nothing after the scan'], icons: ['zap', 'user-round-x', 'circle-off'] } },
+        { type: 'note', text: 'After the event nothing connects the two people.' },
       ],
-      visual: { layout: 'single', items: [{ label: 'Problem', spec: 'An image that shows the problem. Coming soon.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Problem', spec: '', src: '/images/jam-problem.webp', alt: 'Jam: an empty Jams list and a shareable QR code with contact icons' }] } },
 
-    { id: 'research', nav: 'Research', title: ['What people said,', 'not what we assumed.'],
+    { id: 'research', nav: 'Research', title: ['People like the speed', 'and worry about the personal touch.'],
       blocks: [
-        { type: 'cards', items: [
-          { icon: 'lock', label: 'Interviews', title: 'Privacy is non-negotiable.', body: 'Control over who sees what came up unprompted in 7 of 10 interviews.' },
-          { icon: 'route', label: 'Interviews', title: 'Interactions matter beyond the app.', body: 'People wanted to see what happened after the scan, wherever it happened.' },
-          { icon: 'repeat', hi: true, label: 'Focus group', title: 'Without a reason to return, Jam is a one-time tool.' },
-        ] },
+        { type: 'quote', text: 'Digital tools can enhance networking, but they cannot replace personal connections.', by: 'Interview finding' },
+        { type: 'note', text: '10+ interviews and one focus group. People asked for a photo and job title, follow-up reminders and messages in the app.' },
       ],
-      visual: { layout: 'single', items: [{ label: 'Research', spec: 'Interview notes, persona or the findings board. Coming soon.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Research', spec: '', src: '/images/jam-research.webp', alt: 'The interview findings board' }] } },
 
-    { id: 'insight', nav: 'Insight', statement: true, title: ['People didn’t want numbers.', 'They wanted a reason to come back.'] },
-
-    { id: 'alignment', nav: 'Alignment', wide: true, title: ['Two PMs,', 'two definitions of analytics.'],
-      lede: 'An ideation workshop turned them into one definition and three questions.',
-      blocks: [{ type: 'list', items: [
-        { icon: 'zap', label: 'How might we', title: 'Make analytics actionable, not just informational?' },
-        { icon: 'calendar-clock', label: 'How might we', title: 'Give people a reason to return between events?' },
-        { icon: 'shield', label: 'How might we', title: 'Surface insights without compromising privacy?' },
-      ] }] },
-
-    { id: 'solution', nav: 'Solution', title: ['One feature,', 'three parts.'],
-      blocks: [{ type: 'bento', cells: [
-        { icon: 'bell', title: 'Smart follow-ups', body: 'Nudges tied to a person and an event: “Remember Alex from last Thursday?”', wide: true, fill: true },
-        { icon: 'chart-no-axes-column', title: 'Weekly digest', body: 'Link clicks, top platforms and industries reached, built to skim' },
-        { icon: 'contact', title: 'Connection profiles', body: 'Living contact cards with event history, talking points and notes' },
+    { id: 'decisions', nav: 'Decisions', title: ['Every feature answers', 'one worry.'],
+      blocks: [{ type: 'table', head: ['Worry', 'Answer'], rows: [
+        ['A card feels impersonal', 'A profile for each person: photo, job title, where we met'],
+        ['I forget to follow up', 'Reminders tied to a person and an event'],
+        ['I can’t tell what works', 'Clicks per Jam and top job titles'],
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Solution', spec: '', src: '/images/jam-solution.webp', alt: 'Jam: the Instagram analytics screen, Notifications and a connection Profile' }] } },
+      visual: { layout: 'single', items: [{ label: 'Workshop', spec: '', src: '/images/jam-workshop.webp', alt: 'Workshop board of How-might-we notes grouped by theme' }] } },
 
-    { id: 'testing', nav: 'Testing', wide: true, title: ['8 usability tests,', '3 changes.'],
-      blocks: [{ type: 'table', head: ['What we saw', 'What changed'], rows: [
-        ['Icon-only navigation confused 5 of 8 testers', 'Text labels on the bottom navigation'],
-        ['Clarity was rated 2', 'Dividers and colour: rated 4.5'],
-        ['Contact details came before context', 'Event context first, then the person'],
+    { id: 'jams', nav: 'Jams', title: ['One QR code,', 'all your contacts.'],
+      lede: 'Add a Jam for each way to reach you: phone, Discord, LinkedIn, email, Instagram. One QR code shares them all.',
+      visual: { layout: 'single', items: [{ label: 'Jams', spec: '', src: '/images/jam-jams.webp', alt: 'Jam: the Jams list and the QR code screen' }] } },
+
+    { id: 'followups', nav: 'Follow-ups', title: ['The app remembers', 'so you don’t have to.'],
+      lede: 'Each person gets a profile with the date and place you met and talking points for later.',
+      blocks: [{ type: 'list', items: [
+        { icon: 'user-round-check', title: 'Follow-up reminders', body: 'Tied to a person and an event' },
+        { icon: 'chart-no-axes-column', title: 'Engagement updates', body: 'When your clicks go up' },
+        { icon: 'calendar-search', title: 'Event suggestions', body: 'Networking events worth attending' },
+        { icon: 'coffee', title: 'Coffee chat refreshers', body: 'A reminder before you meet' },
+      ] }],
+      visual: { layout: 'single', items: [{ label: 'Follow-ups', spec: '', src: '/images/jam-follow.webp', alt: 'Jam: Notifications and a connection Profile' }] } },
+
+    { id: 'analytics', nav: 'Analytics', title: ['See which Jam', 'people open.'],
+      blocks: [{ type: 'callout', text: 'Clicks per Jam by day, and the job titles of the people who open them. A weekly report arrives as a notification.' }],
+      visual: { layout: 'single', items: [{ label: 'Analytics', spec: '', src: '/images/jam-analytics.webp', alt: 'Jam: the Instagram analytics screen and the weekly report notification' }] } },
+
+    { id: 'hifi', nav: 'Hi-fi', title: ['Minimal', 'on purpose.'],
+      lede: 'Eight usability tests praised the minimalism and convenience.',
+      visual: { layout: 'single', items: [{ label: 'Hi-fi', spec: '', src: '/images/jam-hifi.webp', alt: 'All Jam app screens' }] } },
+
+    { id: 'reflection', nav: 'Reflection', wide: true, title: ['Personal touch is a product feature,', 'not decoration.'],
+      blocks: [{ type: 'decision', rows: [
+        ['Learned', 'Contradictions in the interviews pointed to the real problem.'],
+        ['Next', 'See whether reminders bring people back over time.'],
       ] }] },
-
-    { id: 'reflection', nav: 'Reflection', wide: true, title: ['The brief is rarely', 'the real problem.'],
-      blocks: [
-        { type: 'decision', rows: [
-          ['My part', 'Aligning two PMs on one definition took as much work as the screens.'],
-          ['I’d change', 'We tested with people who network easily, not with those who find it hard.'],
-        ] },
-        { type: 'chain', steps: ['Validate with shipped data', 'Test notification fatigue', 'Onboarding that builds the habit'] },
-      ] },
   ],
 };
 
