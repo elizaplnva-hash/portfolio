@@ -225,8 +225,12 @@ const jam: Partial<CaseData> = {
 
     { id: 'research', nav: 'Research', title: ['People like the speed', 'and worry about the personal touch.'],
       blocks: [
-        { type: 'quote', text: 'Digital tools can enhance networking, but they cannot replace personal connections.', by: 'Interview finding' },
-        { type: 'note', text: '10+ interviews and one focus group. People asked for a photo and job title, follow-up reminders and messages in the app.' },
+        { type: 'quote', text: 'Digital tools can enhance networking, but they cannot replace personal connections.', by: '10+ interviews and one focus group' },
+        { type: 'cards', items: [
+          { icon: 'id-card', label: 'Asked for', title: 'Photo and job title' },
+          { icon: 'bell-ring', label: 'Asked for', title: 'Follow-up reminders' },
+          { icon: 'message-circle', label: 'Asked for', title: 'Messages in the app' },
+        ] },
       ],
       visual: { layout: 'single', items: [{ label: 'Research', spec: '', src: '/images/jam-research.webp', alt: 'The interview findings board' }] } },
 
@@ -239,7 +243,15 @@ const jam: Partial<CaseData> = {
       visual: { layout: 'single', items: [{ label: 'Workshop', spec: '', src: '/images/jam-workshop.webp', alt: 'Workshop board of How-might-we notes grouped by theme' }] } },
 
     { id: 'jams', nav: 'Jams', title: ['One QR code,', 'all your contacts.'],
-      lede: 'Add a Jam for each way to reach you: phone, Discord, LinkedIn, email, Instagram. One QR code shares them all.',
+      lede: 'Add a Jam for each way to reach you. One QR code shares them all.',
+      blocks: [{ type: 'cards', items: [
+        { icon: 'phone', title: 'Phone' },
+        { icon: 'message-square', title: 'Discord' },
+        { icon: 'briefcase', title: 'LinkedIn' },
+        { icon: 'mail', title: 'Email' },
+        { icon: 'camera', title: 'Instagram' },
+        { icon: 'qr-code', hi: true, title: 'One QR code', body: 'Shares them all' },
+      ] }],
       visual: { layout: 'single', items: [{ label: 'Jams', spec: '', src: '/images/jam-jams.webp', alt: 'Jam: the Jams list and the QR code screen' }] } },
 
     { id: 'followups', nav: 'Follow-ups', title: ['The app remembers', 'so you don’t have to.'],
@@ -253,17 +265,24 @@ const jam: Partial<CaseData> = {
       visual: { layout: 'single', items: [{ label: 'Follow-ups', spec: '', src: '/images/jam-follow.webp', alt: 'Jam: Notifications and a connection Profile' }] } },
 
     { id: 'analytics', nav: 'Analytics', title: ['See which Jam', 'people open.'],
-      blocks: [{ type: 'callout', text: 'Clicks per Jam by day, and the job titles of the people who open them. A weekly report arrives as a notification.' }],
+      blocks: [{ type: 'cards', items: [
+        { icon: 'mouse-pointer-click', title: 'Clicks per Jam', body: 'By day' },
+        { icon: 'briefcase', title: 'Top job titles', body: 'Who opens your Jams' },
+        { icon: 'bell', hi: true, title: 'Weekly report', body: 'Arrives as a notification' },
+      ] }],
       visual: { layout: 'single', items: [{ label: 'Analytics', spec: '', src: '/images/jam-analytics.webp', alt: 'Jam: the Instagram analytics screen and the weekly report notification' }] } },
 
     { id: 'hifi', nav: 'Hi-fi', title: ['Minimal', 'on purpose.'],
-      lede: 'Eight usability tests praised the minimalism and convenience.',
+      blocks: [{ type: 'cards', items: [
+        { icon: 'minimize-2', label: '8 usability tests', title: 'Minimalism' },
+        { icon: 'zap', label: '8 usability tests', title: 'Convenience' },
+      ] }],
       visual: { layout: 'single', items: [{ label: 'Hi-fi', spec: '', src: '/images/jam-hifi.webp', alt: 'All Jam app screens' }] } },
 
     { id: 'reflection', nav: 'Reflection', wide: true, title: ['Personal touch is a product feature,', 'not decoration.'],
-      blocks: [{ type: 'decision', rows: [
-        ['Learned', 'Contradictions in the interviews pointed to the real problem.'],
-        ['Next', 'See whether reminders bring people back over time.'],
+      blocks: [{ type: 'cards', items: [
+        { icon: 'lightbulb', label: 'Learned', title: 'Contradictions in the interviews pointed to the real problem.' },
+        { icon: 'flag', hi: true, label: 'Next', title: 'See whether reminders bring people back over time.' },
       ] }] },
   ],
 };
