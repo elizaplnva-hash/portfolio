@@ -496,29 +496,6 @@ export const cases: CaseData[] = [
         { label: 'Outcome', value: 'Yelp Award 2025' },
       ] }] },
 
-    { id: 'brief', nav: 'Brief', wide: true, title: ['Built for owners who need bookings, not dashboards.'],
-      lede: 'Ben AI is an AI-powered lead conversion system for home service businesses.',
-      blocks: [{ type: 'facts', caption: 'Scope', items: [
-        { value: '20+', label: 'Sections designed' },
-        { value: '3', label: 'Use cases, up from 1' },
-      ] }] },
-
-    { id: 'changes', nav: 'Changes', wide: true, title: ['The first site worked until the product outgrew it.'],
-      lede: 'Version 1 had one hero, one use case and one audience. Then the product grew.',
-      blocks: [{ type: 'list', items: [
-        { title: 'More products', body: 'Live chat, plus SunTech and Thumbtack beyond Yelp.' },
-        { title: 'An industry award', body: 'Recognition that needed a place on the site.' },
-        { title: 'A new pricing model', body: 'Pro and Custom plans.' },
-      ] }] },
-
-    { id: 'decisions', nav: 'Decisions', wide: true, title: ['Four decisions shaped version 2.'],
-      blocks: [{ type: 'steps', items: [
-        { title: 'Three heroes, one per use case', body: 'Lead conversion, live chat and Yelp ad optimization.' },
-        { title: 'Proof under every hero', body: 'Feature lists, dashboards and screenshots.' },
-        { title: 'The award as a trust signal', body: 'Made prominent on the page.' },
-        { title: 'Pricing that shows what each tier unlocks', body: 'Pro and Custom, side by side.' },
-      ] }] },
-
     { id: 'shot-tablets', nav: 'Tablets', shot: true, title: [''],
       visual: { layout: 'single', items: [{ label: 'Tablets', spec: '', src: '/images/ben-tablets.webp', alt: "Three tablets showing the Ben AI product pages" }] } },
     { id: 'shot-print', nav: 'Print', shot: true, title: [''],
@@ -546,11 +523,6 @@ export const cases: CaseData[] = [
     { id: 'shot-faq', nav: 'FAQ', shot: true, title: [''],
       visual: { layout: 'single', items: [{ label: 'FAQ', spec: '', src: '/images/ben-faq.webp', alt: "Got Questions? Ben’s Got Answers, with the footer" }] } },
 
-    { id: 'outcome', nav: 'Outcome', wide: true, title: ['Best in Innovation, Yelp 2025.'],
-      lede: 'The site won the Yelp Advertising Partner Award, helped attract the first major clients and made a complex AI product easy to understand for a non-technical audience.' },
-
-    { id: 'reflection', nav: 'Reflection', wide: true, title: ['The hardest part was knowing what to keep.'],
-      blocks: [{ type: 'quote', text: 'A website isn’t a one-time deliverable. It’s a product that reflects where a company is, and where it’s going.', by: 'Eliza Popelinova' }] },
   ],
   },
   { slug: 'reboot-hub', side: 'back', name: 'Re:Boot Hub', tags: ['Consulting', 'Brandbook'], headline: 'A brand built on speed, structure and truth', color: '#e8ff3a', highlights,
