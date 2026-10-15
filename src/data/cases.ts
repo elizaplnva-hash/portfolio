@@ -305,7 +305,7 @@ const lapunzel: Partial<CaseData> = {
         { label: 'Scope', value: 'Mobile UX, research, flows' },
         { label: 'Focus', value: 'Conversion, retention' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Product page', spec: 'The redesigned product page on a phone.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Lapunzel', spec: '', src: '/images/lap-hero.webp', alt: 'Lapunzel mobile site: the home hero, a product page and the shampoos and conditioners list' }] } },
 
     { id: 'problem', nav: 'Problem', title: ['Not the price.', 'The uncertainty.'],
       blocks: [{ type: 'list', items: [
@@ -313,15 +313,11 @@ const lapunzel: Partial<CaseData> = {
         { icon: 'credit-card', label: 'Checkout', title: 'A new brand at a premium price, with no proof at the moment of paying.' },
         { icon: 'tag', label: 'Price', title: 'Value wasn’t visible, so the price felt unjustified.' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Before', spec: 'The old catalogue or checkout screen.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Problem', spec: '', src: '/images/lap-problem.webp', alt: 'Lapunzel: Bestsellers and the “Our product is true craft” page' }] } },
 
     { id: 'research', nav: 'Research', title: ['We asked before', 'we redesigned.'],
       blocks: [{ type: 'facts', caption: 'Research', items: [{ value: '50+', label: 'Survey responses' }, { value: '15', label: 'Interviews' }] }],
-      visual: { layout: 'stack', items: [
-        { label: 'Survey', spec: 'A crop of the survey results.' },
-        { label: 'Interviews', spec: 'Interview notes or quotes.' },
-        { label: 'Synthesis', spec: 'The findings board, wide.' },
-      ] } },
+      visual: { layout: 'single', items: [{ label: 'Research', spec: '', src: '/images/lap-research.webp', alt: 'Interview quotes and survey results: accounts, reviews, sources of pet-care information, categories bought' }] } },
 
     { id: 'insight', nav: 'Insight', statement: true, title: ['Trust is a UX feature,', 'not a marketing claim.'],
       lede: 'People needed reassurance, not persuasion.' },
@@ -340,20 +336,16 @@ const lapunzel: Partial<CaseData> = {
         ] },
       ],
       visual: { layout: 'stack', items: [
-        { label: 'Vet-approved tag', spec: 'A close crop.' },
-        { label: 'Reviews', spec: 'Photo and video reviews.' },
-        { label: 'Checkout', spec: 'Checkout with the trust signals in place.' },
+        { label: 'Vet-approved tag', spec: '', src: '/images/lap-trust-1.webp', alt: 'Product list with Bestseller and Vet recommended tags' },
+        { label: 'Reviews', spec: '', src: '/images/lap-trust-2.webp', alt: 'Reviews with photo and video' },
+        { label: 'Checkout', spec: '', src: '/images/lap-trust-3.webp', alt: 'Checkout with payment, order summary and log in' },
       ] } },
 
     { id: 'categories', nav: 'Categories', title: ['Categories by use,', 'not by anatomy.'],
       blocks: [{ type: 'contrast',
         from: { label: 'Before', items: ['Fur', 'Eyes', 'Ears'] },
         to: { label: 'After', items: ['Shampoos and conditioners', 'Balms and soaps', 'Tonics and foams'], icons: ['droplets', 'bubbles', 'sparkles'] } }],
-      visual: { layout: 'stack', items: [
-        { label: 'Old menu', spec: 'Categories by body part.' },
-        { label: 'New menu', spec: 'Categories by use.' },
-        { label: 'Catalogue', spec: 'The new catalogue, wide.' },
-      ] } },
+      visual: { layout: 'single', items: [{ label: 'Menu and catalogue', spec: '', src: '/images/lap-categories.webp', alt: 'The new menu and the Catalogue grouped by use' }] } },
 
     { id: 'value', nav: 'Value', title: ['Value before', 'price.'],
       blocks: [
@@ -364,17 +356,13 @@ const lapunzel: Partial<CaseData> = {
         ] },
         { type: 'callout', text: 'Made scannable on every product, with guides linked from the products they explain.' },
       ],
-      visual: { layout: 'single', items: [{ label: 'Ingredients', spec: 'The product page section with ingredients, origin and purpose.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Product page', spec: '', src: '/images/lap-value.webp', alt: 'Product page and the “Our product is true craft” section' }] } },
 
     { id: 'outcome', nav: 'Outcome', title: ['From “Should I trust this?”', 'to “This makes sense.”'],
       blocks: [
         { type: 'callout', text: 'Removing the reason someone hesitates mattered more than making it pretty.' },
       ],
-      visual: { layout: 'row', items: [
-        { label: 'Catalogue', spec: 'Final catalogue.' },
-        { label: 'Product', spec: 'Final product page.' },
-        { label: 'Checkout', spec: 'Final checkout.' },
-      ] } },
+      visual: { layout: 'single', items: [{ label: 'Final', spec: '', src: '/images/lap-outcome.webp', alt: 'Final checkout and the Blog' }] } },
   ],
 };
 
@@ -439,7 +427,7 @@ const greenCredit: Partial<CaseData> = {
 export const cases: CaseData[] = [
   { slug: 'pinkwallet', side: 'front', name: 'PinkWallet', tags: ['Fintech', 'AI'], headline: "Crypto that doesn't scare first-time users", color: '#ff8fc8', image: '/images/pw-home.webp', big: true, facts, highlights, summary, ...pinkwallet },
   { slug: 'jam', side: 'front', name: 'Jam', tags: ['Consumer', 'UX research'], headline: 'Turned a contact-collecting app into a reason to follow up', color: '#6b8cff', image: '/images/jam-home.webp', facts, highlights, summary, ...jam },
-  { slug: 'lapunzel', side: 'front', name: 'Lapunzel', tags: ['E-commerce', 'Conversion'], headline: 'Reframed a redesign as a trust problem', color: '#ffb547', facts, highlights, summary, ...lapunzel },
+  { slug: 'lapunzel', side: 'front', name: 'Lapunzel', tags: ['E-commerce', 'Conversion'], headline: 'Reframed a redesign as a trust problem', color: '#ffb547', image: '/images/lap-hero.webp', facts, highlights, summary, ...lapunzel },
   { slug: 'green-credit-score', side: 'front', name: 'Green Credit Score', tags: ['Fintech', 'Web'], headline: 'A credit-score dashboard, designed in one month', color: '#3ccf7a', facts, highlights, summary, ...greenCredit },
   { slug: 'world-of-colors', side: 'back', name: 'World of Colors', tags: ['Brand', 'Website'], headline: '[Headline: what was hard and what we achieved]', color: '#ff5a36', big: true, facts: facts.slice(0, 3), highlights, summary },
   { slug: 'ben-ai', side: 'back', name: 'Ben AI', tags: ['AI SaaS', 'Brand system'], headline: 'A brand and product system for an award-winning AI startup', color: '#7b61ff', facts: facts.slice(0, 3), highlights, summary },
