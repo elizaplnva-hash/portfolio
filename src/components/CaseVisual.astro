@@ -11,10 +11,10 @@ const total = shots.length;
   <a href="/visual" class="cv-close">Close</a>
 
   <div class="cv-stage" aria-hidden="true">
-    <div class="cv-bg on" data-i="0">{c.image && <img src={c.image} alt="" />}</div>
+    <div class="cv-bg on" data-i="0"></div>
     {shots.map((s, i) => (
       <div class="cv-bg" data-i={i + 1}>
-        <figure class="cv-frame">{s.src ? <img src={s.src} alt={s.alt ?? ''} loading="lazy" /> : <figcaption>{s.label}</figcaption>}</figure>
+        <figure class:list={['cv-frame', { has: s.src }]}>{s.src ? <img src={s.src} alt={s.alt ?? ''} loading="lazy" /> : <figcaption>{s.label}</figcaption>}</figure>
       </div>
     ))}
   </div>
