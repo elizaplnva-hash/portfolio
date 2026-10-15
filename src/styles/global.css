@@ -185,3 +185,10 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
   .tile, .turn .curl { transition: none; }
   a.tile:hover { transform: none; }
 }
+
+/* dark side: darker tag fills, light text */
+[data-side='back'] .tags span { background: color-mix(in srgb, var(--c) 22%, #232220); color: #f2f2f2; }
+[data-side='back'] .tags span:first-child { background: color-mix(in srgb, var(--c) 42%, #232220); color: #fff; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  [data-side='back'] .skills li:hover { background: color-mix(in srgb, var(--h) 30%, #2a2825); color: #fff; }
+}
