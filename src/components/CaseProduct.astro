@@ -38,7 +38,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
     <nav class="rail" aria-label="Case sections">
       <a href="/" class="back"><span class="ar" aria-hidden="true" set:html={icon('arrow-left')} /><span class="roll"><span data-t="Back">Back</span></span></a>
       {brand && !groups.length ? <span aria-hidden="true"></span> : <ol>
-        {(brand ? screens.filter((s) => s.group) : screens.filter((s) => s.nav)).map((s) => <li><a href={`#${s.id}`} data-step={s.id} data-group={s.group}><span class="roll"><span data-t={s.nav}>{s.nav}</span></span></a></li>)}
+        {(brand ? screens.filter((s, i) => s.group || (i === 0 && s.nav)) : screens.filter((s) => s.nav)).map((s) => <li><a href={`#${s.id}`} data-step={s.id} data-group={s.group}><span class="roll"><span data-t={s.nav}>{s.nav}</span></span></a></li>)}
       </ol>}
       <div class="me-row"><span class="face" aria-hidden="true">EP</span><a href={mail} class="btn contact"><span class="roll"><span data-t="Let’s talk">Let’s talk</span></span></a></div>
     </nav>
