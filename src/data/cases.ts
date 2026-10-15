@@ -53,6 +53,7 @@ export interface CaseData {
   fill?: string;              // case colour for small dots and marks
   tint?: string;              // pastel behind the case images
   screens?: Screen[];         // Product pages; falls back to a generic skeleton
+  shots?: Ph[];               // Brand pages: the images shown one by one while scrolling
 }
 
 const facts = [
