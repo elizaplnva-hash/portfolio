@@ -106,14 +106,14 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) { .skills li:hover { transform: translateY(-2px) scale(1.04); background: color-mix(in srgb, var(--h) 16%, #fff); } }
 
 /* cases */
-.case { padding: 12px; display: flex; flex-direction: column; gap: 12px; box-shadow: var(--sh1); }
+.case { padding: 10px; display: flex; flex-direction: column; gap: 10px; box-shadow: var(--sh1); }
 .case .art { flex: none; aspect-ratio: 4 / 3; border-radius: 10px; overflow: hidden; background: color-mix(in srgb, var(--c) var(--art-mix), #fff); }
 .case .art img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.case .meta { display: flex; flex-direction: column; gap: 10px; padding: 0 6px 6px; }
+.case .meta { display: flex; flex-direction: column; gap: 8px; padding: 0 6px 4px; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .tags span { background: color-mix(in srgb, var(--c) 22%, #fff); color: #111; border-radius: 999px; padding: 4px 10px; font-size: 12px; }
 .tags span:first-child { background: color-mix(in srgb, var(--c) 55%, #fff); color: #111; font-weight: 400; }
-.case h2 { font-size: 20px; font-weight: 500; line-height: 1.08; letter-spacing: -.03em; }
+.case h2 { font-size: 18px; font-weight: 500; line-height: 1.08; letter-spacing: -.03em; }
 .case.big .art { aspect-ratio: 4 / 3; }
 .case.big .meta { padding: 4px 14px 12px; gap: 12px; }
 .case.big h2 { font-size: 28px; line-height: 1; letter-spacing: -.05em; max-width: 620px; }
@@ -125,12 +125,20 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .turn .curl { position: absolute; right: 0; bottom: 0; width: 56px; height: 56px; background: linear-gradient(135deg, var(--curl-a) 0 50%, var(--curl-b) 50% 100%); transition: width .45s var(--ease), height .45s var(--ease); }
 .turn:hover .curl { width: 72px; height: 72px; }
 
-/* hover tilt (pointer devices) */
+/* hover lift + tilt (pointer devices) */
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  a.tile { --tilt: 1.2deg; }
-  a.tile.case-1 { --tilt: .7deg; }
-  a.tile:hover { transform: perspective(1400px) rotateX(calc(var(--tilt) * .6)) rotateY(calc(var(--tilt) * -1)); box-shadow: var(--sh-hover); }
-  [data-side='back'] a.tile:hover { transform: perspective(1400px) rotateX(calc(var(--tilt) * .6)) rotateY(var(--tilt)); }
+  .tile { --tilt: 1.2deg; }
+  .tile.case-1 { --tilt: .7deg; }
+  .tile:hover { transform: translateY(-6px) perspective(1400px) rotateX(calc(var(--tilt) * .6)) rotateY(calc(var(--tilt) * -1)); box-shadow: var(--sh-hover); z-index: 1; }
+  [data-side='back'] .tile:hover { transform: translateY(-6px) perspective(1400px) rotateX(calc(var(--tilt) * .6)) rotateY(var(--tilt)); }
+  .photo img { transition: transform .6s var(--ease); }
+  .photo:hover img { transform: scale(1.04) translateX(-6px); }
+  .photo.has-img .name { transition: transform .5s var(--ease); }
+  .photo:hover .name { transform: translate(6px, -6px); }
+  .photo .chips { transition: transform .5s var(--ease); }
+  .photo:hover .chips { transform: translate(6px, -4px); }
+  .case .art img { transition: transform .6s var(--ease); }
+  .case:hover .art img { transform: scale(1.05); }
 }
 @media (hover: none) { a.tile:active { transform: scale(.985); } }
 
