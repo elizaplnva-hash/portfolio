@@ -25,7 +25,8 @@ figure { margin: 0; }
 /* ---------- Next ---------- */
 .next { display: grid; gap: var(--gap); grid-template-columns: 1fr; }
 .next .tile { padding: 12px; display: flex; flex-direction: column; gap: 12px; }
-.next .art { aspect-ratio: 16 / 9; border-radius: 6px; background: var(--c); }
+.next .art { aspect-ratio: 16 / 9; border-radius: 6px; background: var(--c); overflow: hidden; position: relative; }
+.next .art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 .next .meta { padding: 0 6px 6px; display: flex; flex-direction: column; gap: 10px; }
 .next small { font-size: 12px; color: var(--muted); }
 .next h2 { font-size: 20px; font-weight: 500; line-height: 1.08; letter-spacing: -.03em; }
