@@ -20,6 +20,10 @@ const generic: Screen[] = [
 ];
 const screens = c.screens ?? generic;
 const brand = c.side === 'back';
+const groups = brand ? screens.filter((s) => s.group) : [];
+const groupOf: Record<string, string> = {};
+let cur = '';
+screens.forEach((s) => { if (s.group) cur = s.group; groupOf[s.id] = cur; });
 const tint = brand ? `color-mix(in srgb, ${c.fill ?? c.color} 22%, #1c1b1a)` : (c.tint ?? '#f1f1ef');
 const tone = `--c:${c.fill ?? c.color};--a:${c.accent ?? `color-mix(in oklab, ${c.color} 70%, #000)`};--af:${c.fill ?? c.color};--t:${tint}`;
 const mail = 'mailto:elizaplnva@gmail.com';
@@ -33,8 +37,8 @@ const mail = 'mailto:elizaplnva@gmail.com';
   <div class="story">
     <nav class="rail" aria-label="Case sections">
       <a href="/" class="back"><span class="ar" aria-hidden="true" set:html={icon('arrow-left')} /><span class="roll"><span data-t="Back">Back</span></span></a>
-      {brand ? <span aria-hidden="true"></span> : <ol>
-        {screens.filter((s) => s.nav).map((s) => <li><a href={`#${s.id}`} data-step={s.id}><span class="roll"><span data-t={s.nav}>{s.nav}</span></span></a></li>)}
+      {brand && !groups.length ? <span aria-hidden="true"></span> : <ol>
+        {(brand ? screens.filter((s) => s.group) : screens.filter((s) => s.nav)).map((s) => <li><a href={`#${s.id}`} data-step={s.id} data-group={s.group}><span class="roll"><span data-t={s.nav}>{s.nav}</span></span></a></li>)}
       </ol>}
       <div class="me-row"><span class="face" aria-hidden="true">EP</span><a href={mail} class="btn contact"><span class="roll"><span data-t="Let’s talk">Let’s talk</span></span></a></div>
     </nav>
@@ -43,7 +47,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
     <div class="frame-sh" aria-hidden="true"></div>
     <div class="steps">
       {screens.map((s, si) => (
-        <section class:list={['step', { statement: s.statement, wide: s.wide }]} id={s.id} data-step={s.id}>
+        <section class:list={['step', { statement: s.statement, wide: s.wide }]} id={s.id} data-step={s.id} data-group={groupOf[s.id] || undefined}>
           {s.visual && (
             <div class:list={['m-vis', `v-${s.visual.layout}`]}>
               {s.visual.items.map((p) => <figure class:list={['ph', { 'has-img': p.src }]}>{p.src ? <img src={p.src} alt={p.alt ?? p.label} decoding="async" /> : <><b>{p.label}</b>{p.spec && <p>{p.spec}</p>}</>}</figure>)}
@@ -154,7 +158,8 @@ const mail = 'mailto:elizaplnva@gmail.com';
   const vis = [...document.querySelectorAll<HTMLElement>('.stage .vis')];
   const stage = document.querySelector<HTMLElement>('.stage');
   const set = (id: string) => {
-    links.forEach((a) => a.toggleAttribute('aria-current', a.dataset.step === id));
+    const grp = document.getElementById(id)?.dataset.group;
+    links.forEach((a) => a.toggleAttribute('aria-current', a.dataset.group ? a.dataset.group === grp : a.dataset.step === id));
     let shown = false;
     vis.forEach((v) => { const on = v.dataset.step === id; v.classList.toggle('on', on); shown ||= on; });
     stage?.classList.toggle('empty', !shown);

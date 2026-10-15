@@ -33,6 +33,7 @@ export interface Screen {
   lede?: string;
   statement?: boolean;             // one huge line, no image
   wide?: boolean;                  // text only, spans the frame
+  group?: string;                  // rail category for brand cases (set on the first shot of each group)
   shot?: boolean;                  // no text: the visual fills the frame (brand cases)
   blocks?: Block[];
   visual?: Visual;
@@ -524,6 +525,42 @@ export const cases: CaseData[] = [
       visual: { layout: 'single', items: [{ label: 'FAQ', spec: '', src: '/images/ben-faq.webp', alt: "Got Questions? Ben’s Got Answers, with the footer" }] } },
 
   ],
+  },
+  { slug: 'sequoia', side: 'back', name: 'Sequoia', tags: ['Plumbing', 'Web design'], headline: 'A website and brand collateral for a plumbing company', color: '#2f7d63', image: '/images/seq-1.webp', facts: facts.slice(0, 3), highlights, summary,
+    accent: '#3f9a7c', fill: '#3f9a7c',
+    screens: [
+    { id: 'overview', nav: 'Overview', wide: true, title: ['Sequoia'],
+      lede: 'A website and branded merchandise for Sequoia Plumbing & Mechanical.',
+      blocks: [{ type: 'meta', items: [
+        { label: 'Scope', value: 'Web design, merch' },
+      ] }] },
+    { id: 'shot-1', nav: 'Main page', group: 'Main page', shot: true, title: [''],
+      visual: { layout: 'single', items: [{ label: 'Sequoia 1', spec: '', src: '/images/seq-1.webp', alt: 'Sequoia Plumbing & Mechanical, image 1' }] } },
+    { id: 'shot-2', shot: true, title: [''],
+      visual: { layout: 'single', items: [{ label: 'Sequoia 2', spec: '', src: '/images/seq-2.webp', alt: 'Sequoia Plumbing & Mechanical, image 2' }] } },
+    { id: 'shot-3', shot: true, title: [''],
+      visual: { layout: 'single', items: [{ label: 'Sequoia 3', spec: '', src: '/images/seq-3.webp', alt: 'Sequoia Plumbing & Mechanical, image 3' }] } },
+    { id: 'shot-4', shot: true, title: [''],
+      visual: { layout: 'single', items: [{ label: 'Sequoia 4', spec: '', src: '/images/seq-4.webp', alt: 'Sequoia Plumbing & Mechanical, image 4' }] } },
+    { id: 'shot-5', shot: true, title: [''],
+      visual: { layout: 'single', items: [{ label: 'Sequoia 5', spec: '', src: '/images/seq-5.webp', alt: 'Sequoia Plumbing & Mechanical, image 5' }] } },
+    { id: 'shot-6', shot: true, title: [''],
+      visual: { layout: 'single', items: [{ label: 'Sequoia 6', spec: '', src: '/images/seq-6.webp', alt: 'Sequoia Plumbing & Mechanical, image 6' }] } },
+    { id: 'shot-7', shot: true, title: [''],
+      visual: { layout: 'single', items: [{ label: 'Sequoia 7', spec: '', src: '/images/seq-7.webp', alt: 'Sequoia Plumbing & Mechanical, image 7' }] } },
+    { id: 'shot-8', shot: true, title: [''],
+      visual: { layout: 'single', items: [{ label: 'Sequoia 8', spec: '', src: '/images/seq-8.webp', alt: 'Sequoia Plumbing & Mechanical, image 8' }] } },
+    { id: 'shot-9', nav: 'Other pages', group: 'Other pages', shot: true, title: [''],
+      visual: { layout: 'single', items: [{ label: 'Sequoia 9', spec: '', src: '/images/seq-9.webp', alt: 'Sequoia Plumbing & Mechanical, image 9' }] } },
+    { id: 'shot-10', shot: true, title: [''],
+      visual: { layout: 'single', items: [{ label: 'Sequoia 10', spec: '', src: '/images/seq-10.webp', alt: 'Sequoia Plumbing & Mechanical, image 10' }] } },
+    { id: 'shot-11', nav: 'Merch', group: 'Merch', shot: true, title: [''],
+      visual: { layout: 'single', items: [{ label: 'Sequoia 11', spec: '', src: '/images/seq-11.webp', alt: 'Sequoia Plumbing & Mechanical, image 11' }] } },
+    { id: 'shot-12', shot: true, title: [''],
+      visual: { layout: 'single', items: [{ label: 'Sequoia 12', spec: '', src: '/images/seq-12.webp', alt: 'Sequoia Plumbing & Mechanical, image 12' }] } },
+    { id: 'shot-13', shot: true, title: [''],
+      visual: { layout: 'single', items: [{ label: 'Sequoia 13', spec: '', src: '/images/seq-13.webp', alt: 'Sequoia Plumbing & Mechanical, image 13' }] } },
+    ],
   },
   { slug: 'reboot-hub', side: 'back', name: 'Re:Boot Hub', tags: ['Consulting', 'Brandbook'], headline: 'A brand built on speed, structure and truth', color: '#e8ff3a', highlights,
     summary: 'A brand identity and brandbook for a consulting hub: logo concepts first, then the full system once the client chose a direction.',
