@@ -372,55 +372,107 @@ const greenCredit: Partial<CaseData> = {
   tint: '#DDF7D0',
   facts: [
     { label: 'Role', value: 'Product Designer' },
-    { label: 'Timeline', value: '1 month' },
-    { label: 'Scope', value: 'Landing and dashboard' },
+    { label: 'Timeline', value: '4 weeks' },
+    { label: 'Platform', value: 'Web, mobile' },
     { label: 'Status', value: 'In development' },
   ],
-  summary: 'A consumer credit-score product: a landing page and a dashboard behind sign-in.',
+  summary: 'A credit-score product that makes credit data easier to understand and act on.',
   screens: [
-    { id: 'overview', nav: 'Overview', title: ['A credit score,', 'behind one sign-in.'],
-      lede: 'A consumer credit-score product: a landing page and a four-section dashboard behind sign-in.',
+    { id: 'overview', nav: 'Overview', title: ['Making credit data easier to understand and act on.'],
       blocks: [{ type: 'meta', items: [
         { label: 'Role', value: 'Product Designer' },
-        { label: 'Timeline', value: '1 month' },
-        { label: 'Scope', value: 'Landing, dashboard' },
+        { label: 'Timeline', value: '4 weeks' },
+        { label: 'Platform', value: 'Web, mobile' },
         { label: 'Status', value: 'In development' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Dashboard', spec: 'The dashboard home.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Dashboard', spec: 'The main product mockup.' }] } },
 
-    { id: 'constraint', nav: 'Constraint', title: ['Too little time', 'for the usual cycle.'],
-      lede: 'The window was too short for wireframes, then mockups, then a prototype. So we skipped the linear stage.',
-      blocks: [{ type: 'table', head: ['Step', 'How'], rows: [
-        ['Research', 'Competitive analysis of credit-score products'],
-        ['Prototype', 'Figma AI agents instead of a wireframe stage'],
-        ['Build', 'An internal component library'],
+    { id: 'challenge', nav: 'Challenge', title: ["The problem wasn't too much data. It was too little clarity."],
+      lede: 'Credit information is spread across scores, accounts, payment histories and reports. The challenge was to show what matters and what to do next.',
+      blocks: [{ type: 'list', numbered: true, items: [
+        { title: 'Scores without context', body: 'A number without a clear explanation of what it means.' },
+        { title: 'Fragmented data', body: 'Users compare information across separate bureaus.' },
+        { title: 'No clear priorities', body: 'Every metric competes for attention.' },
       ] }],
-      visual: { layout: 'stack', items: [
-        { label: 'Competitors', spec: 'A collage of competitor screens.' },
-        { label: 'AI prototype', spec: 'An early AI-generated prototype.' },
-        { label: 'Components', spec: 'The component library, wide.' },
-      ] } },
+      visual: { layout: 'single', items: [{ label: 'Problem', spec: 'An interface or a diagram of the problem.' }] } },
 
-    { id: 'structure', nav: 'Structure', title: ['After the landing,', 'only the core.'],
-      lede: 'Attention is limited, so the case shows the landing and the main dashboard, not every screen.',
-      blocks: [{ type: 'chain', steps: ['Landing', 'Sign-in', 'Dashboard'] }],
-      visual: { layout: 'stack', items: [
-        { label: 'Landing', spec: 'The landing hero.' },
-        { label: 'Sign-in', spec: 'The sign-in screen.' },
-        { label: 'Structure', spec: 'Your Structure block, as it is.' },
-      ] } },
+    { id: 'research', nav: 'Research', title: ['Three patterns shaped the direction.'],
+      lede: 'We benchmarked existing financial products to find where credit information becomes hard to read.',
+      blocks: [{ type: 'table', head: ['Finding', 'Opportunity'], rows: [
+        ['Scores lack context', 'Explain score status'],
+        ['Data is fragmented', 'Compare bureaus side by side'],
+        ['No clear priorities', 'Highlight key factors'],
+      ] }],
+      visual: { layout: 'single', items: [{ label: 'Benchmark', spec: 'Competitor analysis or interface examples.' }] } },
 
-    { id: 'dashboard', nav: 'Dashboard', title: ['Four sections,', 'one score.'],
-      blocks: [{ type: 'note', text: '[Name the four sections and what each one answers.]' }],
-      visual: { layout: 'row', items: [
-        { label: 'Section', spec: 'Dashboard section 1.' },
-        { label: 'Section', spec: 'Dashboard section 2.' },
-        { label: 'Section', spec: 'Dashboard section 3.' },
-      ] } },
+    { id: 'principles', nav: 'Principles', title: ['Three decisions defined the product.'],
+      lede: 'Each principle set one consistent way to present credit information so users understand it faster.',
+      blocks: [{ type: 'cards', items: [
+        { icon: 'gauge', title: '01. Score first', body: 'The score and its status appear before supporting details.' },
+        { icon: 'palette', title: '02. Color communicates status', body: 'A shared five-level scale keeps status meanings consistent.' },
+        { icon: 'columns-2', title: '03. Bureaus side by side', body: 'A consistent layout makes differences easier to spot.' },
+      ] }],
+      visual: { layout: 'single', items: [{ label: 'Principles', spec: 'Score cards, the colour scale and the bureau comparison.' }] } },
 
-    { id: 'outcome', nav: 'Outcome', title: ['Concept to clickable', 'in hours, not weeks.'],
-      
-      visual: { layout: 'single', items: [{ label: 'Final frame', spec: 'The dashboard on a clean background.' }] } },
+    { id: 'landing', nav: 'Landing', title: ['Explain the value before asking for commitment.'],
+      lede: 'The landing page introduces the product, shows its benefits and gives users a clear path to getting started.',
+      blocks: [{ type: 'list', numbered: true, items: [
+        { label: 'Explain', title: 'Introduce the product', body: 'Show what users can understand and manage.' },
+        { label: 'Build confidence', title: 'Answer key questions', body: 'Present features, pricing and FAQs.' },
+        { label: 'Convert', title: 'Make the next step clear', body: 'Keep the path to sign-up easy to find.' },
+      ] }],
+      visual: { layout: 'single', items: [{ label: 'Landing', spec: 'The full landing page or a few of its sections.' }] } },
+
+    { id: 'dashboard', nav: 'Dashboard', title: ['Your credit, at a glance.'],
+      lede: 'The dashboard brings scores, credit factors and debt information into one view, a clear starting point.',
+      blocks: [{ type: 'cards', items: [
+        { icon: 'layout-dashboard', title: 'A clear entry point', body: 'Key information first, deeper sections one tap away.' },
+        { icon: 'columns-2', title: 'Consistent comparison', body: 'All three bureaus follow the same layout.' },
+        { icon: 'mouse-pointer-click', title: 'Details on demand', body: 'Users open individual sections to explore more.' },
+      ] }],
+      visual: { layout: 'single', items: [{ label: 'Dashboard', spec: 'The real dashboard screen.' }] } },
+
+    { id: 'simulator', nav: 'Simulator', title: ['Explore possible outcomes before making a decision.'],
+      lede: 'Users try hypothetical scenarios and see how different choices could affect their score.',
+      blocks: [
+        { type: 'list', numbered: true, items: [
+          { title: 'Open a new credit card', body: 'Explore the potential impact of a new account.' },
+          { title: 'Get a new loan', body: 'Understand the possible effect of additional credit.' },
+          { title: 'Increase a credit limit', body: 'Explore changes in credit utilization.' },
+          { title: 'Close an existing card', body: 'Consider how closing an account could affect the score.' },
+        ] },
+        { type: 'note', text: 'Simulated outcomes are estimates, not guarantees.' },
+      ],
+      visual: { layout: 'single', items: [{ label: 'Simulator', spec: 'The simulator screen with an example scenario.' }] } },
+
+    { id: 'report', nav: 'Report', title: ['A complete report without the information overload.'],
+      lede: 'Personal information, account details, balances and payment history sit in one consistent, readable structure.',
+      blocks: [{ type: 'cards', items: [
+        { label: 'Layer 01', title: 'Personal information', body: 'Compare the details reported by each bureau.' },
+        { label: 'Layer 02', title: 'Account overview', body: 'Review balances, limits, utilization and status.' },
+        { label: 'Layer 03', title: 'Payment history', body: 'Explore month-by-month account records.' },
+      ] }],
+      visual: { layout: 'single', items: [{ label: 'Credit report', spec: 'The bureau table and an account detail.' }] } },
+
+    { id: 'monitoring', nav: 'Monitoring', title: ['Know when something changes.'],
+      lede: 'Monitoring keeps users informed about relevant changes without a full report review every time.',
+      blocks: [{ type: 'cards', items: [
+        { icon: 'trending-up', title: 'Credit score updated', body: 'Your TransUnion score went up 6 points. 2 days ago' },
+        { icon: 'gauge', title: 'Credit utilization', body: 'Credit utilization decreased to 24%. 5 days ago' },
+        { icon: 'credit-card', title: 'New account', body: 'American Express card added to your report. 1 week ago' },
+      ] }],
+      visual: { layout: 'single', items: [{ label: 'Alerts', spec: 'The notifications screen.' }] } },
+
+    { id: 'delivery', nav: 'Delivery', title: ['From brief to a development-ready product.'],
+      lede: 'The work connected product logic, UX exploration, interface design, reusable components and responsive layouts.',
+      blocks: [
+        { type: 'facts', caption: 'Scope', items: [{ value: '140+', label: 'Screens designed: dashboard, reports, account details and supporting flows' }] },
+        { type: 'cards', items: [
+          { label: 'System', title: 'Reusable components', body: 'Shared patterns for scores, statuses, account data and comparisons.' },
+          { label: 'Workflow', title: 'AI-supported exploration', body: 'AI helped early exploration and design-system cleanup. Final decisions stayed with the team.' },
+        ] },
+      ],
+      visual: { layout: 'single', items: [{ label: 'System', spec: 'The design system, components and responsive screens.' }] } },
   ],
 };
 
