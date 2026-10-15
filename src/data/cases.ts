@@ -34,6 +34,7 @@ export interface Screen {
   statement?: boolean;             // one huge line, no image
   wide?: boolean;                  // text only, spans the frame
   group?: string;                  // rail category for brand cases (set on the first shot of each group)
+  link?: { label: string; href: string };   // outward button under the lede
   shot?: boolean;                  // no text: the visual fills the frame (brand cases)
   blocks?: Block[];
   visual?: Visual;
@@ -526,15 +527,19 @@ export const cases: CaseData[] = [
 
   ],
   },
-  { slug: 'sequoia', side: 'back', name: 'Sequoia', tags: ['Plumbing', 'Web design'], headline: 'A website and brand collateral for a plumbing company', color: '#2f7d63', image: '/images/seq-1.webp', facts: facts.slice(0, 3), highlights, summary,
+  { slug: 'sequoia', side: 'back', name: 'Sequoia', tags: ['Home Services', 'Web Design', 'Brand Identity'], headline: 'A distinctive brand, built for digital and physical experiences', color: '#2f7d63', image: '/images/seq-1.webp', facts: facts.slice(0, 3), highlights, summary,
     accent: '#3f9a7c', fill: '#3f9a7c',
     screens: [
-    { id: 'overview', nav: 'Overview', wide: true, title: ['Sequoia'],
-      lede: 'A website and branded merchandise for Sequoia Plumbing & Mechanical.',
+    { id: 'overview', nav: 'Overview', wide: true, title: ['Sequoia Plumbing & Air'],
+      lede: 'A custom visual identity and multi-page website for a Bay Area plumbing and air company, extended across branded merchandise and print materials.',
+      link: { label: 'View live website', href: 'https://www.sequoiaplumbingandair.com/' },
       blocks: [{ type: 'meta', items: [
-        { label: 'Scope', value: 'Web design, merch' },
+        { label: 'Role', value: 'Brand & Web Designer' },
+        { label: 'Timeline', value: 'July 2026' },
+        { label: 'Scope', value: 'Brand identity, UX/UI, web design' },
+        { label: 'Deliverables', value: 'Website, logo, merchandise & print' },
       ] }] },
-    { id: 'shot-1', nav: 'Main page', group: 'Main page', shot: true, title: [''],
+    { id: 'shot-1', nav: 'Website', group: 'Website', shot: true, title: [''],
       visual: { layout: 'single', items: [{ label: 'Sequoia 1', spec: '', src: '/images/seq-1.webp', alt: 'Sequoia Plumbing & Mechanical, image 1' }] } },
     { id: 'shot-2', shot: true, title: [''],
       visual: { layout: 'single', items: [{ label: 'Sequoia 2', spec: '', src: '/images/seq-2.webp', alt: 'Sequoia Plumbing & Mechanical, image 2' }] } },
@@ -550,11 +555,11 @@ export const cases: CaseData[] = [
       visual: { layout: 'single', items: [{ label: 'Sequoia 7', spec: '', src: '/images/seq-7.webp', alt: 'Sequoia Plumbing & Mechanical, image 7' }] } },
     { id: 'shot-8', shot: true, title: [''],
       visual: { layout: 'single', items: [{ label: 'Sequoia 8', spec: '', src: '/images/seq-8.webp', alt: 'Sequoia Plumbing & Mechanical, image 8' }] } },
-    { id: 'shot-9', nav: 'Other pages', group: 'Other pages', shot: true, title: [''],
+    { id: 'shot-9', nav: 'Inner Pages', group: 'Inner Pages', shot: true, title: [''],
       visual: { layout: 'single', items: [{ label: 'Sequoia 9', spec: '', src: '/images/seq-9.webp', alt: 'Sequoia Plumbing & Mechanical, image 9' }] } },
     { id: 'shot-10', shot: true, title: [''],
       visual: { layout: 'single', items: [{ label: 'Sequoia 10', spec: '', src: '/images/seq-10.webp', alt: 'Sequoia Plumbing & Mechanical, image 10' }] } },
-    { id: 'shot-11', nav: 'Merch', group: 'Merch', shot: true, title: [''],
+    { id: 'shot-11', nav: 'Brand Applications', group: 'Brand Applications', shot: true, title: [''],
       visual: { layout: 'single', items: [{ label: 'Sequoia 11', spec: '', src: '/images/seq-11.webp', alt: 'Sequoia Plumbing & Mechanical, image 11' }] } },
     { id: 'shot-12', shot: true, title: [''],
       visual: { layout: 'single', items: [{ label: 'Sequoia 12', spec: '', src: '/images/seq-12.webp', alt: 'Sequoia Plumbing & Mechanical, image 12' }] } },
