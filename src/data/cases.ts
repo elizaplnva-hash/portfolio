@@ -223,7 +223,7 @@ const jam: Partial<CaseData> = {
           { icon: 'rotate-ccw', hi: true, title: 'No reason to reopen the app' },
         ] },
       ],
-      visual: { layout: 'single', items: [{ label: 'Problem', spec: '', src: '/images/jam-problem.webp', alt: 'Jam before analytics: an empty Jams list and the QR code screen' }] } },
+      visual: { layout: 'single', items: [{ label: 'Problem', spec: '', src: '/images/jam-problem.webp', alt: 'The existing Jam app: sign-up, the QR code card and the Jams form' }] } },
 
     { id: 'research', nav: 'Research', title: ['What people said,', 'not what we assumed.'],
       blocks: [
@@ -254,7 +254,7 @@ const jam: Partial<CaseData> = {
         { icon: 'briefcase', title: 'Top job titles', body: 'Who opens your Jams' },
         { icon: 'bell', hi: true, title: 'Weekly digest', body: 'Arrives as a notification' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Analytics', spec: '', src: '/images/jam-analytics.webp', alt: 'Jam: the Instagram analytics screen and the weekly report notification' }] } },
+      visual: { layout: 'single', items: [{ label: 'Analytics', spec: '', src: '/images/jam-analytics.webp', alt: 'The new Analytics screen and the New Spreads weekly trends' }] } },
 
     { id: 'followups', nav: 'Follow-ups', title: ['Analytics says who.', 'Reminders say when.'],
       lede: 'Each connection gets a profile with event history, talking points and notes.',
@@ -264,7 +264,7 @@ const jam: Partial<CaseData> = {
         { icon: 'calendar-search', title: 'Event suggestions', body: 'Networking events worth attending' },
         { icon: 'coffee', title: 'Coffee chat refreshers', body: 'A reminder before you meet' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Follow-ups', spec: '', src: '/images/jam-follow.webp', alt: 'Jam: Notifications and a connection Profile' }] } },
+      visual: { layout: 'single', items: [{ label: 'Follow-ups', spec: '', src: '/images/jam-follow.webp', alt: 'Jam: Notifications, Calendar and a connection Profile' }] } },
 
     { id: 'testing', nav: 'Testing', title: ['8 usability tests,', '3 changes.'],
       blocks: [{ type: 'table', head: ['What we saw', 'What changed'], rows: [
@@ -272,7 +272,7 @@ const jam: Partial<CaseData> = {
         ['Clarity was rated 2', 'Dividers and colour: rated 4.5'],
         ['Contact details came before context', 'Event context first, then the person'],
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Hi-fi', spec: '', src: '/images/jam-hifi.webp', alt: 'All Jam app screens' }] } },
+      visual: { layout: 'single', items: [{ label: 'Instagram analytics', spec: '', src: '/images/jam-hifi.webp', alt: 'The Instagram clicks screens: clicks per day and top demographics by industry and job title' }] } },
 
     { id: 'reflection', nav: 'Reflection', wide: true, title: ['The brief is rarely', 'the real problem.'],
       blocks: [
@@ -438,7 +438,7 @@ const greenCredit: Partial<CaseData> = {
 
 export const cases: CaseData[] = [
   { slug: 'pinkwallet', side: 'front', name: 'PinkWallet', tags: ['Fintech', 'AI'], headline: "Crypto that doesn't scare first-time users", color: '#ff8fc8', image: '/images/pw-home.webp', big: true, facts, highlights, summary, ...pinkwallet },
-  { slug: 'jam', side: 'front', name: 'Jam', tags: ['Consumer', 'UX research'], headline: 'Turned a contact-collecting app into a reason to follow up', color: '#6b8cff', facts, highlights, summary, ...jam },
+  { slug: 'jam', side: 'front', name: 'Jam', tags: ['Consumer', 'UX research'], headline: 'Turned a contact-collecting app into a reason to follow up', color: '#6b8cff', image: '/images/jam-home.webp', facts, highlights, summary, ...jam },
   { slug: 'lapunzel', side: 'front', name: 'Lapunzel', tags: ['E-commerce', 'Conversion'], headline: 'Reframed a redesign as a trust problem', color: '#ffb547', facts, highlights, summary, ...lapunzel },
   { slug: 'green-credit-score', side: 'front', name: 'Green Credit Score', tags: ['Fintech', 'Web'], headline: 'A credit-score dashboard, designed in one month', color: '#3ccf7a', facts, highlights, summary, ...greenCredit },
   { slug: 'world-of-colors', side: 'back', name: 'World of Colors', tags: ['Brand', 'Website'], headline: '[Headline: what was hard and what we achieved]', color: '#ff5a36', big: true, facts: facts.slice(0, 3), highlights, summary },
