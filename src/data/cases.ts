@@ -487,15 +487,14 @@ export const cases: CaseData[] = [
   { slug: 'ben-ai', side: 'back', name: 'Ben AI', tags: ['AI SaaS', 'Web design'], headline: 'A brand and product system for an award-winning AI startup', color: '#7b61ff', image: '/images/ben-monitors.webp', facts: facts.slice(0, 3), highlights, summary,
     accent: '#8b78ff', fill: '#8b78ff',
     screens: [
-    { id: 'overview', nav: 'Overview', title: ['An AI tool outgrew its first website.'],
+    { id: 'overview', nav: 'Overview', wide: true, title: ['Ben AI'],
       lede: 'A complete website redesign for an AI tool that outgrew its first version, and went on to win a Yelp industry award.',
       blocks: [{ type: 'meta', items: [
         { label: 'Role', value: 'Lead Designer' },
         { label: 'Timeline', value: '2024–2025' },
         { label: 'Scope', value: 'Web design, UX, visual system' },
         { label: 'Outcome', value: 'Yelp Award 2025' },
-      ] }],
-      visual: { layout: 'single', items: [{ label: 'Ben AI', spec: '', src: '/images/ben-monitors.webp', alt: 'Three monitors showing the Ben AI product pages' }] } },
+      ] }] },
 
     { id: 'brief', nav: 'Brief', wide: true, title: ['Built for owners who need bookings, not dashboards.'],
       lede: 'Ben AI is an AI-powered lead conversion system for home service businesses.',

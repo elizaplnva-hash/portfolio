@@ -33,9 +33,9 @@ const mail = 'mailto:elizaplnva@gmail.com';
   <div class="story">
     <nav class="rail" aria-label="Case sections">
       <a href="/" class="back"><span class="ar" aria-hidden="true" set:html={icon('arrow-left')} /><span class="roll"><span data-t="Back">Back</span></span></a>
-      <ol>
+      {brand ? <span aria-hidden="true"></span> : <ol>
         {screens.filter((s) => s.nav).map((s) => <li><a href={`#${s.id}`} data-step={s.id}><span class="roll"><span data-t={s.nav}>{s.nav}</span></span></a></li>)}
-      </ol>
+      </ol>}
       <div class="me-row"><span class="face" aria-hidden="true">EP</span><a href={mail} class="btn contact"><span class="roll"><span data-t="Let’s talk">Let’s talk</span></span></a></div>
     </nav>
 
