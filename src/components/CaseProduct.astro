@@ -19,10 +19,12 @@ const generic: Screen[] = [
     visual: { layout: 'single', items: [{ label: 'Final frame', spec: '' }] } },
 ];
 const screens = c.screens ?? generic;
-const tone = `--c:${c.fill ?? c.color};--a:${c.accent ?? `color-mix(in oklab, ${c.color} 70%, #000)`};--af:${c.fill ?? c.color};--t:${c.tint ?? '#f1f1ef'}`;
+const brand = c.side === 'back';
+const tint = brand ? `color-mix(in srgb, ${c.fill ?? c.color} 22%, #1c1b1a)` : (c.tint ?? '#f1f1ef');
+const tone = `--c:${c.fill ?? c.color};--a:${c.accent ?? `color-mix(in oklab, ${c.color} 70%, #000)`};--af:${c.fill ?? c.color};--t:${tint}`;
 const mail = 'mailto:elizaplnva@gmail.com';
 ---
-<div class="cp-story" style={tone}>
+<div class:list={['cp-story', { brand }]} style={tone}>
   <header class="m-bar">
     <a href="/" class="back"><span class="ar" aria-hidden="true" set:html={icon('arrow-left')} />Back</a>
     <div class="me-row"><span class="face" aria-hidden="true">EP</span><a href={mail} class="btn contact">Let’s talk</a></div>
@@ -32,7 +34,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
     <nav class="rail" aria-label="Case sections">
       <a href="/" class="back"><span class="ar" aria-hidden="true" set:html={icon('arrow-left')} /><span class="roll"><span data-t="Back">Back</span></span></a>
       <ol>
-        {screens.map((s) => <li><a href={`#${s.id}`} data-step={s.id}><span class="roll"><span data-t={s.nav}>{s.nav}</span></span></a></li>)}
+        {screens.filter((s) => s.nav).map((s) => <li><a href={`#${s.id}`} data-step={s.id}><span class="roll"><span data-t={s.nav}>{s.nav}</span></span></a></li>)}
       </ol>
       <div class="me-row"><span class="face" aria-hidden="true">EP</span><a href={mail} class="btn contact"><span class="roll"><span data-t="Let’s talk">Let’s talk</span></span></a></div>
     </nav>
@@ -47,7 +49,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
               {s.visual.items.map((p) => <figure class:list={['ph', { 'has-img': p.src }]}>{p.src ? <img src={p.src} alt={p.alt ?? p.label} decoding="async" /> : <><b>{p.label}</b>{p.spec && <p>{p.spec}</p>}</>}</figure>)}
             </div>
           )}
-          <div class="step-text">
+          {!s.shot && <div class="step-text">
             {si === 0 && <div class="tags rv"><span>{c.name}</span>{c.tags.map((t) => <span>{t}</span>)}</div>}
             {si === 0
               ? <h1 class="ttl rv">{s.title[0]} {s.title[1] && <em>{s.title[1]}</em>}</h1>
@@ -120,7 +122,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
                   </div>);
               }
             })}
-          </div>
+          </div>}
         </section>
       ))}
       <section class="step cta-step" id="next" data-step="next">

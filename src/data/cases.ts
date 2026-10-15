@@ -33,6 +33,7 @@ export interface Screen {
   lede?: string;
   statement?: boolean;             // one huge line, no image
   wide?: boolean;                  // text only, spans the frame
+  shot?: boolean;                  // no text: the visual fills the frame (brand cases)
   blocks?: Block[];
   visual?: Visual;
 }
@@ -483,21 +484,74 @@ export const cases: CaseData[] = [
   { slug: 'lapunzel', side: 'front', name: 'Lapunzel', tags: ['E-commerce', 'Conversion'], headline: 'Reframed a redesign as a trust problem', color: '#ffb547', image: '/images/lap-hero.webp', facts, highlights, summary, ...lapunzel },
   { slug: 'green-credit-score', side: 'front', name: 'Green Credit Score', tags: ['Fintech', 'Web'], headline: 'A credit-score dashboard, designed in one month', color: '#3ccf7a', facts, highlights, summary, ...greenCredit },
   { slug: 'world-of-colors', side: 'back', name: 'World of Colors', tags: ['Brand', 'Website'], headline: '[Headline: what was hard and what we achieved]', color: '#ff5a36', big: true, facts: facts.slice(0, 3), highlights, summary },
-  { slug: 'ben-ai', side: 'back', name: 'Ben AI', tags: ['AI SaaS', 'Brand system'], headline: 'A brand and product system for an award-winning AI startup', color: '#7b61ff', image: '/images/ben-monitors.webp', shots: [
-    { label: 'Three monitors with the Ben AI product pages', spec: '', src: '/images/ben-monitors.webp', alt: 'Three monitors with the Ben AI product pages' },
-    { label: 'Turn Yelp Leads Into Booked Jobs', spec: '', src: '/images/ben-yelp-leads.webp', alt: 'Turn Yelp Leads Into Booked Jobs' },
-    { label: 'Yelp Ads Campaign Management System', spec: '', src: '/images/ben-yelp-ads.webp', alt: 'Yelp Ads Campaign Management System' },
-    { label: 'Win More Thumbtack Jobs', spec: '', src: '/images/ben-thumbtack.webp', alt: 'Win More Thumbtack Jobs' },
-    { label: 'Your Website’s 24/7 Assistant', spec: '', src: '/images/ben-website.webp', alt: 'Your Website’s 24/7 Assistant' },
-    { label: 'Convert Visitors Into Real Customers', spec: '', src: '/images/ben-convert.webp', alt: 'Convert Visitors Into Real Customers' },
-    { label: 'We Received Industry Recognition', spec: '', src: '/images/ben-recognition.webp', alt: 'We Received Industry Recognition' },
-    { label: 'Ben Supports Every Job', spec: '', src: '/images/ben-jobs.webp', alt: 'Ben Supports Every Job' },
-    { label: 'Not Just Smart, Human-Smart', spec: '', src: '/images/ben-why-ben.webp', alt: 'Not Just Smart, Human-Smart' },
-    { label: 'Clients: quote, locations and logos', spec: '', src: '/images/ben-clients.webp', alt: 'Clients: quote, locations and logos' },
-    { label: 'Plans That Grow With Your Business', spec: '', src: '/images/ben-pricing.webp', alt: 'Plans That Grow With Your Business' },
-    { label: 'The Results Speak For Ben', spec: '', src: '/images/ben-results.webp', alt: 'The Results Speak For Ben' },
-    { label: 'Got Questions? Ben’s Got Answers', spec: '', src: '/images/ben-faq.webp', alt: 'Got Questions? Ben’s Got Answers' },
-  ], facts: facts.slice(0, 3), highlights, summary },
+  { slug: 'ben-ai', side: 'back', name: 'Ben AI', tags: ['AI SaaS', 'Web design'], headline: 'A brand and product system for an award-winning AI startup', color: '#7b61ff', image: '/images/ben-monitors.webp', facts: facts.slice(0, 3), highlights, summary,
+    accent: '#8b78ff', fill: '#8b78ff',
+    screens: [
+    { id: 'overview', nav: 'Overview', title: ['An AI tool outgrew its first website.'],
+      lede: 'A complete website redesign for an AI tool that outgrew its first version, and went on to win a Yelp industry award.',
+      blocks: [{ type: 'meta', items: [
+        { label: 'Role', value: 'Lead Designer' },
+        { label: 'Timeline', value: '2024–2025' },
+        { label: 'Scope', value: 'Web design, UX, visual system' },
+        { label: 'Outcome', value: 'Yelp Award 2025' },
+      ] }],
+      visual: { layout: 'single', items: [{ label: 'Ben AI', spec: '', src: '/images/ben-monitors.webp', alt: 'Three monitors showing the Ben AI product pages' }] } },
+
+    { id: 'brief', nav: 'Brief', wide: true, title: ['Built for owners who need bookings, not dashboards.'],
+      lede: 'Ben AI is an AI-powered lead conversion system for home service businesses.',
+      blocks: [{ type: 'facts', caption: 'Scope', items: [
+        { value: '20+', label: 'Sections designed' },
+        { value: '3', label: 'Use cases, up from 1' },
+      ] }] },
+
+    { id: 'changes', nav: 'Changes', wide: true, title: ['The first site worked until the product outgrew it.'],
+      lede: 'Version 1 had one hero, one use case and one audience. Then the product grew.',
+      blocks: [{ type: 'list', items: [
+        { title: 'More products', body: 'Live chat, plus SunTech and Thumbtack beyond Yelp.' },
+        { title: 'An industry award', body: 'Recognition that needed a place on the site.' },
+        { title: 'A new pricing model', body: 'Pro and Custom plans.' },
+      ] }] },
+
+    { id: 'decisions', nav: 'Decisions', wide: true, title: ['Four decisions shaped version 2.'],
+      blocks: [{ type: 'steps', items: [
+        { title: 'Three heroes, one per use case', body: 'Lead conversion, live chat and Yelp ad optimization.' },
+        { title: 'Proof under every hero', body: 'Feature lists, dashboards and screenshots.' },
+        { title: 'The award as a trust signal', body: 'Made prominent on the page.' },
+        { title: 'Pricing that shows what each tier unlocks', body: 'Pro and Custom, side by side.' },
+      ] }] },
+
+    { id: 'shot-yelp-leads', nav: 'Yelp leads', shot: true, title: [''],
+      visual: { layout: 'single', items: [{ label: 'Yelp leads', spec: '', src: '/images/ben-yelp-leads.webp', alt: "Turn Yelp Leads Into Booked Jobs" }] } },
+    { id: 'shot-yelp-ads', nav: 'Yelp ads', shot: true, title: [''],
+      visual: { layout: 'single', items: [{ label: 'Yelp ads', spec: '', src: '/images/ben-yelp-ads.webp', alt: "Yelp Ads Campaign Management System" }] } },
+    { id: 'shot-thumbtack', nav: 'Thumbtack', shot: true, title: [''],
+      visual: { layout: 'single', items: [{ label: 'Thumbtack', spec: '', src: '/images/ben-thumbtack.webp', alt: "Win More Thumbtack Jobs" }] } },
+    { id: 'shot-website', nav: 'Live chat', shot: true, title: [''],
+      visual: { layout: 'single', items: [{ label: 'Live chat', spec: '', src: '/images/ben-website.webp', alt: "Your Website’s 24/7 Assistant" }] } },
+    { id: 'shot-convert', nav: 'Convert', shot: true, title: [''],
+      visual: { layout: 'single', items: [{ label: 'Convert', spec: '', src: '/images/ben-convert.webp', alt: "Convert Visitors Into Real Customers" }] } },
+    { id: 'shot-recognition', nav: 'Recognition', shot: true, title: [''],
+      visual: { layout: 'single', items: [{ label: 'Recognition', spec: '', src: '/images/ben-recognition.webp', alt: "We Received Industry Recognition" }] } },
+    { id: 'shot-jobs', nav: 'Every job', shot: true, title: [''],
+      visual: { layout: 'single', items: [{ label: 'Every job', spec: '', src: '/images/ben-jobs.webp', alt: "Ben Supports Every Job" }] } },
+    { id: 'shot-why-ben', nav: 'Why Ben', shot: true, title: [''],
+      visual: { layout: 'single', items: [{ label: 'Why Ben', spec: '', src: '/images/ben-why-ben.webp', alt: "Not Just Smart, Human-Smart" }] } },
+    { id: 'shot-clients', nav: 'Clients', shot: true, title: [''],
+      visual: { layout: 'single', items: [{ label: 'Clients', spec: '', src: '/images/ben-clients.webp', alt: "Clients: quote, locations and logos" }] } },
+    { id: 'shot-pricing', nav: 'Pricing', shot: true, title: [''],
+      visual: { layout: 'single', items: [{ label: 'Pricing', spec: '', src: '/images/ben-pricing.webp', alt: "Plans That Grow With Your Business" }] } },
+    { id: 'shot-results', nav: 'Results', shot: true, title: [''],
+      visual: { layout: 'single', items: [{ label: 'Results', spec: '', src: '/images/ben-results.webp', alt: "The Results Speak For Ben" }] } },
+    { id: 'shot-faq', nav: 'FAQ', shot: true, title: [''],
+      visual: { layout: 'single', items: [{ label: 'FAQ', spec: '', src: '/images/ben-faq.webp', alt: "Got Questions? Ben’s Got Answers" }] } },
+
+    { id: 'outcome', nav: 'Outcome', wide: true, title: ['Best in Innovation, Yelp 2025.'],
+      lede: 'The site won the Yelp Advertising Partner Award, helped attract the first major clients and made a complex AI product easy to understand for a non-technical audience.' },
+
+    { id: 'reflection', nav: 'Reflection', wide: true, title: ['The hardest part was knowing what to keep.'],
+      blocks: [{ type: 'quote', text: 'A website isn’t a one-time deliverable. It’s a product that reflects where a company is, and where it’s going.', by: 'Eliza Popelinova' }] },
+  ],
+  },
   { slug: 'reboot-hub', side: 'back', name: 'Re:Boot Hub', tags: ['Consulting', 'Brandbook'], headline: 'A brand built on speed, structure and truth', color: '#e8ff3a', highlights,
     summary: 'A brand identity and brandbook for a consulting hub: logo concepts first, then the full system once the client chose a direction.',
     facts: [{ label: 'Role', value: 'Brand Designer' }, { label: 'Deliverables', value: 'Logo concepts, brandbook' }, { label: 'Type', value: 'Gotham, Open Sans' }] },
