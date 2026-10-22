@@ -39,7 +39,7 @@ export const sides = {
     pitch: 'Story first, style second. Identities, websites and illustration that feel like one brand.',
     socials: [socials.behance, socials.instagram, socials.linkedin, socials.email, socials.cv],
     skills: skills.back as { svg: string; label: string }[],
-    cases: bySide('back').map(toTile),
+    cases: bySide('back').filter((c) => c.slug !== 'bobyard').map(toTile), // grid fits 4 back cases; Bobyard is parked until she picks a slot
     turn: { small: 'Curious how I design products?', big: 'Flip to the front', href: '/', label: 'Turn over to Product work' },
   },
 } as const;

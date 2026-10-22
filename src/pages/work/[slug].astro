@@ -11,5 +11,5 @@ export function getStaticPaths() {
 const { c } = Astro.props;
 ---
 <Base title={`${c.name} — Eliza Popelinova`} side={c.side}>
-  {c.side === 'front' ? <CaseProduct c={c} /> : <CaseVisual c={c} />}
+  {c.side === 'front' || c.screens ? <CaseProduct c={c} /> : <CaseVisual c={c} />}
 </Base>

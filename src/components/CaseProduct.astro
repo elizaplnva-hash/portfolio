@@ -1,73 +1,203 @@
 ---
-import type { CaseData } from '../data/cases';
+import type { CaseData, Screen } from '../data/cases';
 import NextCase from './NextCase.astro';
+import { icon, metaIcon } from '../data/icons';
 interface Props { c: CaseData; }
 const { c } = Astro.props;
-const placeholder = [
-  { id: 'context', n: '01', title: 'Context', blocks: [{ type: 'text', paragraphs: ['[What the product is and who it is for.]', '[Your role and the team.]'] }, { type: 'figs', cols: 1, figs: [{ src: '', alt: '' }] }] },
-  { id: 'problem', n: '02', title: 'Problem', blocks: [{ type: 'text', paragraphs: ['[What was not working, in one or two sentences.]', '[How you found out: research, data, interviews.]'] }, { type: 'figs', cols: 2, figs: [{ src: '', alt: '' }, { src: '', alt: '' }] }] },
-  { id: 'process', n: '03', title: 'Process', blocks: [{ type: 'text', paragraphs: ['[Key decisions and why. Keep to the two or three that mattered.]'] }, { type: 'figs', cols: 2, figs: [{ src: '', alt: '' }, { src: '', alt: '' }] }] },
-  { id: 'solution', n: '04', title: 'Solution', blocks: [{ type: 'text', paragraphs: ['[What you shipped, in plain words.]'] }, { type: 'figs', cols: 2, figs: [{ src: '', alt: '' }, { src: '', alt: '' }] }] },
-  { id: 'outcome', n: '05', title: 'Outcome', blocks: [{ type: 'text', paragraphs: ['[What changed after launch.]', '[What you would do differently.]'] }] },
+
+const generic: Screen[] = [
+  { id: 'overview', nav: 'Overview', title: [c.headline], lede: c.summary,
+    blocks: [{ type: 'meta', items: c.facts.map((f) => ({ label: f.label, value: f.value })) }],
+    visual: { layout: 'single', items: [{ label: 'Cover', spec: 'The product on its home screen.' }] } },
+  { id: 'problem', nav: 'Problem', title: ['[What was broken,', 'in one line.]'],
+    visual: { layout: 'single', items: [{ label: 'The problem', spec: 'A screen or a quote that proves it.' }] } },
+  { id: 'insight', nav: 'Insight', statement: true, title: ['[The one insight', 'everything rests on.]'] },
+  { id: 'decisions', nav: 'Decisions', title: ['[The decision', 'that mattered.]'],
+    blocks: [{ type: 'decision', rows: [['Decision', '[What you decided]'], ['Chose', '[X over Y]'], ['Because', '[Why]']] }],
+    visual: { layout: 'stack', items: [{ label: 'Detail', spec: '' }, { label: 'Detail', spec: '' }, { label: 'Key screen', spec: '' }] } },
+  { id: 'outcome', nav: 'Outcome', title: ['[What shipped', 'and what changed.]'],
+    visual: { layout: 'single', items: [{ label: 'Final frame', spec: '' }] } },
 ];
-const sections = c.sections ?? placeholder;
+const screens = c.screens ?? generic;
+const brand = c.side === 'back';
+const groups = brand ? screens.filter((s) => s.group) : [];
+const groupOf: Record<string, string> = {};
+let cur = '';
+screens.forEach((s) => { if (s.group) cur = s.group; groupOf[s.id] = cur; });
+const tint = brand ? `color-mix(in srgb, ${c.fill ?? c.color} 22%, #1c1b1a)` : (c.tint ?? '#f1f1ef');
+const tone = `--c:${c.fill ?? c.color};--a:${c.accent ?? `color-mix(in oklab, ${c.color} 70%, #000)`};--af:${c.fill ?? c.color};--t:${tint}`;
+const mail = 'mailto:elizaplnva@gmail.com';
 ---
-<div class="cp cp-product">
-  <aside class="tile side">
-    <a href="/" class="home-link">Eliza<br />Popelinova</a>
-    <nav aria-label="Sections" data-sections>
-      {sections.map((s) => <a href={`#${s.id}`}><span>{s.n}</span>{s.title}</a>)}
+<div class:list={['cp-story', { brand }]} style={tone}>
+  <header class="m-bar">
+    <a href="/" class="back"><span class="ar" aria-hidden="true" set:html={icon('arrow-left')} />Back</a>
+    <div class="me-row"><span class="face" aria-hidden="true">EP</span><a href={mail} class="btn contact">Let’s talk</a></div>
+  </header>
+
+  <div class="story">
+    <nav class="rail" aria-label="Case sections">
+      <a href="/" class="back"><span class="ar" aria-hidden="true" set:html={icon('arrow-left')} /><span class="roll"><span data-t="Back">Back</span></span></a>
+      {brand && !groups.length ? <span aria-hidden="true"></span> : <ol>
+        {(brand ? screens.filter((s, i) => s.group || (i === 0 && s.nav)) : screens.filter((s) => s.nav)).map((s) => <li><a href={`#${s.id}`} data-step={s.id} data-group={s.group}><span class="roll"><span data-t={s.nav}>{s.nav}</span></span></a></li>)}
+      </ol>}
+      <div class="me-row"><span class="face" aria-hidden="true">EP</span><a href={mail} class="btn contact"><span class="roll"><span data-t="Let’s talk">Let’s talk</span></span></a></div>
     </nav>
-    <p class="other"><a href="/">All product work</a><br /><a href="/visual">Brand &amp; visual work</a></p>
-  </aside>
 
-  <div class="main">
-    <header class="tile hero">
-      <div class="tags"><span>{c.name}</span>{c.tags.map((t) => <span>{t}</span>)}</div>
-      <h1>{c.headline}</h1>
-      <figure class:list={['fig', { 'has-img': !!c.image }]} style={`--c:${c.color}`}>{c.image ? <img src={c.image} alt={`${c.name} landing page`} /> : <figcaption>{c.name}, key screens</figcaption>}</figure>
-    </header>
+    <div class="frame" aria-hidden="true"></div>
+    <div class="frame-sh" aria-hidden="true"></div>
+    <div class="steps">
+      {screens.map((s, si) => (
+        <section class:list={['step', { statement: s.statement, wide: s.wide }]} id={s.id} data-step={s.id} data-group={groupOf[s.id] || undefined}>
+          {s.visual && (
+            <div class:list={['m-vis', `v-${s.visual.layout}`]}>
+              {s.visual.items.map((p) => <figure class:list={['ph', { 'has-img': p.src }]}>{p.src ? <img src={p.src} alt={p.alt ?? p.label} decoding="async" /> : <><b>{p.label}</b>{p.spec && <p>{p.spec}</p>}</>}</figure>)}
+            </div>
+          )}
+          {!s.shot && <div class="step-text">
+            {si === 0 && <div class="tags rv"><span>{c.name}</span>{c.tags.map((t) => <span>{t}</span>)}</div>}
+            {si === 0
+              ? <h1 class="ttl rv">{s.title[0]} {s.title[1] && <em>{s.title[1]}</em>}</h1>
+              : s.statement
+                ? <h2 class="ttl"><span class="ln">{s.title[0]}</span> {s.title[1] && <em class="ln">{s.title[1]}</em>}</h2>
+                : <h2 class="ttl rv">{s.title[0]} {s.title[1] && <em>{s.title[1]}</em>}</h2>}
+            {s.lede && <p class="lede rv">{s.lede}</p>}
+            {s.link && <a class="btn live rv" href={s.link.href} target="_blank" rel="noopener">{s.link.label}</a>}
 
-    <section class="tile facts-tile" aria-label="Facts">
-      <dl class="facts">{c.facts.map((f) => <div><dt>{f.label}</dt><dd>{f.value}</dd></div>)}</dl>
-    </section>
-
-    <section class="highlights" aria-label="Highlights">
-      {c.highlights.map((h, i) => <div class="tile"><span>0{i + 1}</span><p>{h}</p></div>)}
-    </section>
-
-    {sections.map((s) => (
-      <section class="tile sec" id={s.id}>
-        <div class="head"><span>{s.n}</span><h2>{s.title}</h2></div>
-        {s.blocks.map((b) => b.type === 'text' ? (
-          <div class="text">
-            {b.heading && <h3>{b.heading}</h3>}
-            {b.paragraphs.map((t) => <p>{t}</p>)}
-          </div>
-        ) : (
-          <div class={`figs cols-${b.cols}`}>
-            {b.figs.map((f) => (
-              <figure class:list={['fig', { 'has-img': !!f.src }]} style={`--c:${c.color}`}>
-                {f.src && <img src={f.src} alt={f.alt} loading="lazy" />}
-                {f.caption && <figcaption class="cap">{f.caption}</figcaption>}
-              </figure>
-            ))}
-          </div>
-        ))}
+            {s.blocks?.map((b) => {
+              switch (b.type) {
+                case 'meta': return (
+                  <ul class="meta rv">{b.items.map((m) => (
+                    <li><span class="ic" aria-hidden="true" set:html={icon(metaIcon[m.label] ?? 'circle-check')} /><span><small>{m.label}</small><b>{m.value}</b></span></li>))}
+                  </ul>);
+                case 'bento': return (
+                  <div class="bento rv">{b.cells.map((x) => (
+                    <div class:list={['cell', 'lift', x.fill ? 'l1 hi' : 'l2', { wide: x.wide }]}>
+                      {x.icon && <span class="ic" aria-hidden="true" set:html={icon(x.icon)} />}
+                      <h3>{x.title}</h3>
+                      {x.body && <p>{x.body}</p>}
+                    </div>))}
+                  </div>);
+                case 'contrast': return (
+                  <div class="contrast rv">
+                    <div class="from l3 lift"><p>{b.from.label}</p><ul>{b.from.items.map((t) => <li>{t}</li>)}</ul></div>
+                    <div class="to l1 hi lift"><p>{b.to.label}</p><ul>{b.to.items.map((t, i) => <li>{b.to.icons?.[i] && <span class="ic" aria-hidden="true" set:html={icon(b.to.icons[i])} />}{t}</li>)}</ul></div>
+                  </div>);
+                case 'table': return (
+                  <table class="tbl rv">
+                    <thead><tr><th>{b.head[0]}</th><th>{b.head[1]}</th></tr></thead>
+                    <tbody>{b.rows.map((r) => <tr><th scope="row">{r[0]}</th><td>{r[1]}</td></tr>)}</tbody>
+                  </table>);
+                case 'decision': return (
+                  <dl class="decision rv">{b.rows.map((r) => <div><dt>{r[0]}</dt><dd>{r[1]}</dd></div>)}</dl>);
+                case 'cards': return (
+                  <div class="cards rv">{b.items.map((x) => (
+                    <div class:list={['cell', 'lift', x.hi ? 'l1 hi' : 'l2']}>
+                      {x.icon && <span class="ic" aria-hidden="true" set:html={icon(x.icon)} />}
+                      {x.label && <small>{x.label}</small>}<h3>{x.title}</h3>{x.body && <p>{x.body}</p>}
+                    </div>))}
+                  </div>);
+                case 'list': return (
+                  <ol class:list={['list rv', { num: b.numbered }]}>{b.items.map((x) => (
+                    <li>
+                      {x.icon ? <span class="ic" aria-hidden="true" set:html={icon(x.icon)} /> : b.numbered ? <span class="n" aria-hidden="true"></span> : null}
+                      <div>{x.label && <small>{x.label}</small>}<h3>{x.title}</h3>{x.body && <p>{x.body}</p>}</div>
+                    </li>))}
+                  </ol>);
+                case 'callout': return <p class="callout rv">{b.text}</p>;
+                case 'chain': return (
+                  <ol class="chain rv">{b.steps.map((t, i) => (
+                    <li><span class:list={['pill', i === b.steps.length - 1 ? 'l1 last' : 'l2']}>{t}</span>{i < b.steps.length - 1 && <span class="ar" aria-hidden="true" set:html={icon('arrow-down')} />}</li>))}
+                  </ol>);
+                case 'chips': return (
+                  <ul class="chips big rv">{b.items.map((t) => <li>{t}</li>)}</ul>);
+                case 'facts': return (
+                  <div class="facts rv"><small>{b.caption}</small>
+                    <dl>{b.items.map((f) => <div class="l2 lift"><dd>{f.value}</dd><dt>{f.label}</dt></div>)}</dl>
+                  </div>);
+                case 'note': return <p class="note rv">{b.text}</p>;
+                case 'fromto': return (
+                  <dl class="fromto rv"><div class="l3 lift"><dt>From</dt><dd>{b.from}</dd></div><div class="l1 hi lift"><dt>To</dt><dd>{b.to}</dd></div></dl>);
+                case 'steps': return (
+                  <ol class="list num rv">{b.items.map((x) => <li><span class="n" aria-hidden="true"></span><div><h3>{x.title}</h3><p>{x.body}</p></div></li>)}</ol>);
+                case 'quote': return (<figure class="quote rv"><blockquote>“{b.text}”</blockquote><figcaption>{b.by}</figcaption></figure>);
+                case 'theme': return (
+                  <div class="theme rv" role="group" aria-label="Screen theme">
+                    <button type="button" aria-pressed="true" data-theme="light">Light</button>
+                    <button type="button" aria-pressed="false" data-theme="dark">Dark</button>
+                  </div>);
+              }
+            })}
+          </div>}
+        </section>
+      ))}
+      <section class="step cta-step" id="next" data-step="next">
+        <div class="step-text">
+          <h2 class="ttl rv">Thanks for scrolling all the way down.</h2>
+          <p class="lede rv">If something here sparked an idea or a question, I’d like to hear it.</p>
+          <div class="cta-row rv"><a href={mail} class="cta"><span class="roll"><span data-t="Let’s talk">Let’s talk</span></span></a></div>
+        </div>
       </section>
-    ))}
+    </div>
 
-    <NextCase current={c} />
+    <div class="stage">
+      {screens.map((s, i) => s.visual && (
+        <div class:list={['vis', `v-${s.visual.layout}`, { on: i === 0 }]} data-step={s.id} aria-hidden="true">
+          {s.visual.items.map((p) => <figure class:list={['ph', { 'has-img': p.src }]}>{p.src ? <img src={p.src} alt={p.alt ?? p.label} decoding="async" /> : <><b>{p.label}</b>{p.spec && <p>{p.spec}</p>}</>}</figure>)}
+        </div>
+      ))}
+      <div class="vis nx" data-step="next"><NextCase current={c} /></div>
+    </div>
   </div>
+
+  <section class="end"><NextCase current={c} /></section>
 </div>
 
 <script>
-  const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-sections] a')];
-  const secs = links.map((a) => document.querySelector(a.hash)).filter(Boolean) as Element[];
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((e) => {
-      if (e.isIntersecting) links.forEach((a) => a.setAttribute('aria-current', String(a.hash === '#' + e.target.id)));
+  document.documentElement.classList.add('js');
+  const steps = [...document.querySelectorAll<HTMLElement>('.step')];
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('.rail a[data-step]')];
+  const vis = [...document.querySelectorAll<HTMLElement>('.stage .vis')];
+  const stage = document.querySelector<HTMLElement>('.stage');
+  const set = (id: string) => {
+    const grp = document.getElementById(id)?.dataset.group;
+    links.forEach((a) => a.toggleAttribute('aria-current', a.dataset.group ? a.dataset.group === grp : a.dataset.step === id));
+    let shown = false;
+    vis.forEach((v) => { const on = v.dataset.step === id; v.classList.toggle('on', on); shown ||= on; });
+    stage?.classList.toggle('empty', !shown);
+  };
+  // reveal: a screen's blocks rise once it is a little in view
+  const rv = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); rv.unobserve(e.target); } }), { rootMargin: '0px 0px -15% 0px' });
+  steps.forEach((s) => rv.observe(s));
+  if (steps[0]) set(steps[0].id);
+  const io = new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && set((e.target as HTMLElement).id)), { rootMargin: '-45% 0px -45% 0px' });
+  steps.forEach((s) => io.observe(s));
+
+  // images lean toward the cursor (mouse devices only, never with reduced motion)
+  if (matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)').matches) {
+    document.querySelectorAll<HTMLElement>('.stage .ph').forEach((el) => {
+      el.addEventListener('pointermove', (e) => {
+        const r = el.getBoundingClientRect();
+        el.style.setProperty('--rx', `${(-((e.clientY - r.top) / r.height - 0.5) * 6).toFixed(2)}deg`);
+        el.style.setProperty('--ry', `${(((e.clientX - r.left) / r.width - 0.5) * 6).toFixed(2)}deg`);
+        el.classList.add('lean');
+      });
+      el.addEventListener('pointerleave', () => {
+        el.classList.remove('lean');
+        el.style.removeProperty('--rx');
+        el.style.removeProperty('--ry');
+      });
     });
-  }, { rootMargin: '-35% 0px -55% 0px' });
-  secs.forEach((s) => io.observe(s));
+  }
+
+  // light / dark switch for the "every state" screens
+  document.querySelectorAll<HTMLElement>('.theme').forEach((g) => {
+    const step = g.closest<HTMLElement>('.step');
+    g.addEventListener('click', (ev) => {
+      const b = (ev.target as HTMLElement).closest<HTMLButtonElement>('button');
+      if (!b || !step) return;
+      g.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      const dark = b.dataset.theme === 'dark';
+      document.querySelectorAll<HTMLElement>(`[data-step="${step.id}"].vis, #${step.id} .m-vis`).forEach((v) => v.classList.toggle('dark', dark));
+    });
+  });
 </script>
