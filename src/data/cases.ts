@@ -391,7 +391,7 @@ const greenCredit: Partial<CaseData> = {
       visual: { layout: 'single', items: [{ label: 'Dashboard', spec: 'The main product mockup.' }] } },
 
     { id: 'challenge', nav: 'Challenge', title: ["The problem wasn't too much data. It was too little clarity."],
-      lede: 'Credit information is spread across scores, accounts, payment histories and reports. The challenge was to show what matters and what to do next.',
+      lede: 'Credit information lives in many places. The challenge was to show what matters and what to do next.',
       blocks: [{ type: 'list', numbered: true, items: [
         { title: 'Scores without context', body: 'A number without a clear explanation of what it means.' },
         { title: 'Fragmented data', body: 'Users compare information across separate bureaus.' },
@@ -400,11 +400,11 @@ const greenCredit: Partial<CaseData> = {
       visual: { layout: 'single', items: [{ label: 'Problem', spec: 'An interface or a diagram of the problem.' }] } },
 
     { id: 'research', nav: 'Research', title: ['Three patterns shaped the direction.'],
-      lede: 'We benchmarked existing financial products to find where credit information becomes hard to read.',
-      blocks: [{ type: 'table', head: ['Finding', 'Opportunity'], rows: [
-        ['Scores lack context', 'Explain score status'],
-        ['Data is fragmented', 'Compare bureaus side by side'],
-        ['No clear priorities', 'Highlight key factors'],
+      lede: 'We reviewed existing credit and finance products to see where reading credit data gets hard.',
+      blocks: [{ type: 'table', head: ['Pattern in the market', 'Direction'], rows: [
+        ['A number, with no explanation', 'Say what the score means'],
+        ['Each bureau in its own report', 'One view for all three'],
+        ['Every metric looks equally important', 'Rank factors by impact'],
       ] }],
       visual: { layout: 'single', items: [{ label: 'Benchmark', spec: 'Competitor analysis or interface examples.' }] } },
 
@@ -430,7 +430,7 @@ const greenCredit: Partial<CaseData> = {
       lede: 'The dashboard brings scores, credit factors and debt information into one view, a clear starting point.',
       blocks: [{ type: 'cards', items: [
         { icon: 'layout-dashboard', title: 'A clear entry point', body: 'Key information first, deeper sections one tap away.' },
-        { icon: 'columns-2', title: 'Consistent comparison', body: 'All three bureaus follow the same layout.' },
+        { icon: 'gauge', title: 'Factors under the score', body: 'The factors behind the score sit right below it.' },
         { icon: 'mouse-pointer-click', title: 'Details on demand', body: 'Users open individual sections to explore more.' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'Dashboard', spec: 'The real dashboard screen.' }] } },
