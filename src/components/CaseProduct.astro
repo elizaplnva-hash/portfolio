@@ -31,7 +31,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
 <div class:list={['cp-story', { brand }]} style={tone}>
   <header class="m-bar">
     <a href="/" class="back"><span class="ar" aria-hidden="true" set:html={icon('arrow-left')} />Back</a>
-    <div class="me-row"><span class="face" aria-hidden="true">EP</span><a href={mail} class="btn contact">Let’s talk</a></div>
+    <div class="me-row"><span class="face" aria-hidden="true"><img src="/images/eliza.webp" alt="" width="76" height="76" decoding="async" /></span><a href={mail} class="btn contact">Let’s talk</a></div>
   </header>
 
   <div class="story">
@@ -40,7 +40,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
       {brand && !groups.length ? <span aria-hidden="true"></span> : <ol>
         {(brand ? screens.filter((s, i) => s.group || (i === 0 && s.nav)) : screens.filter((s) => s.nav)).map((s) => <li><a href={`#${s.id}`} data-step={s.id} data-group={s.group}><span class="roll"><span data-t={s.nav}>{s.nav}</span></span></a></li>)}
       </ol>}
-      <div class="me-row"><span class="face" aria-hidden="true">EP</span><a href={mail} class="btn contact"><span class="roll"><span data-t="Let’s talk">Let’s talk</span></span></a></div>
+      <div class="me-row"><span class="face" aria-hidden="true"><img src="/images/eliza.webp" alt="" width="76" height="76" decoding="async" /></span><a href={mail} class="btn contact"><span class="roll"><span data-t="Let’s talk">Let’s talk</span></span></a></div>
     </nav>
 
     <div class="frame" aria-hidden="true"></div>

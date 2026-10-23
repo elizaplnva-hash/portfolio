@@ -388,7 +388,7 @@ const greenCredit: Partial<CaseData> = {
         { label: 'Platform', value: 'Web, mobile' },
         { label: 'Status', value: 'In development' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Dashboard', spec: 'The main product mockup.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Dashboard', spec: '', src: '/images/gcs-overview.webp', alt: 'Green Credit Score dashboard on a monitor' }] } },
 
     { id: 'challenge', nav: 'Challenge', title: ["The problem wasn't too much data. It was too little clarity."],
       lede: 'Credit information lives in many places. The challenge was to show what matters and what to do next.',
@@ -397,7 +397,7 @@ const greenCredit: Partial<CaseData> = {
         { title: 'Fragmented data', body: 'Users compare information across separate bureaus.' },
         { title: 'No clear priorities', body: 'Every metric competes for attention.' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Problem', spec: 'An interface or a diagram of the problem.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Problem', spec: '', src: '/images/gcs-challenge.webp', alt: 'The three areas of credit data: accounts, inquiries and records, payment history' }] } },
 
     { id: 'research', nav: 'Research', title: ['Three patterns shaped the direction.'],
       lede: 'We reviewed existing credit and finance products to see where reading credit data gets hard.',
@@ -406,7 +406,7 @@ const greenCredit: Partial<CaseData> = {
         ['Each bureau in its own report', 'One view for all three'],
         ['Every metric looks equally important', 'Rank factors by impact'],
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Benchmark', spec: 'Competitor analysis or interface examples.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Benchmark', spec: '', src: '/images/gcs-research.webp', alt: 'Score factors screen on a laptop' }] } },
 
     { id: 'principles', nav: 'Principles', title: ['Three decisions defined the product.'],
       lede: 'Each principle set one consistent way to present credit information so users understand it faster.',
@@ -415,7 +415,7 @@ const greenCredit: Partial<CaseData> = {
         { icon: 'palette', title: '02. Color communicates status', body: 'A shared five-level scale keeps status meanings consistent.' },
         { icon: 'columns-2', title: '03. Bureaus side by side', body: 'A consistent layout makes differences easier to spot.' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Principles', spec: 'Score cards, the colour scale and the bureau comparison.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Principles', spec: '', src: '/images/gcs-principles.webp', alt: 'Score, status colours and bureau comparison' }] } },
 
     { id: 'landing', nav: 'Landing', title: ['Explain the value before asking for commitment.'],
       lede: 'The landing page introduces the product, shows its benefits and gives users a clear path to getting started.',
@@ -433,7 +433,7 @@ const greenCredit: Partial<CaseData> = {
         { icon: 'gauge', title: 'Factors under the score', body: 'The factors behind the score sit right below it.' },
         { icon: 'mouse-pointer-click', title: 'Details on demand', body: 'Users open individual sections to explore more.' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Dashboard', spec: 'The real dashboard screen.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Dashboard', spec: '', src: '/images/gcs-dashboard.webp', alt: 'The dashboard on a tablet' }] } },
 
     { id: 'simulator', nav: 'Simulator', title: ['Explore possible outcomes before making a decision.'],
       lede: 'Users try hypothetical scenarios and see how different choices could affect their score.',
@@ -446,7 +446,7 @@ const greenCredit: Partial<CaseData> = {
         ] },
         { type: 'note', text: 'Simulated outcomes are estimates, not guarantees.' },
       ],
-      visual: { layout: 'single', items: [{ label: 'Simulator', spec: 'The simulator screen with an example scenario.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Simulator', spec: '', src: '/images/gcs-simulator.webp', alt: 'The score simulator with its scenarios' }] } },
 
     { id: 'report', nav: 'Report', title: ['A complete report without the information overload.'],
       lede: 'Personal information, account details, balances and payment history sit in one consistent, readable structure.',
@@ -455,16 +455,7 @@ const greenCredit: Partial<CaseData> = {
         { label: 'Layer 02', title: 'Account overview', body: 'Review balances, limits, utilization and status.' },
         { label: 'Layer 03', title: 'Payment history', body: 'Explore month-by-month account records.' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Credit report', spec: 'The bureau table and an account detail.' }] } },
-
-    { id: 'monitoring', nav: 'Monitoring', title: ['Know when something changes.'],
-      lede: 'Monitoring keeps users informed about relevant changes without a full report review every time.',
-      blocks: [{ type: 'cards', items: [
-        { icon: 'trending-up', title: 'Credit score updated', body: 'Your TransUnion score went up 6 points. 2 days ago' },
-        { icon: 'gauge', title: 'Credit utilization', body: 'Credit utilization decreased to 24%. 5 days ago' },
-        { icon: 'credit-card', title: 'New account', body: 'American Express card added to your report. 1 week ago' },
-      ] }],
-      visual: { layout: 'single', items: [{ label: 'Alerts', spec: 'The notifications screen.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Credit report', spec: '', src: '/images/gcs-report.webp', alt: 'The accounts report compared across bureaus' }] } },
 
     { id: 'delivery', nav: 'Delivery', title: ['From brief to a development-ready product.'],
       lede: 'The work connected product logic, UX exploration, interface design, reusable components and responsive layouts.',
@@ -475,7 +466,7 @@ const greenCredit: Partial<CaseData> = {
           { label: 'Workflow', title: 'AI-supported exploration', body: 'AI helped early exploration and design-system cleanup. Final decisions stayed with the team.' },
         ] },
       ],
-      visual: { layout: 'single', items: [{ label: 'System', spec: 'The design system, components and responsive screens.' }] } },
+      visual: { layout: 'single', items: [{ label: 'System', spec: '', src: '/images/gcs-delivery.webp', alt: 'The score simulator on a laptop' }] } },
   ],
 };
 
@@ -483,7 +474,7 @@ export const cases: CaseData[] = [
   { slug: 'pinkwallet', side: 'front', name: 'PinkWallet', tags: ['Fintech', 'AI'], headline: "Crypto that doesn't scare first-time users", color: '#ff8fc8', image: '/images/pw-home.webp', big: true, facts, highlights, summary, ...pinkwallet },
   { slug: 'jam', side: 'front', name: 'Jam', tags: ['Consumer', 'UX research'], headline: 'Turned a contact-collecting app into a reason to follow up', color: '#6b8cff', image: '/images/jam-home.webp', facts, highlights, summary, ...jam },
   { slug: 'lapunzel', side: 'front', name: 'Lapunzel', tags: ['E-commerce', 'Conversion'], headline: 'Reframed a redesign as a trust problem', color: '#ffb547', image: '/images/lap-hero.webp', facts, highlights, summary, ...lapunzel },
-  { slug: 'green-credit-score', side: 'front', name: 'Green Credit Score', tags: ['Fintech', 'Web'], headline: 'A credit-score dashboard, designed in one month', color: '#3ccf7a', facts, highlights, summary, ...greenCredit },
+  { slug: 'green-credit-score', side: 'front', name: 'Green Credit Score', tags: ['Fintech', 'Web'], headline: 'A credit-score dashboard, designed in one month', color: '#3ccf7a', image: '/images/gcs-overview.webp', facts, highlights, summary, ...greenCredit },
   { slug: 'world-of-colors', side: 'back', name: 'World of Colors', tags: ['Brand', 'Website'], headline: '[Headline: what was hard and what we achieved]', color: '#ff5a36', big: true, facts: facts.slice(0, 3), highlights, summary },
   { slug: 'ben-ai', side: 'back', name: 'Ben AI', tags: ['AI SaaS', 'Web design'], headline: 'A brand and product system for an award-winning AI startup', color: '#7b61ff', image: '/images/ben-tablets.webp', facts: facts.slice(0, 3), highlights, summary,
     accent: '#8b78ff', fill: '#8b78ff',
