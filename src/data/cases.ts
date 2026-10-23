@@ -175,7 +175,6 @@ const pinkwallet: Partial<CaseData> = {
           ['Recovery', 'Errors, next steps'],
           ['Conversations', 'First chat, AI responses'],
         ] },
-        { type: 'theme' },
       ],
       visual: { layout: 'single', items: [{ label: 'PIG conversations', spec: '', src: '/images/pw-states.webp', alt: 'PIG on a phone held in a hand, with a Bitcoin chart reply and a wallet choice when sending' }] } },
 
