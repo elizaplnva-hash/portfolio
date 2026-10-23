@@ -382,3 +382,8 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 
 .brand .btn.live { align-self: flex-start; background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 35%, transparent); transition: transform .12s var(--out), background .2s var(--out); }
 .brand .btn.live:hover { background: var(--white); }
+/* a single fact becomes a full-width banner */
+.facts dl:has(> div:only-child) { max-width: none; }
+.facts dl:has(> div:only-child) > div { grid-template-columns: 150px 1fr; padding: 18px 22px; }
+.facts dl:has(> div:only-child) dd { font-size: 56px; }
+.facts dl:has(> div:only-child) dt { font-size: 15px; max-width: 420px; }
