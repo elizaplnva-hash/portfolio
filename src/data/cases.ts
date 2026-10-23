@@ -424,7 +424,7 @@ const greenCredit: Partial<CaseData> = {
         { label: 'Build confidence', title: 'Answer key questions', body: 'Present features, pricing and FAQs.' },
         { label: 'Convert', title: 'Make the next step clear', body: 'Keep the path to sign-up easy to find.' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Landing', spec: 'The full landing page or a few of its sections.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Landing', spec: '', src: '/images/gcs-landing.webp', alt: 'The landing page: hero, reviews, pricing and FAQ' }] } },
 
     { id: 'dashboard', nav: 'Dashboard', title: ['Your credit, at a glance.'],
       lede: 'The dashboard brings scores, credit factors and debt information into one view, a clear starting point.',
@@ -471,12 +471,12 @@ const greenCredit: Partial<CaseData> = {
 };
 
 export const cases: CaseData[] = [
-  { slug: 'pinkwallet', side: 'front', name: 'PinkWallet', tags: ['Fintech', 'AI'], headline: "Crypto that doesn't scare first-time users", color: '#ff8fc8', image: '/images/pw-home.webp', big: true, facts, highlights, summary, ...pinkwallet },
+  { slug: 'green-credit-score', side: 'front', name: 'Green Credit Score', tags: ['Fintech', 'Web'], headline: 'A credit-score dashboard, designed in one month', color: '#3ccf7a', image: '/images/gcs-overview.webp', big: true, facts, highlights, summary, ...greenCredit },
+  { slug: 'pinkwallet', side: 'front', name: 'PinkWallet', tags: ['Fintech', 'AI'], headline: "Crypto that doesn't scare first-time users", color: '#ff8fc8', image: '/images/pw-home.webp', facts, highlights, summary, ...pinkwallet },
   { slug: 'jam', side: 'front', name: 'Jam', tags: ['Consumer', 'UX research'], headline: 'Turned a contact-collecting app into a reason to follow up', color: '#6b8cff', image: '/images/jam-home.webp', facts, highlights, summary, ...jam },
   { slug: 'lapunzel', side: 'front', name: 'Lapunzel', tags: ['E-commerce', 'Conversion'], headline: 'Reframed a redesign as a trust problem', color: '#ffb547', image: '/images/lap-hero.webp', facts, highlights, summary, ...lapunzel },
-  { slug: 'green-credit-score', side: 'front', name: 'Green Credit Score', tags: ['Fintech', 'Web'], headline: 'A credit-score dashboard, designed in one month', color: '#3ccf7a', image: '/images/gcs-overview.webp', facts, highlights, summary, ...greenCredit },
-  { slug: 'world-of-colors', side: 'back', name: 'World of Colors', tags: ['Brand', 'Website'], headline: '[Headline: what was hard and what we achieved]', color: '#ff5a36', big: true, facts: facts.slice(0, 3), highlights, summary },
-  { slug: 'ben-ai', side: 'back', name: 'Ben AI', tags: ['AI SaaS', 'Web design'], headline: 'A brand and product system for an award-winning AI startup', color: '#7b61ff', image: '/images/ben-tablets.webp', facts: facts.slice(0, 3), highlights, summary,
+  { slug: 'world-of-colors', side: 'back', name: 'World of Colors', tags: ['Brand', 'Website'], headline: '[Headline: what was hard and what we achieved]', color: '#ff5a36', facts: facts.slice(0, 3), highlights, summary },
+  { slug: 'ben-ai', side: 'back', name: 'Ben AI', tags: ['AI SaaS', 'Web design'], headline: 'A brand and product system for an award-winning AI startup', color: '#7b61ff', image: '/images/ben-tablets.webp', big: true, facts: facts.slice(0, 3), highlights, summary,
     accent: '#8b78ff', fill: '#8b78ff',
     screens: [
     { id: 'overview', nav: 'Overview', wide: true, title: ['Ben AI'],
@@ -563,4 +563,6 @@ export const cases: CaseData[] = [
   { slug: 'bobyard', side: 'back', name: 'Bobyard', tags: ['Construction AI', 'Illustration'], headline: 'Illustration and visuals for a construction-AI startup', color: '#e8541e', facts: facts.slice(0, 3), highlights, summary },
 ];
 
-export const bySide = (side: Side) => cases.filter((c) => c.side === side);
+// cases whose pages exist but are not on the home sheet yet
+const parked = new Set(['world-of-colors', 'reboot-hub', 'bobyard']);
+export const bySide = (side: Side) => cases.filter((c) => c.side === side && !parked.has(c.slug));

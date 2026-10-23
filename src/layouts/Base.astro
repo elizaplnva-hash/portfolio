@@ -21,5 +21,16 @@ const description = 'Eliza Popelinova, Senior Product Designer in Vancouver. Pro
   </head>
   <body>
     <slot />
+    <script is:inline>
+      // tell the page transition whether a case is opening or closing
+      addEventListener('pagereveal', (e) => {
+        try {
+          if (!e.viewTransition) return;
+          const a = navigation.activation;
+          const from = new URL(a.from.url).pathname, to = new URL(a.entry.url).pathname;
+          if (from.startsWith('/work/') || to.startsWith('/work/')) e.viewTransition.types.add('case');
+        } catch (_) {}
+      });
+    </script>
   </body>
 </html>

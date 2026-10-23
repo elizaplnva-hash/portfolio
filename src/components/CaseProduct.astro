@@ -26,21 +26,23 @@ let cur = '';
 screens.forEach((s) => { if (s.group) cur = s.group; groupOf[s.id] = cur; });
 const tint = brand ? `color-mix(in srgb, ${c.fill ?? c.color} 22%, #1c1b1a)` : (c.tint ?? '#f1f1ef');
 const tone = `--c:${c.fill ?? c.color};--a:${c.accent ?? `color-mix(in oklab, ${c.color} 70%, #000)`};--af:${c.fill ?? c.color};--t:${tint}`;
+const home = brand ? '/visual' : '/';
+const face = brand ? { src: '/images/eliza-dark.webp', pos: '24% 22%' } : { src: '/images/eliza.webp', pos: '50% 22%' };
 const mail = 'mailto:elizaplnva@gmail.com';
 ---
 <div class:list={['cp-story', { brand }]} style={tone}>
   <header class="m-bar">
-    <a href="/" class="back"><span class="ar" aria-hidden="true" set:html={icon('arrow-left')} />Back</a>
-    <div class="me-row"><span class="face" aria-hidden="true"><img src="/images/eliza.webp" alt="" width="76" height="76" decoding="async" /></span><a href={mail} class="btn contact">Let’s talk</a></div>
+    <a href={home} class="back"><span class="ar" aria-hidden="true" set:html={icon('arrow-left')} />Back</a>
+    <div class="me-row"><span class="face" aria-hidden="true"><img src={face.src} alt="" width="76" height="76" decoding="async" style={`object-position:${face.pos}`} /></span><a href={mail} class="btn contact">Let’s talk</a></div>
   </header>
 
   <div class="story">
     <nav class="rail" aria-label="Case sections">
-      <a href="/" class="back"><span class="ar" aria-hidden="true" set:html={icon('arrow-left')} /><span class="roll"><span data-t="Back">Back</span></span></a>
+      <a href={home} class="back"><span class="ar" aria-hidden="true" set:html={icon('arrow-left')} /><span class="roll"><span data-t="Back">Back</span></span></a>
       {brand && !groups.length ? <span aria-hidden="true"></span> : <ol>
         {(brand ? screens.filter((s, i) => s.group || (i === 0 && s.nav)) : screens.filter((s) => s.nav)).map((s) => <li><a href={`#${s.id}`} data-step={s.id} data-group={s.group}><span class="roll"><span data-t={s.nav}>{s.nav}</span></span></a></li>)}
       </ol>}
-      <div class="me-row"><span class="face" aria-hidden="true"><img src="/images/eliza.webp" alt="" width="76" height="76" decoding="async" /></span><a href={mail} class="btn contact"><span class="roll"><span data-t="Let’s talk">Let’s talk</span></span></a></div>
+      <div class="me-row"><span class="face" aria-hidden="true"><img src={face.src} alt="" width="76" height="76" decoding="async" style={`object-position:${face.pos}`} /></span><a href={mail} class="btn contact"><span class="roll"><span data-t="Let’s talk">Let’s talk</span></span></a></div>
     </nav>
 
     <div class="frame" aria-hidden="true"></div>
@@ -141,7 +143,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
 
     <div class="stage">
       {screens.map((s, i) => s.visual && (
-        <div class:list={['vis', `v-${s.visual.layout}`, { on: i === 0 }]} data-step={s.id} aria-hidden="true">
+        <div class:list={['vis', `v-${s.visual.layout}`, { on: i === 0 }]} data-step={s.id} aria-hidden="true" style={i === 0 ? `view-transition-name:vt-${c.slug}` : undefined}>
           {s.visual.items.map((p) => <figure class:list={['ph', { 'has-img': p.src }]}>{p.src ? <img src={p.src} alt={p.alt ?? p.label} decoding="async" /> : <><b>{p.label}</b>{p.spec && <p>{p.spec}</p>}</>}</figure>)}
         </div>
       ))}

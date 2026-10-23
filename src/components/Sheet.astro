@@ -9,7 +9,7 @@ const hues = ['#E0408F', '#5B6EF0', '#E58A1F', '#22A55E'];
 ---
 <main class="sheet">
   <a href="#" class="tile photo has-img" aria-label="About Eliza Popelinova">
-    <img src="/images/eliza.webp" alt="Eliza Popelinova" width="1200" height="960" decoding="async" />
+    <img src={s.photo} alt="Eliza Popelinova" width="1200" height="960" decoding="async" style={`object-position:${s.photoPos}`} />
     <div class="chips">
       <span class="pill light">Vancouver, BC</span>
       <span class="pill light"><span class="dot"></span>Open to work</span>
@@ -40,7 +40,7 @@ const hues = ['#E0408F', '#5B6EF0', '#E58A1F', '#22A55E'];
 
   {s.cases.map((c, i) => (
     <a href={c.href} class:list={['tile', 'case', `case-${i + 1}`, { big: c.big }]} style={`--c:${c.color}`}>
-      <div class="art">{c.image && <img src={c.image} alt="" loading="lazy" />}</div>
+      <div class="art" style={`view-transition-name:vt-${c.slug}`}>{c.image && <img src={c.image} alt="" loading="lazy" />}</div>
       <div class="meta">
         <div class="tags"><span>{c.name}</span>{c.tags.map((t) => <span>{t}</span>)}</div>
         <h2>{c.headline}</h2>
@@ -66,7 +66,17 @@ const hues = ['#E0408F', '#5B6EF0', '#E58A1F', '#22A55E'];
   to { clip-path: circle(150vmax at 100% 100%); }
 }
 
+/* opening and closing a case: the cover grows out of its tile, the rest fades */
+:root:active-view-transition-type(case)::view-transition-old(root) { animation: vt-out .28s ease-out both; }
+:root:active-view-transition-type(case)::view-transition-new(root) { animation: vt-in .45s .12s ease-out both; clip-path: none; z-index: 1; }
+:root:active-view-transition-type(case)::view-transition-group(*) { animation-duration: .65s; animation-timing-function: cubic-bezier(.22, 1, .36, 1); }
+:root:active-view-transition-type(case)::view-transition-old(*):not(:root), :root:active-view-transition-type(case)::view-transition-new(*):not(:root) { height: 100%; object-fit: cover; }
+:root:active-view-transition-type(case)::view-transition-group(root) { animation-duration: .45s; }
+@keyframes vt-out { to { opacity: 0; } }
+@keyframes vt-in { from { opacity: 0; } }
+
 @media (prefers-reduced-motion: reduce) {
-  ::view-transition-new(root) { animation: none; }
+  ::view-transition-new(root), :root:active-view-transition-type(case)::view-transition-new(root), :root:active-view-transition-type(case)::view-transition-old(root) { animation: none; }
+  :root:active-view-transition-type(case)::view-transition-group(*) { animation-duration: .01s; }
 }
 </style>
