@@ -27,7 +27,7 @@ screens.forEach((s) => { if (s.group) cur = s.group; groupOf[s.id] = cur; });
 const tint = brand ? `color-mix(in srgb, ${c.fill ?? c.color} 22%, #1c1b1a)` : (c.tint ?? '#f1f1ef');
 const tone = `--c:${c.fill ?? c.color};--a:${c.accent ?? `color-mix(in oklab, ${c.color} 70%, #000)`};--af:${c.fill ?? c.color};--t:${tint}`;
 const home = brand ? '/visual' : '/';
-const face = brand ? { src: '/images/eliza-dark.webp', pos: '24% 22%' } : { src: '/images/eliza.webp', pos: '50% 22%' };
+const face = brand ? { src: '/images/eliza-dark.webp', pos: '50% 12%' } : { src: '/images/eliza.webp', pos: '50% 22%' };
 const mail = 'mailto:elizaplnva@gmail.com';
 ---
 <div class:list={['cp-story', { brand }]} style={tone}>

@@ -29,7 +29,7 @@ export const sides = {
   front: {
     title: 'Eliza Popelinova — Senior Product Designer',
     pitch: 'Research first, pixels second. I design products people understand on the first try.',
-    photo: '/images/eliza.webp', photoPos: '62% 30%',
+    photo: '/images/eliza-home.webp', photoPos: '62% 35%',
     socials: [socials.linkedin, socials.behance, socials.email, socials.cv],
     skills: skills.front as { svg: string; label: string }[],
     cases: bySide('front').map(toTile),
@@ -38,7 +38,7 @@ export const sides = {
   back: {
     title: 'Eliza Popelinova — Brand & Visual Designer',
     pitch: 'Story first, style second. Identities, websites and illustration that feel like one brand.',
-    photo: '/images/eliza-dark.webp', photoPos: '22% 17%',
+    photo: '/images/eliza-dark.webp', photoPos: '50% 0%',
     socials: [socials.behance, socials.linkedin, socials.email, socials.cv],
     skills: skills.back as { svg: string; label: string }[],
     cases: bySide('back').map(toTile),
