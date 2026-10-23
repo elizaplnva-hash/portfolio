@@ -21,7 +21,7 @@ const hues = ['#E0408F', '#5B6EF0', '#E58A1F', '#22A55E'];
     <p>{s.pitch}</p>
     <nav class="socials" aria-label="Links">
       {s.socials.map((l) => (
-        <a class="ico" href={l.href} aria-label={l.label}><Icon kind={l.kind} /></a>
+        <a class="ico" href={l.href} aria-label={l.label} target={l.href.startsWith('http') ? '_blank' : undefined} rel={l.href.startsWith('http') ? 'noopener' : undefined}><Icon kind={l.kind} /></a>
       ))}
     </nav>
   </section>
