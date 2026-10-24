@@ -106,13 +106,39 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .skills li { transition: transform .35s cubic-bezier(.23, 1, .32, 1), background-color .3s ease-out; background: var(--chip-low); box-shadow: var(--ring);  color: var(--chip-ink); border-radius: 999px; padding: 5px 10px; display: inline-flex; align-items: center; gap: 6px; }
 .skills svg { flex: none; }
 
-/* process */
-.process { background: var(--tile-low); box-shadow: var(--ring); padding: 20px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; }
+/* process: four steps, the hovered one opens into a frame (transform and opacity only) */
+.process { --row: 28px; --open: 54px; --rv: 0;
+  background: var(--tile-low); box-shadow: var(--ring); padding: 18px 20px 16px; display: flex; flex-direction: column; justify-content: space-between; gap: 10px; overflow: hidden; }
 .process h2 { font-size: 26px; font-weight: 500; line-height: .95; letter-spacing: -.05em; text-transform: uppercase; }
-.process ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; flex: 1; min-height: 0; }
-.process li { background: color-mix(in srgb, var(--h) 16%, #fff); border-radius: 12px; padding: 9px 10px; display: flex; flex-direction: column; gap: 4px; font-size: 11px; line-height: 1.2; color: #444; min-height: 0; }
-.process li b { color: color-mix(in srgb, var(--h) 85%, #000); font-size: 12px; font-weight: 600; }
-.process li strong { display: block; color: #111; font-size: 13px; font-weight: 500; letter-spacing: -.02em; margin-bottom: 1px; }
+.steps { list-style: none; margin: 0; padding: 0; position: relative; height: calc(var(--row) * 4 + var(--open)); flex: none; }
+.steps > li { position: absolute; left: 0; right: 0; height: var(--row); display: flex; align-items: center; padding: 0 14px; outline: none; transition: transform .4s var(--ease); }
+.steps > li:nth-of-type(1) { top: 0; } .steps > li:nth-of-type(2) { top: var(--row); }
+.steps > li:nth-of-type(3) { top: calc(var(--row) * 2); } .steps > li:nth-of-type(4) { top: calc(var(--row) * 3); }
+.steps > li::after { content: ''; position: absolute; left: 0; right: 0; top: 100%; height: var(--open); }
+.steps > li > b { position: relative; z-index: 1; font-size: 19px; font-weight: 500; letter-spacing: -.04em; color: var(--muted); transition: color .3s ease; }
+.steps > li > p { position: absolute; z-index: 1; left: 14px; top: calc(var(--row) - 2px); width: 50%; margin: 0; font-size: 11.5px; line-height: 1.3; color: var(--muted); opacity: 0; transition: opacity .25s ease; pointer-events: none; }
+.steps > li > ul { position: absolute; z-index: 1; right: 12px; top: 8px; width: 42%; margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 4px; justify-content: flex-end; opacity: 0; transition: opacity .25s ease; pointer-events: none; }
+.steps > li > ul li { background: var(--chip-low); box-shadow: var(--ring); color: var(--chip-ink); border-radius: 999px; padding: 3px 8px; font-size: 11px; }
+.pframe { position: absolute; left: 0; right: 0; top: 0; height: calc(var(--row) + var(--open)); border-radius: 14px; background: var(--tile); box-shadow: var(--sh2); opacity: 0; transition: transform .4s var(--ease), opacity .25s ease; pointer-events: none; }
+.steps:has(> li:nth-of-type(1):is(:hover, :focus-within)) .pframe { opacity: 1; transform: translateY(calc(var(--row) * 0)); }
+.steps:has(> li:nth-of-type(1):is(:hover, :focus-within)) > li:nth-of-type(1) > b { color: var(--ink); }
+.steps:has(> li:nth-of-type(1):is(:hover, :focus-within)) > li:nth-of-type(1) > p, .steps:has(> li:nth-of-type(1):is(:hover, :focus-within)) > li:nth-of-type(1) > ul { opacity: 1; }
+.steps:has(> li:nth-of-type(1):is(:hover, :focus-within)) > li:nth-of-type(2) { transform: translateY(var(--open)); }
+.steps:has(> li:nth-of-type(1):is(:hover, :focus-within)) > li:nth-of-type(3) { transform: translateY(var(--open)); }
+.steps:has(> li:nth-of-type(1):is(:hover, :focus-within)) > li:nth-of-type(4) { transform: translateY(var(--open)); }
+.steps:has(> li:nth-of-type(2):is(:hover, :focus-within)) .pframe { opacity: 1; transform: translateY(calc(var(--row) * 1)); }
+.steps:has(> li:nth-of-type(2):is(:hover, :focus-within)) > li:nth-of-type(2) > b { color: var(--ink); }
+.steps:has(> li:nth-of-type(2):is(:hover, :focus-within)) > li:nth-of-type(2) > p, .steps:has(> li:nth-of-type(2):is(:hover, :focus-within)) > li:nth-of-type(2) > ul { opacity: 1; }
+.steps:has(> li:nth-of-type(2):is(:hover, :focus-within)) > li:nth-of-type(3) { transform: translateY(var(--open)); }
+.steps:has(> li:nth-of-type(2):is(:hover, :focus-within)) > li:nth-of-type(4) { transform: translateY(var(--open)); }
+.steps:has(> li:nth-of-type(3):is(:hover, :focus-within)) .pframe { opacity: 1; transform: translateY(calc(var(--row) * 2)); }
+.steps:has(> li:nth-of-type(3):is(:hover, :focus-within)) > li:nth-of-type(3) > b { color: var(--ink); }
+.steps:has(> li:nth-of-type(3):is(:hover, :focus-within)) > li:nth-of-type(3) > p, .steps:has(> li:nth-of-type(3):is(:hover, :focus-within)) > li:nth-of-type(3) > ul { opacity: 1; }
+.steps:has(> li:nth-of-type(3):is(:hover, :focus-within)) > li:nth-of-type(4) { transform: translateY(var(--open)); }
+.steps:has(> li:nth-of-type(4):is(:hover, :focus-within)) .pframe { opacity: 1; transform: translateY(calc(var(--row) * 3)); }
+.steps:has(> li:nth-of-type(4):is(:hover, :focus-within)) > li:nth-of-type(4) > b { color: var(--ink); }
+.steps:has(> li:nth-of-type(4):is(:hover, :focus-within)) > li:nth-of-type(4) > p, .steps:has(> li:nth-of-type(4):is(:hover, :focus-within)) > li:nth-of-type(4) > ul { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .steps > li, .pframe, .steps > li > p, .steps > li > ul { transition: none; } }
 
 /* cases */
 .case { padding: 10px; display: flex; flex-direction: column; gap: 10px; box-shadow: var(--sh1); }
@@ -161,9 +187,10 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
     grid-template-rows: repeat(3, minmax(0, 1fr));
   }
   .photo { aspect-ratio: auto; grid-area: 1 / 1; }
-  .pitch { grid-area: 1 / 2 / 2 / 4; }
-  .pitch p { font-size: clamp(24px, 2.4vw, 34px); }
-  .skills { grid-area: 1 / 4; aspect-ratio: auto; }
+  .pitch { grid-area: 1 / 2; padding: 20px 22px; }
+  .pitch p { font-size: clamp(22px, 1.8vw, 28px); }
+  .pitch .sub { font-size: 13px; }
+  .process, .skills { grid-area: 1 / 3 / 2 / 5; aspect-ratio: auto; }
   .case.big { grid-area: 2 / 1 / 4 / 3; gap: 14px; }
   .case { overflow: hidden; }
   .case .art { flex: 1; aspect-ratio: auto; min-height: 0; }
