@@ -18,7 +18,10 @@ const hues = ['#E0408F', '#5B6EF0', '#E58A1F', '#22A55E'];
   </a>
 
   <section class="tile pitch">
-    <p>{s.pitch}</p>
+    <div class="lead">
+      <p>{s.pitch}</p>
+      {'pitchSub' in s && <p class="sub">{s.pitchSub}</p>}
+    </div>
     <nav class="socials" aria-label="Links">
       {s.socials.map((l) => (
         <a class="ico" href={l.href} aria-label={l.label} target={l.href.startsWith('http') ? '_blank' : undefined} rel={l.href.startsWith('http') ? 'noopener' : undefined}><Icon kind={l.kind} /></a>
@@ -26,23 +29,36 @@ const hues = ['#E0408F', '#5B6EF0', '#E58A1F', '#22A55E'];
     </nav>
   </section>
 
-  <section class="tile skills">
-    <h2>My superpowers</h2>
-    <ul>
-      {s.skills.map((k, i) => (
-        <li style={`--h:${hues[i % hues.length]}`}>
-          <svg style={`color:${hues[i % hues.length]}`} width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={k.svg} />
-          {k.label.trim()}
-        </li>
-      ))}
-    </ul>
-  </section>
+  {'process' in s ? (
+    <section class="tile process">
+      <h2>My process</h2>
+      <ol>
+        {s.process.map((p, i) => (
+          <li style={`--h:${hues[i % hues.length]}`}><b>{i + 1}</b><span><strong>{p.title}</strong>{p.text}</span></li>
+        ))}
+      </ol>
+    </section>
+  ) : (
+    <section class="tile skills">
+      <h2>My superpowers</h2>
+      <ul>
+        {s.skills.map((k, i) => (
+          <li style={`--h:${hues[i % hues.length]}`}>
+            <svg style={`color:${hues[i % hues.length]}`} width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={k.svg} />
+            {k.label.trim()}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
 
   {s.cases.map((c, i) => (
     <a href={c.href} class:list={['tile', 'case', `case-${i + 1}`, { big: c.big }]} style={`--c:${c.color}`}>
-      <div class="art" style={`view-transition-name:vt-${c.slug}`}>{c.image && <img src={c.image} alt="" loading="lazy" />}</div>
-      <div class="meta">
+      <div class="art" style={`view-transition-name:vt-${c.slug}`}>
+        {c.image && <img src={c.image} alt="" loading="lazy" />}
         <div class="tags"><span>{c.name}</span>{c.tags.map((t) => <span>{t}</span>)}</div>
+      </div>
+      <div class="meta">
         <h2>{c.headline}</h2>
       </div>
     </a>

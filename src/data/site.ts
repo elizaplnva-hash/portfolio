@@ -28,7 +28,14 @@ const toTile = (c: CaseData): Case => ({ name: c.name, tags: c.tags, headline: c
 export const sides = {
   front: {
     title: 'Eliza Popelinova — Senior Product Designer',
-    pitch: 'Research first, pixels second. I design products people understand on the first try.',
+    pitch: 'Research first, pixels second.',
+    pitchSub: 'Senior Product Designer for fintech and AI: I find what’s unclear and design it out.',
+    process: [
+      { title: 'Discover', text: 'Interviews, audits, data' },
+      { title: 'Define', text: 'One problem to design around' },
+      { title: 'Design', text: 'Flows, screens, a system' },
+      { title: 'Deliver', text: 'Specs and handoff with devs' },
+    ],
     photo: '/images/eliza-home.webp', photoPos: '62% 35%',
     socials: [socials.linkedin, socials.behance, socials.email, socials.cv],
     skills: skills.front as { svg: string; label: string }[],
