@@ -18,10 +18,9 @@ const hues = ['#E0408F', '#5B6EF0', '#E58A1F', '#22A55E'];
   </a>
 
   <section class="tile pitch">
-    <span class="tag">About</span>
+    <span class="tag">Intro</span>
     <div class="lead">
-      <h2 class="role">{s.role}</h2>
-      <p class="motto">{s.pitch}</p>
+      <h2 class="role" set:html={s.role} />
       <p class="sub">{s.pitchSub}</p>
     </div>
     <nav class="socials" aria-label="Links">

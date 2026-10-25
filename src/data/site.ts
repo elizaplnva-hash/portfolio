@@ -35,9 +35,9 @@ const process = [
 export const sides = {
   front: {
     title: 'Eliza Popelinova — Senior Product Designer',
-    role: 'Senior Product Designer for fintech and AI',
-    pitch: 'Research first, pixels second.',
-    pitchSub: 'I find what’s unclear and design it out. End-to-end UX, design systems and AI products, from the first research to developer handoff.',
+    role: 'Complex <b>fintech and AI</b> products, made <b>clear</b>.',
+    pitch: '',
+    pitchSub: 'Senior Product Designer with 6+ years designing products people trust with their money and personal data.',
     process,
     photo: '/images/eliza-home.webp', photoPos: '62% 35%',
     socials: [socials.linkedin, socials.behance, socials.email, socials.cv],
@@ -47,9 +47,9 @@ export const sides = {
   },
   back: {
     title: 'Eliza Popelinova — Brand & Visual Designer',
-    role: 'Brand and visual designer',
-    pitch: 'Story first, style second.',
-    pitchSub: 'Identities, websites and illustration that feel like one brand.',
+    role: '<b>Brand and visual</b> designer',
+    pitch: '',
+    pitchSub: 'Story first, style second: identities, websites and illustration that feel like one brand.',
     process, // text to be reworked towards branding
     photo: '/images/eliza-dark.webp', photoPos: '50% 0%',
     socials: [socials.behance, socials.linkedin, socials.email, socials.cv],
