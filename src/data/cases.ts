@@ -206,17 +206,17 @@ const jam: Partial<CaseData> = {
     { label: 'Timeline', value: '12 weeks' },
     { label: 'Scope', value: 'Research to hi-fi prototype' },
   ],
-  summary: 'Jam is a digital business card: scan a QR code, share your contact.',
+  summary: 'Jam Social is a digital business card: scan a QR code, share your contact.',
   screens: [
     { id: 'overview', nav: 'Overview', title: ['Analytics was the ask.', 'A reason to come back was the need.'],
-      lede: 'Jam is an existing networking app: scan a QR code, share your contact. The team asked whether to add analytics, and what kind would matter. I owned the research and the analytics feature.',
+      lede: 'Jam Social is an existing networking app: scan a QR code, share your contact. The team asked whether to add analytics, and what kind would matter. I owned the research and the analytics feature.',
       blocks: [{ type: 'meta', items: [
         { label: 'Role', value: 'Product Designer' },
         { label: 'Team', value: '2 designers, 2 PMs' },
         { label: 'Timeline', value: '12 weeks' },
         { label: 'Scope', value: 'Research to hi-fi' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Jam', spec: '', src: '/images/jam-overview.webp', alt: 'Jam on three phones: the weekly analytics notification, the Analytics screen and the Instagram clicks screen' }] } },
+      visual: { layout: 'single', items: [{ label: 'Jam Social', spec: '', src: '/images/jam-overview.webp', alt: 'Jam Social on three phones: the weekly analytics notification, the Analytics screen and the Instagram clicks screen' }] } },
 
     { id: 'problem', nav: 'Problem', title: ['Networking feels like', 'talking into a void.'],
       blocks: [
@@ -227,14 +227,14 @@ const jam: Partial<CaseData> = {
           { icon: 'rotate-ccw', hi: true, title: 'No reason to reopen the app' },
         ] },
       ],
-      visual: { layout: 'single', items: [{ label: 'Problem', spec: '', src: '/images/jam-problem.webp', alt: 'The existing Jam app: sign-up, the QR code card and the Jams form' }] } },
+      visual: { layout: 'single', items: [{ label: 'Problem', spec: '', src: '/images/jam-problem.webp', alt: 'The existing Jam Social app: sign-up, the QR code card and the Jams form' }] } },
 
     { id: 'research', nav: 'Research', title: ['What people said,', 'not what we assumed.'],
       blocks: [
         { type: 'cards', items: [
           { icon: 'route', label: 'Interviews', title: 'Analytics should reach beyond the app.' },
           { icon: 'lock', label: 'Interviews', title: 'Privacy is essential.', body: 'Control over who sees what came up unprompted in 7 of 10 interviews.' },
-          { icon: 'repeat', hi: true, label: 'Focus group', title: 'Without a reason to return, Jam is a one-time tool.' },
+          { icon: 'repeat', hi: true, label: 'Focus group', title: 'Without a reason to return, Jam Social is a one-time tool.' },
         ] },
         { type: 'note', text: '10+ interviews, one focus group, a competitor audit and a heuristic evaluation.' },
       ],
@@ -268,7 +268,7 @@ const jam: Partial<CaseData> = {
         { icon: 'calendar-search', title: 'Event suggestions', body: 'Networking events worth attending' },
         { icon: 'coffee', title: 'Coffee chat refreshers', body: 'A reminder before you meet' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Follow-ups', spec: '', src: '/images/jam-follow.webp', alt: 'Jam: Notifications, Calendar and a connection Profile' }] } },
+      visual: { layout: 'single', items: [{ label: 'Follow-ups', spec: '', src: '/images/jam-follow.webp', alt: 'Jam Social: Notifications, Calendar and a connection Profile' }] } },
 
     { id: 'testing', nav: 'Testing', title: ['8 usability tests,', '3 changes.'],
       blocks: [{ type: 'table', head: ['What we saw', 'What changed'], rows: [
@@ -474,7 +474,7 @@ const greenCredit: Partial<CaseData> = {
 export const cases: CaseData[] = [
   { slug: 'pinkwallet', side: 'front', name: 'PinkWallet', tags: ['Fintech', 'End-to-end', 'AI'], headline: 'Crypto for first-timers, through conversation', color: '#ff8fc8', image: '/images/pinkwallet-hero.webp', phones: ['/images/pw-phone-wallet.webp', '/images/pw-phone-pig.webp', '/images/pw-phone-dashboard.webp'], big: true, facts, highlights, summary, ...pinkwallet },
   { slug: 'green-credit-score', side: 'front', name: 'Green Credit Score', tags: ['Fintech', 'Web + mobile', '0-to-1'], headline: 'Credit health, readable in 5 seconds', color: '#3ccf7a', image: '/images/gcs-overview.webp', facts, highlights, summary, ...greenCredit },
-  { slug: 'jam', side: 'front', name: 'Jam', tags: ['Consumer', 'Networking', 'Mobile app'], headline: 'Reopen rate up 2.5× after the first scan', color: '#6b8cff', image: '/images/jam-home.webp', phones: ['/images/jam-phone-lock.webp', '/images/jam-phone-analytics.webp'], facts, highlights, summary, ...jam },
+  { slug: 'jam', side: 'front', name: 'Jam Social', tags: ['Consumer', 'Networking', 'Mobile app'], headline: 'Reopen rate up 2.5× after the first scan', color: '#6b8cff', image: '/images/jam-home.webp', phones: ['/images/jam-phone-lock.webp', '/images/jam-phone-analytics.webp'], facts, highlights, summary, ...jam },
   { slug: 'lapunzel', side: 'front', name: 'Lapunzel', tags: ['E-commerce', 'Conversion', 'UX research'], headline: 'Product-page exits down 20%', color: '#ffb547', image: '/images/lap-hero.webp', phones: ['/images/lap-phone-home.webp', '/images/lap-phone-product.webp'], facts, highlights, summary, ...lapunzel },
   { slug: 'world-of-colors', side: 'back', name: 'World of Colors', tags: ['Brand', 'Website'], headline: '[Headline: what was hard and what we achieved]', color: '#ff5a36', facts: facts.slice(0, 3), highlights, summary },
   { slug: 'ben-ai', side: 'back', name: 'Ben AI', tags: ['AI SaaS', 'Web design'], headline: 'A brand and product system for an award-winning AI startup', color: '#7b61ff', image: '/images/ben-tablets.webp', big: true, facts: facts.slice(0, 3), highlights, summary,
