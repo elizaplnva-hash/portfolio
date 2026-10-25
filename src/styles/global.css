@@ -101,14 +101,10 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .pitch .motto { font-size: clamp(15px, 1.2vw, 18px); font-weight: 500; letter-spacing: -.03em; line-height: 1.2; color: var(--muted); margin-top: 14px; }
 .pitch .sub { font-size: 14px; letter-spacing: -.01em; line-height: 1.35; color: var(--muted); margin-top: 6px; max-width: 520px; }
 .socials { display: flex; gap: 8px; }
-.ico { --ico-c: #555; display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 11px; background: var(--ico-c); color: #fff;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .28), inset 0 -2px 0 rgba(0, 0, 0, .12), 0 1px 2px rgba(17, 17, 17, .18), 0 4px 10px color-mix(in srgb, var(--ico-c) 35%, transparent);
+.ico { display: inline-flex; width: 42px; height: 42px; border-radius: 10px; background: #fff; overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(17, 17, 17, .06), 0 1px 2px rgba(17, 17, 17, .12), 0 4px 10px rgba(17, 17, 17, .10);
   transition: transform .4s var(--ease), box-shadow .4s var(--ease); }
-.ico[data-kind='linkedin'] { --ico-c: #0a66c2; }
-.ico[data-kind='behance'] { --ico-c: #1769ff; }
-.ico[data-kind='email'] { --ico-c: #e3829d; }
-.ico[data-kind='cv'] { --ico-c: #3a3a38; }
-.ico svg { width: 22px; height: 22px; }
+.ico svg { width: 100%; height: 100%; display: block; }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) { .ico:hover { transform: translateY(-3px); } }
 
 /* chips on the photo: spinning globe, blinking status dot */
@@ -205,7 +201,8 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
   [data-side='back'] a.tile:hover { transform: translateY(-3px) perspective(1400px) rotateX(calc(var(--tilt) * .6)) rotateY(var(--tilt)); }
   .photo img { transform: translate(calc(var(--px, 0) * -10px), calc(var(--py, 0) * -8px)) scale(1.16); transition: transform .5s var(--ease); }
   .case .art img { transition: transform .6s var(--ease); }
-  .case:hover .art img { transform: scale(1.05); }
+  .case .art img { transform: translate(calc(var(--px, 0) * -9px), calc(var(--py, 0) * -7px)) scale(1.1); transition: transform .5s var(--ease); }
+  a.tile.case:hover { transform: none; }
 }
 @media (hover: none) { a.tile:active { transform: scale(.985); } }
 
