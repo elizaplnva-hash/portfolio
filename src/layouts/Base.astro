@@ -23,13 +23,21 @@ const description = 'Eliza Popelinova, Senior Product Designer in Vancouver. Pro
   <body>
     <slot />
     <script is:inline>
-      // tell the page transition whether a case is opening or closing
+      // case open/close: covers morph (named elements). Side flip: drop the names so the
+      // whole page is revealed by the circle and nothing jumps ahead of it.
+      const isCase = (a, b) => [a, b].some((u) => u && new URL(u).pathname.startsWith('/work/'));
+      const unname = () => document.querySelectorAll('[style*="view-transition-name"]').forEach((el) => { el.style.viewTransitionName = 'none'; });
+      addEventListener('pageswap', (e) => {
+        try {
+          if (!e.viewTransition || !e.activation) return;
+          if (isCase(location.href, e.activation.entry.url)) e.viewTransition.types.add('case'); else unname();
+        } catch (_) {}
+      });
       addEventListener('pagereveal', (e) => {
         try {
           if (!e.viewTransition) return;
           const a = navigation.activation;
-          const from = new URL(a.from.url).pathname, to = new URL(a.entry.url).pathname;
-          if (from.startsWith('/work/') || to.startsWith('/work/')) e.viewTransition.types.add('case');
+          if (isCase(a.from && a.from.url, a.entry.url)) e.viewTransition.types.add('case'); else unname();
         } catch (_) {}
       });
     </script>
