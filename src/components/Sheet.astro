@@ -49,7 +49,7 @@ const hues = ['#E0408F', '#5B6EF0', '#E58A1F', '#22A55E'];
     <a href={c.href} class:list={['tile', 'case', `case-${i + 1}`, { big: c.big }]} style={`--c:${c.color}`}>
       <div class="art" style={`view-transition-name:vt-${c.slug}`}>
         {c.phones ? (
-          <div class:list={['stage', `n${c.phones.length}`, { desk: c.desk }]} aria-hidden="true">
+          <div class:list={['stage', `n${c.phones.length}`, { desk: c.desk, first: c.slug === 'jam' }]} aria-hidden="true">
             <span class="word" style={`font-size:calc((100cqw - 40px) / ${(c.name.length * 0.5).toFixed(2)})`}>{c.name}</span>
             {c.phones.map((src, k) => <img class:list={['phone', `phone-${k + 1}`]} src={src} alt="" loading="lazy" />)}
           </div>
@@ -71,6 +71,8 @@ const hues = ['#E0408F', '#5B6EF0', '#E58A1F', '#22A55E'];
 <script>
   // the product name behind the phones spans the cover with ~20px on each side
   const fit = () => document.querySelectorAll<HTMLElement>('.stage .word').forEach((w) => {
+    const tags = w.closest('.art')?.querySelector<HTMLElement>('.tags');
+    if (tags) w.parentElement!.style.setProperty('--tags', tags.offsetTop + tags.offsetHeight + 'px');
     const box = w.parentElement!.clientWidth - 40; w.style.fontSize = '100px';
     w.style.fontSize = (100 * box / w.scrollWidth).toFixed(1) + 'px';
   });
