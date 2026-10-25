@@ -471,9 +471,9 @@ const greenCredit: Partial<CaseData> = {
 };
 
 export const cases: CaseData[] = [
-  { slug: 'pinkwallet', side: 'front', name: 'PinkWallet', tags: ['Fintech', 'AI'], headline: 'A crypto wallet with an AI assistant for first-time users', color: '#ff8fc8', image: '/images/pinkwallet-hero.webp', big: true, facts, highlights, summary, ...pinkwallet },
-  { slug: 'green-credit-score', side: 'front', name: 'Green Credit Score', tags: ['Fintech', 'Web'], headline: 'A credit-score dashboard for web and mobile', color: '#3ccf7a', image: '/images/gcs-overview.webp', facts, highlights, summary, ...greenCredit },
-  { slug: 'jam', side: 'front', name: 'Jam', tags: ['Consumer', 'UX research'], headline: 'A contact-collecting app, extended with analytics', color: '#6b8cff', image: '/images/jam-home.webp', facts, highlights, summary, ...jam },
+  { slug: 'pinkwallet', side: 'front', name: 'PinkWallet', tags: ['Fintech', 'AI'], headline: 'A crypto wallet you talk to, built for first-time users', color: '#ff8fc8', image: '/images/pinkwallet-hero.webp', big: true, facts, highlights, summary, ...pinkwallet },
+  { slug: 'green-credit-score', side: 'front', name: 'Green Credit Score', tags: ['Fintech', 'Web'], headline: 'Credit health, readable in 5 seconds', color: '#3ccf7a', image: '/images/gcs-overview.webp', facts, highlights, summary, ...greenCredit },
+  { slug: 'jam', side: 'front', name: 'Jam', tags: ['Consumer', 'UX research'], headline: 'From a one-time scan to a reason to come back', color: '#6b8cff', image: '/images/jam-home.webp', facts, highlights, summary, ...jam },
   { slug: 'lapunzel', side: 'front', name: 'Lapunzel', tags: ['E-commerce', 'Conversion'], headline: 'An e-commerce redesign focused on trust', color: '#ffb547', image: '/images/lap-hero.webp', facts, highlights, summary, ...lapunzel },
   { slug: 'world-of-colors', side: 'back', name: 'World of Colors', tags: ['Brand', 'Website'], headline: '[Headline: what was hard and what we achieved]', color: '#ff5a36', facts: facts.slice(0, 3), highlights, summary },
   { slug: 'ben-ai', side: 'back', name: 'Ben AI', tags: ['AI SaaS', 'Web design'], headline: 'A brand and product system for an award-winning AI startup', color: '#7b61ff', image: '/images/ben-tablets.webp', big: true, facts: facts.slice(0, 3), highlights, summary,
