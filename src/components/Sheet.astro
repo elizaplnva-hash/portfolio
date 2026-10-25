@@ -81,12 +81,13 @@ const hues = ['#E0408F', '#5B6EF0', '#E58A1F', '#22A55E'];
 /* switching sides: the other side is revealed from the page-curl corner */
 @view-transition { navigation: auto; }
 ::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
-::view-transition-old(root) { z-index: 1; }
-::view-transition-new(root) { z-index: 2; animation: reveal .8s cubic-bezier(.65, 0, .2, 1) both; }
+::view-transition-old(root) { z-index: 1; animation: recede 1.15s cubic-bezier(.45, 0, .2, 1) both; transform-origin: 30% 30%; }
+::view-transition-new(root) { z-index: 2; animation: reveal 1.15s cubic-bezier(.45, 0, .2, 1) both; transform-origin: 100% 100%; }
 @keyframes reveal {
-  from { clip-path: circle(0 at 100% 100%); }
-  to { clip-path: circle(150vmax at 100% 100%); }
+  from { clip-path: circle(0 at 100% 100%); transform: scale(1.04); }
+  to { clip-path: circle(150vmax at 100% 100%); transform: none; }
 }
+@keyframes recede { to { transform: scale(.96); opacity: .55; } }
 
 /* opening and closing a case: the cover grows out of its tile, the rest fades */
 :root:active-view-transition-type(case)::view-transition-old(root) { animation: vt-out .28s ease-out both; }
@@ -98,7 +99,7 @@ const hues = ['#E0408F', '#5B6EF0', '#E58A1F', '#22A55E'];
 @keyframes vt-in { from { opacity: 0; } }
 
 @media (prefers-reduced-motion: reduce) {
-  ::view-transition-new(root), :root:active-view-transition-type(case)::view-transition-new(root), :root:active-view-transition-type(case)::view-transition-old(root) { animation: none; }
+  ::view-transition-new(root), ::view-transition-old(root), :root:active-view-transition-type(case)::view-transition-new(root), :root:active-view-transition-type(case)::view-transition-old(root) { animation: none; }
   :root:active-view-transition-type(case)::view-transition-group(*) { animation-duration: .01s; }
 }
 </style>
