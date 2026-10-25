@@ -304,4 +304,11 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 /* two phones: side by side, the second slightly in front */
 .stage.n2 .phone-1 { transform: translate(calc(-50% + var(--spread) * -.5 + var(--px, 0) * -14px), calc(var(--rise) + 4% + var(--py, 0) * -9px)) rotate(calc(var(--tilt) * -.6)); }
 .stage.n2 .phone-2 { transform: translate(calc(-50% + var(--spread) * .5 + var(--px, 0) * -22px), calc(var(--rise) + var(--py, 0) * -14px)) rotate(calc(var(--tilt) * .6)); }
+/* monitor + phone: upright, side by side, the phone slightly over the monitor and rising further */
+.stage.desk .phone-1 { height: 86cqh; transform: translate(calc(-62% + var(--px, 0) * -10px), calc(var(--rise) + 10% + var(--py, 0) * -6px)); }
+.stage.desk .phone-2 { height: 74cqh; z-index: 2; transform: translate(calc(38% + var(--px, 0) * -22px), calc(var(--rise) + 26% + var(--py, 0) * -14px)); }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .case:hover .stage.desk .phone-1 { transform: translate(calc(-62% + var(--px, 0) * -10px), calc(9% + var(--py, 0) * -6px)); }
+  .case:hover .stage.desk .phone-2 { transform: translate(calc(38% + var(--px, 0) * -22px), calc(2% + var(--py, 0) * -14px)); }
+}
 @media (prefers-reduced-motion: reduce) { .stage .phone, .stage .word { transition: none; } }
