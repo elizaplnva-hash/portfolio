@@ -287,8 +287,8 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
 /* layered cover: tinted fill, the product name faintly behind, phones that rise on hover and follow the cursor */
 .case .art:has(.stage) { container-type: size; }
-.stage { position: absolute; inset: 0; background: color-mix(in srgb, var(--c) 16%, #fff); overflow: hidden; }
-.stage .word { position: absolute; left: 50%; top: 42%; transform: translate(-50%, -50%); font-size: 19cqw; font-weight: 700; letter-spacing: -.05em; line-height: 1; white-space: nowrap; color: color-mix(in srgb, var(--c) 30%, #fff); }
+.stage { position: absolute; inset: 0; z-index: 0; background: color-mix(in srgb, var(--c) 16%, #fff); overflow: hidden; }
+.stage .word { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-weight: 700; letter-spacing: -.05em; line-height: 1; white-space: nowrap; color: color-mix(in srgb, var(--c) 30%, #fff); }
 .stage .phone { position: absolute; bottom: 0; left: 50%; height: 96cqh; width: auto; filter: drop-shadow(0 18px 28px rgba(40, 10, 40, .22)); --rise: 12%; transition: transform .7s var(--ease); }
 .stage .phone-1 { transform: translate(calc(-50% + var(--spread) * -1 + var(--px, 0) * -12px), calc(var(--rise) + 7% + var(--py, 0) * -8px)) rotate(calc(var(--tilt) * -1)); }
 .stage .phone-2 { z-index: 2; transform: translate(calc(-50% + var(--px, 0) * -22px), calc(var(--rise) + var(--py, 0) * -14px)); }
@@ -298,4 +298,10 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
   .case:hover .stage { --spread: 50cqh; --tilt: 10deg; }
   .case:hover .stage .phone { --rise: 5%; }
 }
+/* small tiles: phones sit lower so the tags stay readable */
+.case:not(.big) .stage .phone { height: 90cqh; --rise: 26%; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) { .case:not(.big):hover .stage .phone { --rise: 16%; } }
+/* two phones: side by side, the second slightly in front */
+.stage.n2 .phone-1 { transform: translate(calc(-50% + var(--spread) * -.5 + var(--px, 0) * -14px), calc(var(--rise) + 4% + var(--py, 0) * -9px)) rotate(calc(var(--tilt) * -.6)); }
+.stage.n2 .phone-2 { transform: translate(calc(-50% + var(--spread) * .5 + var(--px, 0) * -22px), calc(var(--rise) + var(--py, 0) * -14px)) rotate(calc(var(--tilt) * .6)); }
 @media (prefers-reduced-motion: reduce) { .stage .phone, .stage .word { transition: none; } }

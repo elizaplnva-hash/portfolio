@@ -49,8 +49,8 @@ const hues = ['#E0408F', '#5B6EF0', '#E58A1F', '#22A55E'];
     <a href={c.href} class:list={['tile', 'case', `case-${i + 1}`, { big: c.big }]} style={`--c:${c.color}`}>
       <div class="art" style={`view-transition-name:vt-${c.slug}`}>
         {c.phones ? (
-          <div class="stage" aria-hidden="true">
-            <span class="word">{c.name}</span>
+          <div class:list={['stage', `n${c.phones.length}`]} aria-hidden="true">
+            <span class="word" style={`font-size:calc(92cqw / ${(c.name.length * 0.6).toFixed(2)})`}>{c.name}</span>
             {c.phones.map((src, k) => <img class:list={['phone', `phone-${k + 1}`]} src={src} alt="" loading="lazy" />)}
           </div>
         ) : c.image && <img src={c.image} alt="" loading="lazy" />}
