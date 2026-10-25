@@ -88,12 +88,13 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .pill { border-radius: 999px; padding: 7px 13px 7px 11px; font-size: 14px; letter-spacing: -.02em; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; }
 .pill.light { background: rgba(247, 247, 245, .94); color: #111; }
 .pill.dark { background: #111; color: #fff; }
-.pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--pink); }
+.pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--status); }
 .name { font-size: 40px; font-weight: 500; line-height: .92; letter-spacing: -.06em; }
 
 /* pitch */
 .tag { display: inline-flex; align-items: center; gap: 7px; align-self: flex-start; background: var(--tile-low); border-radius: 999px; padding: 7px 13px 7px 11px; font-size: 14px; font-weight: 500; letter-spacing: -.02em; color: var(--ink); line-height: 1; margin: 0; }
 .tag svg, .pill svg { color: var(--pink); flex: none; }
+.pill .ic-world { --globe-line: #f7f7f5; }
 .pitch { box-shadow: var(--sh2); padding: 20px 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px; }
 .pitch .role { font-size: clamp(24px, 2.3vw, 34px); font-weight: 500; line-height: 1.02; letter-spacing: -.05em; max-width: 720px; }
 .pitch .motto { font-size: clamp(15px, 1.2vw, 18px); font-weight: 500; letter-spacing: -.03em; line-height: 1.2; color: var(--muted); margin-top: 14px; }
@@ -111,9 +112,8 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 /* chips on the photo: spinning globe, blinking status dot */
 .pill .dot { animation: blink 1.8s ease-in-out infinite; }
 @keyframes blink { 50% { opacity: .25; } }
-@keyframes meridian { 0% { transform: scaleX(1); } 50% { transform: scaleX(.05); } 100% { transform: scaleX(1); } }
-.ic-world .m1, .ic-world .m2 { transform-origin: 12px 12px; }
-@media (prefers-reduced-motion: no-preference) { .ic-world .m1 { animation: meridian 3.6s linear infinite; } .ic-world .m2 { animation: meridian 3.6s linear infinite -1.8s; } }
+@keyframes roll { to { transform: translateX(8px); } }
+@media (prefers-reduced-motion: no-preference) { .ic-world .roll { animation: roll 1.6s linear infinite; } }
 @media (prefers-reduced-motion: reduce) { .pill .dot { animation: none; } }
 
 /* one entrance for everything: rise 12px and fade, staggered */
