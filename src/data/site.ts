@@ -37,7 +37,7 @@ export const sides = {
     title: 'Eliza Popelinova — Senior Product Designer',
     role: 'Complex <b>fintech and AI</b> products, made <b>clear</b>.',
     pitch: '',
-    pitchSub: 'Senior Product Designer with 6+ years designing products people trust with their money and personal data.',
+    pitchSub: 'Senior Product Designer bringing order from the first wireframe to launch.',
     process,
     photo: '/images/eliza-home.webp', photoPos: '62% 35%',
     socials: [socials.linkedin, socials.behance, socials.email, socials.cv],
