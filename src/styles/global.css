@@ -136,16 +136,16 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .skills svg { flex: none; }
 
 /* process: four steps pinned to the bottom; the hovered one opens upwards into a frame (transform and opacity only) */
-.process { --row: 26px; --open: 154px;
+.process { --row: 25px; --open: 160px;
   background: var(--tile); box-shadow: var(--ring); padding: 16px 14px 14px; display: flex; flex-direction: column; justify-content: space-between; gap: 8px; overflow: hidden; }
 .steps { list-style: none; margin: 0; padding: 0; position: relative; height: calc(var(--row) * 4 + var(--open)); flex: none; }
 .steps > li { position: absolute; left: 0; right: 0; height: var(--row); display: flex; align-items: center; padding: 0 12px; outline: none; transition: transform .5s var(--ease); }
 .steps > li:nth-of-type(1) { --sc: #22a55e; top: var(--open); } .steps > li:nth-of-type(2) { --sc: #5b6ef0; top: calc(var(--open) + var(--row)); }
 .steps > li:nth-of-type(3) { --sc: #e0408f; top: calc(var(--open) + var(--row) * 2); } .steps > li:nth-of-type(4) { --sc: #e58a1f; top: calc(var(--open) + var(--row) * 3); }
 .steps > li::after { content: ''; position: absolute; left: 0; right: 0; top: 100%; height: var(--open); }
-.steps > li > svg { position: relative; z-index: 1; flex: none; width: 24px; height: 24px; padding: 5px; box-sizing: border-box; border-radius: 50%; background: #f7f7f5; margin-right: 9px; color: #b9b9b6; transition: color .3s ease, background-color .3s ease; }
+.steps > li > svg { position: relative; z-index: 1; flex: none; width: 23px; height: 23px; padding: 5px; box-sizing: border-box; border-radius: 50%; background: #f7f7f5; margin-right: 9px; color: #b9b9b6; transition: color .3s ease, background-color .3s ease; }
 .steps > li > b { position: relative; z-index: 1; font-size: 20px; font-weight: 400; letter-spacing: -.04em; color: #a3a3a0; transition: color .3s ease; }
-.steps > li > p { position: absolute; z-index: 1; left: 12px; right: 12px; top: calc(var(--row) - 2px); margin: 0; font-size: 14px; line-height: 1.28; color: var(--muted); opacity: 0; transition: opacity .12s ease; pointer-events: none; }
+.steps > li > p { position: absolute; z-index: 1; left: 45px; right: 12px; top: calc(var(--row) + 3px); margin: 0; font-size: 14px; line-height: 1.28; color: var(--muted); opacity: 0; transition: opacity .12s ease; pointer-events: none; }
 .steps > li > ul { position: absolute; z-index: 1; left: 12px; right: 12px; bottom: calc(var(--open) * -1 + 22px); margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 4px; opacity: 0; transition: opacity .12s ease; pointer-events: none; }
 .steps > li > ul li { background: color-mix(in srgb, var(--sc) 9%, #fff); color: var(--ink); border-radius: 999px; padding: 3px 9px; font-size: 13.5px; letter-spacing: -.01em; }
 .pframe { position: absolute; left: 0; right: 0; top: 0; height: calc(var(--row) + var(--open)); border-radius: 14px; background: var(--tile); box-shadow: var(--sh2); opacity: 0; transform-origin: 50% 100%; transform: translateY(calc(var(--row) * 3)) scaleY(.35); transition: transform .5s var(--ease), opacity .3s ease; pointer-events: none; }
