@@ -6,11 +6,11 @@
 .fig img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .fig figcaption { position: absolute; left: 12px; bottom: 10px; font-size: 12px; color: #111; opacity: .75; }
 figure { margin: 0; }
-.home-link { font-size: 15px; font-weight: 500; letter-spacing: -.06em; line-height: .92; }
+.home-link { font-size: 15px; font-weight: 500; letter-spacing: -.03em; line-height: .92; }
 
 /* ---------- Visual ---------- */
 .cp-visual .side { padding: 24px; display: flex; flex-direction: column; gap: 28px; }
-.cp-visual .side h1 { font-size: clamp(30px, 3vw, 44px); font-weight: 500; line-height: 1; letter-spacing: -.05em; }
+.cp-visual .side h1 { font-size: clamp(30px, 3vw, 44px); font-weight: 500; line-height: 1; letter-spacing: -.025em; }
 .cp-visual .side p { font-size: 16px; line-height: 1.45; color: var(--muted); }
 .cp-visual .side .other { margin-top: auto; font-size: 13px; color: var(--muted); }
 .cp-visual .side .other a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
@@ -29,7 +29,7 @@ figure { margin: 0; }
 .next .art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 .next .meta { padding: 0 6px 6px; display: flex; flex-direction: column; gap: 10px; }
 .next small { font-size: 12px; color: var(--muted); }
-.next h2 { font-size: 20px; font-weight: 500; line-height: 1.08; letter-spacing: -.03em; }
+.next h2 { font-size: 20px; font-weight: 500; line-height: 1.08; letter-spacing: -.015em; }
 
 @media (min-width: 900px) {
   .cp-product { grid-template-columns: 240px minmax(0, 1fr); }
@@ -193,7 +193,7 @@ h1.ttl { font-size: clamp(30px, 3vw, 46px); letter-spacing: -.045em; line-height
 .facts small { font-size: 11px; color: var(--muted); }
 .facts dl { display: grid; gap: 8px; margin: 6px 0 0; max-width: 300px; }
 .facts div { border-radius: var(--r); padding: 12px 16px; display: grid; grid-template-columns: 96px 1fr; align-items: center; gap: 8px; }
-.facts dd { margin: 0; font-size: 40px; font-weight: 500; line-height: 1; letter-spacing: -.05em; color: var(--af); }
+.facts dd { margin: 0; font-size: 40px; font-weight: 500; line-height: 1; letter-spacing: -.025em; color: var(--af); }
 .facts dt { font-size: 14px; color: var(--soft); }
 
 /* theme switch */
@@ -212,7 +212,7 @@ h1.ttl { font-size: clamp(30px, 3vw, 46px); letter-spacing: -.045em; line-height
 .cta-row .addr { font-size: 14px; color: var(--muted); }
 
 /* statement */
-.statement .ttl { font-size: clamp(38px, min(4.8vw, 9dvh), 76px); line-height: 1; letter-spacing: -.05em; }
+.statement .ttl { font-size: clamp(38px, min(4.8vw, 9dvh), 76px); line-height: 1; letter-spacing: -.025em; }
 .statement .ln { display: block; }
 .statement .lede { font-size: 17px; max-width: 30em; }
 
@@ -318,7 +318,7 @@ h1.ttl { font-size: clamp(30px, 3vw, 46px); letter-spacing: -.045em; line-height
 .cv-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .cv-intro, .cv-shot { position: relative; z-index: 1; height: 100vh; height: 100dvh; scroll-snap-align: start; }
 .cv-intro { display: flex; flex-direction: column; justify-content: flex-end; gap: 28px; padding: 0 max(28px, 8vw) 9dvh; max-width: 1100px; }
-.cv-intro h1 { font-size: clamp(56px, 9vw, 150px); font-weight: 500; line-height: .88; letter-spacing: -.06em; color: #f2f2f2; }
+.cv-intro h1 { font-size: clamp(56px, 9vw, 150px); font-weight: 500; line-height: .88; letter-spacing: -.03em; color: #f2f2f2; }
 .cv-meta { display: grid; grid-template-columns: repeat(2, minmax(0, 260px)); gap: 16px 56px; }
 .cv-meta dd { margin: 0; }
 .cv-meta dt { font-size: 12px; color: rgba(242, 242, 242, .6); }
@@ -376,7 +376,7 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
   .brand .stage .ph.has-img img { width: auto; height: auto; max-width: 100%; max-height: calc(100dvh - 2 * var(--pad) - 56px); border-radius: 10px; }
 }
 .brand .story .tags { display: none; }
-.brand h1.ttl { font-size: clamp(56px, 8vw, 130px); font-weight: 500; line-height: .9; letter-spacing: -.06em; }
+.brand h1.ttl { font-size: clamp(56px, 8vw, 130px); font-weight: 500; line-height: .9; letter-spacing: -.03em; }
 .brand .step:first-child .lede { font-size: 18px; max-width: 640px; color: var(--ink); }
 .brand .step:first-child .step-text { gap: 28px; }
 

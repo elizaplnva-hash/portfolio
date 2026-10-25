@@ -9,9 +9,9 @@ const hues = ['#E0408F', '#5B6EF0', '#E58A1F', '#22A55E'];
 ---
 <main class="sheet">
   <a href="#" class="tile photo has-img" aria-label="About Eliza Popelinova">
-    <img src={s.photo} alt="Eliza Popelinova" width="1200" height="960" decoding="async" style={`object-position:${s.photoPos}`} />
+    <span class="ph"><img src={s.photo} alt="Eliza Popelinova" width="1200" height="960" decoding="async" style={`object-position:${s.photoPos}`} /></span>
     <div class="chips">
-      <span class="pill light"><Icon kind="world" size={19} />Vancouver, BC</span>
+      <span class="pill light"><span class="earth" aria-hidden="true"><span></span></span>Vancouver, BC</span>
       <span class="pill light"><span class="dot"></span>Open to work</span>
     </div>
     <h1 class="name">Eliza Popelinova</h1>

@@ -35,7 +35,7 @@ const process = [
 export const sides = {
   front: {
     title: 'Eliza Popelinova — Senior Product Designer',
-    role: 'Complex <b>fintech and AI</b> products, made <b>clear</b>.',
+    role: 'Complex <b>fintech and AI</b> products, made <b>clear</b>',
     pitch: '',
     pitchSub: 'Senior Product Designer bringing order from the first wireframe to launch.',
     process,
