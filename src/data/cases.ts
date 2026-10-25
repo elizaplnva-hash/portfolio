@@ -48,6 +48,7 @@ export interface CaseData {
   headline: string;           // the one selling headline (also used on the home tile)
   color: string;              // placeholder fill until real images arrive
   image?: string;             // cover, /images/...
+  phones?: string[];          // layered home cover: transparent phone renders over a tinted fill
   big?: boolean;              // large tile on home
   facts: { label: string; value: string }[];   // role, timeline, platform...
   highlights: string[];       // selling points (Product pages)
@@ -471,7 +472,7 @@ const greenCredit: Partial<CaseData> = {
 };
 
 export const cases: CaseData[] = [
-  { slug: 'pinkwallet', side: 'front', name: 'PinkWallet', tags: ['Fintech', 'End-to-end', 'AI'], headline: 'Crypto for first-timers, through conversation', color: '#ff8fc8', image: '/images/pinkwallet-hero.webp', big: true, facts, highlights, summary, ...pinkwallet },
+  { slug: 'pinkwallet', side: 'front', name: 'PinkWallet', tags: ['Fintech', 'End-to-end', 'AI'], headline: 'Crypto for first-timers, through conversation', color: '#ff8fc8', image: '/images/pinkwallet-hero.webp', phones: ['/images/pw-phone-wallet.webp', '/images/pw-phone-pig.webp'], big: true, facts, highlights, summary, ...pinkwallet },
   { slug: 'green-credit-score', side: 'front', name: 'Green Credit Score', tags: ['Fintech', 'Web + mobile', '0-to-1'], headline: 'Credit health, readable in 5 seconds', color: '#3ccf7a', image: '/images/gcs-overview.webp', facts, highlights, summary, ...greenCredit },
   { slug: 'jam', side: 'front', name: 'Jam', tags: ['Consumer', 'Networking', 'Mobile app'], headline: 'Reopen rate up 2.5× after the first scan', color: '#6b8cff', image: '/images/jam-home.webp', facts, highlights, summary, ...jam },
   { slug: 'lapunzel', side: 'front', name: 'Lapunzel', tags: ['E-commerce', 'Conversion', 'UX research'], headline: 'Product-page exits down 20%', color: '#ffb547', image: '/images/lap-hero.webp', facts, highlights, summary, ...lapunzel },

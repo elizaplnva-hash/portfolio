@@ -48,7 +48,12 @@ const hues = ['#E0408F', '#5B6EF0', '#E58A1F', '#22A55E'];
   {s.cases.map((c, i) => (
     <a href={c.href} class:list={['tile', 'case', `case-${i + 1}`, { big: c.big }]} style={`--c:${c.color}`}>
       <div class="art" style={`view-transition-name:vt-${c.slug}`}>
-        {c.image && <img src={c.image} alt="" loading="lazy" />}
+        {c.phones ? (
+          <div class="stage" aria-hidden="true">
+            <span class="word">{c.name}</span>
+            {c.phones.map((src, k) => <img class:list={['phone', `phone-${k + 1}`]} src={src} alt="" loading="lazy" />)}
+          </div>
+        ) : c.image && <img src={c.image} alt="" loading="lazy" />}
         <div class="tags"><span>{c.name}</span>{c.tags.map((t) => <span>{t}</span>)}</div>
       </div>
       <div class="meta">

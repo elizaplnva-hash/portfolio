@@ -4,6 +4,7 @@ import { bySide, type CaseData } from './cases';
 export type Side = 'front' | 'back';
 
 export interface Case {
+  phones?: string[];
   name: string;          // first tag, product name
   tags: string[];        // domain tags
   headline: string;      // one selling headline
@@ -23,7 +24,7 @@ const socials: Record<string, Social> = {
   cv: { label: 'CV', href: 'https://docs.google.com/document/d/1YjUz99y6IoWJ0SpFcVYLKatav0It3E2y/edit?usp=sharing', kind: 'cv' },
 };
 
-const toTile = (c: CaseData): Case => ({ name: c.name, tags: c.tags, headline: c.headline, color: c.color, image: c.image, big: c.big, slug: c.slug, href: `/work/${c.slug}` });
+const toTile = (c: CaseData): Case => ({ name: c.name, tags: c.tags, headline: c.headline, color: c.color, image: c.image, phones: c.phones, big: c.big, slug: c.slug, href: `/work/${c.slug}` });
 
 const process = [
   { title: 'Research', text: 'I never skip it. Who is already on the market, how they look, what they changed and how it worked.', tags: ['Market scan', 'Competitor audit', 'Reference search', 'Interviews', 'Surveys'] },
