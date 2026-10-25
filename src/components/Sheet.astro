@@ -11,26 +11,28 @@ const hues = ['#E0408F', '#5B6EF0', '#E58A1F', '#22A55E'];
   <a href="#" class="tile photo has-img" aria-label="About Eliza Popelinova">
     <img src={s.photo} alt="Eliza Popelinova" width="1200" height="960" decoding="async" style={`object-position:${s.photoPos}`} />
     <div class="chips">
-      <span class="pill light">Vancouver, BC</span>
+      <span class="pill light"><svg class="globe" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><g class="spin"><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></g></svg>Vancouver, BC</span>
       <span class="pill light"><span class="dot"></span>Open to work</span>
     </div>
     <h1 class="name">Eliza Popelinova</h1>
   </a>
 
   <section class="tile pitch">
+    <span class="tag">About</span>
     <div class="lead">
-      <p>{s.pitch}</p>
-      {'pitchSub' in s && <p class="sub"><span class="ink">{s.pitchSub.split(':')[0]}:</span>{s.pitchSub.slice(s.pitchSub.indexOf(':') + 1)}</p>}
+      <h2 class="role">{s.role}</h2>
+      <p class="motto">{s.pitch}</p>
+      <p class="sub">{s.pitchSub}</p>
     </div>
     <nav class="socials" aria-label="Links">
       {s.socials.map((l) => (
-        <a class="ico" href={l.href} aria-label={l.label} target={l.href.startsWith('http') ? '_blank' : undefined} rel={l.href.startsWith('http') ? 'noopener' : undefined}><Icon kind={l.kind} /></a>
+        <a class="ico" data-kind={l.kind} href={l.href} aria-label={l.label} target={l.href.startsWith('http') ? '_blank' : undefined} rel={l.href.startsWith('http') ? 'noopener' : undefined}><Icon kind={l.kind} /></a>
       ))}
     </nav>
   </section>
 
   <section class="tile process" aria-labelledby="proc-h">
-    <h2 id="proc-h">My process</h2>
+    <h2 id="proc-h" class="tag">My process</h2>
     <ol class="steps">
       <span class="pframe" aria-hidden="true"></span>
       {s.process.map((p) => (
