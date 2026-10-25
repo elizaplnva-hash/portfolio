@@ -1,5 +1,5 @@
 :root {
-  --font: 'Inter Tight Variable', 'Helvetica Neue', 'Hanken Grotesk', Arial, sans-serif;
+  --font: 'Manrope Variable', 'Helvetica Neue', 'Hanken Grotesk', Arial, sans-serif;
   --gap: 14px;
   --pad: clamp(16px, 2vw, 32px);
   --radius: 14px;
@@ -98,11 +98,11 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .pill svg { color: var(--pink); flex: none; }
 
 .pitch { box-shadow: var(--sh2); padding: 20px 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px; }
-.pitch .role { font-size: clamp(26px, 2.6vw, 40px); font-weight: 500; line-height: 1.04; letter-spacing: -.02em; max-width: 80%; text-wrap: balance; }
+.pitch .role { font-size: clamp(26px, 2.6vw, 40px); font-weight: 600; line-height: 1.08; letter-spacing: -.035em; max-width: 80%; text-wrap: balance; }
 .pitch .motto { font-size: clamp(15px, 1.2vw, 18px); font-weight: 500; letter-spacing: -.015em; line-height: 1.2; color: var(--muted); margin-top: 14px; }
-.pitch .role { color: #9d9d9b; }
-.pitch .role b { color: var(--ink); font-weight: 500; }
-[data-side='back'] .pitch .role { color: #6e6b66; }
+.pitch .role { color: var(--ink); }
+.pitch .role b { font-weight: inherit; }
+
 .pitch .sub { font-size: 15px; letter-spacing: -.01em; line-height: 1.35; color: var(--muted); margin-top: 12px; max-width: 560px; }
 .socials { display: flex; gap: 8px; }
 .ico { display: inline-flex; width: 44px; height: 44px; border-radius: 23%; background: #fff; overflow: hidden;
