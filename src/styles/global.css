@@ -14,7 +14,7 @@
   --sh1: 0 1px 2px rgba(17, 17, 17, .05), 0 8px 24px rgba(17, 17, 17, .08);
   --sh2: 0 1px 2px rgba(17, 17, 17, .05), 0 3px 10px rgba(17, 17, 17, .05);
   --sh-hover: 0 1px 2px rgba(17, 17, 17, .04), 0 6px 18px rgba(17, 17, 17, .07);
-  --art-mix: 30%;           /* pastel placeholder art, like the case pages */
+  --art-mix: 16%;           /* light solid fill behind case covers */
   --chip-low: #ffffff;
   --ink: #111111;
   --muted: #6a6a6a;
