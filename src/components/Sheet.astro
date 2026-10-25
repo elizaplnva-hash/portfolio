@@ -50,7 +50,7 @@ const hues = ['#E0408F', '#5B6EF0', '#E58A1F', '#22A55E'];
       <div class="art" style={`view-transition-name:vt-${c.slug}`}>
         {c.phones ? (
           <div class:list={['stage', `n${c.phones.length}`]} aria-hidden="true">
-            <span class="word" style={`font-size:calc(92cqw / ${(c.name.length * 0.6).toFixed(2)})`}>{c.name}</span>
+            <span class="word" style={`font-size:calc((100cqw - 40px) / ${(c.name.length * 0.5).toFixed(2)})`}>{c.name}</span>
             {c.phones.map((src, k) => <img class:list={['phone', `phone-${k + 1}`]} src={src} alt="" loading="lazy" />)}
           </div>
         ) : c.image && <img src={c.image} alt="" loading="lazy" />}
@@ -69,6 +69,14 @@ const hues = ['#E0408F', '#5B6EF0', '#E58A1F', '#22A55E'];
   </a>
 </main>
 <script>
+  // the product name behind the phones spans the cover with ~20px on each side
+  const fit = () => document.querySelectorAll<HTMLElement>('.stage .word').forEach((w) => {
+    const box = w.parentElement!.clientWidth - 40; w.style.fontSize = '100px';
+    w.style.fontSize = (100 * box / w.scrollWidth).toFixed(1) + 'px';
+  });
+  document.fonts.ready.then(fit);
+  addEventListener('resize', fit);
+
   // the photo and case covers drift a little towards the cursor (mouse only, never with reduced motion)
   if (matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)').matches) {
     document.querySelectorAll<HTMLElement>('.photo, .case').forEach((el) => {
