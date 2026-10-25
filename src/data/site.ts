@@ -41,7 +41,7 @@ export const sides = {
     pitch: '',
     pitchSub: 'Senior Product Designer bringing order from the first wireframe to launch.',
     process,
-    photo: '/images/eliza-home.webp', photoPos: '62% 35%',
+    photo: '/images/eliza-home-2.webp', photoPos: '50% 10%',
     socials: [socials.linkedin, socials.behance, socials.email, socials.cv],
     skills: skills.front as { svg: string; label: string }[],
     cases: bySide('front').map(toTile),
