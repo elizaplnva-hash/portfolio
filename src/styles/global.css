@@ -100,14 +100,15 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .pitch .motto { font-size: clamp(15px, 1.2vw, 18px); font-weight: 500; letter-spacing: -.03em; line-height: 1.2; color: var(--muted); margin-top: 14px; }
 .pitch .sub { font-size: 14px; letter-spacing: -.01em; line-height: 1.35; color: var(--muted); margin-top: 6px; max-width: 520px; }
 .socials { display: flex; gap: 8px; }
-.ico { --ico-c: #555; --ico-bg: color-mix(in srgb, var(--ico-c) 14%, #fff); display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: var(--ico-bg); color: var(--ico-c); transition: transform .4s var(--ease), background-color .3s ease-out, color .3s ease-out; }
+.ico { --ico-c: #555; display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 11px; background: var(--ico-c); color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .28), inset 0 -2px 0 rgba(0, 0, 0, .12), 0 1px 2px rgba(17, 17, 17, .18), 0 4px 10px color-mix(in srgb, var(--ico-c) 35%, transparent);
+  transition: transform .4s var(--ease), box-shadow .4s var(--ease); }
 .ico[data-kind='linkedin'] { --ico-c: #0a66c2; }
 .ico[data-kind='behance'] { --ico-c: #1769ff; }
-.ico[data-kind='email'] { --ico-c: #d4467a; }
-.ico[data-kind='cv'] { --ico-c: #555; }
-.ico svg { width: 19px; height: 19px; }
-@media (hover: hover) and (prefers-reduced-motion: no-preference) { .ico:hover { transform: translateY(-3px); background: var(--ico-c); color: #fff; --ico-bg: var(--ico-c); } }
-@media (hover: hover) { .ico:hover { background: var(--ico-c); color: #fff; --ico-bg: var(--ico-c); } }
+.ico[data-kind='email'] { --ico-c: #e3829d; }
+.ico[data-kind='cv'] { --ico-c: #3a3a38; }
+.ico svg { width: 22px; height: 22px; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) { .ico:hover { transform: translateY(-3px); } }
 
 /* chips on the photo: spinning globe, blinking status dot */
 .pill .dot { animation: blink 1.8s ease-in-out infinite; }
@@ -134,40 +135,47 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .skills svg { flex: none; }
 
 /* process: four steps pinned to the bottom; the hovered one opens upwards into a frame (transform and opacity only) */
-.process { --row: 26px; --open: 136px;
+.process { --row: 26px; --open: 154px;
   background: var(--tile); box-shadow: var(--ring); padding: 16px 14px 14px; display: flex; flex-direction: column; justify-content: space-between; gap: 8px; overflow: hidden; }
 .steps { list-style: none; margin: 0; padding: 0; position: relative; height: calc(var(--row) * 4 + var(--open)); flex: none; }
 .steps > li { position: absolute; left: 0; right: 0; height: var(--row); display: flex; align-items: center; padding: 0 12px; outline: none; transition: transform .45s var(--ease); }
-.steps > li:nth-of-type(1) { top: var(--open); } .steps > li:nth-of-type(2) { top: calc(var(--open) + var(--row)); }
-.steps > li:nth-of-type(3) { top: calc(var(--open) + var(--row) * 2); } .steps > li:nth-of-type(4) { top: calc(var(--open) + var(--row) * 3); }
+.steps > li:nth-of-type(1) { --sc: #22a55e; top: var(--open); } .steps > li:nth-of-type(2) { --sc: #5b6ef0; top: calc(var(--open) + var(--row)); }
+.steps > li:nth-of-type(3) { --sc: #e0408f; top: calc(var(--open) + var(--row) * 2); } .steps > li:nth-of-type(4) { --sc: #e58a1f; top: calc(var(--open) + var(--row) * 3); }
 .steps > li::after { content: ''; position: absolute; left: 0; right: 0; top: 100%; height: var(--open); }
 .steps > li > svg { position: relative; z-index: 1; flex: none; margin-right: 9px; color: #c9c9c6; transition: color .3s ease; }
-.steps > li > b { position: relative; z-index: 1; font-size: 18px; font-weight: 400; letter-spacing: -.04em; color: #a3a3a0; transition: color .3s ease; }
-.steps > li > p { position: absolute; z-index: 1; left: 12px; right: 12px; top: calc(var(--row) - 2px); margin: 0; font-size: 12.5px; line-height: 1.32; color: var(--muted); opacity: 0; transition: opacity .3s ease; pointer-events: none; }
-.steps > li > ul { position: absolute; z-index: 1; left: 12px; right: 12px; top: calc(var(--row) + 2px + 3.9em); margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 4px; opacity: 0; transition: opacity .3s ease; pointer-events: none; }
-.steps > li > ul li { background: var(--tile-low); color: var(--ink); border-radius: 999px; padding: 3px 9px; font-size: 12px; letter-spacing: -.01em; }
+.steps > li > b { position: relative; z-index: 1; font-size: 19px; font-weight: 400; letter-spacing: -.04em; color: #a3a3a0; transition: color .3s ease; }
+.steps > li > p { position: absolute; z-index: 1; left: 12px; right: 12px; top: calc(var(--row) - 2px); margin: 0; font-size: 13.5px; line-height: 1.3; color: var(--muted); opacity: 0; transition: opacity .3s ease; pointer-events: none; }
+.steps > li > ul { position: absolute; z-index: 1; left: 12px; right: 12px; bottom: calc(var(--open) * -1 + 22px); margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 4px; opacity: 0; transition: opacity .3s ease; pointer-events: none; }
+.steps > li > ul li { background: color-mix(in srgb, var(--sc) 26%, #fff); color: var(--ink); border-radius: 999px; padding: 4px 10px; font-size: 13.5px; letter-spacing: -.01em; }
 .pframe { position: absolute; left: 0; right: 0; top: 0; height: calc(var(--row) + var(--open)); border-radius: 14px; background: var(--tile); box-shadow: var(--sh2); opacity: 0; transition: transform .45s var(--ease), opacity .3s ease; pointer-events: none; }
 .steps:has(> li:nth-of-type(1):is(:hover, :focus-within)) .pframe { opacity: 1; transform: translateY(calc(var(--row) * 0)); }
 .steps:has(> li:nth-of-type(1):is(:hover, :focus-within)) > li:nth-of-type(1) > b { color: var(--ink); }
-.steps:has(> li:nth-of-type(1):is(:hover, :focus-within)) > li:nth-of-type(1) > svg { color: var(--pink); }
+.steps:has(> li:nth-of-type(1):is(:hover, :focus-within)) > li:nth-of-type(1) > svg { color: var(--sc); }
+.steps:has(> li:nth-of-type(1):is(:hover, :focus-within)) .pframe { background: color-mix(in srgb, #22a55e 11%, #fff); }
 .steps:has(> li:nth-of-type(1):is(:hover, :focus-within)) > li:nth-of-type(1) > p, .steps:has(> li:nth-of-type(1):is(:hover, :focus-within)) > li:nth-of-type(1) > ul { opacity: 1; }
-.steps:has(> li:nth-of-type(1):is(:hover, :focus-within)) > li:nth-of-type(1) { transform: translateY(calc(var(--open) * -1)); }
+.steps:has(> li:nth-of-type(1):is(:hover, :focus-within)) > li:nth-of-type(1) { transform: translateY(calc(var(--open) * -1 + 10px)); }
 .steps:has(> li:nth-of-type(2):is(:hover, :focus-within)) .pframe { opacity: 1; transform: translateY(calc(var(--row) * 1)); }
 .steps:has(> li:nth-of-type(2):is(:hover, :focus-within)) > li:nth-of-type(2) > b { color: var(--ink); }
-.steps:has(> li:nth-of-type(2):is(:hover, :focus-within)) > li:nth-of-type(2) > svg { color: var(--pink); }
+.steps:has(> li:nth-of-type(2):is(:hover, :focus-within)) > li:nth-of-type(2) > svg { color: var(--sc); }
+.steps:has(> li:nth-of-type(2):is(:hover, :focus-within)) .pframe { background: color-mix(in srgb, #5b6ef0 11%, #fff); }
 .steps:has(> li:nth-of-type(2):is(:hover, :focus-within)) > li:nth-of-type(2) > p, .steps:has(> li:nth-of-type(2):is(:hover, :focus-within)) > li:nth-of-type(2) > ul { opacity: 1; }
-.steps:has(> li:nth-of-type(2):is(:hover, :focus-within)) > li:nth-of-type(1), .steps:has(> li:nth-of-type(2):is(:hover, :focus-within)) > li:nth-of-type(2) { transform: translateY(calc(var(--open) * -1)); }
+.steps:has(> li:nth-of-type(2):is(:hover, :focus-within)) > li:nth-of-type(1) { transform: translateY(calc(var(--open) * -1)); }
+.steps:has(> li:nth-of-type(2):is(:hover, :focus-within)) > li:nth-of-type(2) { transform: translateY(calc(var(--open) * -1 + 10px)); }
 .steps:has(> li:nth-of-type(3):is(:hover, :focus-within)) .pframe { opacity: 1; transform: translateY(calc(var(--row) * 2)); }
 .steps:has(> li:nth-of-type(3):is(:hover, :focus-within)) > li:nth-of-type(3) > b { color: var(--ink); }
-.steps:has(> li:nth-of-type(3):is(:hover, :focus-within)) > li:nth-of-type(3) > svg { color: var(--pink); }
+.steps:has(> li:nth-of-type(3):is(:hover, :focus-within)) > li:nth-of-type(3) > svg { color: var(--sc); }
+.steps:has(> li:nth-of-type(3):is(:hover, :focus-within)) .pframe { background: color-mix(in srgb, #e0408f 11%, #fff); }
 .steps:has(> li:nth-of-type(3):is(:hover, :focus-within)) > li:nth-of-type(3) > p, .steps:has(> li:nth-of-type(3):is(:hover, :focus-within)) > li:nth-of-type(3) > ul { opacity: 1; }
-.steps:has(> li:nth-of-type(3):is(:hover, :focus-within)) > li:nth-of-type(1), .steps:has(> li:nth-of-type(3):is(:hover, :focus-within)) > li:nth-of-type(2), .steps:has(> li:nth-of-type(3):is(:hover, :focus-within)) > li:nth-of-type(3) { transform: translateY(calc(var(--open) * -1)); }
+.steps:has(> li:nth-of-type(3):is(:hover, :focus-within)) > li:nth-of-type(1), .steps:has(> li:nth-of-type(3):is(:hover, :focus-within)) > li:nth-of-type(2) { transform: translateY(calc(var(--open) * -1)); }
+.steps:has(> li:nth-of-type(3):is(:hover, :focus-within)) > li:nth-of-type(3) { transform: translateY(calc(var(--open) * -1 + 10px)); }
 .steps:has(> li:nth-of-type(4):is(:hover, :focus-within)) .pframe { opacity: 1; transform: translateY(calc(var(--row) * 3)); }
 .steps:has(> li:nth-of-type(4):is(:hover, :focus-within)) > li:nth-of-type(4) > b { color: var(--ink); }
-.steps:has(> li:nth-of-type(4):is(:hover, :focus-within)) > li:nth-of-type(4) > svg { color: var(--pink); }
+.steps:has(> li:nth-of-type(4):is(:hover, :focus-within)) > li:nth-of-type(4) > svg { color: var(--sc); }
+.steps:has(> li:nth-of-type(4):is(:hover, :focus-within)) .pframe { background: color-mix(in srgb, #e58a1f 11%, #fff); }
 .steps:has(> li:nth-of-type(4):is(:hover, :focus-within)) > li:nth-of-type(4) > p, .steps:has(> li:nth-of-type(4):is(:hover, :focus-within)) > li:nth-of-type(4) > ul { opacity: 1; }
-.steps:has(> li:nth-of-type(4):is(:hover, :focus-within)) > li:nth-of-type(1), .steps:has(> li:nth-of-type(4):is(:hover, :focus-within)) > li:nth-of-type(2), .steps:has(> li:nth-of-type(4):is(:hover, :focus-within)) > li:nth-of-type(3), .steps:has(> li:nth-of-type(4):is(:hover, :focus-within)) > li:nth-of-type(4) { transform: translateY(calc(var(--open) * -1)); }
-@media (max-height: 840px) { .process { --open: 86px; } .steps > li > ul { display: none; } }
+.steps:has(> li:nth-of-type(4):is(:hover, :focus-within)) > li:nth-of-type(1), .steps:has(> li:nth-of-type(4):is(:hover, :focus-within)) > li:nth-of-type(2), .steps:has(> li:nth-of-type(4):is(:hover, :focus-within)) > li:nth-of-type(3) { transform: translateY(calc(var(--open) * -1)); }
+.steps:has(> li:nth-of-type(4):is(:hover, :focus-within)) > li:nth-of-type(4) { transform: translateY(calc(var(--open) * -1 + 10px)); }
+@media (max-height: 840px) { .process { --open: 92px; } .steps > li > ul { display: none; } }
 @media (prefers-reduced-motion: reduce) { .steps > li, .pframe, .steps > li > p, .steps > li > ul { transition: none; } }
 
 /* cases */
@@ -182,6 +190,7 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .case .tags span, .case .tags span:first-child { background: rgba(255, 255, 255, .66); color: #111; padding: 6px 12px; font-size: 13px; font-weight: 500; letter-spacing: -.01em; backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .55), 0 1px 8px rgba(0, 0, 0, .10); }
 .case h2 { font-size: 18px; font-weight: 500; line-height: 1.08; letter-spacing: -.03em; }
 .case.big .art { aspect-ratio: 4 / 3; }
+.case.big .art img { object-position: 50% 0; }
 .case.big .meta { padding: 4px 14px 12px; gap: 12px; }
 .case.big h2 { font-size: 28px; line-height: 1; letter-spacing: -.05em; max-width: 620px; }
 
@@ -209,7 +218,7 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
   .sheet {
     height: 100vh; height: 100dvh; min-height: 780px;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-template-rows: minmax(0, 1.22fr) minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1.32fr) minmax(0, 1fr) minmax(0, 1fr);
   }
   .photo { aspect-ratio: auto; grid-area: 1 / 1; }
   .pitch { grid-area: 1 / 2 / 2 / 4; }
