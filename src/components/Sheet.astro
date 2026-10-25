@@ -18,7 +18,7 @@ const hues = ['#E0408F', '#5B6EF0', '#E58A1F', '#22A55E'];
   </a>
 
   <section class="tile pitch">
-    <span class="tag">Intro</span>
+    <div class="tags-row"><span class="tag">Intro</span><span class="tag">{side === 'front' ? 'Product' : 'Brand'}</span></div>
     <div class="lead">
       <h2 class="role" set:html={s.role} />
       <p class="sub">{s.pitchSub}</p>
@@ -73,6 +73,7 @@ const hues = ['#E0408F', '#5B6EF0', '#E58A1F', '#22A55E'];
   const fit = () => document.querySelectorAll<HTMLElement>('.stage .word').forEach((w) => {
     const tags = w.closest('.art')?.querySelector<HTMLElement>('.tags');
     if (tags) w.parentElement!.style.setProperty('--tags', tags.offsetTop + tags.offsetHeight + 'px');
+    requestAnimationFrame(() => w.parentElement!.classList.add('ready'));
     const box = w.parentElement!.clientWidth - 40; w.style.fontSize = '100px';
     w.style.fontSize = (100 * box / w.scrollWidth).toFixed(1) + 'px';
   });
@@ -81,6 +82,14 @@ const hues = ['#E0408F', '#5B6EF0', '#E58A1F', '#22A55E'];
 
   // the photo and case covers drift a little towards the cursor (mouse only, never with reduced motion)
   if (matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)').matches) {
+    // the page-curl corner of the turn tile grows as the cursor gets closer to it
+    const turn = document.querySelector<HTMLElement>('.turn');
+    turn?.addEventListener('pointermove', (e) => {
+      const r = turn.getBoundingClientRect();
+      const d = Math.hypot(r.right - e.clientX, r.bottom - e.clientY) / Math.hypot(r.width, r.height);
+      turn.style.setProperty('--curl', Math.round(58 + 70 * Math.max(0, 1 - d * 1.4)) + 'px');
+    });
+    turn?.addEventListener('pointerleave', () => turn.style.setProperty('--curl', '58px'));
     document.querySelectorAll<HTMLElement>('.photo, .case').forEach((el) => {
       el.addEventListener('pointermove', (e) => {
         const r = el.getBoundingClientRect();
@@ -96,13 +105,12 @@ const hues = ['#E0408F', '#5B6EF0', '#E58A1F', '#22A55E'];
 /* switching sides: the other side is revealed from the page-curl corner */
 @view-transition { navigation: auto; }
 ::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
-::view-transition-old(root) { z-index: 1; animation: recede 1.15s cubic-bezier(.45, 0, .2, 1) both; transform-origin: 30% 30%; }
-::view-transition-new(root) { z-index: 2; animation: reveal 1.15s cubic-bezier(.45, 0, .2, 1) both; transform-origin: 100% 100%; }
+::view-transition-old(root) { z-index: 1; }
+::view-transition-new(root) { z-index: 2; animation: reveal 1s cubic-bezier(.45, 0, .2, 1) both; }
 @keyframes reveal {
-  from { clip-path: circle(0 at 100% 100%); transform: scale(1.04); }
-  to { clip-path: circle(150vmax at 100% 100%); transform: none; }
+  from { clip-path: circle(0 at 100% 100%); }
+  to { clip-path: circle(150vmax at 100% 100%); }
 }
-@keyframes recede { to { transform: scale(.96); opacity: .55; } }
 
 /* opening and closing a case: the cover grows out of its tile, the rest fades */
 :root:active-view-transition-type(case)::view-transition-old(root) { animation: vt-out .28s ease-out both; }
