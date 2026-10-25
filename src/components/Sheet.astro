@@ -50,7 +50,7 @@ const hues = ['#E0408F', '#5B6EF0', '#E58A1F', '#22A55E'];
       <div class="art" style={`view-transition-name:vt-${c.slug}`}>
         {c.phones ? (
           <div class:list={['stage', `n${c.phones.length}`, { desk: c.desk, first: c.slug === 'jam' }]} aria-hidden="true">
-            <span class="word" style={`font-size:calc((100cqw - 40px) / ${(c.name.length * 0.5).toFixed(2)})`}>{c.name}</span>
+            <span class="word" style={`font-size:calc((100cqw - 40px) / ${((c.mark ?? c.name).length * 0.5).toFixed(2)})`}>{c.mark ?? c.name}</span>
             {c.phones.map((src, k) => <img class:list={['phone', `phone-${k + 1}`]} src={src} alt="" loading="lazy" />)}
           </div>
         ) : c.image && <img src={c.image} alt="" loading="lazy" />}
