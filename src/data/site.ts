@@ -23,7 +23,7 @@ const socials: Record<string, Social> = {
   linkedin: { label: 'LinkedIn', href: 'https://www.linkedin.com/in/elizaplnva/', kind: 'linkedin' },
   behance: { label: 'Behance', href: 'https://www.behance.net/lizapopelinova', kind: 'behance' },
   email: { label: 'Email', href: 'mailto:elizaplnva@gmail.com', kind: 'email' },
-  cv: { label: 'CV', href: 'https://docs.google.com/document/d/1YjUz99y6IoWJ0SpFcVYLKatav0It3E2y/edit?usp=sharing', kind: 'cv' },
+  cv: { label: 'CV', href: '/Eliza_Popelinova_Senior_Product_Designer_Resume.pdf', kind: 'cv' },
 };
 
 const toTile = (c: CaseData): Case => ({ name: c.name, tags: c.tags, headline: c.headline, color: c.color, image: c.image, phones: c.phones, desk: c.desk, mark: c.mark, big: c.big, slug: c.slug, href: `/work/${c.slug}` });
