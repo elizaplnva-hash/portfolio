@@ -230,13 +230,29 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 /* tablet / mobile */
 @media (max-width: 899px) {
   .sheet { grid-template-columns: 1fr 1fr; }
-  .photo, .pitch, .skills, .case.big, .turn { grid-column: 1 / -1; }
+  .photo { aspect-ratio: 4 / 5; }
+  .process, .skills, .case.big { grid-column: 1 / -1; }
   .skills { aspect-ratio: auto; }
-  .case-4 { grid-column: 1 / -1; }
-  .case-4 .art { aspect-ratio: 16 / 9; }
   .case.big h2 { font-size: 26px; }
-  .turn { padding-right: 72px; }
+  .turn { padding-right: 72px; min-height: 180px; }
   .turn h2 { font-size: 30px; }
+}
+@media (max-width: 599px) {
+  .sheet { grid-template-columns: 1fr; }
+  .photo, .pitch, .case, .turn { grid-column: 1 / -1; }
+}
+
+/* small screens: My process is a plain list, every step open (no hover on touch) */
+@media (max-width: 899px) {
+  .process { gap: 18px; }
+  .steps { height: auto; display: grid; gap: 18px; }
+  .steps > li { position: static; height: auto; padding: 0; display: grid; grid-template-columns: 23px 1fr; column-gap: 10px; row-gap: 6px; align-items: center; transform: none !important; }
+  .steps > li::after, .pframe { display: none; }
+  .steps > li > svg { margin: 0; color: var(--sc); background: color-mix(in srgb, var(--sc) 13%, #fff); }
+  .steps > li > b { color: var(--ink); font-size: 19px; }
+  .steps > li > p, .steps > li > ul { position: static; grid-column: 2; width: auto; opacity: 1 !important; transition: none; }
+  .steps > li > ul li { font-size: 13px; }
+  [data-side='back'] .steps > li > svg { background: color-mix(in srgb, var(--sc) 22%, #232220); }
 }
 @media (max-width: 520px) {
   .name { font-size: 36px; }
@@ -285,7 +301,6 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .case .art:has(.stage) { container-type: size; }
 .stage:not(.ready) .phone { transition: none !important; }
 .stage { position: absolute; inset: 0; z-index: 0; background: color-mix(in srgb, var(--c) 16%, #fff); overflow: hidden; }
-.stage .word { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-weight: 700; letter-spacing: -.05em; line-height: 1; white-space: nowrap; color: color-mix(in srgb, var(--c) 30%, #fff); }
 /* devices hang from just below the tags (--tags is measured in JS), sit a little lower at rest and lift on hover */
 .stage { --spread: 42cqh; --tilt: 7deg; --drop: 9cqh; }
 .stage .phone { position: absolute; left: 50%; top: calc(var(--tags, 48px) + 5px); height: 104cqh; width: auto; filter: drop-shadow(0 18px 28px rgba(40, 10, 40, .22)); transition: transform .7s var(--ease); }
@@ -301,7 +316,7 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .case:hover .stage { --spread: 50cqh; --tilt: 10deg; --drop: 0cqh; }
 }
-@media (prefers-reduced-motion: reduce) { .stage .phone, .stage .word { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .stage .phone { transition: none; } }
 
 .tag.side { margin-left: 6px; }
 .tags-row { display: flex; gap: 6px; }
