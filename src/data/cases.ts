@@ -141,11 +141,10 @@ const pinkwallet: Partial<CaseData> = {
           { value: '49', text: 'don’t understand\nhow it works' },
           { value: '43', text: 'worry\nabout fraud' },
         ] } },
-        { label: 'What people say', spec: '', alt: 'Four public posts about wallet friction: network fees, a security warning, an address typo and a stuck transaction', reviews: [
+        { label: 'What people say', spec: '', alt: 'Three public posts about wallet friction: network fees, a security warning and an address typo', reviews: [
           { tag: 'Fees', source: 'appstore', text: '“The app keeps saying the network fee is not enough no matter how much I adjust the amount.”', meta: 'Trust Wallet · App Store · Apr 2024' },
           { tag: 'Warnings', source: 'github', text: '“No balance change found. This transaction maybe malicious.”', meta: 'Phantom · GitHub · Nov 2023' },
           { tag: 'Addresses', source: 'reddit', text: '“The last number of the address is changed.”', meta: 'r/CryptoHelp · Oct 2026' },
-          { tag: 'Transactions', source: 'reddit', text: '“Stuck on ‘Processing’ or ‘Pending’ and then eventually failing.”', meta: 'r/trustwalletcommunity · Oct 2024' },
         ] },
         { label: 'Competitor audit', spec: 'Ты рисуешь: страница-отчёт аудита Phantom и Trust Wallet: где трение для новичка (отправка, swap, безопасность, объём).' },
       ] } },

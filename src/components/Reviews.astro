@@ -6,17 +6,12 @@ const { items } = Astro.props;
 const reddit = readFileSync(`${process.cwd()}/node_modules/@tabler/icons/icons/outline/brand-reddit.svg`, 'utf8').replace(/<!--[\s\S]*?-->/g, '').trim();
 const ico = { appstore: icon('brand-apple'), github: icon('brand-github'), reddit };
 const label = { appstore: 'App Store', github: 'GitHub', reddit: 'Reddit' };
-const cols = [items.filter((_, i) => i % 2 === 0), items.filter((_, i) => i % 2 === 1)];
 ---
 <div class="rvs">
-  {cols.map((col) => (
-    <div class="rv-col">
-      {col.map((r) => (
-        <figure class="rv-c" title={r.meta}>
-          <i class={`src ${r.source}`} role="img" aria-label={label[r.source]} set:html={ico[r.source]} />
-          <blockquote>{r.text}</blockquote>
-        </figure>
-      ))}
-    </div>
+  {items.map((r, i) => (
+    <figure class={`rv-c ${r.source}`} style={`--i:${i}`}>
+      <figcaption class="rv-h"><span class="ic" aria-hidden="true" set:html={ico[r.source]} />{label[r.source]}</figcaption>
+      <blockquote>{r.text}</blockquote>
+    </figure>
   ))}
 </div>

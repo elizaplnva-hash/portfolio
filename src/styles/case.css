@@ -526,24 +526,23 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .ph.stats .sts-c .t { color: var(--ink); text-align: left; }
 
 /* research: public posts as scattered cards */
-.ph.reviews, .stage .ph.reviews { display: grid; align-content: center; padding: 16px; transform: none; transition: none; text-align: left; color: var(--ink); }
+.ph.reviews, .stage .ph.reviews { display: block; position: relative; padding: 0; transform: none; transition: none; text-align: left; color: var(--ink); }
 .stage .vis:has(.ph.stats) { grid-template-columns: minmax(0,1fr) minmax(0,1fr); grid-template-rows: minmax(0,1fr) minmax(0,1.25fr); }
 .sts-c { padding: 24px 22px; grid-template-columns: clamp(72px, 5.8vw, 84px) 1fr; column-gap: 10px; }
 .sts-c .v { font-size: clamp(40px, 3.3vw, 48px); }
 .sts-c .t { font-size: clamp(14px, 1.1vw, 16px); }
 
-.rvs { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 10px; width: 100%; align-items: start; }
-.rv-col { display: grid; gap: 10px; }
-.rv-col:nth-child(2) { margin-top: 34px; }
-.rv-c { margin: 0; display: grid; gap: 10px; padding: 14px 14px 16px; background: #fff; border-radius: 14px; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 6px 20px rgba(17,17,17,.08); }
-.rv-c .src { width: 24px; height: 24px; border-radius: 50%; background: #f3f3f1; display: grid; place-items: center; font-style: normal; color: var(--ink); }
-.rv-c .src svg { width: 13px; height: 13px; }
-.rv-c blockquote { margin: 0; font-size: clamp(12px, .95vw, 13.5px); font-weight: 600; letter-spacing: -.02em; line-height: 1.3; color: var(--ink); }
-.rv-col:nth-child(1) .rv-c:nth-child(1) { transform: rotate(-1.5deg); }
-.rv-col:nth-child(1) .rv-c:nth-child(2) { transform: rotate(1deg); }
-.rv-col:nth-child(2) .rv-c:nth-child(1) { transform: rotate(1.2deg); }
-.rv-col:nth-child(2) .rv-c:nth-child(2) { transform: rotate(-1deg); }
+.rvs { position: relative; width: 100%; height: 100%; }
+.rv-c { position: absolute; margin: 0; width: min(68%, 240px); left: calc(7% + var(--i) * 7%); top: calc(5% + var(--i) * 30%); z-index: calc(10 - var(--i)); background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 1px 3px rgba(17,17,17,.07), 0 8px 22px rgba(17,17,17,.10); transform: rotate(7deg) skewY(-2deg); --b: #6d6d69; }
+.rv-c.appstore { --b: #0a84ff; } .rv-c.github { --b: #24292f; } .rv-c.reddit { --b: #ff4500; }
+.rv-h { display: flex; align-items: center; gap: 7px; padding: 8px 13px; background: #f8f8f6; font-size: 11.5px; font-weight: 600; letter-spacing: -.02em; color: #6d6d69; }
+.rv-h .ic { width: 14px; height: 14px; display: grid; place-items: center; }
+.rv-h .ic svg { width: 13px; height: 13px; }
+.rv-c blockquote { margin: 0; padding: 12px 14px 16px; font-size: clamp(12.5px, 1vw, 14px); font-weight: 600; letter-spacing: -.022em; line-height: 1.28; color: var(--ink); }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .rv-c { transition: transform .6s var(--out); }
-  .rv-c:hover { transform: translateY(-5px) rotate(0deg) scale(1.04); position: relative; z-index: 2; }
+  .rv-c { transition: transform .6s var(--out), filter .5s ease-out; }
+  .rv-h { transition: background .4s ease-out, color .4s ease-out; }
+  .rvs:has(.rv-c:hover) .rv-c:not(:hover) { filter: blur(2.5px); }
+  .rv-c:hover { transform: translateY(-10px) rotate(7deg) skewY(-2deg) scale(1.05); z-index: 20; }
+  .rv-c:hover .rv-h { background: var(--b); color: #fff; }
 }
