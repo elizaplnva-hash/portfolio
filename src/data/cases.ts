@@ -179,17 +179,16 @@ const pinkwallet: Partial<CaseData> = {
         ], alt: 'PIG chat: the user asks to send ETH to Smith, PIG asks which of two wallets, shows a send preview, and the user confirms.' },
       ] } },
 
-    { id: 'feed', nav: 'Feed', title: ['Discovery', 'without impulse.'],
-      lede: 'A feed brings people back, but crypto content pushes impulsive decisions. So the Feed lives next to PIG: news, videos and posts from X, with a way to slow down when a story raises a question.',
+    { id: 'feed', nav: 'Feed', title: ['Discovery,', 'without impulse.'],
+      lede: 'On the first three visits, a short pop-up introduces PIG in the Feed. Users can ask what’s going on in crypto, and PIG answers with a story to open. They can also browse the Feed directly.',
       blocks: [
-        { type: 'quote', text: 'Not sure what to make of this?', by: 'PIG in the Feed' },
-        { type: 'note', text: 'For the first three visits the Feed explains itself; after that it gets out of the way. Onboarding introduces everything in the order it is used, wallet creation last.' },
+        { type: 'callout', text: 'A place to understand crypto, not a source of buy recommendations.' },
       ],
-      visual: { layout: 'stack', items: [
-        { label: 'Post from X', spec: 'Пост из X в ленте.' },
-        { label: 'PIG on the post', spec: 'Тот же пост со всплывающим PIG и вопросом «Not sure what to make of this?».' },
-        { label: 'Exploring the Feed screen', spec: 'Три версии слайда Feed рядом: V1, V2, V3.' },
-      ] } },
+      visual: { layout: 'single', items: [{ label: 'Feed with PIG', spec: '', trio: [
+        { src: '/images/pw-feed-1.webp', label: 'Meet PIG', icon: 'sparkles' },
+        { src: '/images/pw-feed-2.webp', label: 'Ask PIG', icon: 'message' },
+        { src: '/images/pw-feed-3.webp', label: 'Read the story', icon: 'article' },
+      ], alt: 'Three screens: a pop-up in the Feed introduces PIG, PIG answers with an article card, and the article opens in the Feed.' }] } },
 
     { id: 'safeguards', nav: 'Safeguards', title: ['Friction only', 'where it protects.'],
       lede: 'Everywhere else friction is the enemy. At irreversible moments it is the safeguard.',
