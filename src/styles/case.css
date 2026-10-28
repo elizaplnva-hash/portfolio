@@ -495,6 +495,8 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   .cmp-hl { transition: transform .35s var(--out), height .35s var(--out), opacity .2s ease-out; }
+  .stage .cmp { transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) scale(var(--sc, 1)); transition: transform .6s var(--out); will-change: transform; }
+  .stage .cmp.lean { --sc: 1.04; transition: transform .25s ease-out; }
   .cmp-hl.jump { transition: opacity .2s ease-out; }
 }
 

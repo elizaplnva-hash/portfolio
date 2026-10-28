@@ -213,6 +213,20 @@ const mail = 'mailto:elizaplnva@gmail.com';
         el.style.removeProperty('--ry');
       });
     });
+    // comparison table leans toward the cursor and comes forward a little
+    document.querySelectorAll<HTMLElement>('.stage .cmp').forEach((el) => {
+      el.addEventListener('pointermove', (e) => {
+        const r = el.getBoundingClientRect();
+        el.style.setProperty('--rx', `${(-((e.clientY - r.top) / r.height - 0.5) * 8).toFixed(2)}deg`);
+        el.style.setProperty('--ry', `${(((e.clientX - r.left) / r.width - 0.5) * 8).toFixed(2)}deg`);
+        el.classList.add('lean');
+      });
+      el.addEventListener('pointerleave', () => {
+        el.classList.remove('lean');
+        el.style.removeProperty('--rx');
+        el.style.removeProperty('--ry');
+      });
+    });
     // comparison table: a soft highlight follows the cursor from row to row
     document.querySelectorAll<HTMLElement>('.cmp').forEach((t) => {
       const hl = t.querySelector<HTMLElement>('.cmp-hl');
