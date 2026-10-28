@@ -5,7 +5,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -99,17 +99,17 @@ const pinkwallet: Partial<CaseData> = {
       ] }],
       visual: { layout: 'single', items: [{ label: 'The Wallet home in both themes', spec: '', srcs: ['/images/pw-home-dark.webp', '/images/pw-home-light.webp'], alt: 'The PinkWallet home screen in the dark and the light theme' }] } },
 
-    { id: 'background', nav: 'Background', title: ['The brief changed before','we started designing.'],
-      lede: 'This was our second project with the client. The first was a crypto token for experienced users. This time he came back with funding and a different idea: a wallet for people new to crypto. It came with three things to work out.',
+    { id: 'background', nav: 'Brief', title: ['The brief changed before','we started designing.'],
+      lede: 'The first project was a crypto token for experienced users. Then the client came back with funding and a new idea: a wallet for people new to crypto.',
       blocks: [
         { type: 'numbered', items: [
-          { title: 'A new audience', body: 'People with little or no experience managing their own crypto.' },
-          { title: 'The feature list', body: 'Decide what belongs in the first version and what can wait.' },
-          { title: 'The AI request', body: 'Find a useful role for AI without giving it control over users’ money.' },
+          { title: 'A new audience', body: 'People with little or no crypto experience.' },
+          { title: 'The feature list', body: 'What belongs in version one, and what can wait.' },
+          { title: 'The AI request', body: 'A useful role for AI that never controls users’ money.' },
         ] },
         { type: 'note', text: 'My first job was to turn that wish list into a product with a point of view.' },
       ],
-      visual: { layout: 'single', items: [{ label: 'Where we started', spec: 'Сайт PinkCoin и первый концепт-экран кошелька рядом, из первого этапа.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Where we started', spec: '', combo: ['/images/pw-pinkcoin-site.webp', '/images/pw-wallet-phone.webp'], alt: 'The PinkCoin token website from the first project, and the first concept of the wallet screen' }] } },
 
     { id: 'stakes', nav: 'Stakes', wide: true, title: ['In crypto, a mistake', 'can’t be undone.'],
       lede: 'A wallet does what a banking app does. What changes is the price of an error.',
