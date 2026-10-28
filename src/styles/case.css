@@ -587,8 +587,8 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 }
 
 /* three phones in a row; the hovered one comes forward and grows */
-.ph.trio, .stage .ph.trio { background: none; padding: 0; overflow: visible; transform: none; container-type: size; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: center; gap: 3cqw; }
-.ph.trio img { width: min(27cqw, calc(80cqh * .4928)); height: auto; flex: none; filter: drop-shadow(0 14px 22px rgba(60, 10, 60, .22)); }
+.ph.trio, .stage .ph.trio { background: none; padding: 0; overflow: visible; transform: none; container-type: size; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: center; gap: 1cqw; }
+.ph.trio img { width: min(30.5cqw, calc(86cqh * .4928)); height: auto; flex: none; filter: drop-shadow(0 14px 22px rgba(60, 10, 60, .22)); }
 .m-vis.v-single .ph.trio { aspect-ratio: 16 / 10; }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   .ph.trio img { transition: transform .5s var(--out); transform-origin: 50% 55%; }
