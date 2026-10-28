@@ -417,7 +417,7 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .stage .ph:not(.has-img):not(.duo) { box-shadow: inset 0 0 0 1px rgba(17,17,17,.06); }
 
 /* ---------- Product case cards: white, soft shadow, roomier ---------- */
-.cp-story:not(.brand) :is(.l1, .l2, .l3, .tbl, .decision, .quote) { background: var(--white); box-shadow: 0 1px 2px rgba(17,17,17,.05), 0 3px 10px rgba(17,17,17,.06); }
+.cp-story:not(.brand) :is(.l1, .l2, .l3, .tbl, .decision, .quote) { background: #fff; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 6px 20px rgba(17,17,17,.08); }
 .cp-story:not(.brand) .lift::before { background: var(--white); }
 .cp-story:not(.brand) .lift::after { display: block; box-shadow: var(--sh-hover, var(--sh)); }
 .cp-story:not(.brand) .ic svg { width: 17px; height: 17px; }
@@ -429,5 +429,5 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .cp-story:not(.brand) .quote { padding: 20px 24px; }
 .cp-story:not(.brand) .callout { padding: 16px 20px; }
 
-/* grey frame so the white cards read as filled, like the white tiles on the home ground */
-.cp-story:not(.brand) .frame { background: #f6f6f4; }
+/* white frame, white cards separated by a soft shadow, as in the process frame on the home tile */
+.cp-story:not(.brand) .frame { background: #fff; }
