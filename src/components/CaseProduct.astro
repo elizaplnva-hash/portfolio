@@ -40,6 +40,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
     <nav class="rail" aria-label="Case sections">
       <a href={home} class="back">Back</a>
       {brand && !groups.length ? <span aria-hidden="true"></span> : <ol>
+        <li class="rail-hl" aria-hidden="true"></li>
         {(brand ? screens.filter((s, i) => s.group || (i === 0 && s.nav)) : screens.filter((s) => s.nav)).map((s) => <li><a href={`#${s.id}`} data-step={s.id} data-group={s.group}><span class="roll"><span data-t={s.nav}>{s.nav}</span></span></a></li>)}
       </ol>}
       <div class="me-row"><span class="face" aria-hidden="true"><img src={face.src} alt="" width="76" height="76" decoding="async" style={`object-position:${face.pos}`} /></span><a href={mail} class="btn contact"><span class="roll"><span data-t="Let’s talk">Let’s talk</span></span></a></div>
@@ -160,17 +161,32 @@ const mail = 'mailto:elizaplnva@gmail.com';
   const links = [...document.querySelectorAll<HTMLAnchorElement>('.rail a[data-step]')];
   const vis = [...document.querySelectorAll<HTMLElement>('.stage .vis')];
   const stage = document.querySelector<HTMLElement>('.stage');
+  const hl = document.querySelector<HTMLElement>('.rail-hl');
+  let over = false;
+  const moveHl = (a?: HTMLElement) => {
+    if (!hl || !a) return;
+    hl.style.width = `${a.offsetWidth}px`;
+    hl.style.height = `${a.offsetHeight}px`;
+    hl.style.transform = `translate(${a.offsetLeft}px, ${a.offsetTop}px)`;
+  };
   const set = (id: string) => {
     const grp = document.getElementById(id)?.dataset.group;
     links.forEach((a) => a.toggleAttribute('aria-current', a.dataset.group ? a.dataset.group === grp : a.dataset.step === id));
     let shown = false;
     vis.forEach((v) => { const on = v.dataset.step === id; v.classList.toggle('on', on); shown ||= on; });
     stage?.classList.toggle('empty', !shown);
+    if (!over) moveHl(links.find((a) => a.hasAttribute('aria-current')));
   };
   // reveal: a screen's blocks rise once it is a little in view
   const rv = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); rv.unobserve(e.target); } }), { rootMargin: '0px 0px -15% 0px' });
   steps.forEach((s) => rv.observe(s));
   if (steps[0]) set(steps[0].id);
+  requestAnimationFrame(() => hl?.classList.add('ready'));
+  links.forEach((a) => {
+    a.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') { over = true; moveHl(a); } });
+    a.addEventListener('click', () => moveHl(a));
+  });
+  hl?.parentElement?.addEventListener('pointerleave', () => { over = false; moveHl(links.find((a) => a.hasAttribute('aria-current'))); });
   const io = new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && set((e.target as HTMLElement).id)), { rootMargin: '-45% 0px -45% 0px' });
   steps.forEach((s) => io.observe(s));
 

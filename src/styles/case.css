@@ -271,10 +271,14 @@ h1.ttl { font-size: clamp(30px, 3vw, 46px); letter-spacing: -.045em; line-height
   .rail, .stage { display: flex; position: sticky; top: 0; height: 100dvh; align-self: start; }
   .cp-story .stage { background: transparent; overflow: visible; }
   .rail { flex-direction: column; justify-content: space-between; align-items: flex-start; padding: var(--pad); z-index: 2; }
-  .rail ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1px; width: 100%; }
-  .rail ol a { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); padding: 6px 10px; margin-left: -10px; border-radius: 999px; }
+  .rail ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1px; width: 100%; position: relative; }
+  .rail ol a { position: relative; z-index: 1; display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); padding: 6px 10px; margin-left: -10px; border-radius: 999px; }
   .rail ol a:hover { color: var(--ink); }
-  .rail ol a[aria-current] { background: var(--white); box-shadow: var(--sh2); color: var(--ink); font-weight: 500; }
+  .rail ol a[aria-current] { color: var(--ink); font-weight: 500; }
+  /* one white pill that follows the cursor over the list and rests on the current section */
+  .rail-hl { position: absolute; left: 0; top: 0; z-index: 0; border-radius: 999px; background: var(--white); box-shadow: var(--sh2); pointer-events: none; opacity: 0; }
+  .rail-hl.ready { opacity: 1; }
+  @media (prefers-reduced-motion: no-preference) { .rail-hl.ready { transition: transform .35s var(--out); } }
   .steps { position: relative; z-index: 1; }
   .step { min-height: 100dvh; scroll-snap-align: start; justify-content: center; padding: var(--pad) clamp(20px, 2.6vw, 44px); }
   .step.statement .step-text, .step.wide .step-text { width: calc(100vw - var(--rail) - 3 * var(--pad)); }
@@ -370,7 +374,8 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
   .brand .step-text { max-width: 500px; }
   .brand .step.wide .step-text { max-width: none; }
 .brand .rail ol a { padding: 6px 12px; }
-.brand .rail ol a[aria-current] { background: #2e2d2b; box-shadow: inset 0 0 0 1px rgba(255,255,255,.07); color: #fff; }
+.brand .rail ol a[aria-current], .brand .rail ol a:hover { color: #fff; }
+.brand .rail-hl { background: #2e2d2b; box-shadow: inset 0 0 0 1px rgba(255,255,255,.07); }
   .brand .stage .vis { left: 0; right: 0; display: flex; align-items: center; justify-content: center; padding: 28px; background: transparent; border-radius: 20px; }
   .brand .stage .vis[data-step='overview'] { left: 46%; }
   .brand .stage .vis.nx { left: 50%; padding: 0; right: 10px; }
