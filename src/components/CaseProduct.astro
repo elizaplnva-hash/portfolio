@@ -32,13 +32,13 @@ const mail = 'mailto:elizaplnva@gmail.com';
 ---
 <div class:list={['cp-story', { brand }]} style={tone}>
   <header class="m-bar">
-    <a href={home} class="back"><span class="ar" aria-hidden="true" set:html={icon('arrow-left')} />Back</a>
+    <a href={home} class="back">Back</a>
     <div class="me-row"><span class="face" aria-hidden="true"><img src={face.src} alt="" width="76" height="76" decoding="async" style={`object-position:${face.pos}`} /></span><a href={mail} class="btn contact">Let’s talk</a></div>
   </header>
 
   <div class="story">
     <nav class="rail" aria-label="Case sections">
-      <a href={home} class="back"><span class="ar" aria-hidden="true" set:html={icon('arrow-left')} /><span class="roll"><span data-t="Back">Back</span></span></a>
+      <a href={home} class="back">Back</a>
       {brand && !groups.length ? <span aria-hidden="true"></span> : <ol>
         {(brand ? screens.filter((s, i) => s.group || (i === 0 && s.nav)) : screens.filter((s) => s.nav)).map((s) => <li><a href={`#${s.id}`} data-step={s.id} data-group={s.group}><span class="roll"><span data-t={s.nav}>{s.nav}</span></span></a></li>)}
       </ol>}

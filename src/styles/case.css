@@ -60,12 +60,14 @@ html:has(.cp-story), body:has(.cp-story) { background: #f3f3f1; }
 .cp-story { --l2: color-mix(in srgb, var(--t) 32%, #f8f8f7); --l3: color-mix(in srgb, var(--t) 78%, #f0f0ef); }
 .cp-story h3 { margin: 0; }
 .m-bar { position: sticky; top: 0; z-index: 5; display: flex; justify-content: space-between; align-items: center; padding: 10px var(--pad); background: rgba(243,243,241,.92); backdrop-filter: blur(10px); }
-.back { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px 7px 10px; border-radius: 999px; background: var(--white); box-shadow: var(--sh2); color: var(--soft); font-size: 13px; font-weight: 500; transition: transform .12s var(--out); }
+.back { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 999px; background: var(--white); box-shadow: var(--sh2); color: var(--soft); font-size: 13px; font-weight: 500; transition: transform .12s var(--out); }
 .back { transition: transform .12s var(--out), box-shadow .2s ease-out, color .2s ease-out, background .2s ease-out; }
 .back:active { transform: scale(.97); }
 @media (hover: hover) and (pointer: fine) { .back:hover { color: var(--ink); box-shadow: var(--sh-hover, var(--sh)); } }
 .back .ar svg { width: 16px; height: 16px; display: block; }
 .me-row { display: flex; align-items: center; gap: 10px; }
+.face { transition: box-shadow .2s ease-out; }
+@media (hover: hover) and (pointer: fine) { .face:hover { box-shadow: var(--sh-hover, var(--sh)); } }
 .face { width: 38px; height: 38px; border-radius: 50%; background: var(--white); box-shadow: var(--sh2); color: var(--muted); display: inline-grid; place-items: center; font-size: 11px; flex: none; }
 .btn { display: inline-flex; align-items: center; justify-content: center; background: var(--ink); color: #fff; border-radius: 999px; padding: 8px 16px; font-size: 13px; font-weight: 500; transition: transform .12s var(--out); }
 
@@ -111,7 +113,6 @@ h1.ttl { font-size: clamp(30px, 3vw, 46px); letter-spacing: -.045em; line-height
 .note { font-size: 14px; line-height: 1.5; color: var(--muted); max-width: 36em; }
 .callout { font-size: 14px; line-height: 1.45; color: var(--ink); max-width: 36em; background: var(--t); border-radius: var(--r); padding: 12px 16px; }
 .cp-story .tags span { background: var(--white); box-shadow: 0 0 0 1px rgba(17,17,17,.06); color: var(--ink); font-size: 11px; padding: 3px 9px; }
-.cp-story .tags span:first-child { background: var(--ink); color: #fff; box-shadow: none; }
 
 /* meta: icon row, no cards */
 .meta { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 12px; }
