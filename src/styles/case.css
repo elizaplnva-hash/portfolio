@@ -477,8 +477,8 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 
 /* comparison table: banking app vs crypto wallet */
 .ph.compare, .stage .ph.compare { background: none; aspect-ratio: auto; display: grid; place-items: center; padding: 0 32px; border-radius: 0; transform: none; overflow: visible; }
-.cmp { --col: 140px; position: relative; width: min(100%, 640px); }
-.cmp-plate { position: absolute; top: 0; bottom: 0; right: 0; width: var(--col); background: #fff; border-radius: 18px; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 6px 20px rgba(17,17,17,.08); }
+.cmp { --col: 140px; position: relative; width: min(100%, 660px); background: #fff; border-radius: 22px; padding: 0 10px 8px 28px; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 8px 26px rgba(17,17,17,.09); }
+.cmp-plate { position: absolute; top: 10px; bottom: 10px; right: 10px; width: var(--col); background: #fff; border-radius: 18px; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 6px 20px rgba(17,17,17,.08); }
 .cmp-h, .cmp-r { position: relative; display: grid; grid-template-columns: 1fr var(--col) var(--col); align-items: center; }
 .cmp-h { height: 76px; }
 .cmp-h .tg { justify-self: center; background: var(--white); box-shadow: 0 1px 2px rgba(17,17,17,.05), 0 3px 10px rgba(17,17,17,.06); color: var(--ink); font-size: 13.5px; letter-spacing: -.02em; line-height: 1; padding: 6px 13px; border-radius: 999px; }
@@ -492,3 +492,8 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .cmp { text-align: left; }
 .cmp-r .nm { color: var(--ink); }
 .cp-story .ttl { text-wrap: balance; }
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .stage .cmp { transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .6s var(--out); will-change: transform; }
+  .stage .cmp.lean { transition: transform .15s ease-out; }
+}

@@ -212,6 +212,19 @@ const mail = 'mailto:elizaplnva@gmail.com';
         el.style.removeProperty('--ry');
       });
     });
+    document.querySelectorAll<HTMLElement>('.stage .cmp').forEach((el) => {
+      el.addEventListener('pointermove', (e) => {
+        const r = el.getBoundingClientRect();
+        el.style.setProperty('--rx', `${(-((e.clientY - r.top) / r.height - 0.5) * 8).toFixed(2)}deg`);
+        el.style.setProperty('--ry', `${(((e.clientX - r.left) / r.width - 0.5) * 8).toFixed(2)}deg`);
+        el.classList.add('lean');
+      });
+      el.addEventListener('pointerleave', () => {
+        el.classList.remove('lean');
+        el.style.removeProperty('--rx');
+        el.style.removeProperty('--ry');
+      });
+    });
   }
 
   // light / dark switch for the "every state" screens
