@@ -134,7 +134,6 @@ const pinkwallet: Partial<CaseData> = {
           { title: 'Make recipients and costs clear', body: 'Saved contacts, swap fees in % and $ before confirming.' },
           { title: 'Use warnings where they matter', body: 'Extra checks only before irreversible sends and recovery.' },
         ] },
-        { type: 'pull', text: 'Keep the routine simple. Make the risks clear.' },
       ],
       visual: { layout: 'stack', items: [
         { label: 'Market context', spec: '', alt: 'Why do some U.S. non‑owners stay away from crypto? 49% don’t understand how crypto works, 43% worry about fraud (NCA × Harris Poll, 2025)', stats: { lead: 'Why do some U.S. non‑owners stay away from crypto?', items: [
