@@ -48,6 +48,7 @@ export interface CaseData {
   headline: string;           // the one selling headline (also used on the home tile)
   color: string;              // placeholder fill until real images arrive
   image?: string;             // cover, /images/...
+  noNameTag?: boolean;        // case page: don't show the product name as the first tag
   mark?: string;              // name written behind the cover, if shorter than the product name
   desk?: boolean;             // cover is a monitor + a phone
   phones?: string[];          // layered home cover: transparent phone renders over a tinted fill
@@ -73,6 +74,7 @@ const summary = '[Two sentences: what the product or brand is, and your part in 
 
 
 const pinkwallet: Partial<CaseData> = {
+  noNameTag: true,
   accent: '#E0408F',
   fill: '#E0408F',
   tint: '#FFE6F1',
@@ -85,13 +87,12 @@ const pinkwallet: Partial<CaseData> = {
   summary: 'A crypto wallet for people new to crypto, with PIG, an AI co-pilot that prepares actions and leaves the decision to the user.',
   screens: [
     { id: 'overview', nav: 'Overview', title: ['Crypto for first-timers,', 'through conversation'],
-      lede: 'An iOS crypto wallet for people curious about crypto who have never managed it themselves. I designed the product end to end with our Design Manager: architecture, 200+ screens in two themes, an optional AI assistant and the component system, in eight weeks.',
+      lede: 'PinkWallet is an iOS crypto wallet for people curious about crypto who have never managed it themselves. I designed it end to end with our Design Manager: architecture, 200+ screens in two themes, an optional AI assistant and the component system.',
       blocks: [{ type: 'meta', items: [
-        { label: 'Role', value: 'Product Designer, two-person design team' },
+        { label: 'Role', value: 'Product Designer' },
         { label: 'Scope', value: 'Architecture, UX/UI, design system' },
-        { label: 'Team', value: 'Design Manager (Danart), client’s developers' },
-        { label: 'Timeline', value: 'Dec 2025 – Jan 2026, 8 weeks' },
-        { label: 'Status', value: 'App Store, July 2026' },
+        { label: 'Timeline', value: '8 weeks' },
+        { label: 'Launch', value: 'July 2026' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'The Wallet home in both themes', spec: 'Главный экран кошелька в светлой и тёмной теме рядом. Телефоны прямо, без наклонов и рук, светлый фон.' }] } },
 
