@@ -514,7 +514,7 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .sts-c { display: grid; grid-template-columns: clamp(78px, 7vw, 96px) 1fr; align-items: center; column-gap: 12px; padding: 26px; background: #fff; border-radius: 16px; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 6px 20px rgba(17,17,17,.08); }
 .sts-c .v { font-size: clamp(42px, 3.8vw, 54px); font-weight: 500; letter-spacing: -.05em; line-height: .9; color: var(--af, #e0408f); }
 .sts-c .v sup { font-size: .45em; letter-spacing: -.02em; vertical-align: top; position: relative; top: .1em; margin-left: 2px; }
-.sts-c .t { font-size: clamp(15px, 1.25vw, 18px); font-weight: 600; letter-spacing: -.03em; line-height: 1.2; text-wrap: balance; }
+.sts-c .t { white-space: pre-line; font-size: clamp(15px, 1.25vw, 18px); font-weight: 600; letter-spacing: -.03em; line-height: 1.2; text-wrap: balance; }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   .sts-c { transition: transform .6s var(--out), opacity .5s ease-out; }
   .sts:has(.sts-c:hover) .sts-c:not(:hover) { opacity: .45; transform: scale(.97); }

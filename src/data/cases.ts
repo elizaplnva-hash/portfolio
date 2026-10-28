@@ -138,8 +138,8 @@ const pinkwallet: Partial<CaseData> = {
       ],
       visual: { layout: 'stack', items: [
         { label: 'Market context', spec: '', alt: 'Why don’t more people own crypto? 49% don’t understand how it works, 43% worry about fraud (NCA × Harris Poll, 2025)', stats: { lead: 'Why don’t more people own crypto?', items: [
-          { value: '49', text: 'don’t understand how it works' },
-          { value: '43', text: 'worry about fraud' },
+          { value: '49', text: 'don’t understand\nhow it works' },
+          { value: '43', text: 'worry\nabout fraud' },
         ] } },
         { label: 'What reviews say', spec: 'Ты рисуешь: коллаж 6–8 стикеров с жалобами из отзывов App Store и Reddit, по темам: fees, failed sends, overload, warnings.' },
         { label: 'Competitor audit', spec: 'Ты рисуешь: страница-отчёт аудита Phantom и Trust Wallet: где трение для новичка (отправка, swap, безопасность, объём).' },
