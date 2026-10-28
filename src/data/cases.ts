@@ -87,7 +87,7 @@ const pinkwallet: Partial<CaseData> = {
   summary: 'A crypto wallet for people new to crypto, with PIG, an AI co-pilot that prepares actions and leaves the decision to the user.',
   screens: [
     { id: 'overview', nav: 'Overview', title: ['Crypto for first-timers,', 'through conversation'],
-      lede: 'PinkWallet is a crypto wallet for people who have never managed crypto themselves. Designed end to end with our Design Manager and shipped to the App Store: 200+ screens, two themes, a component system and PIG, an AI co-pilot that never moves money on its own.',
+      lede: 'A wallet for people who have never managed crypto, built so that nobody has to learn it first. I designed it end to end: the architecture, 200+ screens in two themes, a component system and PIG, an AI co-pilot that prepares actions and leaves the decision to the user. It launched on the App Store in July 2026.',
       blocks: [{ type: 'meta', items: [
         { label: 'Role', value: 'Product Designer\nUX and UI design' },
         { label: 'Scope', value: 'Information architecture\nWallet, swap, onboarding' },
@@ -96,76 +96,47 @@ const pinkwallet: Partial<CaseData> = {
       ] }],
       visual: { layout: 'single', items: [{ label: 'The Wallet home in both themes', spec: 'Главный экран кошелька в светлой и тёмной теме рядом. Телефоны прямо, без наклонов и рук, светлый фон.' }] } },
 
-    { id: 'brief', nav: 'Brief', statement: true, title: ['How do you make crypto feel as familiar as a banking app', 'without hiding the parts that can cost someone money?'] },
-
-    { id: 'context', nav: 'Context', wide: true, title: ['Same actions,', 'higher stakes.'],
-      lede: 'A crypto wallet does what a banking app does. The difference is what happens when something goes wrong.',
-      blocks: [{ type: 'table', head: ['In a banking app', 'In a crypto wallet'], rows: [
-        ['Sending money', 'Pick a name or an account number. In crypto, paste a long address: one wrong character and the money is gone.'],
-        ['A mistake', 'The bank can reverse it. In crypto, nobody can.'],
-        ['Exchanging currency', 'One clear rate. In crypto, a rate, a network fee and sometimes a service fee.'],
-        ['Forgotten password', 'Reset it by email. In crypto, lose the 12-word recovery phrase and the wallet is gone forever.'],
-      ] }] },
-
-    { id: 'rethinking', nav: 'Background', title: ['A returning client,', 'a new direction.'],
-      lede: 'In our first project, Danart designed the client’s brand, the PinkCoin token site, the investor deck and the first concept screens, and I contributed to that phase. The client raised funding and came back. By then, the focus had moved from a token for crypto-savvy users to a wallet for beginners. He brought a feature list and a wish for AI, without a defined role for it.',
+    { id: 'background', nav: 'Background', title: ['The brief changed', 'before the design began.'],
+      lede: 'Our second project with the client. The first was a token for crypto-savvy users. He returned with funding and a new goal: a wallet for beginners, a long feature list and a wish for AI. My first job was to turn that into a product with a point of view.',
       blocks: [{ type: 'decision', rows: [
-        ['Build a crypto wallet with AI', 'Help beginners take irreversible financial actions without feeling overwhelmed'],
-        ['Add many features', 'Prioritise a safe, understandable core'],
-        ['Introduce AI', 'Define where AI adds value, and where it must never act alone'],
+        ['A wallet with AI', 'Help beginners take irreversible actions without feeling overwhelmed'],
+        ['Many features', 'A safe, understandable core'],
+        ['AI', 'Know where it helps, and where it must never act alone'],
       ] }],
+      visual: { layout: 'single', items: [{ label: 'Where we started', spec: 'Сайт PinkCoin и первый концепт-экран кошелька рядом, из первого этапа.' }] } },
+
+    { id: 'stakes', nav: 'Stakes', wide: true, title: ['In crypto, a mistake', 'can’t be undone.'],
+      lede: 'A wallet does what a banking app does. What changes is the price of an error.',
+      blocks: [
+        { type: 'table', head: ['In a banking app', 'In a crypto wallet'], rows: [
+          ['Wrong recipient', 'The bank can reverse it. In crypto, nobody can.'],
+          ['Address', 'A name or an account number. In crypto, a long string: one wrong character and the money is gone.'],
+          ['Lost access', 'Reset by email. In crypto, lose the 12-word phrase and the wallet is gone.'],
+        ] },
+        { type: 'callout', text: 'The question for the whole product: how to make crypto feel as familiar as a banking app without hiding what can cost someone money.' },
+      ] },
+
+    { id: 'research', nav: 'Research', title: ['People aren’t afraid of crypto.', 'They don’t understand it.'],
+      lede: 'With no research budget I worked from what already existed: a competitor audit, App Store and Reddit reviews, and conventions people know from messengers and banks.',
+      blocks: [
+        { type: 'facts', caption: 'Pew 2026, NCA × Harris 2025: crypto users in general, not PinkWallet users', items: [
+          { value: '49%', label: 'of non-owners don’t understand how it works' },
+          { value: '43%', label: 'of non-owners worry about fraud' },
+        ] },
+        { type: 'cards', items: [
+          { label: 'Conclusion', title: 'Users bring banking habits.' },
+          { label: 'Conclusion', title: 'The cost must be clear before the decision.' },
+          { label: 'Conclusion', title: 'People recognise names, not addresses.' },
+        ] },
+      ],
       visual: { layout: 'stack', items: [
-        { label: 'PinkCoin site', spec: 'Сайт PinkCoin из первого этапа, один кадр.' },
-        { label: 'First concept', spec: 'Исходный концепт-экран кошелька из первого этапа.' },
-        { label: 'From the first concept to the product architecture', spec: 'Карта информационной архитектуры продукта (IA-карта): разделы, связи, где живёт PIG. Светлый фон.' },
+        { label: 'Who is held back, and why', spec: 'Ты рисуешь: график из двух столбцов, 49% и 43%. Цвета кейса, без осей и сетки.' },
+        { label: 'What reviews say', spec: 'Ты рисуешь: коллаж 6–8 стикеров с жалобами из отзывов App Store и Reddit, по темам: fees, failed sends, overload, warnings.' },
+        { label: 'Competitor audit', spec: 'Ты рисуешь: страница-отчёт аудита Phantom и Trust Wallet: где трение для новичка (отправка, swap, безопасность, объём).' },
       ] } },
 
-    { id: 'market', nav: 'Market', title: ['Not afraid.', 'Unfamiliar.'],
-      blocks: [
-        { type: 'facts', caption: 'Market context', items: [
-          { value: '27% vs 11%', label: 'US men vs women who have used crypto' },
-          { value: '49%', label: 'Non-owners who don’t understand how crypto works' },
-          { value: '43%', label: 'Non-owners worried about fraud' },
-        ] },
-        { type: 'note', text: 'Sources: Pew Research Center, 2026; NCA × Harris Poll, 2025. Market data on crypto users in general, not PinkWallet users.' },
-      ],
-      visual: { layout: 'single', items: [{ label: 'Who is held back, and why', spec: 'Простой график из двух пар столбцов: 27% и 11% (мужчины и женщины в США пользовались криптой), 49% и 43% (не понимают, как работает; боятся мошенничества). Цвета кейса, без осей и сетки.' }] } },
-
-    { id: 'research', nav: 'Research', title: ['No research budget.', 'Still evidence.'],
-      blocks: [
-        { type: 'list', numbered: true, items: [
-          { title: 'Competitor audit', body: 'Where common wallet experiences create friction for beginners.' },
-          { title: 'App Store and Reddit reviews', body: 'Overloaded screens, fees that don’t match the final amount, failed sends, warnings for familiar addresses.' },
-          { title: 'Borrowed conventions', body: 'Contacts from messaging apps, the review step from banking.' },
-        ] },
-        { type: 'cards', items: [
-          { label: 'Assumption', title: 'Users bring banking habits: resets and refunds.' },
-          { label: 'Assumption', title: 'The cost must be clear before the decision.' },
-          { label: 'Assumption', title: 'People recognise names, not addresses.' },
-        ] },
-      ],
-      visual: { layout: 'single', items: [{ label: 'What reviews say', spec: 'Коллаж из 6–8 стикеров с цитатами-жалобами из отзывов App Store и Reddit, сгруппированных по темам: fees, failed sends, overload, warnings.' }] } },
-
-    { id: 'competitors', nav: 'Competitors', title: ['Built for people who', 'already know crypto.'],
-      blocks: [
-        { type: 'cards', items: [
-          { label: 'Sending', title: 'Phantom: contacts, QR. Trust Wallet: addresses, QR.', body: 'PinkWallet: people with several wallets each.' },
-          { label: 'Swap', title: 'Phantom: “You pay / You receive”. Trust Wallet: fees by provider.', body: 'PinkWallet: fee in % and dollars.' },
-          { label: 'Security', title: 'Phantom: transaction checks. Trust Wallet: security scanner.', body: 'PinkWallet: friction only at irreversible moments.' },
-          { label: 'Scope', title: 'Phantom: NFTs, DeFi. Trust Wallet: 100+ networks.', body: 'PinkWallet: 6 assets, core actions.' },
-        ] },
-        { type: 'contrast',
-          from: { label: 'Typical wallet', items: ['Technical language', 'Raw addresses', 'No explanation', 'Hidden risk'] },
-          to: { label: 'PinkWallet', items: ['Familiar actions', 'Saved contacts', 'Progressive explanation', 'Visible confirmation'] } },
-      ],
-      visual: { layout: 'row', items: [
-        { label: 'Phantom', spec: 'Экран отправки в Phantom.' },
-        { label: 'Trust Wallet', spec: 'Экран отправки в Trust Wallet.' },
-        { label: 'PinkWallet', spec: 'Экран отправки в PinkWallet. Подпись под рядом: The same task in three wallets.' },
-      ] } },
-
-    { id: 'direction', nav: 'Direction', title: ['A familiar core,', 'two differences.'],
-      lede: 'We prioritised the features and defined the architecture first. A beginner shouldn’t learn a new interface and a new kind of money at the same time.',
+    { id: 'choices', nav: 'Choices', title: ['Keep the core familiar,', 'change only two things.'],
+      lede: 'Phantom and Trust Wallet are built for people who already know crypto. I started from the opposite end: a beginner shouldn’t learn a new interface and a new kind of money at once. So the core stays familiar, and PIG and Feed are the only two new things.',
       blocks: [
         { type: 'bento', cells: [
           { icon: 'wallet', title: 'Wallet' },
@@ -174,31 +145,21 @@ const pinkwallet: Partial<CaseData> = {
           { icon: 'history', title: 'History' },
           { icon: 'contact', title: 'Contacts' },
           { icon: 'settings', title: 'Settings' },
-          { icon: 'sparkles', title: 'PIG', body: 'AI co-pilot', fill: true },
-          { icon: 'newspaper', title: 'Feed', body: 'Discovery, with a guide', fill: true },
+          { icon: 'sparkles', title: 'PIG', fill: true },
+          { icon: 'newspaper', title: 'Feed', fill: true },
         ] },
+        { type: 'note', text: 'Four goals: understandable core actions, no avoidable mistakes at irreversible moments, AI without lost control, discovery without impulsive decisions.' },
       ],
-      visual: { layout: 'single', items: [{ label: 'Five tabs, two that are new', spec: 'Нижняя навигация из пяти вкладок крупно. PIG и Feed подсвечены цветом кейса, остальные три спокойные.' }] } },
-
-    { id: 'priorities', nav: 'Priorities', wide: true, title: ['Four priorities,', 'in this order.'],
-      blocks: [
-        { type: 'table', head: ['Priority', 'Product goal'], rows: [
-          ['1', 'Make core wallet actions understandable'],
-          ['2', 'Prevent avoidable mistakes in irreversible actions'],
-          ['3', 'Add AI assistance without removing user control'],
-          ['4', 'Encourage discovery without pushing impulsive decisions'],
-        ] },
-      ] },
+      visual: { layout: 'stack', items: [
+        { label: 'Phantom', spec: 'Экран отправки в Phantom.' },
+        { label: 'Trust Wallet', spec: 'Экран отправки в Trust Wallet.' },
+        { label: 'Information architecture', spec: 'IA-карта продукта: разделы и связи, PIG и Feed подсвечены цветом кейса.' },
+      ] } },
 
     { id: 'pig', nav: 'PIG', title: ['A co-pilot,', 'not an autopilot.'],
-      lede: 'The cheaper path was no AI: tooltips and an FAQ. But crypto forces constant decisions about networks, fees and addresses. PIG helps at the moment of the decision.',
+      lede: 'An FAQ would have been cheaper. But crypto forces decisions about networks, fees and addresses at the moment of sending, so help has to appear there. PIG explains, fills in details and flags risks. Only the user can send money.',
       blocks: [
-        { type: 'chain', steps: ['User asks', 'PIG prepares the transaction', 'User reviews the details', 'User confirms'] },
-        { type: 'cards', items: [
-          { icon: 'sparkles', hi: true, title: 'PIG can explain, fill in details and flag risks.' },
-          { icon: 'hand', title: 'Only the user can send money.' },
-          { icon: 'mic', title: 'Optional: text, voice or call.' },
-        ] },
+        { type: 'chain', steps: ['User asks', 'PIG prepares', 'User reviews', 'User confirms'] },
         { type: 'quote', text: 'Totally fine. Everyone starts confused.', by: 'PIG' },
       ],
       visual: { layout: 'row', items: [
@@ -207,93 +168,55 @@ const pinkwallet: Partial<CaseData> = {
         { label: 'PIG prepares, the person decides', spec: 'Подтверждение пользователем. Три экрана по шагам цепочки.' },
       ] } },
 
-    { id: 'feed', nav: 'Feed', title: ['Discovery,', 'with a guide.'],
-      lede: 'News, videos and posts from X inside the wallet. A feed drives engagement, but crypto content can push impulsive decisions. PIG offers a way to slow down.',
+    { id: 'feed', nav: 'Feed', title: ['Discovery', 'without impulse.'],
+      lede: 'A feed brings people back, but crypto content pushes impulsive decisions. So the Feed lives next to PIG: news, videos and posts from X, with a way to slow down when a story raises a question.',
       blocks: [
         { type: 'quote', text: 'Not sure what to make of this?', by: 'PIG in the Feed' },
-        { type: 'note', text: 'For the first three visits, the Feed explains itself as part of onboarding, then gets out of the way.' },
+        { type: 'note', text: 'For the first three visits the Feed explains itself; after that it gets out of the way. Onboarding introduces everything in the order it is used, wallet creation last.' },
       ],
-      visual: { layout: 'row', items: [
-        { label: 'Video post', spec: 'Пост-видео в ленте.' },
+      visual: { layout: 'stack', items: [
         { label: 'Post from X', spec: 'Пост из X в ленте.' },
         { label: 'PIG on the post', spec: 'Тот же пост со всплывающим PIG и вопросом «Not sure what to make of this?».' },
+        { label: 'Exploring the Feed screen', spec: 'Три версии слайда Feed рядом: V1, V2, V3.' },
       ] } },
 
-    { id: 'risk', nav: 'Risk', title: ['Friction only', 'where it protects.'],
-      lede: 'Everywhere else, friction is the enemy. At irreversible moments, it is the safeguard.',
-      blocks: [
-        { type: 'decision', rows: [
-          ['Wallet setup: losing access forever', 'Three progressive warnings, an acknowledgement, a PIN that can’t be recovered'],
-          ['Transaction review: wrong address, network or amount', 'An explicit review step instead of one-tap sending'],
-          ['During the transaction: unclear status', 'Progress and errors, never a guess'],
-          ['After the transaction: unclear outcome', 'Done, or what needs attention'],
-        ] },
-        { type: 'note', text: 'I proposed splitting the recovery warnings into three short steps instead of one long message, to explain without overwhelming.' },
-      ],
-      visual: { layout: 'stack', items: [
-        { label: 'Recovery phrase', spec: 'Экран recovery phrase с предупреждениями.' },
-        { label: 'Review before sending', spec: 'Экран подтверждения перед отправкой.' },
-        { label: 'Before, during, after', spec: 'Поток Before → During → After: три маленьких экрана в ряд (подтверждение, прогресс, результат).' },
-      ] } },
-
-    { id: 'costs', nav: 'Costs', title: ['Readable costs,', 'recognisable people.'],
-      blocks: [
-        { type: 'cards', items: [
-          { icon: 'receipt', hi: true, label: 'Cost before commitment', title: 'Every amount in crypto and dollars.', body: '3% is easy to ignore, $3.60 is not.' },
-          { icon: 'contact', label: 'Sending to people', title: 'Several wallets per contact, notes, invalid addresses flagged.' },
-        ] },
-        { type: 'note', text: 'PinkWallet launched with a 0% fee. The fee component supports percentage and fiat display for future charges.' },
-      ],
-      visual: { layout: 'stack', items: [
-        { label: 'Fee component, designed for future charges', spec: 'Превью обмена с комиссией в процентах и в долларах.' },
-        { label: 'Contact', spec: 'Карточка контакта с несколькими кошельками и заметкой.' },
-        { label: 'Invalid address', spec: 'Ошибка адреса: как экран сообщает, что адрес неверный.' },
-      ] } },
-
-    { id: 'onboarding', nav: 'Onboarding', title: ['Introduced in the', 'order it’s used.'],
-      lede: 'Eleven screens follow the app’s own logic: welcome and wallet, then Feed, PIG, Swap and Contacts, then theme, language and currency. Only then wallet creation.',
-      blocks: [{ type: 'facts', caption: 'Onboarding', items: [
-        { value: '11', label: 'Screens' }, { value: '5', label: 'Areas' }, { value: '3', label: 'Versions of the Feed screen' },
+    { id: 'safeguards', nav: 'Safeguards', title: ['Friction only', 'where it protects.'],
+      lede: 'Everywhere else friction is the enemy. At irreversible moments it is the safeguard.',
+      blocks: [{ type: 'decision', rows: [
+        ['Wallet setup', 'Three short warnings instead of one long one, and a PIN that can’t be recovered'],
+        ['Before sending', 'An explicit review, every amount in crypto and dollars: 3% is easy to ignore, $3.60 is not'],
+        ['Recipients', 'Several wallets per contact, invalid addresses flagged'],
+        ['After sending', 'Done, or what needs attention'],
       ] }],
       visual: { layout: 'stack', items: [
-        { label: 'Exploring the Feed screen', spec: 'Три версии слайда Feed рядом: V1, V2, V3.' },
-        { label: 'Final screens', spec: 'Ряд финальных экранов онбординга: Welcome, Feed, PIG, Swap, Contacts.' },
+        { label: 'Recovery phrase', spec: 'Recovery phrase с тремя короткими предупреждениями.' },
+        { label: 'Review before sending', spec: 'Экран подтверждения перед отправкой.' },
+        { label: 'Fee, contact, invalid address', spec: 'Три маленьких экрана в ряд: превью комиссии (Fee component, designed for future charges), контакт с несколькими кошельками, ошибка адреса.' },
       ] } },
 
-    { id: 'cut', nav: 'What we cut', title: ['Saying no was', 'most of the job.'],
+    { id: 'tradeoffs', nav: 'Trade-offs', title: ['Saying no was', 'most of the job.'],
+      lede: 'Every decision passed one test: does it reduce the chance that someone loses money or gives up?',
       blocks: [
-        { type: 'callout', text: 'Does this reduce the chance someone loses money or gives up?' },
         { type: 'cards', items: [
-          { label: 'Product', title: 'Trader-grade analytics', body: 'Beginners needed context, not a trading terminal.' },
-          { label: 'Product', title: 'Autonomous transactions', body: 'PIG never moves money on its own.' },
-          { label: 'Product', title: 'Buy recommendations', body: 'They pushed beginners toward speculation.' },
-          { label: 'Product', title: 'Android', body: 'The budget covered one platform.' },
-          { label: 'Process', title: 'Wireframes', body: 'Skipped to fit eight weeks. We defined the information architecture first, built on proven competitor patterns, and reviewed every section with the client.' },
+          { label: 'Cut', title: 'Trader-grade analytics' },
+          { label: 'Cut', title: 'Buy recommendations' },
+          { label: 'Cut', title: 'Android' },
+          { label: 'Skipped', title: 'Wireframes', body: 'Architecture first, every section reviewed with the client.' },
         ] },
-      ] },
-
-    { id: 'ownership', nav: 'Ownership', title: ['Who owned', 'what.'],
-      blocks: [
-        { type: 'decision', rows: [
-          ['Product direction and architecture', 'Shared with the Design Manager'],
-          ['UX flows and interaction design', 'Me'],
-          ['UI and design system', 'Me'],
-          ['Client coordination', 'Design Manager'],
-          ['Development', 'Client’s team'],
-        ] },
-        { type: 'note', text: 'We debated choices like how much fee detail to show, and aligned with the client section by section. With no direct line to the developers, motion was less specified, and the shipped transitions show it.' },
-      ] },
+        { type: 'note', text: 'I owned UX flows, UI and the design system. Direction and architecture I shaped with the Design Manager, who also led the client conversation.' },
+      ],
+      visual: { layout: 'single', items: [{ label: 'What made the cut', spec: 'Ты рисуешь: матрица приоритизации «снижает риск потери или отказа / усилие». Вошедшее внутри, отрезанное (аналитика, рекомендации покупки, Android) за границей.' }] } },
 
     { id: 'system', nav: 'Design system', title: ['One product,', 'two moods.'],
       blocks: [{ type: 'bento', cells: [
-        { icon: 'sun-moon', title: 'Two themes, same components', fill: true },
+        { icon: 'sun-moon', title: 'Two themes on the same components', fill: true },
         { icon: 'component', title: 'Anything used twice became a component' },
         { icon: 'eye', title: 'WCAG AA', body: 'States by shape and label.' },
-        { icon: 'box', title: '3D assets made with AI', body: 'Curated to one material, light and palette.' },
+        { icon: 'box', title: '3D assets made with AI', body: 'Curated to one material and palette.' },
         { icon: 'pencil-line', title: 'Copy written by me, AI-assisted' },
       ] }],
       visual: { layout: 'stack', items: [
-        { label: 'Coin card anatomy', spec: 'Карточка монеты с вариантами и разметкой анатомии: что из чего состоит, какие состояния.' },
+        { label: 'Coin card anatomy', spec: 'Ты рисуешь: карточка монеты с вариантами и разметкой анатомии.' },
         { label: 'Same screen, two themes', spec: 'Один и тот же экран в светлой и тёмной теме.' },
         { label: 'Asset sheet', spec: 'Лист ассетов: монеты, иконки транзакций, два PIG.' },
       ] } },
@@ -306,20 +229,17 @@ const pinkwallet: Partial<CaseData> = {
         { value: '65%', label: 'Swap conversion' },
         { value: '98%', label: 'Transaction success' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'From first screen to a wallet', spec: 'Горизонтальная воронка: онбординг 80% → создание кошелька 85%. Отдельно 65% и 98% крупными цифрами. Без лишних осей и сетки.' }] } },
+      visual: { layout: 'single', items: [{ label: 'From first screen to a wallet', spec: 'Ты рисуешь: горизонтальная воронка онбординг 80% → создание кошелька 85%, отдельно 65% и 98% крупными цифрами. Без осей и сетки.' }] } },
 
     { id: 'reflection', nav: 'Reflection', title: ['Built on convention,', 'never tested.'],
-      lede: 'Everything here rests on convention and on reducing the cost of a mistake. That was the right call for eight weeks, but it’s still an assumption.',
-      blocks: [
-        { type: 'list', items: [
-          { title: 'Test the confirmation step', body: 'Safety or friction?' },
-          { title: 'Test trust in PIG', body: 'After its first prepared transaction.' },
-          { title: 'Work with developers', body: 'Regular reviews and interaction specs.' },
-          { title: 'Connect decisions to data', body: 'Before handoff.' },
-        ] },
-        { type: 'chain', steps: ['You send / They receive', 'Say a transfer is final', 'Check recovery understanding'] },
-      ],
-      visual: { layout: 'single', items: [{ label: 'Concept for the next iteration', spec: 'Экран подтверждения до и после: слева текущий, справа с блоком «You send / They receive» и фразой о том, что перевод окончательный.' }] } },
+      lede: 'Everything here rests on convention and on lowering the cost of a mistake. That was right for eight weeks, but it is still an assumption.',
+      blocks: [{ type: 'list', items: [
+        { title: 'Test the confirmation step', body: 'Does it protect or annoy?' },
+        { title: 'Test trust in PIG', body: 'After its first prepared transaction.' },
+        { title: 'Work with developers through interaction specs', body: 'With no direct line to them, motion was less specified, and the shipped transitions show it.' },
+        { title: 'Connect decisions to data', body: 'Before handoff.' },
+      ] }],
+      visual: { layout: 'single', items: [{ label: 'Concept for the next iteration', spec: 'Ты рисуешь: экран подтверждения до и после, справа блок «You send / They receive» и фраза, что перевод окончательный. Рядом можно план теста на одну страницу.' }] } },
 
     { id: 'closing', nav: 'Closing', statement: true, title: ['Crypto shouldn’t require people to think like traders', 'before they can participate.'] },
   ],
