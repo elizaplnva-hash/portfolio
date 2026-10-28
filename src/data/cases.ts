@@ -87,12 +87,12 @@ const pinkwallet: Partial<CaseData> = {
   summary: 'A crypto wallet for people new to crypto, with PIG, an AI co-pilot that prepares actions and leaves the decision to the user.',
   screens: [
     { id: 'overview', nav: 'Overview', title: ['Crypto for first-timers,', 'through conversation'],
-      lede: 'PinkWallet is an iOS crypto wallet for people curious about crypto who have never managed it themselves. I designed it end to end with our Design Manager: architecture, 200+ screens in two themes, an optional AI assistant and the component system.',
+      lede: 'PinkWallet is a crypto wallet for people who have never managed crypto themselves. Designed end to end with our Design Manager and shipped to the App Store: 200+ screens, two themes, a component system and PIG, an AI co-pilot that never moves money on its own.',
       blocks: [{ type: 'meta', items: [
-        { label: 'Role', value: 'Product Designer' },
-        { label: 'Scope', value: 'Architecture, UX/UI, design system' },
-        { label: 'Timeline', value: '8 weeks' },
-        { label: 'Launch', value: 'July 2026' },
+        { label: 'Role', value: 'Product Designer\nUX and UI design' },
+        { label: 'Scope', value: 'Information architecture\nWallet, swap, onboarding' },
+        { label: 'Timeline', value: '8 weeks\nDec 2025 – Jan 2026' },
+        { label: 'Launch', value: 'July 2026\niOS' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'The Wallet home in both themes', spec: 'Главный экран кошелька в светлой и тёмной теме рядом. Телефоны прямо, без наклонов и рук, светлый фон.' }] } },
 

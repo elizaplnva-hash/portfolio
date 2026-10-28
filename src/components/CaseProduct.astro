@@ -69,7 +69,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
               switch (b.type) {
                 case 'meta': return (
                   <ul class="meta rv">{b.items.map((m) => (
-                    <li><span class="ic" aria-hidden="true" set:html={icon(metaIcon[m.label] ?? 'circle-check')} /><span><small>{m.label}</small><b>{m.value}</b></span></li>))}
+                    <li><span class="ic" aria-hidden="true" set:html={icon(metaIcon[m.label] ?? 'circle-check')} /><span><small>{m.label}</small><b>{m.value.split('\n').map((l) => <span>{l}</span>)}</b></span></li>))}
                   </ul>);
                 case 'bento': return (
                   <div class="bento rv">{b.cells.map((x) => (
