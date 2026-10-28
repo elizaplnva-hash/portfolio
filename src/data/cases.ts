@@ -113,10 +113,10 @@ const pinkwallet: Partial<CaseData> = {
       ],
       visual: { layout: 'single', items: [{ label: 'Where we started', spec: '', combo: ['/images/pw-pinkcoin-site.webp', '/images/pw-wallet-phone.webp'], alt: 'The PinkCoin token website from the first project, and the first concept of the wallet screen' }] } },
 
-    { id: 'stakes', nav: 'Context', title: ['In crypto, a mistake', 'can’t be undone.'],
-      lede: 'A self-custody wallet lets people hold and send crypto without a bank managing their funds. Day to day, it works like a banking app.',
+    { id: 'stakes', nav: 'Context', title: ['Crypto without a bank', 'in the middle.'],
+      lede: 'It’s digital money that people send to each other directly.\nSome apps keep it for you, the way a bank does. PinkWallet doesn’t: only the owner can access and move their money.\nAccess is a list of 12 words, like a password that can’t be reset. Payments go to a long string of letters and numbers, not a name. A sent payment can’t be cancelled, and there’s no one to call.',
       blocks: [
-        { type: 'pull', text: 'The challenge was to make it feel just as familiar, without hiding the risks.' },
+        { type: 'pull', text: 'The challenge was to make it feel as familiar as a banking app, without hiding the risks.' },
       ],
       visual: { layout: 'single', items: [{ label: 'After you press send', spec: '', alt: 'A mistake can be fixed in a banking app and cannot be fixed in a crypto wallet', compare: { cols: ['Banking app', 'Crypto wallet'], rows: [
         { label: 'Cancel a payment before it settles', a: true, b: false },
