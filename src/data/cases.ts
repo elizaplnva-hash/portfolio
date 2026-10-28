@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Security'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string }[]; stats?: { lead: string; items: { value: string; text: string }[] }; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Security'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; stats?: { lead: string; items: { value: string; text: string }[] }; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -137,24 +137,24 @@ const pinkwallet: Partial<CaseData> = {
         { type: 'pull', text: 'Keep everyday actions familiar. Make risks clear before users commit.' },
       ],
       visual: { layout: 'stack', items: [
-        { label: 'Market context', spec: '', alt: 'Why don’t more people own crypto? 49% don’t understand how it works, 43% worry about fraud (NCA × Harris Poll, 2025)', stats: { lead: 'Why don’t more people own crypto?', items: [
-          { value: '49', text: 'don’t understand\nhow it works' },
-          { value: '43', text: 'worry\nabout fraud' },
+        { label: 'Market context', spec: '', alt: 'Why do some U.S. non‑owners stay away from crypto? 49% don’t understand how crypto works, 43% worry about fraud (NCA × Harris Poll, 2025)', stats: { lead: 'Why do some U.S. non‑owners stay away from crypto?', items: [
+          { value: '49', text: 'Don’t understand\nhow crypto works' },
+          { value: '43', text: 'Worry\nabout fraud' },
         ] } },
         { label: 'What people say', spec: '', alt: 'Three public posts about wallet friction: network fees, a security warning and an address typo', reviews: [
-          { tag: 'Fees', source: 'appstore', text: '“The app keeps saying the network fee is not enough no matter how much I adjust the amount.”', meta: 'Trust Wallet · App Store · Apr 2024' },
-          { tag: 'Warnings', source: 'github', text: '“No balance change found. This transaction maybe malicious.”', meta: 'Phantom · GitHub · Nov 2023' },
+          { tag: 'Fees', from: 'Trust · App Store', source: 'appstore', text: '“The app keeps saying the network fee is not enough no matter how much I adjust the amount.”', meta: 'Trust Wallet · App Store · Apr 2024' },
+          { tag: 'Warnings', from: 'Phantom · GitHub', source: 'github', text: '“No balance change found. This transaction maybe malicious.”', meta: 'Phantom · GitHub · Nov 2023' },
           { tag: 'Addresses', source: 'reddit', text: '“The last number of the address is changed.”', meta: 'r/CryptoHelp · Oct 2026' },
         ] },
         { label: 'Competitor audit', spec: '', alt: 'The Phantom and Trust Wallet home screens with the points where a beginner meets friction', audit: [
           { name: 'Phantom', logo: 'phantom', phone: '/images/pw-audit-phantom.webp', cards: [
-            { tag: 'Sending', text: 'Four tabs at the top, none for moving money' },
-            { tag: 'Swap', text: 'Trade is a tab, not an action beside the balance' },
-            { tag: 'Security', text: 'Leverage up to 40x on the home screen' } ] },
+            { tag: 'Sending', text: 'Send isn’t a top-level action' },
+            { tag: 'Swap', text: 'Trading sits in a separate tab' },
+            { tag: 'Security', text: 'Leverage up to 40× is promoted on the home screen' } ] },
           { name: 'Trust Wallet', logo: 'trust', phone: '/images/pw-audit-trust.webp', cards: [
-            { tag: 'Sending', text: 'One of four equal buttons under the balance' },
-            { tag: 'Swap', text: 'The only highlighted action on Home' },
-            { tag: 'Security', text: 'WETH appears twice, on two networks' } ] },
+            { tag: 'Sending', text: 'Send is one of four primary actions' },
+            { tag: 'Swap', text: 'Swap has a dedicated shortcut' },
+            { tag: 'Security', text: 'WETH appears as separate entries across two networks' } ] },
         ] },
       ] } },
 
