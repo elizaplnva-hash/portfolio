@@ -445,10 +445,10 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 
 /* numbered brief cards + first-person quote */
 .numbered { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; counter-reset: nb; }
-.numbered li { counter-increment: nb; display: grid; grid-template-columns: 30px 1fr; gap: 14px; align-items: start; border-radius: var(--r); padding: 18px 22px; }
-.numbered .num { width: 30px; height: 30px; border-radius: 50%; background: var(--af); color: #fff; display: grid; place-items: center; }
-.numbered .num::before { content: counter(nb); font-size: 13px; font-weight: 600; line-height: 1; }
-.numbered h3 { margin: 0; font-size: 16px; font-weight: 600; line-height: 30px; letter-spacing: -.02em; }
+.numbered li { counter-increment: nb; display: grid; grid-template-columns: 22px 1fr; gap: 12px; align-items: start; border-radius: var(--r); padding: 18px 22px; }
+.numbered .num { width: 22px; height: 22px; border-radius: 50%; background: var(--af); color: #fff; display: grid; place-items: center; }
+.numbered .num::before { content: counter(nb); font-size: 11px; font-weight: 600; line-height: 1; }
+.numbered h3 { margin: 0; font-size: 16px; font-weight: 600; line-height: 22px; letter-spacing: -.02em; }
 .numbered p { margin: 2px 0 0; font-size: 14px; line-height: 1.4; color: var(--muted); letter-spacing: -.01em; }
 .cp-story:not(.brand) .numbered li { background: #fff; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 6px 20px rgba(17,17,17,.08); }
 .cp-story:not(.brand) .quote.me { background: var(--t); box-shadow: none; display: grid; grid-template-columns: auto 1fr auto; gap: 18px; align-items: center; padding: 22px 24px; }
