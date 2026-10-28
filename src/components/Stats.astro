@@ -1,0 +1,10 @@
+---
+interface Props { lead: string; items: { value: string; text: string }[]; }
+const { lead, items } = Astro.props;
+---
+<div class="sts">
+  <p class="sts-lead">{lead}</p>
+  {items.map((it) => (
+    <div class="sts-c"><span class="v">{it.value}<sup>%</sup></span><span class="t">{it.text}</span></div>
+  ))}
+</div>

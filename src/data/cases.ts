@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; stats?: { lead: string; items: { value: string; text: string }[] }; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -126,21 +126,21 @@ const pinkwallet: Partial<CaseData> = {
         { label: 'Get the money back', a: true, b: false },
       ] } }] } },
 
-    { id: 'research', nav: 'Research', title: ['People aren’t afraid of crypto.', 'They don’t understand it.'],
-      lede: 'With no research budget I worked from what already existed: a competitor audit, App Store and Reddit reviews, and conventions people know from messengers and banks.',
+    { id: 'research', nav: 'Research', title: ['Research pointed to a gap','in understanding.'],
+      lede: 'With no budget for interviews or usability testing, I worked from what already existed: competitor analysis, App Store and Reddit reviews, and patterns from banking and messaging apps.',
       blocks: [
-        { type: 'facts', caption: 'Pew 2026, NCA × Harris 2025: crypto users in general, not PinkWallet users', items: [
-          { value: '49%', label: 'of non-owners don’t understand how it works' },
-          { value: '43%', label: 'of non-owners worry about fraud' },
+        { type: 'numbered', items: [
+          { title: 'Familiar interactions matter', body: 'Addresses and networks replace picking a contact, so I borrowed patterns from banking and messaging apps.' },
+          { title: 'Costs need to be visible upfront', body: 'Reviews showed fees that differed from the final amount, so costs appear in % and $ before confirmation.' },
+          { title: 'Warnings need context', body: 'Frequent warnings, even for known addresses, so extra friction is reserved for irreversible sends and recovery.' },
         ] },
-        { type: 'cards', items: [
-          { label: 'Conclusion', title: 'Users bring banking habits.' },
-          { label: 'Conclusion', title: 'The cost must be clear before the decision.' },
-          { label: 'Conclusion', title: 'People recognise names, not addresses.' },
-        ] },
+        { type: 'pull', text: 'Keep everyday actions familiar, show costs before confirmation, add checks only where a mistake costs money or access.' },
       ],
       visual: { layout: 'stack', items: [
-        { label: 'Who is held back, and why', spec: 'Ты рисуешь: график из двух столбцов, 49% и 43%. Цвета кейса, без осей и сетки.' },
+        { label: 'Market context', spec: '', alt: 'Why don’t more people own crypto? 49% don’t understand how it works, 43% worry about fraud (NCA × Harris Poll, 2025)', stats: { lead: 'Why don’t more people own crypto?', items: [
+          { value: '49', text: 'don’t understand how it works' },
+          { value: '43', text: 'worry about fraud' },
+        ] } },
         { label: 'What reviews say', spec: 'Ты рисуешь: коллаж 6–8 стикеров с жалобами из отзывов App Store и Reddit, по темам: fees, failed sends, overload, warnings.' },
         { label: 'Competitor audit', spec: 'Ты рисуешь: страница-отчёт аудита Phantom и Trust Wallet: где трение для новичка (отправка, swap, безопасность, объём).' },
       ] } },
