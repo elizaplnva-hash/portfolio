@@ -22,7 +22,7 @@ One sheet that fits one screen (desktop 4×3 grid, 100dvh, min 780px). Front = P
 - Front: grey ground `#f3f3f1`, all tiles white; hover = a very light shadow only (`--sh-hover`). Back: dark ground, dark tiles, no shadows and no outlines on hover; tags and chips are dark translucent (inverted front).
 - Text: black for primary, grey for secondary.
 - Colour: pink `--pink: #e0408f` for section-tag dots and small accents; green only for the status dot; case colours on covers and process steps; brand colours only inside the social icons. No gradients in UI (the Earth icon and curl shading are the only exceptions).
-- Icons: Tabler (filled) for UI, Simple Icons shapes for brand logos, Lucide on case pages. Arrows only on Back and in the process chain on case pages.
+- Icons: Tabler (filled) for UI and on case pages (icon in a case-tinted circle; Lucide outline only as a fallback when Tabler has no filled twin), Simple Icons shapes for brand logos. Arrows only on Back and in the process chain on case pages.
 - Motion: transform/opacity only, ease-out, ~0.4–0.7s; no page-load entrance animations. Always honour `prefers-reduced-motion`. Pointer effects on mouse devices only.
 - Must not look "AI-made": no filler copy, no mono-caps labels.
 - Keep it fast: no UI frameworks; client JS only for pointer effects, cover measuring and the curl.
@@ -34,7 +34,7 @@ No fabricated metrics. Case headline metrics (Jam Social 2.5×, Lapunzel 20%, Gr
 `npm run dev` / `npm run build`. Work on `feat/links`, push, review the Vercel preview URL. Merge to `main` only when the owner explicitly says so ("влей").
 
 ## Case pages (Product)
-- Grey ground. Importance = elevation: key element white with soft shadow (`.l1`), supporting off-white (`.l2`), the rest slightly grey (`.l3`). Black main text, grey secondary.
+- Grey ground. Cards are white with a soft shadow and generous inner padding (dark brand cases keep the old elevation levels `.l1`/`.l2`/`.l3`). Image panel: light grey `panel` inset 10px from the frame, rounded. Black main text, grey secondary.
 - Rail on the left (Back pill, section list with the active item white, photo + Contact button), content column, image panel to the right edge. One full screen per section (scroll-snap). Brand cases use the dark mode of the same template with `group` sections in the rail and an optional `link` button.
 - Each case has a pastel `tint` behind its images; case colour (`fill`) only in small icons. Headlines all black. Facts are cards with numbers in the case colour. Last screen: CTA left, next-case and brand-work tiles right.
 - Vary the form: icon row, bento, divider lists, contrast panels, table, plain text, one tinted callout. Cards react on hover.
