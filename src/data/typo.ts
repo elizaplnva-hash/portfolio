@@ -4,6 +4,7 @@ const NB = ' ';
 const SHORT = /(^|\s)(a|an|the|to|of|in|on|at|by|for|and|or|but|is|it|its|I|we|no|as|if|so|my|our|his|her|with|from|than|that|then|when|each|every|one|two|three)\s+/gi;
 
 export function tidy(s: string): string {
+  if (s.includes('\n')) return s.split('\n').map(tidy).join('\n');
   if (s.length < 24) return s;
   let t = s.replace(/(^|[.!?:]\s+)([A-Za-z’']{1,5})\s+/g, (_m, p, w) => p + w + NB);
   t = t.replace(SHORT, (_m, p, w) => p + w + NB);

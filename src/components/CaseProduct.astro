@@ -64,7 +64,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
               : s.statement
                 ? <h2 class="ttl"><span class="ln">{s.title[0]}</span> {s.title[1] && <em class="ln">{s.title[1]}</em>}</h2>
                 : <h2 class="ttl rv">{s.title[0]} {s.title[1] && <em>{s.title[1]}</em>}</h2>}
-            {s.lede && <p class="lede rv">{s.lede}</p>}
+            {s.lede && s.lede.split('\n').map((t) => <p class="lede rv">{t}</p>)}
             {s.link && <a class="btn live rv" href={s.link.href} target="_blank" rel="noopener">{s.link.label}</a>}
 
             {s.blocks?.map((b) => {
