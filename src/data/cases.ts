@@ -85,7 +85,7 @@ const pinkwallet: Partial<CaseData> = {
   summary: 'A crypto wallet for people new to crypto, with PIG, an AI co-pilot that prepares actions and leaves the decision to the user.',
   screens: [
     { id: 'overview', nav: 'Overview', title: ['Crypto for first-timers,', 'through conversation'],
-      lede: 'A returning client. After Danart designed the brand, the investor deck and the first concept screens, the client secured funding and came back to build the full product. Eight weeks later: 200+ screens, two themes and a component system for a wallet made for people new to crypto.',
+      lede: 'An iOS crypto wallet for people curious about crypto who have never managed it themselves. I designed the product end to end with our Design Manager: architecture, 200+ screens in two themes, an optional AI assistant and the component system, in eight weeks.',
       blocks: [{ type: 'meta', items: [
         { label: 'Role', value: 'Product Designer, two-person design team' },
         { label: 'Scope', value: 'Architecture, UX/UI, design system' },
@@ -106,8 +106,8 @@ const pinkwallet: Partial<CaseData> = {
         ['Forgotten password', 'Reset it by email. In crypto, lose the 12-word recovery phrase and the wallet is gone forever.'],
       ] }] },
 
-    { id: 'rethinking', nav: 'Rethinking', title: ['What the client asked,', 'and what we solved.'],
-      lede: 'This was our second project with the client. In the first, Danart designed his brand, the PinkCoin token site, the investor deck and the first concept screens, and I contributed to that phase. Between the two, the focus moved from a token for crypto-savvy users to a wallet for beginners. He came back with funding, a feature list and a wish for AI, without a defined role for it. We prioritised the features and defined the architecture first.',
+    { id: 'rethinking', nav: 'Background', title: ['A returning client,', 'a new direction.'],
+      lede: 'In our first project, Danart designed the client’s brand, the PinkCoin token site, the investor deck and the first concept screens, and I contributed to that phase. The client raised funding and came back. By then, the focus had moved from a token for crypto-savvy users to a wallet for beginners. He brought a feature list and a wish for AI, without a defined role for it.',
       blocks: [{ type: 'decision', rows: [
         ['Build a crypto wallet with AI', 'Help beginners take irreversible financial actions without feeling overwhelmed'],
         ['Add many features', 'Prioritise a safe, understandable core'],
@@ -164,7 +164,7 @@ const pinkwallet: Partial<CaseData> = {
       ] } },
 
     { id: 'direction', nav: 'Direction', title: ['A familiar core,', 'two differences.'],
-      lede: 'A beginner shouldn’t learn a new interface and a new kind of money at the same time.',
+      lede: 'We prioritised the features and defined the architecture first. A beginner shouldn’t learn a new interface and a new kind of money at the same time.',
       blocks: [
         { type: 'bento', cells: [
           { icon: 'wallet', title: 'Wallet' },
