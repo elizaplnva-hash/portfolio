@@ -99,15 +99,15 @@ const pinkwallet: Partial<CaseData> = {
       ] }],
       visual: { layout: 'single', items: [{ label: 'The Wallet home in both themes', spec: '', srcs: ['/images/pw-home-dark.webp', '/images/pw-home-light.webp'], alt: 'The PinkWallet home screen in the dark and the light theme' }] } },
 
-    { id: 'background', nav: 'Background', title: ['The brief changed', 'before the design began.'],
-      lede: 'Our second project with the client. The first was a token for crypto-savvy users. He returned with funding and a new goal.',
+    { id: 'background', nav: 'Background', title: ['The brief changed before','we started designing.'],
+      lede: 'This was our second project with the client. The first was a crypto token for experienced users. This time he came back with funding and a different idea: a wallet for people new to crypto. It came with three things to work out.',
       blocks: [
         { type: 'numbered', items: [
-          { title: 'A wallet for beginners', body: 'Help people take irreversible actions without feeling overwhelmed.' },
-          { title: 'A long feature list', body: 'Find the safe, understandable core and leave the rest for later.' },
-          { title: 'A wish for AI', body: 'Decide where it helps and where it must never act alone.' },
+          { title: 'A new audience', body: 'People with little or no experience managing their own crypto.' },
+          { title: 'The feature list', body: 'Decide what belongs in the first version and what can wait.' },
+          { title: 'The AI request', body: 'Find a useful role for AI without giving it control over users’ money.' },
         ] },
-        { type: 'quote', me: true, text: 'My first job was to turn a wish list into a product with a point of view.', by: 'Eliza, Product Designer' },
+        { type: 'note', text: 'My first job was to turn that wish list into a product with a point of view.' },
       ],
       visual: { layout: 'single', items: [{ label: 'Where we started', spec: 'Сайт PinkCoin и первый концепт-экран кошелька рядом, из первого этапа.' }] } },
 
