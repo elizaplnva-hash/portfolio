@@ -599,3 +599,21 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
   .ph.trio .tp:hover { transform: scale(1.12); position: relative; z-index: 2; }
   .ph.trio:has(.tp:hover) .tp:not(:hover) { transform: scale(.97); }
 }
+
+/* scope table: keep / limit / cut */
+.cmp.scope { --col: 64px; padding: 0 18px 8px 28px; }
+.cmp.scope .cmp-h, .cmp.scope .cmp-r { grid-template-columns: 1fr repeat(3, var(--col)); }
+.cmp.scope .cmp-h { height: 64px; }
+.cmp.scope .cmp-r { height: auto; padding: 13px 0; border-top: 1px solid #eee; }
+.cmp.scope .nm small { display: block; margin-top: 3px; font-size: 13px; font-weight: 400; color: var(--muted); letter-spacing: -.01em; line-height: 1.35; }
+.cmp.scope .cmp-r:last-child .nm { font-weight: 500; }
+.cmp.scope .tg { font-weight: 700; font-size: 12.5px; padding: 6px 11px; box-shadow: none; }
+.cmp.scope .tg.keep { background: #e3f4e8; color: #2f7d4d; }
+.cmp.scope .tg.limit { background: #fdefd6; color: #b7791f; }
+.cmp.scope .tg.cut { background: #fde4e5; color: #e5484d; }
+.cmp.scope i.on svg { width: 16px; height: 16px; }
+.cmp.scope i.on.keep { background: #e3f4e8; color: #2f7d4d; }
+.cmp.scope i.on.limit { background: #fdefd6; color: #b7791f; }
+.cmp.scope i.on.cut { background: #fde4e5; color: #e5484d; }
+.cmp.scope i.off { width: 10px; height: 10px; background: #e6e6e6; }
+@media (max-width: 899px) { .cmp.scope { --col: 52px; padding-left: 18px; } }

@@ -1,0 +1,17 @@
+---
+import { icon } from '../data/icons';
+interface Props { rows: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; }
+const { rows } = Astro.props;
+const cols = [{ k: 'keep', t: 'Keep', i: 'circle-check' }, { k: 'limit', t: 'Limit', i: 'shield' }, { k: 'cut', t: 'Cut', i: 'circle-x' }] as const;
+---
+<div class="cmp scope">
+  <div class="cmp-h"><span></span>{cols.map((c) => <span class:list={['tg', c.k]}>{c.t}</span>)}</div>
+  {rows.map((r) => (
+    <div class="cmp-r">
+      <span class="nm">{r.name}<small>{r.why}</small></span>
+      {cols.map((c) => r.d === c.k
+        ? <i class:list={['on', c.k]} role="img" aria-label={c.t} set:html={icon(c.i)} />
+        : <i class="off" aria-hidden="true"></i>)}
+    </div>
+  ))}
+</div>

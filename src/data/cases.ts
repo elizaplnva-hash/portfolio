@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Security'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; stats?: { lead: string; items: { value: string; text: string }[] }; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Security'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; stats?: { lead: string; items: { value: string; text: string }[] }; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -199,18 +199,19 @@ const pinkwallet: Partial<CaseData> = {
         { src: '/images/pw-safe-3.webp', label: 'Create a PIN', icon: 'lock' },
       ], alt: 'Three wallet setup screens: three warnings with a confirmation checkbox, the 12-word recovery phrase, and PIN creation.' }] } },
 
-    { id: 'tradeoffs', nav: 'Trade-offs', title: ['Saying no was', 'most of the job.'],
-      lede: 'Every decision passed one test: does it reduce the chance that someone loses money or gives up?',
+    { id: 'tradeoffs', nav: 'Trade-offs', title: ['One question', 'decided the scope.'],
+      lede: 'With eight weeks and two designers, we had to be selective. Every feature passed one question: does it reduce the chance that someone loses money or gives up? We kept what beginners need, limited what could add risk, and cut the rest.',
       blocks: [
-        { type: 'cards', items: [
-          { label: 'Cut', title: 'Trader-grade analytics' },
-          { label: 'Cut', title: 'Buy recommendations' },
-          { label: 'Cut', title: 'Android' },
-          { label: 'Skipped', title: 'Wireframes', body: 'Architecture first, every section reviewed with the client.' },
-        ] },
-        { type: 'note', text: 'I owned UX flows, UI and the design system. Direction and architecture I shaped with the Design Manager, who also led the client conversation.' },
+        { type: 'note', text: 'Two limits came from outside the product: iOS only, because the budget covered one platform, and no wireframes. We went from architecture straight to high fidelity to fit eight weeks.' },
+        { type: 'note', text: 'I owned UX flows, UI and the design system, and shaped direction and architecture with the Design Manager.' },
       ],
-      visual: { layout: 'single', items: [{ label: 'What made the cut', spec: 'Ты рисуешь: матрица приоритизации «снижает риск потери или отказа / усилие». Вошедшее внутри, отрезанное (аналитика, рекомендации покупки, Android) за границей.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Scope decisions', spec: '', scope: [
+        { name: 'Portfolio overview', why: 'Simple allocation and performance views.', d: 'keep' },
+        { name: 'Feed', why: 'Explains crypto, no buy recommendations.', d: 'keep' },
+        { name: 'PIG', why: 'Prepares transactions; the user confirms.', d: 'limit' },
+        { name: 'Trading analytics', why: 'Dense charts and technical indicators.', d: 'cut' },
+        { name: 'Buy recommendations', why: 'Speculative purchase signals.', d: 'cut' },
+      ], alt: 'Five product decisions sorted into keep, limit or cut.' }] } },
 
     { id: 'system', nav: 'Design system', title: ['One product,', 'two moods.'],
       blocks: [{ type: 'bento', cells: [
