@@ -463,7 +463,7 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 /* site screenshot + phone composed on the panel */
 .ph.combo, .stage .ph.combo { position: relative; background: none; overflow: hidden; padding: 0; container-type: size; transform: none; border-radius: inherit; }
 .ph.combo .cs { position: absolute; left: 9%; top: 9%; bottom: 0; width: 68%; height: auto; object-fit: cover; object-position: top; border-radius: 14px 14px 0 0; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 10px 30px rgba(17,17,17,.10); }
-.ph.combo .cp { position: absolute; left: 54%; top: 27%; width: 37%; height: auto; filter: drop-shadow(0 18px 28px rgba(40, 10, 40, .22)); }
+.ph.combo .cp { position: absolute; left: 54%; top: 19%; width: 37%; height: auto; filter: drop-shadow(0 18px 28px rgba(40, 10, 40, .22)); }
 
 .cp-story .note { white-space: nowrap; }
 .ph.combo .cs { transition: transform .6s var(--out); will-change: transform; }
@@ -472,5 +472,5 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .ph.combo .cp { transform-origin: 50% 60%; }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   .ph.combo .cs:hover { transform: scale(1.05); }
-  .ph.combo .cp:hover { transform: scale(1.1) rotate(-5deg); }
+  .ph.combo .cp:hover { transform: scale(1.1) rotate(5deg); }
 }
