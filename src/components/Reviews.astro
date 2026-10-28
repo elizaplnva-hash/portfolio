@@ -10,7 +10,7 @@ const label = { appstore: 'App Store', github: 'GitHub', reddit: 'Reddit' };
 <div class="rvs">
   {items.map((r, i) => (
     <figure class={`rv-c ${r.source}`} style={`--i:${i}`}>
-      <figcaption class="rv-h"><span class="ic" aria-hidden="true" set:html={ico[r.source]} />{label[r.source]}</figcaption>
+      <figcaption class="rv-h"><span class="rv-i" aria-hidden="true" set:html={ico[r.source]} />{label[r.source]}</figcaption>
       <blockquote>{r.text}</blockquote>
     </figure>
   ))}
