@@ -1,3 +1,4 @@
+import { tidyDeep } from './typo';
 export type Side = 'front' | 'back';
 
 /* ---------- Product case: one screen = one question ---------- */
@@ -5,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; alt?: string }
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Security'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; stats?: { lead: string; items: { value: string; text: string }[] }; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -20,7 +21,9 @@ export type Block =
   | { type: 'chips'; items: string[] }
   | { type: 'facts'; caption: string; items: { value: string; label: string }[] }
   | { type: 'note'; text: string }
-  | { type: 'quote'; text: string; by: string }
+  | { type: 'pull'; text: string }
+  | { type: 'quote'; text: string; by: string; me?: boolean }
+  | { type: 'numbered'; plain?: boolean; items: { title: string; body: string }[] }
   | { type: 'fromto'; from: string; to: string }
   | { type: 'steps'; items: { title: string; body: string }[] }
   | { type: 'theme' }
@@ -48,6 +51,10 @@ export interface CaseData {
   headline: string;           // the one selling headline (also used on the home tile)
   color: string;              // placeholder fill until real images arrive
   image?: string;             // cover, /images/...
+  noNameTag?: boolean;        // case page: don't show the product name as the first tag
+  mark?: string;              // name written behind the cover, if shorter than the product name
+  desk?: boolean;             // cover is a monitor + a phone
+  phones?: string[];          // layered home cover: transparent phone renders over a tinted fill
   big?: boolean;              // large tile on home
   facts: { label: string; value: string }[];   // role, timeline, platform...
   highlights: string[];       // selling points (Product pages)
@@ -55,6 +62,7 @@ export interface CaseData {
   accent?: string;            // case colour, safe for text on white
   fill?: string;              // case colour for small dots and marks
   tint?: string;              // pastel behind the case images
+  panel?: string;             // overrides the image panel background (e.g. white)
   screens?: Screen[];         // Product pages; falls back to a generic skeleton
   shots?: Ph[];               // Brand pages: the images shown one by one while scrolling
 }
@@ -70,129 +78,180 @@ const summary = '[Two sentences: what the product or brand is, and your part in 
 
 
 const pinkwallet: Partial<CaseData> = {
+  noNameTag: true,
   accent: '#E0408F',
   fill: '#E0408F',
   tint: '#FFE6F1',
+  panel: '#F6F6F4',
   facts: [
-    { label: 'Role', value: 'Product Designer' },
-    { label: 'Timeline', value: '8 weeks' },
-    { label: 'Platform', value: 'iOS' },
-    { label: 'Status', value: 'Launched July 2026' },
+    { label: 'Role', value: 'Product Designer, two-person design team' },
+    { label: 'Scope', value: 'Architecture, UX/UI, design system' },
+    { label: 'Timeline', value: 'Dec 2025 – Jan 2026, 8 weeks' },
+    { label: 'Status', value: 'App Store, July 2026' },
   ],
-  summary: 'A multi-chain crypto wallet, redesigned around PIG, an AI companion.',
+  summary: 'A crypto wallet for people new to crypto, with PIG, an AI co-pilot that prepares actions and leaves the decision to the user.',
   screens: [
-    { id: 'overview', nav: 'Overview', title: ['Crypto,', 'without learning crypto.'],
-      lede: 'A multi-chain wallet redesigned around PIG, an AI companion that helps users manage crypto through natural conversation instead of complex navigation.',
+    { id: 'overview', nav: 'Overview', title: ['Crypto for first-timers,', 'through conversation'],
+      lede: 'Most crypto wallets assume you already know what you’re doing. PinkWallet doesn’t.\nIt’s a self-custody wallet that works like a banking app and says plainly that a sent transaction can’t be undone.\nPIG, an AI assistant, explains each action and sets it up. You press confirm.',
       blocks: [{ type: 'meta', items: [
-        { label: 'Role', value: 'Product Designer' },
-        { label: 'Timeline', value: '8 weeks' },
-        { label: 'Platform', value: 'iOS' },
-        { label: 'Status', value: 'Launched July 2026' },
+        { label: 'Collaboration', value: 'Design Manager\nClient development team' },
+        { label: 'Timeline', value: '8 weeks\nLaunched July 2026' },
+        { label: 'Responsibilities', value: 'Product architecture\nUX/UI, design system' },
+        { label: 'Position', value: 'Product Designer' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Home screen', spec: '', src: '/images/pinkwallet-hero.webp', alt: 'PinkWallet on two phones: the wallet home with balances and the My card screen with recent transactions' }] } },
+      visual: { layout: 'single', items: [{ label: 'The Wallet home in both themes', spec: '', srcs: ['/images/pw-home-dark.webp', '/images/pw-home-light.webp'], alt: 'The PinkWallet home screen in the dark and the light theme' }] } },
 
-    { id: 'product', nav: 'Product', title: ['One wallet,', 'more ways to manage crypto.'],
-      lede: 'PinkWallet brings asset management, AI assistance, crypto news and everyday wallet tools into one mobile experience.',
-      blocks: [{ type: 'bento', cells: [
-        { icon: 'sparkles', title: 'AI companion', body: 'Ask questions, explore crypto and start actions through PIG.', wide: true, fill: true },
-        { icon: 'wallet', title: 'Multi-chain wallet', body: 'Assets across five networks: BTC, ETH, SOL, TRX and XRP.' },
-        { icon: 'newspaper', title: 'Crypto feed', body: 'Market news, and a way to discuss stories with PIG.' },
-        { icon: 'layout-grid', title: 'Everyday tools', body: 'Swap assets, manage contacts, reach wallet settings.' },
-        { icon: 'key-round', title: 'Self-custody', body: 'Users keep control of their wallet and private keys.' },
-      ] }],
+    { id: 'background', nav: 'Brief', title: ['The brief changed before','we started designing.'],
+      lede: 'The first project was a crypto token for experienced users. Then the client came back with funding and a new idea: a wallet.',
+      blocks: [
+        { type: 'numbered', items: [
+          { title: 'A new audience', body: 'People with little or no crypto experience.' },
+          { title: 'The feature list', body: 'What belongs in version one, and what can wait.' },
+          { title: 'The AI request', body: 'A useful role for AI that never controls users’ money.' },
+        ] },
+        { type: 'note', text: 'My first job was to turn that wish list into a point of view.' },
+      ],
+      visual: { layout: 'single', items: [{ label: 'Where we started', spec: '', combo: ['/images/pw-pinkcoin-site.webp', '/images/pw-wallet-phone.webp'], alt: 'The PinkCoin token website from the first project, and the first concept of the wallet screen' }] } },
+
+    { id: 'stakes', nav: 'Context', title: ['Crypto without a bank', 'in the middle.'],
+      lede: 'Crypto is digital money people can send directly to each other through a blockchain, without a bank processing the transfer.\nWith a self-custody wallet like PinkWallet, you control the keys to your money. Access depends on a 12-word recovery phrase. Lose it, and there may be no way to get back into your wallet.\nOnce a transaction is confirmed, it can’t be reversed.',
+      blocks: [
+        { type: 'pull', text: 'That changes what the interface needs to do: make every transaction clear before the user commits to it.' },
+      ],
+      visual: { layout: 'single', items: [{ label: 'After you press send', spec: '', alt: 'A mistake can be fixed in a banking app and cannot be fixed in a crypto wallet', compare: { cols: ['Banking app', 'Crypto wallet'], rows: [
+        { label: 'Cancel a payment before it settles', a: true, b: false },
+        { label: 'Dispute a mistake', a: true, b: false },
+        { label: 'Call someone who can help', a: true, b: false },
+        { label: 'Reset your access', a: true, b: false },
+        { label: 'Get the money back', a: true, b: false },
+      ] } }] } },
+
+    { id: 'research', nav: 'Research', title: ['The challenge wasn’t','to simplify everything.'],
+      lede: 'People new to crypto need familiar ways to manage money, but they also need to know when an action can’t easily be undone. With no budget for interviews or usability testing, I used market data, wallet reviews and competitor analysis to find where first-timers get stuck.',
+      blocks: [
+        { type: 'numbered', plain: true, items: [
+          { title: 'Make core actions easy to find', body: 'Essential actions stay on Home, no trading terminal.' },
+          { title: 'Make recipients and costs clear', body: 'Saved contacts, swap fees in % and $ before confirming.' },
+          { title: 'Use warnings where they matter', body: 'Extra checks only before irreversible sends and recovery.' },
+        ] },
+      ],
       visual: { layout: 'stack', items: [
-        { label: 'Cards', spec: '', src: '/images/pw-cards.webp', alt: 'PinkWallet card designs, stacked' },
-        { label: 'App icon', spec: '', src: '/images/pw-app-icon.webp', alt: 'The PinkWallet app icon on an iPhone home screen' },
-        { label: 'Crypto feed', spec: '', src: '/images/pw-feed.webp', alt: 'The crypto feed on a tilted phone: a story opened with an NFT card, and 3D icons for video, news and X' },
+        { label: 'Market context', spec: '', alt: 'Why do some U.S. non‑owners stay away from crypto? 49% don’t understand how crypto works, 43% worry about fraud (NCA × Harris Poll, 2025)', stats: { lead: 'Why do some U.S. non‑owners stay away from crypto?', items: [
+          { value: '49', text: 'Don’t understand\nhow crypto works' },
+          { value: '43', text: 'Worry\nabout fraud' },
+        ] } },
+        { label: 'What people say', spec: '', alt: 'Three public posts about wallet friction: network fees, a security warning and an address typo', reviews: [
+          { tag: 'Fees', from: 'Trust · App Store', source: 'appstore', text: '“The app keeps saying the network fee is not enough no matter how much I adjust the amount.”', meta: 'Trust Wallet · App Store · Apr 2024' },
+          { tag: 'Warnings', from: 'Phantom · GitHub', source: 'github', text: '“No balance change found. This transaction maybe malicious.”', meta: 'Phantom · GitHub · Nov 2023' },
+          { tag: 'Addresses', source: 'reddit', text: '“The last number of the address is changed.”', meta: 'r/CryptoHelp · Oct 2026' },
+        ] },
+        { label: 'Competitor audit', spec: '', alt: 'The Phantom and Trust Wallet home screens with the points where a beginner meets friction', audit: [
+          { name: 'Phantom', logo: 'phantom', phone: '/images/pw-audit-phantom.webp', cards: [
+            { tag: 'Sending', text: 'Send isn’t a top-level action' },
+            { tag: 'Swap', text: 'Trading sits in a separate tab' },
+            { tag: 'Security', text: 'Leverage up to 40× is promoted on the home screen' } ] },
+          { name: 'Trust Wallet', logo: 'trust', phone: '/images/pw-audit-trust.webp', cards: [
+            { tag: 'Sending', text: 'Send is one of four primary actions' },
+            { tag: 'Swap', text: 'Swap has a dedicated shortcut' },
+            { tag: 'Security', text: 'WETH appears as separate entries across two networks' } ] },
+        ] },
       ] } },
 
-    { id: 'problem', nav: 'Problem', title: ['Crypto asks people to think', 'like a blockchain.'],
-      lede: 'Sending crypto can involve unfamiliar concepts before users even reach their goal. Networks, addresses, fees and transaction details add complexity to what should feel like a simple action.',
+    { id: 'choices', nav: 'Choices', title: ['A familiar core,','with two new additions.'],
+      lede: 'A beginner shouldn’t have to learn a new interface and a new kind of money at once.\nWe kept everyday wallet actions familiar: managing assets, sending, receiving and swapping.',
       blocks: [
-        { type: 'contrast',
-          from: { label: 'The technical model', items: ['Addresses', 'Networks', 'Gas fees', 'Transactions'] },
-          to: { label: 'The user’s mental model', items: ['Send', 'Receive', 'Swap'], icons: ['send', 'inbox', 'blend'] } },
-        { type: 'callout', text: 'The challenge was to bridge that gap without sacrificing transparency or control.' },
+        { type: 'pull', text: 'Two new parts, two roles: Feed for exploring crypto, PIG for understanding and preparing actions across the wallet.' },
       ],
-      visual: { layout: 'single', items: [{ label: 'Confirmation', spec: '', src: '/images/pw-confirmation.webp', alt: 'The Confirmation screen before sending Bitcoin, on a phone held in a hand' }] } },
+      visual: { layout: 'single', items: [
+        { label: 'Product structure', spec: '', src: '/images/pw-structure.webp', zoom: true, alt: 'PinkWallet structure: Core wallet, PIG and Feed are three equal entry points; Core wallet and PIG lead to the same five actions.' },
+      ] } },
 
-    { id: 'insight', nav: 'Insight', statement: true, title: ['Users think in outcomes,', 'not interfaces.'],
-      lede: 'People don’t open a wallet to navigate menus. They open it to do something with their money.',
+    { id: 'pig', nav: 'PIG', title: ['A co-pilot,', 'not an autopilot.'],
+      lede: 'An FAQ would have been cheaper. But crypto forces decisions about networks, fees and addresses at the moment of sending, so help has to appear there. PIG explains, fills in details and flags risks. Only the user can send money.',
       blocks: [
-        { type: 'fromto', from: 'Finding features, navigating menus, understanding technical options.', to: 'Expressing an intention, reviewing the details, confirming the action.' },
-      ] },
+        { type: 'chain', steps: ['User asks', 'PIG prepares', 'User reviews', 'User confirms'] },
+        { type: 'quote', text: 'Totally fine. Everyone starts confused.', by: 'PIG' },
+      ],
+      visual: { layout: 'row', items: [
+        { label: 'Ask', spec: 'Запрос пользователя в чате с PIG.' },
+        { label: 'Prepare', spec: 'Подготовленная PIG транзакция: получатель, сумма, комиссия.' },
+        { label: 'PIG prepares, the person decides', spec: 'Подтверждение пользователем. Три экрана по шагам цепочки.' },
+      ] } },
 
-    { id: 'approach', nav: 'Approach', title: ['Every crypto concept got', 'a simpler answer.'],
-      lede: 'The goal wasn’t to hide complexity. It was to remove unnecessary decisions while keeping important information visible.',
-      blocks: [{ type: 'list', items: [
-        { icon: 'receipt', title: 'Fees', body: 'Make transaction costs understandable before confirmation.' },
-        { icon: 'network', title: 'Networks', body: 'Remove network decisions wherever the product can handle them.' },
-        { icon: 'compass', title: 'Navigation', body: 'Let users say what they want through PIG, not only through menus.' },
-        { icon: 'shield-check', title: 'Confirmation', body: 'Show the essential details before users approve an action.' },
+    { id: 'feed', nav: 'Feed', title: ['Discovery', 'without impulse.'],
+      lede: 'A feed brings people back, but crypto content pushes impulsive decisions. So the Feed lives next to PIG: news, videos and posts from X, with a way to slow down when a story raises a question.',
+      blocks: [
+        { type: 'quote', text: 'Not sure what to make of this?', by: 'PIG in the Feed' },
+        { type: 'note', text: 'For the first three visits the Feed explains itself; after that it gets out of the way. Onboarding introduces everything in the order it is used, wallet creation last.' },
+      ],
+      visual: { layout: 'stack', items: [
+        { label: 'Post from X', spec: 'Пост из X в ленте.' },
+        { label: 'PIG on the post', spec: 'Тот же пост со всплывающим PIG и вопросом «Not sure what to make of this?».' },
+        { label: 'Exploring the Feed screen', spec: 'Три версии слайда Feed рядом: V1, V2, V3.' },
+      ] } },
+
+    { id: 'safeguards', nav: 'Safeguards', title: ['Friction only', 'where it protects.'],
+      lede: 'Everywhere else friction is the enemy. At irreversible moments it is the safeguard.',
+      blocks: [{ type: 'decision', rows: [
+        ['Wallet setup', 'Three short warnings instead of one long one, and a PIN that can’t be recovered'],
+        ['Before sending', 'An explicit review, every amount in crypto and dollars: 3% is easy to ignore, $3.60 is not'],
+        ['Recipients', 'Several wallets per contact, invalid addresses flagged'],
+        ['After sending', 'Done, or what needs attention'],
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Swap flow', spec: '', src: '/images/pw-swap.webp', alt: 'The swap flow on four phones: amount, token select, confirmation and swap completed, in dark and light themes' }] } },
+      visual: { layout: 'stack', items: [
+        { label: 'Recovery phrase', spec: 'Recovery phrase с тремя короткими предупреждениями.' },
+        { label: 'Review before sending', spec: 'Экран подтверждения перед отправкой.' },
+        { label: 'Fee, contact, invalid address', spec: 'Три маленьких экрана в ряд: превью комиссии (Fee component, designed for future charges), контакт с несколькими кошельками, ошибка адреса.' },
+      ] } },
 
-    { id: 'pig', nav: 'PIG', title: ['AI built in,', 'not bolted on.'],
-      lede: 'PIG isn’t a separate chatbot. It is another way to use the wallet itself, while the familiar controls stay where they are.',
+    { id: 'tradeoffs', nav: 'Trade-offs', title: ['Saying no was', 'most of the job.'],
+      lede: 'Every decision passed one test: does it reduce the chance that someone loses money or gives up?',
       blocks: [
         { type: 'cards', items: [
-          { icon: 'message-circle', hi: true, label: 'Conversational', title: 'Ask, explore and start actions in natural language.' },
-          { icon: 'layout-dashboard', label: 'Traditional', title: 'Familiar wallet features and controls, one tap away.' },
+          { label: 'Cut', title: 'Trader-grade analytics' },
+          { label: 'Cut', title: 'Buy recommendations' },
+          { label: 'Cut', title: 'Android' },
+          { label: 'Skipped', title: 'Wireframes', body: 'Architecture first, every section reviewed with the client.' },
         ] },
-        { type: 'note', text: 'The way people interact can change without splitting the product in two.' },
+        { type: 'note', text: 'I owned UX flows, UI and the design system. Direction and architecture I shaped with the Design Manager, who also led the client conversation.' },
       ],
-      visual: { layout: 'single', items: [{ label: 'PIG', spec: '', src: '/images/pw-pig.webp', alt: 'PIG, the AI companion, greeting the user, with example prompts around the phone' }] } },
+      visual: { layout: 'single', items: [{ label: 'What made the cut', spec: 'Ты рисуешь: матрица приоритизации «снижает риск потери или отказа / усилие». Вошедшее внутри, отрезанное (аналитика, рекомендации покупки, Android) за границей.' }] } },
 
-    { id: 'trust', nav: 'Trust', title: ['Conversational doesn’t mean', 'casual.'],
-      lede: 'When money is involved, a simple interface isn’t enough. People need to know what they approve, what is happening and how it ended.',
-      blocks: [{ type: 'list', numbered: true, items: [
-        { label: 'Before', title: 'Make the decision clear', body: 'Essential transaction details before confirmation.' },
-        { label: 'During', title: 'Keep the user informed', body: 'Progress and errors, never a guess.' },
-        { label: 'After', title: 'Close the loop', body: 'A clear result: done, or what needs attention.' },
+    { id: 'system', nav: 'Design system', title: ['One product,', 'two moods.'],
+      blocks: [{ type: 'bento', cells: [
+        { icon: 'sun-moon', title: 'Two themes on the same components', fill: true },
+        { icon: 'component', title: 'Anything used twice became a component' },
+        { icon: 'eye', title: 'WCAG AA', body: 'States by shape and label.' },
+        { icon: 'box', title: '3D assets made with AI', body: 'Curated to one material and palette.' },
+        { icon: 'pencil-line', title: 'Copy written by me, AI-assisted' },
       ] }],
       visual: { layout: 'stack', items: [
-        { label: 'Choose a wallet', spec: '', src: '/images/pw-chat-wallets.webp', alt: 'PIG chat asking which of two wallets to send to' },
-        { label: 'Send preview', spec: '', src: '/images/pw-chat-preview.webp', alt: 'PIG chat showing a send preview with recipient, amount and fee' },
-        { label: 'Sent', spec: '', src: '/images/pw-sent.webp', alt: 'The Sent receipt, with PIG waving next to it' },
+        { label: 'Coin card anatomy', spec: 'Ты рисуешь: карточка монеты с вариантами и разметкой анатомии.' },
+        { label: 'Same screen, two themes', spec: 'Один и тот же экран в светлой и тёмной теме.' },
+        { label: 'Asset sheet', spec: 'Лист ассетов: монеты, иконки транзакций, два PIG.' },
       ] } },
 
-    { id: 'onboarding', nav: 'Onboarding', title: ['More than a wallet,', 'from the first screen.'],
-      lede: 'Onboarding introduces PinkWallet as an everyday crypto companion before asking anyone to create or import a wallet.',
-      blocks: [{ type: 'steps', items: [
-        { title: 'Welcome', body: 'PinkWallet and its promise of simpler crypto.' },
-        { title: 'Meet PIG', body: 'How an AI companion fits into the wallet.' },
-        { title: 'Explore', body: 'The crypto feed, and talking about news with PIG.' },
-        { title: 'Get started', body: 'Create a new wallet or import an existing one.' },
+    { id: 'outcome', nav: 'Outcome', title: ['Launched,', 'and in use.'],
+      blocks: [{ type: 'facts', caption: 'Product analytics provided by the client, July–September 2026', items: [
+        { value: '80%', label: 'Onboarding completion' },
+        { value: '85%', label: 'Wallet creation completion' },
+        { value: '3 min', label: 'Median wallet setup' },
+        { value: '65%', label: 'Swap conversion' },
+        { value: '98%', label: 'Transaction success' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Onboarding', spec: '', src: '/images/pw-onboarding.webp', alt: 'Three onboarding screens: Meet PIG, Your crypto feed and Welcome to PinkWallet' }] } },
+      visual: { layout: 'single', items: [{ label: 'From first screen to a wallet', spec: 'Ты рисуешь: горизонтальная воронка онбординг 80% → создание кошелька 85%, отдельно 65% и 98% крупными цифрами. Без осей и сетки.' }] } },
 
-    { id: 'states', nav: 'Every state', title: ['Every state is part', 'of the experience.'],
-      lede: 'A wallet is more than its home screen. First use, empty balances, progress, errors and conversations with PIG all decide how reliable it feels.',
-      blocks: [
-        { type: 'table', head: ['State', 'What is covered'], rows: [
-          ['First use', 'Empty wallet, first balance'],
-          ['Transactions', 'Confirmation, progress'],
-          ['Recovery', 'Errors, next steps'],
-          ['Conversations', 'First chat, AI responses'],
-        ] },
-        { type: 'theme' },
-      ],
-      visual: { layout: 'single', items: [{ label: 'PIG conversations', spec: '', src: '/images/pw-states.webp', alt: 'PIG on a phone held in a hand, with a Bitcoin chart reply and a wallet choice when sending' }] } },
+    { id: 'reflection', nav: 'Reflection', title: ['Built on convention,', 'never tested.'],
+      lede: 'Everything here rests on convention and on lowering the cost of a mistake. That was right for eight weeks, but it is still an assumption.',
+      blocks: [{ type: 'list', items: [
+        { title: 'Test the confirmation step', body: 'Does it protect or annoy?' },
+        { title: 'Test trust in PIG', body: 'After its first prepared transaction.' },
+        { title: 'Work with developers through interaction specs', body: 'With no direct line to them, motion was less specified, and the shipped transitions show it.' },
+        { title: 'Connect decisions to data', body: 'Before handoff.' },
+      ] }],
+      visual: { layout: 'single', items: [{ label: 'Concept for the next iteration', spec: 'Ты рисуешь: экран подтверждения до и после, справа блок «You send / They receive» и фраза, что перевод окончательный. Рядом можно план теста на одну страницу.' }] } },
 
-    { id: 'process', nav: 'Process', title: ['This wasn’t', 'a concept exercise.'],
-      lede: 'PinkWallet was designed for release: from early explorations through iteration and testing into development and launch.',
-      blocks: [
-        { type: 'chain', steps: ['Exploration', 'Iteration', 'Testing', 'Development', 'Launch'] },
-        { type: 'note', text: 'A shared component library kept the core flows and states consistent. PIG’s character and the custom 3D icons were made with generative AI, then refined by hand.' },
-      ],
-      visual: { layout: 'single', items: [{ label: 'Screens', spec: '', src: '/images/pw-process.webp', alt: 'A grid of PinkWallet screens: filters, history, swap, contacts and PIG chat' }] } },
-
-    { id: 'outcome', nav: 'Outcome', title: ['From first screen', 'to launch.'],
-      lede: 'One mobile experience that brings together a multi-chain wallet, AI-assisted interactions and everyday crypto tools.',
-      blocks: [
-        { type: 'facts', caption: 'Scope', items: [{ value: '200+', label: 'Screens' }, { value: '8', label: 'Core flows' }, { value: '5', label: 'Networks' }] },
-      ],
-      visual: { layout: 'single', items: [{ label: 'Final frame', spec: '', src: '/images/pw-outcome.webp', alt: 'The PinkWallet home and Dashboard on two phones in the dark theme' }] } },
+    { id: 'closing', nav: 'Closing', statement: true, title: ['Crypto shouldn’t require people to think like traders', 'before they can participate.'] },
   ],
 };
 
@@ -206,17 +265,17 @@ const jam: Partial<CaseData> = {
     { label: 'Timeline', value: '12 weeks' },
     { label: 'Scope', value: 'Research to hi-fi prototype' },
   ],
-  summary: 'Jam is a digital business card: scan a QR code, share your contact.',
+  summary: 'Jam Social is a digital business card: scan a QR code, share your contact.',
   screens: [
     { id: 'overview', nav: 'Overview', title: ['Analytics was the ask.', 'A reason to come back was the need.'],
-      lede: 'Jam is an existing networking app: scan a QR code, share your contact. The team asked whether to add analytics, and what kind would matter. I owned the research and the analytics feature.',
+      lede: 'Jam Social is an existing networking app: scan a QR code, share your contact. The team asked whether to add analytics, and what kind would matter. I owned the research and the analytics feature.',
       blocks: [{ type: 'meta', items: [
         { label: 'Role', value: 'Product Designer' },
         { label: 'Team', value: '2 designers, 2 PMs' },
         { label: 'Timeline', value: '12 weeks' },
         { label: 'Scope', value: 'Research to hi-fi' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Jam', spec: '', src: '/images/jam-overview.webp', alt: 'Jam on three phones: the weekly analytics notification, the Analytics screen and the Instagram clicks screen' }] } },
+      visual: { layout: 'single', items: [{ label: 'Jam Social', spec: '', src: '/images/jam-overview.webp', alt: 'Jam Social on three phones: the weekly analytics notification, the Analytics screen and the Instagram clicks screen' }] } },
 
     { id: 'problem', nav: 'Problem', title: ['Networking feels like', 'talking into a void.'],
       blocks: [
@@ -227,14 +286,14 @@ const jam: Partial<CaseData> = {
           { icon: 'rotate-ccw', hi: true, title: 'No reason to reopen the app' },
         ] },
       ],
-      visual: { layout: 'single', items: [{ label: 'Problem', spec: '', src: '/images/jam-problem.webp', alt: 'The existing Jam app: sign-up, the QR code card and the Jams form' }] } },
+      visual: { layout: 'single', items: [{ label: 'Problem', spec: '', src: '/images/jam-problem.webp', alt: 'The existing Jam Social app: sign-up, the QR code card and the Jams form' }] } },
 
     { id: 'research', nav: 'Research', title: ['What people said,', 'not what we assumed.'],
       blocks: [
         { type: 'cards', items: [
           { icon: 'route', label: 'Interviews', title: 'Analytics should reach beyond the app.' },
           { icon: 'lock', label: 'Interviews', title: 'Privacy is essential.', body: 'Control over who sees what came up unprompted in 7 of 10 interviews.' },
-          { icon: 'repeat', hi: true, label: 'Focus group', title: 'Without a reason to return, Jam is a one-time tool.' },
+          { icon: 'repeat', hi: true, label: 'Focus group', title: 'Without a reason to return, Jam Social is a one-time tool.' },
         ] },
         { type: 'note', text: '10+ interviews, one focus group, a competitor audit and a heuristic evaluation.' },
       ],
@@ -268,7 +327,7 @@ const jam: Partial<CaseData> = {
         { icon: 'calendar-search', title: 'Event suggestions', body: 'Networking events worth attending' },
         { icon: 'coffee', title: 'Coffee chat refreshers', body: 'A reminder before you meet' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Follow-ups', spec: '', src: '/images/jam-follow.webp', alt: 'Jam: Notifications, Calendar and a connection Profile' }] } },
+      visual: { layout: 'single', items: [{ label: 'Follow-ups', spec: '', src: '/images/jam-follow.webp', alt: 'Jam Social: Notifications, Calendar and a connection Profile' }] } },
 
     { id: 'testing', nav: 'Testing', title: ['8 usability tests,', '3 changes.'],
       blocks: [{ type: 'table', head: ['What we saw', 'What changed'], rows: [
@@ -389,25 +448,25 @@ const greenCredit: Partial<CaseData> = {
         { label: 'Platform', value: 'Web, mobile' },
         { label: 'Status', value: 'In development' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Dashboard', spec: 'The main product mockup.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Dashboard', spec: '', src: '/images/gcs-overview.webp', alt: 'Green Credit Score dashboard on a monitor' }] } },
 
     { id: 'challenge', nav: 'Challenge', title: ["The problem wasn't too much data. It was too little clarity."],
-      lede: 'Credit information is spread across scores, accounts, payment histories and reports. The challenge was to show what matters and what to do next.',
+      lede: 'Credit information lives in many places. The challenge was to show what matters and what to do next.',
       blocks: [{ type: 'list', numbered: true, items: [
         { title: 'Scores without context', body: 'A number without a clear explanation of what it means.' },
         { title: 'Fragmented data', body: 'Users compare information across separate bureaus.' },
         { title: 'No clear priorities', body: 'Every metric competes for attention.' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Problem', spec: 'An interface or a diagram of the problem.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Problem', spec: '', src: '/images/gcs-challenge.webp', alt: 'The three areas of credit data: accounts, inquiries and records, payment history' }] } },
 
     { id: 'research', nav: 'Research', title: ['Three patterns shaped the direction.'],
-      lede: 'We benchmarked existing financial products to find where credit information becomes hard to read.',
-      blocks: [{ type: 'table', head: ['Finding', 'Opportunity'], rows: [
-        ['Scores lack context', 'Explain score status'],
-        ['Data is fragmented', 'Compare bureaus side by side'],
-        ['No clear priorities', 'Highlight key factors'],
+      lede: 'We reviewed existing credit and finance products to see where reading credit data gets hard.',
+      blocks: [{ type: 'table', head: ['Pattern in the market', 'Direction'], rows: [
+        ['A number, with no explanation', 'Say what the score means'],
+        ['Each bureau in its own report', 'One view for all three'],
+        ['Every metric looks equally important', 'Rank factors by impact'],
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Benchmark', spec: 'Competitor analysis or interface examples.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Benchmark', spec: '', src: '/images/gcs-research.webp', alt: 'Score factors screen on a laptop' }] } },
 
     { id: 'principles', nav: 'Principles', title: ['Three decisions defined the product.'],
       lede: 'Each principle set one consistent way to present credit information so users understand it faster.',
@@ -416,7 +475,7 @@ const greenCredit: Partial<CaseData> = {
         { icon: 'palette', title: '02. Color communicates status', body: 'A shared five-level scale keeps status meanings consistent.' },
         { icon: 'columns-2', title: '03. Bureaus side by side', body: 'A consistent layout makes differences easier to spot.' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Principles', spec: 'Score cards, the colour scale and the bureau comparison.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Principles', spec: '', src: '/images/gcs-principles.webp', alt: 'Score, status colours and bureau comparison' }] } },
 
     { id: 'landing', nav: 'Landing', title: ['Explain the value before asking for commitment.'],
       lede: 'The landing page introduces the product, shows its benefits and gives users a clear path to getting started.',
@@ -425,16 +484,16 @@ const greenCredit: Partial<CaseData> = {
         { label: 'Build confidence', title: 'Answer key questions', body: 'Present features, pricing and FAQs.' },
         { label: 'Convert', title: 'Make the next step clear', body: 'Keep the path to sign-up easy to find.' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Landing', spec: 'The full landing page or a few of its sections.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Landing', spec: '', src: '/images/gcs-landing.webp', alt: 'The landing page: hero, reviews, pricing and FAQ' }] } },
 
     { id: 'dashboard', nav: 'Dashboard', title: ['Your credit, at a glance.'],
       lede: 'The dashboard brings scores, credit factors and debt information into one view, a clear starting point.',
       blocks: [{ type: 'cards', items: [
         { icon: 'layout-dashboard', title: 'A clear entry point', body: 'Key information first, deeper sections one tap away.' },
-        { icon: 'columns-2', title: 'Consistent comparison', body: 'All three bureaus follow the same layout.' },
+        { icon: 'gauge', title: 'Factors under the score', body: 'The factors behind the score sit right below it.' },
         { icon: 'mouse-pointer-click', title: 'Details on demand', body: 'Users open individual sections to explore more.' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Dashboard', spec: 'The real dashboard screen.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Dashboard', spec: '', src: '/images/gcs-dashboard.webp', alt: 'The dashboard on a tablet' }] } },
 
     { id: 'simulator', nav: 'Simulator', title: ['Explore possible outcomes before making a decision.'],
       lede: 'Users try hypothetical scenarios and see how different choices could affect their score.',
@@ -447,7 +506,7 @@ const greenCredit: Partial<CaseData> = {
         ] },
         { type: 'note', text: 'Simulated outcomes are estimates, not guarantees.' },
       ],
-      visual: { layout: 'single', items: [{ label: 'Simulator', spec: 'The simulator screen with an example scenario.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Simulator', spec: '', src: '/images/gcs-simulator.webp', alt: 'The score simulator with its scenarios' }] } },
 
     { id: 'report', nav: 'Report', title: ['A complete report without the information overload.'],
       lede: 'Personal information, account details, balances and payment history sit in one consistent, readable structure.',
@@ -456,16 +515,7 @@ const greenCredit: Partial<CaseData> = {
         { label: 'Layer 02', title: 'Account overview', body: 'Review balances, limits, utilization and status.' },
         { label: 'Layer 03', title: 'Payment history', body: 'Explore month-by-month account records.' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Credit report', spec: 'The bureau table and an account detail.' }] } },
-
-    { id: 'monitoring', nav: 'Monitoring', title: ['Know when something changes.'],
-      lede: 'Monitoring keeps users informed about relevant changes without a full report review every time.',
-      blocks: [{ type: 'cards', items: [
-        { icon: 'trending-up', title: 'Credit score updated', body: 'Your TransUnion score went up 6 points. 2 days ago' },
-        { icon: 'gauge', title: 'Credit utilization', body: 'Credit utilization decreased to 24%. 5 days ago' },
-        { icon: 'credit-card', title: 'New account', body: 'American Express card added to your report. 1 week ago' },
-      ] }],
-      visual: { layout: 'single', items: [{ label: 'Alerts', spec: 'The notifications screen.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Credit report', spec: '', src: '/images/gcs-report.webp', alt: 'The accounts report compared across bureaus' }] } },
 
     { id: 'delivery', nav: 'Delivery', title: ['From brief to a development-ready product.'],
       lede: 'The work connected product logic, UX exploration, interface design, reusable components and responsive layouts.',
@@ -476,17 +526,17 @@ const greenCredit: Partial<CaseData> = {
           { label: 'Workflow', title: 'AI-supported exploration', body: 'AI helped early exploration and design-system cleanup. Final decisions stayed with the team.' },
         ] },
       ],
-      visual: { layout: 'single', items: [{ label: 'System', spec: 'The design system, components and responsive screens.' }] } },
+      visual: { layout: 'single', items: [{ label: 'System', spec: '', src: '/images/gcs-delivery.webp', alt: 'The score simulator on a laptop' }] } },
   ],
 };
 
 export const cases: CaseData[] = [
-  { slug: 'pinkwallet', side: 'front', name: 'PinkWallet', tags: ['Fintech', 'AI'], headline: "Crypto that doesn't scare first-time users", color: '#ff8fc8', image: '/images/pw-home.webp', big: true, facts, highlights, summary, ...pinkwallet },
-  { slug: 'jam', side: 'front', name: 'Jam', tags: ['Consumer', 'UX research'], headline: 'Turned a contact-collecting app into a reason to follow up', color: '#6b8cff', image: '/images/jam-home.webp', facts, highlights, summary, ...jam },
-  { slug: 'lapunzel', side: 'front', name: 'Lapunzel', tags: ['E-commerce', 'Conversion'], headline: 'Reframed a redesign as a trust problem', color: '#ffb547', image: '/images/lap-hero.webp', facts, highlights, summary, ...lapunzel },
-  { slug: 'green-credit-score', side: 'front', name: 'Green Credit Score', tags: ['Fintech', 'Web'], headline: 'A credit-score dashboard, designed in one month', color: '#3ccf7a', facts, highlights, summary, ...greenCredit },
-  { slug: 'world-of-colors', side: 'back', name: 'World of Colors', tags: ['Brand', 'Website'], headline: '[Headline: what was hard and what we achieved]', color: '#ff5a36', big: true, facts: facts.slice(0, 3), highlights, summary },
-  { slug: 'ben-ai', side: 'back', name: 'Ben AI', tags: ['AI SaaS', 'Web design'], headline: 'A brand and product system for an award-winning AI startup', color: '#7b61ff', image: '/images/ben-tablets.webp', facts: facts.slice(0, 3), highlights, summary,
+  { slug: 'pinkwallet', side: 'front', name: 'PinkWallet', tags: ['Fintech', 'End-to-end', 'AI'], headline: 'Crypto for first-timers, through conversation', color: '#ff8fc8', image: '/images/pinkwallet-hero.webp', phones: ['/images/pw-phone-wallet.webp', '/images/pw-phone-pig.webp', '/images/pw-phone-dashboard.webp'], big: true, facts, highlights, summary, ...pinkwallet },
+  { slug: 'green-credit-score', side: 'front', name: 'Green Credit Score', tags: ['Fintech', 'Web + mobile', '0-to-1'], headline: 'Credit health, readable in 5 seconds', color: '#3ccf7a', image: '/images/gcs-overview.webp', phones: ['/images/gcs-monitor.webp', '/images/gcs-phone.webp'], desk: true, mark: 'Green Score', facts, highlights, summary, ...greenCredit },
+  { slug: 'jam', side: 'front', name: 'Jam Social', tags: ['Consumer', 'Networking', 'Mobile app'], headline: 'Reopen rate up 2.5× after the first scan', color: '#6b8cff', image: '/images/jam-home.webp', phones: ['/images/jam-phone-lock.webp', '/images/jam-phone-analytics.webp'], facts, highlights, summary, ...jam },
+  { slug: 'lapunzel', side: 'front', name: 'Lapunzel', tags: ['E-commerce', 'Conversion', 'UX research'], headline: 'Product-page exits down 20%', color: '#ffb547', image: '/images/lap-hero.webp', phones: ['/images/lap-phone-home.webp', '/images/lap-phone-product.webp'], facts, highlights, summary, ...lapunzel },
+  { slug: 'world-of-colors', side: 'back', name: 'World of Colors', tags: ['Brand', 'Website'], headline: '[Headline: what was hard and what we achieved]', color: '#ff5a36', facts: facts.slice(0, 3), highlights, summary },
+  { slug: 'ben-ai', side: 'back', name: 'Ben AI', tags: ['AI SaaS', 'Web design'], headline: 'A brand and product system for an award-winning AI startup', color: '#7b61ff', image: '/images/ben-tablets.webp', big: true, facts: facts.slice(0, 3), highlights, summary,
     accent: '#8b78ff', fill: '#8b78ff',
     screens: [
     { id: 'overview', nav: 'Overview', wide: true, title: ['Ben AI'],
@@ -573,4 +623,8 @@ export const cases: CaseData[] = [
   { slug: 'bobyard', side: 'back', name: 'Bobyard', tags: ['Construction AI', 'Illustration'], headline: 'Illustration and visuals for a construction-AI startup', color: '#e8541e', facts: facts.slice(0, 3), highlights, summary },
 ];
 
-export const bySide = (side: Side) => cases.filter((c) => c.side === side);
+// cases whose pages exist but are not on the home sheet yet
+for (const c of cases) { tidyDeep(c.screens); c.headline = tidyDeep(c.headline, "headline"); }
+
+const parked = new Set(['world-of-colors', 'reboot-hub', 'bobyard']);
+export const bySide = (side: Side) => cases.filter((c) => c.side === side && !parked.has(c.slug));

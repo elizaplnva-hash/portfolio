@@ -1,4 +1,8 @@
 ---
+import Stats from './Stats.astro';
+import Reviews from './Reviews.astro';
+import Audit from './Audit.astro';
+import Compare from './Compare.astro';
 import type { CaseData, Screen } from '../data/cases';
 import NextCase from './NextCase.astro';
 import { icon, metaIcon } from '../data/icons';
@@ -25,22 +29,25 @@ const groupOf: Record<string, string> = {};
 let cur = '';
 screens.forEach((s) => { if (s.group) cur = s.group; groupOf[s.id] = cur; });
 const tint = brand ? `color-mix(in srgb, ${c.fill ?? c.color} 22%, #1c1b1a)` : (c.tint ?? '#f1f1ef');
-const tone = `--c:${c.fill ?? c.color};--a:${c.accent ?? `color-mix(in oklab, ${c.color} 70%, #000)`};--af:${c.fill ?? c.color};--t:${tint}`;
+const tone = `--c:${c.fill ?? c.color};--a:${c.accent ?? `color-mix(in oklab, ${c.color} 70%, #000)`};--af:${c.fill ?? c.color};--t:${tint};--pn:${c.panel ?? tint}`;
+const home = brand ? '/visual' : '/';
+const face = brand ? { src: '/images/eliza-dark.webp', pos: '50% 12%' } : { src: '/images/eliza.webp', pos: '50% 22%' };
 const mail = 'mailto:elizaplnva@gmail.com';
 ---
 <div class:list={['cp-story', { brand }]} style={tone}>
   <header class="m-bar">
-    <a href="/" class="back"><span class="ar" aria-hidden="true" set:html={icon('arrow-left')} />Back</a>
-    <div class="me-row"><span class="face" aria-hidden="true">EP</span><a href={mail} class="btn contact">Let’s talk</a></div>
+    <a href={home} class="back">Back</a>
+    <div class="me-row"><span class="face" aria-hidden="true"><img src={face.src} alt="" width="76" height="76" decoding="async" style={`object-position:${face.pos}`} /></span><a href={mail} class="btn contact">Let’s talk</a></div>
   </header>
 
   <div class="story">
     <nav class="rail" aria-label="Case sections">
-      <a href="/" class="back"><span class="ar" aria-hidden="true" set:html={icon('arrow-left')} /><span class="roll"><span data-t="Back">Back</span></span></a>
+      <a href={home} class="back">Back</a>
       {brand && !groups.length ? <span aria-hidden="true"></span> : <ol>
+        <li class="rail-hl" aria-hidden="true"></li>
         {(brand ? screens.filter((s, i) => s.group || (i === 0 && s.nav)) : screens.filter((s) => s.nav)).map((s) => <li><a href={`#${s.id}`} data-step={s.id} data-group={s.group}><span class="roll"><span data-t={s.nav}>{s.nav}</span></span></a></li>)}
       </ol>}
-      <div class="me-row"><span class="face" aria-hidden="true">EP</span><a href={mail} class="btn contact"><span class="roll"><span data-t="Let’s talk">Let’s talk</span></span></a></div>
+      <div class="me-row"><span class="face" aria-hidden="true"><img src={face.src} alt="" width="76" height="76" decoding="async" style={`object-position:${face.pos}`} /></span><a href={mail} class="btn contact"><span class="roll"><span data-t="Let’s talk">Let’s talk</span></span></a></div>
     </nav>
 
     <div class="frame" aria-hidden="true"></div>
@@ -50,24 +57,24 @@ const mail = 'mailto:elizaplnva@gmail.com';
         <section class:list={['step', { statement: s.statement, wide: s.wide }]} id={s.id} data-step={s.id} data-group={groupOf[s.id] || undefined}>
           {s.visual && (
             <div class:list={['m-vis', `v-${s.visual.layout}`]}>
-              {s.visual.items.map((p) => <figure class:list={['ph', { 'has-img': p.src }]}>{p.src ? <img src={p.src} alt={p.alt ?? p.label} decoding="async" /> : <><b>{p.label}</b>{p.spec && <p>{p.spec}</p>}</>}</figure>)}
+              {s.visual.items.map((p) => <figure class:list={['ph', { 'has-img': p.src, duo: p.srcs, combo: p.combo, compare: p.compare, stats: p.stats, reviews: p.reviews, audit: p.audit, zoom: p.zoom }]}>{p.audit ? <Audit apps={p.audit} /> : p.reviews ? <Reviews items={p.reviews} /> : p.stats ? <Stats lead={p.stats.lead} items={p.stats.items} /> : p.compare ? <Compare cols={p.compare.cols} rows={p.compare.rows} /> : p.combo ? <><img class="cs" src={p.combo[0]} alt={p.alt ?? p.label} decoding="async" /><img class="cp" src={p.combo[1]} alt="" decoding="async" /></> : p.srcs ? <><img src={p.srcs[0]} alt={p.alt ?? p.label} decoding="async" /><img src={p.srcs[1]} alt="" decoding="async" /></> : p.src ? <img src={p.src} alt={p.alt ?? p.label} decoding="async" /> : <><b>{p.label}</b>{p.spec && <p>{p.spec}</p>}</>}</figure>)}
             </div>
           )}
           {!s.shot && <div class="step-text">
-            {si === 0 && <div class="tags rv"><span>{c.name}</span>{c.tags.map((t) => <span>{t}</span>)}</div>}
+            {si === 0 && <div class="tags rv">{!c.noNameTag && <span>{c.name}</span>}{c.tags.map((t) => <span>{t}</span>)}</div>}
             {si === 0
               ? <h1 class="ttl rv">{s.title[0]} {s.title[1] && <em>{s.title[1]}</em>}</h1>
               : s.statement
                 ? <h2 class="ttl"><span class="ln">{s.title[0]}</span> {s.title[1] && <em class="ln">{s.title[1]}</em>}</h2>
                 : <h2 class="ttl rv">{s.title[0]} {s.title[1] && <em>{s.title[1]}</em>}</h2>}
-            {s.lede && <p class="lede rv">{s.lede}</p>}
+            {s.lede && s.lede.split('\n').map((t) => <p class="lede rv">{t}</p>)}
             {s.link && <a class="btn live rv" href={s.link.href} target="_blank" rel="noopener">{s.link.label}</a>}
 
             {s.blocks?.map((b) => {
               switch (b.type) {
                 case 'meta': return (
                   <ul class="meta rv">{b.items.map((m) => (
-                    <li><span class="ic" aria-hidden="true" set:html={icon(metaIcon[m.label] ?? 'circle-check')} /><span><small>{m.label}</small><b>{m.value}</b></span></li>))}
+                    <li><span class="ic" aria-hidden="true" set:html={icon(metaIcon[m.label] ?? 'circle-check')} /><span><small>{m.label}</small><b>{m.value.split('\n').map((l) => <span>{l}</span>)}</b></span></li>))}
                   </ul>);
                 case 'bento': return (
                   <div class="bento rv">{b.cells.map((x) => (
@@ -115,11 +122,18 @@ const mail = 'mailto:elizaplnva@gmail.com';
                     <dl>{b.items.map((f) => <div class="l2 lift"><dd>{f.value}</dd><dt>{f.label}</dt></div>)}</dl>
                   </div>);
                 case 'note': return <p class="note rv">{b.text}</p>;
+                case 'pull': return <p class="pull rv">{b.text}</p>;
                 case 'fromto': return (
                   <dl class="fromto rv"><div class="l3 lift"><dt>From</dt><dd>{b.from}</dd></div><div class="l1 hi lift"><dt>To</dt><dd>{b.to}</dd></div></dl>);
                 case 'steps': return (
                   <ol class="list num rv">{b.items.map((x) => <li><span class="n" aria-hidden="true"></span><div><h3>{x.title}</h3><p>{x.body}</p></div></li>)}</ol>);
-                case 'quote': return (<figure class="quote rv"><blockquote>“{b.text}”</blockquote><figcaption>{b.by}</figcaption></figure>);
+                case 'quote': return b.me ? (
+                  <figure class="quote me rv"><span class="face" aria-hidden="true"><img src={face.src} alt="" width="76" height="76" loading="lazy" decoding="async" style={`object-position:${face.pos}`} /></span>
+                    <div><blockquote>{b.text}</blockquote><figcaption>{b.by}</figcaption></div>
+                    <span class="qm" aria-hidden="true" set:html={icon('quote')} /></figure>
+                ) : (<figure class="quote rv"><blockquote>“{b.text}”</blockquote><figcaption>{b.by}</figcaption></figure>);
+                case 'numbered': return (
+                  <ol class:list={['numbered rv', { plain: b.plain }]}>{b.items.map((x) => <li class="l2">{!b.plain && <span class="num" aria-hidden="true"></span>}<div><h3>{x.title}</h3><p>{x.body}</p></div></li>)}</ol>);
                 case 'theme': return (
                   <div class="theme rv" role="group" aria-label="Screen theme">
                     <button type="button" aria-pressed="true" data-theme="light">Light</button>
@@ -141,8 +155,8 @@ const mail = 'mailto:elizaplnva@gmail.com';
 
     <div class="stage">
       {screens.map((s, i) => s.visual && (
-        <div class:list={['vis', `v-${s.visual.layout}`, { on: i === 0 }]} data-step={s.id} aria-hidden="true">
-          {s.visual.items.map((p) => <figure class:list={['ph', { 'has-img': p.src }]}>{p.src ? <img src={p.src} alt={p.alt ?? p.label} decoding="async" /> : <><b>{p.label}</b>{p.spec && <p>{p.spec}</p>}</>}</figure>)}
+        <div class:list={['vis', `v-${s.visual.layout}`, { on: i === 0 }]} data-step={s.id} aria-hidden="true" style={i === 0 ? `view-transition-name:vt-${c.slug}` : undefined}>
+          {s.visual.items.map((p) => <figure class:list={['ph', { 'has-img': p.src, duo: p.srcs, combo: p.combo, compare: p.compare, stats: p.stats, reviews: p.reviews, audit: p.audit, zoom: p.zoom }]}>{p.audit ? <Audit apps={p.audit} /> : p.reviews ? <Reviews items={p.reviews} /> : p.stats ? <Stats lead={p.stats.lead} items={p.stats.items} /> : p.compare ? <Compare cols={p.compare.cols} rows={p.compare.rows} /> : p.combo ? <><img class="cs" src={p.combo[0]} alt={p.alt ?? p.label} decoding="async" /><img class="cp" src={p.combo[1]} alt="" decoding="async" /></> : p.srcs ? <><img src={p.srcs[0]} alt={p.alt ?? p.label} decoding="async" /><img src={p.srcs[1]} alt="" decoding="async" /></> : p.src ? <img src={p.src} alt={p.alt ?? p.label} decoding="async" /> : <><b>{p.label}</b>{p.spec && <p>{p.spec}</p>}</>}</figure>)}
         </div>
       ))}
       <div class="vis nx" data-step="next"><NextCase current={c} /></div>
@@ -158,27 +172,69 @@ const mail = 'mailto:elizaplnva@gmail.com';
   const links = [...document.querySelectorAll<HTMLAnchorElement>('.rail a[data-step]')];
   const vis = [...document.querySelectorAll<HTMLElement>('.stage .vis')];
   const stage = document.querySelector<HTMLElement>('.stage');
+  const hl = document.querySelector<HTMLElement>('.rail-hl');
+  let over = false;
+  const moveHl = (a?: HTMLElement) => {
+    if (!hl || !a) return;
+    hl.style.width = `${a.offsetWidth}px`;
+    hl.style.height = `${a.offsetHeight}px`;
+    hl.style.transform = `translate(${a.offsetLeft}px, ${a.offsetTop}px)`;
+  };
   const set = (id: string) => {
     const grp = document.getElementById(id)?.dataset.group;
     links.forEach((a) => a.toggleAttribute('aria-current', a.dataset.group ? a.dataset.group === grp : a.dataset.step === id));
     let shown = false;
     vis.forEach((v) => { const on = v.dataset.step === id; v.classList.toggle('on', on); shown ||= on; });
     stage?.classList.toggle('empty', !shown);
+    if (!over) moveHl(links.find((a) => a.hasAttribute('aria-current')));
   };
   // reveal: a screen's blocks rise once it is a little in view
   const rv = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); rv.unobserve(e.target); } }), { rootMargin: '0px 0px -15% 0px' });
   steps.forEach((s) => rv.observe(s));
   if (steps[0]) set(steps[0].id);
+  requestAnimationFrame(() => hl?.classList.add('ready'));
+  links.forEach((a) => {
+    a.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') { over = true; moveHl(a); } });
+    a.addEventListener('click', () => moveHl(a));
+  });
+  hl?.parentElement?.addEventListener('pointerleave', () => { over = false; moveHl(links.find((a) => a.hasAttribute('aria-current'))); });
   const io = new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && set((e.target as HTMLElement).id)), { rootMargin: '-45% 0px -45% 0px' });
   steps.forEach((s) => io.observe(s));
 
   // images lean toward the cursor (mouse devices only, never with reduced motion)
   if (matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)').matches) {
-    document.querySelectorAll<HTMLElement>('.stage .ph').forEach((el) => {
+    document.querySelectorAll<HTMLElement>('.stage .ph:not(.duo):not(.combo):not(.compare):not(.stats):not(.reviews):not(.audit):not(.zoom)').forEach((el) => {
       el.addEventListener('pointermove', (e) => {
         const r = el.getBoundingClientRect();
         el.style.setProperty('--rx', `${(-((e.clientY - r.top) / r.height - 0.5) * 6).toFixed(2)}deg`);
         el.style.setProperty('--ry', `${(((e.clientX - r.left) / r.width - 0.5) * 6).toFixed(2)}deg`);
+        el.classList.add('lean');
+      });
+      el.addEventListener('pointerleave', () => {
+        el.classList.remove('lean');
+        el.style.removeProperty('--rx');
+        el.style.removeProperty('--ry');
+      });
+    });
+    // structure diagram: zooms toward the cursor and follows it
+    document.querySelectorAll<HTMLElement>('.stage .ph.zoom').forEach((el) => {
+      const img = el.querySelector('img');
+      if (!img) return;
+      const S = 1.75;
+      el.addEventListener('pointermove', (e) => {
+        const r = el.getBoundingClientRect();
+        const dx = (e.clientX - r.left) / r.width - 0.5;
+        const dy = (e.clientY - r.top) / r.height - 0.5;
+        img.style.transform = `translate(${(-dx * (S - 1) * r.width).toFixed(1)}px, ${(-dy * (S - 1) * r.height).toFixed(1)}px) scale(${S})`;
+      });
+      el.addEventListener('pointerleave', () => { img.style.transform = ''; });
+    });
+    // comparison table leans toward the cursor and comes forward a little
+    document.querySelectorAll<HTMLElement>('.stage .cmp').forEach((el) => {
+      el.addEventListener('pointermove', (e) => {
+        const r = el.getBoundingClientRect();
+        el.style.setProperty('--rx', `${(-((e.clientY - r.top) / r.height - 0.5) * 8).toFixed(2)}deg`);
+        el.style.setProperty('--ry', `${(((e.clientX - r.left) / r.width - 0.5) * 8).toFixed(2)}deg`);
         el.classList.add('lean');
       });
       el.addEventListener('pointerleave', () => {

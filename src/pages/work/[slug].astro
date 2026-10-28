@@ -10,6 +10,6 @@ export function getStaticPaths() {
 }
 const { c } = Astro.props;
 ---
-<Base title={`${c.name} — Eliza Popelinova`} side={c.side}>
+<Base noindex={c.headline.startsWith('[') || ['world-of-colors', 'reboot-hub', 'bobyard'].includes(c.slug)} title={`${c.name}, ${c.headline} | Eliza Popelinova`} description={c.summary && !c.summary.startsWith('[') ? c.summary : c.headline} side={c.side}>
   {c.side === 'front' || c.screens ? <CaseProduct c={c} /> : <CaseVisual c={c} />}
 </Base>

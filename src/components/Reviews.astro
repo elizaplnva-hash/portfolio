@@ -1,0 +1,17 @@
+---
+import { readFileSync } from 'node:fs';
+import { icon } from '../data/icons';
+interface Props { items: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; }
+const { items } = Astro.props;
+const reddit = readFileSync(`${process.cwd()}/node_modules/@tabler/icons/icons/outline/brand-reddit.svg`, 'utf8').replace(/<!--[\s\S]*?-->/g, '').trim();
+const ico = { appstore: icon('brand-apple'), github: icon('brand-github'), reddit };
+const label = { appstore: 'App Store', github: 'GitHub', reddit: 'Reddit' };
+---
+<div class="rvs">
+  {items.map((r, i) => (
+    <figure class={`rv-c ${r.source}`} style={`--i:${i}`}>
+      <figcaption class="rv-h"><span class="rv-i" aria-hidden="true" set:html={ico[r.source]} /><span class="from">{r.from ?? label[r.source]}</span><span class="tg">{r.tag}</span></figcaption>
+      <blockquote>{r.text}</blockquote>
+    </figure>
+  ))}
+</div>
