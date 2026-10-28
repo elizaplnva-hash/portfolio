@@ -126,15 +126,15 @@ const pinkwallet: Partial<CaseData> = {
         { label: 'Get the money back', a: true, b: false },
       ] } }] } },
 
-    { id: 'research', nav: 'Research', title: ['Three things shaped','the product direction.'],
-      lede: 'With no budget for interviews or usability testing, I used market data, wallet reviews and competitor analysis to identify friction for first-time users.',
+    { id: 'research', nav: 'Research', title: ['The challenge wasn’t','to simplify everything.'],
+      lede: 'People new to crypto need familiar ways to manage money, but they also need to know when an action can’t easily be undone. With no budget for interviews or usability testing, I used market data, wallet reviews and competitor analysis to find where first-timers get stuck.',
       blocks: [
         { type: 'numbered', plain: true, items: [
-          { title: 'Make core actions easy to find', body: 'PinkWallet keeps essential wallet actions accessible without turning the home screen into a trading terminal.' },
-          { title: 'Make recipients and costs clear', body: 'PinkWallet uses saved contacts with multiple wallet destinations and shows swap fees in both percentages and dollars before confirmation.' },
-          { title: 'Use warnings where they matter', body: 'Extra checks appear before irreversible transactions and during wallet recovery, while routine actions stay simple.' },
+          { title: 'Make core actions easy to find', body: 'Essential actions stay on Home, no trading terminal.' },
+          { title: 'Make recipients and costs clear', body: 'Saved contacts, swap fees in % and $ before confirming.' },
+          { title: 'Use warnings where they matter', body: 'Extra checks only before irreversible sends and recovery.' },
         ] },
-        { type: 'pull', text: 'Keep everyday actions familiar. Make risks clear before users commit.' },
+        { type: 'pull', text: 'Keep the routine simple. Make the risks clear.' },
       ],
       visual: { layout: 'stack', items: [
         { label: 'Market context', spec: '', alt: 'Why do some U.S. non‑owners stay away from crypto? 49% don’t understand how crypto works, 43% worry about fraud (NCA × Harris Poll, 2025)', stats: { lead: 'Why do some U.S. non‑owners stay away from crypto?', items: [
