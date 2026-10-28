@@ -428,3 +428,6 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .cp-story:not(.brand) .tbl th, .cp-story:not(.brand) .tbl td { padding: 13px 20px; }
 .cp-story:not(.brand) .quote { padding: 20px 24px; }
 .cp-story:not(.brand) .callout { padding: 16px 20px; }
+
+/* grey frame so the white cards read as filled, like the white tiles on the home ground */
+.cp-story:not(.brand) .frame { background: #f6f6f4; }
