@@ -148,12 +148,12 @@ const pinkwallet: Partial<CaseData> = {
         ] },
         { label: 'Competitor audit', spec: '', alt: 'The Phantom and Trust Wallet home screens with the points where a beginner meets friction', audit: [
           { name: 'Phantom', logo: 'phantom', phone: '/images/pw-audit-phantom.webp', cards: [
-            { tag: 'Sending', text: 'Four tabs at the top, none of them Send' },
-            { tag: 'Swap', text: 'Trading sits in a tab, not next to the balance' },
+            { tag: 'Sending', text: 'Four tabs at the top, none for moving money' },
+            { tag: 'Swap', text: 'Trade is a tab, not an action beside the balance' },
             { tag: 'Security', text: 'Leverage up to 40x on the home screen' } ] },
           { name: 'Trust Wallet', logo: 'trust', phone: '/images/pw-audit-trust.webp', cards: [
-            { tag: 'Sending', text: 'Send is one of four equal buttons' },
-            { tag: 'Swap', text: 'Swap is the only highlighted action' },
+            { tag: 'Sending', text: 'One of four equal buttons under the balance' },
+            { tag: 'Swap', text: 'The only highlighted action on Home' },
             { tag: 'Security', text: 'WETH appears twice, on two networks' } ] },
         ] },
       ] } },
