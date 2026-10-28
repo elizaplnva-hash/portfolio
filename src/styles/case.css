@@ -617,3 +617,11 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .cmp.scope i.on.cut { background: #fde4e5; color: #e5484d; }
 .cmp.scope i.off { width: 10px; height: 10px; background: #e6e6e6; }
 @media (max-width: 899px) { .cmp.scope { --col: 52px; padding-left: 18px; } }
+/* same look for the two-column yes/no table */
+.cmp.scope.c2 .cmp-h, .cmp.scope.c2 .cmp-r { grid-template-columns: 1fr repeat(2, var(--col)); }
+.cmp.scope.c2 .cmp-r { padding: 0; height: 66px; }
+.cmp.scope.c2 .cmp-r:last-child .nm { font-weight: 700; }
+.cmp.scope.c2 .tg { background: #f1f1ef; color: var(--ink); }
+.cmp.scope.c2 { --col: 124px; }
+.cmp.scope .tg { white-space: nowrap; }
+@media (max-width: 899px) { .cmp.scope.c2 { --col: 96px; } }
