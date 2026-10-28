@@ -113,10 +113,9 @@ const pinkwallet: Partial<CaseData> = {
       visual: { layout: 'single', items: [{ label: 'Where we started', spec: '', combo: ['/images/pw-pinkcoin-site.webp', '/images/pw-wallet-phone.webp'], alt: 'The PinkCoin token website from the first project, and the first concept of the wallet screen' }] } },
 
     { id: 'stakes', nav: 'Context', title: ['In crypto, a mistake', 'can’t be undone.'],
-      lede: 'A crypto wallet lets people hold and send money without a bank in between. It works like a banking app.',
+      lede: 'A self-custody wallet lets people hold and send crypto without a bank managing their funds. Day to day, it works like a banking app.',
       blocks: [
-        { type: 'pull', text: 'What changes is the price of an error.' },
-        { type: 'note', text: 'The question for the whole product: how to make crypto feel as familiar as a banking app without hiding what can cost someone money.' },
+        { type: 'pull', text: 'The challenge was to make it feel just as familiar, without hiding the risks.' },
       ],
       visual: { layout: 'single', items: [{ label: 'After you press send', spec: '', alt: 'A mistake can be fixed in a banking app and cannot be fixed in a crypto wallet', compare: { cols: ['Banking app', 'Crypto wallet'], rows: [
         { label: 'Cancel a payment before it settles', a: true, b: false },
