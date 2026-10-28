@@ -320,3 +320,6 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
 .tag.side { margin-left: 6px; }
 .tags-row { display: flex; gap: 6px; }
+
+/* no lonely last words: let the browser balance the last lines of running text */
+p, li, dd, dt, blockquote, figcaption, h3, .lede { text-wrap: pretty; }

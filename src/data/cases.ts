@@ -1,3 +1,4 @@
+import { tidyDeep } from './typo';
 export type Side = 'front' | 'back';
 
 /* ---------- Product case: one screen = one question ---------- */
@@ -623,5 +624,7 @@ export const cases: CaseData[] = [
 ];
 
 // cases whose pages exist but are not on the home sheet yet
+for (const c of cases) { tidyDeep(c.screens); c.headline = tidyDeep(c.headline, "headline"); }
+
 const parked = new Set(['world-of-colors', 'reboot-hub', 'bobyard']);
 export const bySide = (side: Side) => cases.filter((c) => c.side === side && !parked.has(c.slug));
