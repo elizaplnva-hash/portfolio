@@ -575,3 +575,13 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .rv-h .from { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .rv-h .tg { flex: none; font-size: calc(var(--u) * 10.5); font-weight: 600; padding: calc(var(--u) * 2) calc(var(--u) * 8); border-radius: 999px; background: var(--bg); color: var(--b); letter-spacing: -.01em; }
 .rv-c::after { content: ''; position: absolute; inset: 0; background: #f6f6f4; opacity: 0; pointer-events: none; }
+
+/* structure diagram: one image, zooms toward the cursor on mouse devices */
+.ph.zoom { background: #f5f5f5; }
+.ph.zoom img { object-fit: contain; transform-origin: 50% 50%; }
+.m-vis.v-single .ph.zoom { aspect-ratio: 2 / 1; }
+.stage .ph.zoom { transform: none; cursor: zoom-in; }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .stage .ph.zoom img { transition: transform .5s var(--out); will-change: transform; }
+  .stage .ph.zoom:hover img { transition: transform .18s ease-out; }
+}

@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Security'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; stats?: { lead: string; items: { value: string; text: string }[] }; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Security'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; stats?: { lead: string; items: { value: string; text: string }[] }; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -172,10 +172,8 @@ const pinkwallet: Partial<CaseData> = {
         ] },
         { type: 'note', text: 'Four goals: understandable core actions, no avoidable mistakes at irreversible moments, AI without lost control, discovery without impulsive decisions.' },
       ],
-      visual: { layout: 'stack', items: [
-        { label: 'Phantom', spec: 'Экран отправки в Phantom.' },
-        { label: 'Trust Wallet', spec: 'Экран отправки в Trust Wallet.' },
-        { label: 'Information architecture', spec: 'IA-карта продукта: разделы и связи, PIG и Feed подсвечены цветом кейса.' },
+      visual: { layout: 'single', items: [
+        { label: 'Product structure', spec: '', src: '/images/pw-structure.webp', zoom: true, alt: 'PinkWallet structure: Core wallet, PIG and Feed are three equal entry points; Core wallet and PIG lead to the same five actions.' },
       ] } },
 
     { id: 'pig', nav: 'PIG', title: ['A co-pilot,', 'not an autopilot.'],
