@@ -107,7 +107,7 @@ const pinkwallet: Partial<CaseData> = {
           { title: 'The feature list', body: 'What belongs in version one, and what can wait.' },
           { title: 'The AI request', body: 'A useful role for AI that never controls users’ money.' },
         ] },
-        { type: 'note', text: 'My first job was to turn that wish list into a product with a point of view.' },
+        { type: 'note', text: 'My first job was to turn that wish list into a point of view.' },
       ],
       visual: { layout: 'single', items: [{ label: 'Where we started', spec: '', combo: ['/images/pw-pinkcoin-site.webp', '/images/pw-wallet-phone.webp'], alt: 'The PinkCoin token website from the first project, and the first concept of the wallet screen' }] } },
 
