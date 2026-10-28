@@ -524,3 +524,26 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .ph.stats { text-align: left; color: var(--ink); }
 .ph.stats .sts-lead { max-width: none; font-size: clamp(15px, 1.25vw, 18px); line-height: 1.2; color: var(--ink); }
 .ph.stats .sts-c .t { color: var(--ink); text-align: left; }
+
+/* research: public posts as scattered cards */
+.ph.reviews, .stage .ph.reviews { display: grid; align-content: center; padding: clamp(18px, 2.4vw, 34px); transform: none; transition: none; text-align: left; color: var(--ink); }
+.rvs { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 16px; width: 100%; max-width: 720px; margin: 0 auto; }
+.rv-c { margin: 0; display: grid; align-content: start; gap: 14px; padding: 20px 22px; background: #fff; border-radius: 16px; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 6px 20px rgba(17,17,17,.08); }
+.rv-c:nth-child(1) { transform: rotate(-1.2deg); }
+.rv-c:nth-child(2) { transform: translateY(18px) rotate(1deg); }
+.rv-c:nth-child(3) { transform: translateY(-6px) rotate(.8deg); }
+.rv-c:nth-child(4) { transform: translateY(12px) rotate(-1deg); }
+.rv-h { display: flex; align-items: center; gap: 10px; }
+.rv-h .src { width: 28px; height: 28px; border-radius: 50%; background: #f3f3f1; display: grid; place-items: center; font-style: normal; color: var(--ink); }
+.rv-h .src svg { width: 15px; height: 15px; }
+.rv-h .tg { font-size: 12px; font-weight: 600; letter-spacing: -.02em; padding: 3px 10px; border-radius: 999px; background: #ffe6f1; color: #c62f78; }
+.rv-c blockquote { margin: 0; font-size: clamp(14px, 1.15vw, 16px); font-weight: 600; letter-spacing: -.025em; line-height: 1.3; color: var(--ink); }
+.rv-c figcaption { font-size: 12px; color: var(--muted); letter-spacing: -.01em; }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .rv-c { transition: transform .6s var(--out), box-shadow .4s ease-out; }
+  .rv-c:hover { transform: translateY(-6px) rotate(0deg) scale(1.03); position: relative; z-index: 2; }
+}
+.stage .vis:has(.ph.stats) { grid-template-columns: minmax(0,1fr) minmax(0,1fr); grid-template-rows: minmax(0,1fr) minmax(0,1.25fr); }
+.sts-c { padding: 24px 22px; grid-template-columns: clamp(72px, 5.8vw, 84px) 1fr; column-gap: 10px; }
+.sts-c .v { font-size: clamp(40px, 3.3vw, 48px); }
+.sts-c .t { font-size: clamp(14px, 1.1vw, 16px); }

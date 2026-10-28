@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; stats?: { lead: string; items: { value: string; text: string }[] }; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string }[]; stats?: { lead: string; items: { value: string; text: string }[] }; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -141,8 +141,13 @@ const pinkwallet: Partial<CaseData> = {
           { value: '49', text: 'don’t understand\nhow it works' },
           { value: '43', text: 'worry\nabout fraud' },
         ] } },
-        { label: 'What reviews say', spec: 'Ты рисуешь: коллаж 6–8 стикеров с жалобами из отзывов App Store и Reddit, по темам: fees, failed sends, overload, warnings.' },
         { label: 'Competitor audit', spec: 'Ты рисуешь: страница-отчёт аудита Phantom и Trust Wallet: где трение для новичка (отправка, swap, безопасность, объём).' },
+        { label: 'What people say', spec: '', alt: 'Four public posts about wallet friction: network fees, a security warning, an address typo and a stuck transaction', reviews: [
+          { tag: 'Fees', source: 'appstore', text: '“The app keeps saying the network fee is not enough no matter how much I adjust the amount. Why??? Makes no sense.”', meta: 'Trust Wallet · App Store · Apr 2024' },
+          { tag: 'Warnings', source: 'github', text: '“No balance change found. This transaction maybe malicious.”', meta: 'Phantom · GitHub · Nov 2023' },
+          { tag: 'Addresses', source: 'reddit', text: '“The last number of the address is changed.”', meta: 'r/CryptoHelp · Oct 2026' },
+          { tag: 'Transactions', source: 'reddit', text: '“Stuck on ‘Processing’ or ‘Pending’ and then eventually failing.”', meta: 'r/trustwalletcommunity · Oct 2024' },
+        ] },
       ] } },
 
     { id: 'choices', nav: 'Choices', title: ['Keep the core familiar,', 'change only two things.'],
