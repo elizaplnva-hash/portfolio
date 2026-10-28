@@ -445,14 +445,16 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 
 /* numbered brief cards + first-person quote */
 .numbered { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; counter-reset: nb; }
-.numbered li { counter-increment: nb; display: grid; grid-template-columns: 44px 1fr; gap: 16px; align-items: start; border-radius: var(--r); padding: 18px 22px; }
-.numbered .num::before { content: counter(nb); font-size: 32px; font-weight: 500; line-height: 1; letter-spacing: -.03em; color: var(--af); }
-.numbered h3 { margin: 0; font-size: 16px; font-weight: 600; line-height: 1.25; letter-spacing: -.02em; }
-.numbered p { margin: 4px 0 0; font-size: 14px; line-height: 1.4; color: var(--muted); letter-spacing: -.01em; }
+.numbered li { counter-increment: nb; display: grid; grid-template-columns: 30px 1fr; gap: 14px; align-items: start; border-radius: var(--r); padding: 18px 22px; }
+.numbered .num { width: 30px; height: 30px; border-radius: 50%; background: var(--af); color: #fff; display: grid; place-items: center; }
+.numbered .num::before { content: counter(nb); font-size: 13px; font-weight: 600; line-height: 1; }
+.numbered h3 { margin: 0; font-size: 16px; font-weight: 600; line-height: 30px; letter-spacing: -.02em; }
+.numbered p { margin: 2px 0 0; font-size: 14px; line-height: 1.4; color: var(--muted); letter-spacing: -.01em; }
 .cp-story:not(.brand) .numbered li { background: #fff; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 6px 20px rgba(17,17,17,.08); }
-.quote.me { position: relative; display: grid; gap: 14px; }
-.quote.me .qm { width: 28px; height: 28px; color: var(--af); display: block; }
+.cp-story:not(.brand) .quote.me { background: var(--t); box-shadow: none; display: grid; grid-template-columns: auto 1fr auto; gap: 18px; align-items: center; padding: 22px 24px; }
+.quote.me .face { width: 56px; height: 56px; box-shadow: none; }
+.quote.me blockquote { font-size: 19px; line-height: 1.3; font-weight: 600; letter-spacing: -.025em; }
+.quote.me figcaption { margin: 8px 0 0; font-size: 13px; color: var(--muted); }
+.quote.me .qm { align-self: start; width: 26px; height: 26px; color: var(--af); display: block; }
 .quote.me .qm svg { width: 100%; height: 100%; display: block; }
-.quote.me blockquote { font-size: 20px; line-height: 1.3; font-weight: 600; letter-spacing: -.025em; }
-.quote.me figcaption { margin: 0; display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); }
-.quote.me .face { width: 32px; height: 32px; box-shadow: none; }
+.quote.me blockquote { text-wrap: balance; }

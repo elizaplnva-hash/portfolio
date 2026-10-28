@@ -123,11 +123,12 @@ const mail = 'mailto:elizaplnva@gmail.com';
                 case 'steps': return (
                   <ol class="list num rv">{b.items.map((x) => <li><span class="n" aria-hidden="true"></span><div><h3>{x.title}</h3><p>{x.body}</p></div></li>)}</ol>);
                 case 'quote': return b.me ? (
-                  <figure class="quote me rv"><span class="qm" aria-hidden="true" set:html={icon('quote')} /><blockquote>{b.text}</blockquote>
-                    <figcaption><span class="face" aria-hidden="true"><img src={face.src} alt="" width="76" height="76" loading="lazy" decoding="async" style={`object-position:${face.pos}`} /></span>{b.by}</figcaption></figure>
+                  <figure class="quote me rv"><span class="face" aria-hidden="true"><img src={face.src} alt="" width="76" height="76" loading="lazy" decoding="async" style={`object-position:${face.pos}`} /></span>
+                    <div><blockquote>{b.text}</blockquote><figcaption>{b.by}</figcaption></div>
+                    <span class="qm" aria-hidden="true" set:html={icon('quote')} /></figure>
                 ) : (<figure class="quote rv"><blockquote>“{b.text}”</blockquote><figcaption>{b.by}</figcaption></figure>);
                 case 'numbered': return (
-                  <ol class="numbered rv">{b.items.map((x) => <li class="l2 lift"><span class="num" aria-hidden="true"></span><div><h3>{x.title}</h3><p>{x.body}</p></div></li>)}</ol>);
+                  <ol class="numbered rv">{b.items.map((x) => <li class="l2"><span class="num" aria-hidden="true"></span><div><h3>{x.title}</h3><p>{x.body}</p></div></li>)}</ol>);
                 case 'theme': return (
                   <div class="theme rv" role="group" aria-label="Screen theme">
                     <button type="button" aria-pressed="true" data-theme="light">Light</button>
