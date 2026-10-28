@@ -281,7 +281,7 @@ h1.ttl { font-size: clamp(30px, 3vw, 46px); letter-spacing: -.045em; line-height
   .step.statement .step-text, .step.wide .step-text { width: calc(100vw - var(--rail) - 3 * var(--pad)); }
   .step.wide .step-text > :not(.ttl) { max-width: 620px; }
   .contrast { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); }
-  .stage .vis { position: absolute; top: var(--pad); bottom: var(--pad); left: 0; right: 0; display: grid; gap: 3px; padding: 0; background: var(--t); border-radius: 0 20px 20px 0; overflow: hidden; opacity: 0; transform: scale(.98); transition: opacity .45s ease-out, transform .6s var(--out); pointer-events: none; }
+  .stage .vis { position: absolute; top: var(--pad); bottom: var(--pad); left: 0; right: 0; display: grid; gap: 3px; padding: 0; background: var(--pn, var(--t)); border-radius: 0 20px 20px 0; overflow: hidden; opacity: 0; transform: scale(.98); transition: opacity .45s ease-out, transform .6s var(--out); pointer-events: none; }
   .stage .vis.on { opacity: 1; transform: none; }
   .stage .v-stack { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1.25fr; }
   .stage .v-stack .ph:nth-child(3) { grid-column: span 2; }
@@ -396,11 +396,9 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .meta b span { display: block; }
 .meta b span + span { color: var(--soft); font-weight: 400; }
 
-/* two transparent phone renders composed on the case tint */
-.ph.duo, .stage .ph.duo { position: relative; background: none; overflow: visible; padding: 0; container-type: size; }
-.ph.duo img { position: absolute; height: min(64cqh, 82cqw); width: auto; filter: drop-shadow(0 18px 28px rgba(40, 10, 40, .22)); transition: transform .7s var(--out); }
-.ph.duo img:first-child { left: 9%; bottom: 8%; transform: translateY(3%); }
-.ph.duo img:last-child { right: 9%; top: 10%; transform: translateY(3%); }
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .ph.duo:hover img { transform: translateY(-2%); }
-}
+/* two transparent phone renders composed on the case tint: no motion */
+.ph.duo, .stage .ph.duo { position: relative; background: none; overflow: visible; padding: 0; container-type: size; transform: none; }
+.ph.duo img { position: absolute; height: min(74cqh, 92cqw); width: auto; filter: drop-shadow(0 18px 28px rgba(40, 10, 40, .18)); }
+.ph.duo img:first-child { right: calc(50% + 6px); bottom: 6%; }
+.ph.duo img:last-child { left: calc(50% + 6px); top: 7%; }
+.stage .ph:not(.has-img):not(.duo) { box-shadow: inset 0 0 0 1px rgba(17,17,17,.06); }

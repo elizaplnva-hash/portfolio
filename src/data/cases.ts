@@ -59,6 +59,7 @@ export interface CaseData {
   accent?: string;            // case colour, safe for text on white
   fill?: string;              // case colour for small dots and marks
   tint?: string;              // pastel behind the case images
+  panel?: string;             // overrides the image panel background (e.g. white)
   screens?: Screen[];         // Product pages; falls back to a generic skeleton
   shots?: Ph[];               // Brand pages: the images shown one by one while scrolling
 }
@@ -78,6 +79,7 @@ const pinkwallet: Partial<CaseData> = {
   accent: '#E0408F',
   fill: '#E0408F',
   tint: '#FFE6F1',
+  panel: '#FFFFFF',
   facts: [
     { label: 'Role', value: 'Product Designer, two-person design team' },
     { label: 'Scope', value: 'Architecture, UX/UI, design system' },

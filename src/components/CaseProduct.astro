@@ -25,7 +25,7 @@ const groupOf: Record<string, string> = {};
 let cur = '';
 screens.forEach((s) => { if (s.group) cur = s.group; groupOf[s.id] = cur; });
 const tint = brand ? `color-mix(in srgb, ${c.fill ?? c.color} 22%, #1c1b1a)` : (c.tint ?? '#f1f1ef');
-const tone = `--c:${c.fill ?? c.color};--a:${c.accent ?? `color-mix(in oklab, ${c.color} 70%, #000)`};--af:${c.fill ?? c.color};--t:${tint}`;
+const tone = `--c:${c.fill ?? c.color};--a:${c.accent ?? `color-mix(in oklab, ${c.color} 70%, #000)`};--af:${c.fill ?? c.color};--t:${tint};--pn:${c.panel ?? tint}`;
 const home = brand ? '/visual' : '/';
 const face = brand ? { src: '/images/eliza-dark.webp', pos: '50% 12%' } : { src: '/images/eliza.webp', pos: '50% 22%' };
 const mail = 'mailto:elizaplnva@gmail.com';
@@ -176,7 +176,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
 
   // images lean toward the cursor (mouse devices only, never with reduced motion)
   if (matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)').matches) {
-    document.querySelectorAll<HTMLElement>('.stage .ph').forEach((el) => {
+    document.querySelectorAll<HTMLElement>('.stage .ph:not(.duo)').forEach((el) => {
       el.addEventListener('pointermove', (e) => {
         const r = el.getBoundingClientRect();
         el.style.setProperty('--rx', `${(-((e.clientY - r.top) / r.height - 0.5) * 6).toFixed(2)}deg`);
