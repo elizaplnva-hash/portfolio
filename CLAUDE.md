@@ -28,7 +28,7 @@ One sheet that fits one screen (desktop 4×3 grid, 100dvh, min 780px). Front = P
 - Keep it fast: no UI frameworks; client JS only for pointer effects, cover measuring and the curl.
 
 ## Facts policy
-No fabricated metrics. Case headline metrics (Jam Social 2.5×, Lapunzel 20%, Green Credit Score "5 seconds", "0-to-1") are confirmed by the owner. No agency name (Danart) on cases. Title on site: Senior Product Designer.
+No fabricated metrics. Case headline metrics (Jam Social 2.5×, Lapunzel 20%, Green Credit Score "5 seconds", "0-to-1") are confirmed by the owner. The agency name (Danart) may be named on cases (owner allowed it); her lead there is the Design Manager. Title on site: Senior Product Designer.
 
 ## Workflow
 `npm run dev` / `npm run build`. Work on `feat/links`, push, review the Vercel preview URL. Merge to `main` only when the owner explicitly says so ("влей").
