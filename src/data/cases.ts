@@ -79,7 +79,6 @@ const pinkwallet: Partial<CaseData> = {
   accent: '#E0408F',
   fill: '#E0408F',
   tint: '#FFE6F1',
-  panel: '#FFFFFF',
   facts: [
     { label: 'Role', value: 'Product Designer, two-person design team' },
     { label: 'Scope', value: 'Architecture, UX/UI, design system' },

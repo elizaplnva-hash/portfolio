@@ -295,6 +295,8 @@ h1.ttl { font-size: clamp(30px, 3vw, 46px); letter-spacing: -.045em; line-height
   .stage .vis.nx .tile { min-height: 0; overflow: hidden; }
   .stage .vis.nx .art { flex: 1; aspect-ratio: auto; min-height: 0; }
   .stage .vis.nx .turn { grid-area: auto; min-height: 0; }
+  /* image panel inset from the frame, like the cover on the home tile */
+  .cp-story:not(.brand) .stage .vis:not(.nx) { top: calc(var(--pad) + 10px); bottom: calc(var(--pad) + 10px); left: 10px; right: 10px; border-radius: 14px; }
   .stage .vis:not(.on) { visibility: hidden; transition: opacity .45s ease-out, transform .6s var(--out), visibility 0s .45s; }
   .stage .vis.on { pointer-events: auto; }
 }
