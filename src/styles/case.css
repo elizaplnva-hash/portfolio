@@ -259,7 +259,7 @@ h1.ttl { font-size: clamp(30px, 3vw, 46px); letter-spacing: -.045em; line-height
 @media (min-width: 900px) and (min-height: 620px) {
   html:has(.cp-story) { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
   .m-bar, .m-vis { display: none; }
-  .story { display: grid; grid-template-columns: var(--rail) minmax(380px, 520px) minmax(0, 1fr); padding-right: var(--pad); }
+  .story { display: grid; grid-template-columns: var(--rail) minmax(380px, clamp(380px, 36vw, 800px)) minmax(0, 1fr); padding-right: var(--pad); }
   .rail, .steps, .stage { grid-row: 1; }
   .cta-step { scroll-snap-align: start; }
   .rail { grid-column: 1; } .steps { grid-column: 2; } .stage { grid-column: 3; z-index: 1; }
