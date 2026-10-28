@@ -100,7 +100,7 @@ const pinkwallet: Partial<CaseData> = {
       visual: { layout: 'single', items: [{ label: 'The Wallet home in both themes', spec: '', srcs: ['/images/pw-home-dark.webp', '/images/pw-home-light.webp'], alt: 'The PinkWallet home screen in the dark and the light theme' }] } },
 
     { id: 'background', nav: 'Brief', title: ['The brief changed before','we started designing.'],
-      lede: 'The first project was a crypto token for experienced users. Then the client came back with funding and a new idea: a wallet for people new to crypto.',
+      lede: 'The first project was a crypto token for experienced users. Then the client came back with funding and a new idea: a wallet.',
       blocks: [
         { type: 'numbered', items: [
           { title: 'A new audience', body: 'People with little or no crypto experience.' },
