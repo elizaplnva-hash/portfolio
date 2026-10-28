@@ -167,7 +167,7 @@ const pinkwallet: Partial<CaseData> = {
       ] } },
 
     { id: 'pig', nav: 'PIG', title: ['A co-pilot,', 'not an autopilot.'],
-      lede: 'Crypto transactions involve decisions about addresses, networks and fees. PIG helps users through this process by preparing the transaction and explaining its details.',
+      lede: 'Crypto transactions involve decisions about addresses, networks and fees. When a contact has several wallets, PIG asks which one to use, then prepares the transaction and explains its details.',
       blocks: [
         { type: 'pull', text: 'It never sends money on the user’s behalf. The user reviews and confirms every transaction.' },
         { type: 'chain', steps: ['User asks', 'PIG prepares', 'User reviews', 'User confirms'] },
