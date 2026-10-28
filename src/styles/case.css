@@ -534,17 +534,19 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 
 .rvs { position: absolute; inset: 26px 18px 26px; }
 .rv-c { position: absolute; margin: 0; width: 82%; left: calc(var(--i) * 9%); top: calc(var(--i) * 33%); z-index: calc(10 - var(--i)); background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 1px 3px rgba(17,17,17,.07), 0 8px 22px rgba(17,17,17,.10); --b: #6d6d69; }
-.rv-c.appstore { --b: #0a84ff; --bg: #e3f1ff; } .rv-c.github { --b: #24292f; --bg: #fff; } .rv-c.reddit { --b: #ff4500; --bg: #ffe9df; }
+.rv-c.appstore { --b: #0a84ff; --bg: #e3f1ff; } .rv-c.github { --b: #24292f; --bg: #ebedef; } .rv-c.reddit { --b: #e03d00; --bg: #ffe9df; }
 .rv-h { display: flex; align-items: center; gap: 8px; padding: 7px 12px; background: #f8f8f6; font-size: 11.5px; font-weight: 600; letter-spacing: -.02em; color: #6d6d69; }
-.rv-i { width: 22px; height: 22px; border-radius: 50%; background: var(--bg, #fff); color: var(--ink); display: grid; place-items: center; flex: none; transition: color .3s ease-out; }
+.rv-i { width: 22px; height: 22px; border-radius: 50%; background: #fff; color: var(--ink); display: grid; place-items: center; flex: none; transition: color .3s ease-out, background .3s ease-out; }
 .rv-i svg { width: 13px; height: 13px; display: block; fill: currentColor; }
 .rv-c blockquote { margin: 0; padding: 11px 14px 14px; font-size: clamp(12px, .92vw, 13.5px); font-weight: 600; letter-spacing: -.022em; line-height: 1.28; color: var(--ink); }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .rv-c { transition: transform .6s var(--out), opacity .5s ease-out; }
+  .rv-c { transition: transform .6s var(--out); }
   .rv-i svg { transition: color .3s ease-out; }
-  .rvs:has(.rv-c:hover) .rv-c:not(:hover) { opacity: .45; transform: scale(.97); }
+  .rv-c::after { transition: opacity .5s ease-out; }
+  .rvs:has(.rv-c:hover) .rv-c:not(:hover) { transform: scale(.97); }
+  .rvs:has(.rv-c:hover) .rv-c:not(:hover)::after { opacity: .62; }
   .rv-c:hover { transform: scale(1.03); z-index: 20; }
-  .rv-c:hover .rv-i { color: var(--b); }
+  .rv-c:hover .rv-i { color: var(--b); background: var(--bg); }
 }
 
 /* research: competitor audit, drawn on a 660 x 452 board and scaled to the frame */
@@ -570,4 +572,5 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .numbered.plain li { grid-template-columns: 1fr; }
 
 .rv-h .from { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.rv-h .tg { flex: none; font-size: 10.5px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: #ffe6f1; color: #c62f78; letter-spacing: -.01em; }
+.rv-h .tg { flex: none; font-size: 10.5px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--bg); color: var(--b); letter-spacing: -.01em; }
+.rv-c::after { content: ''; position: absolute; inset: 0; background: #f6f6f4; opacity: 0; pointer-events: none; }
