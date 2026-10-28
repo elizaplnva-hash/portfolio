@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string }[]; stats?: { lead: string; items: { value: string; text: string }[] }; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Security'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string }[]; stats?: { lead: string; items: { value: string; text: string }[] }; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -146,7 +146,16 @@ const pinkwallet: Partial<CaseData> = {
           { tag: 'Warnings', source: 'github', text: '“No balance change found. This transaction maybe malicious.”', meta: 'Phantom · GitHub · Nov 2023' },
           { tag: 'Addresses', source: 'reddit', text: '“The last number of the address is changed.”', meta: 'r/CryptoHelp · Oct 2026' },
         ] },
-        { label: 'Competitor audit', spec: 'Ты рисуешь: страница-отчёт аудита Phantom и Trust Wallet: где трение для новичка (отправка, swap, безопасность, объём).' },
+        { label: 'Competitor audit', spec: '', alt: 'The Phantom and Trust Wallet home screens with the points where a beginner meets friction', audit: [
+          { name: 'Phantom', logo: 'phantom', phone: '/images/pw-audit-phantom.webp', cards: [
+            { tag: 'Sending', text: 'Four tabs at the top, none of them Send' },
+            { tag: 'Swap', text: 'Trading sits in a tab, not next to the balance' },
+            { tag: 'Security', text: 'Leverage up to 40x on the home screen' } ] },
+          { name: 'Trust Wallet', logo: 'trust', phone: '/images/pw-audit-trust.webp', cards: [
+            { tag: 'Sending', text: 'Send is one of four equal buttons' },
+            { tag: 'Swap', text: 'Swap is the only highlighted action' },
+            { tag: 'Security', text: 'WETH appears twice, on two networks' } ] },
+        ] },
       ] } },
 
     { id: 'choices', nav: 'Choices', title: ['Keep the core familiar,', 'change only two things.'],

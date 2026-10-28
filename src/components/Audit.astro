@@ -1,0 +1,19 @@
+---
+import { readFileSync } from 'node:fs';
+interface App { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Security'; text: string }[]; }
+interface Props { apps: App[]; }
+const { apps } = Astro.props;
+const logos = Object.fromEntries(apps.map((a) => [a.logo, readFileSync(`${process.cwd()}/src/data/logos/${a.logo}.svg`, 'utf8').replace(/<\?xml.*?\?>/, '').trim()]));
+---
+<div class="au">
+  <div class="au-col l">
+    <p class="au-h"><span class="lg" aria-hidden="true" set:html={logos[apps[0].logo]} />{apps[0].name}</p>
+    {apps[0].cards.map((c) => <div class="au-n"><span class={`t ${c.tag.toLowerCase()}`}>{c.tag}</span><p>{c.text}</p></div>)}
+  </div>
+  <img class="au-ph a" src={apps[0].phone} alt={`${apps[0].name} home screen`} decoding="async" />
+  <img class="au-ph b" src={apps[1].phone} alt={`${apps[1].name} home screen`} decoding="async" />
+  <div class="au-col r">
+    <p class="au-h"><span class="lg" aria-hidden="true" set:html={logos[apps[1].logo]} />{apps[1].name}</p>
+    {apps[1].cards.map((c) => <div class="au-n"><span class={`t ${c.tag.toLowerCase()}`}>{c.tag}</span><p>{c.text}</p></div>)}
+  </div>
+</div>
