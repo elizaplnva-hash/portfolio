@@ -213,6 +213,23 @@ const mail = 'mailto:elizaplnva@gmail.com';
         el.style.removeProperty('--ry');
       });
     });
+    // comparison table: a soft highlight follows the cursor from row to row
+    document.querySelectorAll<HTMLElement>('.cmp').forEach((t) => {
+      const hl = t.querySelector<HTMLElement>('.cmp-hl');
+      if (!hl) return;
+      t.querySelectorAll<HTMLElement>('.cmp-r').forEach((r) => {
+        r.addEventListener('pointerenter', () => {
+          const first = !hl.classList.contains('on');
+          hl.classList.toggle('jump', first);
+          hl.style.transform = `translateY(${r.offsetTop}px)`;
+          hl.style.height = `${r.offsetHeight}px`;
+          if (first) void hl.offsetWidth;
+          hl.classList.remove('jump');
+          hl.classList.add('on');
+        });
+      });
+      t.addEventListener('pointerleave', () => hl.classList.remove('on'));
+    });
   }
 
   // light / dark switch for the "every state" screens
