@@ -89,12 +89,12 @@ const pinkwallet: Partial<CaseData> = {
   summary: 'A crypto wallet for people new to crypto, with PIG, an AI co-pilot that prepares actions and leaves the decision to the user.',
   screens: [
     { id: 'overview', nav: 'Overview', title: ['Crypto for first-timers,', 'through conversation'],
-      lede: 'A wallet for people who have never managed crypto, built so that nobody has to learn it first. I designed it end to end: the architecture, 200+ screens in two themes, a component system and PIG, an AI co-pilot that prepares actions and leaves the decision to the user. It launched on the App Store in July 2026.',
+      lede: 'PinkWallet makes self-custody less intimidating by bringing the familiarity of banking to crypto without concealing the risks of irreversible transactions. Its AI co-pilot, PIG, helps users understand and prepare actions while keeping every financial decision in their hands.',
       blocks: [{ type: 'meta', items: [
-        { label: 'Role', value: 'Product Designer\nUX and UI design' },
-        { label: 'Scope', value: 'Information architecture\nWallet, swap, onboarding' },
-        { label: 'Timeline', value: '8 weeks\nDec 2025 – Jan 2026' },
-        { label: 'Launch', value: 'July 2026\niOS' },
+        { label: 'Collaboration', value: 'Design Manager\nClient development team' },
+        { label: 'Timeline', value: '8 weeks\nLaunched July 2026' },
+        { label: 'Responsibilities', value: 'Product architecture\nUX/UI, design system' },
+        { label: 'Position', value: 'Product Designer' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'The Wallet home in both themes', spec: '', srcs: ['/images/pw-home-dark.webp', '/images/pw-home-light.webp'], alt: 'The PinkWallet home screen in the dark and the light theme' }] } },
 
