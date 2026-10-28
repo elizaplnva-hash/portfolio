@@ -89,7 +89,7 @@ const pinkwallet: Partial<CaseData> = {
   summary: 'A crypto wallet for people new to crypto, with PIG, an AI co-pilot that prepares actions and leaves the decision to the user.',
   screens: [
     { id: 'overview', nav: 'Overview', title: ['Crypto for first-timers,', 'through conversation'],
-      lede: 'PinkWallet makes self-custody less intimidating by bringing the familiarity of banking to crypto without concealing the risks of irreversible transactions. Its AI co-pilot, PIG, helps users understand and prepare actions while keeping every financial decision in their hands.',
+      lede: 'Most crypto wallets assume you already know what you’re doing. PinkWallet doesn’t. It’s a self-custody wallet that works like a banking app and says plainly that a sent transaction can’t be undone. PIG, an AI assistant, explains each action and sets it up. You press confirm.',
       blocks: [{ type: 'meta', items: [
         { label: 'Collaboration', value: 'Design Manager\nClient development team' },
         { label: 'Timeline', value: '8 weeks\nLaunched July 2026' },
