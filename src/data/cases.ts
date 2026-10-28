@@ -158,9 +158,9 @@ const pinkwallet: Partial<CaseData> = {
       ] } },
 
     { id: 'choices', nav: 'Choices', title: ['A familiar core,','with two new additions.'],
-      lede: 'A beginner shouldn’t have to learn a new interface and a new kind of money at once.\nSo the everyday actions stay where people expect them: managing assets, sending, receiving and swapping.',
+      lede: 'A beginner shouldn’t have to learn a new interface and a new kind of money at once.\nWe kept everyday wallet actions familiar: managing assets, sending, receiving and swapping.',
       blocks: [
-        { type: 'pull', text: 'I added only two things: Feed, for crypto discovery, and PIG, an AI assistant that helps with those same actions along the way.' },
+        { type: 'pull', text: 'We gave the two new features distinct roles: Feed became a place to explore crypto, while PIG helps users understand and prepare actions across the wallet.' },
       ],
       visual: { layout: 'single', items: [
         { label: 'Product structure', spec: '', src: '/images/pw-structure.webp', zoom: true, alt: 'PinkWallet structure: Core wallet, PIG and Feed are three equal entry points; Core wallet and PIG lead to the same five actions.' },
