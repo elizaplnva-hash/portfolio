@@ -1,0 +1,17 @@
+---
+interface Props { cols: string[]; rows: { label: string; a: boolean; b: boolean }[]; }
+const { cols, rows } = Astro.props;
+const yes = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+const no = '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+---
+<div class="cmp">
+  <span class="cmp-plate" aria-hidden="true"></span>
+  <div class="cmp-h"><span></span><span class="tg">{cols[0]}</span><span class="tg">{cols[1]}</span></div>
+  {rows.map((r) => (
+    <div class="cmp-r">
+      <span class="nm">{r.label}</span>
+      <i class:list={[r.a ? 'ok' : 'no']} role="img" aria-label={r.a ? 'Yes' : 'No'} set:html={r.a ? yes : no} />
+      <i class:list={[r.b ? 'ok' : 'no']} role="img" aria-label={r.b ? 'Yes' : 'No'} set:html={r.b ? yes : no} />
+    </div>
+  ))}
+</div>

@@ -5,7 +5,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -111,16 +111,18 @@ const pinkwallet: Partial<CaseData> = {
       ],
       visual: { layout: 'single', items: [{ label: 'Where we started', spec: '', combo: ['/images/pw-pinkcoin-site.webp', '/images/pw-wallet-phone.webp'], alt: 'The PinkCoin token website from the first project, and the first concept of the wallet screen' }] } },
 
-    { id: 'stakes', nav: 'Stakes', wide: true, title: ['In crypto, a mistake', 'can’t be undone.'],
+    { id: 'stakes', nav: 'Stakes', title: ['In crypto, a mistake', 'can’t be undone.'],
       lede: 'A wallet does what a banking app does. What changes is the price of an error.',
       blocks: [
-        { type: 'table', head: ['In a banking app', 'In a crypto wallet'], rows: [
-          ['Wrong recipient', 'The bank can reverse it. In crypto, nobody can.'],
-          ['Address', 'A name or an account number. In crypto, a long string: one wrong character and the money is gone.'],
-          ['Lost access', 'Reset by email. In crypto, lose the 12-word phrase and the wallet is gone.'],
-        ] },
-        { type: 'callout', text: 'The question for the whole product: how to make crypto feel as familiar as a banking app without hiding what can cost someone money.' },
-      ] },
+        { type: 'note', text: 'The question for the whole product: how to make crypto feel as familiar as a banking app without hiding what can cost someone money.' },
+      ],
+      visual: { layout: 'single', items: [{ label: 'After you press send', spec: '', alt: 'A mistake can be fixed in a banking app and cannot be fixed in a crypto wallet', compare: { cols: ['Banking app', 'Crypto wallet'], rows: [
+        { label: 'Cancel a payment before it settles', a: true, b: false },
+        { label: 'Dispute a mistake', a: true, b: false },
+        { label: 'Call someone who can help', a: true, b: false },
+        { label: 'Reset your access', a: true, b: false },
+        { label: 'Get the money back', a: true, b: false },
+      ] } }] } },
 
     { id: 'research', nav: 'Research', title: ['People aren’t afraid of crypto.', 'They don’t understand it.'],
       lede: 'With no research budget I worked from what already existed: a competitor audit, App Store and Reddit reviews, and conventions people know from messengers and banks.',

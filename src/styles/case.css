@@ -465,7 +465,7 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .ph.combo .cs { position: absolute; left: 9%; top: 9%; bottom: 0; width: 68%; height: auto; object-fit: cover; object-position: top; border-radius: 14px 14px 0 0; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 10px 30px rgba(17,17,17,.10); }
 .ph.combo .cp { position: absolute; left: 54%; top: 19%; width: 37%; height: auto; filter: drop-shadow(0 18px 28px rgba(40, 10, 40, .22)); }
 
-.cp-story .note { white-space: nowrap; }
+#background .note { white-space: nowrap; }
 .ph.combo .cs { transition: transform .6s var(--out); will-change: transform; }
 .ph.combo .cp { transition: transform .6s var(--out); will-change: transform; }
 .ph.combo .cs { transform-origin: 50% 0; }
@@ -474,3 +474,21 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
   .ph.combo .cs:hover { transform: scale(1.05); }
   .ph.combo .cp:hover { transform: scale(1.1) rotate(5deg); }
 }
+
+/* comparison table: banking app vs crypto wallet */
+.ph.compare, .stage .ph.compare { background: none; aspect-ratio: auto; display: grid; place-items: center; padding: 0 32px; border-radius: 0; transform: none; overflow: visible; }
+.cmp { --col: 140px; position: relative; width: min(100%, 640px); }
+.cmp-plate { position: absolute; top: 0; bottom: 0; right: 0; width: var(--col); background: #fff; border-radius: 18px; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 6px 20px rgba(17,17,17,.08); }
+.cmp-h, .cmp-r { position: relative; display: grid; grid-template-columns: 1fr var(--col) var(--col); align-items: center; }
+.cmp-h { height: 76px; }
+.cmp-h .tg { justify-self: center; background: var(--white); box-shadow: 0 1px 2px rgba(17,17,17,.05), 0 3px 10px rgba(17,17,17,.06); color: var(--ink); font-size: 13.5px; letter-spacing: -.02em; line-height: 1; padding: 6px 13px; border-radius: 999px; }
+.cmp-r { height: 66px; }
+.cmp-r .nm { font-size: 16px; font-weight: 500; letter-spacing: -.02em; padding-right: 12px; }
+.cmp-r:last-child .nm { font-weight: 700; }
+.cmp-r i { justify-self: center; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; }
+.cmp-r i.ok { background: #e3f4e8; color: #2f7d4d; }
+.cmp-r i.no { background: #fde4e5; color: #e5484d; }
+@media (max-width: 899px) { .ph.compare { padding: 16px 0; } .cmp { --col: 96px; } .cmp-r .nm { font-size: 14px; } }
+.cmp { text-align: left; }
+.cmp-r .nm { color: var(--ink); }
+.cp-story .ttl { text-wrap: balance; }
