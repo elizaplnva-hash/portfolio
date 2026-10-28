@@ -182,7 +182,7 @@ const pinkwallet: Partial<CaseData> = {
     { id: 'feed', nav: 'Feed', title: ['Discovery,', 'without impulse.'],
       lede: 'On the first three visits, a short pop-up introduces PIG in the Feed. Users can ask what’s going on in crypto, and PIG answers with a story to open. They can also browse the Feed directly.',
       blocks: [
-        { type: 'callout', text: 'A place to understand crypto, not a source of buy recommendations.' },
+        { type: 'pull', text: 'A place to understand crypto, not a source of buy recommendations.' },
       ],
       visual: { layout: 'single', items: [{ label: 'Feed with PIG', spec: '', trio: [
         { src: '/images/pw-feed-1.webp', label: 'Meet PIG', icon: 'sparkles' },
