@@ -566,3 +566,5 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
   .au-ph { transition: transform .6s var(--out); }
   .au-ph:hover { transform: scale(1.06); z-index: 3; }
 }
+
+.numbered.plain li { grid-template-columns: 1fr; }

@@ -23,7 +23,7 @@ export type Block =
   | { type: 'note'; text: string }
   | { type: 'pull'; text: string }
   | { type: 'quote'; text: string; by: string; me?: boolean }
-  | { type: 'numbered'; items: { title: string; body: string }[] }
+  | { type: 'numbered'; plain?: boolean; items: { title: string; body: string }[] }
   | { type: 'fromto'; from: string; to: string }
   | { type: 'steps'; items: { title: string; body: string }[] }
   | { type: 'theme' }
@@ -126,15 +126,15 @@ const pinkwallet: Partial<CaseData> = {
         { label: 'Get the money back', a: true, b: false },
       ] } }] } },
 
-    { id: 'research', nav: 'Research', title: ['Research pointed to a gap','in understanding.'],
-      lede: 'With no budget for interviews or usability testing, I worked from what already existed: competitor analysis, App Store and Reddit reviews, and patterns from banking and messaging apps.',
+    { id: 'research', nav: 'Research', title: ['Three things shaped','the product direction.'],
+      lede: 'With no budget for interviews or usability testing, I used market data, wallet reviews and competitor analysis to identify friction for first-time users.',
       blocks: [
-        { type: 'numbered', items: [
-          { title: 'Familiar interactions matter', body: 'Addresses and networks replace picking a contact, so I borrowed patterns from banking and messaging apps.' },
-          { title: 'Costs need to be visible upfront', body: 'Reviews showed fees that differed from the final amount, so costs appear in % and $ before confirmation.' },
-          { title: 'Warnings need context', body: 'Frequent warnings, even for known addresses, so extra friction is reserved for irreversible sends and recovery.' },
+        { type: 'numbered', plain: true, items: [
+          { title: 'Make core actions easy to find', body: 'PinkWallet keeps essential wallet actions accessible without turning the home screen into a trading terminal.' },
+          { title: 'Make recipients and costs clear', body: 'PinkWallet uses saved contacts with multiple wallet destinations and shows swap fees in both percentages and dollars before confirmation.' },
+          { title: 'Use warnings where they matter', body: 'Extra checks appear before irreversible transactions and during wallet recovery, while routine actions stay simple.' },
         ] },
-        { type: 'pull', text: 'Keep everyday actions familiar, show costs before confirmation, add checks only where a mistake costs money or access.' },
+        { type: 'pull', text: 'Keep everyday actions familiar. Make risks clear before users commit.' },
       ],
       visual: { layout: 'stack', items: [
         { label: 'Market context', spec: '', alt: 'Why don’t more people own crypto? 49% don’t understand how it works, 43% worry about fraud (NCA × Harris Poll, 2025)', stats: { lead: 'Why don’t more people own crypto?', items: [

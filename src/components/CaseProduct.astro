@@ -133,7 +133,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
                     <span class="qm" aria-hidden="true" set:html={icon('quote')} /></figure>
                 ) : (<figure class="quote rv"><blockquote>“{b.text}”</blockquote><figcaption>{b.by}</figcaption></figure>);
                 case 'numbered': return (
-                  <ol class="numbered rv">{b.items.map((x) => <li class="l2"><span class="num" aria-hidden="true"></span><div><h3>{x.title}</h3><p>{x.body}</p></div></li>)}</ol>);
+                  <ol class:list={['numbered rv', { plain: b.plain }]}>{b.items.map((x) => <li class="l2">{!b.plain && <span class="num" aria-hidden="true"></span>}<div><h3>{x.title}</h3><p>{x.body}</p></div></li>)}</ol>);
                 case 'theme': return (
                   <div class="theme rv" role="group" aria-label="Screen theme">
                     <button type="button" aria-pressed="true" data-theme="light">Light</button>
