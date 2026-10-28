@@ -157,20 +157,10 @@ const pinkwallet: Partial<CaseData> = {
         ] },
       ] } },
 
-    { id: 'choices', nav: 'Choices', title: ['Keep the core familiar,', 'change only two things.'],
-      lede: 'Phantom and Trust Wallet are built for people who already know crypto. I started from the opposite end: a beginner shouldn’t learn a new interface and a new kind of money at once. So the core stays familiar, and PIG and Feed are the only two new things.',
+    { id: 'choices', nav: 'Choices', title: ['A familiar core,','with two new additions.'],
+      lede: 'A beginner shouldn’t have to learn a new interface and a new kind of money at once.\nSo the everyday actions stay where people expect them: managing assets, sending, receiving and swapping.',
       blocks: [
-        { type: 'bento', cells: [
-          { icon: 'wallet', title: 'Wallet' },
-          { icon: 'send', title: 'Send & receive' },
-          { icon: 'repeat', title: 'Swap' },
-          { icon: 'history', title: 'History' },
-          { icon: 'contact', title: 'Contacts' },
-          { icon: 'settings', title: 'Settings' },
-          { icon: 'sparkles', title: 'PIG', fill: true },
-          { icon: 'newspaper', title: 'Feed', fill: true },
-        ] },
-        { type: 'note', text: 'Four goals: understandable core actions, no avoidable mistakes at irreversible moments, AI without lost control, discovery without impulsive decisions.' },
+        { type: 'pull', text: 'I added only two things: Feed, for crypto discovery, and PIG, an AI assistant that helps with those same actions along the way.' },
       ],
       visual: { layout: 'single', items: [
         { label: 'Product structure', spec: '', src: '/images/pw-structure.webp', zoom: true, alt: 'PinkWallet structure: Core wallet, PIG and Feed are three equal entry points; Core wallet and PIG lead to the same five actions.' },
