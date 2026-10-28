@@ -191,18 +191,13 @@ const pinkwallet: Partial<CaseData> = {
       ], alt: 'Three screens: a pop-up in the Feed introduces PIG, PIG answers with an article card, and the article opens in the Feed.' }] } },
 
     { id: 'safeguards', nav: 'Safeguards', title: ['Friction only', 'where it protects.'],
-      lede: 'Everywhere else friction is the enemy. At irreversible moments it is the safeguard.',
-      blocks: [{ type: 'decision', rows: [
-        ['Wallet setup', 'Three short warnings instead of one long one, and a PIN that can’t be recovered'],
-        ['Before sending', 'An explicit review, every amount in crypto and dollars: 3% is easy to ignore, $3.60 is not'],
-        ['Recipients', 'Several wallets per contact, invalid addresses flagged'],
-        ['After sending', 'Done, or what needs attention'],
-      ] }],
-      visual: { layout: 'stack', items: [
-        { label: 'Recovery phrase', spec: 'Recovery phrase с тремя короткими предупреждениями.' },
-        { label: 'Review before sending', spec: 'Экран подтверждения перед отправкой.' },
-        { label: 'Fee, contact, invalid address', spec: 'Три маленьких экрана в ряд: превью комиссии (Fee component, designed for future charges), контакт с несколькими кошельками, ошибка адреса.' },
-      ] } },
+      lede: 'In a self-custody wallet, losing the recovery phrase can mean losing access to your funds. Before the wallet is created, three short warnings explain why the phrase matters. Continue stays disabled until users confirm they understand the risk.\nAfter saving the phrase, users create a PIN. If they forget it, it cannot be recovered.',
+      blocks: [{ type: 'pull', text: 'Viewing the phrase again requires PIN verification.' }],
+      visual: { layout: 'single', items: [{ label: 'Wallet setup', spec: '', trio: [
+        { src: '/images/pw-safe-1.webp', label: 'Understand the risk', icon: 'shield' },
+        { src: '/images/pw-safe-2.webp', label: 'Save the phrase', icon: 'key' },
+        { src: '/images/pw-safe-3.webp', label: 'Create a PIN', icon: 'lock' },
+      ], alt: 'Three wallet setup screens: three warnings with a confirmation checkbox, the 12-word recovery phrase, and PIN creation.' }] } },
 
     { id: 'tradeoffs', nav: 'Trade-offs', title: ['Saying no was', 'most of the job.'],
       lede: 'Every decision passed one test: does it reduce the chance that someone loses money or gives up?',
