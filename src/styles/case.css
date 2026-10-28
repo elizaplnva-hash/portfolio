@@ -586,12 +586,16 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
   .stage .ph.zoom:hover img { transition: transform .18s ease-out; }
 }
 
-/* three phones in a row; the hovered one comes forward and grows */
+/* three phones in a row, each with a label pill; the hovered one comes forward and grows */
 .ph.trio, .stage .ph.trio { background: none; padding: 0; overflow: visible; transform: none; container-type: size; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: center; gap: 1cqw; }
-.ph.trio img { width: min(30.5cqw, calc(86cqh * .4928)); height: auto; flex: none; filter: drop-shadow(0 14px 22px rgba(60, 10, 60, .22)); }
+.ph.trio .tp { flex: none; width: min(30.5cqw, calc(78cqh * .4928)); display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.ph.trio .tp img { width: 100%; height: auto; display: block; filter: drop-shadow(0 14px 22px rgba(60, 10, 60, .22)); }
+.ph.trio .lb { display: inline-flex; align-items: center; gap: 8px; padding: 5px 13px 5px 5px; border-radius: 999px; background: var(--white); box-shadow: var(--sh2); font-size: 13px; font-weight: 600; letter-spacing: -.02em; color: var(--ink); white-space: nowrap; }
+.ph.trio .lb .ic { width: 24px; height: 24px; }
+.ph.trio .lb .ic svg { width: 14px; height: 14px; }
 .m-vis.v-single .ph.trio { aspect-ratio: 16 / 10; }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .ph.trio img { transition: transform .5s var(--out); transform-origin: 50% 55%; }
-  .ph.trio img:hover { transform: scale(1.14); position: relative; z-index: 2; }
-  .ph.trio:has(img:hover) img:not(:hover) { transform: scale(.97); }
+  .ph.trio .tp { transition: transform .5s var(--out); transform-origin: 50% 45%; }
+  .ph.trio .tp:hover { transform: scale(1.12); position: relative; z-index: 2; }
+  .ph.trio:has(.tp:hover) .tp:not(:hover) { transform: scale(.97); }
 }

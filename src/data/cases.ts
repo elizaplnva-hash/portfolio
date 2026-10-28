@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Security'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; stats?: { lead: string; items: { value: string; text: string }[] }; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; trio?: string[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Security'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; stats?: { lead: string; items: { value: string; text: string }[] }; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -167,13 +167,16 @@ const pinkwallet: Partial<CaseData> = {
       ] } },
 
     { id: 'pig', nav: 'PIG', title: ['A co-pilot,', 'not an autopilot.'],
-      lede: 'Crypto transactions involve decisions about addresses, networks and fees. When a contact has several wallets, PIG asks which one to use, then prepares the transaction and explains its details.',
+      lede: 'Sending crypto takes more than a recipient and an amount. A contact can have several wallets, so PIG first helps choose the right one, then prepares the transaction and explains its details.',
       blocks: [
-        { type: 'pull', text: 'It never sends money on the user’s behalf. The user reviews and confirms every transaction.' },
-        { type: 'chain', steps: ['User asks', 'PIG prepares', 'User reviews', 'User confirms'] },
+        { type: 'pull', text: 'The user reviews everything and confirms. PIG never sends money on their behalf.' },
       ],
       visual: { layout: 'single', items: [
-        { label: 'Send to a contact', spec: '', trio: ['/images/pw-pig-1.webp', '/images/pw-pig-2.webp', '/images/pw-pig-3.webp'], alt: 'PIG chat: the user asks to send ETH to Smith, PIG asks which of two wallets, shows a send preview, and the user confirms.' },
+        { label: 'Send to a contact', spec: '', trio: [
+          { src: '/images/pw-pig-1.webp', label: 'Choose the wallet', icon: 'wallet' },
+          { src: '/images/pw-pig-2.webp', label: 'Review and send', icon: 'eye' },
+          { src: '/images/pw-pig-3.webp', label: 'Sent', icon: 'circle-check' },
+        ], alt: 'PIG chat: the user asks to send ETH to Smith, PIG asks which of two wallets, shows a send preview, and the user confirms.' },
       ] } },
 
     { id: 'feed', nav: 'Feed', title: ['Discovery', 'without impulse.'],
