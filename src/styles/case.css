@@ -494,6 +494,6 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .cp-story .ttl { text-wrap: balance; }
 
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .stage .cmp { transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .6s var(--out); will-change: transform; }
-  .stage .cmp.lean { transition: transform .15s ease-out; }
+  .stage .cmp { transition: transform .6s var(--out); will-change: transform; }
+  .stage .cmp:hover { transform: rotate(-3deg); }
 }
