@@ -5,7 +5,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; alt?: string }
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -94,7 +94,7 @@ const pinkwallet: Partial<CaseData> = {
         { label: 'Timeline', value: '8 weeks\nDec 2025 – Jan 2026' },
         { label: 'Launch', value: 'July 2026\niOS' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'The Wallet home in both themes', spec: 'Главный экран кошелька в светлой и тёмной теме рядом. Телефоны прямо, без наклонов и рук, светлый фон.' }] } },
+      visual: { layout: 'single', items: [{ label: 'The Wallet home in both themes', spec: '', srcs: ['/images/pw-home-dark.webp', '/images/pw-home-light.webp'], alt: 'The PinkWallet home screen in the dark and the light theme' }] } },
 
     { id: 'background', nav: 'Background', title: ['The brief changed', 'before the design began.'],
       lede: 'Our second project with the client. The first was a token for crypto-savvy users. He returned with funding and a new goal: a wallet for beginners, a long feature list and a wish for AI. My first job was to turn that into a product with a point of view.',

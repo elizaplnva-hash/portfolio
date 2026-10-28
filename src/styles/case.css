@@ -395,3 +395,12 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 
 .meta b span { display: block; }
 .meta b span + span { color: var(--soft); font-weight: 400; }
+
+/* two transparent phone renders composed on the case tint */
+.ph.duo, .stage .ph.duo { position: relative; background: none; overflow: visible; padding: 0; container-type: size; }
+.ph.duo img { position: absolute; height: min(64cqh, 82cqw); width: auto; filter: drop-shadow(0 18px 28px rgba(40, 10, 40, .22)); transition: transform .7s var(--out); }
+.ph.duo img:first-child { left: 9%; bottom: 8%; transform: translateY(3%); }
+.ph.duo img:last-child { right: 9%; top: 10%; transform: translateY(3%); }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .ph.duo:hover img { transform: translateY(-2%); }
+}
