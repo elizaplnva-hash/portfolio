@@ -119,6 +119,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
                     <dl>{b.items.map((f) => <div class="l2 lift"><dd>{f.value}</dd><dt>{f.label}</dt></div>)}</dl>
                   </div>);
                 case 'note': return <p class="note rv">{b.text}</p>;
+                case 'pull': return <p class="pull rv">{b.text}</p>;
                 case 'fromto': return (
                   <dl class="fromto rv"><div class="l3 lift"><dt>From</dt><dd>{b.from}</dd></div><div class="l1 hi lift"><dt>To</dt><dd>{b.to}</dd></div></dl>);
                 case 'steps': return (
@@ -211,7 +212,6 @@ const mail = 'mailto:elizaplnva@gmail.com';
         el.style.removeProperty('--rx');
         el.style.removeProperty('--ry');
       });
-    });
     });
   }
 

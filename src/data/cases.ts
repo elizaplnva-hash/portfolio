@@ -20,6 +20,7 @@ export type Block =
   | { type: 'chips'; items: string[] }
   | { type: 'facts'; caption: string; items: { value: string; label: string }[] }
   | { type: 'note'; text: string }
+  | { type: 'pull'; text: string }
   | { type: 'quote'; text: string; by: string; me?: boolean }
   | { type: 'numbered'; items: { title: string; body: string }[] }
   | { type: 'fromto'; from: string; to: string }
@@ -112,8 +113,9 @@ const pinkwallet: Partial<CaseData> = {
       visual: { layout: 'single', items: [{ label: 'Where we started', spec: '', combo: ['/images/pw-pinkcoin-site.webp', '/images/pw-wallet-phone.webp'], alt: 'The PinkCoin token website from the first project, and the first concept of the wallet screen' }] } },
 
     { id: 'stakes', nav: 'Stakes', title: ['In crypto, a mistake', 'can’t be undone.'],
-      lede: 'A wallet does what a banking app does. What changes is the price of an error.',
+      lede: 'A wallet does what a banking app does.',
       blocks: [
+        { type: 'pull', text: 'What changes is the price of an error.' },
         { type: 'note', text: 'The question for the whole product: how to make crypto feel as familiar as a banking app without hiding what can cost someone money.' },
       ],
       visual: { layout: 'single', items: [{ label: 'After you press send', spec: '', alt: 'A mistake can be fixed in a banking app and cannot be fixed in a crypto wallet', compare: { cols: ['Banking app', 'Crypto wallet'], rows: [
