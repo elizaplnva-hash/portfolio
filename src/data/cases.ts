@@ -20,7 +20,8 @@ export type Block =
   | { type: 'chips'; items: string[] }
   | { type: 'facts'; caption: string; items: { value: string; label: string }[] }
   | { type: 'note'; text: string }
-  | { type: 'quote'; text: string; by: string }
+  | { type: 'quote'; text: string; by: string; me?: boolean }
+  | { type: 'numbered'; items: { title: string; body: string }[] }
   | { type: 'fromto'; from: string; to: string }
   | { type: 'steps'; items: { title: string; body: string }[] }
   | { type: 'theme' }
@@ -99,12 +100,15 @@ const pinkwallet: Partial<CaseData> = {
       visual: { layout: 'single', items: [{ label: 'The Wallet home in both themes', spec: '', srcs: ['/images/pw-home-dark.webp', '/images/pw-home-light.webp'], alt: 'The PinkWallet home screen in the dark and the light theme' }] } },
 
     { id: 'background', nav: 'Background', title: ['The brief changed', 'before the design began.'],
-      lede: 'Our second project with the client. The first was a token for crypto-savvy users. He returned with funding and a new goal: a wallet for beginners, a long feature list and a wish for AI. My first job was to turn that into a product with a point of view.',
-      blocks: [{ type: 'decision', rows: [
-        ['A wallet with AI', 'Help beginners take irreversible actions without feeling overwhelmed'],
-        ['Many features', 'A safe, understandable core'],
-        ['AI', 'Know where it helps, and where it must never act alone'],
-      ] }],
+      lede: 'Our second project with the client. The first was a token for crypto-savvy users. He returned with funding and a new goal.',
+      blocks: [
+        { type: 'numbered', items: [
+          { title: 'A wallet for beginners', body: 'Help people take irreversible actions without feeling overwhelmed.' },
+          { title: 'A long feature list', body: 'Find the safe, understandable core and leave the rest for later.' },
+          { title: 'A wish for AI', body: 'Decide where it helps and where it must never act alone.' },
+        ] },
+        { type: 'quote', me: true, text: 'My first job was to turn a wish list into a product with a point of view.', by: 'Eliza, Product Designer' },
+      ],
       visual: { layout: 'single', items: [{ label: 'Where we started', spec: 'Сайт PinkCoin и первый концепт-экран кошелька рядом, из первого этапа.' }] } },
 
     { id: 'stakes', nav: 'Stakes', wide: true, title: ['In crypto, a mistake', 'can’t be undone.'],
