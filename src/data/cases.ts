@@ -199,8 +199,8 @@ const pinkwallet: Partial<CaseData> = {
         { src: '/images/pw-safe-3.webp', label: 'Create a PIN', icon: 'lock' },
       ], alt: 'Three wallet setup screens: three warnings with a confirmation checkbox, the 12-word recovery phrase, and PIN creation.' }] } },
 
-    { id: 'tradeoffs', nav: 'Trade-offs', title: ['One question', 'decided the scope.'],
-      lede: 'With eight weeks and two designers, we had to be selective. We kept what beginners need, limited what could add risk, and cut the rest.',
+    { id: 'tradeoffs', nav: 'Scope', title: ['One question', 'decided the scope.'],
+      lede: 'With eight weeks, two designers and a budget for one platform, we had to be selective. We kept what beginners need, limited what could add risk, and cut the rest.',
       blocks: [{ type: 'pull', text: 'Does this reduce the chance that someone loses money or gives up?' }],
       visual: { layout: 'single', items: [{ label: 'Scope decisions', spec: '', scope: [
         { name: 'Portfolio overview', why: 'Simple allocation and performance views.', d: 'keep' },
