@@ -200,11 +200,8 @@ const pinkwallet: Partial<CaseData> = {
       ], alt: 'Three wallet setup screens: three warnings with a confirmation checkbox, the 12-word recovery phrase, and PIN creation.' }] } },
 
     { id: 'tradeoffs', nav: 'Trade-offs', title: ['One question', 'decided the scope.'],
-      lede: 'With eight weeks and two designers, we had to be selective. Every feature passed one question: does it reduce the chance that someone loses money or gives up? We kept what beginners need, limited what could add risk, and cut the rest.',
-      blocks: [
-        { type: 'note', text: 'Two limits came from outside the product: iOS only, because the budget covered one platform, and no wireframes. We went from architecture straight to high fidelity to fit eight weeks.' },
-        { type: 'note', text: 'I owned UX flows, UI and the design system, and shaped direction and architecture with the Design Manager.' },
-      ],
+      lede: 'With eight weeks and two designers, we had to be selective. We kept what beginners need, limited what could add risk, and cut the rest.',
+      blocks: [{ type: 'pull', text: 'Does this reduce the chance that someone loses money or gives up?' }],
       visual: { layout: 'single', items: [{ label: 'Scope decisions', spec: '', scope: [
         { name: 'Portfolio overview', why: 'Simple allocation and performance views.', d: 'keep' },
         { name: 'Feed', why: 'Explains crypto, no buy recommendations.', d: 'keep' },
