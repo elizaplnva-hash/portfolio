@@ -533,8 +533,8 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .sts-c .t { font-size: clamp(14px, 1.1vw, 16px); }
 
 .ph.reviews, .stage .ph.reviews { container-type: size; overflow: hidden; }
-.rvs { --u: min(calc(100cqw / 327), calc(100cqh / 362)); position: absolute; left: 50%; top: 50%; width: calc(var(--u) * 327); height: calc(var(--u) * 362); transform: translate(-50%, -50%); }
-.rv-c { position: absolute; margin: 0; width: calc(var(--u) * 252); left: calc(var(--u) * (14 + var(--i) * 24)); top: calc(var(--u) * (26 + var(--i) * 106)); z-index: calc(10 - var(--i)); background: #fff; border-radius: calc(var(--u) * 14); overflow: hidden; box-shadow: 0 1px 3px rgba(17,17,17,.07), 0 8px 22px rgba(17,17,17,.10); --b: #6d6d69; }
+.rvs { --u: min(calc(100cqw / 327), calc(100cqh / 362)); position: absolute; left: 50%; top: 50%; width: calc(var(--u) * 327); height: calc(var(--u) * 362); transform: translate(-50%, -50%); display: flex; flex-direction: column; justify-content: center; gap: calc(var(--u) * 12); }
+.rv-c { position: relative; margin: 0; width: calc(var(--u) * 252); left: calc(var(--u) * (14 + var(--i) * 24)); z-index: calc(10 - var(--i)); background: #fff; border-radius: calc(var(--u) * 14); overflow: hidden; box-shadow: 0 1px 3px rgba(17,17,17,.07), 0 8px 22px rgba(17,17,17,.10); --b: #6d6d69; }
 .rv-c.appstore { --b: #0a84ff; --bg: #e3f1ff; } .rv-c.github { --b: #24292f; --bg: #ebedef; } .rv-c.reddit { --b: #e03d00; --bg: #ffe9df; }
 .rv-h { display: flex; align-items: center; gap: calc(var(--u) * 8); padding: calc(var(--u) * 7) calc(var(--u) * 12); background: #f8f8f6; font-size: calc(var(--u) * 11.5); font-weight: 600; letter-spacing: -.02em; color: #6d6d69; }
 .rv-i { width: calc(var(--u) * 22); height: calc(var(--u) * 22); border-radius: 50%; background: #fff; color: var(--ink); display: grid; place-items: center; flex: none; transition: color .3s ease-out, background .3s ease-out; }

@@ -185,7 +185,7 @@ const pinkwallet: Partial<CaseData> = {
         { type: 'pull', text: 'A place to understand crypto, not a source of buy recommendations.' },
       ],
       visual: { layout: 'single', items: [{ label: 'Feed with PIG', spec: '', trio: [
-        { src: '/images/pw-feed-1.webp', label: 'Meet PIG', icon: 'sparkles' },
+        { src: '/images/pw-feed-1.webp', label: 'Meet PIG', icon: 'heart' },
         { src: '/images/pw-feed-2.webp', label: 'Ask PIG', icon: 'message' },
         { src: '/images/pw-feed-3.webp', label: 'Read the story', icon: 'article' },
       ], alt: 'Three screens: a pop-up in the Feed introduces PIG, PIG answers with an article card, and the article opens in the Feed.' }] } },
