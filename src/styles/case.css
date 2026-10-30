@@ -625,3 +625,6 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .cmp.scope.c2 { --col: 124px; }
 .cmp.scope .tg { white-space: nowrap; }
 @media (max-width: 899px) { .cmp.scope.c2 { --col: 96px; } }
+
+/* numbered cards with an icon instead of the number */
+.numbered li:has(.ic) { grid-template-columns: 30px 1fr; align-items: center; }

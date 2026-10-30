@@ -23,7 +23,7 @@ export type Block =
   | { type: 'note'; text: string }
   | { type: 'pull'; text: string }
   | { type: 'quote'; text: string; by: string; me?: boolean }
-  | { type: 'numbered'; plain?: boolean; items: { title: string; body: string }[] }
+  | { type: 'numbered'; plain?: boolean; items: { title: string; body: string; icon?: string }[] }
   | { type: 'fromto'; from: string; to: string }
   | { type: 'steps'; items: { title: string; body: string }[] }
   | { type: 'theme' }
@@ -211,18 +211,14 @@ const pinkwallet: Partial<CaseData> = {
       ], alt: 'Five product decisions sorted into keep, limit or cut.' }] } },
 
     { id: 'system', nav: 'Design system', title: ['One product,', 'two moods.'],
-      blocks: [{ type: 'bento', cells: [
-        { icon: 'sun-moon', title: 'Two themes on the same components', fill: true },
-        { icon: 'component', title: 'Anything used twice became a component' },
-        { icon: 'eye', title: 'WCAG AA', body: 'States by shape and label.' },
-        { icon: 'box', title: '3D assets made with AI', body: 'Curated to one material and palette.' },
-        { icon: 'pencil-line', title: 'Copy written by me, AI-assisted' },
+      lede: '200+ screens in eight weeks, built from one set of components.',
+      blocks: [{ type: 'numbered', items: [
+        { icon: 'sun-moon', title: 'Two themes, one component set', body: 'Light and dark are built on the same components.' },
+        { icon: 'component', title: 'A rule, not a library', body: 'Anything used twice became a component, so a change is made in one place.' },
+        { icon: 'eye', title: 'Accessible by default', body: 'WCAG AA. States differ by shape and label, not by colour alone.' },
+        { icon: 'box', title: 'One material, one palette', body: '3D coins and assets, made with AI, curated into a single look.' },
       ] }],
-      visual: { layout: 'stack', items: [
-        { label: 'Coin card anatomy', spec: 'Ты рисуешь: карточка монеты с вариантами и разметкой анатомии.' },
-        { label: 'Same screen, two themes', spec: 'Один и тот же экран в светлой и тёмной теме.' },
-        { label: 'Asset sheet', spec: 'Лист ассетов: монеты, иконки транзакций, два PIG.' },
-      ] } },
+      visual: { layout: 'single', items: [{ label: 'Design system board', spec: 'Ты рисуешь: одно большое полотно на всю панель, 1600×1600, экспорт 2×. Компоненты группами с пунктирными контурами, часть уходит за край.' }] } },
 
     { id: 'outcome', nav: 'Outcome', title: ['Launched,', 'and in use.'],
       blocks: [{ type: 'facts', caption: 'Product analytics provided by the client, July–September 2026', items: [
