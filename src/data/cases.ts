@@ -468,7 +468,7 @@ const greenCredit: Partial<CaseData> = {
       ] }],
       visual: { layout: 'single', items: [{ label: 'Dashboard', spec: '', src: '/images/gcs-overview.webp', alt: 'Green Credit Score dashboard on a monitor' }] } },
 
-    { id: 'challenge', nav: 'Challenge', title: ["The problem wasn't too much data. It was too little clarity."],
+    { id: 'challenge', nav: 'Challenge', title: ["The problem wasn't too much data. It was too little clarity"],
       lede: 'Credit information lives in many places. The challenge was to show what matters and what to do next.',
       blocks: [{ type: 'list', numbered: true, items: [
         { title: 'Scores without context', body: 'A number without a clear explanation of what it means.' },
