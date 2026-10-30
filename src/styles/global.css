@@ -170,19 +170,21 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) { .steps > li, .pframe, .steps > li > p, .steps > li > ul { transition: none; } }
 
 /* cases */
-.case { padding: 10px; display: flex; flex-direction: column; gap: 10px; box-shadow: var(--sh1); }
+.case { padding: 10px; display: flex; flex-direction: column; gap: 6px; box-shadow: var(--sh1); }
 .case .art { position: relative; flex: none; aspect-ratio: 4 / 3; border-radius: 10px; overflow: hidden; background: color-mix(in srgb, var(--c) var(--art-mix), #fff); }
 .case .art > img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.case .meta { display: flex; flex-direction: column; gap: 8px; padding: 0 6px 4px; }
+.case .meta { display: flex; flex-direction: column; gap: 6px; padding: 0 6px 2px; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .tags span { background: color-mix(in srgb, var(--c) 22%, #fff); color: #111; border-radius: 999px; padding: 4px 10px; font-size: 12px; }
 .tags span:first-child { background: color-mix(in srgb, var(--c) 55%, #fff); color: #111; font-weight: 400; }
 .case .tags { position: absolute; top: 10px; left: 10px; right: 10px; z-index: 1; gap: 5px; }
 .case .tags span, .case .tags span:first-child { background: rgba(255, 255, 255, .66); color: #111; padding: 6px 12px; font-size: 13px; font-weight: 500; letter-spacing: -.01em; backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .55), 0 1px 8px rgba(0, 0, 0, .10); }
+.case:not(.big) .tags { gap: 4px; }
+.case:not(.big) .tags span, .case:not(.big) .tags span:first-child { font-size: clamp(10px, 3.15cqw, 13px); padding: .46em .8em; }
 .case h2 { font-size: 18px; font-weight: 500; line-height: 1.08; letter-spacing: -.015em; }
 .case.big .art { aspect-ratio: 4 / 3; }
 .case.big .art > img { object-position: 50% 0; }
-.case.big .meta { padding: 4px 14px 12px; gap: 12px; }
+.case.big .meta { padding: 0 14px 8px; gap: 10px; }
 .case.big h2 { font-size: 28px; line-height: 1; letter-spacing: -.025em; }
 
 /* turn tile */
@@ -302,7 +304,8 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .stage:not(.ready) .phone { transition: none !important; }
 .stage { position: absolute; inset: 0; z-index: 0; background: color-mix(in srgb, var(--c) 16%, #fff); overflow: hidden; }
 /* devices hang from just below the tags (--tags is measured in JS), sit a little lower at rest and lift on hover */
-.stage { --spread: 42cqh; --tilt: 7deg; --drop: 9cqh; }
+.stage { --spread: 42cqh; --tilt: 7deg; --drop: 2cqh; }
+.stage.desk { --drop: 3cqh; }
 .stage .phone { position: absolute; left: 50%; top: calc(var(--tags, 48px) + 5px); height: 104cqh; width: auto; filter: drop-shadow(0 18px 28px rgba(40, 10, 40, .22)); transition: transform .7s var(--ease); }
 .stage .phone-1 { transform: translate(calc(-50% - var(--spread) + var(--px, 0) * -12px), calc(var(--drop) + 6cqh + var(--py, 0) * -6px)) rotate(calc(var(--tilt) * -1)); }
 .stage .phone-2 { z-index: 2; transform: translate(calc(-50% + var(--px, 0) * -20px), calc(var(--drop) + var(--py, 0) * -10px)); }
@@ -314,7 +317,7 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .stage.desk .phone-1 { height: 104cqh; transform: translate(calc(-61% + var(--px, 0) * -8px), calc(var(--drop) * 2 + var(--py, 0) * -5px)); }
 .stage.desk .phone-2 { top: auto; bottom: -20cqh; left: auto; right: 2cqw; height: 73cqh; z-index: 2; transform: translate(calc(var(--px, 0) * -14px), calc(var(--drop) * 2.6 + var(--py, 0) * -8px)); }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .case:hover .stage { --spread: 50cqh; --tilt: 10deg; --drop: 0cqh; }
+  .case:hover .stage { --spread: 50cqh; --tilt: 10deg; --drop: -3cqh; }
 }
 @media (prefers-reduced-motion: reduce) { .stage .phone { transition: none; } }
 
@@ -323,3 +326,9 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
 /* no lonely last words: let the browser balance the last lines of running text */
 p, li, dd, dt, blockquote, figcaption, h3, .lede { text-wrap: pretty; }
+
+/* narrow desktop / landscape tablet: the turn tile's headline must fit its tile */
+@media (min-width: 900px) and (max-width: 1239px) {
+  .turn { padding: 20px 22px; }
+  .turn h2 { font-size: clamp(20px, 2.3vw, 34px); padding-right: 44px; }
+}
