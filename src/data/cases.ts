@@ -222,16 +222,16 @@ const pinkwallet: Partial<CaseData> = {
 
     { id: 'outcome', nav: 'Outcome', title: ['Launched,', 'and in use.'],
       lede: 'PinkWallet launched in July 2026. The first three months of client-provided analytics show how users moved through wallet setup and used its core features.',
-      blocks: [{ type: 'note', text: 'Product analytics provided by the client, July–September 2026.' }],
+      blocks: [{ type: 'note', text: 'Product analytics provided by the client (Amplitude and backend data), July–September 2026.' }],
       visual: { layout: 'single', items: [{ label: 'Launch analytics', spec: '', alt: 'Launch analytics, July to September 2026', metrics: [
-        { title: 'Getting started', items: [
-          { value: '80%', label: 'Onboarding completion', note: '800 of 1,000 users who started onboarding' },
-          { value: '85%', label: 'Wallet creation completion', note: '680 of 800 who started wallet setup' },
+        { title: 'Setting up', items: [
+          { value: '80%', label: 'Onboarding completion', note: 'of users who started onboarding finished it' },
+          { value: '85%', label: 'Wallet creation completion', note: 'of users who started wallet setup created a wallet' },
           { value: '3 min', label: 'Median wallet setup time', note: 'From security setup to PIN creation, for users who finished', wide: true },
         ] },
-        { title: 'Wallet activity', items: [
-          { value: '65%', label: 'Swap conversion', note: '130 of 200 who requested a quote completed a swap' },
-          { value: '98%', label: 'Transaction success', note: '490 of 500 submitted transactions were confirmed' },
+        { title: 'Using the wallet', items: [
+          { value: '65%', label: 'Swap conversion', note: 'of users who requested a quote completed a swap' },
+          { value: '98%', label: 'Transaction success', note: 'of submitted transactions were confirmed' },
         ] },
       ] }] } },
 
