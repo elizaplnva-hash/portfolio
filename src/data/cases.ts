@@ -63,7 +63,6 @@ export interface CaseData {
   fill?: string;              // case colour for small dots and marks
   tint?: string;              // pastel behind the case images
   panel?: string;             // overrides the image panel background (e.g. white)
-  closing?: [string, string?];   // headline of the last (contact) screen; default is a thank-you line
   screens?: Screen[];         // Product pages; falls back to a generic skeleton
   shots?: Ph[];               // Brand pages: the images shown one by one while scrolling
 }
@@ -79,7 +78,6 @@ const summary = '[Two sentences: what the product or brand is, and your part in 
 
 
 const pinkwallet: Partial<CaseData> = {
-  closing: ['Crypto shouldn’t require people to think like traders', 'before they can participate.'],
   noNameTag: true,
   accent: '#E0408F',
   fill: '#E0408F',
