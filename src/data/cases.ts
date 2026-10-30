@@ -213,10 +213,10 @@ const pinkwallet: Partial<CaseData> = {
     { id: 'system', nav: 'Design system', title: ['One product,', 'two moods.'],
       lede: '200+ screens in eight weeks, built from one set of components.',
       blocks: [{ type: 'numbered', items: [
-        { icon: 'sun-moon', title: 'Two themes, one component set', body: 'Light and dark are built on the same components.' },
-        { icon: 'component', title: 'A rule, not a library', body: 'Anything used twice became a component, so a change is made in one place.' },
-        { icon: 'eye', title: 'Accessible by default', body: 'WCAG AA. States differ by shape and label, not by colour alone.' },
-        { icon: 'box', title: 'One material, one palette', body: '3D coins and assets, made with AI, curated into a single look.' },
+        { icon: 'sun-moon', title: 'Two themes, one component set', body: 'Light and dark share the same components.' },
+        { icon: 'component', title: 'A rule, not a library', body: 'Anything used twice became a component.' },
+        { icon: 'eye', title: 'Accessible by default', body: 'WCAG AA, states never rely on colour alone.' },
+        { icon: 'box', title: 'One material, one palette', body: '3D assets made with AI, in one style.' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'Design system', spec: '', src: '/images/pw-system.webp', zoom: true, bleed: true, alt: 'The PinkWallet interface components in one canvas: inputs, chips, buttons, navigation, 3D coins and transaction receipts in light and dark.' }] } },
 

@@ -627,9 +627,12 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 @media (max-width: 899px) { .cmp.scope.c2 { --col: 96px; } }
 
 /* numbered cards with an icon instead of the number */
-.numbered li:has(.ic) { grid-template-columns: 30px 1fr; align-items: center; }
+.numbered li:has(.ic) { grid-template-columns: 22px 1fr; align-items: start; }
+.numbered .ic { width: 22px; height: 22px; }
+.numbered .ic svg { width: 13px; height: 13px; }
 
 /* full-bleed board: the image fills the panel edge to edge and is cropped by it */
 .ph.zoom.bleed { padding: 0; background: #f5f5f5; }
 .ph.zoom.bleed img { object-fit: cover; width: 100%; height: 100%; border-radius: 0; }
 .m-vis.v-single .ph.zoom.bleed { aspect-ratio: 1 / 1; }
+.cp-story:not(.brand) .numbered .ic svg { width: 12px; height: 12px; }
