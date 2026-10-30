@@ -15,10 +15,10 @@ const other = current.side === 'front'
         ? <div class:list={['nxs', `n${next.phones.length}`, { desk: next.desk, first: next.slug === 'jam' }]}>{next.phones.map((src, k) => <img class={`phone phone-${k + 1}`} src={src} alt="" loading="lazy" />)}</div>
         : next.image && <img src={next.image} alt="" loading="lazy" />}
       <div class="tags">{next.tags.map((t) => <span>{t}</span>)}</div>
+      <span class="lbl">Next case</span>
     </div>
     <div class="meta">
       <h2>{next.headline}</h2>
-      <small>Next case</small>
     </div>
   </a>
   <a href={other.href} class="tile turn" aria-label={other.small}>
