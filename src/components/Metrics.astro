@@ -1,0 +1,19 @@
+---
+interface Props { groups: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; }
+const { groups } = Astro.props;
+---
+<div class="mtx">
+  {groups.map((g) => (
+    <section class="mg">
+      <h3>{g.title}</h3>
+      <div class="mg-i">
+        {g.items.map((m) => (
+          <div class:list={['mt', { wide: m.wide }]}>
+            <b class="v">{m.value}</b>
+            <div><span class="l">{m.label}</span><span class="n">{m.note}</span></div>
+          </div>
+        ))}
+      </div>
+    </section>
+  ))}
+</div>

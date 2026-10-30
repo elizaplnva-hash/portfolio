@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Security'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; stats?: { lead: string; items: { value: string; text: string }[] }; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; bleed?: boolean; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Security'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; stats?: { lead: string; items: { value: string; text: string }[] }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; bleed?: boolean; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -221,14 +221,19 @@ const pinkwallet: Partial<CaseData> = {
       visual: { layout: 'single', items: [{ label: 'Design system', spec: '', src: '/images/pw-system.webp', zoom: true, bleed: true, alt: 'The PinkWallet interface components in one canvas: inputs, chips, buttons, navigation, 3D coins and transaction receipts in light and dark.' }] } },
 
     { id: 'outcome', nav: 'Outcome', title: ['Launched,', 'and in use.'],
-      blocks: [{ type: 'facts', caption: 'Product analytics provided by the client, July–September 2026', items: [
-        { value: '80%', label: 'Onboarding completion' },
-        { value: '85%', label: 'Wallet creation completion' },
-        { value: '3 min', label: 'Median wallet setup' },
-        { value: '65%', label: 'Swap conversion' },
-        { value: '98%', label: 'Transaction success' },
-      ] }],
-      visual: { layout: 'single', items: [{ label: 'From first screen to a wallet', spec: 'Ты рисуешь: горизонтальная воронка онбординг 80% → создание кошелька 85%, отдельно 65% и 98% крупными цифрами. Без осей и сетки.' }] } },
+      lede: 'PinkWallet launched in July 2026. The first three months of client-provided analytics show how users moved through wallet setup and used its core features.',
+      blocks: [{ type: 'note', text: 'Product analytics provided by the client, July–September 2026.' }],
+      visual: { layout: 'single', items: [{ label: 'Launch analytics', spec: '', alt: 'Launch analytics, July to September 2026', metrics: [
+        { title: 'Getting started', items: [
+          { value: '80%', label: 'Onboarding completion', note: '800 of 1,000 users who started onboarding' },
+          { value: '85%', label: 'Wallet creation completion', note: '680 of 800 who started wallet setup' },
+          { value: '3 min', label: 'Median wallet setup time', note: 'From security setup to PIN creation, for users who finished', wide: true },
+        ] },
+        { title: 'Wallet activity', items: [
+          { value: '65%', label: 'Swap conversion', note: '130 of 200 who requested a quote completed a swap' },
+          { value: '98%', label: 'Transaction success', note: '490 of 500 submitted transactions were confirmed' },
+        ] },
+      ] }] } },
 
     { id: 'reflection', nav: 'Reflection', title: ['Built on convention,', 'never tested.'],
       lede: 'Everything here rests on convention and on lowering the cost of a mistake. That was right for eight weeks, but it is still an assumption.',
