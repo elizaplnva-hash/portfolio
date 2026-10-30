@@ -676,13 +676,17 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .next .art .nxs.n2 .phone-1 { transform: translate(calc(-50% - var(--spread) * .5 + var(--px, 0) * -14px), calc(var(--drop) + 4cqh + var(--py, 0) * -6px)) rotate(calc(var(--tilt) * -.6)); }
 .next .art .nxs.n2 .phone-2 { transform: translate(calc(-50% + var(--spread) * .5 + var(--px, 0) * -20px), calc(var(--drop) + var(--py, 0) * -10px)) rotate(calc(var(--tilt) * .6)); }
 .next .art .nxs.first .phone-1 { z-index: 3; }
+.next .art .nxs.desk { --drop: 0cqh; }
 .next .art .nxs.desk .phone-1 { height: 104cqh; transform: translate(calc(-61% + var(--px, 0) * -8px), calc(var(--drop) * 2 + var(--py, 0) * -5px)); }
 .next .art .nxs.desk .phone-2 { top: auto; bottom: -20cqh; left: auto; right: 2cqw; height: 73cqh; z-index: 2; transform: translate(calc(var(--px, 0) * -14px), calc(var(--drop) * 2.6 + var(--py, 0) * -8px)); }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .next .tile:not(.turn):hover .art .nxs { --spread: 50cqh; --tilt: 10deg; --drop: 0cqh; }
+  .next .tile:not(.turn):hover .art .nxs.desk { --drop: -4cqh; }
   .next a.tile:not(.turn):hover { transform: none; }
 }
 @media (prefers-reduced-motion: reduce) { .next .art .nxs .phone { transition: none; } }
+.next .tile:not(.turn) .meta { flex-direction: row; justify-content: space-between; align-items: baseline; gap: 16px; }
+.next .tile:not(.turn) .meta small { flex: none; white-space: nowrap; }
 .next .meta h2 { font-size: 22px; letter-spacing: -.02em; }
 /* turn tile as on the home sheet: white small line, bigger headline */
 .next .turn { padding: 22px 26px; gap: 24px; }
@@ -695,3 +699,8 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .cta-step .ask { font-size: 17px; line-height: 1.4; color: var(--muted); }
 .cta-step .ask a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--af); text-decoration-thickness: 2px; text-underline-offset: 4px; transition: color .2s ease; }
 .cta-step .ask a:hover { color: var(--af); }
+
+/* outward buttons under the first lede */
+.links { display: flex; flex-wrap: wrap; gap: 8px; }
+.btn.lnk { padding: 10px 18px; font-size: 14px; }
+@media (hover: hover) and (pointer: fine) { .btn.lnk:not(.contact):hover { background: var(--af); } }

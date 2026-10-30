@@ -14,11 +14,11 @@ const other = current.side === 'front'
       {next.phones
         ? <div class:list={['nxs', `n${next.phones.length}`, { desk: next.desk, first: next.slug === 'jam' }]}>{next.phones.map((src, k) => <img class={`phone phone-${k + 1}`} src={src} alt="" loading="lazy" />)}</div>
         : next.image && <img src={next.image} alt="" loading="lazy" />}
-      <div class="tags"><span>{next.name}</span>{next.tags.map((t) => <span>{t}</span>)}</div>
+      <div class="tags">{next.tags.map((t) => <span>{t}</span>)}</div>
     </div>
     <div class="meta">
-      <small>Next case</small>
       <h2>{next.headline}</h2>
+      <small>Next case</small>
     </div>
   </a>
   <a href={other.href} class="tile turn" aria-label={other.small}>

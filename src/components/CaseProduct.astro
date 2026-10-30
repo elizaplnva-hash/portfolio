@@ -71,6 +71,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
                 : <h2 class="ttl rv">{s.title[0]} {s.title[1] && <em>{s.title[1]}</em>}</h2>}
             {s.lede && s.lede.split('\n').map((t) => <p class="lede rv">{t}</p>)}
             {s.link && <a class="btn live rv" href={s.link.href} target="_blank" rel="noopener">{s.link.label}</a>}
+            {s.links && <div class="links rv">{s.links.map((l) => <a class:list={['btn', 'lnk', { contact: l.ghost }]} href={l.href} target="_blank" rel="noopener">{l.label}</a>)}</div>}
 
             {s.blocks?.map((b) => {
               switch (b.type) {
@@ -150,7 +151,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
         <div class="step-text">
           <h2 class="ttl rv">Let’s make complex products easier to understand and trust.</h2>
           <p class="lede rv">From fintech to AI-powered experiences, I turn complex ideas into products people feel confident using.</p>
-          <p class="ask rv">Have a project in mind? <a href={mail}>Let’s talk.</a></p>
+          <div class="cta-row rv"><a href={mail} class="btn contact"><span class="roll"><span data-t="Let’s talk">Let’s talk</span></span></a></div>
         </div>
       </section>
     </div>
@@ -249,6 +250,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
 
   // next-case covers: devices hang below the tag row and drift towards the cursor, as on the home sheet
   const fitNx = () => document.querySelectorAll<HTMLElement>('.nxs').forEach((st) => {
+    document.querySelector('.stage')?.classList.add('ready'); // the home sheet's `.stage:not(.ready) .phone` rule would otherwise switch the transitions off
     const tags = st.closest('.art')?.querySelector<HTMLElement>('.tags');
     if (tags) st.style.setProperty('--tags', tags.offsetTop + tags.offsetHeight + 'px');
     requestAnimationFrame(() => st.classList.add('ready'));
