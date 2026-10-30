@@ -113,16 +113,15 @@ const pinkwallet: Partial<CaseData> = {
       visual: { layout: 'single', items: [{ label: 'The Wallet home in both themes', spec: '', srcs: ['/images/pw-home-dark.webp', '/images/pw-home-light.webp'], alt: 'The PinkWallet home screen in the dark and the light theme' }] } },
 
     { id: 'glance', nav: 'TLDR', title: ['PinkWallet', 'at a glance'],
-      lede: 'Three of the key screens: history, send and swap.',
       blocks: [{ type: 'glance', items: [
         { icon: 'alert-triangle', label: 'Problem', text: 'Crypto wallets assume knowledge first-timers don’t have, and a mistake can’t be undone.', href: '#stakes' },
-        { icon: 'user', label: 'My role', text: 'I designed the architecture, UX/UI and design system, working through a Design Manager.', href: '#choices' },
+        { icon: 'bulb', label: 'Solution', text: 'A familiar wallet with guidance built in: Feed explains crypto, PIG prepares actions.', href: '#choices' },
         { icon: 'chart-bar', label: 'Outcome', text: '80% of users who started onboarding finished it; 65% who requested a swap quote completed it.', href: '#outcome' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'Key screens', spec: '', trio: [
-        { src: '/images/pw-tl-1.webp', label: 'Transaction history', icon: 'history' },
-        { src: '/images/pw-tl-2.webp', label: 'Send', icon: 'send' },
-        { src: '/images/pw-tl-3.webp', label: 'Swap', icon: 'repeat' },
+        { src: '/images/pw-tl-1.webp', label: 'See what happened', icon: 'history' },
+        { src: '/images/pw-tl-2.webp', label: 'Send to a contact', icon: 'send' },
+        { src: '/images/pw-tl-3.webp', label: 'See what you get', icon: 'repeat' },
       ], alt: 'Three key PinkWallet screens: transaction history, choosing an amount to send, and swap.' }] } },
 
     { id: 'background', nav: 'Brief', title: ['The brief changed before','we started designing'],
