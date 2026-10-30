@@ -238,12 +238,12 @@ const pinkwallet: Partial<CaseData> = {
       ] }] } },
 
     { id: 'reflection', nav: 'Reflection', title: ['Built on convention,', 'never tested.'],
-      lede: 'With no budget for usability testing, I relied on familiar patterns and safeguards around irreversible actions. That was practical for eight weeks, but the assumptions stayed unvalidated.',
+      lede: 'Without a usability-testing budget, I relied on familiar patterns and safeguards. Key assumptions remained untested.',
       blocks: [{ type: 'numbered', items: [
-        { title: 'Test the confirmation step', body: 'Does it protect people, or just add friction?' },
-        { title: 'Check trust in PIG', body: 'PIG picks the wallet and prepares the transfer; the user confirms. Do people trust that handoff?' },
-        { title: 'Spec interactions with developers', body: 'Document states and motion; the shipped transitions showed the gaps.' },
-        { title: 'Connect decisions to measurable outcomes', body: 'Define what success looks like for key flows and how to evaluate it after launch.' },
+        { title: 'Test the confirmation step', body: 'Does it prevent mistakes or add friction?' },
+        { title: 'Validate trust in PIG', body: 'Do users trust PIG’s prepared transfer enough to confirm it?' },
+        { title: 'Spec interactions with developers', body: 'Document states and motion to close implementation gaps.' },
+        { title: 'Measure what matters', body: 'Define success metrics for key flows and track them after launch.' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'PinkWallet screens', spec: '', src: '/images/pw-reflection.webp', zoom: true, bleed: true, alt: 'A board of PinkWallet screens in light and dark: filters, transaction history, the PIG chat, a transfer confirmation, swap and contacts.' }] } },
   ],
