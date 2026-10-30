@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Security'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; stats?: { lead: string; items: { value: string; text: string }[] }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; bleed?: boolean; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; stats?: { lead: string; items: { value: string; text: string }[] }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; bleed?: boolean; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -14,6 +14,7 @@ export type Block =
   | { type: 'contrast'; from: { label: string; items: string[] }; to: { label: string; items: string[]; icons?: string[] } }
   | { type: 'table'; head: [string, string]; rows: [string, string][] }
   | { type: 'decision'; rows: [string, string][] }
+  | { type: 'glance'; items: { icon: string; label: string; text: string; href: string; go: string }[] }
   | { type: 'cards'; items: { label?: string; title: string; body?: string; icon?: string; hi?: boolean }[] }
   | { type: 'list'; numbered?: boolean; items: { label?: string; title: string; body?: string; icon?: string }[] }
   | { type: 'callout'; text: string }
@@ -104,12 +105,19 @@ const pinkwallet: Partial<CaseData> = {
         { label: 'Try the app', href: 'https://apps.apple.com/ca/app/pink-wallet-crypto-ai/id6762203790' },
       ],
       blocks: [{ type: 'meta', items: [
-        { label: 'Collaboration', value: 'Design Manager\nClient development team' },
+        { label: 'Collaboration', value: 'Design Manager at Danart\nClient development team' },
         { label: 'Timeline', value: '8 weeks\nLaunched July 2026' },
         { label: 'Responsibilities', value: 'Product architecture\nUX/UI, design system' },
         { label: 'Position', value: 'Product Designer' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'The Wallet home in both themes', spec: '', srcs: ['/images/pw-home-dark.webp', '/images/pw-home-light.webp'], alt: 'The PinkWallet home screen in the dark and the light theme' }] } },
+
+    { id: 'glance', nav: 'Summary', wide: true, title: ['PinkWallet', 'at a glance.'],
+      blocks: [{ type: 'glance', items: [
+        { icon: 'alert-triangle', label: 'Problem', text: 'Crypto wallets assume knowledge first-timers don’t have, and a mistake can’t be undone.', href: '#stakes', go: 'See the context' },
+        { icon: 'user', label: 'My role', text: 'Product Designer on a two-person team. I designed the architecture, UX/UI and design system, and worked with the client’s developers through a Design Manager.', href: '#choices', go: 'See the structure' },
+        { icon: 'chart-bar', label: 'Outcome', text: 'Launched on the App Store in July 2026. 80% of users who started onboarding finished it, and 65% of those who requested a swap quote completed it.', href: '#outcome', go: 'See the numbers' },
+      ] }] },
 
     { id: 'background', nav: 'Brief', title: ['The brief changed before','we started designing.'],
       lede: 'The first project was a crypto token for experienced users. Then the client came back with funding and a new idea: a wallet.',
@@ -137,7 +145,7 @@ const pinkwallet: Partial<CaseData> = {
       ] } }] } },
 
     { id: 'research', nav: 'Research', title: ['The challenge wasn’t','to simplify everything.'],
-      lede: 'People new to crypto need familiar ways to manage money, but they also need to know when an action can’t easily be undone. With no budget for interviews or usability testing, I used market data, wallet reviews and competitor analysis to find where first-timers get stuck.',
+      lede: 'With no budget for interviews or usability testing, I used market data, wallet reviews and competitor analysis to see where first-timers get stuck.',
       blocks: [
         { type: 'numbered', plain: true, items: [
           { title: 'Make core actions easy to find', body: 'Essential actions stay on Home, no trading terminal.' },
@@ -159,16 +167,16 @@ const pinkwallet: Partial<CaseData> = {
           { name: 'Phantom', logo: 'phantom', phone: '/images/pw-audit-phantom.webp', cards: [
             { tag: 'Sending', text: 'Send isn’t a top-level action' },
             { tag: 'Swap', text: 'Trading sits in a separate tab' },
-            { tag: 'Security', text: 'Leverage up to 40× is promoted on the home screen' } ] },
+            { tag: 'Risk exposure', text: 'Leverage up to 40× is promoted on the home screen' } ] },
           { name: 'Trust Wallet', logo: 'trust', phone: '/images/pw-audit-trust.webp', cards: [
             { tag: 'Sending', text: 'Send is one of four primary actions' },
             { tag: 'Swap', text: 'Swap has a dedicated shortcut' },
-            { tag: 'Security', text: 'WETH appears as separate entries across two networks' } ] },
+            { tag: 'Clarity', text: 'WETH appears as separate entries across two networks' } ] },
         ] },
       ] } },
 
     { id: 'choices', nav: 'Choices', title: ['A familiar core,','with two new additions.'],
-      lede: 'A beginner shouldn’t have to learn a new interface and a new kind of money at once.\nWe kept everyday wallet actions familiar: managing assets, sending, receiving and swapping.',
+      lede: 'The research gave three rules. They shaped the structure.\nA beginner shouldn’t have to learn a new interface and a new kind of money at once.\nWe kept everyday wallet actions familiar: managing assets, sending, receiving and swapping.',
       blocks: [
         { type: 'pull', text: 'Two new parts, two roles: Feed for exploring crypto, PIG for understanding and preparing actions across the wallet.' },
       ],
@@ -201,7 +209,7 @@ const pinkwallet: Partial<CaseData> = {
       ], alt: 'Three screens: a pop-up in the Feed introduces PIG, PIG answers with an article card, and the article opens in the Feed.' }] } },
 
     { id: 'safeguards', nav: 'Safeguards', title: ['Friction only', 'where it protects.'],
-      lede: 'In a self-custody wallet, losing the recovery phrase can mean losing access to your funds. Before the wallet is created, three short warnings explain why the phrase matters. Continue stays disabled until users confirm they understand the risk.\nAfter saving the phrase, users create a PIN. If they forget it, it cannot be recovered.',
+      lede: 'Before the wallet is created, three short warnings explain why the recovery phrase matters. Continue stays disabled until users confirm they understand the risk.\nAfter saving the phrase, users create a PIN. If they forget it, it cannot be recovered.',
       blocks: [{ type: 'pull', text: 'Viewing the phrase again requires PIN verification.' }],
       visual: { layout: 'single', items: [{ label: 'Wallet setup', spec: '', trio: [
         { src: '/images/pw-safe-1.webp', label: 'Understand the risk', icon: 'shield' },
@@ -224,15 +232,18 @@ const pinkwallet: Partial<CaseData> = {
       lede: '200+ screens in eight weeks, built from one set of components.',
       blocks: [{ type: 'numbered', items: [
         { icon: 'sun-moon', title: 'Two themes, one component set', body: 'Light and dark share the same components.' },
-        { icon: 'component', title: 'A rule, not a library', body: 'Anything used twice became a component.' },
-        { icon: 'eye', title: 'Accessible by default', body: 'WCAG AA, states never rely on colour alone.' },
+        { icon: 'component', title: 'A rule, not a library', body: 'Repeated patterns became components.' },
+        { icon: 'eye', title: 'Contrast by design', body: 'WCAG AA targets, no state by colour alone.' },
         { icon: 'box', title: 'One material, one palette', body: '3D assets made with AI, in one style.' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'Design system', spec: '', src: '/images/pw-system.webp', zoom: true, bleed: true, alt: 'The PinkWallet interface components in one canvas: inputs, chips, buttons, navigation, 3D coins and transaction receipts in light and dark.' }] } },
 
     { id: 'outcome', nav: 'Outcome', title: ['Launched,', 'and in use.'],
       lede: 'PinkWallet launched in July 2026. Most people who started setup finished it, and some went on to swap and send.',
-      blocks: [{ type: 'note', text: 'Client analytics, measured with Amplitude and backend data, July–September 2026.' }],
+      blocks: [
+        { type: 'pull', text: 'Friction at setup didn’t stop people: most who started finished, in about three minutes.' },
+        { type: 'note', text: 'Client analytics, measured with Amplitude and backend data, July–September 2026.' },
+      ],
       visual: { layout: 'single', items: [{ label: 'Launch analytics', spec: '', alt: 'Launch analytics, July to September 2026', metrics: [
         { title: 'Setting up', items: [
           { value: '80%', label: 'Finished onboarding', note: 'of users who started it' },

@@ -124,6 +124,14 @@ const mail = 'mailto:elizaplnva@gmail.com';
                   <div class="facts rv"><small>{b.caption}</small>
                     <dl>{b.items.map((f) => <div class="l2 lift"><dd>{f.value}</dd><dt>{f.label}</dt></div>)}</dl>
                   </div>);
+                case 'glance': return (
+                  <div class="glance rv">{b.items.map((x) => (
+                    <div class="cell lift">
+                      <span class="ic" aria-hidden="true" set:html={icon(x.icon)} />
+                      <h3>{x.label}</h3><p>{x.text}</p>
+                      <a class="go" href={x.href}>{x.go}</a>
+                    </div>))}
+                  </div>);
                 case 'note': return <p class="note rv">{b.text}</p>;
                 case 'pull': return <p class="pull rv">{b.text}</p>;
                 case 'fromto': return (
