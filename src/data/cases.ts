@@ -38,7 +38,7 @@ export interface Screen {
   wide?: boolean;                  // text only, spans the frame
   group?: string;                  // rail category for brand cases (set on the first shot of each group)
   link?: { label: string; href: string };   // outward button under the lede
-  links?: { label: string; href: string; ghost?: boolean }[];   // several outward buttons under the lede
+  links?: { label: string; href: string }[];   // several outward buttons under the lede
   shot?: boolean;                  // no text: the visual fills the frame (brand cases)
   blocks?: Block[];
   visual?: Visual;
@@ -96,7 +96,7 @@ const pinkwallet: Partial<CaseData> = {
       lede: 'Most crypto wallets assume you already know what you’re doing. PinkWallet doesn’t.\nIt’s a self-custody wallet that works like a banking app and says plainly that a sent transaction can’t be undone.\nPIG, an AI assistant, explains each action and sets it up. You press confirm.',
       links: [
         { label: 'Visit website', href: 'https://pinkwallet.pink/' },
-        { label: 'Try the app', href: 'https://apps.apple.com/ca/app/pink-wallet-crypto-ai/id6762203790', ghost: true },
+        { label: 'Try the app', href: 'https://apps.apple.com/ca/app/pink-wallet-crypto-ai/id6762203790' },
       ],
       blocks: [{ type: 'meta', items: [
         { label: 'Collaboration', value: 'Design Manager\nClient development team' },
