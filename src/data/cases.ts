@@ -81,8 +81,8 @@ const summary = '[Two sentences: what the product or brand is, and your part in 
 
 const pinkwallet: Partial<CaseData> = {
   closing: {
-    title: 'Crypto shouldn’t require people to think like traders before they can participate.',
-    lede: 'That’s how I approach every product: plain language, clear next steps, and safeguards only where a mistake can’t be undone. I’d bring the same to yours.',
+    title: 'Make it simple first, then make it safe.',
+    lede: 'That’s how I designed PinkWallet, and how I’d approach your product.',
   },
   noNameTag: true,
   accent: '#E0408F',
