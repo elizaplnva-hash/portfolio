@@ -126,11 +126,10 @@ const mail = 'mailto:elizaplnva@gmail.com';
                   </div>);
                 case 'glance': return (
                   <div class="glance rv">{b.items.map((x) => (
-                    <div class="cell lift">
+                    <a class="gl" href={x.href}>
                       <span class="ic" aria-hidden="true" set:html={icon(x.icon)} />
-                      <h3>{x.label}</h3><p>{x.text}</p>
-                      <a class="go" href={x.href}>{x.go}</a>
-                    </div>))}
+                      <span class="tx"><small>{x.label}</small><span>{x.text}</span></span>
+                    </a>))}
                   </div>);
                 case 'note': return <p class="note rv">{b.text}</p>;
                 case 'pull': return <p class="pull rv">{b.text}</p>;
@@ -155,9 +154,9 @@ const mail = 'mailto:elizaplnva@gmail.com';
           </div>}
         </section>
       ))}
-      <section class="step cta-step" id="next" data-step="next">
+      <section class:list={['step', 'cta-step', { closing: c.closing }]} id="next" data-step="next">
         <div class="step-text">
-          <h2 class="ttl rv">{c.closing?.title ?? 'Let’s make complex products easier to understand and trust.'}</h2>
+          <h2 class="ttl rv" set:html={c.closing?.title ?? 'Let’s make complex products easier to understand and trust'} />
           <p class="lede rv">{c.closing?.lede ?? 'From fintech to AI-powered experiences, I turn complex ideas into products people feel confident using.'}</p>
           <div class="cta-row rv"><a href={mail} class="btn contact"><span class="roll"><span data-t="Let’s talk">Let’s talk</span></span></a></div>
         </div>

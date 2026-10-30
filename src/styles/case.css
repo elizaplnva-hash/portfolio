@@ -708,17 +708,19 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .cp-story.brand .next .art .lbl { background: rgba(17,17,16,.55); color: #f2f2f2; box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
 .cta-step .ttl { font-size: clamp(28px, 2.7vw, 40px); }
 
-/* TL;DR: three short cards in a row, each with a quiet link to the section behind it */
-.glance { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; max-width: none; }
-.step.wide .step-text > .glance { max-width: 980px; }
-.glance .cell { padding: 20px 22px 22px; gap: 10px; background: var(--white); box-shadow: var(--sh2); align-items: flex-start; }
-.glance .cell h3 { font-size: 13px; font-weight: 500; color: var(--muted); letter-spacing: 0; }
-.glance .cell p { font-size: 17px; line-height: 1.38; letter-spacing: -.015em; color: var(--ink); flex: 1; }
-.glance .go { font-size: 13px; color: var(--soft); text-decoration: underline; text-decoration-color: var(--hair); text-underline-offset: 4px; transition: color .2s ease, text-decoration-color .2s ease; }
-.glance .go:hover { color: var(--af); text-decoration-color: var(--af); }
-@media (hover: hover) and (prefers-reduced-motion: no-preference) { .glance .cell { transition: transform .4s var(--out), box-shadow .4s var(--out); } .glance .cell:hover { transform: translateY(-3px); box-shadow: var(--sh); } }
-@media (max-width: 899px) { .glance { grid-template-columns: 1fr; } }
+/* TLDR: three compact cards stacked under the title; each one is a link to its section */
+.glance { display: flex; flex-direction: column; gap: 8px; }
+.gl { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-radius: var(--r); background: var(--white); box-shadow: var(--sh2); color: var(--ink); }
+.gl .ic { flex: none; }
+.gl .tx { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.gl small { font-size: 11px; color: var(--muted); }
+.gl .tx > span { font-size: 15px; line-height: 1.35; letter-spacing: -.015em; }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) { .gl { transition: transform .4s var(--out), box-shadow .4s var(--out); } .gl:hover { transform: translateY(-2px); box-shadow: var(--sh); } }
 
 /* first-screen tags carry the same pink dot as the home tags, so they don't read as buttons */
 .cp-story .step-text > .tags span::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: color-mix(in srgb, var(--pink, #e0408f) 78%, #fff); flex: none; }
 .cp-story .step-text > .tags span { gap: 7px; padding: 6px 13px 6px 11px; }
+
+/* closing screen: the takeaway is the headline, one word in the case colour */
+.cta-step.closing .ttl { font-size: clamp(40px, min(5vw, 9dvh), 76px); line-height: 1; letter-spacing: -.035em; max-width: 11em; }
+.cta-step .ttl em { color: var(--af); font-style: normal; }
