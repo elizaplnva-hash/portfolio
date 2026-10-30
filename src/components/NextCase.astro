@@ -10,10 +10,14 @@ const other = current.side === 'front'
 ---
 <section class="next" aria-label="Next">
   <a href={`/work/${next.slug}`} class="tile" style={`--c:${next.color}`}>
-    <div class="art">{next.image && <img src={next.image} alt="" loading="lazy" />}</div>
+    <div class="art">
+      {next.phones
+        ? <div class:list={['nxs', `n${next.phones.length}`, { desk: next.desk, first: next.slug === 'jam' }]}>{next.phones.map((src, k) => <img class={`phone phone-${k + 1}`} src={src} alt="" loading="lazy" />)}</div>
+        : next.image && <img src={next.image} alt="" loading="lazy" />}
+      <div class="tags"><span>{next.name}</span>{next.tags.map((t) => <span>{t}</span>)}</div>
+    </div>
     <div class="meta">
       <small>Next case</small>
-      <div class="tags"><span>{next.name}</span>{next.tags.map((t) => <span>{t}</span>)}</div>
       <h2>{next.headline}</h2>
     </div>
   </a>

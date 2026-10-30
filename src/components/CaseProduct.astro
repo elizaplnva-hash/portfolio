@@ -148,8 +148,10 @@ const mail = 'mailto:elizaplnva@gmail.com';
       ))}
       <section class="step cta-step" id="next" data-step="next">
         <div class="step-text">
-          <h2 class="ttl rv">Thanks for scrolling all the way down.</h2>
-          <p class="lede rv">If something here sparked an idea or a question, I’d like to hear it.</p>
+          {c.closing
+            ? <h2 class="ttl rv">{c.closing[0]} {c.closing[1] && <em>{c.closing[1]}</em>}</h2>
+            : <><h2 class="ttl rv">Thanks for scrolling all the way down.</h2>
+              <p class="lede rv">If something here sparked an idea or a question, I’d like to hear it.</p></>}
           <div class="cta-row rv"><a href={mail} class="cta"><span class="roll"><span data-t="Let’s talk">Let’s talk</span></span></a></div>
         </div>
       </section>

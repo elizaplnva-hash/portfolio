@@ -63,6 +63,7 @@ export interface CaseData {
   fill?: string;              // case colour for small dots and marks
   tint?: string;              // pastel behind the case images
   panel?: string;             // overrides the image panel background (e.g. white)
+  closing?: [string, string?];   // headline of the last (contact) screen; default is a thank-you line
   screens?: Screen[];         // Product pages; falls back to a generic skeleton
   shots?: Ph[];               // Brand pages: the images shown one by one while scrolling
 }
@@ -78,6 +79,7 @@ const summary = '[Two sentences: what the product or brand is, and your part in 
 
 
 const pinkwallet: Partial<CaseData> = {
+  closing: ['Crypto shouldn’t require people to think like traders', 'before they can participate.'],
   noNameTag: true,
   accent: '#E0408F',
   fill: '#E0408F',
@@ -236,16 +238,14 @@ const pinkwallet: Partial<CaseData> = {
       ] }] } },
 
     { id: 'reflection', nav: 'Reflection', title: ['Built on convention,', 'never tested.'],
-      lede: 'Everything here rests on convention and on lowering the cost of a mistake. That was right for eight weeks, but it is still an assumption.',
-      blocks: [{ type: 'list', items: [
-        { title: 'Test the confirmation step', body: 'Does it protect or annoy?' },
-        { title: 'Test trust in PIG', body: 'After its first prepared transaction.' },
-        { title: 'Work with developers through interaction specs', body: 'With no direct line to them, motion was less specified, and the shipped transitions show it.' },
-        { title: 'Connect decisions to data', body: 'Before handoff.' },
+      lede: 'With no budget for usability testing, I relied on familiar patterns and safeguards around irreversible actions. That was practical for eight weeks, but the assumptions stayed unvalidated.',
+      blocks: [{ type: 'numbered', items: [
+        { title: 'Test the confirmation step', body: 'Does it protect people, or just add friction?' },
+        { title: 'Check trust in PIG', body: 'PIG picks the wallet and prepares the transfer; the user confirms. Do people trust that handoff?' },
+        { title: 'Spec interactions with developers', body: 'Document states and motion; the shipped transitions showed the gaps.' },
+        { title: 'Connect decisions to measurable outcomes', body: 'Define what success looks like for key flows and how to evaluate it after launch.' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Concept for the next iteration', spec: 'Ты рисуешь: экран подтверждения до и после, справа блок «You send / They receive» и фраза, что перевод окончательный. Рядом можно план теста на одну страницу.' }] } },
-
-    { id: 'closing', nav: 'Closing', statement: true, title: ['Crypto shouldn’t require people to think like traders', 'before they can participate.'] },
+      visual: { layout: 'single', items: [{ label: 'PinkWallet screens', spec: '', src: '/images/pw-reflection.webp', zoom: true, bleed: true, alt: 'A board of PinkWallet screens in light and dark: filters, transaction history, the PIG chat, a transfer confirmation, swap and contacts.' }] } },
   ],
 };
 
