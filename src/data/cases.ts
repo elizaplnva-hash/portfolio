@@ -221,17 +221,17 @@ const pinkwallet: Partial<CaseData> = {
       visual: { layout: 'single', items: [{ label: 'Design system', spec: '', src: '/images/pw-system.webp', zoom: true, bleed: true, alt: 'The PinkWallet interface components in one canvas: inputs, chips, buttons, navigation, 3D coins and transaction receipts in light and dark.' }] } },
 
     { id: 'outcome', nav: 'Outcome', title: ['Launched,', 'and in use.'],
-      lede: 'PinkWallet launched in July 2026. The first three months of client-provided analytics show how users moved through wallet setup and used its core features.',
-      blocks: [{ type: 'note', text: 'Product analytics provided by the client (Amplitude and backend data), July–September 2026.' }],
+      lede: 'PinkWallet launched in July 2026. Most people who started setup finished it, and some went on to swap and send.',
+      blocks: [{ type: 'note', text: 'Client analytics, measured with Amplitude and backend data, July–September 2026.' }],
       visual: { layout: 'single', items: [{ label: 'Launch analytics', spec: '', alt: 'Launch analytics, July to September 2026', metrics: [
         { title: 'Setting up', items: [
-          { value: '80%', label: 'Onboarding completion', note: 'of users who started onboarding finished it' },
-          { value: '85%', label: 'Wallet creation completion', note: 'of users who started wallet setup created a wallet' },
-          { value: '3 min', label: 'Median wallet setup time', note: 'From security setup to PIN creation, for users who finished', wide: true },
+          { value: '80%', label: 'Finished onboarding', note: 'of users who started it' },
+          { value: '85%', label: 'Created a wallet', note: 'of users who started setup' },
+          { value: '3 min', label: 'Median setup time', note: 'From security setup to PIN, for users who finished', wide: true },
         ] },
         { title: 'Using the wallet', items: [
-          { value: '65%', label: 'Swap conversion', note: 'of users who requested a quote completed a swap' },
-          { value: '98%', label: 'Transaction success', note: 'of submitted transactions were confirmed' },
+          { value: '65%', label: 'Completed a swap', note: 'of users who requested a quote' },
+          { value: '98%', label: 'Transactions confirmed', note: 'of those submitted to the network' },
         ] },
       ] }] } },
 
