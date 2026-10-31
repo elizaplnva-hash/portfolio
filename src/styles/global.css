@@ -332,3 +332,9 @@ p, li, dd, dt, blockquote, figcaption, h3, .lede { text-wrap: pretty; }
   .turn { padding: 20px 22px; }
   .turn h2 { font-size: clamp(20px, 2.3vw, 34px); padding-right: 44px; }
 }
+
+/* back side: the name pill and social tiles follow the dark tag language */
+[data-side='back'] .photo.has-img .name { background: rgba(17, 17, 16, .6); color: #f2f2f2; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+[data-side='back'] .ico { background: transparent; box-shadow: none; }
+/* phone: a smaller portrait tile */
+@media (max-width: 599px) { .photo { aspect-ratio: 4 / 3; } .photo .name { font-size: 20px; } }
