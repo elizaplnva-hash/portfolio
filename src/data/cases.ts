@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; stats?: { lead: string; items: { value: string; text: string }[] }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; bleed?: boolean; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; stats?: { lead: string; items: { value: string; text: string }[] }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; bleed?: boolean; dm?: boolean; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -472,7 +472,7 @@ const greenCredit: Partial<CaseData> = {
         { label: 'Timeline', value: '6 weeks\nHanded off July 2026' },
         { label: 'Responsibilities', value: 'UX/UI, design system\nAI workflow' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Dashboard', spec: '', src: '/images/gcs-overview.webp', alt: 'Green Credit Score dashboard on a monitor' }] } },
+      visual: { layout: 'single', items: [{ label: 'Dashboard and mobile', spec: '', combo: ['/images/gcs-dash.webp', '/images/gcs-mob.webp'], dm: true, alt: 'The Green Credit Score dashboard on the web, with the same dashboard on a phone in front of it' }] } },
 
     { id: 'glance', nav: 'TLDR', title: ['Green Credit Score', 'at a glance'],
       blocks: [{ type: 'glance', items: [
