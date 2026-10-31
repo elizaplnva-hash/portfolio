@@ -476,23 +476,23 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 }
 
 /* web dashboard with the mobile view in front: each one grows on its own, the phone a little more */
-.ph.combo.dm .cs { left: 15%; top: 13%; bottom: auto; width: 82%; height: auto; border-radius: 0; box-shadow: none; object-fit: contain; z-index: 1; transform-origin: 50% 45%; filter: drop-shadow(0 34px 50px rgba(17,17,17,.16)) drop-shadow(0 4px 14px rgba(17,17,17,.08)); }
-.ph.combo.dm .cp { left: 3%; top: 40%; width: 27%; z-index: 2; transform-origin: 50% 50%; filter: drop-shadow(0 30px 40px rgba(17,17,17,.30)) drop-shadow(0 6px 12px rgba(17,17,17,.12)); }
+.ph.combo.dm .cs { left: 15%; top: 6%; bottom: auto; width: 82%; height: auto; border-radius: 0; box-shadow: none; object-fit: contain; z-index: 1; transform-origin: 50% 45%; filter: drop-shadow(0 26px 40px rgba(17,17,17,.07)) drop-shadow(0 3px 10px rgba(17,17,17,.04)); }
+.ph.combo.dm .cp { left: 3%; top: 31%; width: 33%; z-index: 2; transform-origin: 50% 50%; filter: drop-shadow(0 24px 34px rgba(17,17,17,.13)) drop-shadow(0 4px 10px rgba(17,17,17,.06)); }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   .ph.combo.dm .cs:hover { transform: scale(1.04); }
-  .ph.combo.dm .cp:hover { transform: scale(1.09); }
+  .ph.combo.dm .cp:hover { transform: scale(1.12); }
 }
 
-/* one tall screen split in two: the right column continues where the left one is cut */
+/* one tall screen shown twice: the front shows the top of the page, the back one (higher, behind) shows where the page continues */
 .ph.cut, .stage .ph.cut { background: none; padding: 0; overflow: visible; transform: none; container-type: size; }
-.ph.cut .ct { position: absolute; top: 22%; width: 46cqw; height: 48cqh; left: 3cqw; overflow: hidden; border-radius: 14px 14px 4px 4px; background: var(--white); box-shadow: 0 24px 44px rgba(17,17,17,.14), 0 3px 10px rgba(17,17,17,.07); transform-origin: 50% 0; }
-.ph.cut .ct.r { left: auto; right: 3cqw; }
-.ph.cut .ct img { display: block; width: 125%; height: auto; max-width: none; }
-.ph.cut .ct.r img { transform: translateY(-48cqh); }
+.ph.cut .ct { position: absolute; left: 3cqw; top: 34%; bottom: 0; width: 62cqw; overflow: hidden; border-radius: 14px 14px 0 0; background: var(--white); z-index: 2; box-shadow: 0 22px 40px rgba(17,17,17,.08), 0 2px 8px rgba(17,17,17,.04); transform-origin: 50% 0; }
+.ph.cut .ct.r { left: auto; right: 3cqw; top: 6%; bottom: auto; height: 55%; z-index: 1; }
+.ph.cut .ct img { display: block; width: 100%; height: auto; max-width: none; }
+.ph.cut .ct.r img { transform: translateY(-59.6%); }
 .m-vis.v-single .ph.cut { aspect-ratio: 16 / 10; }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   .ph.cut .ct { transition: transform .6s var(--out); }
-  .ph.cut .ct:hover { transform: scale(1.04); z-index: 2; }
+  .ph.cut .ct:hover { transform: scale(1.03); }
 }
 
 /* comparison table: banking app vs crypto wallet */
