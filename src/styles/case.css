@@ -496,17 +496,16 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 /* context: banks > bureaus > report > score, a green pulse runs along the line */
 .ph.chain, .stage .ph.chain { background: none; padding: 0; overflow: visible; transform: none; container-type: size; box-shadow: none; display: grid; place-items: center; }
 .ph.chain .cn { position: relative; width: 88cqw; display: flex; justify-content: space-between; align-items: flex-start; }
-.ph.chain .ln { position: absolute; left: 12.5%; right: 12.5%; top: 38px; border-top: 2px dashed rgba(17,17,17,.16); }
-.ph.chain .ln.go { border-top-color: var(--c); opacity: 0; }
+.ph.chain .ln { position: absolute; left: 12.5%; right: 12.5%; top: 36px; height: 4px; border-radius: 4px; background: rgba(17,17,17,.09); }
+.ph.chain .ln.go { background: var(--c); opacity: 0; transform: scaleX(0); transform-origin: 0 50%; }
 .ph.chain .st { position: relative; z-index: 1; width: 25%; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
-.ph.chain .sc { width: 76px; height: 76px; border-radius: 50%; background: var(--t); color: var(--c); display: grid; place-items: center; box-shadow: 0 0 0 8px var(--pn, #F6F6F4); }
+.ph.chain .sc { width: 76px; height: 76px; border-radius: 50%; background: #fff; color: var(--c); display: grid; place-items: center; box-shadow: 0 0 0 8px var(--pn, #F6F6F4), 0 10px 24px rgba(17,17,17,.08), 0 2px 6px rgba(17,17,17,.05); }
 .ph.chain .sc svg { width: 34px; height: 34px; }
-.ph.chain .st:last-child .sc { background: var(--c); color: #fff; }
 .ph.chain .st b { font-size: 14px; font-weight: 600; letter-spacing: -.02em; line-height: 1.25; color: var(--ink); max-width: 116px; }
 .m-vis.v-single .ph.chain { aspect-ratio: 16 / 7; }
 @media (prefers-reduced-motion: no-preference) {
-  @keyframes run { 0% { transform: scaleX(0); opacity: 1; } 65% { transform: scaleX(1); opacity: 1; } 100% { transform: scaleX(1); opacity: 0; } }
-  .ph.chain .ln.go { transform-origin: 0 50%; animation: run 4.5s ease-out infinite; }
+  @keyframes run { 0% { transform: scaleX(0); opacity: 1; } 60% { transform: scaleX(1); opacity: 1; } 85% { transform: scaleX(1); opacity: 0; } 100% { transform: scaleX(1); opacity: 0; } }
+  .ph.chain .ln.go { animation: run 5s ease-out infinite; }
 }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   .ph.chain .st { transition: transform .5s var(--out); }

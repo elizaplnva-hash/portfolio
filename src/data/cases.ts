@@ -486,10 +486,10 @@ const greenCredit: Partial<CaseData> = {
       lede: 'Banks and card issuers report how you borrow and repay to credit bureaus. In the US there are three: Equifax, Experian and TransUnion.\nEach keeps a credit report: your accounts, balances, payments and applications. A credit score, usually between 300 and 850, sums that report up for lenders.\nNot every lender reports to every bureau, so your reports, and your scores, can differ.',
       blocks: [{ type: 'pull', text: 'One person, three reports, several scores, and none of them says what to do next.' }],
       visual: { layout: 'single', items: [{ label: 'From banks to a score', spec: '', chain: [
-        { icon: 'landmark', label: 'Banks and card issuers' },
-        { icon: 'stack-2', label: 'Three bureaus' },
-        { icon: 'file-analytics', label: 'A credit report' },
-        { icon: 'gauge', label: 'A credit score' },
+        { icon: 'landmark', label: 'A bank reports how you pay' },
+        { icon: 'stack-2', label: 'Three bureaus collect it' },
+        { icon: 'file-analytics', label: 'Each keeps it in a report' },
+        { icon: 'gauge', label: 'A score sums it up' },
       ], alt: 'Banks and card issuers report to three bureaus, each keeps a credit report, and a credit score sums it up.' }] } },
 
     { id: 'brief', nav: 'Brief', title: ['A page list and one rule:', 'keep it simple'],
@@ -520,7 +520,7 @@ const greenCredit: Partial<CaseData> = {
         { icon: 'zoom-question', title: 'Understand', body: 'Why, and what’s behind it? Score Factors, Debt Analysis, Credit Report.' },
         { icon: 'compass', title: 'Explore', body: 'What could change it? Score Simulator.' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Product structure', spec: '', src: '/images/gcs-structure.webp', zoom: true, alt: 'Product structure: See, Understand and Explore sit on one structure, with the three bureaus side by side.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Product structure', spec: '', src: '/images/gcs-sitemap.webp', zoom: true, alt: 'Product structure: the dashboard and its five sections, Score factors, Credit report, Debt analysis, Score simulator and Profile, with the pages inside each.' }] } },
 
     { id: 'priorities', nav: 'Prioritization', title: ['Up front,', 'or one click away'],
       lede: 'The dashboard is where the five seconds happen, so every piece of data had to earn its place there. The rest stays one click away, in the section that explains it.',
