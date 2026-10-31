@@ -448,103 +448,156 @@ const lapunzel: Partial<CaseData> = {
 };
 
 const greenCredit: Partial<CaseData> = {
+  closing: {
+    title: 'One layer <em>at a time</em>',
+    lede: 'Complex data doesn’t need less information. It needs an order.',
+  },
   accent: '#22A55E',
   fill: '#22A55E',
   tint: '#DDF7D0',
   facts: [
-    { label: 'Role', value: 'Product Designer' },
-    { label: 'Timeline', value: '4 weeks' },
+    { label: 'Role', value: 'Lead Product Designer' },
+    { label: 'Timeline', value: '6 weeks, planned 8' },
     { label: 'Platform', value: 'Web, mobile' },
     { label: 'Status', value: 'In development' },
   ],
-  summary: 'A credit-score product that makes credit data easier to understand and act on.',
+  summary: 'A credit-monitoring app that gathers three bureau reports in one place, shows where you stand at a glance and explains what moves the score.',
   screens: [
-    { id: 'overview', nav: 'Overview', title: ['Making credit data easier to understand and act on'],
+    { id: 'overview', nav: 'Overview', title: ['Credit health,', 'readable in 5 seconds'],
+      lede: 'Credit data comes from three bureaus, in reports few people know how to read.\nGreen Credit Score gathers them in one place, shows where you stand at a glance and explains what moves the score.\nI led the product from a client’s page list to a design system ready for development.',
       blocks: [{ type: 'meta', items: [
-        { label: 'Role', value: 'Product Designer' },
-        { label: 'Timeline', value: '4 weeks' },
-        { label: 'Platform', value: 'Web, mobile' },
-        { label: 'Status', value: 'In development' },
+        { label: 'Position', value: 'Lead Product Designer' },
+        { label: 'Collaboration', value: 'Design Manager at Danart\nJunior Designer, developer' },
+        { label: 'Timeline', value: '6 weeks, planned 8\nHanded off July 2026, in development' },
+        { label: 'Responsibilities', value: 'Product structure, UX/UI\nAI workflow, design system' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'Dashboard', spec: '', src: '/images/gcs-overview.webp', alt: 'Green Credit Score dashboard on a monitor' }] } },
 
-    { id: 'challenge', nav: 'Challenge', title: ["The problem wasn't too much data. It was too little clarity"],
-      lede: 'Credit information lives in many places. The challenge was to show what matters and what to do next.',
-      blocks: [{ type: 'list', numbered: true, items: [
-        { title: 'Scores without context', body: 'A number without a clear explanation of what it means.' },
-        { title: 'Fragmented data', body: 'Users compare information across separate bureaus.' },
-        { title: 'No clear priorities', body: 'Every metric competes for attention.' },
+    { id: 'glance', nav: 'TLDR', title: ['Green Credit Score', 'at a glance'],
+      blocks: [{ type: 'glance', items: [
+        { icon: 'alert-triangle', label: 'Problem', text: 'Three reports and a score, and no clue what to do next.', href: '#context' },
+        { icon: 'bulb', label: 'Solution', text: 'See where you stand, understand why, explore what could change it.', href: '#strategy' },
+        { icon: 'chart-bar', label: 'Outcome', text: 'Approved by the client and handed to development with a complete design system.', href: '#outcome' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Problem', spec: '', src: '/images/gcs-challenge.webp', alt: 'The three areas of credit data: accounts, inquiries and records, payment history' }] } },
+      visual: { layout: 'single', items: [{ label: 'Key screens', spec: '', trio: [
+        { src: '/images/gcs-dashboard.webp', label: 'See where you stand', icon: 'eye' },
+        { src: '/images/gcs-research.webp', label: 'Understand why', icon: 'bulb' },
+        { src: '/images/gcs-simulator.webp', label: 'Explore what could change', icon: 'compass' },
+      ], alt: 'Three key screens: the dashboard, the score factors and the score simulator.' }] } },
 
-    { id: 'research', nav: 'Research', title: ['Three patterns shaped the direction'],
-      lede: 'We reviewed existing credit and finance products to see where reading credit data gets hard.',
-      blocks: [{ type: 'table', head: ['Pattern in the market', 'Direction'], rows: [
-        ['A number, with no explanation', 'Say what the score means'],
-        ['Each bureau in its own report', 'One view for all three'],
-        ['Every metric looks equally important', 'Rank factors by impact'],
+    { id: 'context', nav: 'Context', title: ['A score is the summary,', 'the report is the story'],
+      lede: 'Banks and card issuers report how you borrow and repay to credit bureaus. In the US there are three: Equifax, Experian and TransUnion.\nEach keeps a credit report: your accounts, balances, payments and applications. A credit score, usually between 300 and 850, sums that report up for lenders.\nNot every lender reports to every bureau, so your reports, and your scores, can differ.',
+      blocks: [{ type: 'pull', text: 'One person, three reports, several scores, and none of them says what to do next.' }],
+      visual: { layout: 'single', items: [{ label: 'Report and score', spec: '', alt: 'A credit report lists every account and payment, a credit score is one number; both can differ between bureaus and neither says what to do next', compare: { cols: ['Credit report', 'Credit score'], rows: [
+        { label: 'Lists every account and payment', a: true, b: false },
+        { label: 'One number from 300 to 850', a: false, b: true },
+        { label: 'Can differ between bureaus', a: true, b: true },
+        { label: 'Used by lenders', a: true, b: true },
+        { label: 'Says what to do next', a: false, b: false },
+      ] } }] } },
+
+    { id: 'brief', nav: 'Brief', title: ['A page list and one rule:', 'keep it simple'],
+      lede: 'A client with a credit-advice blog came to Danart for a US subscription app. The brief listed pages and asked for a light, Apple-like look.',
+      blocks: [
+        { type: 'cards', items: [
+          { title: 'What it had', body: 'Pages, from dashboard to FAQ.' },
+          { title: 'What it asked', body: 'Keep it simple.' },
+          { title: 'What it missed', body: 'How people would use it.' },
+        ] },
+        { type: 'pull', text: 'Simple couldn’t mean showing less. First I needed to know what people actually struggle with.' },
+      ],
+      visual: { layout: 'single', items: [{ label: 'The brief', spec: '', src: '/images/gcs-brief.webp', alt: 'The client’s list of pages and components: site map, home, FAQ, contact, login, onboarding, account settings, member dashboard, credit report and design system.' }] } },
+
+    { id: 'research', nav: 'Research', title: ['People see the number,', 'not what to do next'],
+      lede: 'Before design I studied CFPB consumer research and audited credit-monitoring apps. Three findings became the rules for the product.',
+      blocks: [{ type: 'cards', items: [
+        { title: 'Status first', body: 'People mix up reports, scores and bureaus.' },
+        { title: 'Detail in layers', body: 'First-time readers feel overwhelmed by a full report.' },
+        { title: 'Data leads to action', body: 'People aren’t sure how to improve their credit.' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'Benchmark', spec: '', src: '/images/gcs-research.webp', alt: 'Score factors screen on a laptop' }] } },
 
-    { id: 'principles', nav: 'Principles', title: ['Three decisions defined the product'],
-      lede: 'Each principle set one consistent way to present credit information so users understand it faster.',
+    { id: 'strategy', nav: 'Product strategy', title: ['Three questions,', 'three levels'],
+      lede: 'The tools exist across credit apps; the job was to put them in order. I chose what this product needed, connected it in the sequence people ask, and the team agreed to add three sections beyond the brief.',
       blocks: [{ type: 'cards', items: [
-        { icon: 'gauge', title: '01. Score first', body: 'The score and its status appear before supporting details.' },
-        { icon: 'palette', title: '02. Color communicates status', body: 'A shared five-level scale keeps status meanings consistent.' },
-        { icon: 'columns-2', title: '03. Bureaus side by side', body: 'A consistent layout makes differences easier to spot.' },
+        { icon: 'eye', title: 'See', body: 'Where do I stand? Dashboard.' },
+        { icon: 'zoom-question', title: 'Understand', body: 'Why, and what’s behind it? Score Factors, Debt Analysis, Credit Report.' },
+        { icon: 'compass', title: 'Explore', body: 'What could change it? Score Simulator.' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Principles', spec: '', src: '/images/gcs-principles.webp', alt: 'Score, status colours and bureau comparison' }] } },
+      visual: { layout: 'single', items: [{ label: 'Product structure', spec: '', src: '/images/gcs-structure.webp', zoom: true, alt: 'Product structure: See, Understand and Explore sit on one structure, with the three bureaus side by side.' }] } },
 
-    { id: 'landing', nav: 'Landing', title: ['Explain the value before asking for commitment'],
-      lede: 'The landing page introduces the product, shows its benefits and gives users a clear path to getting started.',
-      blocks: [{ type: 'list', numbered: true, items: [
-        { label: 'Explain', title: 'Introduce the product', body: 'Show what users can understand and manage.' },
-        { label: 'Build confidence', title: 'Answer key questions', body: 'Present features, pricing and FAQs.' },
-        { label: 'Convert', title: 'Make the next step clear', body: 'Keep the path to sign-up easy to find.' },
-      ] }],
+    { id: 'priorities', nav: 'Prioritization', title: ['Up front,', 'or one click away'],
+      lede: 'The dashboard is where the five seconds happen, so every piece of data had to earn its place there. The rest stays one click away, in the section that explains it.',
+      blocks: [{ type: 'quote', text: 'Overview first, zoom and filter, then details on demand.', by: 'Ben Shneiderman, 1996' }],
+      visual: { layout: 'single', items: [{ label: 'What goes where', spec: '', alt: 'Which data sits on the dashboard and which sits deeper', compare: { cols: ['Dashboard', 'Deeper'], rows: [
+        { label: 'Score and status', a: true, b: true },
+        { label: 'Next milestone', a: true, b: false },
+        { label: 'Six factors with impact', a: true, b: true },
+        { label: 'Debt totals', a: true, b: true },
+        { label: 'Month-by-month payment history', a: false, b: true },
+        { label: 'Personal info, inquiries, collections', a: false, b: true },
+        { label: 'What-if scenarios', a: false, b: true },
+      ] } }] } },
+
+    { id: 'guidance', nav: 'Guidance', title: ['Explain the score,', 'then let people try'],
+      lede: 'Every factor opens with the same five blocks: where you stand, why, the accounts behind it, a year of history and what happens if you miss a payment. The simulator turns the same data into eight scenarios, grouped by decisions people actually make.',
+      blocks: [{ type: 'pull', text: 'Current and simulated score sit side by side, and the FAQ says plainly that nothing is guaranteed.' }],
+      visual: { layout: 'single', items: [{ label: 'Explain and explore', spec: '', trio: [
+        { src: '/images/gcs-research.webp', label: 'Score factors', icon: 'gauge' },
+        { src: '/images/gcs-report.webp', label: 'Credit report', icon: 'stack-2' },
+        { src: '/images/gcs-simulator.webp', label: 'Score simulator', icon: 'compass' },
+      ], alt: 'Three screens: score factors, the credit report and the score simulator.' }] } },
+
+    { id: 'colour', nav: 'Design decision', title: ['Colour that carries', 'meaning'],
+      lede: 'Colour is information here: it says what’s fine and what needs attention before you read a number. The team was split; the client and the Junior Designer wanted green only. About 30 people in the US and Canada who follow their credit compared both directions. Most picked semantic colour, and the client chose it.',
+      blocks: [
+        { type: 'cards', items: [
+          { icon: 'palette', title: 'Status at a glance', body: 'Red, amber and green.' },
+          { icon: 'circle-check', title: 'Brand intact', body: 'Impact in shades of green.' },
+          { icon: 'eye', title: 'Readable without colour', body: 'Every mark has a symbol.' },
+        ] },
+        { type: 'cards', items: [{ label: 'What we did', title: 'A new name, a green palette', body: 'The client renamed it Green Credit Score. I moved the palette from brown and beige to green; we kept Montserrat and drew a new logo.' }] },
+      ],
+      visual: { layout: 'single', items: [{ label: 'Status colours', spec: '', src: '/images/gcs-principles.webp', alt: 'Score, status colours and bureau comparison' }] } },
+
+    { id: 'landing', nav: 'Stakeholders', title: ['Two concepts,', 'one client decision'],
+      lede: 'The director wanted a cooler, more modern landing. I believed people checking their own credit need something friendlier. Instead of settling it inside the team, we presented both concepts to the client, each with its pros and cons. The client chose the friendlier one, the direction I’d argued for.',
+      blocks: [{ type: 'contrast',
+        from: { label: 'Concept A: cooler, SaaS-style', items: ['Looks modern', 'Reads like a tool for analysts'] },
+        to: { label: 'Concept B: friendlier, real product screens', items: ['Shows what you get', 'Feels approachable'], icons: ['eye', 'circle-check'] } }],
       visual: { layout: 'single', items: [{ label: 'Landing', spec: '', src: '/images/gcs-landing.webp', alt: 'The landing page: hero, reviews, pricing and FAQ' }] } },
 
-    { id: 'dashboard', nav: 'Dashboard', title: ['Your credit, at a glance'],
-      lede: 'The dashboard brings scores, credit factors and debt information into one view, a clear starting point.',
-      blocks: [{ type: 'cards', items: [
-        { icon: 'layout-dashboard', title: 'A clear entry point', body: 'Key information first, deeper sections one tap away.' },
-        { icon: 'gauge', title: 'Factors under the score', body: 'The factors behind the score sit right below it.' },
-        { icon: 'mouse-pointer-click', title: 'Details on demand', body: 'Users open individual sections to explore more.' },
-      ] }],
+    { id: 'ai', nav: 'AI workflow', title: ['Prompts', 'instead of wireframes'],
+      lede: 'I removed the wireframing stage. I set the structure and requirements for each section, wrote one prompt per section for Figma AI agents and marked up each draft for the Junior Designer, who worked out the visuals. I made the final pass; the Design Manager reviewed after me.',
+      blocks: [{ type: 'chain', steps: ['Requirements', 'Prompts', 'AI drafts', 'Junior Designer', 'Final pass'] }],
       visual: { layout: 'single', items: [{ label: 'Dashboard', spec: '', src: '/images/gcs-dashboard.webp', alt: 'The dashboard on a tablet' }] } },
 
-    { id: 'simulator', nav: 'Simulator', title: ['Explore possible outcomes before making a decision'],
-      lede: 'Users try hypothetical scenarios and see how different choices could affect their score.',
-      blocks: [
-        { type: 'list', numbered: true, items: [
-          { title: 'Open a new credit card', body: 'Explore the potential impact of a new account.' },
-          { title: 'Get a new loan', body: 'Understand the possible effect of additional credit.' },
-          { title: 'Increase a credit limit', body: 'Explore changes in credit utilization.' },
-          { title: 'Close an existing card', body: 'Consider how closing an account could affect the score.' },
-        ] },
-        { type: 'note', text: 'Simulated outcomes are estimates, not guarantees.' },
-      ],
-      visual: { layout: 'single', items: [{ label: 'Simulator', spec: '', src: '/images/gcs-simulator.webp', alt: 'The score simulator with its scenarios' }] } },
+    { id: 'handoff', nav: 'Handoff', title: ['Built for the developer', 'we work with'],
+      lede: 'We’ve worked with this developer before, so the file followed the structure he prefers. I left comments wherever precision mattered, and we walked through the tricky parts together before he started.',
+      visual: { layout: 'single', items: [{ label: 'Design system', spec: '', src: '/images/gcs-delivery.webp', alt: 'The score simulator on a laptop' }] } },
 
-    { id: 'report', nav: 'Report', title: ['A complete report without the information overload'],
-      lede: 'Personal information, account details, balances and payment history sit in one consistent, readable structure.',
-      blocks: [{ type: 'cards', items: [
-        { label: 'Layer 01', title: 'Personal information', body: 'Compare the details reported by each bureau.' },
-        { label: 'Layer 02', title: 'Account overview', body: 'Review balances, limits, utilization and status.' },
-        { label: 'Layer 03', title: 'Payment history', body: 'Explore month-by-month account records.' },
+    { id: 'outcome', nav: 'Outcome', title: ['Approved,', 'and in development'],
+      lede: 'The client approved the design and it went to development. The three added sections, the dashboard structure and semantic colour all made it into the final product.',
+      visual: { layout: 'single', items: [{ label: 'Outcome', spec: '', alt: 'Delivery and decisions: two weeks ahead of plan, three sections added, about thirty people compared colour directions, two landing concepts presented', metrics: [
+        { title: 'Delivery', items: [
+          { value: '2 wks', label: 'Ahead of plan', note: 'Wireframing stage removed' },
+          { value: '3', label: 'Sections beyond the brief', note: 'Approved with the final design' },
+        ] },
+        { title: 'Decisions', items: [
+          { value: '~30', label: 'People compared colour directions', note: 'Informal, in the US and Canada' },
+          { value: '2', label: 'Landing concepts presented', note: 'The client chose one' },
+        ] },
+      ] }] } },
+
+    { id: 'reflection', nav: 'Reflection', title: ['What I’d keep,', 'what I’d test'],
+      lede: 'The product is in development, so there are no launch metrics yet.',
+      blocks: [{ type: 'numbered', items: [
+        { title: 'Structure before prompts', body: 'Figma’s AI agents were new; this project let us learn them. They work only when each section’s job is decided first.' },
+        { title: 'Options, not opinions', body: 'Both disagreements were settled by showing two versions with their trade-offs.' },
+        { title: 'Test with the real audience', body: 'With no time or budget, the director and I asked people we knew who follow their credit. Next time I’d recruit people who manage US credit.' },
+        { title: 'Then measure', body: 'Can people name their score, its status and one change in five seconds?' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'Credit report', spec: '', src: '/images/gcs-report.webp', alt: 'The accounts report compared across bureaus' }] } },
-
-    { id: 'delivery', nav: 'Delivery', title: ['From brief to a development-ready product'],
-      lede: 'The work connected product logic, UX exploration, interface design, reusable components and responsive layouts.',
-      blocks: [
-        { type: 'facts', caption: 'Scope', items: [{ value: '140+', label: 'Screens designed: dashboard, reports, account details and supporting flows' }] },
-        { type: 'cards', items: [
-          { label: 'System', title: 'Reusable components', body: 'Shared patterns for scores, statuses, account data and comparisons.' },
-          { label: 'Workflow', title: 'AI-supported exploration', body: 'AI helped early exploration and design-system cleanup. Final decisions stayed with the team.' },
-        ] },
-      ],
-      visual: { layout: 'single', items: [{ label: 'System', spec: '', src: '/images/gcs-delivery.webp', alt: 'The score simulator on a laptop' }] } },
   ],
 };
 
