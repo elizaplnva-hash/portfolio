@@ -300,6 +300,7 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 @media (prefers-reduced-motion: no-preference) { .earth > span { animation: earth 8s steps(48) infinite; } }
 
 /* layered cover: tinted fill, the product name faintly behind, phones that rise on hover and follow the cursor */
+.case .art { container-type: inline-size; }
 .case .art:has(.stage) { container-type: size; }
 .stage:not(.ready) .phone { transition: none !important; }
 .stage { position: absolute; inset: 0; z-index: 0; background: color-mix(in srgb, var(--c) 16%, #fff); overflow: hidden; }
