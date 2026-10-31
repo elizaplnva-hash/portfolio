@@ -455,6 +455,7 @@ const greenCredit: Partial<CaseData> = {
   accent: '#22A55E',
   fill: '#22A55E',
   tint: '#DDF7D0',
+  panel: '#F6F6F4',
   facts: [
     { label: 'Role', value: 'Lead Product Designer' },
     { label: 'Timeline', value: '6 weeks, planned 8' },
@@ -464,12 +465,12 @@ const greenCredit: Partial<CaseData> = {
   summary: 'A credit-monitoring app that gathers three bureau reports in one place, shows where you stand at a glance and explains what moves the score.',
   screens: [
     { id: 'overview', nav: 'Overview', title: ['Credit health,', 'readable in 5 seconds'],
-      lede: 'Credit data comes from three bureaus, in reports few people know how to read.\nGreen Credit Score gathers them in one place, shows where you stand at a glance and explains what moves the score.\nI led the product from a client’s page list to a design system ready for development.',
+      lede: 'Your borrowing record is split across three reports, and they’re hard to read.\nGreen Credit Score gathers them in one place, shows where you stand at a glance and explains what moves the score.\nI led the product from a client’s page list to a design system ready for development.',
       blocks: [{ type: 'meta', items: [
-        { label: 'Position', value: 'Lead Product Designer' },
-        { label: 'Collaboration', value: 'Design Manager at Danart\nJunior Designer, developer' },
-        { label: 'Timeline', value: '6 weeks, planned 8\nHanded off July 2026, in development' },
-        { label: 'Responsibilities', value: 'Product structure, UX/UI\nAI workflow, design system' },
+        { label: 'Position', value: 'Lead Product Designer\nDanart Agency' },
+        { label: 'Collaboration', value: 'Design Manager\nJunior Designer' },
+        { label: 'Timeline', value: '6 weeks\nHanded off July 2026' },
+        { label: 'Responsibilities', value: 'UX/UI, design system\nAI workflow' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'Dashboard', spec: '', src: '/images/gcs-overview.webp', alt: 'Green Credit Score dashboard on a monitor' }] } },
 
@@ -515,7 +516,7 @@ const greenCredit: Partial<CaseData> = {
         { title: 'Detail in layers', body: 'First-time readers feel overwhelmed by a full report.' },
         { title: 'Data leads to action', body: 'People aren’t sure how to improve their credit.' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Benchmark', spec: '', src: '/images/gcs-research.webp', alt: 'Score factors screen on a laptop' }] } },
+      visual: { layout: 'single', items: [{ label: 'Add: reviews and competitor audit', spec: 'Three real reviews of credit apps with date and source, and two competitor screens showing where they cause friction' }] } },
 
     { id: 'strategy', nav: 'Product strategy', title: ['Three questions,', 'three levels'],
       lede: 'The tools exist across credit apps; the job was to put them in order. I chose what this product needed, connected it in the sequence people ask, and the team agreed to add three sections beyond the brief.',
@@ -565,16 +566,16 @@ const greenCredit: Partial<CaseData> = {
       blocks: [{ type: 'contrast',
         from: { label: 'Concept A: cooler, SaaS-style', items: ['Looks modern', 'Reads like a tool for analysts'] },
         to: { label: 'Concept B: friendlier, real product screens', items: ['Shows what you get', 'Feels approachable'], icons: ['eye', 'circle-check'] } }],
-      visual: { layout: 'single', items: [{ label: 'Landing', spec: '', src: '/images/gcs-landing.webp', alt: 'The landing page: hero, reviews, pricing and FAQ' }] } },
+      visual: { layout: 'single', items: [{ label: 'Add: both landing concepts', spec: 'Concept A and Concept B side by side, without template data' }] } },
 
     { id: 'ai', nav: 'AI workflow', title: ['Prompts', 'instead of wireframes'],
       lede: 'I removed the wireframing stage. I set the structure and requirements for each section, wrote one prompt per section for Figma AI agents and marked up each draft for the Junior Designer, who worked out the visuals. I made the final pass; the Design Manager reviewed after me.',
       blocks: [{ type: 'chain', steps: ['Requirements', 'Prompts', 'AI drafts', 'Junior Designer', 'Final pass'] }],
-      visual: { layout: 'single', items: [{ label: 'Dashboard', spec: '', src: '/images/gcs-dashboard.webp', alt: 'The dashboard on a tablet' }] } },
+      visual: { layout: 'single', items: [{ label: 'Add: AI draft next to the final screen', spec: 'One section as the Figma AI draft and as the final design' }] } },
 
     { id: 'handoff', nav: 'Handoff', title: ['Built for the developer', 'we work with'],
       lede: 'We’ve worked with this developer before, so the file followed the structure he prefers. I left comments wherever precision mattered, and we walked through the tricky parts together before he started.',
-      visual: { layout: 'single', items: [{ label: 'Design system', spec: '', src: '/images/gcs-delivery.webp', alt: 'The score simulator on a laptop' }] } },
+      visual: { layout: 'single', items: [{ label: 'Add: developer comments', spec: 'A Figma frame with your comments for the developer, and two examples' }] } },
 
     { id: 'outcome', nav: 'Outcome', title: ['Approved,', 'and in development'],
       lede: 'The client approved the design and it went to development. The three added sections, the dashboard structure and semantic colour all made it into the final product.',
