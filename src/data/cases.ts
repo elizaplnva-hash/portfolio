@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; stats?: { lead: string; items: { value: string; text: string }[] }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; bleed?: boolean; dm?: boolean; cut?: string; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; stats?: { lead: string; items: { value: string; text: string }[] }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; bleed?: boolean; dm?: boolean; cut?: string; orbit?: { who: string; cards: { name: string; score: string; tag: string; ok: boolean }[]; chips: string[] }; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -480,18 +480,16 @@ const greenCredit: Partial<CaseData> = {
         { icon: 'bulb', label: 'Solution', text: 'See where you stand, understand why, explore what could change it.', href: '#strategy' },
         { icon: 'chart-bar', label: 'Outcome', text: 'Approved by the client and handed to development with a complete design system.', href: '#outcome' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Credit report', spec: '', cut: '/images/gcs-report-full.webp', alt: 'The credit report screen: the top of the page on the left, and the page continuing on the right.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Credit report', spec: '', cut: '/images/gcs-report-full.webp', alt: 'The Green Credit Score credit report page, cut off by the frame.' }] } },
 
     { id: 'context', nav: 'Context', title: ['A score is the summary,', 'the report is the story'],
       lede: 'Banks and card issuers report how you borrow and repay to credit bureaus. In the US there are three: Equifax, Experian and TransUnion.\nEach keeps a credit report: your accounts, balances, payments and applications. A credit score, usually between 300 and 850, sums that report up for lenders.\nNot every lender reports to every bureau, so your reports, and your scores, can differ.',
       blocks: [{ type: 'pull', text: 'One person, three reports, several scores, and none of them says what to do next.' }],
-      visual: { layout: 'single', items: [{ label: 'Report and score', spec: '', alt: 'A credit report lists every account and payment, a credit score is one number; both can differ between bureaus and neither says what to do next', compare: { cols: ['Credit report', 'Credit score'], rows: [
-        { label: 'Lists every account and payment', a: true, b: false },
-        { label: 'One number from 300 to 850', a: false, b: true },
-        { label: 'Can differ between bureaus', a: true, b: true },
-        { label: 'Used by lenders', a: true, b: true },
-        { label: 'Says what to do next', a: false, b: false },
-      ] } }] } },
+      visual: { layout: 'single', items: [{ label: 'One person, three bureaus', spec: '', orbit: { who: 'One person', cards: [
+        { name: 'TransUnion', score: '693', tag: 'Good', ok: true },
+        { name: 'Equifax', score: '692', tag: 'Good', ok: true },
+        { name: 'Experian', score: 'N/A', tag: 'No data', ok: false },
+      ], chips: ['Accounts', 'Balances', 'Payments', 'Applications'] }, alt: 'One person at the centre with three credit bureau cards around them: TransUnion 693, Equifax 692 and Experian with no data.' }] } },
 
     { id: 'brief', nav: 'Brief', title: ['A page list and one rule:', 'keep it simple'],
       lede: 'A client with a credit-advice blog came to Danart for a US subscription app. The brief listed pages and asked for a light, Apple-like look.',

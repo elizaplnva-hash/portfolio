@@ -483,16 +483,46 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
   .ph.combo.dm .cp:hover { transform: scale(1.12); }
 }
 
-/* one tall screen shown twice: the front shows the top of the page, the back one (higher, behind) shows where the page continues */
-.ph.cut, .stage .ph.cut { background: none; padding: 0; overflow: visible; transform: none; container-type: size; }
-.ph.cut .ct { position: absolute; left: 3cqw; top: 34%; bottom: 0; width: 62cqw; overflow: hidden; border-radius: 14px 14px 0 0; background: var(--white); z-index: 2; box-shadow: 0 22px 40px rgba(17,17,17,.08), 0 2px 8px rgba(17,17,17,.04); transform-origin: 50% 0; }
-.ph.cut .ct.r { left: auto; right: 3cqw; top: 6%; bottom: auto; height: 55%; z-index: 1; }
+/* one tall screen, centred, cut off by the frame */
+.ph.cut, .stage .ph.cut { background: none; padding: 0; overflow: visible; transform: none; container-type: size; box-shadow: none; }
+.ph.cut .ct { position: absolute; left: 50%; margin-left: -45cqw; top: 9%; bottom: 0; width: 90cqw; overflow: hidden; border-radius: 14px 14px 0 0; background: var(--white); box-shadow: 0 22px 40px rgba(17,17,17,.08), 0 2px 8px rgba(17,17,17,.04); transform-origin: 50% 0; }
 .ph.cut .ct img { display: block; width: 100%; height: auto; max-width: none; }
-.ph.cut .ct.r img { transform: translateY(-59.6%); }
 .m-vis.v-single .ph.cut { aspect-ratio: 16 / 10; }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   .ph.cut .ct { transition: transform .6s var(--out); }
   .ph.cut .ct:hover { transform: scale(1.03); }
+}
+
+/* context: one person, the bureaus and what a report holds drift around them */
+.ph.orbit, .stage .ph.orbit { background: none; padding: 0; overflow: hidden; transform: none; container-type: size; box-shadow: none; }
+.ph.orbit .ring { position: absolute; left: 50%; top: 50%; border-radius: 50%; border: 1px dashed rgba(17,17,17,.14); transform: translate(-50%, -50%); }
+.ph.orbit .r1 { width: min(46cqw, 52cqh); aspect-ratio: 1; }
+.ph.orbit .r2 { width: min(82cqw, 92cqh); aspect-ratio: 1; border-color: rgba(17,17,17,.08); }
+.ph.orbit .who { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: 10px; z-index: 2; }
+.ph.orbit .av { width: 88px; height: 88px; border-radius: 50%; background: var(--t); display: grid; place-items: center; color: var(--c); box-shadow: 0 0 0 10px rgba(255,255,255,.7), 0 10px 26px rgba(17,17,17,.07); }
+.ph.orbit .av svg { width: 42px; height: 42px; }
+.ph.orbit .who b { font-size: 14px; font-weight: 700; letter-spacing: -.02em; color: var(--ink); background: var(--white); border-radius: 999px; padding: 5px 13px; box-shadow: var(--sh2); }
+.ph.orbit .bc { position: absolute; z-index: 3; width: 168px; display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; align-items: center; background: #fff; border-radius: 14px; padding: 12px 14px; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 8px 22px rgba(17,17,17,.08); }
+.ph.orbit .bn { grid-column: 1 / -1; font-size: 12px; color: var(--muted); }
+.ph.orbit .bs { font-size: 30px; font-weight: 700; letter-spacing: -.04em; line-height: 1.1; color: var(--ink); }
+.ph.orbit .bt { font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 999px; background: #DDF7D0; color: #1c7a42; }
+.ph.orbit .bc.off .bs { color: #a9a9a4; }
+.ph.orbit .bc.off .bt { background: #ececE8; color: #77776f; }
+.ph.orbit .b0 { left: 5%; top: 9%; }
+.ph.orbit .b1 { right: 5%; top: 17%; }
+.ph.orbit .b2 { left: 50%; margin-left: -84px; bottom: 8%; }
+.ph.orbit .oc { position: absolute; z-index: 1; font-size: 13px; font-weight: 600; letter-spacing: -.02em; color: var(--soft); background: var(--white); border-radius: 999px; padding: 6px 13px; box-shadow: var(--sh2); }
+.ph.orbit .c0 { left: 7%; top: 47%; }
+.ph.orbit .c1 { right: 6%; top: 50%; }
+.ph.orbit .c2 { left: 10%; bottom: 24%; }
+.ph.orbit .c3 { right: 9%; bottom: 20%; }
+.m-vis.v-single .ph.orbit { aspect-ratio: 4 / 5; }
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes drift { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+  .ph.orbit .bc, .ph.orbit .oc { animation: drift 6s ease-in-out infinite; }
+  .ph.orbit .b1, .ph.orbit .c1 { animation-duration: 7s; animation-delay: -2s; }
+  .ph.orbit .b2, .ph.orbit .c2 { animation-duration: 6.5s; animation-delay: -3.5s; }
+  .ph.orbit .c3 { animation-duration: 5.5s; animation-delay: -1s; }
 }
 
 /* comparison table: banking app vs crypto wallet */
