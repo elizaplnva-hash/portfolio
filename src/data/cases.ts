@@ -489,7 +489,7 @@ const greenCredit: Partial<CaseData> = {
         { name: 'TransUnion', score: '693', tag: 'Good', ok: true },
         { name: 'Equifax', score: '692', tag: 'Good', ok: true },
         { name: 'Experian', score: 'N/A', tag: 'No data', ok: false },
-      ], chips: ['Accounts', 'Balances', 'Payments', 'Applications'] }, alt: 'One person at the centre with three credit bureau cards around them: TransUnion 693, Equifax 692 and Experian with no data.' }] } },
+      ], chips: [] }, alt: 'One person at the centre with three credit bureau cards around them: TransUnion 693, Equifax 692 and Experian with no data.' }] } },
 
     { id: 'brief', nav: 'Brief', title: ['A page list and one rule:', 'keep it simple'],
       lede: 'A client with a credit-advice blog came to Danart for a US subscription app. The brief listed pages and asked for a light, Apple-like look.',
