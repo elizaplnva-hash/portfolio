@@ -483,6 +483,18 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
   .ph.combo.dm .cp:hover { transform: scale(1.09); }
 }
 
+/* one tall screen split in two: the right column continues where the left one is cut */
+.ph.cut, .stage .ph.cut { background: none; padding: 0; overflow: visible; transform: none; container-type: size; }
+.ph.cut .ct { position: absolute; top: 22%; width: 46cqw; height: 48cqh; left: 3cqw; overflow: hidden; border-radius: 14px 14px 4px 4px; background: var(--white); box-shadow: 0 24px 44px rgba(17,17,17,.14), 0 3px 10px rgba(17,17,17,.07); transform-origin: 50% 0; }
+.ph.cut .ct.r { left: auto; right: 3cqw; }
+.ph.cut .ct img { display: block; width: 125%; height: auto; max-width: none; }
+.ph.cut .ct.r img { transform: translateY(-48cqh); }
+.m-vis.v-single .ph.cut { aspect-ratio: 16 / 10; }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .ph.cut .ct { transition: transform .6s var(--out); }
+  .ph.cut .ct:hover { transform: scale(1.04); z-index: 2; }
+}
+
 /* comparison table: banking app vs crypto wallet */
 .ph.compare, .stage .ph.compare { background: none; aspect-ratio: auto; display: grid; place-items: center; padding: 0 32px; border-radius: 0; transform: none; overflow: visible; }
 .cmp { --col: 140px; position: relative; width: min(100%, 660px); background: #fff; border-radius: 22px; padding: 0 10px 8px 28px; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 8px 26px rgba(17,17,17,.09); }
