@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; stats?: { lead: string; items: { value: string; text: string }[] }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; bleed?: boolean; dm?: boolean; cut?: string; orbit?: { who: string; cards: { name: string; score: string; tag: string; ok: boolean }[]; chips: string[] }; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; stats?: { lead: string; items: { value: string; text: string }[] }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; bleed?: boolean; dm?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -485,11 +485,12 @@ const greenCredit: Partial<CaseData> = {
     { id: 'context', nav: 'Context', title: ['A score is the summary,', 'the report is the story'],
       lede: 'Banks and card issuers report how you borrow and repay to credit bureaus. In the US there are three: Equifax, Experian and TransUnion.\nEach keeps a credit report: your accounts, balances, payments and applications. A credit score, usually between 300 and 850, sums that report up for lenders.\nNot every lender reports to every bureau, so your reports, and your scores, can differ.',
       blocks: [{ type: 'pull', text: 'One person, three reports, several scores, and none of them says what to do next.' }],
-      visual: { layout: 'single', items: [{ label: 'One person, three bureaus', spec: '', orbit: { who: 'One person', cards: [
-        { name: 'TransUnion', score: '693', tag: 'Good', ok: true },
-        { name: 'Equifax', score: '692', tag: 'Good', ok: true },
-        { name: 'Experian', score: 'N/A', tag: 'No data', ok: false },
-      ], chips: [] }, alt: 'One person at the centre with three credit bureau cards around them: TransUnion 693, Equifax 692 and Experian with no data.' }] } },
+      visual: { layout: 'single', items: [{ label: 'From banks to a score', spec: '', chain: [
+        { icon: 'landmark', label: 'Banks and card issuers' },
+        { icon: 'stack-2', label: 'Three bureaus' },
+        { icon: 'file-analytics', label: 'A credit report' },
+        { icon: 'gauge', label: 'A credit score' },
+      ], alt: 'Banks and card issuers report to three bureaus, each keeps a credit report, and a credit score sums it up.' }] } },
 
     { id: 'brief', nav: 'Brief', title: ['A page list and one rule:', 'keep it simple'],
       lede: 'A client with a credit-advice blog came to Danart for a US subscription app. The brief listed pages and asked for a light, Apple-like look.',
