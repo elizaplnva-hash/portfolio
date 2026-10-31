@@ -764,3 +764,9 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 /* closing screen: the takeaway is the headline, one word in the case colour */
 .cta-step.closing .ttl { font-size: clamp(40px, min(5vw, 9dvh), 76px); line-height: 1; letter-spacing: -.035em; max-width: 11em; }
 .cta-step .ttl em { color: var(--af); font-style: normal; }
+
+/* unfinished screens */
+.m-vis { position: relative; }
+.wip { position: absolute; top: 14px; right: 14px; z-index: 6; display: inline-flex; align-items: center; gap: 8px; padding: 6px 13px; border-radius: 999px; background: #fff; box-shadow: var(--sh2); font-size: 12.5px; font-weight: 600; letter-spacing: -.02em; color: var(--soft); pointer-events: none; }
+.wip i { width: 7px; height: 7px; border-radius: 50%; background: var(--c, #e0408f); }
+@media (prefers-reduced-motion: no-preference) { .wip i { animation: wipb 2.4s ease-in-out infinite; } @keyframes wipb { 0%, 100% { opacity: 1; } 50% { opacity: .35; } } }

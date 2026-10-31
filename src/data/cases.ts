@@ -32,6 +32,7 @@ export type Block =
 
 export interface Screen {
   id: string;
+  wip?: boolean;                   // shows a "Work in progress" mark on the visual
   nav: string;                     // label in the left track
   title: [string, string?];        // second part is set in the case colour
   lede?: string;
@@ -596,6 +597,13 @@ const greenCredit: Partial<CaseData> = {
       visual: { layout: 'single', items: [{ label: 'Credit report', spec: '', src: '/images/gcs-report.webp', alt: 'The accounts report compared across bureaus' }] } },
   ],
 };
+
+// Green Credit Score: everything after the brief is still being finished; the product structure is confirmed.
+{
+  const ss = greenCredit.screens ?? [];
+  const from = ss.findIndex((x) => x.id === 'brief');
+  ss.forEach((x, i) => { if (i > from && x.id !== 'strategy') x.wip = true; });
+}
 
 export const cases: CaseData[] = [
   { slug: 'pinkwallet', side: 'front', name: 'PinkWallet', tags: ['Fintech', 'End-to-end', 'AI'], headline: 'Crypto for first-timers, through conversation', color: '#ff8fc8', image: '/images/pinkwallet-hero.webp', phones: ['/images/pw-phone-wallet.webp', '/images/pw-phone-pig.webp', '/images/pw-phone-dashboard.webp'], big: true, facts, highlights, summary, ...pinkwallet },
