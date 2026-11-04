@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; stats?: { lead: string; items: { value: string; text: string }[]; source?: string }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; stats?: { lead: string; items: { value: string; text: string }[]; source?: string }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -465,7 +465,7 @@ const greenCredit: Partial<CaseData> = {
   summary: 'A credit-monitoring app that gathers three bureau reports in one place, shows where you stand at a glance and explains what moves the score.',
   screens: [
     { id: 'overview', nav: 'Overview', title: ['Credit health,', 'readable in 5 seconds'],
-      lede: 'Your borrowing record is split across three reports, and they’re hard to read.\nGreen Credit Score gathers them in one place, shows where you stand at a glance and explains what moves the score.\nI led the product from a client’s page list to a design system ready for development.',
+      lede: 'A credit score app for people who want to understand their credit, not just see a number.\nI led the product from a client’s page list to a design system ready for development.',
       blocks: [{ type: 'meta', items: [
         { label: 'Role', value: 'Lead Product Designer\nDanart Agency' },
         { label: 'Collaboration', value: 'Design Manager\nJunior Designer' },
@@ -476,21 +476,22 @@ const greenCredit: Partial<CaseData> = {
 
     { id: 'glance', nav: 'TLDR', title: ['Green Credit Score', 'at a glance'],
       blocks: [{ type: 'glance', items: [
-        { icon: 'alert-triangle', label: 'Problem', text: 'Three reports and a score, and no clue what to do next.', href: '#context' },
-        { icon: 'bulb', label: 'Solution', text: 'See where you stand, understand why, explore what could change it.', href: '#strategy' },
-        { icon: 'chart-bar', label: 'Outcome', text: 'Approved by the client and handed to development with a complete design system.', href: '#outcome' },
+        { icon: 'alert-triangle', label: 'Problem', text: 'Credit data is scattered and unexplained, so people see a number and don’t know what to do next.', href: '#context' },
+        { icon: 'bulb', label: 'Solution', text: 'One dashboard with the status up front. Score factors explain what moves it, and a simulator tests changes over time.', href: '#strategy' },
+        { icon: 'chart-bar', label: 'Outcome', text: 'Approved by the client and handed to development with a design system, two weeks ahead of plan. We skipped wireframes by working from our data and Figma agents.', href: '#outcome' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'Credit report', spec: '', cut: '/images/gcs-report-full.webp', alt: 'The Green Credit Score credit report page, cut off by the frame.' }] } },
 
-    { id: 'context', nav: 'Context', title: ['A score is the summary,', 'the report is the story'],
-      lede: 'Banks and card issuers report how you borrow and repay to credit bureaus. In the US there are three: Equifax, Experian and TransUnion.\nEach keeps a credit report: your accounts, balances, payments and applications. A credit score, usually between 300 and 850, sums that report up for lenders.\nNot every lender reports to every bureau, so your reports, and your scores, can differ.',
+    { id: 'context', nav: 'Context', title: ['Your score decides', 'what you can borrow'],
+      lede: 'Sooner or later, almost everyone needs a big loan: a home, a car, a business. The bank checks your credit score first, as the main guarantee you will repay.\nBut your credit lives in three bureaus: Equifax, Experian and TransUnion. Each keeps its own report, so the picture can differ, or be missing.\nPlanning a home, you open them to see where you stand, and feel overwhelmed.',
       blocks: [{ type: 'pull', text: 'So the product has two jobs: say where you stand at a glance, and make the report readable.' }],
-      visual: { layout: 'single', items: [{ label: 'From banks to a score', spec: '', chain: [
-        { icon: 'landmark', label: 'A bank reports how you pay' },
-        { icon: 'stack-2', label: 'Three bureaus collect it' },
-        { icon: 'file-analytics', label: 'Each keeps it in a report' },
-        { icon: 'gauge', label: 'A score sums it up' },
-      ], alt: 'Banks and card issuers report to three bureaus, each keeps a credit report, and a credit score sums it up.' }] } },
+      visual: { layout: 'single', items: [{ label: 'One person, three reports', spec: '', big: true, alt: 'The same person in three bureaus: a score of 693 at TransUnion, 692 at Equifax and no data at Experian.', metrics: [
+        { title: 'One person, three reports', items: [
+          { value: '693', label: 'TransUnion', note: 'Good' },
+          { value: '692', label: 'Equifax', note: 'Good' },
+          { value: 'N/A', label: 'Experian', note: 'No data on file' },
+        ] },
+      ] }] } },
 
     { id: 'brief', nav: 'Client ask', title: ['The brief said what to build,', 'not what it was for'],
       lede: 'A credit expert with an Instagram blog wanted an app for his followers.',
