@@ -8,9 +8,13 @@ import Metrics from './Metrics.astro';
 import type { CaseData, Screen } from '../data/cases';
 import NextCase from './NextCase.astro';
 import { icon, metaIcon } from '../data/icons';
-import { toolIcons } from '../data/toolIcons';
 interface Props { c: CaseData; }
 const { c } = Astro.props;
+
+// the same four cards, in the same order, on every case
+const metaRank: Record<string, number> = { Role: 0, Collaboration: 1, Timeline: 2, Responsibilities: 3 };
+const metaName: Record<string, string> = { Team: 'Collaboration', Scope: 'Responsibilities' };
+const metaOrder = <T extends { label: string }>(items: T[]) => items.map((m) => ({ ...m, label: metaName[m.label] ?? m.label })).sort((a, b) => (metaRank[a.label] ?? 9) - (metaRank[b.label] ?? 9));
 
 const generic: Screen[] = [
   { id: 'overview', nav: 'Overview', title: [c.headline], lede: c.summary,
@@ -65,7 +69,7 @@ const cf = Array.from({ length: 14 }, (_, k) => { const a = (k / 14) * Math.PI *
             {s.wip && <span class="wip"><i></i>Work in progress</span>}</div>
           )}
           {!s.shot && <div class="step-text">
-            {si === 0 && <div class="tags rv">{c.tags.map((t) => <span>{t}</span>)}{c.tools && <div class="tools" aria-label="Tools">{c.tools.map((t) => <i class="tl" role="img" aria-label={t.use ? `${t.name}: ${t.use}` : t.name} title={t.use ? `${t.name}: ${t.use}` : t.name} set:html={toolIcons[t.icon]} />)}</div>}</div>}
+            {si === 0 && <div class="tags rv">{c.tags.map((t) => <span>{t}</span>)}</div>}
             {si === 0
               ? <h1 class="ttl rv">{s.title[0]} {s.title[1] && <em>{s.title[1]}</em>}</h1>
               : s.statement
@@ -78,7 +82,7 @@ const cf = Array.from({ length: 14 }, (_, k) => { const a = (k / 14) * Math.PI *
             {s.blocks?.map((b) => {
               switch (b.type) {
                 case 'meta': return (
-                  <ul class="meta rv">{b.items.map((m) => (
+                  <ul class="meta rv">{metaOrder(b.items).map((m) => (
                     <li><span class="ic" aria-hidden="true" set:html={icon(metaIcon[m.label] ?? 'circle-check')} /><span><small>{m.label}</small><b>{m.value.split('\n').map((l) => <span>{l}</span>)}</b></span></li>))}
                   </ul>);
                 case 'bento': return (
