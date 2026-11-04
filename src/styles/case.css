@@ -718,7 +718,7 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .next .art .nxs.first .phone-1 { z-index: 3; }
 .next .art .nxs.desk { --drop: 0cqh; }
 .next .art .nxs.desk .phone-1 { height: 104cqh; transform: translate(calc(-61% + var(--px, 0) * -8px), calc(var(--drop) * 2 + var(--py, 0) * -5px)); }
-.next .art .nxs.desk .phone-2 { top: calc(var(--tags, 48px) + 5px + 3cqh); bottom: auto; left: calc(50% + 56cqh); right: auto; height: 73cqh; z-index: 2; transform: translate(calc(var(--px, 0) * -14px), calc(var(--drop) * 2 + var(--py, 0) * -8px)); }
+.next .art .nxs.desk .phone-2 { top: calc(var(--tags, 48px) + 5px + 3cqh); bottom: auto; left: calc(50% + 40cqh); right: auto; height: 73cqh; z-index: 2; transform: translate(calc(var(--px, 0) * -14px), calc(var(--drop) * 2 + var(--py, 0) * -8px)); }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .next .tile:not(.turn):hover .art .nxs { --spread: 50cqh; --tilt: 10deg; --drop: 0cqh; }
   .next .tile:not(.turn):hover .art .nxs.desk { --drop: -4cqh; }

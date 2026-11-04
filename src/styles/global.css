@@ -316,7 +316,7 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .stage.first .phone-1 { z-index: 3; }
 /* monitor + phone: upright; the phone is half the monitor, over its right edge, lifting a little more */
 .stage.desk .phone-1 { height: 104cqh; transform: translate(calc(-61% + var(--px, 0) * -8px), calc(var(--drop) * 2 + var(--py, 0) * -5px)); }
-.stage.desk .phone-2 { top: auto; bottom: -20cqh; left: auto; right: 2cqw; height: 73cqh; z-index: 2; transform: translate(calc(var(--px, 0) * -14px), calc(var(--drop) * 2.6 + var(--py, 0) * -8px)); }
+.stage.desk .phone-2 { top: auto; bottom: -20cqh; left: calc(50% + 40cqh); right: auto; height: 73cqh; z-index: 2; transform: translate(calc(var(--px, 0) * -14px), calc(var(--drop) * 2.6 + var(--py, 0) * -8px)); }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .case:hover .stage { --spread: 50cqh; --tilt: 10deg; --drop: -3cqh; }
 }
