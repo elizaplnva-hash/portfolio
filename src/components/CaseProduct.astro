@@ -8,6 +8,7 @@ import Metrics from './Metrics.astro';
 import type { CaseData, Screen } from '../data/cases';
 import NextCase from './NextCase.astro';
 import { icon, metaIcon } from '../data/icons';
+import { toolIcons } from '../data/toolIcons';
 interface Props { c: CaseData; }
 const { c } = Astro.props;
 
@@ -64,7 +65,7 @@ const cf = Array.from({ length: 14 }, (_, k) => { const a = (k / 14) * Math.PI *
             {s.wip && <span class="wip"><i></i>Work in progress</span>}</div>
           )}
           {!s.shot && <div class="step-text">
-            {si === 0 && <div class="tags rv">{c.tags.map((t) => <span>{t}</span>)}</div>}
+            {si === 0 && <div class="tags rv">{c.tags.map((t) => <span>{t}</span>)}{c.tools && <div class="tools" aria-label="Tools">{c.tools.map((t) => <i class="tl" role="img" aria-label={t.use ? `${t.name}: ${t.use}` : t.name} title={t.use ? `${t.name}: ${t.use}` : t.name} set:html={toolIcons[t.icon]} />)}</div>}</div>}
             {si === 0
               ? <h1 class="ttl rv">{s.title[0]} {s.title[1] && <em>{s.title[1]}</em>}</h1>
               : s.statement

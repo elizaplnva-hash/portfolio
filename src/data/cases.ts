@@ -56,6 +56,7 @@ export interface CaseData {
   image?: string;             // cover, /images/...
   noNameTag?: boolean;        // case page: don't show the product name as the first tag
   mark?: string;              // name written behind the cover, if shorter than the product name
+  tools?: { icon: 'figma' | 'notion' | 'openai'; name: string; use?: string }[];   // small icons at the right of the tags on the case overview
   desk?: boolean;             // cover is a monitor + a phone
   phones?: string[];          // layered home cover: transparent phone renders over a tinted fill
   big?: boolean;              // large tile on home
@@ -87,6 +88,11 @@ const pinkwallet: Partial<CaseData> = {
     lede: 'That’s how I designed PinkWallet, and how I’d approach your product.',
   },
   noNameTag: true,
+  tools: [
+    { icon: 'figma', name: 'Figma', use: 'interfaces and the design system' },
+    { icon: 'notion', name: 'Notion' },
+    { icon: 'openai', name: 'ChatGPT', use: '3D and image assets' },
+  ],
   accent: '#E0408F',
   fill: '#E0408F',
   tint: '#FFE6F1',
@@ -110,7 +116,6 @@ const pinkwallet: Partial<CaseData> = {
         { label: 'Collaboration', value: 'Design Manager at Danart\nClient development team' },
         { label: 'Timeline', value: '8 weeks\nLaunched July 2026' },
         { label: 'Responsibilities', value: 'Product architecture\nUX/UI, design system' },
-        { label: 'Tools', value: 'Figma for interfaces and the design system\nChatGPT for 3D and image assets\nAmplitude, the client’s launch analytics' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'The Wallet home in both themes', spec: '', srcs: ['/images/pw-home-dark.webp', '/images/pw-home-light.webp'], alt: 'The PinkWallet home screen in the dark and the light theme' }] } },
 
