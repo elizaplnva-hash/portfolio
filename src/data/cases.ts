@@ -496,9 +496,9 @@ const greenCredit: Partial<CaseData> = {
       lede: 'A credit-history expert wanted to turn what he knows into a product, so more people could manage their credit without a consultation.',
       blocks: [
         { type: 'list', split: true, items: [
-          { icon: 'credit-card', title: 'Format', body: 'A paid subscription app, built on his existing audience' },
-          { icon: 'file-text', title: 'Scope', body: 'Ten pages, from the site map to a design system' },
-          { icon: 'trophy', title: 'Standard', body: 'Better than existing credit apps' },
+          { title: 'Format', body: 'A paid subscription app, built on his existing audience' },
+          { title: 'Scope', body: 'Ten pages, from the site map to a design system' },
+          { title: 'Standard', body: 'Better than existing credit apps' },
         ] },
         { type: 'note', text: 'The brief didn’t say what a member should leave with. Research started there.' },
       ],
@@ -508,9 +508,9 @@ const greenCredit: Partial<CaseData> = {
       lede: 'I explored the US credit landscape from three sides.',
       blocks: [
         { type: 'list', split: true, items: [
-          { icon: 'book', label: 'Desk research', title: 'CFPB, FICO, Experian, FINRA Foundation. People mix up reports and scores, and knowledge gaps cost money.' },
-          { icon: 'chart-bar', label: 'Competitive analysis', title: 'Credit Hero Score, IdentityIQ, Credit Karma. Monitoring is the baseline; factors, debt analysis and simulators go further.' },
-          { icon: 'eye', label: 'Visual benchmarking', title: 'Revolut, Kraken. Summary first, details on demand.' },
+          { label: 'Desk research', title: 'CFPB, FICO, Experian, FINRA Foundation. People mix up reports and scores, and knowledge gaps cost money.' },
+          { label: 'Competitive analysis', title: 'Credit Hero Score, IdentityIQ, Credit Karma. Monitoring is the baseline; factors, debt analysis and simulators go further.' },
+          { label: 'Visual benchmarking', title: 'Revolut, Kraken. Summary first, details on demand.' },
         ] },
         { type: 'note', text: 'Credit data is everywhere. The gap is connecting a score to what drives it.' },
       ],
@@ -523,10 +523,10 @@ const greenCredit: Partial<CaseData> = {
     { id: 'strategy', nav: 'Hypothesis', title: ['How might we', 'make credit make sense?'],
       lede: 'Monitoring is the baseline. To go beyond it, I built the product around three questions people ask in order.',
       blocks: [
-        { type: 'list', split: true, items: [
-          { icon: 'eye', label: 'How might we show where I stand?', title: 'One place with the basics, and a way to go deeper' },
-          { icon: 'zoom-question', label: 'How might we explain what drives it?', title: 'Show the factors and the debt behind the number, next to the full report' },
-          { icon: 'compass', label: 'How might we show what could change it?', title: 'Let people test a change before they make it' },
+        { type: 'list', split: true, numbered: true, items: [
+          { label: 'How might we show where I stand?', title: 'One place with the basics, and a way to go deeper' },
+          { label: 'How might we explain what drives it?', title: 'Show the factors and the debt behind the number, next to the full report' },
+          { label: 'How might we show what could change it?', title: 'Let people test a change before they make it' },
         ] },
         { type: 'note', text: 'The brief covered the dashboard and the report. The team agreed to add three more sections.' },
       ],
