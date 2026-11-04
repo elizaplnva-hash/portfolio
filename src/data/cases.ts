@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; hyps?: { icon: string; saw: string; q: string; a: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; hyps?: { saw: string; q: string; a: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -524,9 +524,9 @@ const greenCredit: Partial<CaseData> = {
       lede: 'Research left me with three findings. For each one I wrote a hypothesis, so the product answers the questions people actually ask.',
       blocks: [{ type: 'pull', text: 'A score matters only when people know what to do next.' }],
       visual: { layout: 'single', items: [{ label: 'Three hypotheses', spec: '', alt: 'Three hypotheses. One: people mix up reports and scores, so how might we show where I stand, with one place for the basics and a way to go deeper. Two: knowledge gaps cost money, so how might we explain what drives it, by showing the factors and the debt behind the number. Three: competitors stop at monitoring, so how might we show what could change it, by letting people test a change before they make it.', hyps: [
-        { icon: 'eye', saw: 'people mix up reports and scores', q: 'How might we show where I stand?', a: 'One place with the basics, and a way to go deeper' },
-        { icon: 'zoom-question', saw: 'knowledge gaps cost money', q: 'How might we explain what drives it?', a: 'Show the factors and the debt behind the number' },
-        { icon: 'compass', saw: 'competitors stop at monitoring', q: 'How might we show what could change it?', a: 'Let people test a change before they make it' },
+        { saw: 'people mix up reports and scores', q: 'How might we show where I stand?', a: 'One place with the basics, and a way to go deeper' },
+        { saw: 'knowledge gaps cost money', q: 'How might we explain what drives it?', a: 'Show the factors and the debt behind the number' },
+        { saw: 'competitors stop at monitoring', q: 'How might we show what could change it?', a: 'Let people test a change before they make it' },
       ] }] } },
 
     { id: 'priorities', nav: 'Prioritization', title: ['Up front,', 'or one click away'],
