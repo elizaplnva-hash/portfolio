@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; stats?: { lead: string; items: { value: string; text: string }[]; source?: string }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; stats?: { lead: string; items: { value: string; text: string }[]; source?: string }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -502,7 +502,7 @@ const greenCredit: Partial<CaseData> = {
         ] },
         { type: 'note', text: 'The brief didn’t say what a member should leave with. Research started there.' },
       ],
-      visual: { layout: 'single', items: [{ label: 'Initial product structure', spec: '', src: '/images/gcs-brief-map.webp', zoom: true, alt: 'The client’s initial structure: a marketing site, registration and a member area. The member area holds the dashboard, credit report and account settings and is the core product.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Initial product structure', spec: '', src: '/images/gcs-brief-map.webp', zoom: true, pad: true, alt: 'The client’s initial structure: a marketing site, registration and a member area. The member area holds the dashboard, credit report and account settings and is the core product.' }] } },
 
     { id: 'research', nav: 'Research', title: ['Plenty of data,', 'little meaning'],
       lede: 'I explored the US credit landscape from three sides.',
@@ -520,13 +520,16 @@ const greenCredit: Partial<CaseData> = {
         { value: '77%', text: 'carry at least one of\nsix types of debt' },
       ] } }] } },
 
-    { id: 'strategy', nav: 'Structure', title: ['Three questions,', 'three levels'],
-      lede: 'The tools exist across credit apps; the job was to put them in order. I chose what this product needed, connected it in the sequence people ask, and the team agreed to add three sections beyond the brief.',
-      blocks: [{ type: 'cards', items: [
-        { icon: 'eye', title: 'See', body: 'Where do I stand? Dashboard.' },
-        { icon: 'zoom-question', title: 'Understand', body: 'Why, and what’s behind it? Score Factors, Debt Analysis, Credit Report.' },
-        { icon: 'compass', title: 'Explore', body: 'What could change it? Score Simulator.' },
-      ] }],
+    { id: 'strategy', nav: 'Hypothesis', title: ['How might we', 'make credit make sense?'],
+      lede: 'Research gave me three questions people ask in order. Each became one level of the product.',
+      blocks: [
+        { type: 'list', split: true, items: [
+          { icon: 'eye', label: 'How might we show where I stand?', title: 'Dashboard, with the status up front' },
+          { icon: 'zoom-question', label: 'How might we explain what drives it?', title: 'Score Factors, Debt Analysis and Credit Report' },
+          { icon: 'compass', label: 'How might we show what could change it?', title: 'Score Simulator' },
+        ] },
+        { type: 'note', text: 'The team agreed to add three sections beyond the brief.' },
+      ],
       visual: { layout: 'single', items: [{ label: 'Product structure', spec: '', src: '/images/gcs-sitemap.webp', zoom: true, alt: 'Product structure: the dashboard and its five sections, Score factors, Credit report, Debt analysis, Score simulator and Profile, with the pages inside each.' }] } },
 
     { id: 'priorities', nav: 'Prioritization', title: ['Up front,', 'or one click away'],
