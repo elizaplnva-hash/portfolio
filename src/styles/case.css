@@ -824,3 +824,23 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .list.split small + h3 { font-weight: 500; font-size: 15px; }
 .list.split .n { background: #f1f1ef; box-shadow: none; font-weight: 600; }
 .sts-c .t small { display: block; font-size: 12px; font-weight: 500; letter-spacing: -.01em; color: var(--muted); margin-bottom: 4px; }
+/* hypotheses: three large cards on the right */
+.stage .vis:has(.ph.hyps) { background: #fff; gap: 6px; grid-template-columns: minmax(0,1fr); grid-template-rows: minmax(0,1fr); }
+.stage .vis:has(.ph.hyps) .ph { background: #f6f6f4; border-radius: 14px; }
+.ph.hyps, .stage .ph.hyps { display: grid; align-content: center; padding: clamp(20px, 3vw, 40px) clamp(18px, 2.4vw, 30px); transform: none; transition: none; text-align: left; color: var(--ink); }
+.hy { display: grid; gap: 12px; width: 100%; }
+.hy-c { display: grid; grid-template-columns: 40px 1fr; column-gap: 16px; align-items: start; padding: clamp(20px, 2.6vh, 30px) 26px; background: #fff; border-radius: 16px; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 6px 20px rgba(17,17,17,.08); }
+.hy-c .ic { width: 40px; height: 40px; }
+.hy-c .ic svg { width: 20px; height: 20px; }
+.hy-saw { display: block; font-size: 12.5px; letter-spacing: -.01em; color: var(--muted); margin-bottom: 10px; }
+.hy-q { margin: 0 0 4px; font-size: 13.5px; font-weight: 600; letter-spacing: -.015em; color: var(--af, #1c9a52); }
+.hy-a { margin: 0; font-size: clamp(18px, 1.6vw, 22px); font-weight: 600; letter-spacing: -.03em; line-height: 1.2; color: var(--ink); text-wrap: balance; }
+.m-vis .ph.hyps { aspect-ratio: auto !important; }
+.ph.hyps, .stage .ph.hyps { grid-template-columns: minmax(0, 1fr); padding: clamp(24px, 3.5vw, 44px); }
+.ph.hyps .hy { gap: 16px; }
+.ph.hyps .hy-c { grid-template-columns: 48px 1fr; column-gap: 20px; padding: clamp(24px, 3.6vh, 36px) clamp(22px, 2.2vw, 32px); border-radius: 20px; }
+.ph.hyps .hy-c .ic { width: 48px; height: 48px; }
+.ph.hyps .hy-c .ic svg { width: 24px; height: 24px; }
+.ph.hyps .hy-saw { font-size: clamp(12.5px, 1vw, 14px); margin-bottom: 14px; }
+.ph.hyps .hy-q { font-size: clamp(14px, 1.15vw, 16px); margin-bottom: 6px; }
+.ph.hyps .hy-a { font-size: clamp(20px, 1.9vw, 27px); line-height: 1.15; letter-spacing: -.035em; color: var(--ink); text-align: left; }

@@ -1,0 +1,17 @@
+---
+import { icon } from '../data/icons';
+interface Props { items: { icon: string; saw: string; q: string; a: string }[]; }
+const { items } = Astro.props;
+---
+<div class="hy">
+  {items.map((it, i) => (
+    <div class="hy-c">
+      <span class="ic" aria-hidden="true" set:html={icon(it.icon)} />
+      <div class="hy-t">
+        <small class="hy-saw">We saw: {it.saw}</small>
+        <p class="hy-q">{it.q}</p>
+        <p class="hy-a">{it.a}</p>
+      </div>
+    </div>
+  ))}
+</div>
