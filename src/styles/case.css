@@ -552,6 +552,7 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .sts-lead { margin: 0 0 4px 4px; font-size: clamp(15px, 1.25vw, 18px); font-weight: 600; letter-spacing: -.03em; line-height: 1.2; color: var(--ink); text-wrap: balance; }
 .sts-c { display: grid; grid-template-columns: clamp(78px, 7vw, 96px) 1fr; align-items: center; column-gap: 12px; padding: 26px; background: #fff; border-radius: 16px; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 6px 20px rgba(17,17,17,.08); }
 .sts-c .v { font-size: clamp(42px, 3.8vw, 54px); font-weight: 500; letter-spacing: -.05em; line-height: .9; color: var(--af, #e0408f); }
+.sts.wide .sts-c { grid-template-columns: 124px 1fr; }
 .sts-c .v sup { font-size: .45em; letter-spacing: -.02em; vertical-align: top; position: relative; top: .1em; margin-left: 2px; }
 .sts-c .t { white-space: pre-line; font-size: clamp(15px, 1.25vw, 18px); font-weight: 600; letter-spacing: -.03em; line-height: 1.2; text-wrap: balance; }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
@@ -567,6 +568,8 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 /* research: public posts as scattered cards */
 .ph.reviews, .stage .ph.reviews { display: block; position: relative; padding: 0; transform: none; transition: none; text-align: left; color: var(--ink); }
 .stage .vis:has(.ph.stats) { grid-template-columns: minmax(0,1fr) minmax(0,1fr); grid-template-rows: minmax(0,1fr) minmax(0,1.25fr); }
+.stage .vis:has(.ph.stats:only-child) { grid-template-columns: minmax(0,1fr); grid-template-rows: minmax(0,1fr); }
+.stage .vis:has(.ph.stats:only-child) .ph { overflow: hidden; }
 .sts-c { padding: 24px 22px; grid-template-columns: clamp(72px, 5.8vw, 84px) 1fr; column-gap: 10px; }
 .sts-c .v { font-size: clamp(40px, 3.3vw, 48px); }
 .sts-c .t { font-size: clamp(14px, 1.1vw, 16px); }

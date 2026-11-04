@@ -504,14 +504,21 @@ const greenCredit: Partial<CaseData> = {
       ],
       visual: { layout: 'single', items: [{ label: 'Initial product structure', spec: '', src: '/images/gcs-brief-map.webp', zoom: true, alt: 'The client’s initial structure: a marketing site, registration and a member area. The member area holds the dashboard, credit report and account settings and is the core product.' }] } },
 
-    { id: 'research', nav: 'Research', title: ['People see the number,', 'not what to do next'],
-      lede: 'Before design I studied CFPB consumer research and audited credit-monitoring apps. Three findings became the rules for the product.',
-      blocks: [{ type: 'cards', items: [
-        { title: 'Status first', body: 'People mix up reports, scores and bureaus.' },
-        { title: 'Detail in layers', body: 'First-time readers feel overwhelmed by a full report.' },
-        { title: 'Data leads to action', body: 'People aren’t sure how to improve their credit.' },
-      ] }],
-      visual: { layout: 'single', items: [{ label: 'Add: reviews and competitor audit', spec: 'Three real reviews of credit apps with date and source, and two competitor screens showing where they cause friction' }] } },
+    { id: 'research', nav: 'Research', title: ['The data was there,', 'the meaning wasn’t'],
+      lede: 'I explored the US credit landscape from three sides.',
+      blocks: [
+        { type: 'list', card: true, items: [
+          { icon: 'book', title: 'Secondary research', body: 'CFPB, FICO, Experian, FINRA Foundation. People mix up reports and scores, and knowledge gaps cost money.' },
+          { icon: 'chart-bar', title: 'Competitive analysis', body: 'Credit Hero Score, IdentityIQ, Credit Karma. Monitoring is the baseline; factors, debt analysis and simulators go further.' },
+          { icon: 'eye', title: 'Visual benchmarking', body: 'Revolut, Kraken. Summary first, details on demand.' },
+        ] },
+        { type: 'note', text: 'Credit data was available. What was missing was a way to connect a score to what drives it.' },
+      ],
+      visual: { layout: 'single', items: [{ label: 'What the research showed', spec: '', alt: 'Three in five US adults say knowledge gaps led to financial mistakes, 60% of them lost at least $1,000, and 77% carry at least one of six types of debt (Experian survey 2024, FINRA Foundation 2024).', stats: { lead: 'Knowing too little is costly, and debt is common', items: [
+        { value: '3 in 5', text: 'US adults say knowledge\ngaps led to money mistakes' },
+        { value: '60%', text: 'of them lost\nat least $1,000' },
+        { value: '77%', text: 'carry at least one of\nsix types of debt' },
+      ], source: 'Experian and Atomik Research, online survey of 2,005 US adults, March 2024. FINRA Foundation, National Financial Capability Study, 2024.' } }] } },
 
     { id: 'strategy', nav: 'Structure', title: ['Three questions,', 'three levels'],
       lede: 'The tools exist across credit apps; the job was to put them in order. I chose what this product needed, connected it in the sequence people ask, and the team agreed to add three sections beyond the brief.',
@@ -611,7 +618,7 @@ const greenCredit: Partial<CaseData> = {
 {
   const ss = greenCredit.screens ?? [];
   const from = ss.findIndex((x) => x.id === 'brief');
-  ss.forEach((x, i) => { if (i >= from && x.id !== 'strategy' && x.id !== 'measure' && x.id !== 'brief') x.visual = { layout: 'single', items: [{ label: 'Work in progress', spec: '', wipph: true }] }; });
+  ss.forEach((x, i) => { if (i >= from && x.id !== 'strategy' && x.id !== 'measure' && x.id !== 'brief' && x.id !== 'research') x.visual = { layout: 'single', items: [{ label: 'Work in progress', spec: '', wipph: true }] }; });
 }
 
 export const cases: CaseData[] = [
