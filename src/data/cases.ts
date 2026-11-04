@@ -476,9 +476,9 @@ const greenCredit: Partial<CaseData> = {
 
     { id: 'glance', nav: 'TLDR', title: ['Green Credit Score', 'at a glance'],
       blocks: [{ type: 'glance', items: [
-        { icon: 'alert-triangle', label: 'Problem', text: 'Credit data comes in three different reports, and it’s unclear how to compare them or which one matters.', href: '#context' },
-        { icon: 'bulb', label: 'Solution', text: 'One dashboard with the status up front. Score factors explain what moves it, and a simulator tests changes over time.', href: '#strategy' },
-        { icon: 'chart-bar', label: 'Outcome', text: 'Approved by the client and handed to development with a design system, two weeks ahead of plan. We skipped wireframes by working from our data and Figma agents.', href: '#outcome' },
+        { icon: 'alert-triangle', label: 'Problem', text: 'Credit data comes in three reports, and it’s unclear which one matters.', href: '#context' },
+        { icon: 'bulb', label: 'Solution', text: 'A dashboard with the status up front, score factors that explain it, and a simulator for testing changes.', href: '#strategy' },
+        { icon: 'chart-bar', label: 'Outcome', text: 'Approved and handed to development with a design system, two weeks early. We skipped wireframes by working from our data and Figma agents.', href: '#outcome' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'Credit report', spec: '', cut: '/images/gcs-report-full.webp', alt: 'The Green Credit Score credit report page, cut off by the frame.' }] } },
 
@@ -495,7 +495,7 @@ const greenCredit: Partial<CaseData> = {
     { id: 'brief', nav: 'Client ask', title: ['From expertise', 'to a product'],
       lede: 'A credit-history expert wanted to turn what he knows into a product, so more people could manage their credit without a consultation.',
       blocks: [
-        { type: 'list', card: true, items: [
+        { type: 'cards', items: [
           { icon: 'credit-card', title: 'Format', body: 'A paid subscription app, built on his existing audience' },
           { icon: 'file-text', title: 'Scope', body: 'Ten pages, from the site map to a design system' },
           { icon: 'trophy', title: 'Standard', body: 'Better than existing credit apps' },
@@ -504,21 +504,21 @@ const greenCredit: Partial<CaseData> = {
       ],
       visual: { layout: 'single', items: [{ label: 'Initial product structure', spec: '', src: '/images/gcs-brief-map.webp', zoom: true, alt: 'The client’s initial structure: a marketing site, registration and a member area. The member area holds the dashboard, credit report and account settings and is the core product.' }] } },
 
-    { id: 'research', nav: 'Research', title: ['The data was there,', 'the meaning wasn’t'],
+    { id: 'research', nav: 'Research', title: ['Plenty of data,', 'little meaning'],
       lede: 'I explored the US credit landscape from three sides.',
       blocks: [
         { type: 'list', card: true, items: [
-          { icon: 'book', title: 'Secondary research', body: 'CFPB, FICO, Experian, FINRA Foundation. People mix up reports and scores, and knowledge gaps cost money.' },
+          { icon: 'book', title: 'Desk research', body: 'CFPB, FICO, Experian, FINRA Foundation. People mix up reports and scores, and knowledge gaps cost money.' },
           { icon: 'chart-bar', title: 'Competitive analysis', body: 'Credit Hero Score, IdentityIQ, Credit Karma. Monitoring is the baseline; factors, debt analysis and simulators go further.' },
           { icon: 'eye', title: 'Visual benchmarking', body: 'Revolut, Kraken. Summary first, details on demand.' },
         ] },
-        { type: 'note', text: 'Credit data was available. What was missing was a way to connect a score to what drives it.' },
+        { type: 'note', text: 'Credit data is everywhere. The gap is connecting a score to what drives it.' },
       ],
       visual: { layout: 'single', items: [{ label: 'What the research showed', spec: '', alt: 'Three in five US adults say knowledge gaps led to financial mistakes, 60% of them lost at least $1,000, and 77% carry at least one of six types of debt (Experian survey 2024, FINRA Foundation 2024).', stats: { lead: 'Knowing too little is costly, and debt is common', items: [
         { value: '3 in 5', text: 'US adults say knowledge\ngaps led to money mistakes' },
         { value: '60%', text: 'of them lost\nat least $1,000' },
         { value: '77%', text: 'carry at least one of\nsix types of debt' },
-      ], source: 'Experian and Atomik Research, online survey of 2,005 US adults, March 2024. FINRA Foundation, National Financial Capability Study, 2024.' } }] } },
+      ], source: 'Sources: FINRA Foundation, 2024. Experian and Atomik Research, 2024.' } }] } },
 
     { id: 'strategy', nav: 'Structure', title: ['Three questions,', 'three levels'],
       lede: 'The tools exist across credit apps; the job was to put them in order. I chose what this product needed, connected it in the sequence people ask, and the team agreed to add three sections beyond the brief.',
