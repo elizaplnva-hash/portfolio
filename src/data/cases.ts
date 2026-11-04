@@ -493,7 +493,7 @@ const greenCredit: Partial<CaseData> = {
       ], alt: 'Banks and card issuers report to three bureaus, each keeps a credit report, and a credit score sums it up.' }] } },
 
     { id: 'brief', nav: 'Client ask', title: ['The brief said what to build,', 'not what it was for'],
-      lede: 'A client with a credit-advice blog wanted an app for its readers.',
+      lede: 'A credit expert with an Instagram blog wanted an app for his followers.',
       blocks: [
         { type: 'list', card: true, items: [
           { icon: 'file-text', title: 'Pages', body: 'Dashboard, report, onboarding, FAQ, settings' },
