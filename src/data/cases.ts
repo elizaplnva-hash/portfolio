@@ -487,10 +487,10 @@ const greenCredit: Partial<CaseData> = {
       blocks: [{ type: 'pull', text: 'So the product has two jobs: say where you stand at a glance, and make the report readable.' }],
       visual: { layout: 'single', items: [{ label: 'A home loan, from the buyer’s side', spec: '', noconf: true, chain: [
         { icon: 'home', label: 'I want to buy a home' },
-        { icon: 'landmark', label: 'The bank looks at my credit score' },
-        { icon: 'stack-2', label: 'Mine sits in three reports' },
-        { icon: 'mood-confuzed', label: 'I can’t tell where I stand' },
-      ], alt: 'A buyer wants a home, the bank checks the credit score, the score sits in three reports, and the buyer cannot tell where they stand.' }] } },
+        { icon: 'zoom-question', label: 'I try to see what I can get' },
+        { icon: 'stack-2', label: 'No single score, only three reports' },
+        { icon: 'mood-confuzed', label: 'Comparing them is hard work, and I feel overwhelmed' },
+      ], alt: 'A buyer wants a home and tries to see what they can get, finds no single score but three reports to compare, and feels overwhelmed.' }] } },
 
     { id: 'brief', nav: 'Client ask', title: ['The brief said what to build,', 'not what it was for'],
       lede: 'A credit expert with an Instagram blog wanted an app for his followers.',
