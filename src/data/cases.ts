@@ -16,7 +16,7 @@ export type Block =
   | { type: 'decision'; rows: [string, string][] }
   | { type: 'glance'; items: { icon: string; label: string; text: string; href: string }[] }
   | { type: 'cards'; items: { label?: string; title: string; body?: string; icon?: string; hi?: boolean }[] }
-  | { type: 'list'; numbered?: boolean; items: { label?: string; title: string; body?: string; icon?: string }[] }
+  | { type: 'list'; numbered?: boolean; card?: boolean; items: { label?: string; title: string; body?: string; icon?: string }[] }
   | { type: 'callout'; text: string }
   | { type: 'chain'; steps: string[] }
   | { type: 'chips'; items: string[] }
@@ -492,15 +492,15 @@ const greenCredit: Partial<CaseData> = {
         { icon: 'gauge', label: 'A score sums it up' },
       ], alt: 'Banks and card issuers report to three bureaus, each keeps a credit report, and a credit score sums it up.' }] } },
 
-    { id: 'brief', nav: 'Client ask', title: ['A page list and one rule:', 'keep it simple'],
-      lede: 'A client with a credit-advice blog came to Danart for a US subscription app. The brief listed pages and asked for a light, Apple-like look.',
+    { id: 'brief', nav: 'Client ask', title: ['The brief said what to build,', 'not what it was for'],
+      lede: 'A client with a credit-advice blog wanted an app for its readers.',
       blocks: [
-        { type: 'cards', items: [
-          { title: 'What it had', body: 'Pages, from dashboard to FAQ.' },
-          { title: 'What it asked', body: 'Keep it simple.' },
-          { title: 'What it missed', body: 'How people would use it.' },
+        { type: 'list', card: true, items: [
+          { icon: 'file-text', title: 'Pages', body: 'Dashboard, report, onboarding, FAQ, settings' },
+          { icon: 'palette', title: 'Style', body: 'Light, Apple-like, simple' },
+          { icon: 'help-circle', title: 'Purpose', body: 'Missing. What should a member understand after logging in?' },
         ] },
-        { type: 'pull', text: 'Simple couldn’t mean showing less. First I needed to know what people actually struggle with.' },
+        { type: 'note', text: 'Research started with that question.' },
       ],
       visual: { layout: 'single', items: [{ label: 'The brief', spec: '', src: '/images/gcs-brief.webp', alt: 'The client’s list of pages and components: site map, home, FAQ, contact, login, onboarding, account settings, member dashboard, credit report and design system.' }] } },
 

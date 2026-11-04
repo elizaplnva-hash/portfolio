@@ -799,3 +799,10 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
   .cp-story:not(.brand) .steps > .step:first-of-type .meta li { padding: 12px 10px 12px 12px; }
   .cp-story:not(.brand) .steps > .step:first-of-type .step-text { padding-top: 30px; padding-bottom: 28px; }
 }
+
+/* a list set inside one white card: icon, a one-word category, a short line */
+.list.card { max-width: none; background: #fff; border-radius: var(--r); padding: 6px 22px; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 6px 20px rgba(17,17,17,.08); }
+.list.card li { align-items: center; gap: 16px; padding: 18px 0; }
+.list.card li:first-child { padding-top: 18px; }
+.list.card h3 { font-size: 16px; font-weight: 600; letter-spacing: -.02em; }
+.list.card p { font-size: 14px; color: var(--muted); }
