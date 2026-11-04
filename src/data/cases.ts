@@ -484,6 +484,7 @@ const greenCredit: Partial<CaseData> = {
 
     { id: 'context', nav: 'Context', title: ['Your score decides', 'what you can borrow'],
       lede: 'Usually between 300 and 850, it tells a lender how reliably you repay.\nThe higher it is, the better the terms on a home, a car or a business loan.\nIn the US, three companies keep these records: Equifax, Experian and TransUnion.',
+      blocks: [{ type: 'pull', text: 'One credit history, in three versions.' }],
       visual: { layout: 'single', items: [{ label: 'From borrowing to a score', spec: '', chain: [
         { icon: 'wallet', label: 'You borrow and repay' },
         { icon: 'landmark', label: 'Banks report it' },
@@ -492,14 +493,14 @@ const greenCredit: Partial<CaseData> = {
       ], alt: 'You borrow and repay, banks report it, bureaus build reports, and one number comes out.' }] } },
 
     { id: 'brief', nav: 'Client ask', title: ['From expertise', 'to a product'],
-      lede: 'A credit-history expert with a large following wanted to turn what he knows into a paid app, so more people could manage their credit without a consultation.',
+      lede: 'A credit-history expert wanted to turn what he knows into a product, so more people could manage their credit without a consultation.',
       blocks: [
         { type: 'list', card: true, items: [
           { icon: 'credit-card', title: 'Format', body: 'A paid subscription app, built on his existing audience' },
           { icon: 'file-text', title: 'Scope', body: 'Ten pages, from the site map to a design system' },
           { icon: 'trophy', title: 'Standard', body: 'Better than existing credit apps' },
         ] },
-        { type: 'note', text: 'The list named pages, not what a member should leave with. Research started there.' },
+        { type: 'note', text: 'The brief didn’t say what a member should leave with. Research started there.' },
       ],
       visual: { layout: 'single', items: [{ label: 'Initial product structure', spec: '', src: '/images/gcs-brief-map.webp', zoom: true, alt: 'The client’s initial structure: a marketing site, registration and a member area. The member area holds the dashboard, credit report and account settings and is the core product.' }] } },
 
