@@ -501,7 +501,7 @@ const greenCredit: Partial<CaseData> = {
         ] },
         { type: 'note', text: 'The list named pages, not what a member should leave with. Research started there.' },
       ],
-      visual: { layout: 'single', items: [{ label: 'The brief', spec: '', src: '/images/gcs-brief.webp', alt: 'The client’s list of pages and components: site map, home, FAQ, contact, login, onboarding, account settings, member dashboard, credit report and design system.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Initial product structure', spec: '', src: '/images/gcs-brief-map.webp', zoom: true, alt: 'The client’s initial structure: a marketing site, registration and a member area. The member area holds the dashboard, credit report and account settings and is the core product.' }] } },
 
     { id: 'research', nav: 'Research', title: ['People see the number,', 'not what to do next'],
       lede: 'Before design I studied CFPB consumer research and audited credit-monitoring apps. Three findings became the rules for the product.',
@@ -610,7 +610,7 @@ const greenCredit: Partial<CaseData> = {
 {
   const ss = greenCredit.screens ?? [];
   const from = ss.findIndex((x) => x.id === 'brief');
-  ss.forEach((x, i) => { if (i >= from && x.id !== 'strategy' && x.id !== 'measure') x.visual = { layout: 'single', items: [{ label: 'Work in progress', spec: '', wipph: true }] }; });
+  ss.forEach((x, i) => { if (i >= from && x.id !== 'strategy' && x.id !== 'measure' && x.id !== 'brief') x.visual = { layout: 'single', items: [{ label: 'Work in progress', spec: '', wipph: true }] }; });
 }
 
 export const cases: CaseData[] = [
