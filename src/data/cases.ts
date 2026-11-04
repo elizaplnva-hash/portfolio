@@ -466,7 +466,7 @@ const greenCredit: Partial<CaseData> = {
   screens: [
     { id: 'overview', nav: 'Overview', title: ['Credit health,', 'readable in 5 seconds'],
       lede: 'A credit app that shows where you stand in one look, and explains how to improve it.\nI led the product from a client’s page list to a design system ready for development.',
-      blocks: [{ type: 'note', text: 'Design goal: understand your status in 5 seconds.' }, { type: 'meta', items: [
+      blocks: [{ type: 'meta', items: [
         { label: 'Role', value: 'Lead Product Designer\nDanart Agency' },
         { label: 'Collaboration', value: 'Design Manager\nJunior Designer' },
         { label: 'Timeline', value: '6 weeks\nHanded off July 2026' },
@@ -483,14 +483,13 @@ const greenCredit: Partial<CaseData> = {
       visual: { layout: 'single', items: [{ label: 'Credit report', spec: '', cut: '/images/gcs-report-full.webp', alt: 'The Green Credit Score credit report page, cut off by the frame.' }] } },
 
     { id: 'context', nav: 'Context', title: ['Your score decides', 'what you can borrow'],
-      lede: 'Sooner or later, almost everyone needs a big loan: a home, a car, a business. The bank looks at one number first.\nIt is built from reports kept by three bureaus: Equifax, Experian and TransUnion.',
-      blocks: [{ type: 'pull', text: 'So the product has two jobs: say where you stand at a glance, and make the report readable.' }],
-      visual: { layout: 'single', items: [{ label: 'A home loan, from the buyer’s side', spec: '', noconf: true, chain: [
-        { icon: 'home', label: 'Want a home' },
-        { icon: 'zoom-question', label: 'Check my credit' },
-        { icon: 'stack-2', label: 'Find three different reports' },
-        { icon: 'mood-confuzed', label: 'Can’t compare them' },
-      ], alt: 'A buyer wants a home, checks their credit, finds three different reports and cannot compare them.' }] } },
+      lede: 'Usually between 300 and 850, it tells a lender how reliably you repay.\nThe higher it is, the better the terms on a home, a car or a business loan.\nIn the US, three companies keep these records: Equifax, Experian and TransUnion.',
+      visual: { layout: 'single', items: [{ label: 'From borrowing to a score', spec: '', chain: [
+        { icon: 'wallet', label: 'You borrow and repay' },
+        { icon: 'landmark', label: 'Banks report it' },
+        { icon: 'file-analytics', label: 'Bureaus build reports' },
+        { icon: 'gauge', label: 'One number comes out' },
+      ], alt: 'You borrow and repay, banks report it, bureaus build reports, and one number comes out.' }] } },
 
     { id: 'brief', nav: 'Client ask', title: ['The brief said what to build,', 'not what it was for'],
       lede: 'A credit expert with an Instagram blog wanted an app for his followers.',
