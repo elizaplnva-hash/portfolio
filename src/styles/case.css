@@ -484,7 +484,7 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 
 /* one tall screen, centred, cut off by the frame */
 .ph.cut, .stage .ph.cut { background: none; padding: 0; overflow: visible; transform: none; container-type: size; box-shadow: none; }
-.ph.cut .ct { position: absolute; left: 50%; margin-left: -45cqw; top: 9%; bottom: 0; width: 90cqw; overflow: hidden; border-radius: 0; background: none; filter: drop-shadow(0 18px 30px rgba(17,17,17,.08)) drop-shadow(0 2px 6px rgba(17,17,17,.04)); transform-origin: 50% 0; }
+.ph.cut .ct { position: absolute; left: 50%; margin-left: -45cqw; top: 6%; bottom: 0; width: 90cqw; overflow: hidden; border-radius: 0; background: none; filter: drop-shadow(0 18px 30px rgba(17,17,17,.08)) drop-shadow(0 2px 6px rgba(17,17,17,.04)); transform-origin: 50% 0; }
 .ph.cut .ct img { display: block; width: 100%; height: auto; max-width: none; }
 .m-vis.v-single .ph.cut { aspect-ratio: 16 / 10; }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
