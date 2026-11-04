@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; stats?: { lead: string; items: { value: string; text: string }[]; source?: string }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; stats?: { lead: string; items: { value: string; text: string }[]; source?: string }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -485,13 +485,12 @@ const greenCredit: Partial<CaseData> = {
     { id: 'context', nav: 'Context', title: ['Your score decides', 'what you can borrow'],
       lede: 'Sooner or later, almost everyone needs a big loan: a home, a car, a business. The bank checks your credit score first, as the main guarantee you will repay.\nBut your credit lives in three bureaus: Equifax, Experian and TransUnion. Each keeps its own report, so the picture can differ, or be missing.\nPlanning a home, you open them to see where you stand, and feel overwhelmed.',
       blocks: [{ type: 'pull', text: 'So the product has two jobs: say where you stand at a glance, and make the report readable.' }],
-      visual: { layout: 'single', items: [{ label: 'One person, three reports', spec: '', big: true, alt: 'The same person in three bureaus: a score of 693 at TransUnion, 692 at Equifax and no data at Experian.', metrics: [
-        { title: 'One person, three reports', items: [
-          { value: '693', label: 'TransUnion', note: 'Good' },
-          { value: '692', label: 'Equifax', note: 'Good' },
-          { value: 'N/A', label: 'Experian', note: 'No data on file' },
-        ] },
-      ] }] } },
+      visual: { layout: 'single', items: [{ label: 'A home loan, from the buyer’s side', spec: '', noconf: true, chain: [
+        { icon: 'home', label: 'I want to buy a home' },
+        { icon: 'landmark', label: 'The bank looks at my credit score' },
+        { icon: 'stack-2', label: 'Mine sits in three reports' },
+        { icon: 'mood-confuzed', label: 'I can’t tell where I stand' },
+      ], alt: 'A buyer wants a home, the bank checks the credit score, the score sits in three reports, and the buyer cannot tell where they stand.' }] } },
 
     { id: 'brief', nav: 'Client ask', title: ['The brief said what to build,', 'not what it was for'],
       lede: 'A credit expert with an Instagram blog wanted an app for his followers.',
