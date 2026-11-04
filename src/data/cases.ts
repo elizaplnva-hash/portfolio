@@ -521,14 +521,14 @@ const greenCredit: Partial<CaseData> = {
       ] } }] } },
 
     { id: 'strategy', nav: 'Hypothesis', title: ['How might we', 'make credit make sense?'],
-      lede: 'Research gave me three questions people ask in order. Each became one level of the product.',
+      lede: 'Monitoring is the baseline. To go beyond it, I built the product around three questions people ask in order.',
       blocks: [
         { type: 'list', split: true, items: [
-          { icon: 'eye', label: 'How might we show where I stand?', title: 'Dashboard, with the status up front' },
-          { icon: 'zoom-question', label: 'How might we explain what drives it?', title: 'Score Factors, Debt Analysis and Credit Report' },
-          { icon: 'compass', label: 'How might we show what could change it?', title: 'Score Simulator' },
+          { icon: 'eye', label: 'How might we show where I stand?', title: 'One place with the basics, and a way to go deeper' },
+          { icon: 'zoom-question', label: 'How might we explain what drives it?', title: 'Show the factors and the debt behind the number, next to the full report' },
+          { icon: 'compass', label: 'How might we show what could change it?', title: 'Let people test a change before they make it' },
         ] },
-        { type: 'note', text: 'The team agreed to add three sections beyond the brief.' },
+        { type: 'note', text: 'The brief covered the dashboard and the report. The team agreed to add three more sections.' },
       ],
       visual: { layout: 'single', items: [{ label: 'Product structure', spec: '', src: '/images/gcs-sitemap.webp', zoom: true, alt: 'Product structure: the dashboard and its five sections, Score factors, Credit report, Debt analysis, Score simulator and Profile, with the pages inside each.' }] } },
 
