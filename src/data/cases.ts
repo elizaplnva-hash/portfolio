@@ -491,15 +491,15 @@ const greenCredit: Partial<CaseData> = {
         { icon: 'gauge', label: 'One number comes out' },
       ], alt: 'You borrow and repay, banks report it, bureaus build reports, and one number comes out.' }] } },
 
-    { id: 'brief', nav: 'Client ask', title: ['The brief said what to build,', 'not what it was for'],
-      lede: 'A credit expert with an Instagram blog wanted an app for his followers.',
+    { id: 'brief', nav: 'Client ask', title: ['From expertise', 'to a product'],
+      lede: 'A credit-history expert with a large following wanted to turn what he knows into a paid app, so more people could manage their credit without a consultation.',
       blocks: [
         { type: 'list', card: true, items: [
-          { icon: 'file-text', title: 'Pages', body: 'Dashboard, report, onboarding, FAQ, settings' },
-          { icon: 'palette', title: 'Style', body: 'Light, Apple-like, simple' },
-          { icon: 'help-circle', title: 'Purpose', body: 'Missing. What should a member understand after logging in?' },
+          { icon: 'credit-card', title: 'Format', body: 'A paid subscription app, built on his existing audience' },
+          { icon: 'file-text', title: 'Scope', body: 'Ten pages, from the site map to a design system' },
+          { icon: 'trophy', title: 'Standard', body: 'Better than existing credit apps' },
         ] },
-        { type: 'note', text: 'Research started with that question.' },
+        { type: 'note', text: 'The list named pages, not what a member should leave with. Research started there.' },
       ],
       visual: { layout: 'single', items: [{ label: 'The brief', spec: '', src: '/images/gcs-brief.webp', alt: 'The client’s list of pages and components: site map, home, FAQ, contact, login, onboarding, account settings, member dashboard, credit report and design system.' }] } },
 
