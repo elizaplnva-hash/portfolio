@@ -483,14 +483,14 @@ const greenCredit: Partial<CaseData> = {
       visual: { layout: 'single', items: [{ label: 'Credit report', spec: '', cut: '/images/gcs-report-full.webp', alt: 'The Green Credit Score credit report page, cut off by the frame.' }] } },
 
     { id: 'context', nav: 'Context', title: ['Your score decides', 'what you can borrow'],
-      lede: 'Sooner or later, almost everyone needs a big loan: a home, a car, a business. The bank checks your credit score first, as the main guarantee you will repay.\nBut your credit lives in three bureaus: Equifax, Experian and TransUnion. Each keeps its own report, so the picture can differ, or be missing.\nPlanning a home, you open them to see where you stand, and feel overwhelmed.',
+      lede: 'Sooner or later, almost everyone needs a big loan: a home, a car, a business. The bank looks at one number first.\nIt is built from reports kept by three bureaus: Equifax, Experian and TransUnion.',
       blocks: [{ type: 'pull', text: 'So the product has two jobs: say where you stand at a glance, and make the report readable.' }],
       visual: { layout: 'single', items: [{ label: 'A home loan, from the buyer’s side', spec: '', noconf: true, chain: [
-        { icon: 'home', label: 'I want to buy a home' },
-        { icon: 'zoom-question', label: 'I try to see what I can get' },
-        { icon: 'stack-2', label: 'No single score, only three reports' },
-        { icon: 'mood-confuzed', label: 'Comparing them is hard work, and I feel overwhelmed' },
-      ], alt: 'A buyer wants a home and tries to see what they can get, finds no single score but three reports to compare, and feels overwhelmed.' }] } },
+        { icon: 'home', label: 'Want a home' },
+        { icon: 'zoom-question', label: 'Check my credit' },
+        { icon: 'stack-2', label: 'Find three different reports' },
+        { icon: 'mood-confuzed', label: 'Can’t compare them' },
+      ], alt: 'A buyer wants a home, checks their credit, finds three different reports and cannot compare them.' }] } },
 
     { id: 'brief', nav: 'Client ask', title: ['The brief said what to build,', 'not what it was for'],
       lede: 'A credit expert with an Instagram blog wanted an app for his followers.',
