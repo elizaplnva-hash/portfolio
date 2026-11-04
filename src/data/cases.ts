@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; stats?: { lead: string; items: { value: string; text: string }[]; source?: string }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -520,16 +520,20 @@ const greenCredit: Partial<CaseData> = {
         { value: '77%', text: 'carry at least one of\nsix types of debt' },
       ] } }] } },
 
-    { id: 'strategy', nav: 'Hypothesis', title: ['How might we', 'make credit make sense?'],
-      lede: 'Monitoring is the baseline. To go beyond it, I built the product around three questions people ask in order.',
+    { id: 'strategy', nav: 'Hypothesis', title: ['How might we turn', 'a number into a plan?'],
+      lede: 'Research left me with three findings. Each became a hypothesis for the product.',
       blocks: [
         { type: 'list', split: true, numbered: true, items: [
-          { label: 'How might we show where I stand?', title: 'One place with the basics, and a way to go deeper' },
-          { label: 'How might we explain what drives it?', title: 'Show the factors and the debt behind the number' },
-          { label: 'How might we show what could change it?', title: 'Let people test a change before they make it' },
+          { label: 'Desk research', title: 'People mix up reports and scores' },
+          { label: 'Desk research', title: 'Knowledge gaps cost money' },
+          { label: 'Competitive analysis', title: 'Competitors stop at monitoring, simulators go further' },
         ] },
       ],
-      visual: { layout: 'single', items: [{ label: 'Product structure', spec: '', src: '/images/gcs-sitemap.webp', zoom: true, alt: 'Product structure: the dashboard and its five sections, Score factors, Credit report, Debt analysis, Score simulator and Profile, with the pages inside each.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Three hypotheses', spec: '', alt: 'Three hypotheses. One: how might we show where I stand, with one place for the basics and a way to go deeper. Two: how might we explain what drives it, by showing the factors and the debt behind the number. Three: how might we show what could change it, by letting people test a change before they make it.', stats: { lead: 'Three hypotheses', nopct: true, items: [
+        { value: '1', label: 'How might we show where I stand?', text: 'One place with the basics, and a way to go deeper' },
+        { value: '2', label: 'How might we explain what drives it?', text: 'Show the factors and the debt behind the number' },
+        { value: '3', label: 'How might we show what could change it?', text: 'Let people test a change before they make it' },
+      ] } }] } },
 
     { id: 'priorities', nav: 'Prioritization', title: ['Up front,', 'or one click away'],
       lede: 'The dashboard is where the five seconds happen, so every piece of data had to earn its place there. The rest stays one click away, in the section that explains it.',

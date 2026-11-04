@@ -1,13 +1,13 @@
 ---
-interface Props { lead: string; items: { value: string; text: string }[]; source?: string; }
-const { lead, items, source } = Astro.props;
-const wide = items.some((it) => !/^\d+$/.test(it.value));
-const parts = (v: string) => (/^\d+$/.test(v) ? { n: v, pct: true } : v.endsWith('%') ? { n: v.slice(0, -1), pct: true } : { n: v, pct: false });
+interface Props { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean; }
+const { lead, items, source, nopct } = Astro.props;
+const wide = !nopct && items.some((it) => !/^\d+$/.test(it.value));
+const parts = (v: string) => (nopct ? { n: v, pct: false } : /^\d+$/.test(v) ? { n: v, pct: true } : v.endsWith('%') ? { n: v.slice(0, -1), pct: true } : { n: v, pct: false });
 ---
 <div class:list={['sts', { wide }]}>
   <p class="sts-lead">{lead}</p>
   {items.map((it) => (
-    <div class="sts-c"><span class="v">{parts(it.value).n}{parts(it.value).pct && <sup>%</sup>}</span><span class="t">{it.text}</span></div>
+    <div class="sts-c"><span class="v">{parts(it.value).n}{parts(it.value).pct && <sup>%</sup>}</span><span class="t">{it.label && <small>{it.label}</small>}{it.text}</span></div>
   ))}
   {source && <p class="sts-src">{source}</p>}
 </div>
