@@ -465,8 +465,8 @@ const greenCredit: Partial<CaseData> = {
   summary: 'A credit-monitoring app that gathers three bureau reports in one place, shows where you stand at a glance and explains what moves the score.',
   screens: [
     { id: 'overview', nav: 'Overview', title: ['Credit health,', 'readable in 5 seconds'],
-      lede: 'A credit score app for people who want to understand their credit, not just see a number.\nI led the product from a client’s page list to a design system ready for development.',
-      blocks: [{ type: 'meta', items: [
+      lede: 'A credit app that shows where you stand in one look, and explains how to improve it.\nI led the product from a client’s page list to a design system ready for development.',
+      blocks: [{ type: 'note', text: 'Design goal: understand your status in 5 seconds.' }, { type: 'meta', items: [
         { label: 'Role', value: 'Lead Product Designer\nDanart Agency' },
         { label: 'Collaboration', value: 'Design Manager\nJunior Designer' },
         { label: 'Timeline', value: '6 weeks\nHanded off July 2026' },
@@ -476,7 +476,7 @@ const greenCredit: Partial<CaseData> = {
 
     { id: 'glance', nav: 'TLDR', title: ['Green Credit Score', 'at a glance'],
       blocks: [{ type: 'glance', items: [
-        { icon: 'alert-triangle', label: 'Problem', text: 'Credit data is scattered and unexplained, so people see a number and don’t know what to do next.', href: '#context' },
+        { icon: 'alert-triangle', label: 'Problem', text: 'Credit data comes in three different reports, and it’s unclear how to compare them or which one matters.', href: '#context' },
         { icon: 'bulb', label: 'Solution', text: 'One dashboard with the status up front. Score factors explain what moves it, and a simulator tests changes over time.', href: '#strategy' },
         { icon: 'chart-bar', label: 'Outcome', text: 'Approved by the client and handed to development with a design system, two weeks ahead of plan. We skipped wireframes by working from our data and Figma agents.', href: '#outcome' },
       ] }],
