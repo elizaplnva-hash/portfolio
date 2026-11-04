@@ -791,9 +791,10 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .sts-src { margin: 4px 4px 0; font-size: 12px; line-height: 1.35; letter-spacing: -.01em; color: var(--muted); }
 
 /* tools used: small app-style icons at the right of the tag row */
-.cp-story .tags .tools { margin-left: auto; display: flex; gap: 6px; }
-.cp-story .tags .tl { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 23%; background: var(--white); box-shadow: 0 1px 2px rgba(17,17,17,.05), 0 3px 10px rgba(17,17,17,.06); }
-.cp-story .tags .tl svg { width: 15px; height: 15px; display: block; }
+.cp-story .step-text > .tags:has(.tools) { align-items: center; }
+.cp-story .tags .tools { margin-left: auto; display: flex; gap: 7px; }
+.cp-story .tags .tl { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 23%; background: var(--white); box-shadow: 0 1px 2px rgba(17,17,17,.05), 0 3px 10px rgba(17,17,17,.06); }
+.cp-story .tags .tl svg { width: 20px; height: 20px; display: block; }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) { .cp-story .tags .tl { transition: transform .35s var(--out); } .cp-story .tags .tl:hover { transform: translateY(-2px); } }
 
 /* short laptop screens: keep the overview meta cards inside the frame */
