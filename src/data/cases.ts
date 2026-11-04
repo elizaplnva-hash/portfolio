@@ -525,10 +525,9 @@ const greenCredit: Partial<CaseData> = {
       blocks: [
         { type: 'list', split: true, numbered: true, items: [
           { label: 'How might we show where I stand?', title: 'One place with the basics, and a way to go deeper' },
-          { label: 'How might we explain what drives it?', title: 'Show the factors and the debt behind the number, next to the full report' },
+          { label: 'How might we explain what drives it?', title: 'Show the factors and the debt behind the number' },
           { label: 'How might we show what could change it?', title: 'Let people test a change before they make it' },
         ] },
-        { type: 'note', text: 'The brief covered the dashboard and the report. The team agreed to add three more sections.' },
       ],
       visual: { layout: 'single', items: [{ label: 'Product structure', spec: '', src: '/images/gcs-sitemap.webp', zoom: true, alt: 'Product structure: the dashboard and its five sections, Score factors, Credit report, Debt analysis, Score simulator and Profile, with the pages inside each.' }] } },
 
