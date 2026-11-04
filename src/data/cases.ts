@@ -484,7 +484,7 @@ const greenCredit: Partial<CaseData> = {
 
     { id: 'context', nav: 'Context', title: ['A score is the summary,', 'the report is the story'],
       lede: 'Banks and card issuers report how you borrow and repay to credit bureaus. In the US there are three: Equifax, Experian and TransUnion.\nEach keeps a credit report: your accounts, balances, payments and applications. A credit score, usually between 300 and 850, sums that report up for lenders.\nNot every lender reports to every bureau, so your reports, and your scores, can differ.',
-      blocks: [{ type: 'pull', text: 'One person, three reports, several scores, and none of them says what to do next.' }],
+      blocks: [{ type: 'pull', text: 'So the product has two jobs: say where you stand at a glance, and make the report readable.' }],
       visual: { layout: 'single', items: [{ label: 'From banks to a score', spec: '', chain: [
         { icon: 'landmark', label: 'A bank reports how you pay' },
         { icon: 'stack-2', label: 'Three bureaus collect it' },
@@ -492,7 +492,7 @@ const greenCredit: Partial<CaseData> = {
         { icon: 'gauge', label: 'A score sums it up' },
       ], alt: 'Banks and card issuers report to three bureaus, each keeps a credit report, and a credit score sums it up.' }] } },
 
-    { id: 'brief', nav: 'Brief', title: ['A page list and one rule:', 'keep it simple'],
+    { id: 'brief', nav: 'Client ask', title: ['A page list and one rule:', 'keep it simple'],
       lede: 'A client with a credit-advice blog came to Danart for a US subscription app. The brief listed pages and asked for a light, Apple-like look.',
       blocks: [
         { type: 'cards', items: [
@@ -513,7 +513,7 @@ const greenCredit: Partial<CaseData> = {
       ] }],
       visual: { layout: 'single', items: [{ label: 'Add: reviews and competitor audit', spec: 'Three real reviews of credit apps with date and source, and two competitor screens showing where they cause friction' }] } },
 
-    { id: 'strategy', nav: 'Product strategy', title: ['Three questions,', 'three levels'],
+    { id: 'strategy', nav: 'Structure', title: ['Three questions,', 'three levels'],
       lede: 'The tools exist across credit apps; the job was to put them in order. I chose what this product needed, connected it in the sequence people ask, and the team agreed to add three sections beyond the brief.',
       blocks: [{ type: 'cards', items: [
         { icon: 'eye', title: 'See', body: 'Where do I stand? Dashboard.' },
@@ -545,7 +545,7 @@ const greenCredit: Partial<CaseData> = {
       ], alt: 'Three screens: score factors, the credit report and the score simulator.' }] } },
 
     { id: 'colour', nav: 'Design decision', title: ['Colour that carries', 'meaning'],
-      lede: 'Colour is information here: it says what’s fine and what needs attention before you read a number. The team was split; the client and the Junior Designer wanted green only. About 30 people in the US and Canada who follow their credit compared both directions. Most picked semantic colour, and the client chose it.',
+      lede: 'Colour is information here: it says what’s fine and what needs attention before you read a number. The team was split; the client and the Junior Designer wanted green only. In an informal check, about 30 people in the US and Canada who follow their credit compared both directions. Most picked semantic colour, and the client chose it.',
       blocks: [
         { type: 'cards', items: [
           { icon: 'palette', title: 'Status at a glance', body: 'Red, amber and green.' },
@@ -585,13 +585,23 @@ const greenCredit: Partial<CaseData> = {
         ] },
       ] }] } },
 
+    { id: 'measure', nav: 'Success metrics', wide: true, title: ['What I’d measure', 'after launch'],
+      lede: 'The product is in development, so there are no results yet. These are the signals I’d track first, and what each would tell the team. They are proposals, not outcomes.',
+      blocks: [{ type: 'list', items: [
+        { icon: 'eye', label: 'Understanding', title: 'Can people name their score, its status and one next step in five seconds?', body: 'A five-second test on the dashboard.' },
+        { icon: 'circle-check', label: 'Usability', title: 'Task success rate and time on task', body: 'For “find the factor that lowers your score”.' },
+        { icon: 'compass', label: 'Navigation', title: 'How often people go from the dashboard to a detail page', body: 'Navigation versus search shows whether the structure works.' },
+        { icon: 'gauge', label: 'Adoption', title: 'Score Simulator use and return visits', body: 'Do people come back to explore, not just to check?' },
+        { icon: 'heart', label: 'Satisfaction', title: 'CSAT after the first report view', body: 'A one-question survey, plus NPS later.' },
+        { icon: 'chart-bar', label: 'Business', title: 'Conversion to subscription, retention and churn', body: 'Once the product has paying users.' },
+      ] }] },
+
     { id: 'reflection', nav: 'Reflection', title: ['What I’d keep,', 'what I’d test'],
       lede: 'The product is in development, so there are no launch metrics yet.',
       blocks: [{ type: 'numbered', items: [
         { title: 'Structure before prompts', body: 'Figma’s AI agents were new; this project let us learn them. They work only when each section’s job is decided first.' },
         { title: 'Options, not opinions', body: 'Both disagreements were settled by showing two versions with their trade-offs.' },
         { title: 'Test with the real audience', body: 'With no time or budget, the director and I asked people we knew who follow their credit. Next time I’d recruit people who manage US credit.' },
-        { title: 'Then measure', body: 'Can people name their score, its status and one change in five seconds?' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'Credit report', spec: '', src: '/images/gcs-report.webp', alt: 'The accounts report compared across bureaus' }] } },
   ],
@@ -601,7 +611,7 @@ const greenCredit: Partial<CaseData> = {
 {
   const ss = greenCredit.screens ?? [];
   const from = ss.findIndex((x) => x.id === 'brief');
-  ss.forEach((x, i) => { if (i >= from && x.id !== 'strategy') x.visual = { layout: 'single', items: [{ label: 'Work in progress', spec: '', wipph: true }] }; });
+  ss.forEach((x, i) => { if (i >= from && x.id !== 'strategy' && x.id !== 'measure') x.visual = { layout: 'single', items: [{ label: 'Work in progress', spec: '', wipph: true }] }; });
 }
 
 export const cases: CaseData[] = [
