@@ -25,5 +25,5 @@ export function icon(name?: string): string {
 }
 
 export const metaIcon: Record<string, string> = {
-  Role: 'briefcase', Timeline: 'clock', Platform: 'smartphone', Status: 'circle-check', Team: 'users', Scope: 'layers', Launch: 'rocket', Collaboration: 'users', Responsibilities: 'layers', Position: 'briefcase', Outcome: 'award', Deliverables: 'package',
+  Role: 'briefcase', Timeline: 'clock', Platform: 'smartphone', Status: 'circle-check', Team: 'users', Scope: 'layers', Launch: 'rocket', Collaboration: 'users', Responsibilities: 'layers', Position: 'briefcase', Outcome: 'award', Deliverables: 'package', Tools: 'settings',
 };

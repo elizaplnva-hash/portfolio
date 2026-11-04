@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; stats?: { lead: string; items: { value: string; text: string }[] }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; stats?: { lead: string; items: { value: string; text: string }[]; source?: string }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -92,8 +92,8 @@ const pinkwallet: Partial<CaseData> = {
   tint: '#FFE6F1',
   panel: '#F6F6F4',
   facts: [
-    { label: 'Role', value: 'Product Designer, two-person design team' },
-    { label: 'Scope', value: 'Architecture, UX/UI, design system' },
+    { label: 'Role', value: 'Product Designer' },
+    { label: 'Responsibilities', value: 'Architecture, UX/UI, design system' },
     { label: 'Timeline', value: 'Dec 2025 – Jan 2026, 8 weeks' },
     { label: 'Status', value: 'App Store, July 2026' },
   ],
@@ -106,10 +106,11 @@ const pinkwallet: Partial<CaseData> = {
         { label: 'Try the app', href: 'https://apps.apple.com/ca/app/pink-wallet-crypto-ai/id6762203790' },
       ],
       blocks: [{ type: 'meta', items: [
+        { label: 'Role', value: 'Product Designer' },
         { label: 'Collaboration', value: 'Design Manager at Danart\nClient development team' },
         { label: 'Timeline', value: '8 weeks\nLaunched July 2026' },
         { label: 'Responsibilities', value: 'Product architecture\nUX/UI, design system' },
-        { label: 'Position', value: 'Product Designer' },
+        { label: 'Tools', value: 'Figma for interfaces and the design system\nChatGPT for 3D and image assets\nAmplitude, the client’s launch analytics' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'The Wallet home in both themes', spec: '', srcs: ['/images/pw-home-dark.webp', '/images/pw-home-light.webp'], alt: 'The PinkWallet home screen in the dark and the light theme' }] } },
 
@@ -125,17 +126,23 @@ const pinkwallet: Partial<CaseData> = {
         { src: '/images/pw-tl-3.webp', label: 'See what you get', icon: 'repeat' },
       ], alt: 'Three key PinkWallet screens: transaction history, choosing an amount to send, and swap.' }] } },
 
-    { id: 'background', nav: 'Brief', title: ['The brief changed before','we started designing'],
-      lede: 'The first project was a crypto token for experienced users. Then the client came back with funding and a new idea: a wallet.',
+    { id: 'background', nav: 'Client ask', title: ['The brief changed before','we started designing'],
+      lede: 'The client came back with funding and a new idea: a wallet.',
       blocks: [
-        { type: 'numbered', items: [
-          { title: 'A new audience', body: 'People with little or no crypto experience.' },
-          { title: 'The feature list', body: 'What belongs in version one, and what can wait.' },
-          { title: 'The AI request', body: 'A useful role for AI that never controls users’ money.' },
-        ] },
-        { type: 'note', text: 'My first job was to turn that wish list into a point of view.' },
+        { type: 'note', text: 'My first job was to turn that idea into a point of view.' },
       ],
       visual: { layout: 'single', items: [{ label: 'Where we started', spec: '', combo: ['/images/pw-pinkcoin-site.webp', '/images/pw-wallet-phone.webp'], alt: 'The PinkCoin token website from the first project, and the first concept of the wallet screen' }] } },
+
+    { id: 'tradeoffs', nav: 'Scope', title: ['One question', 'decided the scope'],
+      lede: 'With eight weeks and a budget for one platform, we had to be selective. We kept what beginners need, limited what could add risk, and cut the rest.',
+      blocks: [{ type: 'pull', text: 'Does this reduce the chance that someone loses money or gives up?' }],
+      visual: { layout: 'single', items: [{ label: 'Scope decisions', spec: '', scope: [
+        { name: 'Portfolio overview', why: 'Simple allocation and performance views.', d: 'keep' },
+        { name: 'Feed', why: 'Explains crypto, no buy recommendations.', d: 'keep' },
+        { name: 'PIG', why: 'Prepares transactions; the user confirms.', d: 'limit' },
+        { name: 'Trading analytics', why: 'Dense charts and technical indicators.', d: 'cut' },
+        { name: 'Buy recommendations', why: 'Speculative purchase signals.', d: 'cut' },
+      ], alt: 'Five product decisions sorted into keep, limit or cut.' }] } },
 
     { id: 'stakes', nav: 'Context', title: ['Crypto without a bank', 'in the middle'],
       lede: 'Crypto is digital money people can send directly to each other through a blockchain, without a bank processing the transfer.\nWith a self-custody wallet like PinkWallet, you control the keys to your money. Access depends on a 12-word recovery phrase. Lose it, and there may be no way to get back into your wallet.\nOnce a transaction is confirmed, it can’t be reversed.',
@@ -160,10 +167,10 @@ const pinkwallet: Partial<CaseData> = {
         ] },
       ],
       visual: { layout: 'stack', items: [
-        { label: 'Market context', spec: '', alt: 'Why do some U.S. non‑owners stay away from crypto? 49% don’t understand how crypto works, 43% worry about fraud (NCA × Harris Poll, 2025)', stats: { lead: 'Why do some U.S. non‑owners stay away from crypto?', items: [
-          { value: '49', text: 'Don’t understand\nhow crypto works' },
-          { value: '43', text: 'Worry\nabout fraud' },
-        ] } },
+        { label: 'Market context', spec: '', alt: 'Why do some U.S. non‑owners stay away from crypto? 49% name not understanding crypto as the biggest barrier, 43% are concerned about security and fraud (National Cryptocurrency Association, Harris Poll, 2025)', stats: { lead: 'Why do some U.S. non‑owners stay away from crypto?', items: [
+          { value: '49', text: 'Say not understanding\ncrypto is the biggest barrier' },
+          { value: '43', text: 'Are concerned about\nsecurity and fraud' },
+        ], source: 'Source: National Cryptocurrency Association, survey by The Harris Poll, May 2025. 2,000 U.S. adults who don’t own crypto.' } },
         { label: 'What people say', spec: '', alt: 'Three public posts about wallet friction: network fees, a security warning and an address typo', reviews: [
           { tag: 'Fees', from: 'Trust · App Store', source: 'appstore', text: '“The app keeps saying the network fee is not enough no matter how much I adjust the amount.”', meta: 'Trust Wallet · App Store · Apr 2024' },
           { tag: 'Warnings', from: 'Phantom · GitHub', source: 'github', text: '“No balance change found. This transaction maybe malicious.”', meta: 'Phantom · GitHub · Nov 2023' },
@@ -181,7 +188,7 @@ const pinkwallet: Partial<CaseData> = {
         ] },
       ] } },
 
-    { id: 'choices', nav: 'Choices', title: ['A familiar core,','with two new additions'],
+    { id: 'choices', nav: 'Structure', title: ['A familiar core,','with two new additions'],
       lede: 'The research gave three rules. They shaped the structure.\nA beginner shouldn’t have to learn a new interface and a new kind of money at once.\nWe kept everyday wallet actions familiar: managing assets, sending, receiving and swapping.',
       blocks: [
         { type: 'pull', text: 'Two new parts, two roles: Feed for exploring crypto, PIG for understanding and preparing actions across the wallet.' },
@@ -223,17 +230,6 @@ const pinkwallet: Partial<CaseData> = {
         { src: '/images/pw-safe-3.webp', label: 'Create a PIN', icon: 'lock' },
       ], alt: 'Three wallet setup screens: three warnings with a confirmation checkbox, the 12-word recovery phrase, and PIN creation.' }] } },
 
-    { id: 'tradeoffs', nav: 'Scope', title: ['One question', 'decided the scope'],
-      lede: 'With eight weeks, two designers and a budget for one platform, we had to be selective. We kept what beginners need, limited what could add risk, and cut the rest.',
-      blocks: [{ type: 'pull', text: 'Does this reduce the chance that someone loses money or gives up?' }],
-      visual: { layout: 'single', items: [{ label: 'Scope decisions', spec: '', scope: [
-        { name: 'Portfolio overview', why: 'Simple allocation and performance views.', d: 'keep' },
-        { name: 'Feed', why: 'Explains crypto, no buy recommendations.', d: 'keep' },
-        { name: 'PIG', why: 'Prepares transactions; the user confirms.', d: 'limit' },
-        { name: 'Trading analytics', why: 'Dense charts and technical indicators.', d: 'cut' },
-        { name: 'Buy recommendations', why: 'Speculative purchase signals.', d: 'cut' },
-      ], alt: 'Five product decisions sorted into keep, limit or cut.' }] } },
-
     { id: 'system', nav: 'Design system', title: ['One product,', 'two moods'],
       lede: '200+ screens in eight weeks, built from one set of components.',
       blocks: [{ type: 'numbered', items: [
@@ -261,6 +257,10 @@ const pinkwallet: Partial<CaseData> = {
           { value: '98%', label: 'Transactions confirmed', note: 'of those submitted to the network' },
         ] },
       ] }] } },
+
+    { id: 'origin', nav: 'Where it started', title: ['Before the wallet,','there was a token'],
+      lede: 'The first project was a crypto token for experienced users. The wallet came later, for people who are new to crypto.',
+      visual: { layout: 'single', items: [{ label: 'The PinkCoin website', spec: '', src: '/images/pw-pinkcoin-top.webp', alt: 'The PinkCoin token website from the first project' }] } },
 
     { id: 'reflection', nav: 'Reflection', title: ['Built on convention,', 'never tested'],
       lede: 'Without a usability-testing budget, I relied on familiar patterns and safeguards. Key assumptions remained untested.',
@@ -468,7 +468,7 @@ const greenCredit: Partial<CaseData> = {
     { id: 'overview', nav: 'Overview', title: ['Credit health,', 'readable in 5 seconds'],
       lede: 'Your borrowing record is split across three reports, and they’re hard to read.\nGreen Credit Score gathers them in one place, shows where you stand at a glance and explains what moves the score.\nI led the product from a client’s page list to a design system ready for development.',
       blocks: [{ type: 'meta', items: [
-        { label: 'Position', value: 'Lead Product Designer\nDanart Agency' },
+        { label: 'Role', value: 'Lead Product Designer\nDanart Agency' },
         { label: 'Collaboration', value: 'Design Manager\nJunior Designer' },
         { label: 'Timeline', value: '6 weeks\nHanded off July 2026' },
         { label: 'Responsibilities', value: 'UX/UI, design system\nAI workflow' },
