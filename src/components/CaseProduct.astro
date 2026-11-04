@@ -113,7 +113,7 @@ const cf = Array.from({ length: 14 }, (_, k) => { const a = (k / 14) * Math.PI *
                     </div>))}
                   </div>);
                 case 'list': return (
-                  <ol class:list={['list rv', { num: b.numbered, card: b.card }]}>{b.items.map((x) => (
+                  <ol class:list={['list rv', { num: b.numbered, card: b.card, split: b.split }]}>{b.items.map((x) => (
                     <li>
                       {x.icon ? <span class="ic" aria-hidden="true" set:html={icon(x.icon)} /> : b.numbered ? <span class="n" aria-hidden="true"></span> : null}
                       <div>{x.label && <small>{x.label}</small>}<h3>{x.title}</h3>{x.body && <p>{x.body}</p>}</div>
