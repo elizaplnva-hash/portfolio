@@ -530,7 +530,7 @@ const greenCredit: Partial<CaseData> = {
       ] }] } },
 
     { id: 'priorities', nav: 'Dashboard', title: ['Where I stand,', 'in one place'],
-      lede: 'Hypothesis 1 became the landing screen after sign-up. It reads top to bottom, and each block leads to the section behind it.',
+      lede: 'The first hypothesis became the landing screen after sign-up. It reads top to bottom, and each block leads to the section behind it.',
       blocks: [
         { type: 'list', split: true, items: [
           { icon: 'gauge', title: 'Status', body: 'Standing with all three bureaus, the monthly change and the next milestone.' },
@@ -541,8 +541,14 @@ const greenCredit: Partial<CaseData> = {
       visual: { layout: 'single', items: [{ label: 'Dashboard and mobile', spec: '', combo: ['/images/gcs-dash.webp', '/images/gcs-mob.webp'], dm: true, alt: 'The Green Credit Score dashboard on the web, with the same dashboard on a phone in front of it' }] } },
 
     { id: 'guidance', nav: 'Explain and test', title: ['Explain the score,', 'then let people try'],
-      lede: 'Every factor opens with the same five blocks: where you stand, why, the accounts behind it, a year of history and what a missed payment would do. The simulator turns the same data into eight scenarios, grouped by decisions people make.',
-      blocks: [{ type: 'pull', text: 'Current and simulated score sit side by side, and the FAQ says plainly that nothing is guaranteed.' }],
+      lede: 'The second and third hypotheses became two linked sections: one explains the score, the other lets people test it.',
+      blocks: [
+        { type: 'list', split: true, items: [
+          { icon: 'zoom-question', title: 'Explain', body: 'Every factor opens with the same five blocks: where you stand, why, the accounts behind it, a year of history and what a missed payment would do.' },
+          { icon: 'compass', title: 'Test', body: 'Eight scenarios grouped by decisions people make, with the current and simulated score side by side.' },
+          { icon: 'alert-triangle', title: 'Limits', body: 'The FAQ states plainly that nothing is guaranteed.' },
+        ] },
+      ],
       visual: { layout: 'single', items: [{ label: 'Explain and explore', spec: '', trio: [
         { src: '/images/gcs-research.webp', label: 'Score factors', icon: 'gauge' },
         { src: '/images/gcs-report.webp', label: 'Credit report', icon: 'stack-2' },
@@ -602,7 +608,7 @@ const greenCredit: Partial<CaseData> = {
 {
   const ss = greenCredit.screens ?? [];
   const from = ss.findIndex((x) => x.id === 'brief');
-  ss.forEach((x, i) => { if (i >= from && x.id !== 'strategy' && x.id !== 'measure' && x.id !== 'brief' && x.id !== 'research' && x.id !== 'priorities') x.visual = { layout: 'single', items: [{ label: 'Work in progress', spec: '', wipph: true }] }; });
+  ss.forEach((x, i) => { if (i >= from && x.id !== 'strategy' && x.id !== 'measure' && x.id !== 'brief' && x.id !== 'research' && x.id !== 'priorities' && x.id !== 'guidance') x.visual = { layout: 'single', items: [{ label: 'Work in progress', spec: '', wipph: true }] }; });
 }
 
 export const cases: CaseData[] = [
