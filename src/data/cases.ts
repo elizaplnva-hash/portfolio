@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; pan?: { src: string; tag: string; icon: string; alt?: string }[]; hyps?: { saw: string; q: string; a: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; pan?: { src: string; alt?: string }[]; hyps?: { saw: string; q: string; a: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -16,7 +16,7 @@ export type Block =
   | { type: 'decision'; rows: [string, string][] }
   | { type: 'glance'; items: { icon: string; label: string; text: string; href: string }[] }
   | { type: 'cards'; items: { label?: string; title: string; body?: string; icon?: string; hi?: boolean }[] }
-  | { type: 'list'; numbered?: boolean; card?: boolean; split?: boolean; items: { label?: string; title: string; body?: string; icon?: string }[] }
+  | { type: 'list'; numbered?: boolean; card?: boolean; split?: boolean; tabs?: boolean; items: { label?: string; title: string; body?: string; icon?: string }[] }
   | { type: 'callout'; text: string }
   | { type: 'chain'; steps: string[] }
   | { type: 'chips'; items: string[] }
@@ -543,14 +543,14 @@ const greenCredit: Partial<CaseData> = {
     { id: 'guidance', nav: 'Explain and test', title: ['Understand the score,', 'then change it'],
       lede: 'The dashboard shows where you stand. Two sections answer what comes next: why, and what would change it.',
       blocks: [
-        { type: 'list', split: true, items: [
+        { type: 'list', split: true, tabs: true, items: [
           { icon: 'zoom-question', title: 'Score factors', body: 'The reason behind the number. Every factor has its own page with the same five blocks.' },
           { icon: 'compass', title: 'Score simulator', body: 'The effect of a decision. Pick one, like closing the oldest card, and see the new result.' },
         ] },
       ],
       visual: { layout: 'single', items: [{ label: 'Score factors and score simulator', spec: '', alt: 'The payment history page of score factors, and the score simulator with the open new credit card scenario.', pan: [
-        { src: '/images/gcs-factors-page.webp', tag: '1 · Payment history', icon: 'gauge', alt: 'Score factors: the payment history page with where you stand, why, accounts behind it, twelve months of history and what happens if you miss a payment.' },
-        { src: '/images/gcs-simulator-page.webp', tag: '2 · New credit card', icon: 'compass', alt: 'Score simulator: decisions grouped by opening or closing accounts, using cards and payment habits, with current and simulated score side by side.' },
+        { src: '/images/gcs-factors-page.webp', alt: 'Score factors: the payment history page with where you stand, why, accounts behind it, twelve months of history and what happens if you miss a payment.' },
+        { src: '/images/gcs-simulator-page.webp', alt: 'Score simulator: decisions grouped by opening or closing accounts, using cards and payment habits, with current and simulated score side by side.' },
       ] }] } },
 
     { id: 'colour', nav: 'Decision: colour', title: ['Colour that carries', 'meaning'],

@@ -115,8 +115,8 @@ const cf = Array.from({ length: 14 }, (_, k) => { const a = (k / 14) * Math.PI *
                     </div>))}
                   </div>);
                 case 'list': return (
-                  <ol class:list={['list rv', { num: b.numbered, card: b.card, split: b.split }]}>{b.items.map((x) => (
-                    <li>
+                  <ol class:list={['list rv', { num: b.numbered, card: b.card, split: b.split, tabs: b.tabs }]}>{b.items.map((x, i) => (
+                    <li class:list={{ on: b.tabs && i === 0 }} tabindex={b.tabs ? 0 : undefined} data-i={b.tabs ? i : undefined}>
                       {x.icon ? <span class="ic" aria-hidden="true" set:html={icon(x.icon)} /> : b.numbered ? <span class="n" aria-hidden="true"></span> : null}
                       <div>{x.label && <small>{x.label}</small>}<h3>{x.title}</h3>{x.body && <p>{x.body}</p>}</div>
                     </li>))}
@@ -232,6 +232,30 @@ const cf = Array.from({ length: 14 }, (_, k) => { const a = (k / 14) * Math.PI *
         el.classList.remove('lean');
         el.style.removeProperty('--rx');
         el.style.removeProperty('--ry');
+      });
+    });
+    // cards that switch the screen shown on the right
+    document.querySelectorAll<HTMLElement>('.list.tabs').forEach((ol) => {
+      const id = ol.closest<HTMLElement>('[data-step]')?.dataset.step;
+      const lis = [...ol.querySelectorAll<HTMLElement>('li')];
+      const pick = (i: number) => {
+        lis.forEach((l, k) => l.classList.toggle('on', k === i));
+        document.querySelectorAll(`[data-step="${id}"] .pn`).forEach((pn) => [...pn.children].forEach((f, k) => f.classList.toggle('on', k === i)));
+      };
+      lis.forEach((l, i) => {
+        l.addEventListener('click', () => pick(i));
+        l.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(i); } });
+      });
+    });
+    // screen grows toward the cursor and follows it
+    document.querySelectorAll<HTMLElement>('.stage .ph.pan').forEach((el) => {
+      el.addEventListener('pointermove', (e) => {
+        const f = el.querySelector<HTMLElement>('.pn-f.on');
+        if (!f) return;
+        const r = el.getBoundingClientRect();
+        const x = ((e.clientX - r.left - f.offsetLeft) / f.offsetWidth) * 100;
+        const y = ((e.clientY - r.top - f.offsetTop) / f.offsetHeight) * 100;
+        el.querySelectorAll<HTMLElement>('.pn-f').forEach((n) => { n.style.transformOrigin = `${x.toFixed(1)}% ${y.toFixed(1)}%`; });
       });
     });
     // structure diagram: zooms toward the cursor and follows it
