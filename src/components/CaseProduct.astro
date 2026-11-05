@@ -72,7 +72,8 @@ const cf = Array.from({ length: 14 }, (_, k) => { const a = (k / 14) * Math.PI *
           )}
           {!s.shot && <div class="step-text">
             {si === 0 && <div class="tags rv">{c.tags.map((t) => <span>{t}</span>)}</div>}
-            {si === 0
+            {s.toggle ? <div class="ttl-row"><h2 class="ttl rv">{s.title[0]} {s.title[1] && <em>{s.title[1]}</em>}</h2><button type="button" class="tg rv" role="switch" aria-checked="false" aria-label="Show the status color version"><i></i></button></div> : null}
+            {s.toggle ? null : si === 0
               ? <h1 class="ttl rv">{s.title[0]} {s.title[1] && <em>{s.title[1]}</em>}</h1>
               : s.statement
                 ? <h2 class="ttl"><span class="ln">{s.title[0]}</span> {s.title[1] && <em class="ln">{s.title[1]}</em>}</h2>
@@ -245,6 +246,15 @@ const cf = Array.from({ length: 14 }, (_, k) => { const a = (k / 14) * Math.PI *
       lis.forEach((l, i) => {
         l.addEventListener('click', () => pick(i));
         l.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(i); } });
+      });
+    });
+    // theme switch: flips between two screens
+    document.querySelectorAll<HTMLButtonElement>('.tg').forEach((b) => {
+      const id = b.closest<HTMLElement>('[data-step]')?.dataset.step;
+      b.addEventListener('click', () => {
+        const on = b.getAttribute('aria-checked') !== 'true';
+        b.setAttribute('aria-checked', String(on));
+        document.querySelectorAll(`[data-step="${id}"] .pn`).forEach((pn) => [...pn.children].forEach((f, k) => f.classList.toggle('on', k === (on ? 1 : 0))));
       });
     });
     // screen grows toward the cursor and follows it

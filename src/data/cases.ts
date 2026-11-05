@@ -32,6 +32,7 @@ export type Block =
 
 export interface Screen {
   id: string;
+  toggle?: boolean;                // theme switch beside the title; flips the pan visual
   wip?: boolean;                   // shows a "Work in progress" mark on the visual
   nav: string;                     // label in the left track
   title: [string, string?];        // second part is set in the case colour
@@ -553,18 +554,20 @@ const greenCredit: Partial<CaseData> = {
         { src: '/images/gcs-simulator-page.webp', alt: 'Score simulator: decisions grouped by opening or closing accounts, using cards and payment habits, with current and simulated score side by side.' },
       ] }] } },
 
-    { id: 'colour', nav: 'Decision: colour', title: ['Colour that carries', 'meaning'],
-      lede: 'The team was split: the client and the Junior Designer wanted green only. In an informal check, about 30 people in the US and Canada who follow their credit compared both directions. Most picked colour that carries status, and the client chose it.',
+    { id: 'colour', nav: 'Status color', toggle: true, title: ['When the brief', 'said green'],
+      lede: 'I expected the palette to be the easy part: the brief said green, and the client wanted it that way. But the research and my own judgment said a single hue can’t separate good, fair and poor at a glance. So I designed both directions and took them to the client together with what people thought.',
       blocks: [
         { type: 'list', split: true, items: [
-          { title: 'Status at a glance', body: 'Red, amber and green.' },
-          { title: 'Brand intact', body: 'Impact in shades of green.' },
-          { title: 'Readable without colour', body: 'Every mark has a symbol.' },
+          { title: 'What people said', body: 'About 30 people who follow their credit compared both directions. Most preferred color that carries status.' },
         ] },
+        { type: 'pull', text: 'The client agreed and chose status color. Brand green stays in the shades for impact.' },
       ],
-      visual: { layout: 'single', items: [{ label: 'Status colours', spec: '', src: '/images/gcs-principles.webp', alt: 'Score, status colours and bureau comparison' }] } },
+      visual: { layout: 'single', items: [{ label: 'Green only and status color', spec: '', alt: 'The same credit report dashboard in two directions: green only, and status color with red, amber and green.', pan: [
+        { src: '/images/gcs-theme-green.webp', alt: 'Green-only direction of the credit report dashboard.' },
+        { src: '/images/gcs-theme-status.webp', alt: 'Status color direction of the credit report dashboard, with red, amber and green.' },
+      ] }] } },
 
-    { id: 'landing', nav: 'Decision: landing', title: ['Two concepts,', 'one client decision'],
+    { id: 'landing', nav: 'Landing tone', title: ['Two concepts,', 'one client decision'],
       lede: 'The director wanted a cooler, more modern landing. I believed people checking their own credit need something friendlier. Instead of settling it inside the team, we presented both concepts to the client, each with its pros and cons. The client chose the friendlier one, the direction I’d argued for.',
       blocks: [{ type: 'contrast',
         from: { label: 'Concept A: cooler, SaaS-style', items: ['Looks modern', 'Reads like a tool for analysts'] },
@@ -606,7 +609,7 @@ const greenCredit: Partial<CaseData> = {
 {
   const ss = greenCredit.screens ?? [];
   const from = ss.findIndex((x) => x.id === 'brief');
-  ss.forEach((x, i) => { if (i >= from && x.id !== 'strategy' && x.id !== 'measure' && x.id !== 'brief' && x.id !== 'research' && x.id !== 'priorities' && x.id !== 'guidance') x.visual = { layout: 'single', items: [{ label: 'Work in progress', spec: '', wipph: true }] }; });
+  ss.forEach((x, i) => { if (i >= from && x.id !== 'strategy' && x.id !== 'measure' && x.id !== 'brief' && x.id !== 'research' && x.id !== 'priorities' && x.id !== 'guidance' && x.id !== 'colour') x.visual = { layout: 'single', items: [{ label: 'Work in progress', spec: '', wipph: true }] }; });
 }
 
 export const cases: CaseData[] = [

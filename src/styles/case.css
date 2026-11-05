@@ -864,3 +864,13 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
   .stage .pn-f { transition: opacity .4s ease-out, transform .5s var(--out), transform-origin .18s ease-out; will-change: transform; }
   .stage .ph.pan:hover .pn-f.on { transform: scale(1.5); }
 }
+
+/* theme switch beside the title: green track = green direction, multicolor track = status direction */
+.ttl-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+.tg { flex: none; position: relative; width: 52px; height: 30px; margin-top: 2px; border: 0; padding: 0; border-radius: 999px; cursor: pointer; background: linear-gradient(90deg, #54BC48, #73D550 51%, #B2ED8F); }
+.tg::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(90deg, #FF5B5B, #FE9F4E 34%, #F5D748 66%, #63DEA7); opacity: 0; transition: opacity .4s ease-out; }
+.tg i { position: absolute; top: 3px; left: 3px; width: 24px; height: 24px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(17,17,17,.25); transition: transform .45s var(--out); }
+.tg[aria-checked="true"]::before { opacity: 1; }
+.tg[aria-checked="true"] i { transform: translateX(22px); }
+.tg:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .tg::before, .tg i { transition: none; } }
