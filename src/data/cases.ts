@@ -530,7 +530,7 @@ const greenCredit: Partial<CaseData> = {
       ] }] } },
 
     { id: 'priorities', nav: 'Dashboard', title: ['Where I stand,', 'in one place'],
-      lede: 'The first hypothesis became the landing screen after sign-up. It reads top to bottom, and each block leads to the section behind it.',
+      lede: 'The first hypothesis became the screen people see right after sign-up. It reads top to bottom, and each block leads to the section behind it.',
       blocks: [
         { type: 'list', split: true, items: [
           { icon: 'gauge', title: 'Status', body: 'Standing with all three bureaus, the monthly change and the next milestone.' },
