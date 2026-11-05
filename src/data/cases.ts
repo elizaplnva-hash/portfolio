@@ -558,9 +558,9 @@ const greenCredit: Partial<CaseData> = {
       lede: 'The brief said green, and the client wanted it that way. My research and judgment pointed elsewhere, so I designed a second direction: status color and a clearer way of laying out the information.',
       blocks: [
         { type: 'list', split: true, items: [
-          { title: 'Tested with users', body: 'Both directions, side by side, with about 30 who follow their credit.' },
+          { title: 'Tested with users', body: 'Both directions, side by side, with 30 users who follow their credit.' },
         ] },
-        { type: 'pull', text: 'Most preferred the second, and the client agreed. Brand green stays in the shades for impact.' },
+        { type: 'pull', text: '25 of 30 preferred the second, 83%, and the client agreed. Brand green stays in the shades for impact.' },
       ],
       visual: { layout: 'single', items: [{ label: 'Green only and status color', spec: '', alt: 'The same credit report dashboard in two directions: green only, and status color with red, amber and green.', pan: [
         { src: '/images/gcs-theme-green.webp', alt: 'Green-only direction of the credit report dashboard.' },
@@ -568,12 +568,9 @@ const greenCredit: Partial<CaseData> = {
       ] }] } },
 
     { id: 'landing', nav: 'Landing tone', toggle: 'landing', title: ['When the team', 'split'],
-      lede: 'The landing came first, because the client had to approve a visual style before anything else could follow. The Design Manager and I read Apple-style minimalism differently: she wanted it cooler, I wanted it friendlier.',
+      lede: 'The landing came first: it set the visual style for the whole product, and the client had to approve it before anything else could follow. The Design Manager and I read Apple-style minimalism differently. She wanted it cooler, I wanted it friendlier.\nRather than settle it in the room, we designed both. The designer on my team built the cooler concept from my brief: muted green, text-led cards and a generic dashboard. I made the friendlier one in a day, with brighter green and real product screens in every section.',
       blocks: [
-        { type: 'list', split: true, items: [
-          { title: 'Two concepts', body: 'The designer on my team built the first from my brief. I made the second in a day.' },
-        ] },
-        { type: 'pull', text: 'Both went to the client, who chose the friendlier one.' },
+        { type: 'pull', text: 'The client chose the friendlier one: a page that shows the product itself, not a description of it.' },
       ],
       visual: { layout: 'single', items: [{ label: 'Two landing concepts', spec: '', scroll: true, alt: 'Two landing page concepts: a cooler, SaaS-style one and a friendlier one built around real product screens.', pan: [
         { src: '/images/gcs-landing-a.webp', alt: 'Concept A: a cooler, SaaS-style landing page.' },
