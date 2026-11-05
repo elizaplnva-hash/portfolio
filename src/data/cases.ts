@@ -530,13 +530,12 @@ const greenCredit: Partial<CaseData> = {
       ] }] } },
 
     { id: 'priorities', nav: 'Dashboard', title: ['Where I stand,', 'in one place'],
-      lede: 'Hypothesis 1 became the first screen after sign-up.',
+      lede: 'Hypothesis 1 became the first screen after sign-up. It reads top to bottom, and every block opens its own section.',
       blocks: [
-        { type: 'list', split: true, items: [
-          { title: 'Score and status', body: 'Three bureaus side by side, the monthly change and the next milestone.' },
-          { title: 'Score factors', body: 'Six factors, each with its impact and one tip.' },
-          { title: 'Debt', body: 'Balances, monthly payments, debt-to-income and the status of each account.' },
-          { title: 'Sections', body: 'Every block links to its own section: report, simulator, debt analysis, factors.' },
+        { type: 'list', split: true, numbered: true, items: [
+          { title: 'Status', body: 'Three bureaus side by side, the monthly change and the next milestone.' },
+          { title: 'What drives it', body: 'Six factors, each with its impact and one tip.' },
+          { title: 'What you owe', body: 'Balances, monthly payments, debt-to-income and the status of each account.' },
         ] },
         { type: 'pull', text: 'Overview first, details on demand.' },
       ],
