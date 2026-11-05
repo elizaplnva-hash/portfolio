@@ -521,7 +521,7 @@ const greenCredit: Partial<CaseData> = {
       ] } }] } },
 
     { id: 'strategy', nav: 'Hypothesis', title: ['How might we turn', 'a number into a plan?'],
-      lede: 'Research left me with three findings. For each one I wrote a hypothesis, so the product answers the questions people actually ask.',
+      lede: 'Research left me with three findings. For each one I wrote a hypothesis. Next: how the product answers them, one by one.',
       blocks: [{ type: 'pull', text: 'A score matters only when people know what to do next.' }],
       visual: { layout: 'single', items: [{ label: 'Three hypotheses', spec: '', alt: 'Three hypotheses. One: people mix up reports and scores, so how might we show where I stand, with one place for the basics and a way to go deeper. Two: knowledge gaps cost money, so how might we explain what drives it, by showing the factors and the debt behind the number. Three: competitors stop at monitoring, so how might we show what could change it, by letting people test a change before they make it.', hyps: [
         { saw: 'people mix up reports and scores', q: 'How might we show where I stand?', a: 'One place with the basics,\nand a way to go deeper' },
@@ -529,10 +529,18 @@ const greenCredit: Partial<CaseData> = {
         { saw: 'competitors stop at monitoring', q: 'How might we show what could change it?', a: 'Let people test a change\nbefore they make it' },
       ] }] } },
 
-    { id: 'priorities', nav: 'Dashboard', title: ['Up front,', 'or one click away'],
-      lede: 'Where do I stand? The dashboard answers in five seconds: score, status, next milestone and six factors. Everything else sits one click away, in the section that explains it.',
-      blocks: [{ type: 'pull', text: 'Only what answers “where do I stand?” earns a place up front.' }],
-      visual: { layout: 'single', items: [{ label: 'Dashboard and mobile', spec: '', combo: ['/images/gcs-dash.webp', '/images/gcs-mob.webp'], dm: true, alt: 'The Green Credit Score dashboard on the web, with the same dashboard on a phone in front of it' }] } },
+    { id: 'priorities', nav: 'Dashboard', title: ['One place with', 'the basics'],
+      lede: 'That became the first screen after sign-up: where you stand, and a way to go deeper.',
+      blocks: [
+        { type: 'list', split: true, items: [
+          { title: 'Score and status', body: 'Three bureaus side by side, the monthly change and the next milestone.' },
+          { title: 'Score factors', body: 'Six factors, each with its impact and one tip.' },
+          { title: 'Debt', body: 'Balances, monthly payments, debt-to-income and the status of each account.' },
+          { title: 'Go deeper', body: 'Every block opens its section: report, simulator, debt, factors.' },
+        ] },
+        { type: 'pull', text: 'Overview first, details on demand.' },
+      ],
+      visual: { layout: 'single', items: [{ label: 'Dashboard and mobile', spec: '', src: '/images/gcs-dashboard-full.webp', zoom: true, pad: true, alt: 'The Green Credit Score dashboard on the web and on mobile: credit score from three bureaus, six score factors and debt analysis, with a menu to the credit report, score simulator, debt analysis and score factors.' }] } },
 
     { id: 'guidance', nav: 'Explain and test', title: ['Explain the score,', 'then let people try'],
       lede: 'Every factor opens with the same five blocks: where you stand, why, the accounts behind it, a year of history and what a missed payment would do. The simulator turns the same data into eight scenarios, grouped by decisions people make.',
