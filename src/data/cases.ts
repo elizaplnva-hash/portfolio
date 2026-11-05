@@ -544,9 +544,9 @@ const greenCredit: Partial<CaseData> = {
       lede: 'The second and third hypotheses answer the next two questions: what drives it, and what could change it.',
       blocks: [
         { type: 'list', split: true, items: [
-          { icon: 'zoom-question', title: 'Factors', body: 'Each opens with the same five blocks: standing, cause, accounts, a year of history and the cost of a missed payment.' },
-          { icon: 'compass', title: 'Simulator', body: 'Eight scenarios grouped by everyday decisions, with current and simulated results side by side.' },
-          { icon: 'alert-triangle', title: 'Limits', body: 'The FAQ states plainly that nothing is guaranteed.' },
+          { icon: 'zoom-question', title: 'Factors', body: 'Every factor shares five blocks, from your standing to the cost of a missed payment.' },
+          { icon: 'compass', title: 'Simulator', body: 'Eight everyday scenarios, with current and simulated results side by side.' },
+          { icon: 'alert-triangle', title: 'Limits', body: 'The FAQ says plainly that nothing is guaranteed, whatever the simulator shows.' },
         ] },
       ],
       visual: { layout: 'single', items: [{ label: 'Explain and explore', spec: '', trio: [
