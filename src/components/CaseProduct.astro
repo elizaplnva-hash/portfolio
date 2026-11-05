@@ -245,6 +245,7 @@ const cf = Array.from({ length: 14 }, (_, k) => { const a = (k / 14) * Math.PI *
       };
       lis.forEach((l, i) => {
         l.addEventListener('click', () => pick(i));
+        l.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') pick(i); });
         l.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(i); } });
       });
     });
