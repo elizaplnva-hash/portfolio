@@ -555,12 +555,12 @@ const greenCredit: Partial<CaseData> = {
       ] }] } },
 
     { id: 'colour', nav: 'Status color', toggle: true, title: ['When the brief', 'said green'],
-      lede: 'I expected the palette to be the easy part: the brief said green, and the client wanted it that way. But the research and my own judgment said a single hue can’t separate good, fair and poor at a glance. So I designed both directions and took them to the client together with what people thought.',
+      lede: 'The brief said green, and the client wanted it that way. My research and judgment pointed elsewhere, so I designed a second direction: status color and a clearer way of laying out the information.',
       blocks: [
         { type: 'list', split: true, items: [
-          { title: 'What people said', body: 'About 30 people who follow their credit compared both directions. Most preferred color that carries status.' },
+          { title: 'What people said', body: 'About 30 people compared both. Most preferred the second.' },
         ] },
-        { type: 'pull', text: 'The client agreed and chose status color. Brand green stays in the shades for impact.' },
+        { type: 'pull', text: 'The client agreed and chose it. Brand green stays in the shades for impact.' },
       ],
       visual: { layout: 'single', items: [{ label: 'Green only and status color', spec: '', alt: 'The same credit report dashboard in two directions: green only, and status color with red, amber and green.', pan: [
         { src: '/images/gcs-theme-green.webp', alt: 'Green-only direction of the credit report dashboard.' },
