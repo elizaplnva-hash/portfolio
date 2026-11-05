@@ -540,13 +540,12 @@ const greenCredit: Partial<CaseData> = {
       ],
       visual: { layout: 'single', items: [{ label: 'Dashboard and mobile', spec: '', combo: ['/images/gcs-dash.webp', '/images/gcs-mob.webp'], dm: true, alt: 'The Green Credit Score dashboard on the web, with the same dashboard on a phone in front of it' }] } },
 
-    { id: 'guidance', nav: 'Explain and test', title: ['Explain the score,', 'then let people try'],
-      lede: 'The second and third hypotheses answer the next two questions: what drives it, and what could change it.',
+    { id: 'guidance', nav: 'Explain and test', title: ['Understand the score,', 'then change it'],
+      lede: 'The dashboard shows where you stand. Two sections answer what comes next: why, and what would change it.',
       blocks: [
         { type: 'list', split: true, items: [
-          { icon: 'zoom-question', title: 'Factors', body: 'Every factor shares five blocks, from your standing to the cost of a missed payment.' },
-          { icon: 'compass', title: 'Simulator', body: 'Eight everyday scenarios, with current and simulated results side by side.' },
-          { icon: 'alert-triangle', title: 'Limits', body: 'The FAQ says plainly that nothing is guaranteed, whatever the simulator shows.' },
+          { icon: 'zoom-question', title: 'Score factors', body: 'The reason behind the number. Every factor has its own page with the same five blocks.' },
+          { icon: 'compass', title: 'Score simulator', body: 'The effect of a decision. Pick one, like closing the oldest card, and see the new result.' },
         ] },
       ],
       visual: { layout: 'single', items: [{ label: 'Explain and explore', spec: '', trio: [
