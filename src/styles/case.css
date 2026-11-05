@@ -560,6 +560,7 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
   .sts:has(.sts-c:hover) .sts-c:not(:hover) { opacity: .45; transform: scale(.97); }
   .sts-c:nth-of-type(1):hover { transform: translateY(12px) rotate(-2deg) scale(1.03); position: relative; z-index: 2; }
   .sts-c:nth-of-type(2):hover { transform: translateY(-12px) rotate(2deg) scale(1.03); position: relative; z-index: 2; }
+  .sts-c:nth-of-type(3):hover { transform: translateX(14px) rotate(-2deg) scale(1.03); position: relative; z-index: 2; }
 }
 .ph.stats { text-align: left; color: var(--ink); }
 .ph.stats .sts-lead { max-width: none; font-size: clamp(15px, 1.25vw, 18px); line-height: 1.2; color: var(--ink); }
@@ -835,5 +836,11 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .ph.hyps .hy-saw { margin: 6px 0 10px; font-size: clamp(12.5px, 1vw, 14px); letter-spacing: -.01em; color: var(--muted); text-align: left; }
 .ph.hyps .hy-c { padding: clamp(18px, 2.6vh, 28px) clamp(20px, 2vw, 28px); background: #fff; border-radius: 20px; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 6px 20px rgba(17,17,17,.08); }
 .ph.hyps .hy-q { margin: 0 0 6px; font-size: clamp(13.5px, 1.1vw, 15px); font-weight: 600; letter-spacing: -.015em; color: var(--af, #1c9a52); text-align: left; }
-.ph.hyps .hy-a { margin: 0; font-size: clamp(19px, 1.8vw, 25px); font-weight: 600; letter-spacing: -.035em; line-height: 1.15; color: var(--ink); text-align: left; text-wrap: balance; }
+.ph.hyps .hy-a { margin: 0; font-size: clamp(19px, 1.8vw, 25px); font-weight: 600; letter-spacing: -.035em; line-height: 1.15; color: var(--ink); text-align: left; white-space: pre-line; }
 .m-vis .ph.hyps { aspect-ratio: auto !important; }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .ph.hyps .hy-c { transition: transform .6s var(--out), opacity .5s ease-out; }
+  .hy:has(.hy-c:hover) .hy-c:not(:hover) { opacity: .45; transform: scale(.97); }
+  .hy-r:nth-child(odd) .hy-c:hover { transform: rotate(-2deg) scale(1.03); position: relative; z-index: 2; }
+  .hy-r:nth-child(even) .hy-c:hover { transform: rotate(2deg) scale(1.03); position: relative; z-index: 2; }
+}

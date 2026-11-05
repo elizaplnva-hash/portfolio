@@ -524,14 +524,14 @@ const greenCredit: Partial<CaseData> = {
       lede: 'Research left me with three findings. For each one I wrote a hypothesis, so the product answers the questions people actually ask.',
       blocks: [{ type: 'pull', text: 'A score matters only when people know what to do next.' }],
       visual: { layout: 'single', items: [{ label: 'Three hypotheses', spec: '', alt: 'Three hypotheses. One: people mix up reports and scores, so how might we show where I stand, with one place for the basics and a way to go deeper. Two: knowledge gaps cost money, so how might we explain what drives it, by showing the factors and the debt behind the number. Three: competitors stop at monitoring, so how might we show what could change it, by letting people test a change before they make it.', hyps: [
-        { saw: 'people mix up reports and scores', q: 'How might we show where I stand?', a: 'One place with the basics, and a way to go deeper' },
-        { saw: 'knowledge gaps cost money', q: 'How might we explain what drives it?', a: 'Show the factors and the debt behind the number' },
-        { saw: 'competitors stop at monitoring', q: 'How might we show what could change it?', a: 'Let people test a change before they make it' },
+        { saw: 'people mix up reports and scores', q: 'How might we show where I stand?', a: 'One place with the basics,\nand a way to go deeper' },
+        { saw: 'knowledge gaps cost money', q: 'How might we explain what drives it?', a: 'Show the factors and\nthe debt behind the number' },
+        { saw: 'competitors stop at monitoring', q: 'How might we show what could change it?', a: 'Let people test a change\nbefore they make it' },
       ] }] } },
 
     { id: 'priorities', nav: 'Dashboard', title: ['Up front,', 'or one click away'],
       lede: 'Where do I stand? The dashboard answers in five seconds: score, status, next milestone and six factors. Everything else sits one click away, in the section that explains it.',
-      blocks: [{ type: 'quote', text: 'Overview first, zoom and filter, then details on demand.', by: 'Ben Shneiderman, 1996' }],
+      blocks: [{ type: 'pull', text: 'Only what answers “where do I stand?” earns a place up front.' }],
       visual: { layout: 'single', items: [{ label: 'Dashboard and mobile', spec: '', combo: ['/images/gcs-dash.webp', '/images/gcs-mob.webp'], dm: true, alt: 'The Green Credit Score dashboard on the web, with the same dashboard on a phone in front of it' }] } },
 
     { id: 'guidance', nav: 'Explain and test', title: ['Explain the score,', 'then let people try'],
