@@ -530,14 +530,13 @@ const greenCredit: Partial<CaseData> = {
       ] }] } },
 
     { id: 'priorities', nav: 'Dashboard', title: ['Where I stand,', 'in one place'],
-      lede: 'Hypothesis 1 became the first screen after sign-up. It reads top to bottom, and every block opens its own section.',
+      lede: 'Hypothesis 1 became the landing screen after sign-up. It reads top to bottom, and each block leads to the section behind it.',
       blocks: [
-        { type: 'list', split: true, numbered: true, items: [
-          { title: 'Status', body: 'Three bureaus side by side, the monthly change and the next milestone.' },
-          { title: 'What drives it', body: 'Six factors, each with its impact and one tip.' },
-          { title: 'What you owe', body: 'Balances, monthly payments, debt-to-income and the status of each account.' },
+        { type: 'list', split: true, items: [
+          { icon: 'gauge', title: 'Status', body: 'Standing with all three bureaus, the monthly change and the next milestone.' },
+          { icon: 'chart-bar', title: 'Drivers', body: 'Six factors labelled by impact, each with a single tip.' },
+          { icon: 'wallet', title: 'Debt', body: 'Open balances, monthly payments, debt-to-income and the standing of each account.' },
         ] },
-        { type: 'pull', text: 'Overview first, details on demand.' },
       ],
       visual: { layout: 'single', items: [{ label: 'Dashboard and mobile', spec: '', combo: ['/images/gcs-dash.webp', '/images/gcs-mob.webp'], dm: true, alt: 'The Green Credit Score dashboard on the web, with the same dashboard on a phone in front of it' }] } },
 
