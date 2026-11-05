@@ -541,11 +541,11 @@ const greenCredit: Partial<CaseData> = {
       visual: { layout: 'single', items: [{ label: 'Dashboard and mobile', spec: '', combo: ['/images/gcs-dash.webp', '/images/gcs-mob.webp'], dm: true, alt: 'The Green Credit Score dashboard on the web, with the same dashboard on a phone in front of it' }] } },
 
     { id: 'guidance', nav: 'Explain and test', title: ['Explain the score,', 'then let people try'],
-      lede: 'The second and third hypotheses became two linked sections: one explains the score, the other lets people test it.',
+      lede: 'The second and third hypotheses answer the next two questions: what drives it, and what could change it.',
       blocks: [
         { type: 'list', split: true, items: [
-          { icon: 'zoom-question', title: 'Explain', body: 'Every factor opens with the same five blocks: where you stand, why, the accounts behind it, a year of history and what a missed payment would do.' },
-          { icon: 'compass', title: 'Test', body: 'Eight scenarios grouped by decisions people make, with the current and simulated score side by side.' },
+          { icon: 'zoom-question', title: 'Factors', body: 'Each opens with the same five blocks: standing, cause, accounts, a year of history and the cost of a missed payment.' },
+          { icon: 'compass', title: 'Simulator', body: 'Eight scenarios grouped by everyday decisions, with current and simulated results side by side.' },
           { icon: 'alert-triangle', title: 'Limits', body: 'The FAQ states plainly that nothing is guaranteed.' },
         ] },
       ],
