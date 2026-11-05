@@ -478,7 +478,7 @@ const greenCredit: Partial<CaseData> = {
       blocks: [{ type: 'glance', items: [
         { icon: 'alert-triangle', label: 'Problem', text: 'Credit data comes in three reports, and it’s unclear which one matters.', href: '#context' },
         { icon: 'bulb', label: 'Solution', text: 'A dashboard with the status up front, score factors that explain it, and a simulator for testing changes.', href: '#strategy' },
-        { icon: 'chart-bar', label: 'Outcome', text: 'Approved and handed to development with a design system, two weeks early. We skipped wireframes by working from our data and Figma agents.', href: '#outcome' },
+        { icon: 'chart-bar', label: 'Outcome', text: 'Approved and handed to development with a design system, two weeks early. We skipped wireframes by working from our data and Figma agents.', href: '#ai' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'Credit report', spec: '', cut: '/images/gcs-report-full.webp', alt: 'The Green Credit Score credit report page, cut off by the frame.' }] } },
 
@@ -529,8 +529,8 @@ const greenCredit: Partial<CaseData> = {
         { saw: 'competitors stop at monitoring', q: 'How might we show what could change it?', a: 'Let people test a change before they make it' },
       ] }] } },
 
-    { id: 'priorities', nav: 'Prioritization', title: ['Up front,', 'or one click away'],
-      lede: 'The dashboard is where the five seconds happen, so every piece of data had to earn its place there. The rest stays one click away, in the section that explains it.',
+    { id: 'priorities', nav: 'Dashboard', title: ['Up front,', 'or one click away'],
+      lede: 'Where do I stand? The dashboard answers in five seconds: score, status, next milestone and six factors. Everything else sits one click away, in the section that explains it.',
       blocks: [{ type: 'quote', text: 'Overview first, zoom and filter, then details on demand.', by: 'Ben Shneiderman, 1996' }],
       visual: { layout: 'single', items: [{ label: 'What goes where', spec: '', alt: 'Which data sits on the dashboard and which sits deeper', compare: { cols: ['Dashboard', 'Deeper'], rows: [
         { label: 'Score and status', a: true, b: true },
@@ -542,8 +542,8 @@ const greenCredit: Partial<CaseData> = {
         { label: 'What-if scenarios', a: false, b: true },
       ] } }] } },
 
-    { id: 'guidance', nav: 'Guidance', title: ['Explain the score,', 'then let people try'],
-      lede: 'Every factor opens with the same five blocks: where you stand, why, the accounts behind it, a year of history and what happens if you miss a payment. The simulator turns the same data into eight scenarios, grouped by decisions people actually make.',
+    { id: 'guidance', nav: 'Explain and test', title: ['Explain the score,', 'then let people try'],
+      lede: 'Every factor opens with the same five blocks: where you stand, why, the accounts behind it, a year of history and what a missed payment would do. The simulator turns the same data into eight scenarios, grouped by decisions people make.',
       blocks: [{ type: 'pull', text: 'Current and simulated score sit side by side, and the FAQ says plainly that nothing is guaranteed.' }],
       visual: { layout: 'single', items: [{ label: 'Explain and explore', spec: '', trio: [
         { src: '/images/gcs-research.webp', label: 'Score factors', icon: 'gauge' },
@@ -551,19 +551,18 @@ const greenCredit: Partial<CaseData> = {
         { src: '/images/gcs-simulator.webp', label: 'Score simulator', icon: 'compass' },
       ], alt: 'Three screens: score factors, the credit report and the score simulator.' }] } },
 
-    { id: 'colour', nav: 'Design decision', title: ['Colour that carries', 'meaning'],
-      lede: 'Colour is information here: it says what’s fine and what needs attention before you read a number. The team was split; the client and the Junior Designer wanted green only. In an informal check, about 30 people in the US and Canada who follow their credit compared both directions. Most picked semantic colour, and the client chose it.',
+    { id: 'colour', nav: 'Decision: colour', title: ['Colour that carries', 'meaning'],
+      lede: 'The team was split: the client and the Junior Designer wanted green only. In an informal check, about 30 people in the US and Canada who follow their credit compared both directions. Most picked colour that carries status, and the client chose it.',
       blocks: [
-        { type: 'cards', items: [
-          { icon: 'palette', title: 'Status at a glance', body: 'Red, amber and green.' },
-          { icon: 'circle-check', title: 'Brand intact', body: 'Impact in shades of green.' },
-          { icon: 'eye', title: 'Readable without colour', body: 'Every mark has a symbol.' },
+        { type: 'list', split: true, items: [
+          { title: 'Status at a glance', body: 'Red, amber and green.' },
+          { title: 'Brand intact', body: 'Impact in shades of green.' },
+          { title: 'Readable without colour', body: 'Every mark has a symbol.' },
         ] },
-        { type: 'cards', items: [{ label: 'What we did', title: 'A new name, a green palette', body: 'The client renamed it Green Credit Score. I moved the palette from brown and beige to green; we kept Montserrat and drew a new logo.' }] },
       ],
       visual: { layout: 'single', items: [{ label: 'Status colours', spec: '', src: '/images/gcs-principles.webp', alt: 'Score, status colours and bureau comparison' }] } },
 
-    { id: 'landing', nav: 'Stakeholders', title: ['Two concepts,', 'one client decision'],
+    { id: 'landing', nav: 'Decision: landing', title: ['Two concepts,', 'one client decision'],
       lede: 'The director wanted a cooler, more modern landing. I believed people checking their own credit need something friendlier. Instead of settling it inside the team, we presented both concepts to the client, each with its pros and cons. The client chose the friendlier one, the direction I’d argued for.',
       blocks: [{ type: 'contrast',
         from: { label: 'Concept A: cooler, SaaS-style', items: ['Looks modern', 'Reads like a tool for analysts'] },
@@ -578,19 +577,6 @@ const greenCredit: Partial<CaseData> = {
     { id: 'handoff', nav: 'Handoff', title: ['Built for the developer', 'we work with'],
       lede: 'We’ve worked with this developer before, so the file followed the structure he prefers. I left comments wherever precision mattered, and we walked through the tricky parts together before he started.',
       visual: { layout: 'single', items: [{ label: 'Add: developer comments', spec: 'A Figma frame with your comments for the developer, and two examples' }] } },
-
-    { id: 'outcome', nav: 'Outcome', title: ['Approved,', 'and in development'],
-      lede: 'The client approved the design and it went to development. The three added sections, the dashboard structure and semantic colour all made it into the final product.',
-      visual: { layout: 'single', items: [{ label: 'Outcome', spec: '', alt: 'Delivery and decisions: two weeks ahead of plan, three sections added, about thirty people compared colour directions, two landing concepts presented', metrics: [
-        { title: 'Delivery', items: [
-          { value: '2 wks', label: 'Ahead of plan', note: 'Wireframing stage removed' },
-          { value: '3', label: 'Sections beyond the brief', note: 'Approved with the final design' },
-        ] },
-        { title: 'Decisions', items: [
-          { value: '~30', label: 'People compared colour directions', note: 'Informal, in the US and Canada' },
-          { value: '2', label: 'Landing concepts presented', note: 'The client chose one' },
-        ] },
-      ] }] } },
 
     { id: 'measure', nav: 'Success metrics', wide: true, title: ['What I’d measure', 'after launch'],
       lede: 'The product is in development, so there are no results yet. These are the signals I’d track first, and what each would tell the team. They are proposals, not outcomes.',
