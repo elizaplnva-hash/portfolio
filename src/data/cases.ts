@@ -529,18 +529,18 @@ const greenCredit: Partial<CaseData> = {
         { saw: 'competitors stop at monitoring', q: 'How might we show what could change it?', a: 'Let people test a change\nbefore they make it' },
       ] }] } },
 
-    { id: 'priorities', nav: 'Dashboard', title: ['One place with', 'the basics'],
-      lede: 'That became the first screen after sign-up: where you stand, and a way to go deeper.',
+    { id: 'priorities', nav: 'Dashboard', title: ['Where I stand,', 'in one place'],
+      lede: 'Hypothesis 1 became the first screen after sign-up.',
       blocks: [
         { type: 'list', split: true, items: [
           { title: 'Score and status', body: 'Three bureaus side by side, the monthly change and the next milestone.' },
           { title: 'Score factors', body: 'Six factors, each with its impact and one tip.' },
           { title: 'Debt', body: 'Balances, monthly payments, debt-to-income and the status of each account.' },
-          { title: 'Go deeper', body: 'Every block opens its section: report, simulator, debt, factors.' },
+          { title: 'Sections', body: 'Every block links to its own section: report, simulator, debt analysis, factors.' },
         ] },
         { type: 'pull', text: 'Overview first, details on demand.' },
       ],
-      visual: { layout: 'single', items: [{ label: 'Dashboard and mobile', spec: '', src: '/images/gcs-dashboard-full.webp', zoom: true, pad: true, alt: 'The Green Credit Score dashboard on the web and on mobile: credit score from three bureaus, six score factors and debt analysis, with a menu to the credit report, score simulator, debt analysis and score factors.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Dashboard and mobile', spec: '', combo: ['/images/gcs-dash.webp', '/images/gcs-mob.webp'], dm: true, alt: 'The Green Credit Score dashboard on the web, with the same dashboard on a phone in front of it' }] } },
 
     { id: 'guidance', nav: 'Explain and test', title: ['Explain the score,', 'then let people try'],
       lede: 'Every factor opens with the same five blocks: where you stand, why, the accounts behind it, a year of history and what a missed payment would do. The simulator turns the same data into eight scenarios, grouped by decisions people make.',
