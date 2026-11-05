@@ -221,23 +221,6 @@ const cf = Array.from({ length: 14 }, (_, k) => { const a = (k / 14) * Math.PI *
 
   // images lean toward the cursor (mouse devices only, never with reduced motion)
   if (matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)').matches) {
-    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      const S = 1.5;
-      document.querySelectorAll<HTMLElement>('.stage .pn-f').forEach((f) => {
-        const img = f.querySelector('img') as HTMLImageElement | null;
-        if (!img) return;
-        f.addEventListener('pointermove', (e) => {
-          const r = f.getBoundingClientRect();
-          const x = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width));
-          const y = Math.min(1, Math.max(0, (e.clientY - r.top) / r.height));
-          const w = img.offsetWidth, h = img.offsetHeight;
-          const tx = -x * (w * S - r.width);
-          const ty = -y * (h * S - r.height);
-          img.style.transform = `translate(${tx}px, ${ty}px) scale(${S})`;
-        });
-        f.addEventListener('pointerleave', () => { img.style.transform = ''; });
-      });
-    }
     document.querySelectorAll<HTMLElement>('.stage .ph:not(.duo):not(.combo):not(.compare):not(.stats):not(.hyps):not(.pan):not(.reviews):not(.audit):not(.zoom):not(.trio):not(.cut):not(.chain)').forEach((el) => {
       el.addEventListener('pointermove', (e) => {
         const r = el.getBoundingClientRect();
