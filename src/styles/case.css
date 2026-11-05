@@ -874,3 +874,17 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .tg[aria-checked="true"] i { transform: translateX(22px); }
 .tg:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { .tg::before, .tg i { transition: none; } }
+
+.tg.land { background: #349765; }
+.tg.land::before { background: #3AAF01; }
+/* long landing pages scroll with the cursor */
+.stage .ph.pan.scroll { cursor: ns-resize; }
+.ph.pan.scroll::after { content: ""; position: absolute; right: 8px; top: calc(12px + var(--p, 0) * (100% - 24px - 56px)); width: 4px; height: 56px; border-radius: 2px; background: rgba(17,17,17,.2); z-index: 2; pointer-events: none; }
+.pan.scroll .pn-f { transform-origin: 50% 0; }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .stage .ph.pan.scroll .pn-f { transition: opacity .4s ease-out, transform .3s ease-out; }
+  .stage .ph.pan.scroll:hover .pn-f.on { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) { .stage .ph.pan.scroll .pn-f { transition: opacity .2s; } }
+.m-vis .ph.pan.scroll .pn { overflow-y: auto; -webkit-overflow-scrolling: touch; }
+.m-vis .ph.pan.scroll::after { display: none; }

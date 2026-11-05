@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; pan?: { src: string; alt?: string }[]; hyps?: { saw: string; q: string; a: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; pan?: { src: string; alt?: string }[]; scroll?: boolean; hyps?: { saw: string; q: string; a: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -32,7 +32,7 @@ export type Block =
 
 export interface Screen {
   id: string;
-  toggle?: boolean;                // theme switch beside the title; flips the pan visual
+  toggle?: boolean | 'landing';                // theme switch beside the title; flips the pan visual
   wip?: boolean;                   // shows a "Work in progress" mark on the visual
   nav: string;                     // label in the left track
   title: [string, string?];        // second part is set in the case colour
@@ -567,12 +567,18 @@ const greenCredit: Partial<CaseData> = {
         { src: '/images/gcs-theme-status.webp', alt: 'Status color direction of the credit report dashboard, with red, amber and green.' },
       ] }] } },
 
-    { id: 'landing', nav: 'Landing tone', title: ['Two concepts,', 'one client decision'],
-      lede: 'The director wanted a cooler, more modern landing. I believed people checking their own credit need something friendlier. Instead of settling it inside the team, we presented both concepts to the client, each with its pros and cons. The client chose the friendlier one, the direction I’d argued for.',
-      blocks: [{ type: 'contrast',
-        from: { label: 'Concept A: cooler, SaaS-style', items: ['Looks modern', 'Reads like a tool for analysts'] },
-        to: { label: 'Concept B: friendlier, real product screens', items: ['Shows what you get', 'Feels approachable'], icons: ['eye', 'circle-check'] } }],
-      visual: { layout: 'single', items: [{ label: 'Add: both landing concepts', spec: 'Concept A and Concept B side by side, without template data' }] } },
+    { id: 'landing', nav: 'Landing tone', toggle: 'landing', title: ['When the team', 'split'],
+      lede: 'The landing came first, because the client had to approve a visual style before anything else could follow. The Design Manager and I read Apple-style minimalism differently: she wanted it cooler, I wanted it friendlier.',
+      blocks: [
+        { type: 'list', split: true, items: [
+          { title: 'Two concepts', body: 'The designer on my team built the first from my brief. I made the second in a day.' },
+        ] },
+        { type: 'pull', text: 'Both went to the client, who chose the friendlier one.' },
+      ],
+      visual: { layout: 'single', items: [{ label: 'Two landing concepts', spec: '', scroll: true, alt: 'Two landing page concepts: a cooler, SaaS-style one and a friendlier one built around real product screens.', pan: [
+        { src: '/images/gcs-landing-a.webp', alt: 'Concept A: a cooler, SaaS-style landing page.' },
+        { src: '/images/gcs-landing-b.webp', alt: 'Concept B: a friendlier landing page with real product screens.' },
+      ] }] } },
 
     { id: 'ai', nav: 'AI workflow', title: ['Prompts', 'instead of wireframes'],
       lede: 'I removed the wireframing stage. I set the structure and requirements for each section, wrote one prompt per section for Figma AI agents and marked up each draft for the Junior Designer, who worked out the visuals. I made the final pass; the Design Manager reviewed after me.',
@@ -609,7 +615,7 @@ const greenCredit: Partial<CaseData> = {
 {
   const ss = greenCredit.screens ?? [];
   const from = ss.findIndex((x) => x.id === 'brief');
-  ss.forEach((x, i) => { if (i >= from && x.id !== 'strategy' && x.id !== 'measure' && x.id !== 'brief' && x.id !== 'research' && x.id !== 'priorities' && x.id !== 'guidance' && x.id !== 'colour') x.visual = { layout: 'single', items: [{ label: 'Work in progress', spec: '', wipph: true }] }; });
+  ss.forEach((x, i) => { if (i >= from && x.id !== 'strategy' && x.id !== 'measure' && x.id !== 'brief' && x.id !== 'research' && x.id !== 'priorities' && x.id !== 'guidance' && x.id !== 'colour' && x.id !== 'landing') x.visual = { layout: 'single', items: [{ label: 'Work in progress', spec: '', wipph: true }] }; });
 }
 
 export const cases: CaseData[] = [
