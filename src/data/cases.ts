@@ -532,15 +532,7 @@ const greenCredit: Partial<CaseData> = {
     { id: 'priorities', nav: 'Dashboard', title: ['Up front,', 'or one click away'],
       lede: 'Where do I stand? The dashboard answers in five seconds: score, status, next milestone and six factors. Everything else sits one click away, in the section that explains it.',
       blocks: [{ type: 'quote', text: 'Overview first, zoom and filter, then details on demand.', by: 'Ben Shneiderman, 1996' }],
-      visual: { layout: 'single', items: [{ label: 'What goes where', spec: '', alt: 'Which data sits on the dashboard and which sits deeper', compare: { cols: ['Dashboard', 'Deeper'], rows: [
-        { label: 'Score and status', a: true, b: true },
-        { label: 'Next milestone', a: true, b: false },
-        { label: 'Six factors with impact', a: true, b: true },
-        { label: 'Debt totals', a: true, b: true },
-        { label: 'Month-by-month payment history', a: false, b: true },
-        { label: 'Personal info, inquiries, collections', a: false, b: true },
-        { label: 'What-if scenarios', a: false, b: true },
-      ] } }] } },
+      visual: { layout: 'single', items: [{ label: 'Dashboard and mobile', spec: '', combo: ['/images/gcs-dash.webp', '/images/gcs-mob.webp'], dm: true, alt: 'The Green Credit Score dashboard on the web, with the same dashboard on a phone in front of it' }] } },
 
     { id: 'guidance', nav: 'Explain and test', title: ['Explain the score,', 'then let people try'],
       lede: 'Every factor opens with the same five blocks: where you stand, why, the accounts behind it, a year of history and what a missed payment would do. The simulator turns the same data into eight scenarios, grouped by decisions people make.',
@@ -604,7 +596,7 @@ const greenCredit: Partial<CaseData> = {
 {
   const ss = greenCredit.screens ?? [];
   const from = ss.findIndex((x) => x.id === 'brief');
-  ss.forEach((x, i) => { if (i >= from && x.id !== 'strategy' && x.id !== 'measure' && x.id !== 'brief' && x.id !== 'research') x.visual = { layout: 'single', items: [{ label: 'Work in progress', spec: '', wipph: true }] }; });
+  ss.forEach((x, i) => { if (i >= from && x.id !== 'strategy' && x.id !== 'measure' && x.id !== 'brief' && x.id !== 'research' && x.id !== 'priorities') x.visual = { layout: 'single', items: [{ label: 'Work in progress', spec: '', wipph: true }] }; });
 }
 
 export const cases: CaseData[] = [
