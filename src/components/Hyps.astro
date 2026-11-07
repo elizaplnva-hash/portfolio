@@ -1,19 +1,14 @@
 ---
-interface Props { items: { saw: string; q: string; a: string; shot?: string; href?: string }[]; }
+interface Props { items: { saw: string; q: string; a: string }[]; }
 const { items } = Astro.props;
 ---
-<div class="hy">
+<div class="hb">
+  <div class="hb-h" aria-hidden="true"><span>We saw</span><span></span><span>How might we</span></div>
   {items.map((it, i) => (
-    <div class="hy-r">
-      <span class="hy-n" aria-hidden="true">{i + 1}</span>
-      <div class="hy-b">
-        <p class="hy-saw">We saw: {it.saw}</p>
-        <div class="hy-c">
-          <p class="hy-q">{it.q}</p>
-          <p class="hy-a">{it.a}</p>
-          {it.shot && <a class="hy-go" href={it.href}>Answered in {it.shot}</a>}
-        </div>
-      </div>
+    <div class="hb-r" style={`--i:${i}`}>
+      <p class="hb-from">{it.saw}</p>
+      <i class="hb-ln" aria-hidden="true"></i>
+      <div class="hb-to"><b>{it.q}</b><span>{it.a}</span></div>
     </div>
   ))}
 </div>
