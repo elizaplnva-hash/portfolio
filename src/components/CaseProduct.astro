@@ -189,6 +189,16 @@ const cf = Array.from({ length: 14 }, (_, k) => { const a = (k / 14) * Math.PI *
 
 <script>
   document.documentElement.classList.add('js');
+  // research ring: count 0 → target when its visual becomes active
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll<SVGSVGElement>('.stage .cst-c.ring svg[data-to]').forEach((svg) => {
+      const vis = svg.closest('.vis'); const t = svg.querySelector('text'); const to = Number(svg.dataset.to);
+      if (!vis || !t) return;
+      let raf = 0;
+      const run = () => { cancelAnimationFrame(raf); const t0 = performance.now() + 500; const tick = (now: number) => { const k = Math.min(1, Math.max(0, (now - t0) / 1100)); const e = 1 - Math.pow(1 - k, 3); t.textContent = Math.round(to * e) + '%'; if (k < 1) raf = requestAnimationFrame(tick); }; raf = requestAnimationFrame(tick); };
+      new MutationObserver(() => { if (vis.classList.contains('on')) run(); else { cancelAnimationFrame(raf); t.textContent = '0%'; } }).observe(vis, { attributes: true, attributeFilter: ['class'] });
+    });
+  }
   const steps = [...document.querySelectorAll<HTMLElement>('.step')];
   const links = [...document.querySelectorAll<HTMLAnchorElement>('.rail a[data-step]')];
   const vis = [...document.querySelectorAll<HTMLElement>('.stage .vis')];
