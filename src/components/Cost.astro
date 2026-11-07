@@ -1,0 +1,17 @@
+---
+interface Props { on: number; total: number; value: string; text: string; ring: number; ringText: string; source: string; }
+const { on, total, value, text, ring, ringText, source } = Astro.props;
+---
+<div class="cst">
+  <div class="cst-c">
+    <div class="ppl" aria-hidden="true">{Array.from({ length: total }, (_, i) => (
+      <svg viewBox="0 0 40 60" class:list={[i < on ? 'on' : 'off']}><circle cx="20" cy="11" r="10" /><path d="M4 60V34a16 16 0 0 1 32 0v26z" /></svg>
+    ))}</div>
+    <p class="cap"><span>{value}</span> {text}</p>
+  </div>
+  <div class="cst-c ring">
+    <svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="15.9" class="tr" /><circle cx="18" cy="18" r="15.9" class="fl" style={`stroke-dasharray:${ring} ${100 - ring}`} /><text x="18" y="20.6" text-anchor="middle">{ring}%</text></svg>
+    <p class="cap">{ringText}</p>
+  </div>
+  <p class="cst-src">{source}</p>
+</div>

@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; pan?: { src: string; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; targets?: { src?: string; items: { value: string; of?: string; stage: string; metric: string; why: string; y?: number }[] }; hyps?: { saw: string; q: string; a: string; shot?: string; href?: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; pan?: { src: string; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; cost?: { on: number; total: number; value: string; text: string; ring: number; ringText: string; source: string }; targets?: { src?: string; items: { value: string; of?: string; stage: string; metric: string; why: string; y?: number }[] }; hyps?: { saw: string; q: string; a: string; shot?: string; href?: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -16,7 +16,7 @@ export type Block =
   | { type: 'decision'; rows: [string, string][] }
   | { type: 'glance'; items: { icon: string; label: string; text: string; href: string }[] }
   | { type: 'cards'; items: { label?: string; title: string; body?: string; icon?: string; hi?: boolean }[] }
-  | { type: 'list'; numbered?: boolean; card?: boolean; split?: boolean; tabs?: boolean; items: { label?: string; title: string; body?: string; icon?: string }[] }
+  | { type: 'list'; numbered?: boolean; card?: boolean; split?: boolean; tabs?: boolean; items: { label?: string; title: string; body?: string; icon?: string; hl?: boolean }[] }
   | { type: 'callout'; text: string }
   | { type: 'chain'; steps: string[] }
   | { type: 'chips'; items: string[] }
@@ -506,18 +506,19 @@ const greenCredit: Partial<CaseData> = {
       visual: { layout: 'single', items: [{ label: 'Initial product structure', spec: '', src: '/images/gcs-brief-map.webp', zoom: true, pad: true, alt: 'The client’s initial structure: a marketing site, registration and a member area. The member area holds the dashboard, credit report and account settings and is the core product.' }] } },
 
     { id: 'research', nav: 'Research', title: ['Plenty of data,', 'little meaning'],
-      lede: 'I explored the US credit landscape from three sides.',
+      lede: 'I looked at US credit from three sides.',
       blocks: [
         { type: 'list', split: true, items: [
-          { label: 'Desk research', title: 'CFPB, FICO, Experian, FINRA Foundation. People mix up reports and scores, and knowledge gaps cost money.' },
-          { label: 'Competitive analysis', title: 'Credit Hero Score, IdentityIQ, Credit Karma. Monitoring is the baseline; factors, debt analysis and simulators go further.' },
-          { label: 'Visual benchmarking', title: 'Revolut, Kraken. Summary first, details on demand.' },
+          { label: 'Desk research', title: 'Not knowing how credit works is expensive.', hl: true },
+          { label: 'Competitors · Credit Karma, IdentityIQ, Credit Hero Score', title: 'Monitoring is the baseline; factors and simulators go further.' },
+          { label: 'Visual benchmarks · Revolut, Kraken', title: 'Summary first, details on demand.' },
         ] },
-        { type: 'note', text: 'Credit data is everywhere. The gap is connecting a score to what drives it.' },
+        { type: 'note', text: 'What’s missing is the link between a score and what drives it.' },
       ],
-      visual: { layout: 'single', items: [{ label: 'What the research showed', spec: '', alt: 'Three in five US adults say knowledge gaps led to financial mistakes, and 60% of them lost at least $1,000 (Experian survey 2024, FINRA Foundation 2024).', stats: { lead: 'Knowing too little is costly', source: 'Experian survey 2024 · FINRA Foundation 2024', items: [
-        { value: '3 in 5', text: 'US adults say knowledge gaps led to money mistakes. 60% of them lost at least $1,000.' },
-      ] } }] } },
+      visual: { layout: 'single', items: [{ label: 'What not knowing costs', spec: '', alt: 'Three in five US adults say a lack of credit knowledge led to money mistakes, and 60% of them lost $1,000 or more (Experian survey 2024, FINRA Foundation 2024).', cost: {
+        on: 3, total: 5, value: '3 in 5', text: 'US adults say a lack of credit knowledge led to money mistakes',
+        ring: 60, ringText: 'of them lost $1,000 or more', source: 'Experian survey 2024 · FINRA Foundation 2024',
+      } }] } },
 
     { id: 'strategy', nav: 'Hypothesis', title: ['How might we turn', 'a number into a plan?'],
       lede: 'Research left me with three findings. Each became a hypothesis, and each hypothesis became a section of the product.',
