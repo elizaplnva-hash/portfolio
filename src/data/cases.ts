@@ -24,7 +24,7 @@ export type Block =
   | { type: 'note'; text: string }
   | { type: 'pull'; text: string }
   | { type: 'quote'; text: string; by: string; me?: boolean }
-  | { type: 'numbered'; plain?: boolean; items: { title: string; body: string; icon?: string }[] }
+  | { type: 'numbered'; react?: boolean; plain?: boolean; items: { title: string; body: string; icon?: string }[] }
   | { type: 'fromto'; from: string; to: string }
   | { type: 'steps'; items: { title: string; body: string }[] }
   | { type: 'theme' }
@@ -602,7 +602,7 @@ const greenCredit: Partial<CaseData> = {
 
     { id: 'reflection', nav: 'Reflection', title: ['What I’d keep,', 'what I’d measure'],
       lede: 'No launch data yet, so these are the targets I’d hold the product to.',
-      blocks: [{ type: 'list', items: [
+      blocks: [{ type: 'numbered', react: true, items: [
         { title: 'Define the job before the prompt', body: 'The agent builds on what each section is for.' },
         { title: 'Options, not opinions', body: 'Two versions with trade-offs closed both disagreements.' },
         { title: 'Test with the real audience', body: 'Next time: people who manage US credit.' },
@@ -610,8 +610,8 @@ const greenCredit: Partial<CaseData> = {
       visual: { layout: 'single', items: [{ label: 'Launch targets', spec: '', alt: 'Three launch targets: 70% of new users activate, 85% of users find the factor that lowers their score, 50% of active users return monthly.', targets: {
         items: [
           { value: '70%', of: 'of new users', stage: 'Sign up', metric: 'Activation rate', why: 'See their score in the first session.' },
-          { value: '85%', of: 'of test users', stage: 'Dashboard', metric: 'Task success rate', why: 'Find what lowers their score.' },
-          { value: '50%', of: 'of active users', stage: 'Monthly', metric: 'Return rate', why: 'Come back when the score updates.' },
+          { value: '85%', of: 'of test users', stage: 'Dashboard', metric: 'Task success rate (TSR)', why: 'Find what lowers their score.' },
+          { value: '50%', of: 'of active users', stage: 'Monthly', metric: 'Monthly retention', why: 'Return when the score updates.' },
         ],
       } }] } },
   ],
