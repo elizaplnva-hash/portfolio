@@ -481,7 +481,7 @@ const greenCredit: Partial<CaseData> = {
         { icon: 'bulb', label: 'Solution', text: 'A dashboard with the status up front, score factors that explain it, and a simulator for testing changes.', href: '#strategy' },
         { icon: 'chart-bar', label: 'Outcome', text: 'Approved and handed to development with a design system, two weeks early. We skipped wireframes by working from our data and Figma agents.', href: '#ai' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Credit report', spec: '', cut: '/images/gcs-report-full.webp', alt: 'The Green Credit Score credit report page, cut off by the frame.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Credit report', spec: '', alt: 'The Green Credit Score credit report page.', pan: [{ src: '/images/gcs-report-full.webp', alt: 'The Green Credit Score credit report page.' }] }] } },
 
     { id: 'context', nav: 'Context', title: ['Your score decides', 'what you can borrow'],
       lede: 'Usually between 300 and 850, it tells a lender how reliably you repay.\nThe higher it is, the better the terms on a home, a car or a business loan.\nIn the US, three companies keep these records: Equifax, Experian and TransUnion.',
