@@ -1,0 +1,14 @@
+---
+interface Props { lead: string; items: { value: string; stage: string; metric: string; why: string }[]; note?: string; }
+const { lead, items, note } = Astro.props;
+---
+<div class="tgs">
+  <p class="tgs-lead">{lead}</p>
+  {items.map((it) => (
+    <div class="tgs-r">
+      <span class="v">{it.value}</span>
+      <div><small>{it.stage}</small><b>{it.metric}</b><p>{it.why}</p></div>
+    </div>
+  ))}
+  {note && <p class="tgs-note">{note}</p>}
+</div>
