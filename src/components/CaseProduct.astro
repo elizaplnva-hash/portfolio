@@ -72,7 +72,7 @@ const cf = Array.from({ length: 14 }, (_, k) => { const a = (k / 14) * Math.PI *
           )}
           {!s.shot && <div class="step-text">
             {si === 0 && <div class="tags rv">{c.tags.map((t) => <span>{t}</span>)}</div>}
-            {s.toggle ? <div class="ttl-row"><h2 class="ttl rv">{s.title[0]} {s.title[1] && <em>{s.title[1]}</em>}</h2><button type="button" class:list={['tg', 'rv', { land: s.toggle === 'landing', ai: s.toggle === 'ai' }]} role="switch" aria-checked="false" aria-label={s.toggle === 'landing' ? 'Show the friendlier concept' : s.toggle === 'ai' ? 'Show the final design' : 'Show the status color version'}><i></i></button></div> : null}
+            {s.toggle ? <div class="ttl-row"><h2 class="ttl rv">{s.title[0]} {s.title[1] && <em>{s.title[1]}</em>}</h2><button type="button" class:list={['tg', 'rv', { land: s.toggle === 'landing', ai: s.toggle === 'ai' }]} role="switch" aria-checked="false" aria-label={s.toggle === 'landing' ? 'Show the friendlier concept' : s.toggle === 'ai' ? 'Show the AI draft' : 'Show the status color version'}><i></i></button></div> : null}
             {s.toggle ? null : si === 0
               ? <h1 class="ttl rv">{s.title[0]} {s.title[1] && <em>{s.title[1]}</em>}</h1>
               : s.statement
@@ -249,18 +249,6 @@ const cf = Array.from({ length: 14 }, (_, k) => { const a = (k / 14) * Math.PI *
         l.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(i); } });
       });
     });
-    // long landing pages: the cursor height sets how far the page has scrolled
-    document.querySelectorAll<HTMLElement>('.stage .ph.pan.scroll').forEach((el) => {
-      el.addEventListener('pointermove', (e) => {
-        const r = el.getBoundingClientRect();
-        const t = Math.min(1, Math.max(0, (e.clientY - r.top - r.height * 0.1) / (r.height * 0.8)));
-        el.style.setProperty('--p', t.toFixed(3));
-        el.querySelectorAll<HTMLElement>('.pn-f').forEach((f) => {
-          const max = Math.max(0, f.offsetTop + f.offsetHeight - r.height);
-          f.style.transform = `translateY(${(-t * max).toFixed(1)}px)`;
-        });
-      });
-    });
     // theme switch: flips between two screens
     document.querySelectorAll<HTMLButtonElement>('.tg').forEach((b) => {
       const id = b.closest<HTMLElement>('[data-step]')?.dataset.step;
@@ -270,16 +258,23 @@ const cf = Array.from({ length: 14 }, (_, k) => { const a = (k / 14) * Math.PI *
         document.querySelectorAll(`[data-step="${id}"] .pn`).forEach((pn) => [...pn.children].forEach((f, k) => f.classList.toggle('on', k === (on ? 1 : 0))));
       });
     });
-    // screen grows toward the cursor and follows it
+    // screens in a frame: the cursor moves the screen under the frame, bigger than it sits at rest
     document.querySelectorAll<HTMLElement>('.stage .ph.pan').forEach((el) => {
+      const S = el.classList.contains('scroll') ? 1 : 1.5;
       el.addEventListener('pointermove', (e) => {
-        const f = el.querySelector<HTMLElement>('.pn-f.on');
-        if (!f) return;
         const r = el.getBoundingClientRect();
-        const x = ((e.clientX - r.left - f.offsetLeft) / f.offsetWidth) * 100;
-        const y = ((e.clientY - r.top - f.offsetTop) / f.offsetHeight) * 100;
-        el.querySelectorAll<HTMLElement>('.pn-f').forEach((n) => { n.style.transformOrigin = `${x.toFixed(1)}% ${y.toFixed(1)}%`; });
+        const xf = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width));
+        const yf = Math.min(1, Math.max(0, (e.clientY - r.top - r.height * 0.1) / (r.height * 0.8)));
+        el.style.setProperty('--p', yf.toFixed(3));
+        el.querySelectorAll<HTMLElement>('.pn-f').forEach((f) => {
+          const w = f.offsetWidth * S;
+          const h = f.offsetHeight * S;
+          const tx = w <= r.width ? (r.width - w) / 2 - f.offsetLeft : -f.offsetLeft + xf * (r.width - w);
+          const ty = f.offsetTop + h <= r.height ? 0 : yf * (r.height - f.offsetTop - h);
+          f.style.transform = `translate(${tx.toFixed(1)}px, ${ty.toFixed(1)}px) scale(${S})`;
+        });
       });
+      el.addEventListener('pointerleave', () => { el.querySelectorAll<HTMLElement>('.pn-f').forEach((f) => { f.style.transform = ''; }); });
     });
     // structure diagram: zooms toward the cursor and follows it
     document.querySelectorAll<HTMLElement>('.stage .ph.zoom').forEach((el) => {

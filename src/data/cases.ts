@@ -533,14 +533,14 @@ const greenCredit: Partial<CaseData> = {
     { id: 'priorities', nav: 'Dashboard', title: ['Where I stand,', 'in one place'],
       lede: 'The first hypothesis became the screen people see right after sign-up, built to be read in five seconds. It reads top to bottom, and each block leads to the section behind it.',
       blocks: [
-        { type: 'list', split: true, numbered: true, items: [
-          { title: 'Status', body: 'Standing with all three bureaus, the monthly change and the next milestone.' },
-          { title: 'Drivers', body: 'Six factors labelled by impact, each with a single tip.' },
-          { title: 'Debt', body: 'Open balances, monthly payments, debt-to-income and the standing of each account.' },
+        { type: 'list', split: true, items: [
+          { icon: 'gauge', title: 'Status', body: 'Standing with all three bureaus, the monthly change and the next milestone.' },
+          { icon: 'chart-bar', title: 'Drivers', body: 'Six factors labelled by impact, each with a single tip.' },
+          { icon: 'wallet', title: 'Debt', body: 'Open balances, monthly payments, debt-to-income and the standing of each account.' },
         ] },
       ],
-      visual: { layout: 'single', items: [{ label: 'Dashboard', spec: '', alt: 'The Green Credit Score dashboard with three numbered sections: status, drivers and debt.', pan: [
-        { src: '/images/gcs-dash.webp', alt: 'The Green Credit Score dashboard on the web.', marks: [{ n: 1, x: 20.5, y: 15.8 }, { n: 2, x: 20.5, y: 43 }, { n: 3, x: 20.5, y: 72.8 }] },
+      visual: { layout: 'single', items: [{ label: 'Dashboard', spec: '', alt: 'The Green Credit Score dashboard: status, drivers and debt.', pan: [
+        { src: '/images/gcs-dash.webp', alt: 'The Green Credit Score dashboard on the web.' },
       ] }] } },
 
     { id: 'guidance', nav: 'Explain and test', title: ['Understand the score,', 'then change it'],
@@ -580,18 +580,25 @@ const greenCredit: Partial<CaseData> = {
       ] }] } },
 
     { id: 'ai', nav: 'AI workflow', toggle: 'ai', title: ['Prompts', 'instead of wireframes'],
-      lede: 'There was no wireframing stage. For each section I set the structure and requirements, then wrote one prompt for Figma’s AI agents.\nThe drafts were a starting point. I marked them up for the designer on my team, who worked out the visuals, and I made the final pass before the Design Manager’s review.',
+      lede: 'I skipped the wireframing stage. For each section I defined the structure and requirements, then turned them into one prompt for Figma’s AI agents.\nThe drafts gave us a shared starting point. I annotated them for the designer on my team, who developed the visuals, and I led the final pass before the Design Manager’s review.',
       blocks: [
-        { type: 'pull', text: 'Skipping wireframes brought the schedule from eight weeks to six.' },
+        { type: 'pull', text: 'Starting from drafts instead of wireframes took two weeks off the schedule: six weeks instead of eight.' },
       ],
-      visual: { layout: 'single', items: [{ label: 'AI draft and final design', spec: '', alt: 'The debt analysis page as the AI draft and as the final design.', pan: [
-        { src: '/images/gcs-debt-draft.webp', alt: 'AI draft of the debt analysis page: three totals and grouped account tables.' },
+      visual: { layout: 'single', items: [{ label: 'Final design and AI draft', spec: '', alt: 'The debt analysis page as the final design and as the AI draft.', pan: [
         { src: '/images/gcs-debt-final.webp', alt: 'Final debt analysis page: totals, balances by account and a payment history timeline per account with status legend.' },
+        { src: '/images/gcs-debt-draft.webp', alt: 'AI draft of the debt analysis page: three totals and grouped account tables.' },
       ] }] } },
 
     { id: 'handoff', nav: 'Handoff', title: ['Built for the developer', 'we work with'],
-      lede: 'We’ve worked with this developer before, so the file followed the structure he prefers. I left comments wherever precision mattered, and we walked through the tricky parts together before he started.',
-      visual: { layout: 'single', items: [{ label: 'Add: developer comments', spec: 'A Figma frame with your comments for the developer, and two examples' }] } },
+      lede: 'We’ve worked with this developer before, so the file followed the structure he prefers, starting with a design system he can read.',
+      blocks: [
+        { type: 'list', split: true, items: [
+          { title: 'A system he can read', body: 'Colors named by brightness, a type scale of display, heading, title and body.' },
+          { title: 'Comments where precision mattered', body: 'States, spacing and edge cases are marked in the file.' },
+          { title: 'A walkthrough before the start', body: 'We went through the tricky parts together first.' },
+        ] },
+      ],
+      visual: { layout: 'single', items: [{ label: 'Add: design system', spec: 'Colors, type scale and components from the Figma file' }] } },
 
     { id: 'measure', nav: 'Success metrics', title: ['What I’d measure', 'after launch'],
       lede: 'The product is still in development, so these are the signals I’d track first, framed with HEART: a goal, then the metric that shows it.',

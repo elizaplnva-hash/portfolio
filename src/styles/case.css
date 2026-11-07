@@ -847,7 +847,7 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 /* two product screens stacked in one frame; the cards on the left switch them, the shown one grows toward the cursor */
 .ph.pan, .stage .ph.pan { background: #f5f5f5; padding: 0; overflow: hidden; transform: none; transition: none; container-type: size; display: block; cursor: zoom-in; }
 .pn { position: absolute; inset: 0; }
-.pn-f { position: absolute; left: 6cqw; right: 6cqw; top: 7cqh; opacity: 0; pointer-events: none; transform-origin: 50% 0; transition: opacity .4s ease-out; }
+.pn-f { position: absolute; left: 6cqw; right: 6cqw; top: 7cqh; opacity: 0; pointer-events: none; transform-origin: 0 0; transition: opacity .4s ease-out; }
 .pn-f.on { opacity: 1; pointer-events: auto; }
 .pn-f img { display: block; width: 100%; height: auto; max-width: none; border-radius: 12px 12px 0 0; filter: drop-shadow(0 18px 30px rgba(17,17,17,.08)) drop-shadow(0 2px 6px rgba(17,17,17,.05)); }
 .m-vis.v-single .ph.pan { aspect-ratio: 4 / 3; }
@@ -862,7 +862,6 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   .stage .pn-f { transition: opacity .4s ease-out, transform .5s var(--out), transform-origin .18s ease-out; will-change: transform; }
-  .stage .ph.pan:hover .pn-f.on { transform: scale(1.5); }
 }
 
 /* theme switch beside the title: green track = green direction, multicolor track = status direction */
@@ -880,16 +879,14 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 /* long landing pages scroll with the cursor */
 .stage .ph.pan.scroll { cursor: ns-resize; }
 .ph.pan.scroll::after { content: ""; position: absolute; right: 8px; top: calc(12px + var(--p, 0) * (100% - 24px - 56px)); width: 4px; height: 56px; border-radius: 2px; background: rgba(17,17,17,.2); z-index: 2; pointer-events: none; }
-.pan.scroll .pn-f { transform-origin: 50% 0; }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   .stage .ph.pan.scroll .pn-f { transition: opacity .4s ease-out, transform .3s ease-out; }
-  .stage .ph.pan.scroll:hover .pn-f.on { transform: none; }
 }
 @media (prefers-reduced-motion: reduce) { .stage .ph.pan.scroll .pn-f { transition: opacity .2s; } }
 .m-vis .ph.pan.scroll .pn { overflow-y: auto; -webkit-overflow-scrolling: touch; }
 .m-vis .ph.pan.scroll::after { display: none; }
 
-.tg.ai { background: #c8c8c4; }
-.tg.ai::before { background: #3ccf7a; }
+.tg.ai { background: #3ccf7a; }
+.tg.ai::before { background: #c8c8c4; }
 /* numbered markers on a screen: they scale with it */
 .pn-f .mk { position: absolute; width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%; background: #111; color: #fff; font-size: 13px; font-weight: 700; letter-spacing: 0; display: grid; place-items: center; box-shadow: 0 2px 8px rgba(17,17,17,.25); }
