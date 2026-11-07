@@ -72,7 +72,7 @@ const cf = Array.from({ length: 14 }, (_, k) => { const a = (k / 14) * Math.PI *
           )}
           {!s.shot && <div class="step-text">
             {si === 0 && <div class="tags rv">{c.tags.map((t) => <span>{t}</span>)}</div>}
-            {s.toggle ? <div class="ttl-row"><h2 class="ttl rv">{s.title[0]} {s.title[1] && <em>{s.title[1]}</em>}</h2><button type="button" class:list={['tg', 'rv', { land: s.toggle === 'landing' }]} role="switch" aria-checked="false" aria-label={s.toggle === 'landing' ? 'Show the friendlier concept' : 'Show the status color version'}><i></i></button></div> : null}
+            {s.toggle ? <div class="ttl-row"><h2 class="ttl rv">{s.title[0]} {s.title[1] && <em>{s.title[1]}</em>}</h2><button type="button" class:list={['tg', 'rv', { land: s.toggle === 'landing', ai: s.toggle === 'ai' }]} role="switch" aria-checked="false" aria-label={s.toggle === 'landing' ? 'Show the friendlier concept' : s.toggle === 'ai' ? 'Show the final design' : 'Show the status color version'}><i></i></button></div> : null}
             {s.toggle ? null : si === 0
               ? <h1 class="ttl rv">{s.title[0]} {s.title[1] && <em>{s.title[1]}</em>}</h1>
               : s.statement

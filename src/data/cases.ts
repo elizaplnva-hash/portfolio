@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; pan?: { src: string; alt?: string }[]; scroll?: boolean; hyps?: { saw: string; q: string; a: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; pan?: { src: string; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; hyps?: { saw: string; q: string; a: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -32,7 +32,7 @@ export type Block =
 
 export interface Screen {
   id: string;
-  toggle?: boolean | 'landing';                // theme switch beside the title; flips the pan visual
+  toggle?: boolean | 'landing' | 'ai';                // theme switch beside the title; flips the pan visual
   wip?: boolean;                   // shows a "Work in progress" mark on the visual
   nav: string;                     // label in the left track
   title: [string, string?];        // second part is set in the case colour
@@ -531,15 +531,17 @@ const greenCredit: Partial<CaseData> = {
       ] }] } },
 
     { id: 'priorities', nav: 'Dashboard', title: ['Where I stand,', 'in one place'],
-      lede: 'The first hypothesis became the screen people see right after sign-up. It reads top to bottom, and each block leads to the section behind it.',
+      lede: 'The first hypothesis became the screen people see right after sign-up, built to be read in five seconds. It reads top to bottom, and each block leads to the section behind it.',
       blocks: [
-        { type: 'list', split: true, items: [
-          { icon: 'gauge', title: 'Status', body: 'Standing with all three bureaus, the monthly change and the next milestone.' },
-          { icon: 'chart-bar', title: 'Drivers', body: 'Six factors labelled by impact, each with a single tip.' },
-          { icon: 'wallet', title: 'Debt', body: 'Open balances, monthly payments, debt-to-income and the standing of each account.' },
+        { type: 'list', split: true, numbered: true, items: [
+          { title: 'Status', body: 'Standing with all three bureaus, the monthly change and the next milestone.' },
+          { title: 'Drivers', body: 'Six factors labelled by impact, each with a single tip.' },
+          { title: 'Debt', body: 'Open balances, monthly payments, debt-to-income and the standing of each account.' },
         ] },
       ],
-      visual: { layout: 'single', items: [{ label: 'Dashboard and mobile', spec: '', combo: ['/images/gcs-dash.webp', '/images/gcs-mob.webp'], dm: true, alt: 'The Green Credit Score dashboard on the web, with the same dashboard on a phone in front of it' }] } },
+      visual: { layout: 'single', items: [{ label: 'Dashboard', spec: '', alt: 'The Green Credit Score dashboard with three numbered sections: status, drivers and debt.', pan: [
+        { src: '/images/gcs-dash.webp', alt: 'The Green Credit Score dashboard on the web.', marks: [{ n: 1, x: 20.5, y: 15.8 }, { n: 2, x: 20.5, y: 43 }, { n: 3, x: 20.5, y: 72.8 }] },
+      ] }] } },
 
     { id: 'guidance', nav: 'Explain and test', title: ['Understand the score,', 'then change it'],
       lede: 'The dashboard shows where you stand. Two sections answer what comes next: why, and what would change it.',
@@ -558,7 +560,7 @@ const greenCredit: Partial<CaseData> = {
       lede: 'The brief said green, and the client wanted it that way. My research and judgment pointed elsewhere, so I designed a second direction: status color and a clearer way of laying out the information.',
       blocks: [
         { type: 'list', split: true, items: [
-          { title: 'Tested with users', body: 'Both directions, side by side, with 30 users who follow their credit.' },
+          { title: 'Five-second check', body: 'Both directions side by side, with 30 users who follow their credit.' },
         ] },
         { type: 'pull', text: '25 of 30 preferred the second, 83%, and the client agreed. Brand green stays in the shades for impact.' },
       ],
@@ -577,25 +579,33 @@ const greenCredit: Partial<CaseData> = {
         { src: '/images/gcs-landing-b.webp', alt: 'Concept B: a friendlier landing page with real product screens.' },
       ] }] } },
 
-    { id: 'ai', nav: 'AI workflow', title: ['Prompts', 'instead of wireframes'],
-      lede: 'I removed the wireframing stage. I set the structure and requirements for each section, wrote one prompt per section for Figma AI agents and marked up each draft for the Junior Designer, who worked out the visuals. I made the final pass; the Design Manager reviewed after me.',
-      blocks: [{ type: 'chain', steps: ['Requirements', 'Prompts', 'AI drafts', 'Junior Designer', 'Final pass'] }],
-      visual: { layout: 'single', items: [{ label: 'Add: AI draft next to the final screen', spec: 'One section as the Figma AI draft and as the final design' }] } },
+    { id: 'ai', nav: 'AI workflow', toggle: 'ai', title: ['Prompts', 'instead of wireframes'],
+      lede: 'There was no wireframing stage. For each section I set the structure and requirements, then wrote one prompt for Figma’s AI agents.\nThe drafts were a starting point. I marked them up for the designer on my team, who worked out the visuals, and I made the final pass before the Design Manager’s review.',
+      blocks: [
+        { type: 'pull', text: 'Skipping wireframes brought the schedule from eight weeks to six.' },
+      ],
+      visual: { layout: 'single', items: [{ label: 'AI draft and final design', spec: '', alt: 'The debt analysis page as the AI draft and as the final design.', pan: [
+        { src: '/images/gcs-debt-draft.webp', alt: 'AI draft of the debt analysis page: three totals and grouped account tables.' },
+        { src: '/images/gcs-debt-final.webp', alt: 'Final debt analysis page: totals, balances by account and a payment history timeline per account with status legend.' },
+      ] }] } },
 
     { id: 'handoff', nav: 'Handoff', title: ['Built for the developer', 'we work with'],
       lede: 'We’ve worked with this developer before, so the file followed the structure he prefers. I left comments wherever precision mattered, and we walked through the tricky parts together before he started.',
       visual: { layout: 'single', items: [{ label: 'Add: developer comments', spec: 'A Figma frame with your comments for the developer, and two examples' }] } },
 
-    { id: 'measure', nav: 'Success metrics', wide: true, title: ['What I’d measure', 'after launch'],
-      lede: 'The product is in development, so there are no results yet. These are the signals I’d track first, and what each would tell the team. They are proposals, not outcomes.',
-      blocks: [{ type: 'list', items: [
-        { icon: 'eye', label: 'Understanding', title: 'Can people name their score, its status and one next step in five seconds?', body: 'A five-second test on the dashboard.' },
-        { icon: 'circle-check', label: 'Usability', title: 'Task success rate and time on task', body: 'For “find the factor that lowers your score”.' },
-        { icon: 'compass', label: 'Navigation', title: 'How often people go from the dashboard to a detail page', body: 'Navigation versus search shows whether the structure works.' },
-        { icon: 'gauge', label: 'Adoption', title: 'Score Simulator use and return visits', body: 'Do people come back to explore, not just to check?' },
-        { icon: 'heart', label: 'Satisfaction', title: 'CSAT after the first report view', body: 'A one-question survey, plus NPS later.' },
-        { icon: 'chart-bar', label: 'Business', title: 'Conversion to subscription, retention and churn', body: 'Once the product has paying users.' },
-      ] }] },
+    { id: 'measure', nav: 'Success metrics', title: ['What I’d measure', 'after launch'],
+      lede: 'The product is still in development, so these are the signals I’d track first, framed with HEART: a goal, then the metric that shows it.',
+      blocks: [{ type: 'table', head: ['Goal', 'Metric'], rows: [
+        ['Adoption', 'Activation rate within the 7-day trial, time to value (TTV)'],
+        ['Task success', 'Task success rate (TSR) and time on task for “find the factor that lowers your score”'],
+        ['Engagement', 'Simulator adoption: share of active users who run a simulation within 30 days'],
+        ['Retention', 'Monthly return rate, since the score updates once a month'],
+        ['Happiness', 'CSAT after the first report view, SUS in usability tests'],
+        ['Revenue', 'Trial-to-paid conversion (TTP) and monthly churn at $29'],
+      ] }],
+      visual: { layout: 'single', items: [{ label: 'Sign up', spec: '', alt: 'The create account screen with the order summary: 7-day trial, $0 due today, then $29 a month.', pan: [
+        { src: '/images/gcs-signup.webp', alt: 'Create account screen with a three-step progress bar and an order summary: credit monitoring, reports, repair guidance and funding help, $0 due today, $29 a month after the 7-day trial.' },
+      ] }] } },
 
     { id: 'reflection', nav: 'Reflection', title: ['What I’d keep,', 'what I’d test'],
       lede: 'The product is in development, so there are no launch metrics yet.',
@@ -612,7 +622,7 @@ const greenCredit: Partial<CaseData> = {
 {
   const ss = greenCredit.screens ?? [];
   const from = ss.findIndex((x) => x.id === 'brief');
-  ss.forEach((x, i) => { if (i >= from && x.id !== 'strategy' && x.id !== 'measure' && x.id !== 'brief' && x.id !== 'research' && x.id !== 'priorities' && x.id !== 'guidance' && x.id !== 'colour' && x.id !== 'landing') x.visual = { layout: 'single', items: [{ label: 'Work in progress', spec: '', wipph: true }] }; });
+  ss.forEach((x, i) => { if (i >= from && x.id !== 'strategy' && x.id !== 'measure' && x.id !== 'brief' && x.id !== 'research' && x.id !== 'priorities' && x.id !== 'guidance' && x.id !== 'colour' && x.id !== 'landing' && x.id !== 'ai') x.visual = { layout: 'single', items: [{ label: 'Work in progress', spec: '', wipph: true }] }; });
 }
 
 export const cases: CaseData[] = [
