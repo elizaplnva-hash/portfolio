@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; pan?: { src: string; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; targets?: { lead?: string; items: { value: string; of?: string; stage: string; metric: string; why: string }[]; note?: string }; hyps?: { saw: string; q: string; a: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; pan?: { src: string; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; targets?: { lead?: string; items: { value: string; of?: string; stage: string; metric: string; why: string }[]; note?: string }; hyps?: { saw: string; q: string; a: string; src?: string; shot?: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -515,19 +515,17 @@ const greenCredit: Partial<CaseData> = {
         ] },
         { type: 'note', text: 'Credit data is everywhere. The gap is connecting a score to what drives it.' },
       ],
-      visual: { layout: 'single', items: [{ label: 'What the research showed', spec: '', alt: 'Three in five US adults say knowledge gaps led to financial mistakes, 60% of them lost at least $1,000, and 77% carry at least one of six types of debt (Experian survey 2024, FINRA Foundation 2024).', stats: { lead: 'Knowing too little is costly, and debt is common', items: [
-        { value: '3 in 5', text: 'US adults say knowledge\ngaps led to money mistakes' },
-        { value: '60%', text: 'of them lost\nat least $1,000' },
-        { value: '77%', text: 'carry at least one of\nsix types of debt' },
+      visual: { layout: 'single', items: [{ label: 'What the research showed', spec: '', alt: 'Three in five US adults say knowledge gaps led to financial mistakes, and 60% of them lost at least $1,000 (Experian survey 2024, FINRA Foundation 2024).', stats: { lead: 'Knowing too little is costly', source: 'Experian survey 2024 · FINRA Foundation 2024', items: [
+        { value: '3 in 5', text: 'US adults say knowledge gaps led to money mistakes. 60% of them lost at least $1,000.' },
       ] } }] } },
 
     { id: 'strategy', nav: 'Hypothesis', title: ['How might we turn', 'a number into a plan?'],
-      lede: 'Research left me with three findings. For each one I wrote a hypothesis. Next: how the product answers them, one by one.',
+      lede: 'Research left me with three findings. Each became a hypothesis, and each hypothesis became a section of the product.',
       blocks: [{ type: 'pull', text: 'A score matters only when people know what to do next.' }],
       visual: { layout: 'single', items: [{ label: 'Three hypotheses', spec: '', alt: 'Three hypotheses. One: people mix up reports and scores, so how might we show where I stand, with one place for the basics and a way to go deeper. Two: knowledge gaps cost money, so how might we explain what drives it, by showing the factors and the debt behind the number. Three: competitors stop at monitoring, so how might we show what could change it, by letting people test a change before they make it.', hyps: [
-        { saw: 'people mix up reports and scores', q: 'How might we show where I stand?', a: 'One place with the basics,\nand a way to go deeper' },
-        { saw: 'knowledge gaps cost money', q: 'How might we explain what drives it?', a: 'Show the factors and\nthe debt behind the number' },
-        { saw: 'competitors stop at monitoring', q: 'How might we show what could change it?', a: 'Let people test a change\nbefore they make it' },
+        { saw: 'people mix up reports and scores', q: 'How might we show where I stand?', a: 'One place for the basics', src: '/images/gcs-dash.webp', shot: 'Dashboard' },
+        { saw: 'knowledge gaps cost money', q: 'How might we explain what drives it?', a: 'Show the factors behind it', src: '/images/gcs-factors-page.webp', shot: 'Score factors' },
+        { saw: 'competitors stop at monitoring', q: 'How might we show what could change it?', a: 'Test a change before making it', src: '/images/gcs-simulator-page.webp', shot: 'Score simulator' },
       ] }] } },
 
     { id: 'priorities', nav: 'Dashboard', title: ['Where I stand,', 'in one place'],
@@ -590,7 +588,7 @@ const greenCredit: Partial<CaseData> = {
       ] }] } },
 
     { id: 'handoff', nav: 'Handoff', title: ['Built for the developer', 'we work with'],
-      lede: 'We’ve worked with this developer before, so the file followed the structure he prefers, starting with a design system he can read.',
+      lede: 'We’ve worked with this developer before, so the file followed the structure he prefers.',
       blocks: [
         { type: 'list', split: true, items: [
           { title: 'A system he can read', body: 'Colors named by brightness, a type scale of display, heading, title and body.' },
@@ -598,11 +596,13 @@ const greenCredit: Partial<CaseData> = {
           { title: 'A walkthrough before the start', body: 'We went through the tricky parts together first.' },
         ] },
       ],
-      visual: { layout: 'single', items: [{ label: 'Add: design system', spec: 'Colors, type scale and components from the Figma file' }] } },
+      visual: { layout: 'single', items: [{ label: 'Design system', spec: '', scroll: true, alt: 'The Green Credit Score design system in Figma: colors, typography, sidebar, header, labels, progress bars, buttons and icons.', pan: [
+        { src: '/images/gcs-system.webp', alt: 'The Green Credit Score design system: colors, typography and dashboard components.' },
+      ] }] } },
 
     { id: 'reflection', nav: 'Reflection', title: ['What I’d keep,', 'what I’d measure'],
       lede: 'No launch data yet, so these are the targets I’d hold the product to.',
-      blocks: [{ type: 'numbered', react: true, items: [
+      blocks: [{ type: 'list', items: [
         { title: 'Define the job before the prompt', body: 'The agent builds on what each section is for.' },
         { title: 'Options, not opinions', body: 'Two versions with trade-offs closed both disagreements.' },
         { title: 'Test with the real audience', body: 'Next time: people who manage US credit.' },
@@ -621,7 +621,7 @@ const greenCredit: Partial<CaseData> = {
 {
   const ss = greenCredit.screens ?? [];
   const from = ss.findIndex((x) => x.id === 'brief');
-  ss.forEach((x, i) => { if (i >= from && x.id !== 'strategy' && x.id !== 'measure' && x.id !== 'brief' && x.id !== 'research' && x.id !== 'priorities' && x.id !== 'guidance' && x.id !== 'colour' && x.id !== 'landing' && x.id !== 'ai' && x.id !== 'reflection') x.visual = { layout: 'single', items: [{ label: 'Work in progress', spec: '', wipph: true }] }; });
+  ss.forEach((x, i) => { if (i >= from && x.id !== 'strategy' && x.id !== 'measure' && x.id !== 'brief' && x.id !== 'research' && x.id !== 'priorities' && x.id !== 'guidance' && x.id !== 'colour' && x.id !== 'landing' && x.id !== 'ai' && x.id !== 'handoff' && x.id !== 'reflection') x.visual = { layout: 'single', items: [{ label: 'Work in progress', spec: '', wipph: true }] }; });
 }
 
 export const cases: CaseData[] = [

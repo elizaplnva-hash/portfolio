@@ -1,5 +1,5 @@
 ---
-interface Props { items: { saw: string; q: string; a: string }[]; }
+interface Props { items: { saw: string; q: string; a: string; src?: string; shot?: string }[]; }
 const { items } = Astro.props;
 ---
 <div class="hy">
@@ -11,6 +11,7 @@ const { items } = Astro.props;
         <div class="hy-c">
           <p class="hy-q">{it.q}</p>
           <p class="hy-a">{it.a}</p>
+          {it.src && <span class="hy-t"><img src={it.src} alt={it.shot} loading="lazy" /></span>}
         </div>
       </div>
     </div>

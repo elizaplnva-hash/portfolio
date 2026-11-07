@@ -908,3 +908,22 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   .numbered.react li:hover, .tgs-r:hover { transform: translateY(-3px); box-shadow: 0 1px 2px rgba(17,17,17,.08), 0 10px 26px rgba(17,17,17,.14); }
 }
+
+/* targets as one user path */
+.tgs.path { max-width: 640px; }
+.tgs-line { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.tgs-line::before { content: ''; position: absolute; left: 12%; right: 12%; top: 16px; height: 2px; background: var(--t); border-radius: 1px; }
+.tgs.path .tgs-r { display: flex; flex-direction: column; align-items: flex-start; gap: 0; position: relative; padding: 0; background: none; box-shadow: none; border-radius: 0; text-align: left; }
+.tgs.path .tgs-r .tag { position: relative; top: auto; right: auto; z-index: 1; margin-bottom: 26px; }
+.tgs.path .tgs-r .v { font-size: clamp(38px, 3.6vw, 54px); }
+.tgs.path .tgs-r small { display: block; font-size: 12px; color: var(--muted); margin: 6px 0 14px; }
+.tgs.path .tgs-r b { font-size: 15px; }
+.tgs.path .tgs-r p { margin: 4px 0 0; }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .tgs.path .tgs-r:hover { transform: translateY(-3px); box-shadow: none; }
+}
+
+.ph.hyps .hy-c { position: relative; padding-right: clamp(110px, 11vw, 150px); }
+.hy-t { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); width: clamp(84px, 8vw, 112px); display: block; }
+.hy-t img { width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: top left; border-radius: 8px; background: #f6f6f4; box-shadow: 0 0 0 1px rgba(17,17,17,.08); }
+.hy-t small { font-size: 11px; color: var(--muted); text-align: left; }
