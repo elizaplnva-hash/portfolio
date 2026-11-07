@@ -1,0 +1,13 @@
+---
+import { icon } from '../data/icons';
+interface Props { items: { icon: string; stage: string; metric: string; how: string }[]; }
+const { items } = Astro.props;
+---
+<div class="ms">
+  {items.map((it) => (
+    <div class="ms-r">
+      <span class="ic" aria-hidden="true" set:html={icon(it.icon)} />
+      <div><small>{it.stage}</small><b>{it.metric}</b><p>{it.how}</p></div>
+    </div>
+  ))}
+</div>

@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; pan?: { src: string; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; hyps?: { saw: string; q: string; a: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; pan?: { src: string; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; measure?: { icon: string; stage: string; metric: string; how: string }[]; hyps?: { saw: string; q: string; a: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -580,8 +580,12 @@ const greenCredit: Partial<CaseData> = {
       ] }] } },
 
     { id: 'ai', nav: 'AI workflow', toggle: 'ai', title: ['Prompts', 'instead of wireframes'],
-      lede: 'I skipped the wireframing stage. For each section I defined the structure and requirements, then turned them into one prompt for Figma’s AI agents.\nThe drafts gave us a shared starting point. I annotated them for the designer on my team, who developed the visuals, and I led the final pass before the Design Manager’s review.',
+      lede: 'Figma’s AI agents were in their first versions, and I wanted to test them on a real project, with the designer on my team learning them too.\nFor each section I passed on what I knew about the product as a prompt: structure and requirements. The agent returned a draft, which my teammate developed before my final pass and the Design Manager’s review.',
       blocks: [
+        { type: 'list', split: true, items: [
+          { title: 'Where AI helped', body: 'The structure of each section, without the time normally spent wireframing.' },
+          { title: 'Where we took over', body: 'Visuals and components. The agent made a basic version, and we tied it into the design system.' },
+        ] },
         { type: 'pull', text: 'Starting from drafts instead of wireframes took two weeks off the schedule: six weeks instead of eight.' },
       ],
       visual: { layout: 'single', items: [{ label: 'Final design and AI draft', spec: '', alt: 'The debt analysis page as the final design and as the AI draft.', pan: [
@@ -600,28 +604,20 @@ const greenCredit: Partial<CaseData> = {
       ],
       visual: { layout: 'single', items: [{ label: 'Add: design system', spec: 'Colors, type scale and components from the Figma file' }] } },
 
-    { id: 'measure', nav: 'Success metrics', title: ['What I’d measure', 'after launch'],
-      lede: 'The product is still in development, so these are the signals I’d track first, framed with HEART: a goal, then the metric that shows it.',
-      blocks: [{ type: 'table', head: ['Goal', 'Metric'], rows: [
-        ['Adoption', 'Activation rate within the 7-day trial, time to value (TTV)'],
-        ['Task success', 'Task success rate (TSR) and time on task for “find the factor that lowers your score”'],
-        ['Engagement', 'Simulator adoption: share of active users who run a simulation within 30 days'],
-        ['Retention', 'Monthly return rate, since the score updates once a month'],
-        ['Happiness', 'CSAT after the first report view, SUS in usability tests'],
-        ['Revenue', 'Trial-to-paid conversion (TTP) and monthly churn at $29'],
-      ] }],
-      visual: { layout: 'single', items: [{ label: 'Sign up', spec: '', alt: 'The create account screen with the order summary: 7-day trial, $0 due today, then $29 a month.', pan: [
-        { src: '/images/gcs-signup.webp', alt: 'Create account screen with a three-step progress bar and an order summary: credit monitoring, reports, repair guidance and funding help, $0 due today, $29 a month after the 7-day trial.' },
-      ] }] } },
-
-    { id: 'reflection', nav: 'Reflection', title: ['What I’d keep,', 'what I’d test'],
-      lede: 'The product is in development, so there are no launch metrics yet.',
+    { id: 'reflection', nav: 'Reflection', title: ['What I’d keep,', 'what I’d measure'],
+      lede: 'The product is still in development, so there are no launch metrics yet. Here is what I took from the project, and where I’d measure first.',
       blocks: [{ type: 'numbered', items: [
-        { title: 'Structure before prompts', body: 'Figma’s AI agents were new; this project let us learn them. They work only when each section’s job is decided first.' },
+        { title: 'Structure before prompts', body: 'Figma’s AI agents work only when each section’s job is decided first.' },
         { title: 'Options, not opinions', body: 'Both disagreements were settled by showing two versions with their trade-offs.' },
-        { title: 'Test with the real audience', body: 'With no time or budget, the director and I asked people we knew who follow their credit. Next time I’d recruit people who manage US credit.' },
+        { title: 'Test with the real audience', body: 'With no time or budget, we asked 30 people we know who follow their credit. Next time I’d recruit people who manage US credit.' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Credit report', spec: '', src: '/images/gcs-report.webp', alt: 'The accounts report compared across bureaus' }] } },
+      visual: { layout: 'single', items: [{ label: 'Where I would measure', spec: '', alt: 'Five places in the product and the metric measured at each: sign up, dashboard, simulator, next month and subscription.', measure: [
+        { icon: 'user', stage: 'Sign up', metric: 'Activation rate, time to value (TTV)', how: 'Analytics events from sign-up to the first score view, within the 7-day trial.' },
+        { icon: 'gauge', stage: 'Dashboard', metric: 'Task success rate (TSR)', how: 'Moderated test: “find the factor that lowers your score”.' },
+        { icon: 'compass', stage: 'Simulator', metric: 'Simulator adoption', how: 'Share of active users who run a simulation in 30 days.' },
+        { icon: 'calendar', stage: 'Next month', metric: 'Monthly return rate', how: 'The cohort that comes back after the score updates.' },
+        { icon: 'credit-card', stage: 'Subscription', metric: 'Trial-to-paid (TTP), churn', how: 'Billing data after the 7-day trial at $29 a month.' },
+      ] }] } },
   ],
 };
 
@@ -629,7 +625,7 @@ const greenCredit: Partial<CaseData> = {
 {
   const ss = greenCredit.screens ?? [];
   const from = ss.findIndex((x) => x.id === 'brief');
-  ss.forEach((x, i) => { if (i >= from && x.id !== 'strategy' && x.id !== 'measure' && x.id !== 'brief' && x.id !== 'research' && x.id !== 'priorities' && x.id !== 'guidance' && x.id !== 'colour' && x.id !== 'landing' && x.id !== 'ai') x.visual = { layout: 'single', items: [{ label: 'Work in progress', spec: '', wipph: true }] }; });
+  ss.forEach((x, i) => { if (i >= from && x.id !== 'strategy' && x.id !== 'measure' && x.id !== 'brief' && x.id !== 'research' && x.id !== 'priorities' && x.id !== 'guidance' && x.id !== 'colour' && x.id !== 'landing' && x.id !== 'ai' && x.id !== 'reflection') x.visual = { layout: 'single', items: [{ label: 'Work in progress', spec: '', wipph: true }] }; });
 }
 
 export const cases: CaseData[] = [
