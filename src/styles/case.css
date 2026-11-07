@@ -894,9 +894,11 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .ph.targets, .stage .ph.targets { display: flex; align-items: center; justify-content: center; padding: clamp(18px, 3cqw, 40px); background: #f5f5f5; transform: none; transition: none; text-align: left; }
 .tgs { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 560px; }
 .tgs-lead { margin: 0 0 4px; font-size: 13px; color: var(--muted); }
-.tgs-r { display: grid; grid-template-columns: 92px 1fr; align-items: center; gap: 14px; padding: 16px 20px; background: #fff; border-radius: 16px; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 6px 20px rgba(17,17,17,.08); }
+.tgs-r { position: relative; display: grid; grid-template-columns: 120px 1fr; align-items: center; gap: 18px; padding: 22px 24px; background: #fff; border-radius: 16px; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 6px 20px rgba(17,17,17,.08); }
 .tgs-r .v { font-size: 38px; font-weight: 600; letter-spacing: -.04em; line-height: 1; color: var(--af); }
-.tgs-r small { display: block; font-size: 12px; color: var(--muted); margin-bottom: 2px; }
+.tgs-r .n small { display: block; font-size: 12px; line-height: 1.3; color: var(--muted); margin-top: 6px; }
+.tgs-r .tag { position: absolute; top: 14px; right: 16px; font-size: 12px; color: var(--muted); background: #f3f3f1; padding: 3px 10px; border-radius: 999px; }
+.tgs-r .t { padding-right: 70px; }
 .tgs-r b { display: block; font-size: 15px; font-weight: 600; letter-spacing: -.02em; line-height: 1.3; color: var(--ink); }
 .tgs-r p { margin: 3px 0 0; font-size: 13px; line-height: 1.4; color: var(--muted); }
 .tgs-note { margin: 4px 0 0; font-size: 13px; line-height: 1.4; color: var(--muted); }

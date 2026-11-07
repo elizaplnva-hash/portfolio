@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; pan?: { src: string; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; targets?: { lead: string; items: { value: string; stage: string; metric: string; why: string }[]; note?: string }; hyps?: { saw: string; q: string; a: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; pan?: { src: string; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; targets?: { lead?: string; items: { value: string; of?: string; stage: string; metric: string; why: string }[]; note?: string }; hyps?: { saw: string; q: string; a: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -580,9 +580,9 @@ const greenCredit: Partial<CaseData> = {
       ] }] } },
 
     { id: 'ai', nav: 'AI workflow', toggle: 'ai', title: ['Prompts', 'instead of wireframes'],
-      lede: 'I replaced wireframing with prompts. For each section I wrote the structure and requirements, and Figma’s AI agents returned a first layout, so design time went into what matters most: the visuals, the components and how they fit the system.\nThe agents were new, so I made the process teachable. The designer on my team built on every draft, and I owned the final pass before the Design Manager’s review.',
+      lede: 'I replaced wireframes with prompts. I set the structure for each section, Figma’s agents drafted the layout, and our time went into visuals and components.\nThe designer on my team refined every draft and learned the workflow on real work; I owned the final pass.',
       blocks: [
-        { type: 'pull', text: 'Structure from the agents, judgment from us: six weeks instead of eight.' },
+        { type: 'pull', text: 'Six weeks instead of eight.' },
       ],
       visual: { layout: 'single', items: [{ label: 'Final design and AI draft', spec: '', alt: 'The debt analysis page as the final design and as the AI draft.', pan: [
         { src: '/images/gcs-debt-final.webp', alt: 'Final debt analysis page: totals, balances by account and a payment history timeline per account with status legend.' },
@@ -601,22 +601,18 @@ const greenCredit: Partial<CaseData> = {
       visual: { layout: 'single', items: [{ label: 'Add: design system', spec: 'Colors, type scale and components from the Figma file' }] } },
 
     { id: 'reflection', nav: 'Reflection', title: ['What I’d keep,', 'what I’d measure'],
-      lede: 'The product is still in development, so there are no launch metrics yet. These are the lessons I’d carry forward, and the targets I’d hold the product to.',
-      blocks: [{ type: 'numbered', items: [
-        { title: 'Define the job before the prompt', body: 'Decide what each section is for first. The agent builds on that, and so does everyone after it.' },
-        { title: 'Options, not opinions', body: 'Both disagreements closed once the client could compare two versions with their trade-offs.' },
-        { title: 'Test with the real audience', body: 'With no time or budget, we asked 30 people we know who follow their credit. Next time I’d recruit people who manage US credit.' },
+      lede: 'No launch data yet, so these are the targets I’d hold the product to.',
+      blocks: [{ type: 'list', items: [
+        { title: 'Define the job before the prompt', body: 'The agent builds on what each section is for.' },
+        { title: 'Options, not opinions', body: 'Two versions with trade-offs closed both disagreements.' },
+        { title: 'Test with the real audience', body: 'Next time: people who manage US credit.' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Launch targets', spec: '', alt: 'Five launch targets: 70% activation, 85% task success, a SUS score of 80, 30% simulator adoption and 50% monthly return.', targets: {
-        lead: 'Launch targets, set before there is data to measure.',
+      visual: { layout: 'single', items: [{ label: 'Launch targets', spec: '', alt: 'Three launch targets: 70% of new users activate, 85% of users find the factor that lowers their score, 50% of active users return monthly.', targets: {
         items: [
-          { value: '70%', stage: 'Sign up', metric: 'Activation rate', why: 'See their score in the first session, within five minutes. Slower, and the 7-day trial runs out before the value shows.' },
-          { value: '85%', stage: 'Dashboard', metric: 'Task success rate (TSR)', why: 'Find the factor that lowers the score. The industry average is 78%, and this is the task the structure exists for.' },
-          { value: '80', stage: 'Dashboard', metric: 'System Usability Scale (SUS)', why: 'After moderated testing. 68 is average, and 80 is where a product reads as good.' },
-          { value: '30%', stage: 'Simulator', metric: 'Simulator adoption', why: 'Active users who test a decision within 30 days. It shows who moves from reading the score to acting on it.' },
-          { value: '50%', stage: 'Next month', metric: 'Monthly return rate', why: 'Back after the score updates. The score changes once a month, so this is the honest pace.' },
+          { value: '70%', of: 'of new users', stage: 'Sign up', metric: 'Activation rate', why: 'See their score in the first session.' },
+          { value: '85%', of: 'of test users', stage: 'Dashboard', metric: 'Task success rate', why: 'Find what lowers their score.' },
+          { value: '50%', of: 'of active users', stage: 'Monthly', metric: 'Return rate', why: 'Come back when the score updates.' },
         ],
-        note: 'Trial-to-paid conversion and churn get their targets once the beta sets a baseline.',
       } }] } },
   ],
 };
