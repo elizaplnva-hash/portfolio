@@ -927,3 +927,25 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .hy-t { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); width: clamp(84px, 8vw, 112px); display: block; }
 .hy-t img { width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: top left; border-radius: 8px; background: #f6f6f4; box-shadow: 0 0 0 1px rgba(17,17,17,.08); }
 .hy-t small { font-size: 11px; color: var(--muted); text-align: left; }
+
+/* targets pinned on the dashboard */
+.tgs.shot { position: relative; width: min(100%, 600px); max-width: none; display: block; }
+.tgs.shot .tgs-img { width: 86%; border-radius: 14px; overflow: hidden; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 6px 20px rgba(17,17,17,.08); background: #fff; }
+.tgs.shot .tgs-img img { display: block; width: 100%; height: auto; }
+.tgs.shot .tgs-r { position: absolute; right: 0; width: 46%; display: flex; flex-direction: column; align-items: flex-start; gap: 0; padding: 14px 16px 16px; background: #fff; border-radius: 16px; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 10px 28px rgba(17,17,17,.14); }
+.tgs.shot .tgs-r .tag { position: static; margin-bottom: 10px; font-size: 12px; padding: 5px 11px 5px 9px; }
+.tgs.shot .tgs-r .row { display: flex; align-items: baseline; gap: 8px; }
+.tgs.shot .tgs-r .v { font-size: clamp(32px, 3vw, 42px); }
+.tgs.shot .tgs-r small { margin: 0; font-size: 12px; color: var(--muted); }
+.tgs.shot .tgs-r b { margin-top: 6px; font-size: 14px; }
+.tgs.shot .tgs-r p { margin: 2px 0 0; font-size: 12.5px; line-height: 1.35; }
+@media (max-width: 900px) { .tgs.shot .tgs-r { position: static; width: auto; margin-top: 10px; } .tgs.shot .tgs-img { width: 100%; } }
+/* research: one big number */
+.stage .vis:has(.ph.stats:only-child) .sts-c { display: grid; gap: 14px; }
+.stage .vis:has(.ph.stats:only-child) .sts-c .v { font-size: clamp(96px, 10vw, 150px); line-height: .9; }
+.stage .vis:has(.ph.stats:only-child) .sts-c .t { font-size: clamp(18px, 1.6vw, 24px); line-height: 1.25; max-width: 18em; }
+.tgs.shot .tgs-r p { display: none; }
+.tgs.shot .tgs-r { width: 42%; padding: 12px 14px 14px; }
+.tgs.shot .tgs-r .v { font-size: clamp(28px, 2.6vw, 36px); }
+.stage .vis:has(.ph.stats:only-child) .sts-c .v { white-space: nowrap; font-size: clamp(64px, 7vw, 104px); }
+.stage .vis:has(.ph.stats:only-child) .sts-c { grid-template-columns: minmax(0,1fr); }

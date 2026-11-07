@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; pan?: { src: string; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; targets?: { lead?: string; items: { value: string; of?: string; stage: string; metric: string; why: string }[]; note?: string }; hyps?: { saw: string; q: string; a: string; src?: string; shot?: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; pan?: { src: string; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; targets?: { src?: string; items: { value: string; of?: string; stage: string; metric: string; why: string; y?: number }[] }; hyps?: { saw: string; q: string; a: string; src?: string; shot?: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -607,11 +607,12 @@ const greenCredit: Partial<CaseData> = {
         { title: 'Options, not opinions', body: 'Two versions with trade-offs closed both disagreements.' },
         { title: 'Test with the real audience', body: 'Next time: people who manage US credit.' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Launch targets', spec: '', alt: 'Three launch targets: 70% of new users activate, 85% of users find the factor that lowers their score, 50% of active users return monthly.', targets: {
+      visual: { layout: 'single', items: [{ label: 'Launch targets', spec: '', alt: 'The dashboard with three launch targets: 70% of new users activate, 85% of test users find the factor that lowers their score, and 50% of active users return monthly.', targets: {
+        src: '/images/gcs-dash.webp',
         items: [
-          { value: '70%', of: 'of new users', stage: 'Sign up', metric: 'Activation rate', why: 'See their score in the first session.' },
-          { value: '85%', of: 'of test users', stage: 'Dashboard', metric: 'Task success rate (TSR)', why: 'Find what lowers their score.' },
-          { value: '50%', of: 'of active users', stage: 'Monthly', metric: 'Monthly retention', why: 'Return when the score updates.' },
+          { value: '50%', of: 'of active users', stage: 'Monthly', metric: 'Monthly retention', why: 'Return when the score updates.', y: 5 },
+          { value: '70%', of: 'of new users', stage: 'Sign up', metric: 'Activation rate', why: 'See their score in the first session.', y: 34 },
+          { value: '85%', of: 'of test users', stage: 'Dashboard', metric: 'Task success rate (TSR)', why: 'Find what lowers their score.', y: 63 },
         ],
       } }] } },
   ],
