@@ -923,10 +923,7 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
   .tgs.path .tgs-r:hover { transform: translateY(-3px); box-shadow: none; }
 }
 
-.ph.hyps .hy-c { position: relative; padding-right: clamp(110px, 11vw, 150px); }
-.hy-t { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); width: clamp(84px, 8vw, 112px); display: block; }
-.hy-t img { width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: top left; border-radius: 8px; background: #f6f6f4; box-shadow: 0 0 0 1px rgba(17,17,17,.08); }
-.hy-t small { font-size: 11px; color: var(--muted); text-align: left; }
+.ph.hyps .hy-go { display: block; margin-top: 10px; font-size: 12.5px; color: var(--muted); text-decoration: none; text-align: left; }
 
 /* targets pinned on the dashboard */
 .tgs.shot { position: relative; width: min(100%, 600px); max-width: none; display: block; }
