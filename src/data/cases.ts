@@ -606,7 +606,8 @@ const greenCredit: Partial<CaseData> = {
       ] }] } },
 
     { id: 'measure', nav: 'Success metrics', title: ['Measuring', 'what matters'],
-      lede: 'The goal wasn’t to help users check a score. It was to make credit information easy to understand and act on.\nI defined success in four stages: activation, comprehension, task completion and retention.',
+      lede: 'I proposed targets for four stages: activation, comprehension, task completion and retention.',
+      blocks: [{ type: 'pull', text: 'The goal wasn’t to check a score. It was to make credit information easy to understand and act on.' }],
       visual: { layout: 'single', items: [{ label: 'Success metrics', spec: '', alt: 'Four proposed targets: 70% activation rate, 80% comprehension rate, 85% task success rate and 40% month 2 retention.', stages: {
         items: [
           { value: '70%', stage: 'Activate', metric: 'Activation rate', what: 'New users who see their score in the first session.', how: 'Product analytics' },
@@ -614,7 +615,6 @@ const greenCredit: Partial<CaseData> = {
           { value: '85%', stage: 'Act', metric: 'Task success rate (TSR)', what: 'Users who find a factor or debt on their own.', how: 'Usability testing' },
           { value: '40%', stage: 'Return', metric: 'Month 2 retention', what: 'Activated users who come back in month two.', how: 'Cohort analytics' },
         ],
-        note: 'All figures are proposed targets, not launch results.',
       } }] } },
 
     { id: 'reflection', nav: 'Reflection', title: ['What I’d', 'carry forward'],
