@@ -602,7 +602,7 @@ const greenCredit: Partial<CaseData> = {
         ] },
       ],
       visual: { layout: 'single', items: [{ label: 'Design system', spec: '', sys: true, alt: 'The Green Credit Score design system in Figma: colors, typography, sidebar, header, labels, progress bars, buttons, icons, cards, table elements and the card simulator.', pan: [
-        { src: '/images/gcs-system-full.webp', alt: 'The Green Credit Score design system: colors, typography and dashboard components.' },
+        { src: '/images/gcs-system-top.webp', alt: 'The Green Credit Score design system: colors, typography and dashboard components.' },
       ] }] } },
 
     { id: 'measure', nav: 'Success metrics', title: ['Measuring', 'what matters'],
