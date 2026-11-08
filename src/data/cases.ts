@@ -579,9 +579,13 @@ const greenCredit: Partial<CaseData> = {
       ] }] } },
 
     { id: 'ai', nav: 'AI workflow', toggle: 'ai', title: ['Prompts', 'instead of wireframes'],
-      lede: 'I replaced wireframes with prompts. I set the structure for each section, Figma’s agents drafted the layout, and our time went into visuals and components.\nThe designer on my team refined every draft and learned the workflow on real work; I owned the final pass.',
+      lede: 'I replaced wireframes with prompts, and design time went into what matters most: the visuals, the components and how they fit the system.',
       blocks: [
-        { type: 'pull', text: 'Six weeks instead of eight.' },
+        { type: 'list', split: true, items: [
+          { icon: 'file-description', label: 'Me', title: 'Wrote the structure and requirements for each section' },
+          { icon: 'sparkles', label: 'Figma agents', title: 'Returned a first layout to react to' },
+          { icon: 'users', label: 'The designer on my team, and me', title: 'Refined the visuals and components; I owned the final pass' },
+        ] },
       ],
       visual: { layout: 'single', items: [{ label: 'Final design and AI draft', spec: '', alt: 'The debt analysis page as the final design and as the AI draft.', pan: [
         { src: '/images/gcs-debt-final.webp', alt: 'Final debt analysis page: totals, balances by account and a payment history timeline per account with status legend.' },
