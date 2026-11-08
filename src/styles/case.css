@@ -1066,3 +1066,27 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
   .stage .vis.on .stg-r:hover { transform: translateY(-3px); box-shadow: 0 1px 2px rgba(17,17,17,.08), 0 12px 28px rgba(17,17,17,.14); transition-delay: 0s; }
 }
 .stg-r .tag::before { background: color-mix(in srgb, var(--af) 80%, #fff); }
+
+/* reflection: where each lesson showed up */
+.stage .vis:has(.ph.proof) { background: #fff; grid-template-columns: minmax(0,1fr); grid-template-rows: minmax(0,1fr); }
+.stage .vis:has(.ph.proof) .ph { background: #f6f6f4; border-radius: 14px; }
+.ph.proof, .stage .ph.proof { display: grid; align-content: center; padding: clamp(24px, 3.5vw, 44px); transform: none; transition: none; text-align: left; color: var(--ink); }
+.m-vis .ph.proof { aspect-ratio: auto !important; }
+.prf { display: grid; gap: 12px; width: 100%; max-width: 580px; margin-inline: auto; }
+.prf-h { margin: 0 0 2px; font-size: 12.5px; color: var(--muted); text-align: left; }
+.prf-r { position: relative; display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 14px; align-items: start; padding: 22px 24px; background: #fff; border-radius: 18px; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 6px 20px rgba(17,17,17,.08); }
+.prf-r .n { width: 22px; height: 22px; border-radius: 50%; background: var(--af); color: #fff; display: grid; place-items: center; font-size: 11px; font-weight: 700; margin-top: 2px; }
+.prf-r p { margin: 0; padding-right: 110px; font-size: clamp(15px, 1.25vw, 17px); font-weight: 600; letter-spacing: -.025em; line-height: 1.3; color: var(--ink); text-align: left; }
+.prf-r .tag { position: absolute; top: 16px; right: 18px; }
+.prf-r .tag::before { background: color-mix(in srgb, var(--af) 80%, #fff); }
+@media (prefers-reduced-motion: no-preference) {
+  .prf-r { transition: transform .6s cubic-bezier(.2,.7,.2,1), opacity .5s ease-out, box-shadow .5s ease-out; }
+  .stage .vis:not(.on) .prf-r { opacity: 0; transform: translateY(14px); }
+  .stage .vis.on .prf-r { transition-delay: calc(var(--i) * .12s + .1s), calc(var(--i) * .12s + .1s), 0s; }
+}
+/* hover on a card: it turns slightly, the others step back */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .stage .vis.on .stg-r:nth-child(odd):hover, .stage .vis.on .prf-r:nth-child(even):hover { transform: rotate(-1.4deg) scale(1.02); }
+  .stage .vis.on .stg-r:nth-child(even):hover, .stage .vis.on .prf-r:nth-child(odd):hover { transform: rotate(1.4deg) scale(1.02); }
+  .stage .vis.on .stg:has(.stg-r:hover) .stg-r:not(:hover), .stage .vis.on .prf:has(.prf-r:hover) .prf-r:not(:hover) { opacity: .5; transform: scale(.98); transition-delay: 0s; }
+}

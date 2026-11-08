@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; pan?: { src: string; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; sys?: boolean; cost?: { on: number; total: number; value: string; text: string; ring: number; ringText: string; source: string }; stages?: { items: { value: string; stage: string; metric: string; what: string; how: string }[]; note?: string }; iterate?: { rows: { signal: string; next: string }[]; note?: string }; hyps?: { saw: string; q: string; a: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; pan?: { src: string; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; sys?: boolean; cost?: { on: number; total: number; value: string; text: string; ring: number; ringText: string; source: string }; stages?: { items: { value: string; stage: string; metric: string; what: string; how: string }[]; note?: string }; proof?: { items: { tag: string; text: string }[] }; hyps?: { saw: string; q: string; a: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -610,27 +610,26 @@ const greenCredit: Partial<CaseData> = {
       blocks: [{ type: 'pull', text: 'The goal wasn’t to check a score. It was to make credit information easy to understand and act on.' }],
       visual: { layout: 'single', items: [{ label: 'Success metrics', spec: '', alt: 'Four proposed targets: 70% activation rate, 80% comprehension rate, 85% task success rate and 40% month 2 retention.', stages: {
         items: [
-          { value: '70%', stage: 'Activate', metric: 'Activation rate', what: 'New users who see their score in the first session.', how: 'Product analytics' },
-          { value: '80%', stage: 'Understand', metric: 'Comprehension rate', what: 'Users who name what affects their score.', how: 'Post-task questions' },
+          { value: '70%', stage: 'Activate', metric: 'Activation rate (AR)', what: 'New users who see their score in the first session.', how: 'Product analytics' },
+          { value: '80%', stage: 'Understand', metric: 'Comprehension rate (CR)', what: 'Users who name what affects their score.', how: 'Post-task questions' },
           { value: '85%', stage: 'Act', metric: 'Task success rate (TSR)', what: 'Users who find a factor or debt on their own.', how: 'Usability testing' },
-          { value: '40%', stage: 'Return', metric: 'Month 2 retention', what: 'Activated users who come back in month two.', how: 'Cohort analytics' },
+          { value: '40%', stage: 'Return', metric: 'Month 2 retention (M2)', what: 'Activated users who come back in month two.', how: 'Cohort analytics' },
         ],
       } }] } },
 
     { id: 'reflection', nav: 'Reflection', title: ['What I’d', 'carry forward'],
+      lede: 'Three lessons I’d take into the next product.',
       blocks: [{ type: 'numbered', react: true, items: [
         { title: 'Define the job before the prompt', body: 'The agent builds on what each section is for.' },
         { title: 'Options, not opinions', body: 'Two versions with trade-offs closed both disagreements.' },
-        { title: 'Test with the real audience', body: 'The preference check validated the direction, not whether people can act on their credit information. Next: usability tests with people who manage US credit, then measurement against these targets.' },
+        { title: 'Test with the real audience', body: 'Next: usability tests with people who manage US credit, then measurement against these targets. A low signal means investigate first, redesign second.' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'From measurement to iteration', spec: '', alt: 'Low activation, comprehension, task success or retention each lead to an investigation: onboarding friction, explanations, information hierarchy, recurring value.', iterate: {
-        rows: [
-          { signal: 'Low activation', next: 'Review onboarding friction and time to first value' },
-          { signal: 'Low comprehension', next: 'Simplify explanations and contextual guidance' },
-          { signal: 'Low task success', next: 'Revisit information hierarchy and navigation' },
-          { signal: 'Low retention', next: 'Investigate recurring value and engagement' },
+      visual: { layout: 'single', items: [{ label: 'Where it showed up', spec: '', alt: 'Lesson one showed up in the AI workflow: six weeks instead of eight. Lesson two in the status color test, where 25 of 30 preferred it, and in the landing concepts. Lesson three in the success metrics: four targets to test against.', proof: {
+        items: [
+          { tag: 'AI workflow', text: 'Structure first, then the layout: six weeks instead of eight.' },
+          { tag: 'Status color', text: '25 of 30 preferred status color, and the client chose the friendlier landing.' },
+          { tag: 'Success metrics', text: 'Four targets to test the product against.' },
         ],
-        note: 'Each signal triggers an investigation before any design change.',
       } }] } },
   ],
 };
