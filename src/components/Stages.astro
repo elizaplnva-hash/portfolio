@@ -1,0 +1,14 @@
+---
+interface Props { items: { value: string; stage: string; metric: string; what: string; how: string }[]; note?: string; }
+const { items, note } = Astro.props;
+---
+<div class="stg">
+  {items.map((it, i) => (
+    <div class="stg-r" style={`--i:${i}`}>
+      <span class="v">{it.value}</span>
+      <div class="t"><b>{it.metric}</b><p>{it.what}</p><small>{it.how}</small></div>
+      <span class="tag">{it.stage}</span>
+    </div>
+  ))}
+  {note && <p class="stg-note">{note}</p>}
+</div>
