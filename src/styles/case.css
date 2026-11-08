@@ -1024,3 +1024,12 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
   .hb-r:hover .hb-to b { color: var(--ink); }
   .hb-r:hover .hb-to span { color: var(--af); }
 }
+
+/* design system: the whole board fitted to the panel, zoomed by the cursor */
+.ph.pan.sys .pn-f { left: 50%; top: 0; height: 100cqh; width: calc(100cqh * .4128); margin-left: calc(-50cqh * .4128); }
+.ph.pan.sys .pn-f img { width: 100%; height: 100%; object-fit: contain; border-radius: 0; filter: none; }
+.stage .ph.pan.sys::after { display: none; }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .hb-r:nth-child(even):hover .hb-from { transform: rotate(-1.8deg) scale(1.02); }
+  .hb-r:nth-child(odd):hover .hb-from { transform: rotate(1.8deg) scale(1.02); }
+}
