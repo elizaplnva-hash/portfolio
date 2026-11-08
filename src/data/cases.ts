@@ -497,9 +497,9 @@ const greenCredit: Partial<CaseData> = {
       lede: 'A credit-history expert wanted to turn what he knows into a product, so more people could manage their credit without a consultation.',
       blocks: [
         { type: 'list', split: true, items: [
-          { title: 'Format', body: 'A paid subscription app, built on his existing audience' },
-          { title: 'Scope', body: 'Ten pages, from the site map to a design system' },
-          { title: 'Standard', body: 'Better than existing credit apps' },
+          { icon: 'credit-card', title: 'Format', body: 'A paid subscription app, built on his existing audience' },
+          { icon: 'layout-grid', title: 'Scope', body: 'Ten pages, from the site map to a design system' },
+          { icon: 'star', title: 'Standard', body: 'Better than existing credit apps' },
         ] },
         { type: 'note', text: 'The brief didn’t say what a member should leave with. Research started there.' },
       ],
@@ -569,9 +569,9 @@ const greenCredit: Partial<CaseData> = {
       ] }] } },
 
     { id: 'landing', nav: 'Landing tone', toggle: 'landing', title: ['When the team', 'split'],
-      lede: 'The landing came first: it set the visual style for the whole product, and the client had to approve it before anything else could follow. The Design Manager and I read Apple-style minimalism differently. She wanted it cooler, I wanted it friendlier.\nRather than settle it in the room, we designed both. The designer on my team built the cooler concept from my brief: muted green, text-led cards and a generic dashboard. I made the friendlier one in a day, with brighter green and real product screens in every section.',
+      lede: 'The landing set the visual style for the whole product, and the client had to approve it first. The Design Manager wanted it cooler; I wanted it friendlier.\nSo we designed both. The designer on my team built the cooler one from my brief, and I built the friendlier one around real product screens.',
       blocks: [
-        { type: 'pull', text: 'The client chose the friendlier one: a page that shows the product itself, not a description of it.' },
+        { type: 'pull', text: 'The client chose the friendlier one.' },
       ],
       visual: { layout: 'single', items: [{ label: 'Two landing concepts', spec: '', scroll: true, alt: 'Two landing page concepts: a cooler, SaaS-style one and a friendlier one built around real product screens.', pan: [
         { src: '/images/gcs-landing-a.webp', alt: 'Concept A: a cooler, SaaS-style landing page.' },

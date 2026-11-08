@@ -1009,3 +1009,18 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
   .cst-c:first-child:hover { transform: rotate(-1.5deg) scale(1.02); box-shadow: 0 1px 2px rgba(17,17,17,.08), 0 12px 30px rgba(17,17,17,.14); }
   .cst-c.ring:hover { transform: rotate(1.5deg) scale(1.02); box-shadow: 0 1px 2px rgba(17,17,17,.08), 0 12px 30px rgba(17,17,17,.14); }
 }
+
+/* hypotheses, reversed: the finding is the white card; the question wakes up on hover */
+.hb { margin-inline: auto; }
+.ph.hyps .hb-from { background: #fff; color: var(--ink); box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 6px 20px rgba(17,17,17,.08); }
+.hb-to { background: #ececea; box-shadow: none; }
+.hb-to b { color: var(--soft); }
+.hb-to span { color: var(--muted); }
+@media (hover: hover) and (pointer: fine) {
+  .hb-r:hover .hb-from { background: #fff; color: var(--ink); }
+  .hb:has(.hb-r:hover) .hb-r:not(:hover) { opacity: 1; }
+  .hb-to, .hb-to b, .hb-to span { transition: background-color .4s ease-out, color .4s ease-out, box-shadow .5s ease-out, transform .6s cubic-bezier(.2,.7,.2,1); }
+  .hb-r:hover .hb-to { background: #fff; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 10px 28px rgba(17,17,17,.14); }
+  .hb-r:hover .hb-to b { color: var(--ink); }
+  .hb-r:hover .hb-to span { color: var(--af); }
+}
