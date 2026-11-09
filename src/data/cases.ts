@@ -462,12 +462,12 @@ const greenCredit: Partial<CaseData> = {
   summary: 'A credit-monitoring app that gathers three bureau reports in one place, shows where you stand at a glance and explains what moves the score.',
   screens: [
     { id: 'overview', nav: 'Overview', title: ['Credit health,', 'readable in 5 seconds'],
-      lede: 'A credit app that shows where you stand in one look, and explains how to improve it.\nI led the product from a client’s page list to a design system ready for development.',
+      lede: 'Green Credit Score brings three bureau reports into one app. I cut nothing from them. I gave every piece a place: the status up front, the reasons one click away.\nI led the design from a client’s page list to a system ready for development.',
       blocks: [{ type: 'meta', items: [
         { label: 'Role', value: 'Lead Product Designer\nDanart Agency' },
-        { label: 'Collaboration', value: 'Design Manager\nJunior Designer' },
-        { label: 'Timeline', value: '6 weeks\nHanded off July 2026' },
-        { label: 'Responsibilities', value: 'UX/UI, design system\nAI workflow' },
+        { label: 'Collaboration', value: 'Design Manager\nThe designer on my team' },
+        { label: 'Timeline', value: '6 weeks, planned 8\nHanded off July 2026' },
+        { label: 'Responsibilities', value: 'Strategy, UX/UI\nDesign system, AI workflow' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'Dashboard and mobile', spec: '', combo: ['/images/gcs-dash.webp', '/images/gcs-mob.webp'], dm: true, alt: 'The Green Credit Score dashboard on the web, with the same dashboard on a phone in front of it' }] } },
 
