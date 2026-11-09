@@ -515,9 +515,9 @@ const greenCredit: Partial<CaseData> = {
         ] },
         { type: 'note', text: 'What’s missing is the link between a score and what drives it.' },
       ],
-      visual: { layout: 'single', items: [{ label: 'What not knowing costs', spec: '', alt: 'Three in five US adults say a lack of credit knowledge led to money mistakes, and 60% of them lost $1,000 or more (Experian survey 2024, FINRA Foundation 2024).', cost: {
+      visual: { layout: 'single', items: [{ label: 'What not knowing costs', spec: '', alt: 'Three in five US adults say a lack of credit knowledge led to money mistakes, and 60% of them lost $1,000 or more (Experian survey by Atomik Research, March 2024).', cost: {
         on: 3, total: 5, value: '3 in 5', text: 'US adults say a lack of credit knowledge led to money mistakes',
-        ring: 60, ringText: 'of them lost $1,000 or more', source: 'Experian survey 2024 · FINRA Foundation 2024',
+        ring: 60, ringText: 'of them lost $1,000 or more', source: 'Experian survey by Atomik Research, March 2024',
       } }] } },
 
     { id: 'strategy', nav: 'Hypothesis', title: ['How might we turn', 'a number into a plan?'],
@@ -559,7 +559,7 @@ const greenCredit: Partial<CaseData> = {
       lede: 'The brief said green, and the client wanted it that way. My research and judgment pointed elsewhere, so I designed a second direction: status color and a clearer way of laying out the information.',
       blocks: [
         { type: 'list', split: true, items: [
-          { title: 'Five-second check', body: 'Both directions side by side, with 30 users who follow their credit.' },
+          { title: 'Quick preference check', body: 'Both directions side by side, shown to about 30 people from our own circles. The Design Manager and I each asked our own contacts.' },
         ] },
         { type: 'pull', text: '25 of 30 preferred the second, 83%, and the client agreed. Brand green stays in the shades for impact.' },
       ],
