@@ -465,7 +465,7 @@ const greenCredit: Partial<CaseData> = {
       lede: 'Green Credit Score brings three bureau reports into one app. I cut nothing from them. I gave every piece a place: the status up front, the reasons one click away.\nI led the design from a client’s page list to a system ready for development.',
       blocks: [{ type: 'meta', items: [
         { label: 'Role', value: 'Lead Product Designer\nDanart Agency' },
-        { label: 'Collaboration', value: 'Design Manager\nThe designer on my team' },
+        { label: 'Collaboration', value: 'Design Manager\nJunior Designer\nDeveloper, contract' },
         { label: 'Timeline', value: '6 weeks, planned 8\nHanded off July 2026' },
         { label: 'Responsibilities', value: 'Strategy, UX/UI\nDesign system, AI workflow' },
       ] }],
@@ -473,9 +473,9 @@ const greenCredit: Partial<CaseData> = {
 
     { id: 'glance', nav: 'TLDR', title: ['Green Credit Score', 'at a glance'],
       blocks: [{ type: 'glance', items: [
-        { icon: 'alert-triangle', label: 'Problem', text: 'Credit data comes in three reports, and it’s unclear which one matters.', href: '#context' },
-        { icon: 'bulb', label: 'Solution', text: 'A dashboard with the status up front, score factors that explain it, and a simulator for testing changes.', href: '#strategy' },
-        { icon: 'chart-bar', label: 'Outcome', text: 'Approved and handed to development with a design system, two weeks early, after Figma’s AI agents replaced the wireframing stage.', href: '#ai' },
+        { icon: 'alert-triangle', label: 'Problem', text: 'One credit history arrives as three reports, and none of them says where you stand.', href: '#context' },
+        { icon: 'bulb', label: 'Solution', text: 'A dashboard to read the status, factor pages to explain it, a simulator to test a change.', href: '#strategy' },
+        { icon: 'chart-bar', label: 'Outcome', text: 'Approved by the client and handed to development two weeks early. Not launched yet, so there is no usage data.', href: '#measure' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'Credit report', spec: '', alt: 'The Green Credit Score credit report page.', pan: [{ src: '/images/gcs-report-full.webp', alt: 'The Green Credit Score credit report page.' }] }] } },
 
