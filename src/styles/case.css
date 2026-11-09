@@ -668,6 +668,8 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .cmp.scope.c2 { --col: 124px; }
 .cmp.scope .tg { white-space: nowrap; }
 @media (max-width: 899px) { .cmp.scope.c2 { --col: 96px; } }
+.cmp.scope.c2 .tg { width: auto; height: auto; margin: 0; padding: 7px 13px; }
+.ph .cmp-note { max-width: none; margin: 0; padding: 14px 0 10px; border-top: 1px solid #eee; font-size: 12.5px; line-height: 1.45; letter-spacing: -.01em; color: var(--muted); text-align: left; }
 
 /* numbered cards with an icon instead of the number */
 .numbered li:has(.ic) { grid-template-columns: 22px 1fr; align-items: start; }

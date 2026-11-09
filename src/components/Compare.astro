@@ -1,16 +1,21 @@
 ---
 import { icon } from '../data/icons';
-interface Props { cols: string[]; rows: { label: string; a: boolean; b: boolean }[]; }
-const { cols, rows } = Astro.props;
-const mark = (v: boolean) => icon(v ? 'circle-check' : 'circle-x');
+type V = boolean | 'part';
+interface Props { cols: string[]; rows: { label: string; a: V; b: V }[]; note?: string; }
+const { cols, rows, note } = Astro.props;
+const dash = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 12h11" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none"/></svg>';
+const mark = (v: V) => (v === 'part' ? dash : icon(v ? 'circle-check' : 'circle-x'));
+const state = (v: V) => (v === 'part' ? 'limit' : v ? 'keep' : 'cut');
+const say = (v: V) => (v === 'part' ? 'Partly' : v ? 'Yes' : 'No');
 ---
 <div class="cmp scope c2">
   <div class="cmp-h"><span></span><span class="tg">{cols[0]}</span><span class="tg">{cols[1]}</span></div>
   {rows.map((r) => (
     <div class="cmp-r">
       <span class="nm">{r.label}</span>
-      <i class:list={['on', r.a ? 'keep' : 'cut']} role="img" aria-label={r.a ? 'Yes' : 'No'} set:html={mark(r.a)} />
-      <i class:list={['on', r.b ? 'keep' : 'cut']} role="img" aria-label={r.b ? 'Yes' : 'No'} set:html={mark(r.b)} />
+      <i class:list={['on', state(r.a)]} role="img" aria-label={say(r.a)} set:html={mark(r.a)} />
+      <i class:list={['on', state(r.b)]} role="img" aria-label={say(r.b)} set:html={mark(r.b)} />
     </div>
   ))}
+  {note && <p class="cmp-note">{note}</p>}
 </div>

@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; pan?: { src: string; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; sys?: boolean; cost?: { on: number; total: number; value: string; text: string; ring: number; ringText: string; source: string }; stages?: { items: { value: string; stage: string; metric: string; what: string; how: string }[]; note?: string }; hyps?: { saw: string; q: string; a: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean; b: boolean }[] }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; pan?: { src: string; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; sys?: boolean; cost?: { on: number; total: number; value: string; text: string; ring: number; ringText: string; source: string }; stages?: { items: { value: string; stage: string; metric: string; what: string; how: string }[]; note?: string }; hyps?: { saw: string; q: string; a: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean | 'part'; b: boolean | 'part' }[]; note?: string }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -497,18 +497,22 @@ const greenCredit: Partial<CaseData> = {
       visual: { layout: 'single', items: [{ label: 'Initial product structure', spec: '', src: '/images/gcs-brief-map.webp', zoom: true, pad: true, alt: 'The client’s initial structure: a marketing site, registration and a member area. The member area holds the dashboard, credit report and account settings and is the core product.' }] } },
 
     { id: 'research', nav: 'Research', title: ['Plenty of data,', 'little meaning'],
-      lede: 'I looked at US credit from three sides.',
+      lede: 'There was no opportunity for user research, so I turned to what already existed and used it as input for hypotheses, not as proof.',
       blocks: [
-        { type: 'list', split: true, items: [
-          { label: 'Desk research', title: 'Not knowing how credit works is expensive.', hl: true },
-          { label: 'Competitors · Credit Karma, IdentityIQ, Credit Hero Score', title: 'Monitoring is the baseline; factors and simulators go further.' },
+        { type: 'list', items: [
+          { label: 'Desk research', title: '3 in 5 US adults say a lack of credit knowledge led to money mistakes (Experian survey by Atomik Research, March 2024).' },
+          { label: 'Competitor review', title: 'All three products have the tools. In my review, none led a person from status to reasons to action.' },
           { label: 'Visual benchmarks · Revolut, Kraken', title: 'Summary first, details on demand.' },
         ] },
-        { type: 'note', text: 'What’s missing is the link between a score and what drives it.' },
       ],
-      visual: { layout: 'single', items: [{ label: 'What not knowing costs', spec: '', alt: 'Three in five US adults say a lack of credit knowledge led to money mistakes, and 60% of them lost $1,000 or more (Experian survey by Atomik Research, March 2024).', cost: {
-        on: 3, total: 5, value: '3 in 5', text: 'US adults say a lack of credit knowledge led to money mistakes',
-        ring: 60, ringText: 'of them lost $1,000 or more', source: 'Experian survey by Atomik Research, March 2024',
+      visual: { layout: 'single', items: [{ label: 'Competitor review', spec: '', alt: 'Credit Karma, IdentityIQ and Credit Hero Score compared on score factors and score simulator. Credit Hero Score has both. Credit Karma and IdentityIQ have a simulator and cover factors partly.', compare: {
+        cols: ['Factors', 'Simulator'],
+        rows: [
+          { label: 'Credit Karma', a: 'part', b: true },
+          { label: 'IdentityIQ', a: 'part', b: true },
+          { label: 'Credit Hero Score', a: true, b: true },
+        ],
+        note: 'Partly: Credit Karma explains factors in articles, IdentityIQ shows the impact of each account. Credit Hero Score is from my review at the time, the others from public pages.',
       } }] } },
 
     { id: 'strategy', nav: 'Hypothesis', title: ['How might we turn', 'a number into a plan?'],
