@@ -127,7 +127,7 @@ const pinkwallet: Partial<CaseData> = {
       ], alt: 'Three key PinkWallet screens: transaction history, choosing an amount to send, and swap.' }] } },
 
     { id: 'background', nav: 'Client ask', title: ['The brief changed before','we started designing'],
-      lede: 'The client came back with funding and a new idea: a wallet.',
+      lede: 'The first project was a crypto token for experienced users. The client came back with funding and a new idea: a wallet for people who are new to crypto.',
       blocks: [
         { type: 'note', text: 'My first job was to turn that idea into a point of view.' },
       ],
@@ -257,10 +257,6 @@ const pinkwallet: Partial<CaseData> = {
           { value: '98%', label: 'Transactions confirmed', note: 'of those submitted to the network' },
         ] },
       ] }] } },
-
-    { id: 'origin', nav: 'Where it started', title: ['Before the wallet,','there was a token'],
-      lede: 'The first project was a crypto token for experienced users. The wallet came later, for people who are new to crypto.',
-      visual: { layout: 'single', items: [{ label: 'The PinkCoin website', spec: '', src: '/images/pw-pinkcoin-top.webp', alt: 'The PinkCoin token website from the first project' }] } },
 
     { id: 'reflection', nav: 'Reflection', title: ['Built on convention,', 'never tested'],
       lede: 'Without a usability-testing budget, I relied on familiar patterns and safeguards. Key assumptions remained untested.',
@@ -606,17 +602,17 @@ const greenCredit: Partial<CaseData> = {
       ] }] } },
 
     { id: 'measure', nav: 'Success metrics', title: ['Measuring', 'what matters'],
-      lede: 'I proposed targets for four stages: activation, comprehension, task completion and retention.',
+      lede: 'One metric for each stage: activation, comprehension, task completion and retention.',
       blocks: [
         { type: 'pull', text: 'The goal wasn’t to check a score. It was to make credit information easy to understand and act on.' },
-        { type: 'note', text: 'Next: usability tests with people who manage US credit, then measurement against these targets.' },
+        { type: 'note', text: 'Targets are set after a baseline is measured.' },
       ],
-      visual: { layout: 'single', items: [{ label: 'Success metrics', spec: '', alt: 'Four proposed targets: 70% activation rate, 80% comprehension rate, 85% task success rate and 40% month 2 retention.', stages: {
+      visual: { layout: 'single', items: [{ label: 'Success metrics', spec: '', alt: 'Four metrics to track: activation rate, comprehension rate, task success rate and month 2 retention, each with what it measures and how.', stages: {
         items: [
-          { value: '70%', stage: 'Activate', metric: 'Activation rate (AR)', what: 'New users who see their score in the first session.', how: 'Product analytics' },
-          { value: '80%', stage: 'Understand', metric: 'Comprehension rate (CR)', what: 'Users who name what affects their score.', how: 'Post-task questions' },
-          { value: '85%', stage: 'Act', metric: 'Task success rate (TSR)', what: 'Users who find a factor or debt on their own.', how: 'Usability testing' },
-          { value: '40%', stage: 'Return', metric: 'Month 2 retention (M2)', what: 'Activated users who come back in month two.', how: 'Cohort analytics' },
+          { value: 'AR', stage: 'Activate', metric: 'Activation rate', what: 'New users who see their score in the first session.', how: 'Product analytics. Watch by bureau and sign-up channel.' },
+          { value: 'CR', stage: 'Understand', metric: 'Comprehension rate', what: 'Users who name their score and its status after a five-second look.', how: 'Five-second test. Watch by score band.' },
+          { value: 'TSR', stage: 'Act', metric: 'Task success rate', what: 'Users who find a factor or run the simulator without help.', how: 'Usability testing. Watch time and drop-off step.' },
+          { value: 'M2', stage: 'Return', metric: 'Month 2 retention', what: 'Activated users who come back in month two.', how: 'Cohort analytics. Watch users who ran the simulator.' },
         ],
       } }] } },
   ],
