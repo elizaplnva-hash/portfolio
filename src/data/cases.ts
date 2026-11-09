@@ -489,15 +489,10 @@ const greenCredit: Partial<CaseData> = {
         { icon: 'gauge', label: 'One number comes out' },
       ], alt: 'You borrow and repay, banks report it, bureaus build reports, and one number comes out.' }] } },
 
-    { id: 'brief', nav: 'Client ask', title: ['From expertise', 'to a product'],
-      lede: 'A credit-history expert wanted to turn what he knows into a product, so more people could manage their credit without a consultation.',
+    { id: 'brief', nav: 'Client ask', title: ['A page list,', 'not a goal'],
+      lede: 'A credit-history expert wanted a paid subscription app, so people could manage their credit without a consultation.\nThe Design Manager ran the client conversations and passed the brief to me: eight pages and one standard, better than existing credit apps.',
       blocks: [
-        { type: 'list', split: true, items: [
-          { icon: 'credit-card', title: 'Format', body: 'A paid subscription app, built on his existing audience' },
-          { icon: 'layout-grid', title: 'Scope', body: 'Ten pages, from the site map to a design system' },
-          { icon: 'star', title: 'Standard', body: 'Better than existing credit apps' },
-        ] },
-        { type: 'note', text: 'The brief didn’t say what a member should leave with. Research started there.' },
+        { type: 'pull', text: 'It named pages, not what a member should leave with. That became my question.' },
       ],
       visual: { layout: 'single', items: [{ label: 'Initial product structure', spec: '', src: '/images/gcs-brief-map.webp', zoom: true, pad: true, alt: 'The client’s initial structure: a marketing site, registration and a member area. The member area holds the dashboard, credit report and account settings and is the core product.' }] } },
 
