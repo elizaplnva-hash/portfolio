@@ -1140,3 +1140,22 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .pn-f .mk.hot { transform: scale(1.3); }
 .pn-f .mk.dim { opacity: .35; }
 @media (prefers-reduced-motion: reduce) { .pn-f .mk { transition: none; } }
+
+/* numbers in the case's own green: light circle, dark green digit */
+.list.split .n { background: color-mix(in srgb, var(--af) 18%, #fff); color: var(--a); }
+/* half-cards under a tab card */
+.list .parts { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.list.split .parts li, .list.split .parts li:first-child { display: block; padding: 6px 12px; margin: 0; border: 0; border-radius: 10px; background: #f6f6f4; box-shadow: none; font-size: 13px; font-weight: 500; letter-spacing: -.01em; color: var(--ink); }
+/* success metrics: icon in place of a big number, tighter cards */
+.stg-r:has(.ic) { grid-template-columns: 44px minmax(0, 1fr); gap: 14px; padding: 16px 20px; }
+.stg-r .ic { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: color-mix(in srgb, var(--af) 18%, #fff); color: var(--a); }
+.stg-r .ic svg { width: 22px; height: 22px; fill: currentColor; }
+.stg-r:has(.ic) .t { padding-right: 90px; }
+
+.ph.stages .stg { max-width: none; gap: 14px; }
+.stg-r:has(.ic) { padding: 22px 26px; grid-template-columns: 52px minmax(0, 1fr); gap: 18px; }
+.stg-r .ic { width: 52px; height: 52px; }
+.stg-r .ic svg { width: 26px; height: 26px; }
+.stg-r:has(.ic) b { font-size: 17px; }
+.stg-r:has(.ic) p { font-size: 14.5px; }
+.stg-r:has(.ic) small { font-size: 13px; }

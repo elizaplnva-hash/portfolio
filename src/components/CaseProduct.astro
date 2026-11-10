@@ -122,7 +122,7 @@ const cf = Array.from({ length: 14 }, (_, k) => { const a = (k / 14) * Math.PI *
                   <ol class:list={['list rv', { num: b.numbered, card: b.card, split: b.split, tabs: b.tabs }]} data-nh={b.noHover ? '' : undefined}>{b.items.map((x, i) => (
                     <li class:list={{ on: b.tabs && i === 0, hl: x.hl }} tabindex={b.tabs ? 0 : undefined} data-i={b.tabs ? i : undefined}>
                       {x.icon ? <span class="ic" aria-hidden="true" set:html={icon(x.icon)} /> : b.numbered ? <span class="n" aria-hidden="true"></span> : null}
-                      <div>{x.label && <small>{x.label}</small>}<h3>{x.title}</h3>{x.body && <p>{x.body}</p>}</div>
+                      <div>{x.label && <small>{x.label}</small>}<h3>{x.title}</h3>{x.body && <p>{x.body}</p>}{x.parts && <ul class="parts">{x.parts.map((t) => <li>{t}</li>)}</ul>}</div>
                     </li>))}
                   </ol>);
                 case 'callout': return <p class="callout rv">{b.text}</p>;
@@ -262,18 +262,6 @@ const cf = Array.from({ length: 14 }, (_, k) => { const a = (k / 14) * Math.PI *
         l.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(i); } });
       });
     });
-    // numbered list <-> numbered pins on the screen: hovering a row lifts its pin, the others fade
-    if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
-      document.querySelectorAll<HTMLElement>('.list.num').forEach((ol) => {
-        const id = ol.closest<HTMLElement>('[data-step]')?.dataset.step;
-        const pins = () => [...document.querySelectorAll<HTMLElement>(`[data-step="${id}"] .pn-f .mk`)];
-        const lis = [...ol.querySelectorAll<HTMLElement>('li')];
-        lis.forEach((l, i) => {
-          l.addEventListener('pointerenter', () => pins().forEach((m) => { const on = Number(m.textContent) === i + 1; m.classList.toggle('hot', on); m.classList.toggle('dim', !on); }));
-          l.addEventListener('pointerleave', () => pins().forEach((m) => m.classList.remove('hot', 'dim')));
-        });
-      });
-    }
     // theme switch: flips between two screens
     document.querySelectorAll<HTMLButtonElement>('.tg').forEach((b) => {
       const id = b.closest<HTMLElement>('[data-step]')?.dataset.step;

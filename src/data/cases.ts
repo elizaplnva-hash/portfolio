@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; evid?: { top: { lead: string; source?: string; items: { value: string; scope?: string; text: string }[] }; frames: { ratio?: string; shots: { src: string; name: string; alt: string; logo: string }[]; finds?: { kind: 'first' | 'deeper'; tag: string; icon: string; text: string }[] }[] }; pan?: { src: string; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; sys?: boolean; cost?: { on: number; total: number; value: string; text: string; ring: number; ringText: string; source: string }; stages?: { items: { value: string; stage: string; metric: string; what: string; how: string }[]; note?: string }; hyps?: { saw: string; q: string; a: string; icon?: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean | 'part'; b: boolean | 'part' }[]; note?: string }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; evid?: { top: { lead: string; source?: string; items: { value: string; scope?: string; text: string }[] }; frames: { ratio?: string; shots: { src: string; name: string; alt: string; logo: string }[]; finds?: { kind: 'first' | 'deeper'; tag: string; icon: string; text: string }[] }[] }; pan?: { src: string; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; sys?: boolean; cost?: { on: number; total: number; value: string; text: string; ring: number; ringText: string; source: string }; stages?: { items: { value: string; icon?: string; stage: string; metric: string; what: string; how: string }[]; note?: string }; hyps?: { saw: string; q: string; a: string; icon?: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean | 'part'; b: boolean | 'part' }[]; note?: string }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -16,7 +16,7 @@ export type Block =
   | { type: 'decision'; rows: [string, string][] }
   | { type: 'glance'; items: { icon: string; label: string; text: string; href: string }[] }
   | { type: 'cards'; items: { label?: string; title: string; body?: string; icon?: string; hi?: boolean }[] }
-  | { type: 'list'; numbered?: boolean; card?: boolean; split?: boolean; tabs?: boolean; noHover?: boolean; items: { label?: string; title: string; body?: string; icon?: string; hl?: boolean }[] }
+  | { type: 'list'; numbered?: boolean; card?: boolean; split?: boolean; tabs?: boolean; noHover?: boolean; items: { label?: string; title: string; body?: string; icon?: string; hl?: boolean; parts?: string[] }[] }
   | { type: 'callout'; text: string }
   | { type: 'chain'; steps: string[] }
   | { type: 'chips'; items: string[] }
@@ -549,16 +549,16 @@ const greenCredit: Partial<CaseData> = {
           { title: 'Debt analysis', body: 'What do I owe? Open balances, monthly payments, debt-to-income and the standing of each account.' },
         ] },
       ],
-      visual: { layout: 'single', items: [{ label: 'Dashboard', spec: '', alt: 'The Green Credit Score dashboard with three numbered blocks: status, score factors and debt analysis.', pan: [
-        { src: '/images/gcs-dash.webp', alt: 'The Green Credit Score dashboard on the web.', marks: [{ n: 1, x: 38.5, y: 15.8 }, { n: 2, x: 37, y: 43 }, { n: 3, x: 37.5, y: 72.8 }] },
+      visual: { layout: 'single', items: [{ label: 'Dashboard', spec: '', alt: 'The Green Credit Score dashboard with status, score factors and debt analysis.', pan: [
+        { src: '/images/gcs-dash.webp', alt: 'The Green Credit Score dashboard on the web.' },
       ] }] } },
 
     { id: 'guidance', nav: 'Explain and test', title: ['Understand the score,', 'then change it'],
       lede: 'Two sections follow the dashboard, one for each question a person asks next.',
       blocks: [
         { type: 'list', split: true, tabs: true, noHover: true, items: [
-          { icon: 'zoom-question', title: 'Score factors', body: 'Why is it this number? Each factor has its own page with five blocks: where you stand, why, the accounts behind it, twelve months of history and what a missed payment would do.' },
-          { icon: 'compass', title: 'Score simulator', body: 'What if I change it? Eight decisions in three groups: open or close accounts, use my cards, payment habits. Pick one and the new score appears beside the current one.' },
+          { icon: 'zoom-question', title: 'Score factors', body: 'Why is it this number? Every factor has its own page with five blocks.', parts: ['Where you stand', 'Why', 'Accounts behind it', '12 months of history', 'If you miss a payment'] },
+          { icon: 'compass', title: 'Score simulator', body: 'What if I change it? Pick one of eight decisions and the new score appears beside the current one.', parts: ['Open or close accounts', 'Use my cards', 'Payment habits'] },
         ] },
       ],
       visual: { layout: 'single', items: [{ label: 'Score factors and score simulator', spec: '', alt: 'The payment history page of score factors, and the score simulator with the open new credit card scenario.', pan: [
@@ -625,10 +625,10 @@ const greenCredit: Partial<CaseData> = {
       ],
       visual: { layout: 'single', items: [{ label: 'Success metrics', spec: '', alt: 'Four metrics to track: activation rate, comprehension rate, task success rate and month 2 retention, each with what it measures and how.', stages: {
         items: [
-          { value: '1', stage: 'Activate', metric: 'Activation rate', what: 'New users who see their score in the first session.', how: 'Product analytics. Watch by bureau and sign-up channel.' },
-          { value: '2', stage: 'Understand', metric: 'Comprehension rate', what: 'Users who name their score and its status after a five-second look.', how: 'Five-second test. Watch by score band.' },
-          { value: '3', stage: 'Act', metric: 'Task success rate', what: 'Users who find a factor or run the simulator without help.', how: 'Usability testing. Watch time and drop-off step.' },
-          { value: '4', stage: 'Return', metric: 'Month 2 retention', what: 'Activated users who come back in month two.', how: 'Cohort analytics. Watch users who ran the simulator.' },
+          { value: '1', icon: 'user-plus', stage: 'Activate', metric: 'Activation rate', what: 'New users who see their score in the first session.', how: 'Product analytics. Watch by bureau and sign-up channel.' },
+          { value: '2', icon: 'eye', stage: 'Understand', metric: 'Comprehension rate', what: 'Users who name their score and its status after a five-second look.', how: 'Five-second test. Watch by score band.' },
+          { value: '3', icon: 'circle-check', stage: 'Act', metric: 'Task success rate', what: 'Users who find a factor or run the simulator without help.', how: 'Usability testing. Watch time and drop-off step.' },
+          { value: '4', icon: 'calendar-event', stage: 'Return', metric: 'Month 2 retention', what: 'Activated users who come back in month two.', how: 'Cohort analytics. Watch users who ran the simulator.' },
         ],
       } }] } },
   ],

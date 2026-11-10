@@ -1,11 +1,12 @@
 ---
-interface Props { items: { value: string; stage: string; metric: string; what: string; how: string }[]; note?: string; }
+import { icon } from '../data/icons';
+interface Props { items: { value: string; icon?: string; stage: string; metric: string; what: string; how: string }[]; note?: string; }
 const { items, note } = Astro.props;
 ---
 <div class="stg">
   {items.map((it, i) => (
     <div class="stg-r" style={`--i:${i}`}>
-      <span class="v">{it.value}</span>
+      {it.icon ? <span class="ic" aria-hidden="true" set:html={icon(it.icon)} /> : <span class="v">{it.value}</span>}
       <div class="t"><b>{it.metric}</b><p>{it.what}</p><small>{it.how}</small></div>
       <span class="tag">{it.stage}</span>
     </div>
