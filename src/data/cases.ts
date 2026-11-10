@@ -412,12 +412,13 @@ const lapunzel: Partial<CaseData> = {
       ] }] } },
 
     { id: 'team', nav: 'Collaboration', title: ['A new team,', 'and a way of working'],
-      lede: 'Three designers and I hadn’t worked together before, so the first job was a way of working. We met two or three times a week, depending on the load, and kept everything in Notion and FigJam. I split the work and each person owned specific tasks. When a decision came up, like naming the categories, we listed the options and weighed them together.\nThe owner was in a shared chat with us from the brief to the delivery.',
+      lede: 'We had never worked together, so I set the rhythm: two or three calls a week, and Notion and FigJam as the one place for tasks and findings.\nEach person owned specific tasks. Decisions, like naming the categories, followed the same routine: list the options, weigh them, pick.',
+      blocks: [{ type: 'pull', text: 'The owner was in a shared chat with us from brief to delivery.' }],
       visual: { layout: 'single', items: [{ label: 'Four weeks, four stages', spec: '', alt: 'Four weeks, four stages. Week 1, Listen: heuristic evaluation, competitive analysis, five user interviews. Week 2, Make sense: survey, brainstorm, hypothesis framing. Week 3, Shape: information architecture, user flow. Week 4, Prove: prototype and usability testing with five people.', plan: [
-        { week: 'Week 1', name: 'Listen', line: 'Hear the site, the market and the owners.', tags: ['Heuristic evaluation', 'Competitive analysis', 'User interviews, 5'], color: '#6b8cff' },
-        { week: 'Week 2', name: 'Make sense', line: 'Turn what we heard into bets we could test.', tags: ['Survey', 'Brainstorm', 'Hypothesis framing'], color: '#e0408f' },
+        { week: 'Week 1', name: 'Listen', line: 'Hear the site, the market and the owners.', tags: ['Heuristic evaluation', 'Competitive analysis', 'User interviews, 5'], color: '#c9a4ea' },
+        { week: 'Week 2', name: 'Make sense', line: 'Turn what we heard into bets we could test.', tags: ['Survey', 'Brainstorm', 'Hypothesis framing'], color: '#a86fdc' },
         { week: 'Week 3', name: 'Shape', line: 'Give every product a clear place to live.', tags: ['Information architecture', 'User flow'], color: '#8A3FD0' },
-        { week: 'Week 4', name: 'Prove', line: 'Put the flow in front of five people.', tags: ['Prototype', 'Usability testing, 5'], color: '#e8541e' },
+        { week: 'Week 4', name: 'Prove', line: 'Put the flow in front of five people.', tags: ['Prototype', 'Usability testing, 5'], color: '#6a2aa8' },
       ] }] } },
 
     { id: 'research', nav: 'Research', title: ['Three angles', 'on one drop-off'],
