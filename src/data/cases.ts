@@ -554,11 +554,11 @@ const greenCredit: Partial<CaseData> = {
       ] }] } },
 
     { id: 'guidance', nav: 'Explain and test', title: ['Understand the score,', 'then change it'],
-      lede: 'The dashboard shows where you stand. Two sections answer what comes next: why, and what would change it.',
+      lede: 'Two sections follow the dashboard, one for each question a person asks next.',
       blocks: [
-        { type: 'list', split: true, tabs: true, items: [
-          { icon: 'zoom-question', title: 'Score factors', body: 'The reason behind the number. Every factor has its own page with the same five blocks.' },
-          { icon: 'compass', title: 'Score simulator', body: 'The effect of a decision. Pick one, like closing the oldest card, and see the new result.' },
+        { type: 'list', split: true, tabs: true, noHover: true, items: [
+          { icon: 'zoom-question', title: 'Score factors', body: 'Why is it this number? Each factor has its own page with five blocks: where you stand, why, the accounts behind it, twelve months of history and what a missed payment would do.' },
+          { icon: 'compass', title: 'Score simulator', body: 'What if I change it? Eight decisions in three groups: open or close accounts, use my cards, payment habits. Pick one and the new score appears beside the current one.' },
         ] },
       ],
       visual: { layout: 'single', items: [{ label: 'Score factors and score simulator', spec: '', alt: 'The payment history page of score factors, and the score simulator with the open new credit card scenario.', pan: [
@@ -572,14 +572,14 @@ const greenCredit: Partial<CaseData> = {
         { type: 'list', split: true, items: [
           { title: 'Quick preference check', body: 'Both directions side by side, shown to about 30 people from our own circles. The Design Manager and I each asked our own contacts.' },
         ] },
-        { type: 'pull', text: '25 of 30 preferred the second, 83%, and the client agreed. Brand green stays in the shades for impact.' },
+        { type: 'pull', text: '25 of 30 preferred the second, and the client agreed. Brand green stays in the shades for impact.' },
       ],
       visual: { layout: 'single', items: [{ label: 'Green only and status color', spec: '', alt: 'The same credit report dashboard in two directions: green only, and status color with red, amber and green.', pan: [
         { src: '/images/gcs-theme-green.webp', alt: 'Green-only direction of the credit report dashboard.' },
         { src: '/images/gcs-theme-status.webp', alt: 'Status color direction of the credit report dashboard, with red, amber and green.' },
       ] }] } },
 
-    { id: 'landing', nav: 'Landing tone', toggle: 'landing', title: ['When the team', 'split'],
+    { id: 'landing', nav: 'Landing tone', toggle: 'landing', title: ['Two landings,', 'one decision'],
       lede: 'The landing set the visual style for the whole product, and the client had to approve it first. The Design Manager wanted it cooler; I wanted it friendlier.\nSo we designed both. The designer on my team built the cooler one from my brief, and I built the friendlier one around real product screens.',
       blocks: [
         { type: 'pull', text: 'The client chose the friendlier one.' },
@@ -617,17 +617,17 @@ const greenCredit: Partial<CaseData> = {
       ] }] } },
 
     { id: 'measure', nav: 'Success metrics', title: ['Measuring', 'what matters'],
-      lede: 'One metric for each stage: activation, comprehension, task completion and retention.',
+      lede: 'Delivered, not yet measured. One metric for each stage: activation, comprehension, task completion and retention.',
       blocks: [
         { type: 'pull', text: 'The goal wasn’t to check a score. It was to make credit information easy to understand and act on.' },
         { type: 'note', text: 'Targets are set after a baseline is measured.' },
       ],
       visual: { layout: 'single', items: [{ label: 'Success metrics', spec: '', alt: 'Four metrics to track: activation rate, comprehension rate, task success rate and month 2 retention, each with what it measures and how.', stages: {
         items: [
-          { value: 'AR', stage: 'Activate', metric: 'Activation rate', what: 'New users who see their score in the first session.', how: 'Product analytics. Watch by bureau and sign-up channel.' },
-          { value: 'CR', stage: 'Understand', metric: 'Comprehension rate', what: 'Users who name their score and its status after a five-second look.', how: 'Five-second test. Watch by score band.' },
-          { value: 'TSR', stage: 'Act', metric: 'Task success rate', what: 'Users who find a factor or run the simulator without help.', how: 'Usability testing. Watch time and drop-off step.' },
-          { value: 'M2', stage: 'Return', metric: 'Month 2 retention', what: 'Activated users who come back in month two.', how: 'Cohort analytics. Watch users who ran the simulator.' },
+          { value: '1', stage: 'Activate', metric: 'Activation rate', what: 'New users who see their score in the first session.', how: 'Product analytics. Watch by bureau and sign-up channel.' },
+          { value: '2', stage: 'Understand', metric: 'Comprehension rate', what: 'Users who name their score and its status after a five-second look.', how: 'Five-second test. Watch by score band.' },
+          { value: '3', stage: 'Act', metric: 'Task success rate', what: 'Users who find a factor or run the simulator without help.', how: 'Usability testing. Watch time and drop-off step.' },
+          { value: '4', stage: 'Return', metric: 'Month 2 retention', what: 'Activated users who come back in month two.', how: 'Cohort analytics. Watch users who ran the simulator.' },
         ],
       } }] } },
   ],
