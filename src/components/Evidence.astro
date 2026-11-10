@@ -2,13 +2,13 @@
 import { icon } from '../data/icons';
 interface Shot { src: string; name: string; alt: string }
 interface Find { kind: 'first' | 'deeper'; tag: string; icon: string; text: string }
-interface Props { top: { lead: string; items: { value: string; scope: string; text: string }[] }; frames: { ratio?: string; shots: Shot[]; finds?: Find[] }[] }
+interface Props { top: { lead: string; items: { value: string; scope?: string; text: string }[] }; frames: { ratio?: string; shots: Shot[]; finds?: Find[] }[] }
 const { top, frames } = Astro.props;
 ---
 <div class="ev-w">
   <div class="ev-top">
     <h3>{top.lead}</h3>
-    <div class="ev-st">{top.items.map((s) => <div class="ev-c"><small>{s.scope}</small><b class="ev-v">{s.value}</b><p>{s.text}</p></div>)}</div>
+    <div class="ev-st">{top.items.map((s) => <div class="ev-c">{s.scope && <small>{s.scope}</small>}<b class="ev-v">{s.value}</b><p>{s.text}</p></div>)}</div>
   </div>
   <div class="pn ev-bot">
     {frames.map((f, i) => (
