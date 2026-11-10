@@ -1,9 +1,9 @@
 ---
 import { icon } from '../data/icons';
-interface Item { icon: string; cat: string; level: 'critical' | 'serious' | 'moderate'; score: string; title: string; text: string; src: string; pos?: string; alt?: string; }
+interface Item { icon: string; cat: string; level: 'catastrophe' | 'major' | 'minor'; score: string; title: string; text: string; src: string; pos?: string; alt?: string; }
 interface Props { items: Item[]; }
 const { items } = Astro.props;
-const word = { critical: 'Critical', serious: 'Serious', moderate: 'Moderate' };
+const word = { catastrophe: 'Catastrophe', major: 'Major', minor: 'Minor' };
 ---
 <div class="fd">
   {items.map((it) => (
