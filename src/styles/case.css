@@ -1164,3 +1164,9 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .stage .ph.pan .pn-f.wide { left: 0; right: auto; top: 0; bottom: 0; transition: opacity .4s ease-out, transform .5s var(--out); }
 .ph.pan .pn-f.wide img { width: 100%; height: 100%; max-width: none; object-fit: fill; border-radius: 0; filter: none; background: #fff; }
 .stage .ph.pan:has(.pn-f.wide.on)::after { opacity: 0; }
+
+/* success metrics: no stage tags, the method sits quiet underneath */
+.stg-r:has(.ic) .t { padding-right: 0; }
+.stg-r:has(.ic) small { margin-top: 8px; font-size: 12px; font-weight: 500; letter-spacing: -.01em; color: #a3a39f; }
+.ph.stages .stg { justify-self: stretch; }
+.ph.stages, .stage .ph.stages { grid-template-columns: minmax(0, 1fr); }

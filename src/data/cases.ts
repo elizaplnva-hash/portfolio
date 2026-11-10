@@ -627,10 +627,10 @@ const greenCredit: Partial<CaseData> = {
       ],
       visual: { layout: 'single', items: [{ label: 'Success metrics', spec: '', alt: 'Four metrics to track: activation rate, comprehension rate, task success rate and month 2 retention, each with what it measures and how.', stages: {
         items: [
-          { value: '1', icon: 'user-plus', stage: 'Activate', metric: 'Activation rate', what: 'New users who see their score in the first session.', how: 'Product analytics. Watch by bureau and sign-up channel.' },
-          { value: '2', icon: 'eye', stage: 'Understand', metric: 'Comprehension rate', what: 'Users who name their score and its status after a five-second look.', how: 'Five-second test. Watch by score band.' },
-          { value: '3', icon: 'circle-check', stage: 'Act', metric: 'Task success rate', what: 'Users who find a factor or run the simulator without help.', how: 'Usability testing. Watch time and drop-off step.' },
-          { value: '4', icon: 'calendar-event', stage: 'Return', metric: 'Month 2 retention', what: 'Activated users who come back in month two.', how: 'Cohort analytics. Watch users who ran the simulator.' },
+          { value: '1', icon: 'user-plus', stage: 'Activate', metric: 'Activation rate', what: 'New users who view their score in session one.', how: 'Product analytics · by bureau and channel' },
+          { value: '2', icon: 'eye', stage: 'Understand', metric: 'Comprehension rate', what: 'Users who identify their score and status in 5 seconds.', how: '5-second test · by score band' },
+          { value: '3', icon: 'circle-check', stage: 'Act', metric: 'Task success rate', what: 'Users who find a factor or run the simulator unaided.', how: 'Usability testing · time and drop-off' },
+          { value: '4', icon: 'calendar-event', stage: 'Return', metric: 'Month 2 retention', what: 'Activated users who return in month two.', how: 'Cohort analysis · simulator users' },
         ],
       } }] } },
   ],
