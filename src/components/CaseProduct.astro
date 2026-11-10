@@ -262,6 +262,18 @@ const cf = Array.from({ length: 14 }, (_, k) => { const a = (k / 14) * Math.PI *
         l.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(i); } });
       });
     });
+    // numbered list <-> numbered pins on the screen: hovering a row lifts its pin, the others fade
+    if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      document.querySelectorAll<HTMLElement>('.list.num').forEach((ol) => {
+        const id = ol.closest<HTMLElement>('[data-step]')?.dataset.step;
+        const pins = () => [...document.querySelectorAll<HTMLElement>(`[data-step="${id}"] .pn-f .mk`)];
+        const lis = [...ol.querySelectorAll<HTMLElement>('li')];
+        lis.forEach((l, i) => {
+          l.addEventListener('pointerenter', () => pins().forEach((m) => { const on = Number(m.textContent) === i + 1; m.classList.toggle('hot', on); m.classList.toggle('dim', !on); }));
+          l.addEventListener('pointerleave', () => pins().forEach((m) => m.classList.remove('hot', 'dim')));
+        });
+      });
+    }
     // theme switch: flips between two screens
     document.querySelectorAll<HTMLButtonElement>('.tg').forEach((b) => {
       const id = b.closest<HTMLElement>('[data-step]')?.dataset.step;

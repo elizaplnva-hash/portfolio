@@ -1134,3 +1134,9 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .ph.hyps .hb-from { display: flex; align-items: center; gap: 12px; }
 .ph.hyps .hb-from .ic { width: 34px; height: 34px; }
 .ph.hyps .hb-from .ic svg { width: 18px; height: 18px; fill: currentColor; }
+
+/* pins follow the list row under the cursor */
+.pn-f .mk { transition: transform .4s ease-out, opacity .4s ease-out; }
+.pn-f .mk.hot { transform: scale(1.3); }
+.pn-f .mk.dim { opacity: .35; }
+@media (prefers-reduced-motion: reduce) { .pn-f .mk { transition: none; } }

@@ -541,16 +541,16 @@ const greenCredit: Partial<CaseData> = {
       ] }] } },
 
     { id: 'priorities', nav: 'Dashboard', title: ['Where I stand,', 'in one place'],
-      lede: 'The first hypothesis became the screen people see right after sign-up, built to be read in five seconds. It reads top to bottom, and each block leads to the section behind it.',
+      lede: 'The first hypothesis became the screen people see right after sign-up. It reads top to bottom, and each block leads to the section behind it.',
       blocks: [
-        { type: 'list', split: true, items: [
-          { icon: 'gauge', title: 'Status', body: 'Standing with all three bureaus, the monthly change and the next milestone.' },
-          { icon: 'chart-bar', title: 'Drivers', body: 'Six factors labelled by impact, each with a single tip.' },
-          { icon: 'wallet', title: 'Debt', body: 'Open balances, monthly payments, debt-to-income and the standing of each account.' },
+        { type: 'list', split: true, numbered: true, items: [
+          { title: 'Status', body: 'Where do I stand? All three bureaus, the monthly change and the next milestone.' },
+          { title: 'Score factors', body: 'What moves it? Six factors labelled by impact, each with one tip.' },
+          { title: 'Debt analysis', body: 'What do I owe? Open balances, monthly payments, debt-to-income and the standing of each account.' },
         ] },
       ],
-      visual: { layout: 'single', items: [{ label: 'Dashboard', spec: '', alt: 'The Green Credit Score dashboard: status, drivers and debt.', pan: [
-        { src: '/images/gcs-dash.webp', alt: 'The Green Credit Score dashboard on the web.' },
+      visual: { layout: 'single', items: [{ label: 'Dashboard', spec: '', alt: 'The Green Credit Score dashboard with three numbered blocks: status, score factors and debt analysis.', pan: [
+        { src: '/images/gcs-dash.webp', alt: 'The Green Credit Score dashboard on the web.', marks: [{ n: 1, x: 38.5, y: 15.8 }, { n: 2, x: 37, y: 43 }, { n: 3, x: 37.5, y: 72.8 }] },
       ] }] } },
 
     { id: 'guidance', nav: 'Explain and test', title: ['Understand the score,', 'then change it'],
