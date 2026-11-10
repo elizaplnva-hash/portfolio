@@ -367,89 +367,118 @@ const jam: Partial<CaseData> = {
 const lapunzel: Partial<CaseData> = {
   closing: {
     title: 'Answer the hesitation <em>where it happens</em>',
-    lede: 'That’s how I designed Lapunzel, and how I’d approach your product.',
+    lede: 'That’s how I worked on Lapunzel, and how I’d approach your product.',
   },
   accent: '#E58A1F',
   fill: '#E58A1F',
   tint: '#FFEBD6',
   facts: [
-    { label: 'Role', value: 'UX Lead' },
-    { label: 'Scope', value: 'Research, IA, usability testing' },
+    { label: 'Role', value: 'UX Lead, freelance project' },
+    { label: 'Scope', value: 'Research, prioritization, usability testing' },
     { label: 'Focus', value: 'Trust and conversion' },
-    { label: 'Timeline', value: '4 weeks, 2024' },
+    { label: 'Timeline', value: '4 weeks, spring 2024' },
   ],
-  summary: 'A young pet-care cosmetics brand whose store visitors left without ordering. I led the UX process and found where they hesitated.',
+  summary: 'An online store for vegan pet cosmetics. I led UX for a new team of three designers and found where shoppers hesitated.',
   screens: [
     { id: 'overview', nav: 'Overview', title: ['Product page exits', 'down 20%'],
-      lede: 'Lapunzel is a young pet-care cosmetics brand. People browsed its store and left without ordering.\nOur team found where they hesitated and answered each doubt on the page itself. The client reported the drop after launch.',
+      lede: 'Lapunzel sells vegan pet cosmetics online. This was a freelance project: I led UX for a new team of three designers, with the brand owner as our stakeholder, from research through to the redesign.',
       blocks: [{ type: 'meta', items: [
-        { label: 'Role', value: 'UX Lead' },
-        { label: 'Collaboration', value: 'Design team of 3–5\nBrand owner' },
-        { label: 'Timeline', value: '4 weeks\n2024' },
-        { label: 'Responsibilities', value: 'Process and deadlines, research\nIA, usability testing' },
+        { label: 'Role', value: 'UX Lead\nFreelance project' },
+        { label: 'Collaboration', value: '3 designers\nBrand owner, stakeholder' },
+        { label: 'Timeline', value: '4 weeks\nSpring 2024' },
+        { label: 'Responsibilities', value: 'Research, prioritization\nDelivery, usability testing' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'Lapunzel', spec: '', src: '/images/lap-hero.webp', alt: 'Lapunzel mobile site: the home hero, a product page and the shampoos and conditioners list' }] } },
 
-    { id: 'problem', nav: 'Problem', title: ['Interested, but', 'didn’t buy'],
-      lede: 'The brand owner saw people leave the store without ordering. In her words, they were afraid of the site.\nOur brief was to find out why before redesigning anything.',
-      blocks: [{ type: 'list', items: [
-        { icon: 'search', label: 'Find', title: 'The menu mixed products with info pages.' },
-        { icon: 'checklist', label: 'Check', title: '“It’s annoying when the site doesn’t match reality. You can pay for something that’s out of stock.”' },
-        { icon: 'truck-delivery', label: 'Buy', title: '“It should be easy to find how delivery and payment work. I don’t want to spend time on calls.”' },
+    { id: 'glance', nav: 'TLDR', title: ['Lapunzel', 'at a glance'],
+      blocks: [{ type: 'glance', items: [
+        { icon: 'alert-triangle', label: 'Problem', text: 'Visitors browsed the store and left without buying. The owner couldn’t tell which part of the journey was failing.', href: '#client' },
+        { icon: 'bulb', label: 'Solution', text: 'Products grouped by type, and the facts people check before paying moved next to the buy button.', href: '#strategy' },
+        { icon: 'chart-bar', label: 'Outcome', text: 'Launched. Client-reported GA4 data shows fewer product-page exits and more completed checkouts.', href: '#outcome' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Problem', spec: '', src: '/images/lap-problem.webp', alt: 'Lapunzel: Bestsellers and the “Our product is true craft” page' }] } },
+      visual: { layout: 'single', items: [{ label: 'Product page', spec: '', src: '/images/lap-value.webp', alt: 'Product page and the “Our product is true craft” section' }] } },
 
-    { id: 'research', nav: 'Research', title: ['Most owners shop in person.', 'Online, they look for a second opinion'],
-      lede: 'We combined five methods: a heuristic review of the old site, a scan of five competitors, five 45-minute interviews, a 55-person survey and an affinity map of every quote.\nThree findings shaped the work.',
-      blocks: [{ type: 'facts', caption: 'Research', items: [
-        { value: '5', label: 'Interviews' },
-        { value: '55', label: 'Survey responses' },
-        { value: '5', label: 'Competitors' },
-        { value: '10', label: 'Heuristics' },
+    { id: 'client', nav: 'Client ask', title: ['The owner had a theory.', 'I wanted proof'],
+      lede: 'She believed shoppers were wary of the site, and that vegan cosmetics weren’t getting credit for their higher price. Both were plausible, and neither was tested.',
+      blocks: [{ type: 'pull', text: 'A redesign built on an untested theory fixes whatever the theory names. So before anyone opened Figma, I proposed we test it.' }],
+      visual: { layout: 'single', items: [{ label: 'The old site', spec: '', src: '/images/lap-problem.webp', alt: 'Lapunzel: Bestsellers and the “Our product is true craft” page' }] } },
+
+    { id: 'team', nav: 'Collaboration', title: ['A new team,', 'and a project to run'],
+      lede: 'This was our first project together, and none of us had worked as a team before. Someone had to set up how we’d work. That was my job: I ran every call, split the tasks, kept findings in shared tables and presented the results. It took a real share of the four weeks.',
+      visual: { layout: 'single', items: [{ label: 'Who did what', spec: '', alt: 'Who did what. I planned and split the tasks, ran the team calls, did the heuristic review, built the user flow and findings tables. The designers did the competitor analysis and UI components. Interviews, the affinity map and the final presentation were shared.', compare: {
+        cols: ['Me', 'Designers'],
+        rows: [
+          { label: 'Planning, tasks, team calls', a: true, b: false },
+          { label: 'Heuristic review', a: true, b: false },
+          { label: 'Competitor analysis and UI components', a: false, b: true },
+          { label: 'Owner interview: questions and asking', a: true, b: 'part' },
+          { label: 'Five owner interviews (I ran one)', a: 'part', b: true },
+          { label: 'Affinity map and hypotheses', a: true, b: 'part' },
+          { label: 'User flow and findings tables', a: true, b: false },
+          { label: 'Presenting to the owner’s team', a: true, b: 'part' },
+        ],
+        note: 'A dash means shared work.',
+      } }] } },
+
+    { id: 'research', nav: 'Research', title: ['Three angles', 'on one drop-off'],
+      lede: 'We split the research so each method answered a different question: what breaks on the site, what competitors do well, and what owners need before they pay.',
+      blocks: [{ type: 'list', items: [
+        { icon: 'layout-dashboard', label: 'The site', title: 'A heuristic review against 10 principles. It found confusing categories.' },
+        { icon: 'clipboard-list', label: 'The market', title: 'Five competitor stores. The stronger ones, Masterzoo and Groomer, lead with filters, reviews and full ingredient lists.' },
+        { icon: 'message-circle', label: 'The people', title: 'Five 45-minute interviews and a survey of 55 owners, plus a 12-question interview with the owner. Every quote went onto an affinity map.' },
       ] }],
+      visual: { layout: 'single', items: [{ label: 'Research', spec: '', alt: 'Research in numbers: five interviews, 55 survey responses, five competitors and 10 heuristics.', stats: { lead: 'The research in numbers', nopct: true, items: [
+        { value: '5', text: 'owner interviews, 45 minutes each' },
+        { value: '55', text: 'survey responses' },
+        { value: '5', text: 'competitor stores reviewed' },
+        { value: '10', text: 'heuristics applied to the old site' },
+      ] } }] } },
+
+    { id: 'insight', nav: 'Insight', title: ['Shoppers weren’t afraid of the site.', 'They had no one to ask'],
+      lede: 'In a store, a consultant or a vet answers the question on the spot. Online, the page has to do that job.',
+      blocks: [{ type: 'pull', text: '“Vegan” didn’t set the brand apart: several owners assumed all pet cosmetics already were. What they looked for was proof: ingredients, certificates, no animal testing.' }],
       visual: { layout: 'single', items: [{ label: 'Survey', spec: '', alt: 'Survey of 55 pet owners: 38 buy pet care in physical stores, 36 ask a vet when unsure, 27 learn from other owners.', stats: { lead: 'What 55 pet owners told us', nopct: true, items: [
-        { value: '38', text: 'buy pet care in physical stores: online lacks the reassurance of a shop assistant', label: 'of 55' },
-        { value: '36', text: 'ask a vet when unsure: buyers lean on outside voices', label: 'of 55' },
+        { value: '38', text: 'buy pet care in physical stores', label: 'of 55' },
+        { value: '36', text: 'ask a vet when unsure', label: 'of 55' },
         { value: '27', text: 'learn about care from other owners', label: 'of 55' },
       ], source: 'Survey of 55 pet owners, March 2024' } }] } },
 
-    { id: 'strategy', nav: 'Strategy', title: ['One finding,', 'one opportunity'],
-      lede: 'We wrote hypotheses as “we believe that… because…” and kept only those with evidence behind them.\nThey grouped into three opportunities: help people find the right product, give them enough to decide, and give them a reason to come back.',
-      blocks: [{ type: 'note', text: 'Deprioritized: the blog. 26 of 55 don’t notice a store blog.' }],
-      visual: { layout: 'single', items: [{ label: 'Three opportunities', spec: '', alt: 'Three opportunities. The menu mixed products with info pages: it became the product-type menu. 38 of 55 shop in person: it became the product card. 20 of 55 would sign up for bonuses: we recommended an optional account.', hyps: [
-        { saw: 'The menu mixed products with info pages', icon: 'search', q: 'Group by what people look for?', a: 'Became the product-type menu' },
-        { saw: '38 of 55 shop in person', icon: 'shopping-cart', q: 'Give the certainty a shop gives?', a: 'Became the product card' },
-        { saw: '20 of 55 would sign up for bonuses', icon: 'gift', q: 'Give a reason to come back?', a: 'We recommended an optional account' },
+    { id: 'strategy', nav: 'Strategy', title: ['Three priorities,', 'in the order people shop'],
+      lede: 'I led the session that turned our findings into three priorities, each tied to a step of the purchase: find the product, trust it enough to pay, and come back. Every hypothesis had to serve one of them, which also showed us what to drop.',
+      blocks: [{ type: 'note', text: 'The blog didn’t make the cut: 26 of 55 owners don’t notice a store blog.' }],
+      visual: { layout: 'single', items: [{ label: 'Three priorities', spec: '', alt: 'Three priorities. Categories were confusing: it became the product-type menu. Online, nothing replaces a store consultant: it became the product card. Rewards interested more people than accounts: we recommended an optional account.', hyps: [
+        { saw: 'Categories were confusing', icon: 'search', q: 'Group products by how people look for them?', a: 'Became the product-type menu' },
+        { saw: 'Online, nothing replaces a store consultant', icon: 'shopping-cart', q: 'Put the answers next to the buy button?', a: 'Became the product card' },
+        { saw: 'Rewards interested more people than accounts', icon: 'gift', q: 'Give people a reason to come back?', a: 'We recommended an optional account' },
       ] }] } },
 
-    { id: 'categories', nav: 'Findability', title: ['Menu grouped by', 'product type'],
-      lede: 'A card sort compared three groupings: by product type, by where it’s applied, and one competitor’s model. We chose product type.\nCategories now sit apart from About, Blog and FAQ.',
+    { id: 'categories', nav: 'Findability', title: ['Categories by use,', 'not by anatomy'],
+      lede: 'The old menu grouped products by body area. We card-sorted three structures and chose product type. A shopper looking for shampoo shouldn’t have to guess whether it lives under Fur or Paws.',
       blocks: [{ type: 'contrast',
-        from: { label: 'Before', items: ['One flat list', 'Products next to Blog and FAQ'] },
-        to: { label: 'After', items: ['Shampoos and conditioners', 'Balms and soaps', 'Tonics and foams', 'About, Blog, FAQ apart'], icons: ['droplets', 'bubbles', 'sparkles', 'info-circle'] } }],
+        from: { label: 'Before', items: ['Fur', 'Eyes', 'Ears'] },
+        to: { label: 'After', items: ['Shampoos and conditioners', 'Balms and soaps', 'Tonics and foams', 'About, Blog and FAQ apart'], icons: ['droplets', 'bubbles', 'sparkles', 'info-circle'] } }],
       visual: { layout: 'single', items: [{ label: 'Menu and catalogue', spec: '', src: '/images/lap-categories.webp', alt: 'The new menu and the Catalogue grouped by use' }] } },
 
-    { id: 'trust', nav: 'Trust', title: ['Proof sits where', 'the doubt is'],
-      lede: 'Shoppers wanted to check before paying. Stock status shows first on the product card, and delivery and payment open in one tap beside composition and usage.\nThe About page links the manufacturer’s certificates.',
-      blocks: [{ type: 'cards', items: [
-        { icon: 'clock', title: 'In stock, above the price' },
-        { icon: 'truck-delivery', title: 'Delivery and payment, one tap away' },
-        { icon: 'badge-check', title: 'Manufacturer certificates' },
-      ] }],
+    { id: 'trust', nav: 'Trust', title: ['Proof at the point', 'of decision'],
+      lede: 'Owners turned to a vet or a store clerk for certainty. We moved that certainty onto the product card: stock status first, delivery and payment one tap away, composition and usage in plain language, and the manufacturer’s certificates a link away.',
+      blocks: [{ type: 'pull', text: 'Every answer on the page is one less reason to leave it.' }],
       visual: { layout: 'stack', items: [
         { label: 'Vet-approved tag', spec: '', src: '/images/lap-trust-1.webp', alt: 'Product list with Bestseller and Vet recommended tags' },
         { label: 'Reviews', spec: '', src: '/images/lap-trust-2.webp', alt: 'Reviews with photo and video' },
         { label: 'Checkout', spec: '', src: '/images/lap-trust-3.webp', alt: 'Checkout with payment, order summary and log in' },
       ] } },
 
-    { id: 'account', nav: 'Registration', title: ['The client said no account.', 'We brought the numbers'],
-      lede: 'The brand owner didn’t want registration. The survey split four ways: 20 of 55 would sign up for bonuses, 18 didn’t mind, 9 wanted to buy as guests and 8 wanted an account.\nWe recommended an optional account, never a required one. The final call was hers.',
-      blocks: [{ type: 'table', head: ['Who', 'Position'], rows: [
-        ['Users', 'Mixed: bonuses win, guests stay'],
-        ['Client', 'Wary of registration'],
-        ['We recommended', 'Optional account'],
-        ['Shipped', 'Not confirmed'],
-      ] }],
+    { id: 'account', nav: 'Registration', title: ['When the owner', 'said no accounts'],
+      lede: 'The owner didn’t want accounts. The survey showed why a mandatory one would cost sales: only 8 of 55 wanted an account, while 20 would sign up for bonuses. I recommended an optional account at checkout.',
+      blocks: [
+        { type: 'pull', text: 'The decision was hers. My job was to make the trade-off visible, not to win the argument.' },
+        { type: 'table', head: ['Who', 'Position'], rows: [
+          ['Shoppers', 'Bonuses win, guests stay'],
+          ['Owner', 'Wary of accounts'],
+          ['I recommended', 'Optional account at checkout'],
+          ['Shipped', 'Not confirmed'],
+        ] },
+      ],
       visual: { layout: 'single', items: [{ label: 'Accounts', spec: '', alt: 'Would you want an account? 20 of 55 would sign up for bonuses, 18 didn’t mind, 9 wanted to buy as guests, 8 wanted an account.', stats: { lead: 'Would you want an account?', nopct: true, items: [
         { value: '20', text: 'would sign up for bonuses', label: 'of 55' },
         { value: '18', text: 'don’t mind either way', label: 'of 55' },
@@ -457,23 +486,37 @@ const lapunzel: Partial<CaseData> = {
         { value: '8', text: 'want an account', label: 'of 55' },
       ], source: 'Survey of 55 pet owners, March 2024' } }] } },
 
-    { id: 'validation', nav: 'Validation', wide: true, title: ['Five tests,', 'three changes'],
-      lede: 'We tested the wireframes with five people. Each comment led to one change.',
+    { id: 'validation', nav: 'Validation', wide: true, title: ['5 usability tests,', '3 changes'],
+      lede: 'We tested the wireframes with five people before any visual design, while changes were still cheap.',
       blocks: [{ type: 'list', numbered: true, items: [
-        { title: 'The header was too heavy', body: '“The header font and icons are a bit large.” We reduced it.' },
-        { title: 'The menu mixed sections', body: '“Better to have separate sections for products, the blog and FAQ.” We grouped it.' },
-        { title: 'The card said nothing about other buyers', body: '“No information about reviews, the average rating or how many there are.” We added rating and review count.' },
+        { title: 'The header felt too heavy', body: '“The header font and icons are a bit large.” We made both lighter.' },
+        { title: 'Products, blog and FAQ blurred together', body: '“Better to have separate sections for products, the blog and FAQ.” We split the menu into groups.' },
+        { title: 'The card said nothing about other buyers', body: '“No information about reviews, the average rating or how many there are.” We added both to the card.' },
       ] }] },
 
-    { id: 'reflection', nav: 'Reflection', wide: true, title: ['The redesign launched.', 'Measurement was the gap'],
-      blocks: [
-        { type: 'callout', text: 'The client reported product-page exits down 20% after launch. We never agreed on a baseline, and a later rebrand changed the site again, so I can’t show current numbers.' },
-        { type: 'cards', items: [
-          { label: 'I owned', title: 'The process', body: 'Deadlines, team syncs, research synthesis and consistency across screens.', icon: 'compass' },
-          { label: 'We cut', title: 'Secondary flows', body: 'Only the primary user path was mapped. The blog stayed out of navigation.', icon: 'scissors' },
-          { label: 'Still open', title: 'The account', body: 'Whether the optional account shipped is not confirmed.', icon: 'help-circle', hi: true },
+    { id: 'outcome', nav: 'Outcome', title: ['Launched,', 'and tracked by the client'],
+      lede: 'The client tracked the store in Google Analytics 4 and shared before-and-after numbers with us. Fewer people left product pages, more added items to the cart, and more of those who started checkout finished it. I didn’t have access to the raw data, so these are the client’s figures.',
+      blocks: [{ type: 'note', text: 'Comparison period and traffic mix weren’t shared with me.' }],
+      visual: { layout: 'single', items: [{ label: 'Client-reported GA4 results', spec: '', alt: 'Client-reported results from Google Analytics 4. Product page exit rate 60% to 48%. Add-to-cart rate 6% to 7.2%. Checkout completion 48% to 54%. Purchase conversion 1.5% to 1.8%.', metrics: [
+        { title: 'Browsing', items: [
+          { value: '60% → 48%', label: 'Product page exits', note: 'exits divided by product page views' },
+          { value: '6% → 7.2%', label: 'Add to cart', note: 'additions per product view' },
         ] },
-        { type: 'chain', steps: ['Agree one metric with the client', 'Record a baseline before launch', 'Review it after the rebrand'] },
+        { title: 'Buying', items: [
+          { value: '48% → 54%', label: 'Checkout completion', note: 'purchases per checkout started' },
+          { value: '1.5% → 1.8%', label: 'Purchase conversion', note: 'sessions with a purchase' },
+        ] },
+      ] }] } },
+
+    { id: 'reflection', nav: 'Reflection', wide: true, title: ['Good numbers,', 'not yet verified'],
+      lede: 'The results point the right way, but I couldn’t check them myself. Next time I’d set up the measurement with the client before launch.',
+      blocks: [
+        { type: 'cards', items: [
+          { label: 'We cut', title: 'Secondary user flows', body: 'Only the main buying path was mapped, so the four weeks went to the journey that decides a sale.', icon: 'scissors' },
+          { label: 'I’d change', title: 'Get the raw data', body: 'Ask for access to the GA4 report so every figure can be checked.', icon: 'flag', hi: true },
+          { label: 'I’d change', title: 'Set roles on day one', body: 'Setting up a new team took more of the four weeks than I planned.', icon: 'compass' },
+        ] },
+        { type: 'chain', steps: ['GA4 events from product list to purchase', 'Same-length periods before and after launch', 'Same traffic sources and devices'] },
       ] },
   ],
 };
