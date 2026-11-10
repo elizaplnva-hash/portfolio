@@ -1170,3 +1170,4 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .stg-r:has(.ic) small { margin-top: 8px; font-size: 12px; font-weight: 500; letter-spacing: -.01em; color: #a3a39f; }
 .ph.stages .stg { justify-self: stretch; }
 .ph.stages, .stage .ph.stages { grid-template-columns: minmax(0, 1fr); }
+.ph .stg-r p { max-width: none; text-wrap: pretty; }
