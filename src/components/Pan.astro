@@ -1,9 +1,9 @@
 ---
-interface Props { items: { src: string; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; }
+interface Props { items: { src: string; still?: boolean; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; }
 const { items } = Astro.props;
 ---
 <div class="pn">
   {items.map((it, i) => (
-    <div class:list={['pn-f', { on: i === 0 }]}><img src={it.src} alt={it.alt ?? ''} decoding="async" />{it.marks?.map((m) => <i class="mk" aria-hidden="true" style={`left:${m.x}%;top:${m.y}%`}>{m.n}</i>)}</div>
+    <div class:list={['pn-f', { on: i === 0, still: it.still }]}><img src={it.src} alt={it.alt ?? ''} decoding="async" />{it.marks?.map((m) => <i class="mk" aria-hidden="true" style={`left:${m.x}%;top:${m.y}%`}>{m.n}</i>)}</div>
   ))}
 </div>

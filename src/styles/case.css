@@ -1160,8 +1160,8 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .stg-r:has(.ic) p { font-size: 14.5px; }
 .stg-r:has(.ic) small { font-size: 13px; }
 
-/* fragments of a board: pre-cropped, fill the panel edge to edge, no scrolling, no panning */
-.stage .ph.pan.fit { cursor: default; background: #f6f6f4; }
-.stage .ph.pan.fit::after { display: none; }
-.ph.pan.fit .pn-f { inset: 14px; left: 14px; right: 14px; top: 14px; bottom: 14px; transform: none !important; border-radius: 14px; overflow: hidden; }
-.ph.pan.fit .pn-f img { width: 100%; height: 100%; object-fit: cover; object-position: top center; border-radius: 0; filter: none; }
+/* a frame shown whole: centred, no zoom, no panning */
+.stage .ph.pan .pn-f.still { top: 50%; translate: 0 -50%; transform: none !important; }
+.ph.pan .pn-f.still img { background: #fff; border-radius: 14px; filter: none; }
+.stage .ph.pan .pn-f.still { left: 3cqw; right: 3cqw; }
+.stage .ph.pan:has(.pn-f.still.on)::after { opacity: 0; }
