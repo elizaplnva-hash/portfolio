@@ -501,11 +501,11 @@ const greenCredit: Partial<CaseData> = {
       visual: { layout: 'single', items: [{ label: 'Initial product structure', spec: '', src: '/images/gcs-brief-map.webp', zoom: true, pad: true, alt: 'The client’s initial structure: a marketing site, registration and a member area. The member area holds the dashboard, credit report and account settings and is the core product.' }] } },
 
     { id: 'research', nav: 'Research', title: ['Plenty of data,', 'little meaning'],
-      lede: 'There was no opportunity for user research, so I turned to what already existed and used it as input for hypotheses, not as proof.',
+      lede: 'There was no opportunity for user research, so I worked from what existed: a national survey, credit competitors and finance apps. Input for hypotheses, not proof.',
       blocks: [
         { type: 'list', split: true, tabs: true, noHover: true, items: [
           { icon: 'layout-dashboard', title: 'Competitor review', body: 'Credit Hero Score and IdentityIQ. Like Green Credit Score, both show all three bureaus.' },
-          { icon: 'photo', title: 'Visual benchmarks', body: 'Revolut and Kraken. Selected for their clear presentation of complex financial data and intuitive data hierarchies.' },
+          { icon: 'photo', title: 'Visual benchmarks', body: 'Revolut and Kraken. Not credit products: picked for how they keep complex financial data easy to scan.' },
         ] },
         { type: 'note', text: 'Survey: Experian with Atomik Research, March 2024, 2,005 US adults.' },
       ],
@@ -520,7 +520,7 @@ const greenCredit: Partial<CaseData> = {
               { src: '/images/gcs-ref-iiq.webp', name: 'IdentityIQ', alt: 'IdentityIQ dashboard: three bureau scores, credit summary and score tracker.' },
             ], finds: [
               { kind: 'first', tag: 'The data is there', icon: 'eye', text: 'Three scores, history, every account.' },
-              { kind: 'deeper', tag: 'Context is missing', icon: 'chart-area-line', text: 'Showing the numbers isn’t enough. Users need context to understand what they mean.' },
+              { kind: 'deeper', tag: 'Context is missing', icon: 'help-circle', text: 'Numbers are shown, not explained.' },
             ] },
           { ratio: '16 / 9', shots: [
               { src: '/images/gcs-ref-rev.webp', name: 'Revolut', alt: 'Revolut home: accounts and transactions with the details of one transaction opened beside them.' },
