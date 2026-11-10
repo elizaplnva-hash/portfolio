@@ -1092,3 +1092,28 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
   .stage .vis.on .stg-r:nth-child(even):hover, .stage .vis.on .prf-r:nth-child(odd):hover { transform: rotate(1.4deg) scale(1.02); }
   .stage .vis.on .stg:has(.stg-r:hover) .stg-r:not(:hover), .stage .vis.on .prf:has(.prf-r:hover) .prf-r:not(:hover) { opacity: .5; transform: scale(.98); transition-delay: 0s; }
 }
+
+/* research evidence: statistics, then screenshots, switched by the cards on the left */
+.ph.ev, .stage .ph.ev { display: block; position: relative; padding: 0; transform: none; transition: none; text-align: left; color: var(--ink); }
+.ev-f { position: absolute; inset: 0; display: grid; align-content: center; padding: 6cqh 6cqw; opacity: 0; pointer-events: none; transition: opacity .4s ease-out; }
+.ev-f.on { opacity: 1; pointer-events: auto; }
+.ev-s { display: grid; gap: 0; justify-items: stretch; }
+.ev-c { position: relative; display: grid; gap: 10px; padding: 26px 26px 24px; background: #fff; border-radius: 16px; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 6px 20px rgba(17,17,17,.08); }
+.ev-c.sub { margin: 26px 0 0 clamp(20px, 3vw, 44px); }
+.ev-c.sub::before { content: ''; position: absolute; left: 28px; bottom: 100%; width: 2px; height: 26px; background: var(--af, #e0408f); opacity: .35; }
+.ev-sc { font-size: 13px; font-weight: 600; letter-spacing: -.02em; color: var(--muted); }
+.ph .ev-v, .ev-v { font-size: clamp(52px, 5vw, 72px); font-weight: 500; letter-spacing: -.05em; line-height: .9; color: var(--af, #e0408f); }
+.ev-c p { max-width: 24em; margin: 0; font-size: clamp(15px, 1.25vw, 18px); font-weight: 600; letter-spacing: -.03em; line-height: 1.2; color: var(--ink); text-wrap: balance; }
+.ph .ev-src, .ev-src { max-width: none; margin: 18px 4px 0; font-size: 12.5px; line-height: 1.45; letter-spacing: -.01em; color: var(--muted); }
+.ev-p { width: min(100%, 480px); margin: 0 auto; }
+.ev-g { display: grid; grid-template-columns: 1fr; gap: 18px; }
+.ev-g figure { margin: 0; display: grid; gap: 10px; align-content: start; }
+.ev-g img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; object-position: top left; border-radius: 10px; background: #fff; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 6px 20px rgba(17,17,17,.08); }
+.ev-p.wide .ev-g img { aspect-ratio: 16 / 9; }
+.ev-g figcaption { font-size: 14px; margin-top: -2px; font-weight: 600; letter-spacing: -.02em; color: var(--ink); }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .ev-c, .ev-g img { transition: transform .5s var(--out), box-shadow .5s ease-out; }
+  .ev-c:hover { transform: translateY(-3px); }
+  .ev-g figure:hover img { transform: translateY(-3px); box-shadow: 0 2px 4px rgba(17,17,17,.06), 0 12px 30px rgba(17,17,17,.12); }
+}
+@media (prefers-reduced-motion: reduce) { .ev-f { transition: opacity .2s; } }
