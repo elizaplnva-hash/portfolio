@@ -477,7 +477,7 @@ const greenCredit: Partial<CaseData> = {
 
     { id: 'glance', nav: 'TLDR', title: ['Green Credit Score', 'at a glance'],
       blocks: [{ type: 'glance', items: [
-        { icon: 'alert-triangle', label: 'Problem', text: 'One credit history arrives as three reports, and none of them says where you stand.', href: '#context' },
+        { icon: 'alert-triangle', label: 'Problem', text: 'Three bureau reports show different snapshots of one credit history. Members need one place to see their overall credit health.', href: '#context' },
         { icon: 'bulb', label: 'Solution', text: 'A dashboard to read the status, factor pages to explain it, a simulator to test a change.', href: '#strategy' },
         { icon: 'chart-bar', label: 'Outcome', text: 'Approved by the client and handed to development two weeks early. Not launched yet, so there is no usage data.', href: '#measure' },
       ] }],
@@ -509,17 +509,17 @@ const greenCredit: Partial<CaseData> = {
         ] },
       ],
       visual: { layout: 'single', items: [{ label: 'Research evidence', spec: '', alt: 'Experian survey numbers, two credit dashboards and two financial apps with the findings taken from them.', evid: {
-        top: { lead: 'What does misreading credit cost?', source: 'Experian survey by Atomik Research, March 2024, 2,005 US adults.', items: [
+        top: { lead: 'What can misunderstanding credit cost?', source: 'Experian survey by Atomik Research, March 2024, 2,005 US adults.', items: [
           { value: '3 in 5', text: 'US adults say limited credit knowledge led to financial mistakes.' },
-          { value: '60%', text: 'of them say those mistakes cost $1,000 or more.' },
+          { value: '60%', text: 'of that group say those mistakes cost $1,000 or more.' },
         ] },
         frames: [
           { shots: [
               { src: '/images/gcs-ref-chs.webp', name: 'Credit Hero Score', logo: '/images/logo-credithero.png', alt: 'Credit Hero Score: three bureau scores with trend charts above debt analysis.' },
               { src: '/images/gcs-ref-iiq.webp', name: 'IdentityIQ', logo: '/images/logo-identityiq.png', alt: 'IdentityIQ dashboard: three bureau scores, credit summary and score tracker.' },
             ], finds: [
-              { kind: 'first', tag: 'What they show', icon: 'eye', text: 'Three bureau scores, score history, every account.' },
-              { kind: 'deeper', tag: 'What they leave out', icon: 'help-circle', text: 'Why the score is what it is, and what to do next.' },
+              { kind: 'first', tag: 'What they show', icon: 'eye', text: 'Three bureau scores, score history and account summaries.' },
+              { kind: 'deeper', tag: 'What needs more context', icon: 'help-circle', text: 'Why individual scores differ, what drives them and which next step matters most.' },
             ] },
           { ratio: '16 / 9', shots: [
               { src: '/images/gcs-ref-rev.webp', name: 'Revolut', logo: '/images/logo-revolut.png', alt: 'Revolut home: accounts and transactions with the details of one transaction opened beside them.' },
@@ -533,11 +533,11 @@ const greenCredit: Partial<CaseData> = {
 
     { id: 'strategy', nav: 'Hypothesis', title: ['How might we turn', 'a number into a plan?'],
       lede: 'Each research finding became a hypothesis, and each hypothesis a screen.',
-      blocks: [{ type: 'pull', text: 'Nothing was cut. Every piece got a place: up front, or one click away.' }],
-      visual: { layout: 'single', items: [{ label: 'Three hypotheses', spec: '', alt: 'Three hypotheses. Finance apps lead with one number: how might we show where a person stands at a glance? It became the dashboard. Limited knowledge costs real money: how might we explain what moves the score? It became the factor pages. Competitors stop short of the next step: how might we let a person test a change before making it? It became the simulator.', hyps: [
+      blocks: [{ type: 'pull', text: 'The result was three layers: an overview, a deeper explanation and a way to test a decision.' }],
+      visual: { layout: 'single', items: [{ label: 'Three hypotheses', spec: '', alt: 'Three hypotheses. Finance apps lead with one number: how might we show where a person stands at a glance? It became the dashboard. Limited knowledge can lead to costly mistakes: how might we explain what moves the score? It became the factor pages. Reviewed apps leave little room to test a change: how might we let a person test a change before making it? It became the simulator.', hyps: [
         { saw: 'Finance apps lead with one number', icon: 'gauge', q: 'Show where a person stands at a glance?', a: 'Became the dashboard' },
-        { saw: 'Limited knowledge costs real money', icon: 'coin', q: 'Explain what moves the score?', a: 'Became the factor pages' },
-        { saw: 'Competitors stop short of the next step', icon: 'arrow-big-right', q: 'Let a person test a change before making it?', a: 'Became the simulator' },
+        { saw: 'Limited knowledge can lead to costly mistakes', icon: 'coin', q: 'Explain what moves the score?', a: 'Became the factor pages' },
+        { saw: 'Reviewed apps leave little room to test a change', icon: 'arrow-big-right', q: 'Let a person test a change before making it?', a: 'Became the simulator' },
       ] }] } },
 
     { id: 'priorities', nav: 'Dashboard', title: ['Where I stand,', 'in one place'],
@@ -567,12 +567,12 @@ const greenCredit: Partial<CaseData> = {
       ] }] } },
 
     { id: 'colour', nav: 'Status color', toggle: true, title: ['When the brief', 'said monochrome'],
-      lede: 'The client asked for minimalism and a monochrome palette, taken from his Instagram. A credit score can’t be read without a status scale, so I designed a second direction: status color and a clearer layout.',
+      lede: 'The client asked for minimalism and a monochrome palette, taken from his Instagram. A score alone doesn’t show its health at a glance, so I explored a second direction: status color and a clearer layout.',
       blocks: [
         { type: 'list', split: true, items: [
-          { title: 'Quick preference check', body: 'Both directions side by side, shown to about 30 people from our own circles. The Design Manager and I each asked our own contacts.' },
+          { title: 'Informal preference check', body: 'We showed both directions to 30 people from our networks. The Design Manager and I each asked our own contacts.' },
         ] },
-        { type: 'pull', text: '25 of 30 preferred the second, and the client agreed. Brand green stays in the shades for impact.' },
+        { type: 'pull', text: '25 of 30 preferred the second, and the client approved it. Brand green stays in the shades for impact.' },
       ],
       visual: { layout: 'single', items: [{ label: 'Green only and status color', spec: '', alt: 'The same credit report dashboard in two directions: green only, and status color with red, amber and green.', pan: [
         { src: '/images/gcs-theme-green.webp', alt: 'Green-only direction of the credit report dashboard.' },
@@ -582,7 +582,7 @@ const greenCredit: Partial<CaseData> = {
     { id: 'landing', nav: 'Landing tone', toggle: 'landing', title: ['Two landings,', 'one decision'],
       lede: 'The landing set the visual style for the whole product, and the client had to approve it first. The Design Manager wanted it cooler; I wanted it friendlier.\nSo we designed both. The designer on my team built the cooler one from my brief, and I built the friendlier one around real product screens.',
       blocks: [
-        { type: 'pull', text: 'When money is involved, people want to feel a person is behind it.' },
+        { type: 'pull', text: 'For a product built around personal financial information, I leaned toward a more human presentation.' },
         { type: 'note', text: 'So the friendlier one has mockups with hands and plain-language explanations, without the fancy visuals of a SaaS. The client chose it.' },
       ],
       visual: { layout: 'single', items: [{ label: 'Two landing concepts', spec: '', scroll: true, alt: 'Two landing page concepts: a cooler, SaaS-style one and a friendlier one built around real product screens.', pan: [
@@ -617,8 +617,8 @@ const greenCredit: Partial<CaseData> = {
         { src: '/images/gcs-system-top.webp', alt: 'The Green Credit Score design system: colors, typography and dashboard components.' },
       ] }] } },
 
-    { id: 'measure', nav: 'Success metrics', title: ['Measuring', 'what matters'],
-      lede: 'Delivered, not yet measured. One metric for each stage: activation, comprehension, task completion and retention.',
+    { id: 'measure', nav: 'Success metrics', title: ['How I’d measure', 'success'],
+      lede: 'With no product usage data yet, these are the measures I’d track after launch: one for each stage, from activation to retention.',
       blocks: [
         { type: 'pull', text: 'The goal wasn’t to check a score. It was to make credit information easy to understand and act on.' },
         { type: 'note', text: 'Targets are set after a baseline is measured.' },
