@@ -490,8 +490,8 @@ const greenCredit: Partial<CaseData> = {
         { icon: 'wallet', label: 'You borrow and repay' },
         { icon: 'landmark', label: 'Banks report it' },
         { icon: 'file-analytics', label: 'Bureaus build reports' },
-        { icon: 'gauge', label: 'One number comes out' },
-      ], alt: 'You borrow and repay, banks report it, bureaus build reports, and one number comes out.' }] } },
+        { icon: 'gauge', label: 'Three bureaus, three numbers' },
+      ], alt: 'You borrow and repay, banks report it, bureaus build reports, and three bureaus give three numbers.' }] } },
 
     { id: 'brief', nav: 'Client ask', title: ['A page list,', 'not a goal'],
       lede: 'A credit-history expert wanted a paid subscription app, so people could manage their credit without a consultation.\nThe Design Manager ran the client conversations and passed the brief to me: eight pages and one standard, better than existing credit apps.',
