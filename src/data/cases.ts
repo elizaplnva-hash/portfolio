@@ -566,8 +566,8 @@ const greenCredit: Partial<CaseData> = {
         { src: '/images/gcs-simulator-page.webp', alt: 'Score simulator: decisions grouped by opening or closing accounts, using cards and payment habits, with current and simulated score side by side.' },
       ] }] } },
 
-    { id: 'colour', nav: 'Status color', toggle: true, title: ['When the brief', 'said green'],
-      lede: 'The brief said green, and the client wanted it that way. My research and judgment pointed elsewhere, so I designed a second direction: status color and a clearer way of laying out the information.',
+    { id: 'colour', nav: 'Status color', toggle: true, title: ['When the brief', 'said monochrome'],
+      lede: 'The client asked for minimalism and a monochrome palette, taken from his Instagram. A credit score can’t be read without a status scale, so I designed a second direction: status color and a clearer layout.',
       blocks: [
         { type: 'list', split: true, items: [
           { title: 'Quick preference check', body: 'Both directions side by side, shown to about 30 people from our own circles. The Design Manager and I each asked our own contacts.' },
@@ -582,7 +582,8 @@ const greenCredit: Partial<CaseData> = {
     { id: 'landing', nav: 'Landing tone', toggle: 'landing', title: ['Two landings,', 'one decision'],
       lede: 'The landing set the visual style for the whole product, and the client had to approve it first. The Design Manager wanted it cooler; I wanted it friendlier.\nSo we designed both. The designer on my team built the cooler one from my brief, and I built the friendlier one around real product screens.',
       blocks: [
-        { type: 'pull', text: 'The client chose the friendlier one.' },
+        { type: 'pull', text: 'When money is involved, people want to feel a person is behind it.' },
+        { type: 'note', text: 'So the friendlier one has mockups with hands and plain-language explanations, without the fancy visuals of a SaaS. The client chose it.' },
       ],
       visual: { layout: 'single', items: [{ label: 'Two landing concepts', spec: '', scroll: true, alt: 'Two landing page concepts: a cooler, SaaS-style one and a friendlier one built around real product screens.', pan: [
         { src: '/images/gcs-landing-a.webp', alt: 'Concept A: a cooler, SaaS-style landing page.' },
@@ -590,7 +591,7 @@ const greenCredit: Partial<CaseData> = {
       ] }] } },
 
     { id: 'ai', nav: 'AI workflow', toggle: 'ai', title: ['Prompts', 'instead of wireframes'],
-      lede: 'I replaced wireframes with prompts, and design time went into what matters most: the visuals, the components and how they fit the system.',
+      lede: 'Figma agents drafted the wireframes from my prompts. Neither the junior designer nor I drew them by hand, so we reached production much faster.',
       blocks: [
         { type: 'list', split: true, items: [
           { icon: 'file-description', label: 'Me', title: 'Wrote the structure and requirements for each section' },
