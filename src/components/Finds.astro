@@ -11,7 +11,7 @@ const word = { catastrophe: 'Catastrophe', major: 'Major', minor: 'Minor' };
       <div class="fd-t">
         <div class="fd-h">
           <span class="fd-tag fd-cat"><span class="ic" aria-hidden="true" set:html={icon(it.icon)} />{it.cat}</span>
-          <span class="fd-tag fd-sev">{word[it.level]} · {it.score}</span>
+          <span class="fd-tag fd-sev">Severity · {it.score}</span>
         </div>
         <h3>{it.title}</h3>
         <p class="fd-d">{it.text}</p>
