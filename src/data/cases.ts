@@ -369,9 +369,9 @@ const lapunzel: Partial<CaseData> = {
     title: 'Answer the hesitation <em>where it happens</em>',
     lede: 'That’s how I worked on Lapunzel, and how I’d approach your product.',
   },
-  accent: '#E58A1F',
-  fill: '#E58A1F',
-  tint: '#FFEBD6',
+  accent: '#8A3FD0',
+  fill: '#8A3FD0',
+  tint: '#F1E7FB',
   facts: [
     { label: 'Role', value: 'UX Lead, freelance project' },
     { label: 'Scope', value: 'Research, prioritization, usability testing' },
@@ -388,7 +388,7 @@ const lapunzel: Partial<CaseData> = {
         { label: 'Timeline', value: '4 weeks\nSpring 2024' },
         { label: 'Responsibilities', value: 'Research, prioritization\nDelivery, usability testing' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Lapunzel', spec: '', src: '/images/lap-hero.webp', alt: 'Lapunzel mobile site: the home hero, a product page and the shampoos and conditioners list' }] } },
+      visual: { layout: 'single', items: [{ label: 'Hero', spec: 'Three mobile screens: home, product page, catalogue', alt: 'Lapunzel mobile site: the home hero, a product page and the shampoos and conditioners list' }] } },
 
     { id: 'glance', nav: 'TLDR', title: ['Lapunzel', 'at a glance'],
       blocks: [{ type: 'glance', items: [
@@ -396,12 +396,12 @@ const lapunzel: Partial<CaseData> = {
         { icon: 'bulb', label: 'Solution', text: 'Products grouped by type, and the facts people check before paying moved next to the buy button.', href: '#strategy' },
         { icon: 'chart-bar', label: 'Outcome', text: 'Launched. Client-reported GA4 data shows fewer product-page exits and more completed checkouts.', href: '#outcome' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Product page', spec: '', src: '/images/lap-value.webp', alt: 'Product page and the “Our product is true craft” section' }] } },
+      visual: { layout: 'single', items: [{ label: 'Before and after', spec: 'The product card: first wireframe next to the final design', alt: 'Product page and the “Our product is true craft” section' }] } },
 
     { id: 'client', nav: 'Client ask', title: ['The owner had a theory.', 'I wanted proof'],
       lede: 'She believed shoppers were wary of the site, and that vegan cosmetics weren’t getting credit for their higher price. Both were plausible, and neither was tested.',
       blocks: [{ type: 'pull', text: 'A redesign built on an untested theory fixes whatever the theory names. So before anyone opened Figma, I proposed we test it.' }],
-      visual: { layout: 'single', items: [{ label: 'The old site', spec: '', src: '/images/lap-problem.webp', alt: 'Lapunzel: Bestsellers and the “Our product is true craft” page' }] } },
+      visual: { layout: 'single', items: [{ label: 'The old site', spec: 'Annotated screenshots of the old site from the heuristic review', alt: 'Lapunzel: Bestsellers and the “Our product is true craft” page' }] } },
 
     { id: 'team', nav: 'Collaboration', title: ['A new team,', 'and a project to run'],
       lede: 'This was our first project together, and none of us had worked as a team before. Someone had to set up how we’d work. That was my job: I ran every call, split the tasks, kept findings in shared tables and presented the results. It took a real share of the four weeks.',
@@ -457,15 +457,15 @@ const lapunzel: Partial<CaseData> = {
       blocks: [{ type: 'contrast',
         from: { label: 'Before', items: ['Fur', 'Eyes', 'Ears'] },
         to: { label: 'After', items: ['Shampoos and conditioners', 'Balms and soaps', 'Tonics and foams', 'About, Blog and FAQ apart'], icons: ['droplets', 'bubbles', 'sparkles', 'info-circle'] } }],
-      visual: { layout: 'single', items: [{ label: 'Menu and catalogue', spec: '', src: '/images/lap-categories.webp', alt: 'The new menu and the Catalogue grouped by use' }] } },
+      visual: { layout: 'single', items: [{ label: 'Menu and catalogue', spec: 'The new menu and catalogue, plus the card sort', alt: 'The new menu and the Catalogue grouped by use' }] } },
 
     { id: 'trust', nav: 'Trust', title: ['Proof at the point', 'of decision'],
       lede: 'Owners turned to a vet or a store clerk for certainty. We moved that certainty onto the product card: stock status first, delivery and payment one tap away, composition and usage in plain language, and the manufacturer’s certificates a link away.',
       blocks: [{ type: 'pull', text: 'Every answer on the page is one less reason to leave it.' }],
       visual: { layout: 'stack', items: [
-        { label: 'Vet-approved tag', spec: '', src: '/images/lap-trust-1.webp', alt: 'Product list with Bestseller and Vet recommended tags' },
-        { label: 'Reviews', spec: '', src: '/images/lap-trust-2.webp', alt: 'Reviews with photo and video' },
-        { label: 'Checkout', spec: '', src: '/images/lap-trust-3.webp', alt: 'Checkout with payment, order summary and log in' },
+        { label: 'Product card', spec: 'Stock status, rating, and the accordions: delivery and payment, ingredients', alt: 'Product list with Bestseller and Vet recommended tags' },
+        { label: 'Vet recommended', spec: 'The tag on the product list', alt: 'Reviews with photo and video' },
+        { label: 'About page', spec: 'The manufacturer’s certificates', alt: 'Checkout with payment, order summary and log in' },
       ] } },
 
     { id: 'account', nav: 'Registration', title: ['When the owner', 'said no accounts'],
@@ -723,7 +723,7 @@ export const cases: CaseData[] = [
   { slug: 'pinkwallet', side: 'front', name: 'PinkWallet', tags: ['Fintech', 'End-to-end', 'AI'], headline: 'Crypto for first-timers, through conversation', color: '#ff8fc8', image: '/images/pinkwallet-hero.webp', phones: ['/images/pw-phone-wallet.webp', '/images/pw-phone-pig.webp', '/images/pw-phone-dashboard.webp'], big: true, facts, highlights, summary, ...pinkwallet },
   { slug: 'green-credit-score', side: 'front', name: 'Green Credit Score', tags: ['Fintech', 'Web + mobile', '0-to-1'], headline: 'Credit health, readable in 5 seconds', color: '#3ccf7a', image: '/images/gcs-overview.webp', phones: ['/images/gcs-monitor.webp', '/images/gcs-phone.webp'], desk: true, mark: 'Green Score', facts, highlights, summary, ...greenCredit },
   { slug: 'jam', side: 'front', name: 'Jam Social', tags: ['Consumer', 'Networking', 'Mobile app'], headline: 'Reopen rate up 2.5× after the first scan', color: '#6b8cff', image: '/images/jam-home.webp', phones: ['/images/jam-phone-lock.webp', '/images/jam-phone-analytics.webp'], facts, highlights, summary, ...jam },
-  { slug: 'lapunzel', side: 'front', name: 'Lapunzel', tags: ['E-commerce', 'Conversion', 'UX research'], headline: 'Product-page exits down 20%', color: '#ffb547', image: '/images/lap-hero.webp', phones: ['/images/lap-phone-home.webp', '/images/lap-phone-product.webp'], facts, highlights, summary, ...lapunzel },
+  { slug: 'lapunzel', side: 'front', name: 'Lapunzel', tags: ['E-commerce', 'Conversion', 'UX research'], headline: 'Product-page exits down 20%', color: '#8A3FD0', image: '/images/lap-hero.webp', phones: ['/images/lap-phone-home.webp', '/images/lap-phone-product.webp'], facts, highlights, summary, ...lapunzel },
   { slug: 'world-of-colors', side: 'back', name: 'World of Colors', tags: ['Brand', 'Website'], headline: '[Headline: what was hard and what we achieved]', color: '#ff5a36', facts: facts.slice(0, 3), highlights, summary },
   { slug: 'ben-ai', side: 'back', name: 'Ben AI', tags: ['AI SaaS', 'Web design'], headline: 'A brand and product system for an award-winning AI startup', color: '#7b61ff', image: '/images/ben-tablets.webp', big: true, facts: facts.slice(0, 3), highlights, summary,
     accent: '#8b78ff', fill: '#8b78ff',
