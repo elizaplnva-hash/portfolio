@@ -1,20 +1,21 @@
 ---
 import { icon } from '../data/icons';
-interface Shot { src: string; name: string; alt: string }
+interface Shot { src: string; name: string; alt: string; logo: string }
 interface Find { kind: 'first' | 'deeper'; tag: string; icon: string; text: string }
-interface Props { top: { lead: string; items: { value: string; scope?: string; text: string }[] }; frames: { ratio?: string; shots: Shot[]; finds?: Find[] }[] }
+interface Props { top: { lead: string; source?: string; items: { value: string; scope?: string; text: string }[] }; frames: { ratio?: string; shots: Shot[]; finds?: Find[] }[] }
 const { top, frames } = Astro.props;
 ---
 <div class="ev-w">
   <div class="ev-top">
     <h3>{top.lead}</h3>
     <div class="ev-st">{top.items.map((s) => <div class="ev-c">{s.scope && <small>{s.scope}</small>}<b class="ev-v">{s.value}</b><p>{s.text}</p></div>)}</div>
+    {top.source && <p class="ev-src">{top.source}</p>}
   </div>
   <div class="pn ev-bot">
     {frames.map((f, i) => (
       <div class:list={['ev-f', { on: i === 0 }]} style={`--ar:${f.ratio ?? '3 / 2'}`}>
         <div class="ev-g">
-          {f.shots.map((s) => <figure><img src={s.src} alt={s.alt} loading="lazy" decoding="async" /></figure>)}
+          {f.shots.map((s) => <figure><img class="ev-lg" src={s.logo} alt={s.name} height="22" loading="lazy" decoding="async" /><img class="ev-sh" src={s.src} alt={s.alt} loading="lazy" decoding="async" /></figure>)}
         </div>
         {f.finds && <div class="ev-k">{f.finds.map((k) => (
           <div class={`ev-kc ${k.kind}`}><span class="ev-ic" aria-hidden="true" set:html={icon(k.icon)} /><span class="ev-lb">{k.tag}</span><p>{k.text}</p></div>

@@ -1095,11 +1095,12 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 }
 
 /* research evidence: statistics on top, a switchable frame of screens and findings below */
-.ph.ev, .stage .ph.ev { display: block; position: relative; padding: 0; transform: none; transition: none; text-align: left; color: var(--ink); background: none; }
+.ph.ev, .stage .ph.ev { display: block; position: relative; padding: 0; transform: none; transition: none; text-align: left; color: var(--ink); background: #fff; border: 0; border-radius: 0; box-shadow: none; outline: 0; overflow: visible; }
 .stage .vis:has(.ph.ev) { background: #fff; padding: 0; }
-.ev-w { position: absolute; inset: 0; display: grid; grid-template-rows: auto 1fr; gap: 6px; }
+.ev-w { position: absolute; inset: 0 -1px 0 0; display: grid; grid-template-rows: auto 1fr; gap: 6px; }
 .ev-top, .ev-bot { background: #f6f6f4; border-radius: 14px; }
-.ev-top { padding: 20px 22px 22px; display: grid; gap: 14px; }
+.ev-top { padding: 20px 22px 18px; display: grid; gap: 14px; }
+.ph .ev-src, .ev-src { max-width: none; margin: -2px 2px 0; font-size: 12px; line-height: 1.4; letter-spacing: -.01em; color: var(--muted); }
 .ev-top h3 { margin: 0; font-size: 20px; font-weight: 600; letter-spacing: -.035em; line-height: 1.15; color: var(--ink); }
 .ev-st { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .ev-c { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; align-items: center; padding: 14px 16px; background: #fff; border-radius: 14px; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 6px 20px rgba(17,17,17,.08); }
@@ -1110,8 +1111,9 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .ev-f { grid-area: 1 / 1; display: grid; gap: 16px; align-content: center; opacity: 0; pointer-events: none; transition: opacity .4s ease-out; }
 .ev-f.on { opacity: 1; pointer-events: auto; }
 .ev-g { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.ev-g figure { position: relative; margin: 0; }
-.ev-g img { display: block; width: 100%; aspect-ratio: var(--ar, 3 / 2); object-fit: cover; object-position: top left; border-radius: 10px; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 8px 24px rgba(17,17,17,.1); }
+.ev-g figure { position: relative; display: grid; gap: 10px; margin: 0; }
+.ev-lg { display: block; width: auto; height: 22px; max-width: 100%; object-fit: contain; object-position: left center; }
+.ev-g .ev-sh { display: block; width: 100%; aspect-ratio: var(--ar, 3 / 2); object-fit: cover; object-position: top left; border-radius: 10px; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 8px 24px rgba(17,17,17,.1); }
 .ev-k { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .ev-kc { display: grid; grid-template-columns: auto 1fr; gap: 10px 12px; align-items: center; padding: 16px 16px 18px; background: #fff; border-radius: 14px; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 6px 20px rgba(17,17,17,.08); }
 .ev-kc p { grid-column: 1 / -1; max-width: none; margin: 0; font-size: 15px; font-weight: 600; letter-spacing: -.03em; line-height: 1.25; color: var(--ink); }
@@ -1121,8 +1123,11 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .ev-kc.first .ev-ic, .ev-kc.first .ev-lb { background: #dff5e7; color: #1b8a4a; }
 .ev-kc.deeper .ev-ic, .ev-kc.deeper .ev-lb { background: #e4efff; color: #2563eb; }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .ev-c, .ev-kc, .ev-g figure { transition: transform .6s var(--out), box-shadow .5s ease-out; }
-  .ev-c:hover, .ev-kc:hover { transform: translateY(-3px); box-shadow: 0 2px 4px rgba(17,17,17,.06), 0 12px 30px rgba(17,17,17,.12); }
+  .ev-c, .ev-g figure { transition: transform .6s var(--out), opacity .5s ease-out, filter .5s ease-out; }
+  .ev-c:hover { transform: scale(1.03) rotate(-.6deg); z-index: 2; }
+  .ev-st:has(.ev-c:hover) .ev-c:not(:hover) { opacity: .5; filter: grayscale(1); transform: scale(.98); }
   .ev-g figure:hover { transform: scale(1.06); z-index: 3; }
+  .ev-g:has(figure:hover) figure:not(:hover) { opacity: .5; filter: grayscale(1); }
 }
+
 @media (prefers-reduced-motion: reduce) { .ev-f { transition: opacity .2s; } }

@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; evid?: { top: { lead: string; items: { value: string; scope?: string; text: string }[] }; frames: { ratio?: string; shots: { src: string; name: string; alt: string }[]; finds?: { kind: 'first' | 'deeper'; tag: string; icon: string; text: string }[] }[] }; pan?: { src: string; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; sys?: boolean; cost?: { on: number; total: number; value: string; text: string; ring: number; ringText: string; source: string }; stages?: { items: { value: string; stage: string; metric: string; what: string; how: string }[]; note?: string }; hyps?: { saw: string; q: string; a: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean | 'part'; b: boolean | 'part' }[]; note?: string }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; evid?: { top: { lead: string; source?: string; items: { value: string; scope?: string; text: string }[] }; frames: { ratio?: string; shots: { src: string; name: string; alt: string; logo: string }[]; finds?: { kind: 'first' | 'deeper'; tag: string; icon: string; text: string }[] }[] }; pan?: { src: string; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; sys?: boolean; cost?: { on: number; total: number; value: string; text: string; ring: number; ringText: string; source: string }; stages?: { items: { value: string; stage: string; metric: string; what: string; how: string }[]; note?: string }; hyps?: { saw: string; q: string; a: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean | 'part'; b: boolean | 'part' }[]; note?: string }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -501,33 +501,32 @@ const greenCredit: Partial<CaseData> = {
       visual: { layout: 'single', items: [{ label: 'Initial product structure', spec: '', src: '/images/gcs-brief-map.webp', zoom: true, pad: true, alt: 'The client’s initial structure: a marketing site, registration and a member area. The member area holds the dashboard, credit report and account settings and is the core product.' }] } },
 
     { id: 'research', nav: 'Research', title: ['Plenty of data,', 'little meaning'],
-      lede: 'There was no opportunity for user research, so I worked from what existed: a national survey, credit competitors and finance apps. Input for hypotheses, not proof.',
+      lede: 'No user research was possible, so I worked from what existed: a survey, credit competitors and finance apps. Evidence for hypotheses, not proof.',
       blocks: [
         { type: 'list', split: true, tabs: true, noHover: true, items: [
-          { icon: 'layout-dashboard', title: 'Competitor review', body: 'Credit Hero Score and IdentityIQ. Like Green Credit Score, both show all three bureaus.' },
-          { icon: 'photo', title: 'Visual benchmarks', body: 'Revolut and Kraken. Not credit products: picked for how they keep complex financial data easy to scan.' },
+          { icon: 'layout-dashboard', title: 'Competitor review', body: 'Credit competitors that, like Green Credit Score, show all three bureaus.' },
+          { icon: 'photo', title: 'Visual benchmarks', body: 'Not credit products: picked for how they keep complex financial data easy to scan.' },
         ] },
-        { type: 'note', text: 'Survey: Experian with Atomik Research, March 2024, 2,005 US adults.' },
       ],
       visual: { layout: 'single', items: [{ label: 'Research evidence', spec: '', alt: 'Experian survey numbers, two credit dashboards and two financial apps with the findings taken from them.', evid: {
-        top: { lead: 'What does misreading credit cost?', items: [
+        top: { lead: 'What does misreading credit cost?', source: 'Experian survey by Atomik Research, March 2024, 2,005 US adults.', items: [
           { value: '3 in 5', text: 'US adults say limited credit knowledge led to financial mistakes.' },
           { value: '60%', text: 'of them say those mistakes cost $1,000 or more.' },
         ] },
         frames: [
           { shots: [
-              { src: '/images/gcs-ref-chs.webp', name: 'Credit Hero Score', alt: 'Credit Hero Score: three bureau scores with trend charts above debt analysis.' },
-              { src: '/images/gcs-ref-iiq.webp', name: 'IdentityIQ', alt: 'IdentityIQ dashboard: three bureau scores, credit summary and score tracker.' },
+              { src: '/images/gcs-ref-chs.webp', name: 'Credit Hero Score', logo: '/images/logo-credithero.png', alt: 'Credit Hero Score: three bureau scores with trend charts above debt analysis.' },
+              { src: '/images/gcs-ref-iiq.webp', name: 'IdentityIQ', logo: '/images/logo-identityiq.png', alt: 'IdentityIQ dashboard: three bureau scores, credit summary and score tracker.' },
             ], finds: [
-              { kind: 'first', tag: 'The data is there', icon: 'eye', text: 'Three scores, history, every account.' },
-              { kind: 'deeper', tag: 'Context is missing', icon: 'help-circle', text: 'Numbers are shown, not explained.' },
+              { kind: 'first', tag: 'What they show', icon: 'eye', text: 'Three bureau scores, score history, every account.' },
+              { kind: 'deeper', tag: 'What they leave out', icon: 'help-circle', text: 'Why the score is what it is, and what to do next.' },
             ] },
           { ratio: '16 / 9', shots: [
-              { src: '/images/gcs-ref-rev.webp', name: 'Revolut', alt: 'Revolut home: accounts and transactions with the details of one transaction opened beside them.' },
-              { src: '/images/gcs-ref-kr.webp', name: 'Kraken', alt: 'Kraken home: portfolio value, suggestions, watchlist and markets, with the buy panel beside them.' },
+              { src: '/images/gcs-ref-rev.webp', name: 'Revolut', logo: '/images/logo-revolut.png', alt: 'Revolut home: accounts and transactions with the details of one transaction opened beside them.' },
+              { src: '/images/gcs-ref-kr.webp', name: 'Kraken', logo: '/images/logo-kraken.png', alt: 'Kraken home: portfolio value, suggestions, watchlist and markets, with the buy panel beside them.' },
             ], finds: [
-              { kind: 'first', tag: 'Summary first', icon: 'eye', text: 'The main number leads, large and at the top.' },
-              { kind: 'deeper', tag: 'Actions in reach', icon: 'pointer', text: 'Actions sit right under the number, not a menu away.' },
+              { kind: 'first', tag: 'Summary first', icon: 'eye', text: 'Revolut leads with the balance, Kraken with portfolio value.' },
+              { kind: 'deeper', tag: 'Actions in reach', icon: 'pointer', text: 'Add money and Deposit sit one step under the number.' },
             ] },
         ],
       } }] } },
