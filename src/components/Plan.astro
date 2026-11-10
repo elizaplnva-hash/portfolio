@@ -1,0 +1,19 @@
+---
+interface Item { week: string; name: string; line: string; tags: string[]; color: string; }
+interface Props { items: Item[]; }
+const { items } = Astro.props;
+---
+<ol class="pl">
+  {items.map((it, i) => (
+    <li class="pl-r" style={`--k:${it.color}`}>
+      <div class="pl-rail"><span class="pl-n">{i + 1}</span>{i < items.length - 1 && <i></i>}</div>
+      <div class="pl-c">
+        <div class="pl-h"><span class="pl-w">{it.week}</span><h3>{it.name}</h3></div>
+        <div class="pl-b">
+          <p>{it.line}</p>
+          <div class="pl-tg">{it.tags.map((t) => <span class="pl-tag">{t}</span>)}</div>
+        </div>
+      </div>
+    </li>
+  ))}
+</ol>

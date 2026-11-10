@@ -1205,3 +1205,32 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .m-vis .ph.finds { height: auto; gap: 10px; }
 .m-vis .fd-c { flex: none; max-height: none; grid-template-columns: minmax(0, 1fr); padding: 14px; }
 .m-vis .fd-i { height: 160px; }
+
+/* Plan: four numbered stages, each its own colour; hover tilts one card and quiets the rest */
+.ph.plan, .stage .ph.plan { background: none; overflow: visible; padding: clamp(14px, 1.8vw, 24px); display: flex; flex-direction: column; align-items: stretch; justify-content: center; transform: none; transition: none; text-align: left; color: var(--ink); }
+.pl { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; justify-content: center; gap: clamp(10px, 1.8vh, 18px); height: 100%; max-height: 720px; }
+.pl-r { flex: 1 1 0; min-height: 0; max-height: 170px; }
+.pl-r { --k: #8A3FD0; display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 14px; }
+.pl-rail { display: flex; flex-direction: column; align-items: center; }
+.pl-n { flex: none; width: 30px; height: 30px; border-radius: 50%; background: var(--k); color: #fff; display: grid; place-items: center; font-size: 13px; font-weight: 700; letter-spacing: -.01em; margin-top: 12px; }
+.pl-rail i { flex: 1; width: 2px; background: color-mix(in srgb, var(--k) 28%, #fff); margin: 4px 0 -18px; border-radius: 2px; }
+.pl-c { display: grid; grid-template-columns: clamp(110px, 24%, 160px) minmax(0, 1fr); gap: clamp(12px, 1.4vw, 20px); padding: clamp(14px, 2vh, 24px) clamp(16px, 1.8vw, 24px); align-items: center; background: #fff; border-radius: 20px; box-shadow: 0 1px 3px rgba(17,17,17,.05), 0 4px 14px rgba(17,17,17,.05); }
+.pl-h { display: flex; flex-direction: column; justify-content: center; }
+.pl-w { font-size: 12px; font-weight: 700; letter-spacing: -.01em; color: var(--k); }
+.pl-c h3 { margin: 2px 0 0; font-size: clamp(18px, 1.7vw, 22px); font-weight: 800; letter-spacing: -.04em; line-height: 1.05; color: var(--ink); }
+.pl-b { display: flex; flex-direction: column; justify-content: center; gap: 9px; min-width: 0; }
+.pl-b p { margin: 0; max-width: none; font-size: clamp(13px, 1vw, 14.5px); font-weight: 600; line-height: 1.35; letter-spacing: -.015em; color: var(--ink); }
+.pl-tg { display: flex; flex-wrap: wrap; gap: 6px; }
+.pl-tag { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px 4px 8px; border-radius: 999px; background: #fff; box-shadow: 0 1px 2px rgba(17,17,17,.08), 0 2px 8px rgba(17,17,17,.08); font-size: 12px; font-weight: 600; letter-spacing: -.015em; color: var(--ink); white-space: nowrap; }
+.pl-tag::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--k); }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .pl-c { transition: transform .5s var(--out); }
+  .pl-r { transition: opacity .4s var(--out); }
+  .pl:hover .pl-r:not(:hover) { opacity: .4; }
+  .pl-r:hover .pl-c { transform: rotate(-1.2deg) translateY(-2px); }
+}
+.m-vis .ph.plan { aspect-ratio: auto !important; padding: 10px; height: auto; }
+.m-vis .pl-c { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+.m-vis .pl { height: auto; max-height: none; gap: 10px; }
+.m-vis .pl-r { flex: none; max-height: none; }
+.m-vis .pl-c { padding: 14px 16px; }
