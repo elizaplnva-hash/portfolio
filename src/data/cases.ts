@@ -383,7 +383,7 @@ const lapunzel: Partial<CaseData> = {
   screens: [
     { id: 'overview', nav: 'Overview', title: ['Product page exits', 'down 20%'],
       lede: 'We all want the best for our pets. Online, that’s hard to judge: you can’t read the label in your hand or ask a clerk, and you’re paying a premium for a brand you don’t know yet.\nLapunzel is a young brand making vegan pet cosmetics: shampoos, balms, tonics, perfumes and tooth gel.\nI led UX for a team of three designers, from the first research call to the redesign, so that shoppers felt sure enough to order.',
-      blocks: [{ type: 'meta', items: [
+      blocks: [{ type: 'note', text: 'The 20% was reported by the client after launch.' }, { type: 'meta', items: [
         { label: 'Role', value: 'UX Lead\nFreelance project' },
         { label: 'Collaboration', value: '3 designers\nBrand owner, stakeholder' },
         { label: 'Timeline', value: '4 weeks\nSpring 2024' },
@@ -393,9 +393,9 @@ const lapunzel: Partial<CaseData> = {
 
     { id: 'glance', nav: 'TLDR', title: ['Lapunzel', 'at a glance'],
       blocks: [{ type: 'glance', items: [
-        { icon: 'alert-triangle', label: 'Problem', text: 'Interested visitors never committed. The owner couldn’t tell what stopped them, or what would settle it.', href: '#client' },
+        { icon: 'alert-triangle', label: 'Problem', text: 'Visitors browsed the store but left without ordering. The owner couldn’t tell what stopped them.', href: '#client' },
         { icon: 'bulb', label: 'Solution', text: 'Products grouped by type, and the facts people check before paying moved next to the buy button.', href: '#strategy' },
-        { icon: 'chart-bar', label: 'Outcome', text: 'Launched. Client-reported GA4 data shows more shoppers ordering.', href: '#outcome' },
+        { icon: 'chart-bar', label: 'Outcome', text: 'Launched. The client reported fewer exits from product pages.', href: '#outcome' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'Before and after', spec: '', trio: [
         { src: '/images/lap-tldr-before.webp', label: 'Before', icon: 'history' },
@@ -412,13 +412,13 @@ const lapunzel: Partial<CaseData> = {
       ] }] } },
 
     { id: 'team', nav: 'Collaboration', title: ['A new team,', 'and a way of working'],
-      lede: 'We had never worked together, so I set the rhythm: two or three calls a week, and Notion and FigJam as the one place for tasks and findings.\nEach person owned specific tasks. Decisions, like naming the categories, followed the same routine: list the options, weigh them, pick.',
+      lede: 'We had never worked together, so I set the rhythm: two or three calls a week, and Notion and FigJam as the one place for tasks and findings.\nI split the tasks so each person owned their own, ran the calls and presented the results to the owner’s team. Decisions, like naming the categories, followed the same routine: list the options, weigh them, pick.',
       blocks: [{ type: 'pull', text: 'The owner was in a shared chat with us from brief to delivery.' }],
-      visual: { layout: 'single', items: [{ label: 'Four weeks, four stages', spec: '', alt: 'Four weeks, four stages. Week 1, Listen: heuristic evaluation, competitive analysis, five user interviews. Week 2, Make sense: survey, brainstorm, hypothesis framing. Week 3, Shape: information architecture, user flow. Week 4, Prove: prototype and usability testing with five people.', plan: [
-        { week: 'Week 1', name: 'Listen', line: 'Hear the site, the market and the owners.', tags: ['Heuristic evaluation', 'Competitive analysis', 'User interviews, 5'], color: '#c9a4ea' },
+      visual: { layout: 'single', items: [{ label: 'Four weeks, four stages', spec: '', alt: 'Four weeks, four stages. Week 1, Listen: heuristic evaluation, competitive analysis, user interviews. Week 2, Make sense: survey, brainstorm, hypothesis framing. Week 3, Shape: information architecture, user flow. Week 4, Prove: prototype and usability testing.', plan: [
+        { week: 'Week 1', name: 'Listen', line: 'Hear the site, the market and the owners.', tags: ['Heuristic evaluation', 'Competitive analysis', 'User interviews'], color: '#c9a4ea' },
         { week: 'Week 2', name: 'Make sense', line: 'Turn what we heard into bets we could test.', tags: ['Survey', 'Brainstorm', 'Hypothesis framing'], color: '#a86fdc' },
         { week: 'Week 3', name: 'Shape', line: 'Give every product a clear place to live.', tags: ['Information architecture', 'User flow'], color: '#8A3FD0' },
-        { week: 'Week 4', name: 'Prove', line: 'Put the flow in front of five people.', tags: ['Prototype', 'Usability testing, 5'], color: '#6a2aa8' },
+        { week: 'Week 4', name: 'Prove', line: 'Check the flow with people before launch.', tags: ['Prototype', 'Usability testing'], color: '#6a2aa8' },
       ] }] } },
 
     { id: 'research', nav: 'Research', title: ['Three angles', 'on one drop-off'],
@@ -426,10 +426,10 @@ const lapunzel: Partial<CaseData> = {
       blocks: [{ type: 'list', items: [
         { icon: 'layout-dashboard', label: 'The site', title: 'A heuristic review of the old site. It found confusing categories.' },
         { icon: 'clipboard-list', label: 'The market', title: 'Five competitor stores. The stronger ones, Masterzoo and Groomer, lead with filters, reviews and full ingredient lists.' },
-        { icon: 'message-circle', label: 'The people', title: 'Five 45-minute interviews and a survey of 55 owners, plus a 12-question interview with the owner. Every quote went onto an affinity map.' },
+        { icon: 'message-circle', label: 'The people', title: 'Five 45-minute interviews and a survey of 55 pet owners, plus a 12-question interview with the brand owner. Every quote went onto an affinity map.' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Research', spec: '', alt: 'Research in numbers: five interviews, 55 survey responses, and five competitors.', stats: { lead: 'The research in numbers', nopct: true, items: [
-        { value: '5', text: 'owner interviews, 45 minutes each' },
+      visual: { layout: 'single', items: [{ label: 'Research', spec: '', alt: 'Research in numbers: five pet-owner interviews, 55 survey responses, and five competitors.', stats: { lead: 'The research in numbers', nopct: true, items: [
+        { value: '5', text: 'pet-owner interviews, 45 minutes each' },
         { value: '55', text: 'survey responses' },
         { value: '5', text: 'competitor stores reviewed' },
       ] } }] } },

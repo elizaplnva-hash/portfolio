@@ -1234,3 +1234,5 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .m-vis .pl { height: auto; max-height: none; gap: 10px; }
 .m-vis .pl-r { flex: none; max-height: none; }
 .m-vis .pl-c { padding: 14px 16px; }
+
+.fd-note { flex: none; margin: 2px 4px 0; max-width: none; font-size: 12px; font-weight: 500; letter-spacing: -.01em; color: var(--muted); }
