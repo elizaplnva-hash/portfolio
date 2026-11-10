@@ -463,7 +463,7 @@ const greenCredit: Partial<CaseData> = {
   summary: 'A credit-monitoring app that gathers three bureau reports in one place, shows where you stand at a glance and explains what moves the score.',
   screens: [
     { id: 'overview', nav: 'Overview', title: ['Credit health,', 'readable in 5 seconds'],
-      lede: 'Green Credit Score brings three bureau reports into one app. I cut nothing from them. I gave every piece a place: the status up front, the reasons one click away.\nI led the design from a client’s page list to a system ready for development.',
+      lede: 'Green Credit Score brings three bureau reports into one app. I cut nothing from them. I gave every piece a place.\nI led the design from a client’s page list to a system ready for development.',
       links: [
         { label: 'Behance case study', href: 'https://www.behance.net/gallery/258270109/Fintech-Dashboard-Web-Mobile-UXUI-Design' },
       ],
@@ -532,12 +532,12 @@ const greenCredit: Partial<CaseData> = {
       } }] } },
 
     { id: 'strategy', nav: 'Hypothesis', title: ['How might we turn', 'a number into a plan?'],
-      lede: 'Each research finding became a hypothesis, and each hypothesis became a section of the product.',
-      blocks: [{ type: 'pull', text: 'A score matters only when people know what to do next.' }],
-      visual: { layout: 'single', items: [{ label: 'Three hypotheses', spec: '', alt: 'Three hypotheses. People mix up reports and scores: how might we show where I stand? One place for the basics. Credit mistakes cost real money: how might we explain what drives it? The factors behind the number. Competitors stop at monitoring: how might we show what could change it? Test a change before making it.', hyps: [
-        { saw: 'People mix up reports and scores', q: 'Show where I stand?', a: 'One place for the basics' },
-        { saw: 'Credit mistakes cost real money', q: 'Explain what drives it?', a: 'The factors behind the number' },
-        { saw: 'Competitors stop at monitoring', q: 'Show what could change it?', a: 'Test a change before making it' },
+      lede: 'Each research finding became a hypothesis, and each hypothesis a screen.',
+      blocks: [{ type: 'pull', text: 'Nothing was cut. Every piece got a place: up front, or one click away.' }],
+      visual: { layout: 'single', items: [{ label: 'Three hypotheses', spec: '', alt: 'Three hypotheses. Finance apps lead with one number: how might we show where a person stands at a glance? It became the dashboard. Limited knowledge costs real money: how might we explain what moves the score? It became the factor pages. Competitors stop short of the next step: how might we let a person test a change before making it? It became the simulator.', hyps: [
+        { saw: 'Finance apps lead with one number', q: 'Show where a person stands at a glance?', a: 'Became the dashboard' },
+        { saw: 'Limited knowledge costs real money', q: 'Explain what moves the score?', a: 'Became the factor pages' },
+        { saw: 'Competitors stop short of the next step', q: 'Let a person test a change before making it?', a: 'Became the simulator' },
       ] }] } },
 
     { id: 'priorities', nav: 'Dashboard', title: ['Where I stand,', 'in one place'],
