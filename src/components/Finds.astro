@@ -1,0 +1,22 @@
+---
+import { icon } from '../data/icons';
+interface Item { icon: string; cat: string; level: 'critical' | 'serious' | 'moderate'; score: string; title: string; text: string; src: string; pos?: string; alt?: string; }
+interface Props { items: Item[]; }
+const { items } = Astro.props;
+const word = { critical: 'Critical', serious: 'Serious', moderate: 'Moderate' };
+---
+<div class="fd">
+  {items.map((it) => (
+    <article class="fd-c" data-lv={it.level}>
+      <div class="fd-t">
+        <div class="fd-h">
+          <p class="fd-cat"><span class="ic" aria-hidden="true" set:html={icon(it.icon)} />{it.cat}</p>
+          <span class="fd-tag">{word[it.level]} · {it.score}</span>
+        </div>
+        <h3>{it.title}</h3>
+        <p class="fd-d">{it.text}</p>
+      </div>
+      <div class="fd-i"><img src={it.src} alt={it.alt ?? ''} loading="lazy" decoding="async" style={it.pos ? `object-position:${it.pos}` : undefined} /></div>
+    </article>
+  ))}
+</div>
