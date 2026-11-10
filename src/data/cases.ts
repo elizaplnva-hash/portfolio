@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; evid?: { top: { lead: string; source?: string; items: { value: string; scope?: string; text: string }[] }; frames: { ratio?: string; shots: { src: string; name: string; alt: string; logo: string }[]; finds?: { kind: 'first' | 'deeper'; tag: string; icon: string; text: string }[] }[] }; pan?: { src: string; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; sys?: boolean; cost?: { on: number; total: number; value: string; text: string; ring: number; ringText: string; source: string }; stages?: { items: { value: string; icon?: string; stage: string; metric: string; what: string; how: string }[]; note?: string }; hyps?: { saw: string; q: string; a: string; icon?: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean | 'part'; b: boolean | 'part' }[]; note?: string }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; evid?: { top: { lead: string; source?: string; items: { value: string; scope?: string; text: string }[] }; frames: { ratio?: string; shots: { src: string; name: string; alt: string; logo: string }[]; finds?: { kind: 'first' | 'deeper'; tag: string; icon: string; text: string }[] }[] }; fit?: boolean; pan?: { src: string; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; sys?: boolean; cost?: { on: number; total: number; value: string; text: string; ring: number; ringText: string; source: string }; stages?: { items: { value: string; icon?: string; stage: string; metric: string; what: string; how: string }[]; note?: string }; hyps?: { saw: string; q: string; a: string; icon?: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean | 'part'; b: boolean | 'part' }[]; note?: string }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -607,14 +607,16 @@ const greenCredit: Partial<CaseData> = {
     { id: 'handoff', nav: 'Handoff', title: ['Built for the developer', 'we work with'],
       lede: 'We’ve worked with this developer before, so the file followed the structure he prefers.',
       blocks: [
-        { type: 'list', split: true, items: [
-          { title: 'A system he can read', body: 'Colors named by brightness, a type scale of display, heading, title and body.' },
-          { title: 'Comments where precision mattered', body: 'States, spacing and edge cases are marked in the file.' },
-          { title: 'A walkthrough before the start', body: 'We went through the tricky parts together first.' },
+        { type: 'list', split: true, tabs: true, items: [
+          { icon: 'palette', title: 'Colors', body: 'Named by brightness, from Green 900 to Green 100.' },
+          { icon: 'typography', title: 'Type scale', body: 'Display, heading, title, body and small, each with size, line height and weight.' },
+          { icon: 'puzzle', title: 'Components', body: 'States, spacing and edge cases are marked in the file. We walked through the tricky parts before the start.' },
         ] },
       ],
-      visual: { layout: 'single', items: [{ label: 'Design system', spec: '', sys: true, alt: 'The Green Credit Score design system in Figma: colors, typography, sidebar, header, labels, progress bars, buttons, icons, cards, table elements and the card simulator.', pan: [
-        { src: '/images/gcs-system-top.webp', alt: 'The Green Credit Score design system: colors, typography and dashboard components.' },
+      visual: { layout: 'single', items: [{ label: 'Design system', spec: '', alt: 'Parts of the Green Credit Score design system in Figma: the accent and dark colors, the type scale, and components with their states.', fit: true, pan: [
+        { src: '/images/gcs-sys-colors.webp', alt: 'Accent colors from Green 900 to Green 100 and the dark colors, each with its hex value.' },
+        { src: '/images/gcs-sys-type.webp', alt: 'The type scale: display, heading, title, body and small, with size, line height and weight.' },
+        { src: '/images/gcs-sys-comp.webp', alt: 'Components with their states: toggle, label, progress bar, input and button.' },
       ] }] } },
 
     { id: 'measure', nav: 'Success metrics', title: ['How I’d measure', 'success'],
