@@ -381,20 +381,20 @@ const lapunzel: Partial<CaseData> = {
   summary: 'An online store for vegan pet cosmetics. I led UX for a new team of three designers and found where shoppers hesitated.',
   screens: [
     { id: 'overview', nav: 'Overview', title: ['Product page exits', 'down 20%'],
-      lede: 'Lapunzel sells vegan pet cosmetics online. This was a freelance project: I led UX for a new team of three designers, with the brand owner as our stakeholder, from research through to the redesign.',
+      lede: 'Lapunzel sells vegan pet cosmetics online. This was a freelance project: I led UX for a new team of three designers, with the brand owner as our stakeholder, to help shoppers feel sure enough to order from a brand made for their pets.',
       blocks: [{ type: 'meta', items: [
         { label: 'Role', value: 'UX Lead\nFreelance project' },
         { label: 'Collaboration', value: '3 designers\nBrand owner, stakeholder' },
         { label: 'Timeline', value: '4 weeks\nSpring 2024' },
         { label: 'Responsibilities', value: 'Research, prioritization\nDelivery, usability testing' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Hero', spec: 'Three mobile screens: home, product page, catalogue', alt: 'Lapunzel mobile site: the home hero, a product page and the shampoos and conditioners list' }] } },
+      visual: { layout: 'single', items: [{ label: 'Product page and catalogue', spec: '', srcs: ['/images/lap-ov-product.webp', '/images/lap-ov-list.webp'], alt: 'The Lapunzel product page and the shampoos and conditioners list on a phone' }] } },
 
     { id: 'glance', nav: 'TLDR', title: ['Lapunzel', 'at a glance'],
       blocks: [{ type: 'glance', items: [
-        { icon: 'alert-triangle', label: 'Problem', text: 'Visitors browsed the store and left without buying. The owner couldn’t tell which part of the journey was failing.', href: '#client' },
+        { icon: 'alert-triangle', label: 'Problem', text: 'Interested visitors never committed. The owner couldn’t tell what stopped them, or what would settle it.', href: '#client' },
         { icon: 'bulb', label: 'Solution', text: 'Products grouped by type, and the facts people check before paying moved next to the buy button.', href: '#strategy' },
-        { icon: 'chart-bar', label: 'Outcome', text: 'Launched. Client-reported GA4 data shows fewer product-page exits and more completed checkouts.', href: '#outcome' },
+        { icon: 'chart-bar', label: 'Outcome', text: 'Launched. Client-reported GA4 data shows more shoppers ordering.', href: '#outcome' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'Before and after', spec: 'The product card: first wireframe next to the final design', alt: 'Product page and the “Our product is true craft” section' }] } },
 
@@ -469,7 +469,7 @@ const lapunzel: Partial<CaseData> = {
       ] } },
 
     { id: 'account', nav: 'Registration', title: ['When the owner', 'said no accounts'],
-      lede: 'The owner didn’t want accounts. The survey showed why a mandatory one would cost sales: only 8 of 55 wanted an account, while 20 would sign up for bonuses. I recommended an optional account at checkout.',
+      lede: 'The owner didn’t want accounts. The survey showed why a mandatory one would cost sales: only 8 of 55 wanted an account, while 20 would sign up for bonuses. Asking for an account is itself a reason to hesitate, so I recommended an optional one at checkout.',
       blocks: [
         { type: 'pull', text: 'The decision was hers. My job was to make the trade-off visible, not to win the argument.' },
         { type: 'table', head: ['Who', 'Position'], rows: [
@@ -495,7 +495,7 @@ const lapunzel: Partial<CaseData> = {
       ] }] },
 
     { id: 'outcome', nav: 'Outcome', title: ['Launched,', 'and tracked by the client'],
-      lede: 'The client tracked the store in Google Analytics 4 and shared before-and-after numbers with us. Fewer people left product pages, more added items to the cart, and more of those who started checkout finished it. I didn’t have access to the raw data, so these are the client’s figures.',
+      lede: 'The client tracked the store in Google Analytics 4 and shared before-and-after numbers with us. Fewer people left product pages, and more of those who stayed went on to order. I didn’t have access to the raw data, so these are the client’s figures.',
       blocks: [{ type: 'note', text: 'Comparison period and traffic mix weren’t shared with me.' }],
       visual: { layout: 'single', items: [{ label: 'Client-reported GA4 results', spec: '', alt: 'Client-reported results from Google Analytics 4. Product page exit rate 60% to 48%. Add-to-cart rate 6% to 7.2%. Checkout completion 48% to 54%. Purchase conversion 1.5% to 1.8%.', metrics: [
         { title: 'Browsing', items: [
