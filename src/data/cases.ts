@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; evid?: { top: { lead: string; source?: string; items: { value: string; scope?: string; text: string }[] }; frames: { ratio?: string; shots: { src: string; name: string; alt: string; logo: string }[]; finds?: { kind: 'first' | 'deeper'; tag: string; icon: string; text: string }[] }[] }; soft?: boolean; pan?: { src: string; wide?: boolean; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; sys?: boolean; cost?: { on: number; total: number; value: string; text: string; ring: number; ringText: string; source: string }; stages?: { items: { value: string; icon?: string; stage: string; metric: string; what: string; how: string }[]; note?: string }; hyps?: { saw: string; q: string; a: string; icon?: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean | 'part'; b: boolean | 'part' }[]; note?: string }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; evid?: { top: { lead: string; source?: string; items: { value: string; scope?: string; text: string }[] }; frames: { ratio?: string; shots: { src: string; name: string; alt: string; logo: string }[]; finds?: { kind: 'first' | 'deeper'; tag: string; icon: string; text: string }[] }[] }; soft?: boolean; pan?: { src: string; wide?: boolean; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; sys?: boolean; cost?: { on: number; total: number; value: string; text: string; ring: number; ringText: string; source: string }; stages?: { items: { value: string; icon?: string; stage: string; metric: string; what: string; how: string }[]; note?: string }; hyps?: { saw: string; q: string; a: string; icon?: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean | 'part'; b: boolean | 'part' }[]; note?: string }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string; flip?: boolean }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -372,6 +372,7 @@ const lapunzel: Partial<CaseData> = {
   accent: '#8A3FD0',
   fill: '#8A3FD0',
   tint: '#F1E7FB',
+  panel: '#F6F6F4',
   facts: [
     { label: 'Role', value: 'UX Lead, freelance project' },
     { label: 'Scope', value: 'Research, prioritization, usability testing' },
@@ -381,14 +382,14 @@ const lapunzel: Partial<CaseData> = {
   summary: 'An online store for vegan pet cosmetics. I led UX for a new team of three designers and found where shoppers hesitated.',
   screens: [
     { id: 'overview', nav: 'Overview', title: ['Product page exits', 'down 20%'],
-      lede: 'Lapunzel sells vegan pet cosmetics online. This was a freelance project: I led UX for a new team of three designers, with the brand owner as our stakeholder, to help shoppers feel sure enough to order from a brand made for their pets.',
+      lede: 'We all want the best for our pets. Online, that’s hard to judge: you can’t read the label in your hand or ask a clerk, and you’re paying a premium for a brand you don’t know yet.\nLapunzel is a young brand making vegan pet cosmetics: shampoos, balms, tonics, perfumes and tooth gel.\nI led UX for a team of three designers, from the first research call to the redesign, so that shoppers felt sure enough to order.',
       blocks: [{ type: 'meta', items: [
         { label: 'Role', value: 'UX Lead\nFreelance project' },
         { label: 'Collaboration', value: '3 designers\nBrand owner, stakeholder' },
         { label: 'Timeline', value: '4 weeks\nSpring 2024' },
         { label: 'Responsibilities', value: 'Research, prioritization\nDelivery, usability testing' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Product page and catalogue', spec: '', srcs: ['/images/lap-ov-product.webp', '/images/lap-ov-list.webp'], alt: 'The Lapunzel product page and the shampoos and conditioners list on a phone' }] } },
+      visual: { layout: 'single', items: [{ label: 'Product page and catalogue', spec: '', srcs: ['/images/lap-ov-product.webp', '/images/lap-ov-list.webp'], flip: true, alt: 'The Lapunzel product page and the shampoos and conditioners list on a phone' }] } },
 
     { id: 'glance', nav: 'TLDR', title: ['Lapunzel', 'at a glance'],
       blocks: [{ type: 'glance', items: [
