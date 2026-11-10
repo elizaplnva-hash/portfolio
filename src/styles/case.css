@@ -1182,16 +1182,16 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 /* Findings: three issue cards, text first, then the old-site screenshot */
 .ph.finds, .stage .ph.finds { background: none; overflow: visible; padding: clamp(14px, 1.8vw, 24px); display: flex; flex-direction: column; align-items: stretch; justify-content: center; gap: clamp(8px, 1.4vh, 14px); transform: none; transition: none; text-align: left; color: var(--ink); }
 .fd { display: contents; }
-.fd-c { --lv: #e8482c; flex: 1 1 0; min-height: 0; max-height: 240px; display: grid; grid-template-columns: minmax(0, 1fr) clamp(130px, 38%, 250px); gap: clamp(12px, 1.4vw, 20px); padding: 10px 10px 10px clamp(16px, 1.8vw, 24px); background: #fff; border-radius: 20px; box-shadow: 0 1px 3px rgba(17,17,17,.05), 0 4px 14px rgba(17,17,17,.05); }
+.fd-c { --lv: #e8482c; flex: 1 1 0; min-height: 0; max-height: 240px; display: grid; grid-template-columns: minmax(0, 1fr) clamp(140px, 40%, 270px); gap: clamp(12px, 1.4vw, 20px); padding: 10px 10px 10px clamp(16px, 1.8vw, 24px); background: #fff; border-radius: 20px; box-shadow: 0 1px 3px rgba(17,17,17,.05), 0 4px 14px rgba(17,17,17,.05); }
 .fd-c[data-lv="serious"] { --lv: #f08a2b; }
 .fd-c[data-lv="moderate"] { --lv: #f2b531; }
 .fd-t { display: flex; flex-direction: column; justify-content: center; gap: 8px; min-width: 0; }
-.fd-h { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
-.fd-cat { margin: 0; display: flex; align-items: center; gap: 8px; max-width: none; font-size: clamp(12px, .95vw, 13.5px); letter-spacing: -.01em; color: var(--muted); }
-.fd-cat .ic { width: 24px; height: 24px; }
-.fd-cat .ic svg { width: 13px; height: 13px; fill: currentColor; }
+.fd-h { display: flex; align-items: center; justify-content: flex-start; gap: 8px; flex-wrap: wrap; }
+.fd-cat { padding: 4px 12px 4px 4px; gap: 8px; }
+.fd-cat .ic { width: 22px; height: 22px; }
+.fd-cat .ic svg { width: 12px; height: 12px; fill: currentColor; }
+.fd-sev::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--lv); }
 .fd-tag { display: inline-flex; align-items: center; gap: 7px; padding: 5px 12px 5px 10px; border-radius: 999px; background: #fff; box-shadow: 0 1px 2px rgba(17,17,17,.08), 0 2px 8px rgba(17,17,17,.08); font-size: 12px; font-weight: 600; letter-spacing: -.015em; color: var(--ink); white-space: nowrap; }
-.fd-tag::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--lv); }
 .fd-c h3 { margin: 4px 0 0; font-size: clamp(17px, 1.6vw, 22px); font-weight: 700; letter-spacing: -.03em; line-height: 1.15; color: var(--ink); }
 .fd-d { margin: 0; max-width: none; font-size: clamp(13px, 1vw, 14.5px); line-height: 1.45; letter-spacing: -.01em; color: var(--muted); }
 .fd-i { border-radius: 12px; background: #f6f6f4; overflow: hidden; min-height: 0; }
