@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; evid?: { stats?: { items: { value: string; scope: string; text: string }[]; source: string }; shots?: { items: { src: string; name: string; alt: string }[]; note: string; wide?: boolean; credit?: string } }[]; pan?: { src: string; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; sys?: boolean; cost?: { on: number; total: number; value: string; text: string; ring: number; ringText: string; source: string }; stages?: { items: { value: string; stage: string; metric: string; what: string; how: string }[]; note?: string }; hyps?: { saw: string; q: string; a: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean | 'part'; b: boolean | 'part' }[]; note?: string }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; evid?: { top: { lead: string; items: { value: string; scope: string; text: string }[] }; frames: { ratio?: string; shots: { src: string; name: string; alt: string }[]; finds?: { kind: 'visibility' | 'context'; tag: string; icon: string; text: string }[] }[] }; pan?: { src: string; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; sys?: boolean; cost?: { on: number; total: number; value: string; text: string; ring: number; ringText: string; source: string }; stages?: { items: { value: string; stage: string; metric: string; what: string; how: string }[]; note?: string }; hyps?: { saw: string; q: string; a: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean | 'part'; b: boolean | 'part' }[]; note?: string }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -16,7 +16,7 @@ export type Block =
   | { type: 'decision'; rows: [string, string][] }
   | { type: 'glance'; items: { icon: string; label: string; text: string; href: string }[] }
   | { type: 'cards'; items: { label?: string; title: string; body?: string; icon?: string; hi?: boolean }[] }
-  | { type: 'list'; numbered?: boolean; card?: boolean; split?: boolean; tabs?: boolean; items: { label?: string; title: string; body?: string; icon?: string; hl?: boolean }[] }
+  | { type: 'list'; numbered?: boolean; card?: boolean; split?: boolean; tabs?: boolean; noHover?: boolean; items: { label?: string; title: string; body?: string; icon?: string; hl?: boolean }[] }
   | { type: 'callout'; text: string }
   | { type: 'chain'; steps: string[] }
   | { type: 'chips'; items: string[] }
@@ -499,26 +499,31 @@ const greenCredit: Partial<CaseData> = {
     { id: 'research', nav: 'Research', title: ['Plenty of data,', 'little meaning'],
       lede: 'There was no opportunity for user research, so I turned to what already existed and used it as input for hypotheses, not as proof.',
       blocks: [
-        { type: 'list', split: true, tabs: true, items: [
-          { icon: 'search', title: 'Desk research', body: 'People say gaps in credit knowledge cost them money.' },
-          { icon: 'layout-dashboard', title: 'Competitor review', body: 'Credit Hero Score, IdentityIQ and Credit Karma all have the tools.' },
-          { icon: 'photo', title: 'Visual benchmarks', body: 'Revolut and Kraken: summary first, details on demand.' },
+        { type: 'list', split: true, tabs: true, noHover: true, items: [
+          { icon: 'layout-dashboard', title: 'Competitor review', body: 'Two credit dashboards.' },
+          { icon: 'photo', title: 'Visual benchmarks', body: 'Two financial apps.' },
         ] },
+        { type: 'note', text: 'Survey: Experian with Atomik Research, March 2024, 2,005 US adults.' },
       ],
-      visual: { layout: 'single', items: [{ label: 'Research evidence', spec: '', alt: 'Experian survey numbers, credit dashboards of Credit Hero Score and IdentityIQ, and the Revolut and Kraken home screens.', evid: [
-        { stats: { items: [
-            { scope: 'All respondents', value: '3 in 5', text: 'US adults say limited knowledge of credit and personal finance led to financial mistakes.' },
-            { scope: 'Of this group', value: '60%', text: 'say those mistakes cost them $1,000 or more.' },
-          ], source: 'Experian, survey by Atomik Research, March 2024. 2,005 US adults.' } },
-        { shots: { items: [
-            { src: '/images/gcs-ref-chs.webp', name: 'Credit Hero Score', alt: 'Credit Hero Score: three bureau scores with trend charts above debt analysis.' },
-            { src: '/images/gcs-ref-iiq.webp', name: 'IdentityIQ', alt: 'IdentityIQ dashboard: three bureau scores, credit summary and score tracker.' },
-          ], note: 'Credit Karma was reviewed too. Credit Hero Score is from my review at the time, IdentityIQ from its public demo.' } },
-        { shots: { wide: true, items: [
-            { src: '/images/gcs-ref-rev.webp', name: 'Revolut', alt: 'Revolut home: accounts and transactions with the details of one transaction opened beside them.' },
-            { src: '/images/gcs-ref-kr.webp', name: 'Kraken', alt: 'Kraken home: portfolio value, suggestions, watchlist and markets, with the buy panel beside them.' },
-          ], note: 'Summary first, details one click away.', credit: 'Screenshots via Mobbin.' } },
-      ] }] } },
+      visual: { layout: 'single', items: [{ label: 'Research evidence', spec: '', alt: 'Experian survey numbers, two credit dashboards and two financial apps with the findings taken from them.', evid: {
+        top: { lead: 'What does not understanding credit cost?', items: [
+          { scope: 'All respondents', value: '3 in 5', text: 'US adults say limited knowledge of credit led to financial mistakes.' },
+          { scope: 'Of this group', value: '60%', text: 'say those mistakes cost them $1,000 or more.' },
+        ] },
+        frames: [
+          { shots: [
+              { src: '/images/gcs-ref-chs.webp', name: 'Credit Hero Score', alt: 'Credit Hero Score: three bureau scores with trend charts above debt analysis.' },
+              { src: '/images/gcs-ref-iiq.webp', name: 'IdentityIQ', alt: 'IdentityIQ dashboard: three bureau scores, credit summary and score tracker.' },
+            ], finds: [
+              { kind: 'visibility', tag: 'Visibility', icon: 'eye', text: 'Score first: three bureaus side by side, each with its date.' },
+              { kind: 'context', tag: 'Context', icon: 'chart-area-line', text: 'History next to the score: the trend, not only today’s value.' },
+            ] },
+          { ratio: '16 / 9', shots: [
+              { src: '/images/gcs-ref-rev.webp', name: 'Revolut', alt: 'Revolut home: accounts and transactions with the details of one transaction opened beside them.' },
+              { src: '/images/gcs-ref-kr.webp', name: 'Kraken', alt: 'Kraken home: portfolio value, suggestions, watchlist and markets, with the buy panel beside them.' },
+            ] },
+        ],
+      } }] } },
 
     { id: 'strategy', nav: 'Hypothesis', title: ['How might we turn', 'a number into a plan?'],
       lede: 'Each research finding became a hypothesis, and each hypothesis became a section of the product.',
