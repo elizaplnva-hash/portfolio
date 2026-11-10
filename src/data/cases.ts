@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; evid?: { top: { lead: string; items: { value: string; scope: string; text: string }[] }; frames: { ratio?: string; shots: { src: string; name: string; alt: string }[]; finds?: { kind: 'visibility' | 'context'; tag: string; icon: string; text: string }[] }[] }; pan?: { src: string; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; sys?: boolean; cost?: { on: number; total: number; value: string; text: string; ring: number; ringText: string; source: string }; stages?: { items: { value: string; stage: string; metric: string; what: string; how: string }[]; note?: string }; hyps?: { saw: string; q: string; a: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean | 'part'; b: boolean | 'part' }[]; note?: string }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; evid?: { top: { lead: string; items: { value: string; scope: string; text: string }[] }; frames: { ratio?: string; shots: { src: string; name: string; alt: string }[]; finds?: { kind: 'first' | 'deeper'; tag: string; icon: string; text: string }[] }[] }; pan?: { src: string; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; sys?: boolean; cost?: { on: number; total: number; value: string; text: string; ring: number; ringText: string; source: string }; stages?: { items: { value: string; stage: string; metric: string; what: string; how: string }[]; note?: string }; hyps?: { saw: string; q: string; a: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean | 'part'; b: boolean | 'part' }[]; note?: string }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -105,6 +105,7 @@ const pinkwallet: Partial<CaseData> = {
       links: [
         { label: 'Visit website', href: 'https://pinkwallet.pink/' },
         { label: 'Try the app', href: 'https://apps.apple.com/ca/app/pink-wallet-crypto-ai/id6762203790' },
+        { label: 'Behance case study', href: 'https://www.behance.net/gallery/258269441/AI-Crypto-Wallet-Mobile-App-UXUI-Design' },
       ],
       blocks: [{ type: 'meta', items: [
         { label: 'Role', value: 'Product Designer' },
@@ -463,6 +464,9 @@ const greenCredit: Partial<CaseData> = {
   screens: [
     { id: 'overview', nav: 'Overview', title: ['Credit health,', 'readable in 5 seconds'],
       lede: 'Green Credit Score brings three bureau reports into one app. I cut nothing from them. I gave every piece a place: the status up front, the reasons one click away.\nI led the design from a client’s page list to a system ready for development.',
+      links: [
+        { label: 'Behance case study', href: 'https://www.behance.net/gallery/258270109/Fintech-Dashboard-Web-Mobile-UXUI-Design' },
+      ],
       blocks: [{ type: 'meta', items: [
         { label: 'Role', value: 'Lead Product Designer\nDanart Agency' },
         { label: 'Collaboration', value: 'Design Manager\nJunior Designer\nDeveloper, contract' },
@@ -500,8 +504,8 @@ const greenCredit: Partial<CaseData> = {
       lede: 'There was no opportunity for user research, so I turned to what already existed and used it as input for hypotheses, not as proof.',
       blocks: [
         { type: 'list', split: true, tabs: true, noHover: true, items: [
-          { icon: 'layout-dashboard', title: 'Competitor review', body: 'Two credit dashboards.' },
-          { icon: 'photo', title: 'Visual benchmarks', body: 'Two financial apps.' },
+          { icon: 'layout-dashboard', title: 'Competitor review', body: 'Two of several credit dashboards: Credit Hero Score, IdentityIQ.' },
+          { icon: 'photo', title: 'Visual benchmarks', body: 'Two of several financial apps: Revolut, Kraken.' },
         ] },
         { type: 'note', text: 'Survey: Experian with Atomik Research, March 2024, 2,005 US adults.' },
       ],
@@ -515,12 +519,15 @@ const greenCredit: Partial<CaseData> = {
               { src: '/images/gcs-ref-chs.webp', name: 'Credit Hero Score', alt: 'Credit Hero Score: three bureau scores with trend charts above debt analysis.' },
               { src: '/images/gcs-ref-iiq.webp', name: 'IdentityIQ', alt: 'IdentityIQ dashboard: three bureau scores, credit summary and score tracker.' },
             ], finds: [
-              { kind: 'visibility', tag: 'Visibility', icon: 'eye', text: 'Score first: three bureaus side by side, each with its date.' },
-              { kind: 'context', tag: 'Context', icon: 'chart-area-line', text: 'History next to the score: the trend, not only today’s value.' },
+              { kind: 'first', tag: 'Visibility', icon: 'eye', text: 'Score first: three bureaus side by side, each with its date.' },
+              { kind: 'deeper', tag: 'Context', icon: 'chart-area-line', text: 'History next to the score: the trend, not only today’s value.' },
             ] },
           { ratio: '16 / 9', shots: [
               { src: '/images/gcs-ref-rev.webp', name: 'Revolut', alt: 'Revolut home: accounts and transactions with the details of one transaction opened beside them.' },
               { src: '/images/gcs-ref-kr.webp', name: 'Kraken', alt: 'Kraken home: portfolio value, suggestions, watchlist and markets, with the buy panel beside them.' },
+            ], finds: [
+              { kind: 'first', tag: 'Summary first', icon: 'eye', text: 'The main number leads, large and at the top.' },
+              { kind: 'deeper', tag: 'Actions in reach', icon: 'pointer', text: 'Actions sit right under the number, not a menu away.' },
             ] },
         ],
       } }] } },
