@@ -397,7 +397,10 @@ const lapunzel: Partial<CaseData> = {
         { icon: 'bulb', label: 'Solution', text: 'Products grouped by type, and the facts people check before paying moved next to the buy button.', href: '#strategy' },
         { icon: 'chart-bar', label: 'Outcome', text: 'Launched. Client-reported GA4 data shows more shoppers ordering.', href: '#outcome' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Before and after', spec: 'The product card: first wireframe next to the final design', alt: 'Product page and the “Our product is true craft” section' }] } },
+      visual: { layout: 'single', items: [{ label: 'Before and after', spec: '', trio: [
+        { src: '/images/lap-tldr-before.webp', label: 'Before', icon: 'history' },
+        { src: '/images/lap-tldr-after.webp', label: 'After', icon: 'sparkles' },
+      ], alt: 'The product page before and after the redesign: a long description with collapsed sections, then stock status above the price and delivery, payment and reviews in accordions.' }] } },
 
     { id: 'client', nav: 'Client ask', title: ['The owner had a theory.', 'I wanted proof'],
       lede: 'She believed shoppers were wary of the site, and that vegan cosmetics weren’t getting credit for their higher price. Both were plausible, and neither was tested.',
