@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; evid?: { top: { lead: string; source?: string; items: { value: string; scope?: string; text: string }[] }; frames: { ratio?: string; shots: { src: string; name: string; alt: string; logo: string }[]; plan?: { week: string; name: string; line: string; tags: string[]; color: string }[]; finds?: { kind: 'first' | 'deeper'; tag: string; icon: string; text: string }[] }[] }; soft?: boolean; pan?: { src: string; wide?: boolean; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; sys?: boolean; cost?: { on: number; total: number; value: string; text: string; ring: number; ringText: string; source: string }; stages?: { items: { value: string; icon?: string; stage: string; metric: string; what: string; how: string }[]; note?: string }; hyps?: { saw: string; q: string; a: string; icon?: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean | 'part'; b: boolean | 'part' }[]; note?: string }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string; flip?: boolean; finds?: { icon: string; cat: string; level: 'catastrophe' | 'major' | 'minor'; score: string; title: string; text: string; src: string; pos?: string; alt?: string }[] }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; evid?: { top: { lead: string; source?: string; items: { value: string; scope?: string; text: string }[] }; frames: { ratio?: string; shots: { src: string; name: string; alt: string; logo: string }[]; plan?: { week: string; name: string; line: string; tags: string[]; color: string }[]; finds?: { kind: 'first' | 'deeper'; tag: string; icon: string; text: string }[] }[] }; soft?: boolean; pan?: { src: string; wide?: boolean; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; sys?: boolean; cost?: { on: number; total: number; value: string; text: string; ring: number; ringText: string; source: string }; stages?: { items: { value: string; icon?: string; stage: string; metric: string; what: string; how: string }[]; note?: string }; hyps?: { saw: string; q: string; a: string; icon?: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean | 'part'; b: boolean | 'part' }[]; note?: string }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; trio?: { src: string; label: string; icon: string }[]; alt?: string; flip?: boolean; matrix?: { title: string; cols: { name: string; logo: string }[]; groups: { label: string; rows: { label: string; v: boolean[] }[] }[] }; finds?: { icon: string; cat: string; level: 'catastrophe' | 'major' | 'minor'; score: string; title: string; text: string; src: string; pos?: string; alt?: string }[] }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -421,18 +421,22 @@ const lapunzel: Partial<CaseData> = {
         { week: 'Week 4', name: 'Prove', line: 'Check the flow with people before launch.', tags: ['Prototype', 'Usability testing'], color: '#6a2aa8' },
       ] }] } },
 
-    { id: 'research', nav: 'Research', title: ['Three angles', 'on one drop-off'],
-      lede: 'We split the research so each method answered a different question: what breaks on the site, what competitors do well, and what owners need before they pay.',
-      blocks: [{ type: 'list', items: [
-        { icon: 'layout-dashboard', label: 'The site', title: 'A heuristic review of the old site. It found confusing categories.' },
-        { icon: 'clipboard-list', label: 'The market', title: 'Five competitor stores. The stronger ones, Masterzoo and Groomer, lead with filters, reviews and full ingredient lists.' },
-        { icon: 'message-circle', label: 'The people', title: 'Five 45-minute interviews and a survey of 55 pet owners, plus a 12-question interview with the brand owner. Every quote went onto an affinity map.' },
-      ] }],
-      visual: { layout: 'single', items: [{ label: 'Research', spec: '', alt: 'Research in numbers: five pet-owner interviews, 55 survey responses, and five competitors.', stats: { lead: 'The research in numbers', nopct: true, items: [
-        { value: '5', text: 'pet-owner interviews, 45 minutes each' },
-        { value: '55', text: 'survey responses' },
-        { value: '5', text: 'competitor stores reviewed' },
-      ] } }] } },
+    { id: 'research', nav: 'Research', title: ['What the market', 'left open'],
+      lede: 'Competitors matched each other on the basics. They differed in how much a shopper could learn about a product before paying.',
+      blocks: [{ type: 'note', text: 'We compared five competitor stores across 18 elements. In parallel came interviews with pet owners, a survey, and an interview with the brand owner.' }],
+      visual: { layout: 'single', items: [{ label: 'Competitors', spec: '', alt: 'Comparison of five competitor stores: all had the basics, but none had ingredients, reviews, storage conditions and shelf life together.', matrix: { title: 'No store let shoppers check everything before paying',
+        cols: [{ name: 'Provet', logo: '/images/lap-logo-provet.webp' }, { name: 'Priroda', logo: '/images/lap-logo-priroda.webp' }, { name: 'Petmarket', logo: '/images/lap-logo-petmarket.webp' }, { name: 'Masterzoo', logo: '/images/lap-logo-masterzoo.webp' }, { name: 'Groomer', logo: '/images/lap-logo-groomer.webp' }],
+        groups: [
+          { label: 'Everyone had', rows: [
+            { label: 'Cats and dogs separately', v: [true, true, true, true, true] },
+            { label: 'Search', v: [true, true, true, true, true] },
+            { label: 'Product description', v: [true, true, true, true, true] },
+            { label: 'Instructions', v: [true, true, true, true, true] } ] },
+          { label: 'Only some had', rows: [
+            { label: 'Ingredients', v: [true, true, true, false, false] },
+            { label: 'Reviews', v: [false, false, true, true, true] },
+            { label: 'Storage conditions', v: [true, true, false, false, false] },
+            { label: 'Shelf life', v: [true, true, false, false, false] } ] } ] } }] } },
 
     { id: 'insight', nav: 'Insight', title: ['Shoppers weren’t afraid of the site.', 'They had no one to ask'],
       lede: 'In a store, a consultant or a vet answers the question on the spot. Online, the page has to do that job.',

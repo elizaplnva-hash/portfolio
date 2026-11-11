@@ -1,0 +1,24 @@
+---
+import { icon } from '../data/icons';
+interface Props { title: string; cols: { name: string; logo: string }[]; groups: { label: string; rows: { label: string; v: boolean[] }[] }[]; }
+const { title, cols, groups } = Astro.props;
+---
+<div class="mx">
+  <h3 class="mx-t">{title}</h3>
+  <div class="mx-c" role="table" aria-label={title}>
+    <div class="mx-h" role="row"><span></span>{cols.map((c) => <span class="mx-s"><span class="mx-l"><img src={c.logo} alt="" decoding="async" /></span>{c.name}</span>)}</div>
+    {groups.map((g) => (
+      <>
+        <p class="mx-g">{g.label}</p>
+        {g.rows.map((r) => (
+          <div class="mx-r" role="row">
+            <span class="mx-n">{r.label}</span>
+            {r.v.map((on) => on
+              ? <i class="mx-y" role="img" aria-label="Yes" set:html={icon('circle-check')} />
+              : <i class="mx-x" role="img" aria-label="No"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 12h11" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" fill="none"/></svg></i>)}
+          </div>
+        ))}
+      </>
+    ))}
+  </div>
+</div>
