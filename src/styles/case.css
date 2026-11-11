@@ -1238,7 +1238,7 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .fd-note { flex: none; margin: 2px 4px 0; max-width: none; font-size: 12px; font-weight: 500; letter-spacing: -.01em; color: var(--muted); }
 
 /* research matrix: title outside, one white card, halo check = yes, dash = no */
-.ph.mxp, .stage .ph.mxp { background: none; overflow: visible; padding: clamp(14px, 1.8vw, 24px); display: flex; flex-direction: column; justify-content: center; transform: none; transition: none; text-align: left; color: var(--ink); }
+.ph.mxp, .stage .ph.mxp { background: none; overflow: visible; padding: clamp(14px, 1.8vw, 24px); display: flex; flex-direction: column; justify-content: center; text-align: left; color: var(--ink); }
 .mx { display: flex; flex-direction: column; gap: clamp(14px, 2.4vh, 22px); width: 100%; max-width: 700px; margin: 0 auto; }
 .mx-t { font-size: clamp(22px, 2.1vw, 28px); font-weight: 700; letter-spacing: -.035em; line-height: 1.12; text-wrap: balance; padding: 0 4px; }
 .mx-c { --k: #8A3FD0; background: #fff; border-radius: 22px; box-shadow: 0 1px 3px rgba(17,17,17,.06), 0 8px 26px rgba(17,17,17,.09); padding: 18px 22px 10px; }

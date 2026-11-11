@@ -383,7 +383,7 @@ const lapunzel: Partial<CaseData> = {
   screens: [
     { id: 'overview', nav: 'Overview', title: ['Product page exits', 'down 20%'],
       lede: 'We all want the best for our pets. Online, that’s hard to judge: you can’t read the label in your hand or ask a clerk, and you’re paying a premium for a brand you don’t know yet.\nLapunzel is a young brand making vegan pet cosmetics: shampoos, balms, tonics, perfumes and tooth gel.\nI led UX for a team of three designers, from the first research call to the redesign, so that shoppers felt sure enough to order.',
-      blocks: [{ type: 'note', text: 'The 20% was reported by the client after launch.' }, { type: 'meta', items: [
+      blocks: [{ type: 'meta', items: [
         { label: 'Role', value: 'UX Lead\nFreelance project' },
         { label: 'Collaboration', value: '3 designers\nBrand owner, stakeholder' },
         { label: 'Timeline', value: '4 weeks\nSpring 2024' },
@@ -403,7 +403,7 @@ const lapunzel: Partial<CaseData> = {
       ], alt: 'The product page before and after the redesign: a long description with collapsed sections, then stock status above the price and delivery, payment and reviews in accordions.' }] } },
 
     { id: 'client', nav: 'Client ask', title: ['Two beliefs', 'worth testing'],
-      lede: 'She believed shoppers were wary of the site, and that vegan cosmetics weren’t getting credit for their higher price. Both were plausible, and we hadn’t checked either yet.\nI started with what we could check ourselves: a heuristic review of the old site. It turned up 35 issues, and three of them shaped the redesign.',
+      lede: 'The brand owner believed shoppers were wary of the site, and that vegan cosmetics weren’t getting credit for their higher price. Both were plausible, and we hadn’t checked either yet.\nI started with what we could check ourselves: a heuristic review of the old site. It turned up 35 issues, and three of them shaped the redesign.',
       blocks: [{ type: 'pull', text: 'I proposed we test both before anyone opened Figma.' }],
       visual: { layout: 'single', items: [{ label: 'Three issues from the heuristic review', spec: '', alt: 'Three issues from the heuristic review of the old site: filters open categories (catastrophe, 4 of 4), delivery information only in the footer (minor, 2 of 4), and no average rating on reviews (minor, 2 of 4).', finds: [
         { icon: 'layout-grid', cat: 'Consistency and standards', level: 'catastrophe', score: '4 of 4', title: 'Filters open categories', text: 'Tapping Filters opened the category list instead of filters.', src: '/images/lap-find-menu.webp', pos: '50% 0%', alt: 'Old mobile site: the category list that opens from Filters (wool, paws, scent, eyes, sets, blog, FAQ)' },
@@ -413,7 +413,7 @@ const lapunzel: Partial<CaseData> = {
 
     { id: 'team', nav: 'Collaboration', title: ['A new team,', 'and a way of working'],
       lede: 'We had never worked together, so I set the rhythm: two or three calls a week, and Notion and FigJam as the one place for tasks and findings.\nI split the tasks so each person owned their own, ran the calls and presented the results to the owner’s team. Decisions, like naming the categories, followed the same routine: list the options, weigh them, pick.',
-      blocks: [{ type: 'pull', text: 'The owner was in a shared chat with us from brief to delivery.' }],
+      blocks: [],
       visual: { layout: 'single', items: [{ label: 'Four weeks, four stages', spec: '', alt: 'Four weeks, four stages. Week 1, Listen: heuristic evaluation, competitive analysis, user interviews. Week 2, Make sense: survey, brainstorm, hypothesis framing. Week 3, Shape: information architecture, user flow. Week 4, Prove: prototype and usability testing.', plan: [
         { week: 'Week 1', name: 'Listen', line: 'Hear the site, the market and the owners.', tags: ['Heuristic evaluation', 'Competitive analysis', 'User interviews'], color: '#c9a4ea' },
         { week: 'Week 2', name: 'Make sense', line: 'Turn what we heard into bets we could test.', tags: ['Survey', 'Brainstorm', 'Hypothesis framing'], color: '#a86fdc' },
@@ -421,10 +421,10 @@ const lapunzel: Partial<CaseData> = {
         { week: 'Week 4', name: 'Prove', line: 'Check the flow with people before launch.', tags: ['Prototype', 'Usability testing'], color: '#6a2aa8' },
       ] }] } },
 
-    { id: 'research', nav: 'Research', title: ['What the market', 'left open'],
-      lede: 'Competitors matched each other on the basics. They differed in how much a shopper could learn about a product before paying.',
-      blocks: [{ type: 'note', text: 'We compared five competitor stores across 18 elements. In parallel came interviews with pet owners, a survey, and an interview with the brand owner.' }],
-      visual: { layout: 'single', items: [{ label: 'Competitors', spec: '', alt: 'Comparison of five competitor stores: all had the basics, but none had ingredients, reviews, storage conditions and shelf life together.', matrix: { title: 'No store let shoppers check everything before paying',
+    { id: 'research', nav: 'Research', title: ['No store let shoppers', 'check everything before paying'],
+      lede: 'Competitors matched each other on the basics. What set them apart was how much a shopper could learn about a product before paying: ingredients, reviews, storage conditions, shelf life. No one offered all four.',
+      blocks: [{ type: 'note', text: 'I compared five competitor stores across 18 elements.' }],
+      visual: { layout: 'single', items: [{ label: 'Competitors', spec: '', alt: 'Comparison of five competitor stores: all had the basics, but none had ingredients, reviews, storage conditions and shelf life together.', matrix: { title: '',
         cols: [{ name: 'Provet', logo: '/images/lap-logo-provet.webp' }, { name: 'Priroda', logo: '/images/lap-logo-priroda.webp' }, { name: 'Petmarket', logo: '/images/lap-logo-petmarket.webp' }, { name: 'Masterzoo', logo: '/images/lap-logo-masterzoo.webp' }, { name: 'Groomer', logo: '/images/lap-logo-groomer.webp' }],
         groups: [
           { label: 'Everyone had', rows: [

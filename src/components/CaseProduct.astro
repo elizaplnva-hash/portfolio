@@ -238,7 +238,7 @@ const cf = Array.from({ length: 14 }, (_, k) => { const a = (k / 14) * Math.PI *
 
   // images lean toward the cursor (mouse devices only, never with reduced motion)
   if (matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)').matches) {
-    document.querySelectorAll<HTMLElement>('.stage .ph:not(.duo):not(.combo):not(.compare):not(.stats):not(.hyps):not(.pan):not(.ev):not(.targets):not(.reviews):not(.audit):not(.zoom):not(.trio):not(.finds):not(.plan):not(.mxp):not(.cut):not(.chain)').forEach((el) => {
+    document.querySelectorAll<HTMLElement>('.stage .ph:not(.duo):not(.combo):not(.compare):not(.stats):not(.hyps):not(.pan):not(.ev):not(.targets):not(.reviews):not(.audit):not(.zoom):not(.trio):not(.finds):not(.plan):not(.cut):not(.chain)').forEach((el) => {
       el.addEventListener('pointermove', (e) => {
         const r = el.getBoundingClientRect();
         el.style.setProperty('--rx', `${(-((e.clientY - r.top) / r.height - 0.5) * 6).toFixed(2)}deg`);
