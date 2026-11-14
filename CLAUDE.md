@@ -28,7 +28,7 @@ One sheet that fits one screen (desktop 4×3 grid, 100dvh, min 780px). Front = P
 - Keep it fast: no UI frameworks; client JS only for pointer effects, cover measuring and the curl.
 
 ## Facts policy
-No fabricated metrics. Confirmed headline metrics: Lapunzel −20% exits (client GA4 report), PinkWallet 80% finished onboarding (client analytics). Jam Social 2.5× — source still to be confirmed with the owner. Green Credit Score has no measured result: "five seconds" is a design goal, never a result. Do not show the agency name (Danart) on cases (owner decision, Nov 2026); her lead there is the Design Manager (never "director"). Title on site: Senior Product Designer.
+No fabricated metrics. Confirmed headline metrics: Lapunzel −20% exits (client GA4 report), PinkWallet 80% finished onboarding (client analytics). Jam Social 2.5× is confirmed by the owner; the case page should still state where the number comes from. Green Credit Score has no measured result: "five seconds" is a design goal, never a result. Do not show the agency name (Danart) on cases (owner decision, Nov 2026); her lead there is the Design Manager (never "director"). Title on site: Senior Product Designer.
 
 ## Workflow
 `npm run dev` / `npm run build`. Work on `feat/links`, push, review the Vercel preview URL. Merge to `main` only when the owner explicitly says so ("влей").
