@@ -53,6 +53,7 @@ export interface CaseData {
   name: string;               // product / client name, first tag
   tags: string[];             // domain tags
   headline: string;           // the one selling headline (also used on the home tile)
+  sub?: string;               // optional grey line under the headline on the home tile (a confirmed fact)
   color: string;              // placeholder fill until real images arrive
   image?: string;             // cover, /images/...
   noNameTag?: boolean;        // case page: don't show the product name as the first tag
@@ -109,7 +110,7 @@ const pinkwallet: Partial<CaseData> = {
       ],
       blocks: [{ type: 'meta', items: [
         { label: 'Role', value: 'Product Designer' },
-        { label: 'Collaboration', value: 'Design Manager at Danart\nClient development team' },
+        { label: 'Collaboration', value: 'Design Manager\nClient development team' },
         { label: 'Timeline', value: '8 weeks\nLaunched July 2026' },
         { label: 'Responsibilities', value: 'Product architecture\nUX/UI, design system' },
       ] }],
@@ -272,6 +273,10 @@ const pinkwallet: Partial<CaseData> = {
 };
 
 const jam: Partial<CaseData> = {
+  closing: {
+    title: 'A product people use once <em>and forget?</em>',
+    lede: 'I find the reason to come back, then design it.',
+  },
   accent: '#5B6EF0',
   fill: '#5B6EF0',
   tint: '#E4E6FF',
@@ -542,13 +547,13 @@ const greenCredit: Partial<CaseData> = {
   ],
   summary: 'A credit-monitoring app that gathers three bureau reports in one place, shows where you stand at a glance and explains what moves the score.',
   screens: [
-    { id: 'overview', nav: 'Overview', title: ['Credit health,', 'readable in 5 seconds'],
+    { id: 'overview', nav: 'Overview', title: ['Three credit reports,', 'one clear order'],
       lede: 'Green Credit Score brings three bureau reports into one app. I cut nothing from them. I gave every piece a place.\nI led the design from a client’s page list to a system ready for development.',
       links: [
         { label: 'Behance case study', href: 'https://www.behance.net/gallery/258270109/Fintech-Dashboard-Web-Mobile-UXUI-Design' },
       ],
       blocks: [{ type: 'meta', items: [
-        { label: 'Role', value: 'Lead Product Designer\nDanart Agency' },
+        { label: 'Role', value: 'Lead Product Designer' },
         { label: 'Collaboration', value: 'Design Manager\nJunior Designer\nDeveloper, contract' },
         { label: 'Timeline', value: '6 weeks, planned 8\nHanded off July 2026' },
         { label: 'Responsibilities', value: 'Strategy, UX/UI\nDesign system, AI workflow' },
@@ -724,8 +729,8 @@ const greenCredit: Partial<CaseData> = {
 }
 
 export const cases: CaseData[] = [
-  { slug: 'pinkwallet', side: 'front', name: 'PinkWallet', tags: ['Fintech', 'End-to-end', 'AI'], headline: 'Crypto for first-timers, through conversation', color: '#ff8fc8', image: '/images/pinkwallet-hero.webp', phones: ['/images/pw-phone-wallet.webp', '/images/pw-phone-pig.webp', '/images/pw-phone-dashboard.webp'], big: true, facts, highlights, summary, ...pinkwallet },
-  { slug: 'green-credit-score', side: 'front', name: 'Green Credit Score', tags: ['Fintech', 'Web + mobile', '0-to-1'], headline: 'Credit health, readable in 5 seconds', color: '#3ccf7a', image: '/images/gcs-overview.webp', phones: ['/images/gcs-monitor.webp', '/images/gcs-phone.webp'], desk: true, mark: 'Green Score', facts, highlights, summary, ...greenCredit },
+  { slug: 'pinkwallet', side: 'front', name: 'PinkWallet', tags: ['Fintech', 'End-to-end', 'AI'], headline: 'Crypto for first-timers, through conversation', sub: '80% finished onboarding · Launched July 2026', color: '#ff8fc8', image: '/images/pinkwallet-hero.webp', phones: ['/images/pw-phone-wallet.webp', '/images/pw-phone-pig.webp', '/images/pw-phone-dashboard.webp'], big: true, facts, highlights, summary, ...pinkwallet },
+  { slug: 'green-credit-score', side: 'front', name: 'Green Credit Score', tags: ['Fintech', 'Web + mobile', '0-to-1'], headline: 'Three credit reports, one clear order', color: '#3ccf7a', image: '/images/gcs-overview.webp', phones: ['/images/gcs-monitor.webp', '/images/gcs-phone.webp'], desk: true, mark: 'Green Score', facts, highlights, summary, ...greenCredit },
   { slug: 'jam', side: 'front', name: 'Jam Social', tags: ['Consumer', 'Networking', 'Mobile app'], headline: 'Reopen rate up 2.5× after the first scan', color: '#6b8cff', image: '/images/jam-home.webp', phones: ['/images/jam-phone-lock.webp', '/images/jam-phone-analytics.webp'], facts, highlights, summary, ...jam },
   { slug: 'lapunzel', side: 'front', name: 'Lapunzel', tags: ['E-commerce', 'Conversion', 'UX research'], headline: 'Product-page exits down 20%', color: '#8A3FD0', image: '/images/lap-hero.webp', phones: ['/images/lap-phone-home.webp', '/images/lap-phone-product.webp'], facts, highlights, summary, ...lapunzel },
   { slug: 'world-of-colors', side: 'back', name: 'World of Colors', tags: ['Brand', 'Website'], headline: '[Headline: what was hard and what we achieved]', color: '#ff5a36', facts: facts.slice(0, 3), highlights, summary },
@@ -772,6 +777,7 @@ export const cases: CaseData[] = [
   },
   { slug: 'sequoia', side: 'back', name: 'Sequoia', tags: ['Home Services', 'Web Design', 'Brand Identity'], headline: 'A distinctive brand, built for digital and physical experiences', color: '#2f7d63', image: '/images/seq-1.webp', facts: facts.slice(0, 3), highlights, summary,
     accent: '#3f9a7c', fill: '#3f9a7c',
+    closing: { title: 'A brand that works <em>on screen and in print</em>', lede: 'Identity, website, merch and print, built as one system.' },
     screens: [
     { id: 'overview', nav: 'Overview', wide: true, title: ['Sequoia Plumbing & Air'],
       lede: 'A custom visual identity and multi-page website for a Bay Area plumbing and air company, extended across branded merchandise and print materials.',
