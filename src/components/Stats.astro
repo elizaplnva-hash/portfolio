@@ -4,7 +4,7 @@ const { lead, items, source, nopct } = Astro.props;
 const wide = !nopct && items.some((it) => !/^\d+$/.test(it.value));
 const parts = (v: string) => (nopct ? { n: v, pct: false } : /^\d+$/.test(v) ? { n: v, pct: true } : v.endsWith('%') ? { n: v.slice(0, -1), pct: true } : { n: v, pct: false });
 ---
-<div class:list={['sts', { wide }]}>
+<div class:list={['sts', { wide, many: items.length >= 4 }]}>
   <p class="sts-lead">{lead}</p>
   {items.map((it) => (
     <div class="sts-c"><span class="v">{parts(it.value).n}{parts(it.value).pct && <sup>%</sup>}</span><span class="t">{it.label && <small>{it.label}</small>}{it.text}</span></div>

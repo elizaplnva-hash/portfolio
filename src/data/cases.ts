@@ -14,7 +14,7 @@ export type Block =
   | { type: 'contrast'; from: { label: string; items: string[] }; to: { label: string; items: string[]; icons?: string[] } }
   | { type: 'table'; head: [string, string]; rows: [string, string][] }
   | { type: 'decision'; rows: [string, string][] }
-  | { type: 'glance'; items: { icon: string; label: string; text: string; href: string }[] }
+  | { type: 'glance'; items: { icon: string; label: string; text: string; href?: string }[] }
   | { type: 'cards'; items: { label?: string; title: string; body?: string; icon?: string; hi?: boolean }[] }
   | { type: 'list'; numbered?: boolean; card?: boolean; split?: boolean; tabs?: boolean; noHover?: boolean; items: { label?: string; title: string; body?: string; icon?: string; hl?: boolean; parts?: string[] }[] }
   | { type: 'callout'; text: string }
@@ -408,7 +408,7 @@ const lapunzel: Partial<CaseData> = {
       ], alt: 'The product page before and after the redesign: a long description with collapsed sections, then stock status above the price and delivery, payment and reviews in accordions.' }] } },
 
     { id: 'client', nav: 'Client ask', title: ['Two beliefs', 'worth testing'],
-      lede: 'The brand owner believed shoppers were wary of the site, and that vegan cosmetics weren’t getting credit for their higher price. Both were plausible, and we hadn’t checked either yet.\nI started with what we could check ourselves: a heuristic review of the old site. It turned up 35 issues, and three of them shaped the redesign.',
+      lede: 'The brand owner believed shoppers were wary of the site, and that vegan cosmetics weren’t getting credit for their price. We hadn’t checked either.\nSo I started with a heuristic review: going through the old site against ten standard usability rules (Nielsen’s) and rating each problem from 0 to 4. It needs no participants and shows whether the site itself gives people a reason to hesitate.\nIt found 35 issues. Three shaped the redesign.',
       blocks: [{ type: 'pull', text: 'I proposed we test both before anyone opened Figma.' }],
       visual: { layout: 'single', items: [{ label: 'Three issues from the heuristic review', spec: '', alt: 'Three issues from the heuristic review of the old site: filters open categories (catastrophe, 4 of 4), delivery information only in the footer (minor, 2 of 4), and no average rating on reviews (minor, 2 of 4).', finds: [
         { icon: 'layout-grid', cat: 'Consistency and standards', level: 'catastrophe', score: '4 of 4', title: 'Filters open categories', text: 'Tapping Filters opened the category list instead of filters.', src: '/images/lap-find-menu.webp', pos: '50% 0%', alt: 'Old mobile site: the category list that opens from Filters (wool, paws, scent, eyes, sets, blog, FAQ)' },
@@ -416,8 +416,8 @@ const lapunzel: Partial<CaseData> = {
         { icon: 'eye', cat: 'System status visibility', level: 'minor', score: '2 of 4', title: 'No average rating', text: 'Reviews had stars, but the product never showed an overall rating.', src: '/images/lap-find-review.webp', pos: '50% 0%', alt: 'Old product page: a single five-star review' },
       ] }] } },
 
-    { id: 'team', nav: 'Collaboration', title: ['A new team,', 'and a way of working'],
-      lede: 'We had never worked together, so I set the rhythm: two or three calls a week, and Notion and FigJam as the one place for tasks and findings.\nI split the tasks so each person owned their own, ran the calls and presented the results to the owner’s team. Decisions, like naming the categories, followed the same routine: list the options, weigh them, pick.',
+    { id: 'team', nav: 'Collaboration', title: ['Four weeks,', 'one job per week'],
+      lede: 'With four weeks and a team that had never worked together, each week had one job: listen, make sense, shape, prove. I owned the plan and the calls. The other designers owned their tasks inside it.\nTwo or three calls a week, tasks in Notion, findings in FigJam.',
       blocks: [],
       visual: { layout: 'single', items: [{ label: 'Four weeks, four stages', spec: '', alt: 'Four weeks, four stages. Week 1, Listen: heuristic evaluation, competitive analysis, user interviews. Week 2, Make sense: survey, brainstorm, hypothesis framing. Week 3, Shape: information architecture, user flow. Week 4, Prove: prototype and usability testing.', plan: [
         { week: 'Week 1', name: 'Listen', line: 'Hear the site, the market and the owners.', tags: ['Heuristic evaluation', 'Competitive analysis', 'User interviews'], color: '#c9a4ea' },
@@ -427,8 +427,12 @@ const lapunzel: Partial<CaseData> = {
       ] }] } },
 
     { id: 'research', nav: 'Research', title: ['No store let shoppers', 'check everything before paying'],
-      lede: 'Competitors matched each other on the basics. What set them apart was how much a shopper could learn about a product before paying: ingredients, reviews, storage conditions, shelf life. No one offered all four.',
-      blocks: [{ type: 'note', text: 'I compared five competitor stores across 18 elements.' }],
+      lede: 'We compared five competitor stores across 18 elements. Three things stood out.',
+      blocks: [{ type: 'glance', items: [
+        { icon: 'circle-check', label: 'Same basics', text: 'All five split cats and dogs and had search, descriptions and instructions. Nothing to win there.' },
+        { icon: 'chart-bar', label: 'Proof differed', text: 'Ingredients, reviews, storage conditions and shelf life each appeared in only two or three stores.' },
+        { icon: 'puzzle', label: 'The gap', text: 'No store had all four. The two closest had three, but no reviews.' },
+      ] }],
       visual: { layout: 'single', items: [{ label: 'Competitors', spec: '', alt: 'Comparison of five competitor stores: all had the basics, but none had ingredients, reviews, storage conditions and shelf life together.', matrix: { title: '',
         cols: [{ name: 'Provet', logo: '/images/lap-logo-provet.webp' }, { name: 'Priroda', logo: '/images/lap-logo-priroda.webp' }, { name: 'Petmarket', logo: '/images/lap-logo-petmarket.webp' }, { name: 'Masterzoo', logo: '/images/lap-logo-masterzoo.webp' }, { name: 'Groomer', logo: '/images/lap-logo-groomer.webp' }],
         groups: [
@@ -485,7 +489,7 @@ const lapunzel: Partial<CaseData> = {
           ['Shoppers', 'Bonuses win, guests stay'],
           ['Owner', 'Wary of accounts'],
           ['I recommended', 'Optional account at checkout'],
-          ['Shipped', 'Not confirmed'],
+          ['Shipped', 'No'],
         ] },
       ],
       visual: { layout: 'single', items: [{ label: 'Accounts', spec: '', alt: 'Would you want an account? 20 of 55 would sign up for bonuses, 18 didn’t mind, 9 wanted to buy as guests, 8 wanted an account.', stats: { lead: 'Would you want an account?', nopct: true, items: [
@@ -739,6 +743,7 @@ export const cases: CaseData[] = [
     screens: [
     { id: 'overview', nav: 'Overview', wide: true, title: ['Ben AI'],
       lede: 'A complete website redesign for an AI tool that outgrew its first version, and went on to win a Yelp industry award.',
+      link: { label: 'Behance case study', href: 'https://www.behance.net/gallery/246929869/AI-AUTORESPONDER-WEB-AND-BRAND-DESIGN' },
       blocks: [{ type: 'meta', items: [
         { label: 'Role', value: 'Lead Designer' },
         { label: 'Timeline', value: '2024–2025' },

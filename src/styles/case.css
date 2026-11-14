@@ -1257,3 +1257,11 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .mx-x svg { width: 18px; height: 18px; }
 .m-vis .ph.mxp { aspect-ratio: auto !important; padding: 10px; height: auto; }
 @media (max-width: 899px) { .mx-c { padding: 14px 12px 6px; } .mx-n { font-size: 12.5px; } .mx-l img { width: 40px; } .mx-s { font-size: 9px; letter-spacing: -.03em; } .mx-h, .mx-r { grid-template-columns: minmax(0, 1.35fr) repeat(5, minmax(0, 1fr)); } .mx-r { height: auto; min-height: 42px; padding: 4px 0; } .mx-y, .mx-x { width: 28px; height: 28px; } .mx-y svg { width: 17px; height: 17px; } }
+
+/* stats with four items: 2x2 so nothing is cut off */
+.stage .vis:has(.ph.stats:only-child) .sts.many { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; align-content: center; }
+.stage .vis:has(.ph.stats:only-child) .sts.many .sts-lead,
+.stage .vis:has(.ph.stats:only-child) .sts.many .sts-src { grid-column: 1 / -1; }
+.stage .vis:has(.ph.stats:only-child) .sts.many .sts-c { padding: 20px; gap: 8px; }
+.stage .vis:has(.ph.stats:only-child) .sts.many .sts-c .v { font-size: clamp(56px, 5.2vw, 84px); }
+.stage .vis:has(.ph.stats:only-child) .sts.many .sts-c .t { font-size: clamp(15px, 1.25vw, 18px); max-width: none; }
