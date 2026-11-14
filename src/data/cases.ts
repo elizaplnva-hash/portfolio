@@ -455,9 +455,9 @@ const lapunzel: Partial<CaseData> = {
       lede: 'In a store, a consultant or a vet answers the question on the spot. Online, the page has to do that job.',
       blocks: [{ type: 'pull', text: 'Several owners assumed all pet cosmetics were already vegan. What they wanted was a reason to trust the product.' }],
       visual: { layout: 'single', items: [{ label: 'Interviews and survey', spec: '', alt: 'Three pet owners from the interviews and the survey numbers beside them: 77% trust information from a veterinarian, 63% look at composition and ingredients, 80% read reviews always or sometimes.', voices: [
-        { num: '77%', label: 'trust information from a veterinarian', quote: 'Only from acquaintances I trust and follow.', who: 'Viktoria, 23', sub: 'Chihuahua owner', tag: 'Sources' },
-        { num: '63%', label: 'look at composition and ingredients', quote: 'I check the composition, but usually on a doctor’s recommendation, especially for shampoo.', who: 'Vika, 33', sub: 'Golden retriever owner', tag: 'Composition' },
-        { num: '80%', label: 'read reviews, always or sometimes', quote: 'I like reading reviews. But reviews get faked, so you can’t really believe them, 50/50.', who: 'Valeria, 23', sub: 'Toy poodle owner', tag: 'Reviews' },
+        { num: '77%', label: 'trust information from a veterinarian', quote: 'Only from acquaintances I trust and follow.', who: 'Viktoria, 23', photo: '/images/lap-p-viktoria.webp', sub: 'Chihuahua owner', tag: 'Sources' },
+        { num: '63%', label: 'look at composition and ingredients', quote: 'I check the composition, but usually on a doctor’s recommendation, especially for shampoo.', who: 'Vika, 33', photo: '/images/lap-p-vika.webp', sub: 'Golden retriever owner', tag: 'Composition' },
+        { num: '80%', label: 'read reviews, always or sometimes', quote: 'I like reading reviews. But reviews get faked, so you can’t really believe them, 50/50.', who: 'Valeria, 23', photo: '/images/lap-p-valeria.webp', sub: 'Toy poodle owner', tag: 'Reviews' },
       ] }] } },
 
     { id: 'strategy', nav: 'Strategy', title: ['Three priorities,', 'in the order people shop'],

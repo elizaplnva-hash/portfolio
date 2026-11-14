@@ -1,6 +1,6 @@
 ---
 import { icon } from '../data/icons';
-interface Item { num: string; label: string; quote: string; who: string; sub?: string; tag: string; }
+interface Item { num: string; label: string; quote: string; who: string; sub?: string; tag: string; photo?: string; }
 interface Props { items: Item[]; }
 const { items } = Astro.props;
 const split = (v: string) => (v.endsWith('%') ? { n: v.slice(0, -1), pct: true } : { n: v, pct: false });
@@ -12,7 +12,7 @@ const split = (v: string) => (v.endsWith('%') ? { n: v.slice(0, -1), pct: true }
       <article class="vc-c">
         <p class="vc-q">“{it.quote}”</p>
         <div class="vc-w">
-          <span class="vc-av" aria-hidden="true" set:html={icon('paw')} />
+          {it.photo ? <img class="vc-ph" src={it.photo} alt="" width="36" height="36" loading="lazy" decoding="async" /> : <span class="vc-av" aria-hidden="true" set:html={icon('paw')} />}
           <span class="vc-id"><b>{it.who}</b>{it.sub && <small>{it.sub}</small>}</span>
           <span class="fd-tag vc-tag"><i aria-hidden="true"></i>{it.tag}</span>
         </div>
