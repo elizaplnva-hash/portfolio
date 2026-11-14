@@ -417,8 +417,12 @@ const lapunzel: Partial<CaseData> = {
       ] }] } },
 
     { id: 'team', nav: 'Collaboration', title: ['Four weeks,', 'one job per week'],
-      lede: 'With four weeks and a team that had never worked together, each week had one job: listen, make sense, shape, prove. I owned the plan and the calls. The other designers owned their tasks inside it.\nTwo or three calls a week, tasks in Notion, findings in FigJam.',
-      blocks: [],
+      lede: 'With four weeks and a team that had never worked together, each week had one job: listen, make sense, shape, prove.',
+      blocks: [{ type: 'glance', items: [
+        { icon: 'user', label: 'My role', text: 'I ran the work: set the rhythm, split the tasks, led every call, presented the results.' },
+        { icon: 'users', label: 'The team', text: 'Three designers each owned their tasks, including the competitor analysis.' },
+        { icon: 'calendar', label: 'Together', text: 'Two or three calls a week, tasks in Notion, findings in FigJam.' },
+      ] }],
       visual: { layout: 'single', items: [{ label: 'Four weeks, four stages', spec: '', alt: 'Four weeks, four stages. Week 1, Listen: heuristic evaluation, competitive analysis, user interviews. Week 2, Make sense: survey, brainstorm, hypothesis framing. Week 3, Shape: information architecture, user flow. Week 4, Prove: prototype and usability testing.', plan: [
         { week: 'Week 1', name: 'Listen', line: 'Hear the site, the market and the owners.', tags: ['Heuristic evaluation', 'Competitive analysis', 'User interviews'], color: '#c9a4ea' },
         { week: 'Week 2', name: 'Make sense', line: 'Turn what we heard into bets we could test.', tags: ['Survey', 'Brainstorm', 'Hypothesis framing'], color: '#a86fdc' },
