@@ -1,0 +1,22 @@
+---
+import { icon } from '../data/icons';
+interface Item { num: string; label: string; quote: string; who: string; sub?: string; tag: string; tagIcon: string; }
+interface Props { items: Item[]; }
+const { items } = Astro.props;
+const split = (v: string) => (v.endsWith('%') ? { n: v.slice(0, -1), pct: true } : { n: v, pct: false });
+---
+<div class="vc">
+  {items.map((it) => (
+    <div class="vc-r">
+      <div class="vc-n"><span class="v">{split(it.num).n}{split(it.num).pct && <sup>%</sup>}</span><span class="l">{it.label}</span></div>
+      <article class="vc-c">
+        <p class="vc-q">“{it.quote}”</p>
+        <div class="vc-w">
+          <span class="vc-av" aria-hidden="true" set:html={icon('paw')} />
+          <span class="vc-id"><b>{it.who}</b>{it.sub && <small>{it.sub}</small>}</span>
+          <span class="fd-tag vc-tag"><span class="ic" aria-hidden="true" set:html={icon(it.tagIcon)} />{it.tag}</span>
+        </div>
+      </article>
+    </div>
+  ))}
+</div>
