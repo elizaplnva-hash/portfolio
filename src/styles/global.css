@@ -186,6 +186,7 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .case.big .art > img { object-position: 50% 0; }
 .case.big .meta { padding: 0 14px 8px; gap: 10px; }
 .case.big h2 { font-size: 28px; line-height: 1; letter-spacing: -.025em; }
+.case .meta p { margin: 0; font-size: 15px; font-weight: 500; letter-spacing: -.015em; line-height: 1.3; color: var(--muted); }
 
 /* turn tile */
 .turn { --curl: 58px; background: var(--accent); color: var(--on-accent); border-radius: var(--radius);
@@ -231,6 +232,8 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
 /* tablet / mobile */
 @media (max-width: 899px) {
+  .process { order: 10; }   /* work first, process after the cases */
+  .turn { order: 20; }
   .sheet { grid-template-columns: 1fr 1fr; }
   .photo { aspect-ratio: 4 / 5; }
   .process, .skills, .case.big { grid-column: 1 / -1; }

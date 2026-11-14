@@ -8,14 +8,14 @@ const s = sides[side];
 const hues = ['#E0408F', '#5B6EF0', '#8A3FD0', '#22A55E'];
 ---
 <main class="sheet">
-  <a href="#" class="tile photo has-img" aria-label="About Eliza Popelinova">
+  <div class="tile photo has-img">
     <span class="ph"><img src={s.photo} alt="Eliza Popelinova" width="1200" height="960" decoding="async" style={`object-position:${s.photoPos}`} /></span>
     <div class="chips">
       <span class="pill light"><span class="earth" aria-hidden="true"><span></span></span>Vancouver, BC</span>
       <span class="pill light"><span class="dot"></span>Open to work</span>
     </div>
     <h1 class="name">Eliza Popelinova</h1>
-  </a>
+  </div>
 
   <section class="tile pitch">
     <div class="tags-row"><span class="tag">Intro</span></div>
@@ -57,6 +57,7 @@ const hues = ['#E0408F', '#5B6EF0', '#8A3FD0', '#22A55E'];
       </div>
       <div class="meta">
         <h2>{c.headline}</h2>
+        {c.sub && <p>{c.sub}</p>}
       </div>
     </a>
   ))}
