@@ -110,7 +110,7 @@ const pinkwallet: Partial<CaseData> = {
       ],
       blocks: [{ type: 'meta', items: [
         { label: 'Role', value: 'Product Designer' },
-        { label: 'Collaboration', value: 'Design Manager\nClient development team' },
+        { label: 'Collaboration', value: 'Design Manager at Danart\n(client and review)\nClient development team' },
         { label: 'Timeline', value: '8 weeks\nLaunched July 2026' },
         { label: 'Responsibilities', value: 'Product architecture\nUX/UI, design system' },
       ] }],
@@ -553,7 +553,7 @@ const greenCredit: Partial<CaseData> = {
         { label: 'Behance case study', href: 'https://www.behance.net/gallery/258270109/Fintech-Dashboard-Web-Mobile-UXUI-Design' },
       ],
       blocks: [{ type: 'meta', items: [
-        { label: 'Role', value: 'Lead Product Designer' },
+        { label: 'Role', value: 'Lead Product Designer\nDanart Agency' },
         { label: 'Collaboration', value: 'Design Manager\nJunior Designer\nDeveloper, contract' },
         { label: 'Timeline', value: '6 weeks, planned 8\nHanded off July 2026' },
         { label: 'Responsibilities', value: 'Strategy, UX/UI\nDesign system, AI workflow' },
@@ -668,7 +668,7 @@ const greenCredit: Partial<CaseData> = {
       lede: 'The landing set the visual style for the whole product, and the client had to approve it first. The Design Manager wanted it cooler; I wanted it friendlier.\nSo we designed both. The designer on my team built the cooler one from my brief, and I built the friendlier one around real product screens.',
       blocks: [
         { type: 'pull', text: 'For a product built around personal financial information, I leaned toward a more human presentation.' },
-        { type: 'note', text: 'So the friendlier one has mockups with hands and plain-language explanations, without the fancy visuals of a SaaS. The client chose it.' },
+        { type: 'note', text: 'So the friendlier one has mockups with hands and plain-language explanations, without the fancy visuals of a SaaS. The client chose it: it was simpler, more accessible and easier to understand, and the client agreed with our view that it should feel friendly.' },
       ],
       visual: { layout: 'single', items: [{ label: 'Two landing concepts', spec: '', scroll: true, alt: 'Two landing page concepts: a cooler, SaaS-style one and a friendlier one built around real product screens.', pan: [
         { src: '/images/gcs-landing-a.webp', alt: 'Concept A: a cooler, SaaS-style landing page.' },
