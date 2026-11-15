@@ -407,7 +407,7 @@ const lapunzel: Partial<CaseData> = {
         { src: '/images/lap-tldr-after.webp', label: 'After', icon: 'sparkles' },
       ], alt: 'The product page before and after the redesign: a long description with collapsed sections, then stock status above the price and delivery, payment and reviews in accordions.' }] } },
 
-    { id: 'client', nav: 'Client ask', title: ['Two beliefs', 'worth testing'],
+    { id: 'client', nav: 'Client ask', title: ['The owner had two guesses'],
       lede: 'The brand owner believed shoppers were wary of the site, and that vegan cosmetics weren’t getting credit for their price. We hadn’t checked either.\nSo I started with a heuristic review: going through the old site against ten standard usability rules (Nielsen’s) and rating each problem from 0 to 4. It needs no participants and shows whether the site itself gives people a reason to hesitate.\nIt found 35 issues. Three shaped the redesign.',
       blocks: [{ type: 'pull', text: 'I proposed we test both before anyone opened Figma.' }],
       visual: { layout: 'single', items: [{ label: 'Three issues from the heuristic review', spec: '', alt: 'Three issues from the heuristic review of the old site: filters open categories (catastrophe, 4 of 4), delivery information only in the footer (minor, 2 of 4), and no average rating on reviews (minor, 2 of 4).', finds: [
@@ -416,7 +416,7 @@ const lapunzel: Partial<CaseData> = {
         { icon: 'eye', cat: 'System status visibility', level: 'minor', score: '2 of 4', title: 'No average rating', text: 'Reviews had stars, but the product never showed an overall rating.', src: '/images/lap-find-review.webp', pos: '50% 0%', alt: 'Old product page: a single five-star review' },
       ] }] } },
 
-    { id: 'team', nav: 'Collaboration', title: ['Four weeks,', 'one job per week'],
+    { id: 'team', nav: 'Collaboration', title: ['Four weeks to test them'],
       lede: 'With four weeks and a team that had never worked together, each week had one job: listen, make sense, shape, prove.',
       blocks: [{ type: 'glance', items: [
         { icon: 'user', label: 'My role', text: 'I ran the work: set the rhythm, split the tasks, led every call, presented the results.' },
@@ -430,7 +430,7 @@ const lapunzel: Partial<CaseData> = {
         { week: 'Week 4', name: 'Prove', line: 'Check the flow with people before launch.', tags: ['Prototype', 'Usability testing'], color: '#6a2aa8' },
       ] }] } },
 
-    { id: 'research', nav: 'Research', title: ['No store let shoppers', 'check everything before paying'],
+    { id: 'research', nav: 'Research', title: ['Competitors had the basics, not the answers'],
       lede: 'We compared five competitor stores across 18 elements. Three things stood out.',
       blocks: [{ type: 'glance', items: [
         { icon: 'circle-check', label: 'Same basics', text: 'All five split cats and dogs and had search, descriptions and instructions. Nothing to win there.' },
@@ -451,8 +451,8 @@ const lapunzel: Partial<CaseData> = {
             { label: 'Storage conditions', v: [true, true, false, false, false] },
             { label: 'Shelf life', v: [true, true, false, false, false] } ] } ] } }] } },
 
-    { id: 'insight', nav: 'Insight', title: ['Shoppers weren’t afraid of the site.', 'They had no one to ask'],
-      lede: 'Competitors showed what stores offer, not what shoppers need. So we ran five interviews and a survey of 55 pet owners: the interviews for the why, the survey for how common it was.',
+    { id: 'insight', nav: 'Insight', title: ['Shoppers had no one to ask'],
+      lede: 'To see what shoppers actually needed, we ran five 45-minute interviews, surveyed 55 pet owners and sorted every answer on an affinity map.',
       blocks: [{ type: 'pull', text: 'So the page’s job was to answer the way a store consultant would.' }],
       visual: { layout: 'single', items: [{ label: 'Interviews and survey', spec: '', alt: 'Three pet owners from the interviews and the survey numbers beside them: 77% trust information from a veterinarian, 63% look at composition and ingredients, 80% read reviews always or sometimes.', voices: [
         { num: '77%', label: 'trust information from a veterinarian', quote: 'Only from acquaintances I trust and follow.', who: 'Viktoria, 23', photo: '/images/lap-p-viktoria.webp', sub: 'Chihuahua owner', tag: 'Sources' },
@@ -460,23 +460,23 @@ const lapunzel: Partial<CaseData> = {
         { num: '80%', label: 'read reviews, always or sometimes', quote: 'I like reading reviews. But reviews get faked, so you can’t really believe them, 50/50.', who: 'Valeria, 23', photo: '/images/lap-p-valeria.webp', sub: 'Toy poodle owner', tag: 'Reviews' },
       ] }] } },
 
-    { id: 'strategy', nav: 'Strategy', title: ['Three priorities,', 'in the order people shop'],
+    { id: 'strategy', nav: 'Strategy', title: ['So the page had to answer at every step'],
       lede: 'I led the session that turned our findings into three priorities, each tied to a step of the purchase: find the product, trust it enough to pay, and come back. Every hypothesis had to serve one of them, which also showed us what to drop.',
-      blocks: [{ type: 'note', text: 'The blog didn’t make the cut: 26 of 55 owners don’t notice a store blog.' }],
-      visual: { layout: 'single', items: [{ label: 'Three priorities', spec: '', alt: 'Three priorities. Categories were confusing: it became the product-type menu. Online, nothing replaces a store consultant: it became the product card. Rewards interested more people than accounts: we recommended an optional account.', hyps: [
+      blocks: [{ type: 'note', text: 'The blog didn’t make the cut: 45% of owners don’t pay attention to a store blog.' }],
+      visual: { layout: 'single', items: [{ label: 'Three priorities', spec: '', alt: 'Three priorities. Categories were confusing: it became the product-type menu. Online, nothing replaces a store consultant: it became the product card. Accounts appealed for speed and for discounts: we recommended an optional account.', hyps: [
         { saw: 'Categories were confusing', icon: 'search', q: 'Group products by how people look for them?', a: 'Became the product-type menu' },
         { saw: 'Online, nothing replaces a store consultant', icon: 'shopping-cart', q: 'Put the answers next to the buy button?', a: 'Became the product card' },
-        { saw: 'Rewards interested more people than accounts', icon: 'gift', q: 'Give people a reason to come back?', a: 'We recommended an optional account' },
+        { saw: 'Accounts appealed for speed and for discounts', icon: 'gift', q: 'Give people a reason to come back?', a: 'We recommended an optional account' },
       ] }] } },
 
-    { id: 'categories', nav: 'Findability', title: ['Categories by use,', 'not by anatomy'],
+    { id: 'categories', nav: 'Findability', title: ['First, help them find it'],
       lede: 'The old menu grouped products by body area. We card-sorted three structures and chose product type. A shopper looking for shampoo shouldn’t have to guess whether it lives under Fur or Paws.',
       blocks: [{ type: 'contrast',
         from: { label: 'Before', items: ['Fur', 'Eyes', 'Ears'] },
         to: { label: 'After', items: ['Shampoos and conditioners', 'Balms and soaps', 'Tonics and foams', 'About, Blog and FAQ apart'], icons: ['droplets', 'bubbles', 'sparkles', 'info-circle'] } }],
       visual: { layout: 'single', items: [{ label: 'Menu and catalogue', spec: 'The new menu and catalogue, plus the card sort', alt: 'The new menu and the Catalogue grouped by use' }] } },
 
-    { id: 'trust', nav: 'Trust', title: ['Proof at the point', 'of decision'],
+    { id: 'trust', nav: 'Trust', title: ['Then, answer before they pay'],
       lede: 'Owners turned to a vet or a store clerk for certainty. We moved that certainty onto the product card: stock status first, delivery and payment one tap away, composition and usage in plain language, and the manufacturer’s certificates a link away.',
       blocks: [{ type: 'pull', text: 'Every answer on the page is one less reason to leave it.' }],
       visual: { layout: 'stack', items: [
@@ -485,25 +485,24 @@ const lapunzel: Partial<CaseData> = {
         { label: 'About page', spec: 'The manufacturer’s certificates', alt: 'Checkout with payment, order summary and log in' },
       ] } },
 
-    { id: 'account', nav: 'Registration', title: ['When the owner', 'said no accounts'],
-      lede: 'The owner didn’t want accounts. The survey showed why a mandatory one would cost sales: only 8 of 55 wanted an account, while 20 would sign up for bonuses. Asking for an account is itself a reason to hesitate, so I recommended an optional one at checkout.',
+    { id: 'account', nav: 'Registration', title: ['Without forcing an account'],
+      lede: 'The owner didn’t want accounts. The survey showed shoppers saw a use for one: 40% wanted it for quick purchases and 30% for offers and discounts. So I recommended an optional account at checkout, offered with its benefit.',
       blocks: [
         { type: 'pull', text: 'The decision was hers. My job was to make the trade-off visible, not to win the argument.' },
         { type: 'table', head: ['Who', 'Position'], rows: [
-          ['Shoppers', 'Bonuses win, guests stay'],
+          ['Shoppers', 'Want it for speed and discounts'],
           ['Owner', 'Wary of accounts'],
           ['I recommended', 'Optional account at checkout'],
           ['Shipped', 'No'],
         ] },
       ],
-      visual: { layout: 'single', items: [{ label: 'Accounts', spec: '', alt: 'Would you want an account? 20 of 55 would sign up for bonuses, 18 didn’t mind, 9 wanted to buy as guests, 8 wanted an account.', stats: { lead: 'Would you want an account?', nopct: true, items: [
-        { value: '20', text: 'would sign up for bonuses', label: 'of 55' },
-        { value: '18', text: 'don’t mind either way', label: 'of 55' },
-        { value: '9', text: 'want to buy as guests', label: 'of 55' },
-        { value: '8', text: 'want an account', label: 'of 55' },
+      visual: { layout: 'single', items: [{ label: 'Accounts', spec: '', alt: 'How important is having an account? 40% prefer one for quick purchases, 30% don’t mind as long as they can buy, 30% want one for offers and discounts.', stats: { lead: 'Is having an account important?', items: [
+        { value: '40', text: 'prefer an account for quick purchases' },
+        { value: '30', text: 'don’t mind, if they can still buy' },
+        { value: '30', text: 'want one for offers and discounts' },
       ], source: 'Survey of 55 pet owners, March 2024' } }] } },
 
-    { id: 'validation', nav: 'Validation', wide: true, title: ['5 usability tests,', '3 changes'],
+    { id: 'validation', nav: 'Validation', wide: true, title: ['Five people tried it first'],
       lede: 'We tested the wireframes with five people before any visual design, while changes were still cheap.',
       blocks: [{ type: 'list', numbered: true, items: [
         { title: 'The header felt too heavy', body: '“The header font and icons are a bit large.” We made both lighter.' },
@@ -511,7 +510,7 @@ const lapunzel: Partial<CaseData> = {
         { title: 'The card said nothing about other buyers', body: '“No information about reviews, the average rating or how many there are.” We added both to the card.' },
       ] }] },
 
-    { id: 'outcome', nav: 'Outcome', title: ['Launched,', 'and tracked by the client'],
+    { id: 'outcome', nav: 'Outcome', title: ['Fewer exits, more orders'],
       lede: 'The client tracked the store in Google Analytics 4 and shared before-and-after numbers with us. Fewer people left product pages, and more of those who stayed went on to order. I didn’t have access to the raw data, so these are the client’s figures.',
       blocks: [{ type: 'note', text: 'Comparison period and traffic mix weren’t shared with me.' }],
       visual: { layout: 'single', items: [{ label: 'Client-reported GA4 results', spec: '', alt: 'Client-reported results from Google Analytics 4. Product page exit rate 60% to 48%. Add-to-cart rate 6% to 7.2%. Checkout completion 48% to 54%. Purchase conversion 1.5% to 1.8%.', metrics: [
@@ -525,7 +524,7 @@ const lapunzel: Partial<CaseData> = {
         ] },
       ] }] } },
 
-    { id: 'reflection', nav: 'Reflection', wide: true, title: ['Good numbers,', 'not yet verified'],
+    { id: 'reflection', nav: 'Reflection', wide: true, title: ['Next time, I’d measure it myself'],
       lede: 'The results point the right way, but I couldn’t check them myself. Next time I’d set up the measurement with the client before launch.',
       blocks: [
         { type: 'cards', items: [
