@@ -14,7 +14,7 @@ export type Block =
   | { type: 'contrast'; from: { label: string; items: string[] }; to: { label: string; items: string[]; icons?: string[] } }
   | { type: 'table'; head: [string, string]; rows: [string, string][] }
   | { type: 'decision'; rows: [string, string][] }
-  | { type: 'glance'; items: { icon: string; label: string; text: string; href?: string }[] }
+  | { type: 'glance'; row?: boolean; items: { icon: string; label: string; text: string; href?: string }[] }
   | { type: 'cards'; items: { label?: string; title: string; body?: string; icon?: string; hi?: boolean }[] }
   | { type: 'list'; numbered?: boolean; card?: boolean; split?: boolean; tabs?: boolean; noHover?: boolean; items: { label?: string; title: string; body?: string; icon?: string; hl?: boolean; parts?: string[] }[] }
   | { type: 'callout'; text: string }
@@ -418,10 +418,10 @@ const lapunzel: Partial<CaseData> = {
 
     { id: 'team', nav: 'Collaboration', title: ['Four weeks to test them'],
       lede: 'With four weeks and a team that had never worked together, each week had one job: listen, make sense, shape, prove.',
-      blocks: [{ type: 'glance', items: [
-        { icon: 'user', label: 'My role', text: 'I ran the work: set the rhythm, split the tasks, led every call, presented the results.' },
-        { icon: 'users', label: 'The team', text: 'Three designers each owned their tasks, including the competitor analysis.' },
-        { icon: 'calendar', label: 'Together', text: 'Two or three calls a week, tasks in Notion, findings in FigJam.' },
+      blocks: [{ type: 'glance', row: true, items: [
+        { icon: 'user', label: 'I ran the work', text: 'Set the rhythm, split the tasks, led every call, presented the results.' },
+        { icon: 'users', label: 'Three designers', text: 'Each owned their tasks, including the competitor analysis.' },
+        { icon: 'calendar', label: 'Two or three calls a week', text: 'Tasks in Notion, findings in FigJam.' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'Four weeks, four stages', spec: '', alt: 'Four weeks, four stages. Week 1, Listen: heuristic evaluation, competitive analysis, user interviews. Week 2, Make sense: survey, brainstorm, hypothesis framing. Week 3, Shape: information architecture, user flow. Week 4, Prove: prototype and usability testing.', plan: [
         { week: 'Week 1', name: 'Listen', line: 'Hear the site, the market and the owners.', tags: ['Heuristic evaluation', 'Competitive analysis', 'User interviews'], color: '#c9a4ea' },

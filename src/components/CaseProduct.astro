@@ -141,7 +141,7 @@ const cf = Array.from({ length: 14 }, (_, k) => { const a = (k / 14) * Math.PI *
                     <dl>{b.items.map((f) => <div class="l2 lift"><dd>{f.value}</dd><dt>{f.label}</dt></div>)}</dl>
                   </div>);
                 case 'glance': return (
-                  <div class="glance rv">{b.items.map((x) => (
+                  <div class:list={['glance rv', { row: b.row }]}>{b.items.map((x) => (
                     <a class="gl" href={x.href}>
                       <span class="ic" aria-hidden="true" set:html={icon(x.icon)} />
                       <span class="tx"><small>{x.label}</small><span>{x.text}</span></span>
