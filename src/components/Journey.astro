@@ -1,0 +1,14 @@
+---
+import { icon } from '../data/icons';
+interface Item { step: string; icon: string; text: string; next?: boolean; }
+interface Props { items: Item[]; }
+const { items } = Astro.props;
+---
+<ol class="jr-l">
+  {items.map((it, i) => (
+    <li class:list={['jr-i', { next: it.next }]} style={`--k:${i}`}>
+      <div class="jr-rail"><span class="jr-c" aria-hidden="true" set:html={icon(it.icon)} />{i < items.length - 1 && <i></i>}</div>
+      <div class="jr-b"><small>{it.step}</small><p>{it.text}</p></div>
+    </li>
+  ))}
+</ol>
