@@ -469,11 +469,19 @@ const lapunzel: Partial<CaseData> = {
       visual: { layout: 'single', items: [{ label: 'Purchase path', spec: '', src: '/images/lap-structure.webp', zoom: true, pad: true, alt: 'The new purchase path in four steps. Find: product-type menu, filters and sorting, product page. Decide: composition, stock and delivery, reviews. Buy: buy or subscribe, enter details, save details. Come back: order status, leave a review, offers by email. New elements are highlighted.' }] } },
 
     { id: 'categories', nav: 'Findability', title: ['First, help them find it'],
-      lede: 'The old menu grouped products by body area. We card-sorted three structures and chose product type. A shopper looking for shampoo shouldn’t have to guess whether it lives under Fur or Paws.',
-      blocks: [{ type: 'contrast',
-        from: { label: 'Before', items: ['Fur', 'Eyes', 'Ears'] },
-        to: { label: 'After', items: ['Shampoos and conditioners', 'Balms and soaps', 'Tonics and foams', 'About, Blog and FAQ apart'], icons: ['droplets', 'bubbles', 'sparkles', 'info-circle'] } }],
-      visual: { layout: 'single', items: [{ label: 'Menu and catalogue', spec: 'The new menu and catalogue, plus the card sort', alt: 'The new menu and the Catalogue grouped by use' }] } },
+      lede: 'The old menu followed the body: wool, paws, eyes. Before changing it, we card-sorted the 15 products three ways.',
+      blocks: [
+        { type: 'cards', items: [
+          { label: 'Chosen', title: 'By product type', body: 'Five groups of one to five products.', hi: true },
+          { label: 'Option 2', title: 'By place of use', body: 'Fur and skin took 8 of the 15 products.' },
+          { label: 'Option 3', title: 'Like a competitor', body: 'Two broad groups, 8 and 7 products.' },
+        ] },
+        { type: 'pull', text: 'A shopper looks for a shampoo, not a body part.' },
+      ],
+      visual: { layout: 'single', items: [{ label: 'Menu before and after', spec: '', trio: [
+        { src: '/images/lap-menu-before.webp', label: 'Before', icon: 'history' },
+        { src: '/images/lap-menu-after.webp', label: 'After', icon: 'sparkles' },
+      ], alt: 'The mobile menu before and after. Before: wool, paws, scent, eyes and sets. After: bestsellers, shampoos and conditioners, balms and soaps, tonics and foams, perfumes and tooth gel.' }] } },
 
     { id: 'trust', nav: 'Trust', title: ['Then, answer before they pay'],
       lede: 'Owners turned to a vet or a store clerk for certainty. We moved that certainty onto the product card: stock status first, delivery and payment one tap away, composition and usage in plain language, and the manufacturer’s certificates a link away.',
