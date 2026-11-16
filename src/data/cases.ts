@@ -483,13 +483,13 @@ const lapunzel: Partial<CaseData> = {
       ], alt: 'The mobile menu before and after. Before: wool, paws, scent, eyes and sets. After: bestsellers, shampoos and conditioners, balms and soaps, tonics and foams, perfumes and tooth gel.' }] } },
 
     { id: 'trust', nav: 'Trust', title: ['Then, answer before they pay'],
-      lede: 'Owners turned to a vet or a store clerk for certainty. We moved that certainty onto the product card: stock status first, delivery and payment one tap away, composition and usage in plain language, and the manufacturer’s certificates a link away.',
-      blocks: [{ type: 'pull', text: 'Every answer on the page is one less reason to leave it.' }],
-      visual: { layout: 'stack', items: [
-        { label: 'Product card', spec: 'Stock status, rating, and the accordions: delivery and payment, ingredients', alt: 'Product list with Bestseller and Vet recommended tags' },
-        { label: 'Vet recommended', spec: 'The tag on the product list', alt: 'Reviews with photo and video' },
-        { label: 'About page', spec: 'The manufacturer’s certificates', alt: 'Checkout with payment, order summary and log in' },
-      ] } },
+      lede: 'Owners used to ask a vet or a store clerk. We moved those answers onto the product page: a vet’s mark on the list, stock, rating and delivery on the card, and reviews from other owners.',
+      blocks: [],
+      visual: { layout: 'single', items: [{ label: 'Product list, card and reviews', spec: '', trio: [
+        { src: '/images/lap-trust-list.webp', label: 'Choose', icon: 'layout-grid' },
+        { src: '/images/lap-trust-card.webp', label: 'Check', icon: 'circle-check' },
+        { src: '/images/lap-trust-reviews.webp', label: 'Hear from others', icon: 'message' },
+      ], alt: 'Three mobile screens. Choose: the product list with Bestseller and Vet recommended tags. Check: the product card with rating, stock status and expandable sections including delivery and payment. Hear from others: a customer review with photo and video, and related articles.' }] } },
 
     { id: 'account', nav: 'Registration', title: ['Without forcing an account'],
       lede: 'The owner didn’t want accounts. The survey showed shoppers saw a use for one: 40% wanted it for quick purchases and 30% for offers and discounts. So I recommended an optional account at checkout, offered with its benefit.',
