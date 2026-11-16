@@ -1326,3 +1326,6 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .m-vis .ph.trio .tp-facts dt { font-size: 12px; }
 
 .m-vis .ph.trio .tp-facts dt { white-space: normal; }
+
+/* trio without drop shadow (wireframes) */
+.ph.trio.flat .tp img { filter: none; }
