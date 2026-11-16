@@ -461,8 +461,11 @@ const lapunzel: Partial<CaseData> = {
       ] }] } },
 
     { id: 'strategy', nav: 'Strategy', title: ['So the page had to answer at every step'],
-      lede: 'I led the session that turned our findings into priorities, each tied to a step of the purchase: find the product, trust it enough to pay, and come back. Every hypothesis had to serve one of them, which also showed us what to drop.',
-      blocks: [{ type: 'note', text: 'The blog stayed in the menu, but its articles now sit with the products they relate to. 45% of owners don’t look at a store blog on its own.' }],
+      lede: 'I led the session that turned our findings into priorities, one for each step of the purchase: find the product, trust it enough to pay, come back.',
+      blocks: [
+        { type: 'pull', text: 'If a hypothesis didn’t help someone find, trust or come back, it didn’t make the list.' },
+        { type: 'note', text: 'That’s why the blog got no push of its own. 45% of owners ignore store blogs, so its articles moved next to the products they relate to.' },
+      ],
       visual: { layout: 'single', items: [{ label: 'Purchase path', spec: '', src: '/images/lap-structure.webp', zoom: true, pad: true, alt: 'The new purchase path in four steps. Find: product-type menu, filters and sorting, product page. Decide: composition, stock and delivery, reviews. Buy: buy or subscribe, enter details, save details. Come back: order status, leave a review, offers by email. New elements are highlighted.' }] } },
 
     { id: 'categories', nav: 'Findability', title: ['First, help them find it'],
