@@ -1,5 +1,5 @@
 ---
-interface Props { groups: { title: string; items: { value: string; label: string; note: string; wide?: boolean }[] }[]; }
+interface Props { groups: { title: string; items: { value: string; label: string; note: string; wide?: boolean; pair?: { before: number; after: number; max: number; unit: string } }[] }[]; }
 const { groups } = Astro.props;
 ---
 <div class="mtx">
@@ -7,7 +7,15 @@ const { groups } = Astro.props;
     <section class="mg">
       <h3>{g.title}</h3>
       <div class="mg-i">
-        {g.items.map((m) => (
+        {g.items.map((m, k) => m.pair ? (
+          <div class="mt pr" role="group" aria-label={`${m.label}: ${m.value}`} style={`--k:${k}`}>
+            <div><span class="l">{m.label}</span><span class="n">{m.note}</span></div>
+            <div class="rows" aria-hidden="true">
+              <div class="row"><em>Before</em><span class="tk"><i style={`--w:${(m.pair.before / m.pair.max) * 100}`}></i></span><b>{m.pair.before}{m.pair.unit}</b></div>
+              <div class="row af"><em>After</em><span class="tk"><i style={`--w:${(m.pair.after / m.pair.max) * 100}`}></i></span><b>{m.pair.after}{m.pair.unit}</b></div>
+            </div>
+          </div>
+        ) : (
           <div class:list={['mt', { wide: m.wide }]}>
             <b class="v">{m.value.endsWith('%') ? <>{m.value.slice(0, -1)}<sup>%</sup></> : m.value}</b>
             <div><span class="l">{m.label}</span><span class="n">{m.note}</span></div>
