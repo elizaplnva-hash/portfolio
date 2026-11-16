@@ -461,13 +461,9 @@ const lapunzel: Partial<CaseData> = {
       ] }] } },
 
     { id: 'strategy', nav: 'Strategy', title: ['So the page had to answer at every step'],
-      lede: 'I led the session that turned our findings into three priorities, each tied to a step of the purchase: find the product, trust it enough to pay, and come back. Every hypothesis had to serve one of them, which also showed us what to drop.',
-      blocks: [{ type: 'note', text: 'The blog didn’t make the cut: 45% of owners don’t pay attention to a store blog.' }],
-      visual: { layout: 'single', items: [{ label: 'Three priorities', spec: '', alt: 'Three priorities. Categories were confusing: it became the product-type menu. Online, nothing replaces a store consultant: it became the product card. Accounts appealed for speed and for discounts: we recommended an optional account.', hyps: [
-        { saw: 'Categories were confusing', icon: 'search', q: 'Group products by how people look for them?', a: 'Became the product-type menu' },
-        { saw: 'Online, nothing replaces a store consultant', icon: 'shopping-cart', q: 'Put the answers next to the buy button?', a: 'Became the product card' },
-        { saw: 'Accounts appealed for speed and for discounts', icon: 'gift', q: 'Give people a reason to come back?', a: 'We recommended an optional account' },
-      ] }] } },
+      lede: 'I led the session that turned our findings into priorities, each tied to a step of the purchase: find the product, trust it enough to pay, and come back. Every hypothesis had to serve one of them, which also showed us what to drop.',
+      blocks: [{ type: 'note', text: 'The blog stayed in the menu, but its articles now sit with the products they relate to. 45% of owners don’t look at a store blog on its own.' }],
+      visual: { layout: 'single', items: [{ label: 'Purchase path', spec: '', src: '/images/lap-structure.webp', zoom: true, alt: 'The new purchase path in four steps. Find: product-type menu, filters and sorting, product page. Decide: composition, stock and delivery, reviews. Buy: buy or subscribe, enter details, save details. Come back: order status, leave a review, offers by email. New elements are highlighted.' }] } },
 
     { id: 'categories', nav: 'Findability', title: ['First, help them find it'],
       lede: 'The old menu grouped products by body area. We card-sorted three structures and chose product type. A shopper looking for shampoo shouldn’t have to guess whether it lives under Fur or Paws.',
