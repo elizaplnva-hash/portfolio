@@ -469,14 +469,14 @@ const lapunzel: Partial<CaseData> = {
       visual: { layout: 'single', items: [{ label: 'Purchase path', spec: '', src: '/images/lap-structure.webp', zoom: true, pad: true, alt: 'The new purchase path in four steps. Find: product-type menu, filters and sorting, product page. Decide: composition, stock and delivery, reviews. Buy: buy or subscribe, enter details, save details. Come back: order status, leave a review, offers by email. New elements are highlighted.' }] } },
 
     { id: 'categories', nav: 'Findability', title: ['First, help them find it'],
-      lede: 'The old menu followed the body: wool, paws, eyes. Before changing it, we card-sorted the 15 products three ways.',
+      lede: 'The old menu followed the body: wool, paws, eyes. We came up with three structures, compared them with how competitors organize their menus, and agreed on one as a team. I made the final call.',
       blocks: [
-        { type: 'cards', items: [
-          { label: 'Chosen', title: 'By product type', body: 'Five groups of one to five products.', hi: true },
-          { label: 'Option 2', title: 'By place of use', body: 'Fur and skin took 8 of the 15 products.' },
-          { label: 'Option 3', title: 'Like a competitor', body: 'Two broad groups, 8 and 7 products.' },
+        { type: 'list', numbered: true, split: true, items: [
+          { title: 'By product type', body: 'Five groups of one to five products.' },
+          { title: 'By place of use', body: 'Fur and skin took 8 of the 15 products.' },
+          { title: 'Like a competitor', body: 'Two broad groups, 8 and 7 products.' },
         ] },
-        { type: 'pull', text: 'A shopper looks for a shampoo, not a body part.' },
+        { type: 'pull', text: 'Product type gives shoppers a direct route to what they came to find. They don’t have to guess which body-area category holds the product.' },
       ],
       visual: { layout: 'single', items: [{ label: 'Menu before and after', spec: '', trio: [
         { src: '/images/lap-menu-before.webp', label: 'Before', icon: 'history' },
