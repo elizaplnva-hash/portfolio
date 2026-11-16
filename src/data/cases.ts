@@ -420,7 +420,7 @@ const lapunzel: Partial<CaseData> = {
       lede: 'With four weeks and a team that had never worked together, each week had one job: listen, make sense, shape, prove.',
       blocks: [{ type: 'glance', row: true, items: [
         { icon: 'user', label: 'I ran the work', text: 'Set the rhythm, split the tasks, led every call, presented the results.' },
-        { icon: 'users', label: 'Three designers', text: 'Each owned their tasks, including the competitor analysis.' },
+        { icon: 'users', label: 'Three designers', text: 'Each owned their tasks, competitor analysis too.' },
         { icon: 'calendar', label: 'Two or three calls a week', text: 'Tasks in Notion, findings in FigJam.' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'Four weeks, four stages', spec: '', alt: 'Four weeks, four stages. Week 1, Listen: heuristic evaluation, competitive analysis, user interviews. Week 2, Make sense: survey, brainstorm, hypothesis framing. Week 3, Shape: information architecture, user flow. Week 4, Prove: prototype and usability testing.', plan: [
@@ -463,7 +463,7 @@ const lapunzel: Partial<CaseData> = {
     { id: 'strategy', nav: 'Strategy', title: ['So the page had to answer at every step'],
       lede: 'I led the session that turned our findings into priorities, each tied to a step of the purchase: find the product, trust it enough to pay, and come back. Every hypothesis had to serve one of them, which also showed us what to drop.',
       blocks: [{ type: 'note', text: 'The blog stayed in the menu, but its articles now sit with the products they relate to. 45% of owners don’t look at a store blog on its own.' }],
-      visual: { layout: 'single', items: [{ label: 'Purchase path', spec: '', src: '/images/lap-structure.webp', zoom: true, alt: 'The new purchase path in four steps. Find: product-type menu, filters and sorting, product page. Decide: composition, stock and delivery, reviews. Buy: buy or subscribe, enter details, save details. Come back: order status, leave a review, offers by email. New elements are highlighted.' }] } },
+      visual: { layout: 'single', items: [{ label: 'Purchase path', spec: '', src: '/images/lap-structure.webp', zoom: true, pad: true, alt: 'The new purchase path in four steps. Find: product-type menu, filters and sorting, product page. Decide: composition, stock and delivery, reviews. Buy: buy or subscribe, enter details, save details. Come back: order status, leave a review, offers by email. New elements are highlighted.' }] } },
 
     { id: 'categories', nav: 'Findability', title: ['First, help them find it'],
       lede: 'The old menu grouped products by body area. We card-sorted three structures and chose product type. A shopper looking for shampoo shouldn’t have to guess whether it lives under Fur or Paws.',
