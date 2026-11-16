@@ -503,7 +503,7 @@ const lapunzel: Partial<CaseData> = {
           { value: '30%', label: 'want one for offers and discounts' },
           { value: '30%', label: 'don’t mind if they can still buy' },
         ] } },
-        { src: '/images/lap-checkout-concept.webp', label: 'Proposed concept', icon: 'user-plus' },
+        { src: '/images/lap-checkout-concept.webp' },
       ], alt: 'Proposed checkout on mobile: contact details form with a note that logging in pre-fills your info and gives faster checkout and order tracking, and a Log in button. Guests can still check out without an account. Beside it, the survey: 40% prefer an account for quick purchases, 30% want one for offers and discounts, 30% don’t mind if they can still buy.' }] } },
 
     { id: 'validation', nav: 'Validation', wide: true, title: ['Five people tried it first'],
