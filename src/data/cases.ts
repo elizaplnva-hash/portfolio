@@ -535,9 +535,8 @@ const lapunzel: Partial<CaseData> = {
     { id: 'reflection', nav: 'Reflection', title: ['What the numbers', 'couldn’t tell me'],
       lede: 'The metrics moved the right way. They didn’t show which decision moved them.',
       blocks: [{ type: 'list', numbered: true, split: true, items: [
-        { title: 'Trust', body: 'It is built across the journey, not on one screen. I’d map what shoppers need to believe at each step.' },
-        { title: 'Surveys', body: 'Answers are hypotheses. I’d check them against what people do at checkout.' },
         { title: 'Results', body: 'I’d tie each decision to a behavior I can measure, so I know which change made the difference.' },
+        { title: 'Trust', body: 'It is built across the journey, not on one screen. I’d map what shoppers need to believe at each step.' },
         { title: 'After purchase', body: 'The first purchase was the priority. Next: what brings customers back.' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'Beyond the buying path', spec: '', flat: true, trio: [
