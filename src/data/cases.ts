@@ -520,11 +520,7 @@ const lapunzel: Partial<CaseData> = {
       ], alt: 'The three wireframes we tested, in grey. Menu: search, a short list of product groups, customer care and social links. Search results: a category header, product count and sort, and two product cards with Vet recommended and New tags and a five-star row without a number. Product page: image gallery, five stars, stock status, price, Buy button and a collapsed Description section.' }] } },
 
     { id: 'outcome', nav: 'Outcome', title: ['Fewer exits, more orders'],
-      lede: 'The client shared before-and-after numbers from Google Analytics 4.',
-      blocks: [{ type: 'glance', items: [
-        { icon: 'chart-bar', label: 'Source', text: 'Google Analytics 4, reported by the client.' },
-        { icon: 'help-circle', label: 'Not shared', text: 'The comparison period and the traffic mix.' },
-      ] }],
+      lede: 'These are the client’s before-and-after figures from Google Analytics 4. Fewer people left product pages, and more of those who stayed went on to order.',
       visual: { layout: 'single', items: [{ label: 'Client-reported GA4 results', spec: '', alt: 'Client-reported results from Google Analytics 4. Product page exit rate 60% to 48%. Add-to-cart rate 6% to 7.2%. Checkout completion 48% to 54%. Purchase conversion 1.5% to 1.8%.', metrics: [
         { title: 'Browsing', items: [
           { value: '60% → 48%', label: 'Product page exits', note: 'exits divided by product page views', pair: { before: 60, after: 48, max: 100, unit: '%' } },
