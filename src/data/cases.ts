@@ -418,9 +418,9 @@ const lapunzel: Partial<CaseData> = {
 
     { id: 'team', nav: 'Collaboration', title: ['Four weeks to test them'],
       lede: 'With four weeks and a team that had never worked together, each week had one job: listen, make sense, shape, prove.',
-      blocks: [{ type: 'glance', row: true, items: [
+      blocks: [{ type: 'glance', items: [
         { icon: 'user', label: 'I ran the work', text: 'Set the rhythm, split the tasks, led every call, presented the results.' },
-        { icon: 'users', label: 'Three designers', text: 'Each owned their tasks, competitor analysis too.' },
+        { icon: 'users', label: 'Three designers', text: 'Each owned their tasks, including the competitor analysis.' },
         { icon: 'calendar', label: 'Two or three calls a week', text: 'Tasks in Notion, findings in FigJam.' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'Four weeks, four stages', spec: '', alt: 'Four weeks, four stages. Week 1, Listen: heuristic evaluation, competitive analysis, user interviews. Week 2, Make sense: survey, brainstorm, hypothesis framing. Week 3, Shape: information architecture, user flow. Week 4, Prove: prototype and usability testing.', plan: [
