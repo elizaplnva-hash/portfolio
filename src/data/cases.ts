@@ -506,13 +506,18 @@ const lapunzel: Partial<CaseData> = {
         { src: '/images/lap-checkout-concept.webp' },
       ], alt: 'Proposed checkout on mobile: contact details form with a note that logging in pre-fills your info and gives faster checkout and order tracking, and a Log in button. Guests can still check out without an account. Beside it, the survey: 40% prefer an account for quick purchases, 30% want one for offers and discounts, 30% don’t mind if they can still buy.' }] } },
 
-    { id: 'validation', nav: 'Validation', wide: true, title: ['Five people tried it first'],
+    { id: 'validation', nav: 'Validation', title: ['Five people tried it first'],
       lede: 'We tested the wireframes with five people before any visual design, while changes were still cheap.',
-      blocks: [{ type: 'list', numbered: true, items: [
+      blocks: [{ type: 'list', numbered: true, split: true, items: [
         { title: 'The header felt too heavy', body: '“The header font and icons are a bit large.” We made both lighter.' },
         { title: 'Products, blog and FAQ blurred together', body: '“Better to have separate sections for products, the blog and FAQ.” We split the menu into groups.' },
         { title: 'The card said nothing about other buyers', body: '“No information about reviews, the average rating or how many there are.” We added both to the card.' },
-      ] }] },
+      ] }],
+      visual: { layout: 'single', items: [{ label: 'Wireframes we tested', spec: '', trio: [
+        { src: '/images/lap-wf-menu.webp', label: 'Menu', icon: 'layout-grid' },
+        { src: '/images/lap-wf-results.webp', label: 'Search results', icon: 'search' },
+        { src: '/images/lap-wf-product.webp', label: 'Product page', icon: 'box' },
+      ], alt: 'The three wireframes we tested, in grey. Menu: search, a short list of product groups, customer care and social links. Search results: a category header, product count and sort, and two product cards with Vet recommended and New tags and a five-star row without a number. Product page: image gallery, five stars, stock status, price, Buy button and a collapsed Description section.' }] } },
 
     { id: 'outcome', nav: 'Outcome', title: ['Fewer exits, more orders'],
       lede: 'The client tracked the store in Google Analytics 4 and shared before-and-after numbers with us. Fewer people left product pages, and more of those who stayed went on to order. I didn’t have access to the raw data, so these are the client’s figures.',
