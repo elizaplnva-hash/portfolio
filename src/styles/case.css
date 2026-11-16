@@ -1302,3 +1302,4 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 .m-vis .vc-n { flex-direction: row; align-items: center; }
 .m-vis .vc-tag { margin-left: 0; }
 @media (max-width: 899px) { .glance.row { flex-direction: column; } }
+#trust .note { font-size: 15px; line-height: 1.5; max-width: 34em; color: var(--soft); }

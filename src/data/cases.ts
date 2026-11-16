@@ -483,8 +483,8 @@ const lapunzel: Partial<CaseData> = {
       ], alt: 'The mobile menu before and after. Before: wool, paws, scent, eyes and sets. After: bestsellers, shampoos and conditioners, balms and soaps, tonics and foams, perfumes and tooth gel.' }] } },
 
     { id: 'trust', nav: 'Trust', title: ['Then, answer before they pay'],
-      lede: 'Owners used to ask a vet or a store clerk. We moved those answers onto the product page: a vet’s mark on the list, stock, rating and delivery on the card, and reviews from other owners.',
-      blocks: [],
+      lede: 'Owners trusted a vet or a store clerk. A website had to earn the same trust, with no one to ask.',
+      blocks: [{ type: 'note', text: 'I put the answers where the doubt appears: a vet’s mark on the list, stock and delivery on the card, other owners’ photos and videos in the reviews.' }],
       visual: { layout: 'single', items: [{ label: 'Product list, card and reviews', spec: '', trio: [
         { src: '/images/lap-trust-list.webp', label: 'Choose', icon: 'layout-grid' },
         { src: '/images/lap-trust-card.webp', label: 'Check', icon: 'circle-check' },
