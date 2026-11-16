@@ -492,21 +492,19 @@ const lapunzel: Partial<CaseData> = {
       ], alt: 'Three mobile screens. Choose: the product list with Bestseller and Vet recommended tags. Check: the product card with rating, stock status and expandable sections including delivery and payment. Hear from others: a customer review with photo and video, and related articles.' }] } },
 
     { id: 'account', nav: 'Registration', title: ['Without forcing an account'],
-      lede: 'The owner didn’t want accounts. The survey showed shoppers saw a use for one: 40% wanted it for quick purchases and 30% for offers and discounts. So I recommended an optional account at checkout, offered with its benefit.',
+      lede: 'The owner worried that mandatory registration would add friction and put off first-time buyers. Our survey also asked shoppers whether they wanted an account at all.',
       blocks: [
-        { type: 'pull', text: 'The decision was hers. My job was to make the trade-off visible, not to win the argument.' },
-        { type: 'table', head: ['Who', 'Position'], rows: [
-          ['Shoppers', 'Want it for speed and discounts'],
-          ['Owner', 'Wary of accounts'],
-          ['I recommended', 'Optional account at checkout'],
-          ['Shipped', 'No'],
+        { type: 'facts', caption: 'Is having an account important?', items: [
+          { value: '40%', label: 'prefer one for quick purchases' },
+          { value: '30%', label: 'want one for offers and discounts' },
+          { value: '30%', label: 'don’t mind, if they can still buy' },
         ] },
+        { type: 'pull', text: 'I kept guest checkout as the default and proposed login as an option.' },
+        { type: 'note', text: 'The owner made the final call, and the button was removed. I brought the evidence, laid out the trade-off and designed the proposal.' },
       ],
-      visual: { layout: 'single', items: [{ label: 'Accounts', spec: '', alt: 'How important is having an account? 40% prefer one for quick purchases, 30% don’t mind as long as they can buy, 30% want one for offers and discounts.', stats: { lead: 'Is having an account important?', items: [
-        { value: '40', text: 'prefer an account for quick purchases' },
-        { value: '30', text: 'don’t mind, if they can still buy' },
-        { value: '30', text: 'want one for offers and discounts' },
-      ], source: 'Survey of 55 pet owners, March 2024' } }] } },
+      visual: { layout: 'single', items: [{ label: 'Checkout concept', spec: '', trio: [
+        { src: '/images/lap-checkout-concept.webp', label: 'Proposed concept', icon: 'user-plus' },
+      ], alt: 'Proposed checkout on mobile: contact details form with a note that logging in pre-fills your info and gives faster checkout and order tracking, and a Log in button. Guests can still check out without an account.' }] } },
 
     { id: 'validation', nav: 'Validation', wide: true, title: ['Five people tried it first'],
       lede: 'We tested the wireframes with five people before any visual design, while changes were still cheap.',
