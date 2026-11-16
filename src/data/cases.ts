@@ -492,16 +492,16 @@ const lapunzel: Partial<CaseData> = {
       ], alt: 'Three mobile screens. Choose: the product list with Bestseller and Vet recommended tags. Check: the product card with rating, stock status and expandable sections including delivery and payment. Hear from others: a customer review with photo and video, and related articles.' }] } },
 
     { id: 'account', nav: 'Registration', title: ['Without forcing an account'],
-      lede: 'The owner worried that mandatory registration would add friction and put off first-time buyers. Our survey also asked shoppers whether they wanted an account at all.',
+      lede: 'The owner worried that mandatory registration would add friction and put off first-time buyers. So I went back to our survey, which had asked shoppers about this.',
       blocks: [
         { type: 'pull', text: 'I kept guest checkout as the default and proposed login as an option.' },
         { type: 'note', text: 'The owner made the final call, and the button was removed. I brought the evidence, laid out the trade-off and designed the proposal.' },
       ],
       visual: { layout: 'single', items: [{ label: 'Survey and checkout concept', spec: '', trio: [
-        { facts: { caption: 'Is having an account important?', items: [
+        { facts: { caption: 'What shoppers said', items: [
           { value: '40%', label: 'prefer one for quick purchases' },
           { value: '30%', label: 'want one for offers and discounts' },
-          { value: '30%', label: 'don’t mind, if they can still buy' },
+          { value: '30%', label: 'don’t mind if they can still buy' },
         ] } },
         { src: '/images/lap-checkout-concept.webp', label: 'Proposed concept', icon: 'user-plus' },
       ], alt: 'Proposed checkout on mobile: contact details form with a note that logging in pre-fills your info and gives faster checkout and order tracking, and a Log in button. Guests can still check out without an account. Beside it, the survey: 40% prefer an account for quick purchases, 30% want one for offers and discounts, 30% don’t mind if they can still buy.' }] } },
