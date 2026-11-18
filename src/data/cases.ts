@@ -800,7 +800,7 @@ export const cases: CaseData[] = [
     screens: [
     { id: 'overview', nav: 'Overview', title: ['A plumbing brand,', 'built to work beyond the logo'],
       lede: 'Our agency team designed the identity. I carried it onto stickers, apparel, print and the website.',
-      link: { label: 'View live website', href: 'https://www.sequoiaplumbingandair.com/' },
+      links: [{ label: 'Visit website', href: 'https://www.sequoiaplumbingandair.com/' }],
       blocks: [{ type: 'meta', items: [
         { label: 'Role', value: 'Brand & Web Designer' },
         { label: 'Collaboration', value: '3 designers, Danart' },
