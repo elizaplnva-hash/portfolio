@@ -6,7 +6,7 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; evid?: { top: { lead: string; source?: string; items: { value: string; scope?: string; text: string }[] }; frames: { ratio?: string; shots: { src: string; name: string; alt: string; logo: string }[]; plan?: { week: string; name: string; line: string; tags: string[]; color: string }[]; finds?: { kind: 'first' | 'deeper'; tag: string; icon: string; text: string }[] }[] }; soft?: boolean; pan?: { src: string; wide?: boolean; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; sys?: boolean; cost?: { on: number; total: number; value: string; text: string; ring: number; ringText: string; source: string }; stages?: { items: { value: string; icon?: string; stage: string; metric: string; what: string; how: string }[]; note?: string }; hyps?: { saw: string; q: string; a: string; icon?: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean; pair?: { before: number; after: number; max: number; unit: string } }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean | 'part'; b: boolean | 'part' }[]; note?: string }; zoom?: boolean; pad?: boolean; bleed?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; flat?: boolean; trio?: { src?: string; label?: string; icon?: string; facts?: { caption: string; items: { value: string; label: string }[] } }[]; alt?: string; flip?: boolean; matrix?: { title: string; cols: { name: string; logo: string }[]; groups: { label: string; rows: { label: string; v: boolean[] }[] }[] }; voices?: { num: string; label: string; quote: string; who: string; sub?: string; tag: string; tagIcon: string }[]; finds?: { icon: string; cat: string; level: 'catastrophe' | 'major' | 'minor'; score: string; title: string; text: string; src: string; pos?: string; alt?: string }[] }   // srcs = transparent device renders composed on the tint
+export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; evid?: { top: { lead: string; source?: string; items: { value: string; scope?: string; text: string }[] }; frames: { ratio?: string; shots: { src: string; name: string; alt: string; logo: string }[]; plan?: { week: string; name: string; line: string; tags: string[]; color: string }[]; finds?: { kind: 'first' | 'deeper'; tag: string; icon: string; text: string }[] }[] }; soft?: boolean; pan?: { src: string; wide?: boolean; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; sys?: boolean; cost?: { on: number; total: number; value: string; text: string; ring: number; ringText: string; source: string }; stages?: { items: { value: string; icon?: string; stage: string; metric: string; what: string; how: string }[]; note?: string }; hyps?: { saw: string; q: string; a: string; icon?: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean; pair?: { before: number; after: number; max: number; unit: string } }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean | 'part'; b: boolean | 'part' }[]; note?: string }; zoom?: boolean; pad?: boolean; bleed?: boolean; peek?: boolean; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; flat?: boolean; trio?: { src?: string; label?: string; icon?: string; facts?: { caption: string; items: { value: string; label: string }[] } }[]; alt?: string; flip?: boolean; matrix?: { title: string; cols: { name: string; logo: string }[]; groups: { label: string; rows: { label: string; v: boolean[] }[] }[] }; voices?: { num: string; label: string; quote: string; who: string; sub?: string; tag: string; tagIcon: string }[]; finds?: { icon: string; cat: string; level: 'catastrophe' | 'major' | 'minor'; score: string; title: string; text: string; src: string; pos?: string; alt?: string }[] }   // srcs = transparent device renders composed on the tint
 
 export type Block =
   | { type: 'meta'; items: { label: string; value: string }[] }
@@ -807,35 +807,35 @@ export const cases: CaseData[] = [
         { label: 'Timeline', value: 'July 2026' },
         { label: 'Responsibilities', value: 'Brand book, mockups, print, website' },
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Hero', spec: 'Laptop with the new site' }] } },
+      visual: { layout: 'single', items: [{ label: 'Home page', spec: '', src: '/images/seq-home.webp', peek: true, alt: 'The Sequoia Plumbing home page: header, a hero with the branded van, review ratings and four special offers' }] } },
     { id: 'challenge', nav: 'Challenge', title: ['An established business,', 'a dated look'],
       lede: 'Sequoia had years of work behind it, but its site and visuals hadn’t kept up as the plumbing side went independent.',
       blocks: [{ type: 'table', head: ['Piece', 'Who'], rows: [
         ['Logo', 'Agency team'], ['Brand book, mockups', 'Me'], ['Stickers, apparel', 'Me'],
         ['Van wrap, business cards', 'With the team'], ['Website brief and layouts', 'Me'],
       ] }],
-      visual: { layout: 'single', items: [{ label: 'Old site', spec: 'The site before' }] } },
+      visual: { layout: 'single', items: [{ label: 'Old site', spec: 'Old site, one screenshot, 4:5' }] } },
     { id: 'book', nav: 'Brand book', title: ['One identity,', 'a short set of rules'],
       lede: 'Logo use, color pairs and type, so every piece after it followed the same rules.',
-      visual: { layout: 'single', items: [{ label: 'Brand book', spec: 'Logo, colors, type' }] } },
+      visual: { layout: 'single', items: [{ label: 'Brand book', spec: 'Final logo and palette, built in code' }] } },
     { id: 'mockups', nav: 'Mockups', title: ['See it', 'before it’s printed'],
       lede: 'I generated mockups with AI on real products, so the client chose in context, before production.',
-      visual: { layout: 'single', items: [{ label: 'Mockups', spec: 'Options side by side' }] } },
+      visual: { layout: 'single', items: [{ label: 'Mockups', spec: '2–3 variants of one item side by side' }] } },
     { id: 'stickers', nav: 'Service stickers', title: ['Built for the moment', 'something breaks'],
       lede: 'The phone number reads first, the brand second. Below it, a service record the technician fills in on site.',
-      visual: { layout: 'single', items: [{ label: 'Stickers', spec: 'Emergency sticker and service record' }] } },
+      visual: { layout: 'single', items: [{ label: 'Stickers', spec: 'Emergency sticker and service record on a boiler' }] } },
     { id: 'apparel', nav: 'Apparel', title: ['The brand', 'at every service visit'],
       lede: 'Caps and T-shirts for the crew, often the first part of the brand a customer meets in person.',
-      visual: { layout: 'single', items: [{ label: 'Apparel', spec: 'Caps, T-shirts, crew' }] } },
+      visual: { layout: 'single', items: [{ label: 'Apparel', spec: 'Crew in T-shirts, cap close-up' }] } },
     { id: 'van', nav: 'Van and print', title: ['The system,', 'at vehicle size'],
       lede: 'With the team, I adapted the identity to the van wrap and business cards.',
-      visual: { layout: 'single', items: [{ label: 'Van and cards', spec: 'Wrapped van, business cards' }] } },
+      visual: { layout: 'single', items: [{ label: 'Van and cards', spec: 'Wrapped van and business cards' }] } },
     { id: 'site', nav: 'Website', title: ['The site had stalled.', 'I took over.'],
       lede: 'One of seven pages was done after a week. I wrote the brief and laid out all seven in two days.',
-      visual: { layout: 'single', items: [{ label: 'Website', spec: 'Home and key pages' }] } },
+      visual: { layout: 'single', items: [{ label: 'Website', spec: '2–3 pages: offers, services, form' }] } },
     { id: 'review', nav: 'Design review', title: ['Delegated,', 'not disconnected'],
       lede: 'Another designer finished the build. I reviewed it and gave references and feedback.',
-      visual: { layout: 'single', items: [{ label: 'Review', spec: 'Feedback and references' }] } },
+      visual: { layout: 'single', items: [{ label: 'Review', spec: 'Figma comments on the other designer’s layout' }] } },
     ] },
   { slug: 'reboot-hub', side: 'back', name: 'Re:Boot Hub', tags: ['Consulting', 'Brandbook'], headline: 'A brand built on speed, structure and truth', color: '#e8ff3a', highlights,
     summary: 'A brand identity and brandbook for a consulting hub: logo concepts first, then the full system once the client chose a direction.',

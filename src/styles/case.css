@@ -1360,3 +1360,7 @@ html:has(.cp-story.lt), body:has(.cp-story.lt) { background: #fff; }
   .lt .rail::before { content: ''; position: absolute; inset: var(--pad) 10px var(--pad) var(--pad); background: #f1f1ef; border-radius: 20px; z-index: -1; }
   .lt .rail { isolation: isolate; }
 }
+
+/* screenshot that runs off the right and bottom edges of the panel */
+.ph.peek { padding: 0; overflow: hidden; position: relative; }
+.ph.peek img { position: absolute; left: 7%; top: 7%; width: 124%; max-width: none; height: auto; object-fit: initial; border-radius: 12px 0 0 0; }
