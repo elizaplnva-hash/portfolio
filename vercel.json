@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/", "destination": "/product", "permanent": false },
+    { "source": "/visual", "destination": "/brand", "permanent": true }
+  ]
+}

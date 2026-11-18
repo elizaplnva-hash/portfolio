@@ -54,7 +54,7 @@ export const sides = {
     socials: [socials.linkedin, socials.behance, socials.email, socials.cv],
     skills: skills.front as { svg: string; label: string }[],
     cases: bySide('front').map(toTile),
-    turn: { small: 'Seen enough screens?', big: 'Now the brand work', href: '/visual', label: 'Turn over to Brand and Visual work' },
+    turn: { small: 'Seen enough screens?', big: 'Now the brand work', href: '/brand', label: 'Turn over to Brand and Visual work' },
   },
   back: {
     title: 'Eliza Popelinova — Brand & Visual Designer',
@@ -66,6 +66,6 @@ export const sides = {
     socials: [socials.behance, socials.linkedin, socials.email, socials.cv],
     skills: skills.back as { svg: string; label: string }[],
     cases: bySide('back').map(toTile),
-    turn: { small: 'Curious how I design products?', big: 'Flip to the front', href: '/', label: 'Turn over to Product work' },
+    turn: { small: 'Curious how I design products?', big: 'Flip to the front', href: '/product', label: 'Turn over to Product work' },
   },
 } as const;

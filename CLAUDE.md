@@ -3,7 +3,7 @@
 Static site on Astro. Deployed from `main` to Vercel. Owner writes in Russian; site copy is English.
 
 ## Concept: "Two sides"
-One sheet that fits one screen (desktop 4×3 grid, 100dvh, min 780px). Front = Product (`/`, light), back = Brand & Visual (`/visual`, dark). The bottom-right "turn" tile flips between sides (cross-document View Transitions: a circle opens from that corner; nothing else on the page moves during the flip). `/product` redirects to `/`.
+One sheet that fits one screen (desktop 4×3 grid, 100dvh, min 780px). Front = Product (`/product`, light), back = Brand & Visual (`/brand`, dark). The bottom-right "turn" tile flips between sides (cross-document View Transitions: a circle opens from that corner; nothing else on the page moves during the flip). `/` redirects to `/product` (temporary, vercel.json + astro redirects); old `/visual` redirects to `/brand`.
 
 ## Where content lives
 - `src/data/site.ts`: per side — intro (`role` = headline, may hold `<b>`; `pitchSub` = one grey line), photo + `photoPos`, socials, shared `process` steps, turn tile copy.

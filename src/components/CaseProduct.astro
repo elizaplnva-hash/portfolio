@@ -46,7 +46,7 @@ let cur = '';
 screens.forEach((s) => { if (s.group) cur = s.group; groupOf[s.id] = cur; });
 const tint = brand ? `color-mix(in srgb, ${c.fill ?? c.color} 22%, #1c1b1a)` : (c.tint ?? '#f1f1ef');
 const tone = `--c:${c.fill ?? c.color};--a:${c.accent ?? `color-mix(in oklab, ${c.color} 70%, #000)`};--af:${c.fill ?? c.color};--t:${tint};--pn:${c.panel ?? tint}`;
-const home = brand ? '/visual' : '/';
+const home = brand ? '/brand' : '/product';
 const face = brand ? { src: '/images/eliza-dark.webp', pos: '50% 12%' } : { src: '/images/eliza.webp', pos: '50% 22%' };
 const mail = 'mailto:elizaplnva@gmail.com';
 const cf = Array.from({ length: 14 }, (_, k) => { const a = (k / 14) * Math.PI * 2 + (k % 2) * 0.22; const d = 62 + (k % 3) * 18; return { x: Math.round(Math.cos(a) * d), y: Math.round(Math.sin(a) * d) - 8, r: (k * 67) % 360 - 180, c: ['#22A55E', '#7fd49a', '#b9eaa0', '#16864a'][k % 4], w: 6 + (k % 3) * 2, h: 10 + (k % 2) * 4, dl: (k % 4) * 35 }; });

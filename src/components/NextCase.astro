@@ -5,8 +5,8 @@ const { current } = Astro.props;
 const list = bySide(current.side);
 const next = list[(list.findIndex((c) => c.slug === current.slug) + 1) % list.length];
 const other = current.side === 'front'
-  ? { href: '/visual', small: 'Seen enough screens?', big: 'Now the brand work' }
-  : { href: '/', small: 'Curious how I design products?', big: 'Flip to the front' };
+  ? { href: '/brand', small: 'Seen enough screens?', big: 'Now the brand work' }
+  : { href: '/product', small: 'Curious how I design products?', big: 'Flip to the front' };
 ---
 <section class="next" aria-label="Next">
   <a href={`/work/${next.slug}`} class="tile" style={`--c:${next.color}`}>
