@@ -1354,3 +1354,17 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
 /* screenshot that runs off the right and bottom edges of the panel */
 .ph.peek { padding: 0; overflow: hidden; position: relative; }
 .ph.peek img { position: absolute; left: 7%; top: 7%; width: 124%; max-width: none; height: auto; object-fit: initial; border-radius: 12px 0 0 0; }
+
+/* dark Product layout (Sequoia): black ground, dark frame, same two columns */
+html:has(.cp-story.dk), body:has(.cp-story.dk) { background: #0b0b0a; }
+.cp-story.dk { --ground: #0b0b0a; --white: #292826; --l2: #232220; --l3: #1f1e1c; --card: #232220; --ink: #f2f2f2; --muted: #8f8a83; --soft: #b8b3ab; --hair: #34322f; --sh: none; --sh2: none; --sh-hover: none; color: var(--ink); }
+.cp-story.dk:not(.brand) .frame { background: #1c1b1a; }
+.dk .btn { color: #111; }
+.dk .btn.contact { color: var(--soft); }
+.dk .back { color: var(--soft); }
+.dk .tags span { box-shadow: none; }
+.dk .rail-hl { box-shadow: none; }
+.cp-story.dk:not(.brand) :is(.l1, .l2, .l3, .tbl, .decision, .quote, .meta li, .numbered li, .list.card) { background: #262523; box-shadow: none; }
+.cp-story.dk:not(.brand) :is(.tbl, .decision, .quote) { box-shadow: 0 0 0 1px rgba(255,255,255,.05); }
+.dk .tags span { background: #262523; color: var(--ink); }
+.dk .tbl th, .dk .tbl td { border-top-color: #34322f; }

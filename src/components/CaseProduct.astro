@@ -51,7 +51,7 @@ const face = brand ? { src: '/images/eliza-dark.webp', pos: '50% 12%' } : { src:
 const mail = 'mailto:elizaplnva@gmail.com';
 const cf = Array.from({ length: 14 }, (_, k) => { const a = (k / 14) * Math.PI * 2 + (k % 2) * 0.22; const d = 62 + (k % 3) * 18; return { x: Math.round(Math.cos(a) * d), y: Math.round(Math.sin(a) * d) - 8, r: (k * 67) % 360 - 180, c: ['#22A55E', '#7fd49a', '#b9eaa0', '#16864a'][k % 4], w: 6 + (k % 3) * 2, h: 10 + (k % 2) * 4, dl: (k % 4) * 35 }; });
 ---
-<div class:list={['cp-story', { brand, lt: c.light }]} style={tone}>
+<div class:list={['cp-story', { brand, lt: c.light, dk: c.light }]} style={tone}>
   <header class="m-bar">
     <a href={home} class="back">Back</a>
     <div class="me-row"><span class="face" aria-hidden="true"><img src={face.src} alt="" width="76" height="76" decoding="async" style={`object-position:${face.pos}`} /></span><a href={mail} class="btn contact">Let’s talk</a></div>
