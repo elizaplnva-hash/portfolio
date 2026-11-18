@@ -1346,3 +1346,17 @@ html:has(.cp-story.brand), body:has(.cp-story.brand) { background: #0b0b0a; }
   .stage .vis:not(.on) .mt.pr .tk i { transform: scaleX(0); }
   .stage .vis.on .mt.pr .tk i { transition-delay: calc(var(--k, 0) * .12s + .3s); }
 }
+
+/* light brand case (Sequoia): grey frames, flat green panels, bright green hover */
+.lt .ph { background: var(--pn); color: rgba(255,255,255,.75); }
+.lt .ph b { color: #fff; }
+@media (hover: hover) and (pointer: fine) { .lt .btn.contact:hover, .lt .cta:hover, .lt .btn.live:hover { background: #c6ef7e; color: #13230f; box-shadow: none; } }
+html:has(.cp-story.lt), body:has(.cp-story.lt) { background: #fff; }
+.cp-story.lt { --ground: #fff; }
+@media (min-width: 900px) and (min-height: 620px) {
+  .cp-story.lt .frame { background: #f1f1ef; }
+  .lt .frame-sh { box-shadow: none; }
+  .lt .rail { padding: calc(var(--pad) * 2) calc(var(--pad) * .6) calc(var(--pad) * 2) calc(var(--pad) * 1.7); }
+  .lt .rail::before { content: ''; position: absolute; inset: var(--pad) 10px var(--pad) var(--pad); background: #f1f1ef; border-radius: 20px; z-index: -1; }
+  .lt .rail { isolation: isolate; }
+}
