@@ -77,12 +77,14 @@ const mail = 'mailto:elizaplnva@gmail.com';
   .sc-screen { height: 100dvh; min-height: 600px; scroll-snap-align: start; padding: var(--gap) var(--gap) var(--gap) 0; display: grid; gap: var(--gap); position: relative; }
   .sc-cell { border-radius: 12px; background: var(--tone); overflow: hidden; position: relative; min-height: 0; }
   .sc-screen.intro, .sc-screen.slide { grid-template-columns: 1fr; }
-  .sc-twin { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: minmax(0, 1fr); gap: 12px; padding: 0 12%; }
-  .sc-twin .tw { position: relative; overflow: hidden; }
+  .sc-twin { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: minmax(0, 1fr); gap: 24px; padding: 0 12%; }
+  .sc-twin .tw { position: relative; overflow: hidden; transform-origin: 50% 0; transition: transform .55s cubic-bezier(.22,1,.36,1); }
+  @media (hover: hover) and (pointer: fine) { .sc-twin:hover .tw { transform: scale(.975); } .sc-twin:hover .tw:hover { transform: scale(1.035); z-index: 2; } }
   .sc-twin img { position: absolute; left: 0; top: 0; width: 100%; height: auto; }
   .sc-twin .tw:first-child img { top: 8%; border-radius: 12px 12px 0 0; }
-  .sc-slide { display: grid; place-items: center; padding: 6%; }
-  .sc-slide img { width: 100%; max-height: 100%; object-fit: contain; border-radius: 12px; }
+  .sc-slide { display: grid; place-items: center; container-type: size; }
+  .sc-slide img { width: min(100cqw - 18cqw, (100cqh - 18cqw) * 16 / 9); height: auto; border-radius: 12px; transition: transform .55s cubic-bezier(.22,1,.36,1); }
+  @media (hover: hover) and (pointer: fine) { .sc-slide:hover img { transform: scale(1.025); } }
   .sc-screen.v2a { grid-template-columns: 1fr 1fr; }
   .sc-screen.v4d { grid-template-columns: repeat(3, 1fr); grid-template-rows: 3fr 2fr; }
   .sc-screen.v3c { grid-template-columns: 1fr 1fr; grid-template-rows: 3fr 2fr; }
@@ -102,7 +104,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
   .sc-card h2 em { font-style: normal; color: #a9e08e; }
   .sc-card p { margin: 0; color: #d8d4cd; font-size: 14px; line-height: 1.45; }
   .sc-btn { display: inline-block; margin-top: 14px; padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,.12); font-size: 13px; transition: background .3s, color .3s; }
-  @media (prefers-reduced-motion: reduce) { .sc * { transition: none !important; } }
+  @media (prefers-reduced-motion: reduce) { .sc * { transition: none !important; transform: none !important; } }
   @media (max-width: 767px) {
     html:has(.sc), body:has(.sc) { overflow: auto; }
     .sc { position: static; display: block; }
