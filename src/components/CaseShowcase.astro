@@ -93,8 +93,8 @@ const mail = 'mailto:elizaplnva@gmail.com';
   .sc-screen { height: 100dvh; min-height: 600px; scroll-snap-align: start; padding: var(--gap) var(--gap) var(--gap) 0; display: grid; gap: var(--gap); position: relative; }
   .sc-cell { border-radius: 12px; background: var(--tone); overflow: hidden; position: relative; min-height: 0; }
   .sc-screen.intro, .sc-screen.slide { grid-template-columns: 1fr; }
-  .sc-twin { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: minmax(0, 1fr); gap: 24px; padding: 0 12%; }
-  .sc-twin .tw { position: relative; overflow: hidden; transform-origin: 50% 0; transition: transform .55s cubic-bezier(.22,1,.36,1); }
+  .sc-twin { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: minmax(0, 1fr); gap: 24px; padding: 0 12%; overflow: hidden; }
+  .sc-twin .tw { position: relative; overflow: hidden; align-self: start; height: calc(100% + 12vh); transform-origin: 50% 0; transition: transform .55s cubic-bezier(.22,1,.36,1); }
   @media (hover: hover) and (pointer: fine) { .sc-twin:hover .tw { transform: scale(.975); } .sc-twin:hover .tw:hover { transform: scale(1.035); z-index: 2; } }
   .sc-twin img { position: absolute; left: 0; top: 0; width: 100%; height: auto; }
   .sc-twin .tw:first-child img { top: 8%; border-radius: 12px 12px 0 0; }
