@@ -802,7 +802,7 @@ export const cases: CaseData[] = [
     show: {
       oneLiner: 'Brand book, print, merch and website for a plumbing company',
       meta: [{ label: 'Client', value: 'Sequoia Plumbing' }, { label: 'Year', value: '2026' }, { label: 'Discipline', value: 'Brand, web' }, { label: 'Agency', value: 'Danart' }],
-      about: { text: 'Sequoia’s plumbing side was growing and going independent, and its brand had to follow. The agency team designed the identity. I built the brand book and mockups, designed the stickers and apparel, helped with the van wrap and business cards, and led the website layouts.', credits: [{ label: 'My role', value: 'Brand & Web Designer' }, { label: 'Agency', value: 'Danart' }, { label: 'Year', value: 'July 2026' }] },
+      about: { text: 'Sequoia’s plumbing side was growing and going independent, and its brand had to follow. The agency team designed the identity. I built the brand book and mockups, designed the stickers and apparel, helped with the van wrap and business cards, and led the website layouts.', credits: [{ label: 'Role', value: 'Brand & Web Designer' }, { label: 'Collaboration', value: 'Danart' }, { label: 'Timeline', value: 'July 2026' }, { label: 'Responsibilities', value: 'Brand book, mockups, print, website' }] },
       next: { slug: 'ben-ai', name: 'Ben AI' },
       screens: [
         { id: 'intro', ch: 'Intro', nav: 'Intro', kind: 'full', tone: '#1F5A40', title: 'Rebranding a plumbing company as it goes independent', lede: 'Sequoia Plumbing was breaking away from its parent company and needed an identity of its own: brand, print, crew wear and website.', src: '/images/seq-van-hero.webp', alt: 'Sequoia van wrap: green and white livery with services list, logo, phone number and website' },

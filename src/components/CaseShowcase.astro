@@ -10,7 +10,7 @@ const list = bySide(c.side);
 const nextCase = list[(list.findIndex((k) => k.slug === c.slug) + 1) % list.length];
 const nextCs = nextCase && nextCase.slug !== c.slug ? nextCase : undefined;
 const chapters = s.screens.reduce<{ ch: string; id: string }[]>((a, x) => { const ch = x.ch ?? x.nav; if (ch !== 'Next' && !a.some((k) => k.ch === ch)) a.push({ ch, id: x.id }); return a; }, []);
-const credIcon: Record<string, string> = { 'My role': 'briefcase', Team: 'user', Agency: 'building', Year: 'calendar' };
+const credIcon: Record<string, string> = { Role: 'briefcase', Collaboration: 'users', Timeline: 'calendar', Responsibilities: 'list' };
 const face = { src: '/images/eliza-dark.webp', pos: '50% 12%' };
 const mail = 'mailto:elizaplnva@gmail.com';
 ---
