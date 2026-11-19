@@ -1,10 +1,12 @@
 ---
 // Brand showcase template: narrow menu, full-screen visual grids, About card on top of the visuals (see claude/case-structure.md)
-import type { CaseData as Case } from '../data/cases';
+import { bySide, type CaseData as Case } from '../data/cases';
 const { c } = Astro.props as { c: Case };
 const s = c.show!;
 const home = '/brand';
-const next = s.next;
+const list = bySide(c.side);
+const nextCase = list[(list.findIndex((k) => k.slug === c.slug) + 1) % list.length];
+const nextCs = nextCase && nextCase.slug !== c.slug ? nextCase : undefined;
 const face = { src: '/images/eliza-dark.webp', pos: '50% 12%' };
 const mail = 'mailto:elizaplnva@gmail.com';
 ---
@@ -26,8 +28,15 @@ const mail = 'mailto:elizaplnva@gmail.com';
         {x.kind === 'slide' && <div class="sc-cell sc-slide"><img src={x.src} alt={x.alt} decoding="async" /></div>}
         {(x.kind === 'v2a' || x.kind === 'v3s' || x.kind === 'v2s' || x.kind === 'v4d' || x.kind === 'v3c') && x.cells!.map((p) => <div class:list={['sc-cell', 'sc-ph', { fit: p.fit }]} style={p.bg ? `background:${p.bg}` : undefined}>{p.src ? <img src={p.src} alt={p.alt ?? ''} decoding="async" style={p.pos ? `object-position:${p.pos}` : undefined} /> : <><b>{p.label}</b><span>{p.spec}</span></>}</div>)}
         {x.kind === 'outro' && <>
-          <div class="sc-cell sc-ph"><b>All pieces together</b><span>Sticker, cap, T-shirt, card and van in one shot</span></div>
-          {next && <a class="sc-cell sc-next" href={`/work/${next.slug}`}><span>Next case</span><b>{next.name}</b></a>}
+          <div class="sc-cell sc-cta">
+            <h2>Let’s make your brand work beyond the logo</h2>
+            <p>From a brand book to the van and the website, I carry an identity through every place customers meet it.</p>
+            <a class="sc-btn" href={mail}>Let’s talk</a>
+          </div>
+          <div class="sc-tiles">
+            {nextCs && <a class="sc-cell sc-next" href={`/work/${nextCs.slug}`}>{nextCs.image && <img src={nextCs.image} alt="" loading="lazy" />}<span>Next case</span><b>{nextCs.headline}</b></a>}
+            <a class="sc-cell sc-next sc-turn" href="/product"><span>Curious how I design products?</span><b>Flip to the front</b></a>
+          </div>
         </>}
         <div class="sc-card" aria-live="polite">
           <h2 set:html={x.title} />
@@ -99,15 +108,22 @@ const mail = 'mailto:elizaplnva@gmail.com';
   .sc-screen.v4d { grid-template-columns: repeat(3, 1fr); grid-template-rows: 3fr 2fr; }
   .sc-screen.v3c { grid-template-columns: 1fr 1fr; grid-template-rows: 3fr 2fr; }
   .sc-screen.v4d .sc-ph:first-child, .sc-screen.v3c .sc-ph:first-child { grid-column: 1 / -1; }
-  .sc-screen.outro { grid-template-columns: 2fr 1fr; }
+  .sc-screen.outro { grid-template-columns: 6fr 5fr; }
+  .sc-cta { background: #1c1b1a; padding: 14vh 44px 44px; display: flex; flex-direction: column; justify-content: flex-start; }
+  .sc-cta h2 { margin: 0 0 16px; max-width: 12em; font-size: clamp(32px, 3.4vw, 52px); line-height: 1.02; font-weight: 700; letter-spacing: -.045em; }
+  .sc-cta p { margin: 0 0 26px; max-width: 440px; color: #b8b3ab; font-size: 16px; line-height: 1.45; }
+  .sc-cta .sc-btn { align-self: flex-start; margin: 0; padding: 12px 20px; font-size: 15px; background: var(--chip); }
+  .sc-tiles { display: grid; grid-template-rows: 1fr 1fr; gap: var(--gap); min-height: 0; }
   .sc-ph { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; text-align: center; padding: 24px; color: rgba(255,255,255,.78); }
   .sc-ph b { font-size: 18px; font-weight: 600; color: #fff; }
   .sc-ph span { font-size: 13px; max-width: 280px; line-height: 1.4; }
   .sc-ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.22,1,.36,1); }
   @media (hover: hover) and (pointer: fine) { .sc-ph:hover img { transform: scale(1.03); } }
-  .sc-next { display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; padding: 28px; transition: background .3s, color .3s; }
+  .sc-next { display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; padding: 24px; background: var(--chip); transition: background .3s, color .3s; }
+  .sc-next img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .38; }
+  .sc-next span, .sc-next b { position: relative; }
   .sc-next span { font-size: 13px; opacity: .75; }
-  .sc-next b { font-size: 30px; font-weight: 700; letter-spacing: -.035em; }
+  .sc-next b { font-size: clamp(20px, 1.9vw, 28px); line-height: 1.1; font-weight: 700; letter-spacing: -.035em; }
   @media (hover: hover) and (pointer: fine) { .sc-next:hover { background: #c6ef7e; color: #13230f; } }
   .sc-card { position: absolute; left: 24px; bottom: 32px; z-index: 3; width: calc((100vw - var(--menu) - 8px) / 2); padding: 22px 26px; border-radius: 12px; background: var(--sel); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); opacity: 0; transform: translateY(8px); pointer-events: none; transition: opacity .25s ease-out, transform .25s ease-out; }
   .about-on .sc-card { opacity: 1; transform: none; pointer-events: auto; }
