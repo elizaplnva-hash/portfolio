@@ -1368,3 +1368,13 @@ html:has(.cp-story.dk), body:has(.cp-story.dk) { background: #0b0b0a; }
 .cp-story.dk:not(.brand) :is(.tbl, .decision, .quote) { box-shadow: 0 0 0 1px rgba(255,255,255,.05); }
 .dk .tags span { background: #262523; color: var(--ink); }
 .dk .tbl th, .dk .tbl td { border-top-color: #34322f; }
+
+/* two website screens on one panel: left starts with a gap, right starts flush with the top; both run off the bottom */
+.ph.twin, .stage .ph.twin { padding: 0 6%; overflow: hidden; position: relative; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: minmax(0, 1fr); align-items: stretch; justify-items: stretch; gap: 10px; transform: none; }
+.ph.twin .tw { position: relative; overflow: hidden; min-height: 0; }
+.ph.twin .tw img { position: absolute; left: 0; top: 0; width: 100%; max-width: none; height: auto; object-fit: initial; }
+.ph.twin .tw:first-child img { top: 7%; border-radius: 12px 12px 0 0; }
+.ph.twin .tw:last-child img { top: 0; }
+/* brand book slide: whole slide on a flat coloured panel */
+.ph.has-img.slide, .lt .ph.has-img.slide { padding: 6%; display: flex; align-items: center; background: var(--pn); }
+.ph.has-img.slide img { height: auto; width: 100%; height: auto; border-radius: 12px; object-fit: contain; }
