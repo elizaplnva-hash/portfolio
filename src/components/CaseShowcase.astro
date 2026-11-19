@@ -83,7 +83,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
   .sc-twin img { position: absolute; left: 0; top: 0; width: 100%; height: auto; }
   .sc-twin .tw:first-child img { top: 8%; border-radius: 12px 12px 0 0; }
   .sc-slide { display: grid; place-items: center; container-type: size; }
-  .sc-slide img { width: min(100cqw - 18cqw, (100cqh - 18cqw) * 16 / 9); height: auto; border-radius: 12px; transition: transform .55s cubic-bezier(.22,1,.36,1); }
+  .sc-slide img { width: min(100cqw - 8cqw, (100cqh - 8cqw) * 16 / 9); height: auto; border-radius: 12px; transition: transform .55s cubic-bezier(.22,1,.36,1); }
   @media (hover: hover) and (pointer: fine) { .sc-slide:hover img { transform: scale(1.025); } }
   .sc-screen.v2a { grid-template-columns: 1fr 1fr; }
   .sc-screen.v3s { grid-template-columns: 7fr 4fr; grid-template-rows: 1fr 1fr; }
@@ -104,6 +104,10 @@ const mail = 'mailto:elizaplnva@gmail.com';
   .sc-next b { font-size: 30px; font-weight: 700; letter-spacing: -.035em; }
   @media (hover: hover) and (pointer: fine) { .sc-next:hover { background: #c6ef7e; color: #13230f; } }
   .sc-card { position: absolute; left: 24px; bottom: 32px; z-index: 3; width: min(380px, 32vw); padding: 18px 20px; border-radius: 12px; background: var(--sel); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); opacity: 0; transform: translateY(8px); pointer-events: none; transition: opacity .25s ease-out, transform .25s ease-out; }
+  /* intro: text card is at most half the width of the screenshot it sits on */
+  .sc-screen.intro .sc-card { width: max(210px, calc((100vw - var(--menu) - 8px) * .19 - 6px)); padding: 14px 16px; }
+  .sc-screen.intro .sc-card h2 { font-size: 17px; }
+  .sc-screen.intro .sc-card p { font-size: 13px; }
   .about-on .sc-card { opacity: 1; transform: none; pointer-events: auto; }
   .sc-card h2 { margin: 0 0 8px; font-size: 22px; line-height: 1.15; font-weight: 700; letter-spacing: -.03em; }
   .sc-card h2 em { font-style: normal; color: #a9e08e; }
