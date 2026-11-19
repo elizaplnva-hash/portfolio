@@ -1,0 +1,142 @@
+---
+// Brand showcase template: narrow menu, full-screen visual grids, About card on top of the visuals (see claude/case-structure.md)
+import type { CaseData as Case } from '../data/cases';
+const { c } = Astro.props as { c: Case };
+const s = c.show!;
+const home = '/brand';
+const next = s.next;
+---
+<div class="sc" data-sc>
+  <aside class="sc-menu">
+    <a class="sc-back" href={home}>Back</a>
+    <div class="sc-id">
+      <h1>{c.name}</h1>
+      <p>{s.oneLiner}</p>
+      <dl>{s.meta.map((m) => <div><dt>{m.label}</dt><dd>{m.value}</dd></div>)}</dl>
+    </div>
+    <nav class="sc-nav" aria-label="Chapters">{s.screens.map((x) => <a href={`#${x.id}`} data-for={x.id}>{x.nav}</a>)}</nav>
+    <button class="sc-about-sw" type="button" role="switch" aria-checked="false" aria-controls="sc-about"><span>About</span><i aria-hidden="true"></i></button>
+  </aside>
+
+  <div class="sc-main" tabindex="-1">
+    {s.screens.map((x) => (
+      <section class:list={['sc-screen', x.kind]} id={x.id} style={`--tone:${x.tone}`}>
+        {x.kind === 'intro' && <>
+          <div class="sc-cell sc-text">
+            <ul class="sc-tags">{c.tags.map((t) => <li>{t}</li>)}</ul>
+            <h2>{x.title[0]}<br />{x.title[1]}</h2>
+            <p>{x.lede}</p>
+            {x.link && <a class="sc-btn" href={x.link.href} target="_blank" rel="noopener">{x.link.label}</a>}
+          </div>
+          <div class="sc-cell sc-twin">{x.twin!.map((t, k) => <div class="tw"><img src={t} alt={k === 0 ? x.alt : ''} decoding="async" /></div>)}</div>
+        </>}
+        {x.kind === 'slide' && <div class="sc-cell sc-slide"><img src={x.src} alt={x.alt} decoding="async" /></div>}
+        {(x.kind === 'v2a' || x.kind === 'v4d' || x.kind === 'v3c') && x.cells!.map((p) => <div class="sc-cell sc-ph">{p.src ? <img src={p.src} alt={p.alt ?? ''} decoding="async" /> : <><b>{p.label}</b><span>{p.spec}</span></>}</div>)}
+        {x.kind === 'outro' && <>
+          <div class="sc-cell sc-text sc-out"><h2 set:html={x.title} /><p>{x.lede}</p></div>
+          {next && <a class="sc-cell sc-next" href={`/work/${next.slug}`}><span>Next case</span><b>{next.name}</b></a>}
+        </>}
+        {x.caption && <p class="sc-cap"><b>{x.nav}</b>{x.caption}</p>}
+      </section>
+    ))}
+  </div>
+
+  <div class="sc-about" id="sc-about" aria-live="polite" hidden>
+    <p>{s.about.text}</p>
+    <dl>{s.about.credits.map((m) => <div><dt>{m.label}</dt><dd>{m.value}</dd></div>)}</dl>
+  </div>
+</div>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-sc]');
+  if (root) {
+    const sw = root.querySelector<HTMLButtonElement>('.sc-about-sw')!;
+    const card = root.querySelector<HTMLElement>('.sc-about')!;
+    const set = (on: boolean) => { sw.setAttribute('aria-checked', String(on)); if (on) { card.hidden = false; requestAnimationFrame(() => card.classList.add('on')); } else { card.classList.remove('on'); setTimeout(() => { if (!card.classList.contains('on')) card.hidden = true; }, 220); } };
+    sw.addEventListener('click', () => set(sw.getAttribute('aria-checked') !== 'true'));
+    addEventListener('keydown', (e) => { if (e.key === 'Escape' && sw.getAttribute('aria-checked') === 'true') set(false); });
+    const links = [...root.querySelectorAll<HTMLAnchorElement>('.sc-nav a')];
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) links.forEach((a) => a.classList.toggle('on', a.dataset.for === e.target.id)); }), { root: root.querySelector('.sc-main'), threshold: 0.55 });
+    root.querySelectorAll('.sc-screen').forEach((el) => io.observe(el));
+    links.forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); document.getElementById(a.dataset.for!)?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); }));
+  }
+</script>
+
+<style is:global>
+  html:has(.sc), body:has(.sc) { background: #0b0b0a; overflow: hidden; }
+  .sc { --ink: #f2f2f2; --muted: #8f8a83; --frame: #1c1b1a; --chip: #262523; --menu: 210px; --gap: 8px; position: fixed; inset: 0; display: grid; grid-template-columns: var(--menu) 1fr; color: var(--ink); font-family: 'Manrope Variable', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -.02em; }
+  .sc a { color: inherit; text-decoration: none; }
+  .sc-menu { display: flex; flex-direction: column; gap: 22px; padding: 28px 16px 20px; min-height: 0; }
+  .sc-back { align-self: flex-start; padding: 8px 14px; border-radius: 999px; background: var(--chip); font-size: 14px; transition: background .3s, color .3s; }
+  .sc-id h1 { margin: 0 0 6px; font-size: 22px; font-weight: 700; letter-spacing: -.035em; }
+  .sc-id p { margin: 0 0 14px; color: var(--muted); font-size: 13px; line-height: 1.4; }
+  .sc dl { margin: 0; }
+  .sc-id dl div { display: flex; flex-direction: column; margin-bottom: 8px; }
+  .sc-id dt { color: var(--muted); font-size: 12px; }
+  .sc-id dd { margin: 0; font-size: 13px; }
+  .sc-nav { display: flex; flex-direction: column; gap: 2px; margin-top: auto; }
+  .sc-nav a { padding: 7px 12px; border-radius: 999px; font-size: 14px; color: var(--muted); transition: background .3s, color .3s; }
+  .sc-nav a.on { background: var(--chip); color: var(--ink); }
+  .sc-about-sw { display: flex; align-items: center; justify-content: space-between; padding: 8px 8px 8px 14px; border: 0; border-radius: 999px; background: var(--chip); color: var(--ink); font: inherit; font-size: 14px; cursor: pointer; transition: background .3s, color .3s; }
+  .sc-about-sw i { width: 34px; height: 20px; border-radius: 999px; background: #3a3835; position: relative; transition: background .3s; }
+  .sc-about-sw i::after { content: ''; position: absolute; top: 3px; left: 3px; width: 14px; height: 14px; border-radius: 50%; background: #f2f2f2; transition: transform .3s; }
+  .sc-about-sw[aria-checked='true'] i { background: #6fb04a; }
+  .sc-about-sw[aria-checked='true'] i::after { transform: translateX(14px); }
+  @media (hover: hover) and (pointer: fine) { .sc-back:hover, .sc-about-sw:hover, .sc-btn:hover { background: #c6ef7e; color: #13230f; } .sc-about-sw:hover i { background: #13230f33; } }
+  .sc-main { height: 100dvh; overflow-y: auto; scroll-snap-type: y mandatory; scrollbar-width: none; }
+  .sc-main::-webkit-scrollbar { display: none; }
+  .sc-screen { height: 100dvh; min-height: 640px; scroll-snap-align: start; padding: var(--gap) var(--gap) var(--gap) 0; display: grid; gap: var(--gap); position: relative; }
+  .sc-cell { border-radius: 12px; background: var(--tone); overflow: hidden; position: relative; min-height: 0; }
+  .sc-text { background: var(--frame); padding: 14vh 40px 40px; display: flex; flex-direction: column; justify-content: flex-start; }
+  .sc-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 24px; padding: 0; list-style: none; }
+  .sc-tags li { padding: 6px 12px; border-radius: 999px; background: var(--chip); font-size: 13px; }
+  .sc-text h2 { margin: 0 0 18px; font-size: clamp(34px, 3.6vw, 52px); line-height: 1.02; font-weight: 700; letter-spacing: -.04em; }
+  .sc-text h2 em { font-style: normal; color: #8fd37a; }
+  .sc-text p { margin: 0 0 26px; max-width: 460px; color: #b8b3ab; font-size: 16px; line-height: 1.45; }
+  .sc-btn { align-self: flex-start; padding: 11px 18px; border-radius: 999px; background: var(--chip); font-size: 14px; transition: background .3s, color .3s; }
+  .sc-screen.intro { grid-template-columns: 5fr 6fr; }
+  .sc-twin { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: minmax(0, 1fr); gap: 10px; padding: 0 6%; }
+  .sc-twin .tw { position: relative; overflow: hidden; }
+  .sc-twin img { position: absolute; left: 0; top: 0; width: 100%; height: auto; }
+  .sc-twin .tw:first-child img { top: 7%; border-radius: 12px 12px 0 0; }
+  .sc-slide { display: grid; place-items: center; padding: 5%; }
+  .sc-slide img { width: 100%; max-height: 100%; object-fit: contain; border-radius: 12px; }
+  .sc-screen.slide { grid-template-columns: 1fr; }
+  .sc-screen.v2a { grid-template-columns: 1fr 1fr; }
+  .sc-screen.v4d { grid-template-columns: repeat(3, 1fr); grid-template-rows: 3fr 2fr; }
+  .sc-screen.v4d .sc-ph:first-child { grid-column: 1 / -1; }
+  .sc-screen.v3c { grid-template-columns: 1fr 1fr; grid-template-rows: 3fr 2fr; }
+  .sc-screen.v3c .sc-ph:first-child { grid-column: 1 / -1; }
+.sc-ph { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; text-align: center; padding: 24px; color: rgba(255,255,255,.78); }
+  .sc-ph b { font-size: 18px; font-weight: 600; color: #fff; }
+  .sc-ph span { font-size: 13px; max-width: 280px; line-height: 1.4; }
+  .sc-ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .sc-cap { position: absolute; left: 20px; top: 20px; z-index: 2; margin: 0; max-width: 300px; padding: 12px 14px; border-radius: 10px; background: rgba(11,11,10,.78); font-size: 13px; line-height: 1.4; color: #cfcac2; }
+  .sc-cap b { display: block; margin-bottom: 2px; font-size: 15px; font-weight: 600; color: #fff; }
+  .sc-screen.outro { grid-template-columns: 1fr 1fr; }
+  .sc-out h2 { font-size: clamp(30px, 3.2vw, 46px); }
+  .sc-next { display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; padding: 28px; background: var(--tone); transition: background .3s, color .3s; }
+  .sc-next span { font-size: 13px; opacity: .75; }
+  .sc-next b { font-size: 30px; font-weight: 700; letter-spacing: -.035em; }
+  @media (hover: hover) and (pointer: fine) { .sc-next:hover { background: #c6ef7e; color: #13230f; } }
+  .sc-about { position: fixed; left: calc(var(--menu) + 24px); bottom: 24px; z-index: 5; width: min(360px, 30vw); padding: 16px; border: 1px solid #d9d9d4; border-radius: 8px; background: rgba(247,247,244,.95); color: #151514; opacity: 0; transform: translateY(8px); transition: opacity .2s ease-out, transform .2s ease-out; }
+  .sc-about.on { opacity: 1; transform: none; }
+  .sc-about p { margin: 0 0 12px; font-size: 14px; line-height: 1.45; }
+  .sc-about dl div { display: flex; gap: 8px; font-size: 12px; line-height: 1.6; }
+  .sc-about dt { color: #6b6a66; min-width: 64px; }
+  .sc-about dd { margin: 0; }
+  @media (prefers-reduced-motion: reduce) { .sc-about { transition: none; } .sc * { transition: none !important; } }
+  @media (max-width: 767px) {
+    html:has(.sc), body:has(.sc) { overflow: auto; }
+    .sc { position: static; display: block; }
+    .sc-menu { flex-direction: row; flex-wrap: wrap; align-items: center; padding: 12px; position: sticky; top: 0; z-index: 6; background: #0b0b0a; }
+    .sc-id, .sc-nav { display: none; }
+    .sc-about-sw { margin-left: auto; }
+    .sc-main { height: auto; overflow: visible; scroll-snap-type: none; }
+    .sc-screen { height: auto; min-height: 0; padding: 8px; grid-template-columns: 1fr !important; grid-template-rows: none !important; }
+    .sc-cell, .sc-ph { min-height: 260px; }
+    .sc-cell.sc-twin { min-height: 420px; }
+    .sc-screen .sc-ph:first-child { grid-column: auto !important; }
+    .sc-about { left: 12px; right: 12px; width: auto; bottom: 12px; }
+  }
+</style>
