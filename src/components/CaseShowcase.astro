@@ -22,6 +22,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
     {s.screens.map((x) => (
       <section class:list={['sc-screen', x.kind]} id={x.id} style={`--tone:${x.tone}`}>
         {x.kind === 'intro' && <div class="sc-cell sc-twin">{x.twin!.map((t, k) => <div class="tw"><img src={t} alt={k === 0 ? x.alt : ''} decoding="async" /></div>)}</div>}
+        {x.kind === 'full' && <div class="sc-cell sc-full"><img src={x.src} alt={x.alt} decoding="async" /></div>}
         {x.kind === 'slide' && <div class="sc-cell sc-slide"><img src={x.src} alt={x.alt} decoding="async" /></div>}
         {(x.kind === 'v2a' || x.kind === 'v3s' || x.kind === 'v2s' || x.kind === 'v4d' || x.kind === 'v3c') && x.cells!.map((p) => <div class:list={['sc-cell', 'sc-ph', { fit: p.fit }]} style={p.bg ? `background:${p.bg}` : undefined}>{p.src ? <img src={p.src} alt={p.alt ?? ''} decoding="async" style={p.pos ? `object-position:${p.pos}` : undefined} /> : <><b>{p.label}</b><span>{p.spec}</span></>}</div>)}
         {x.kind === 'outro' && <>
@@ -82,6 +83,9 @@ const mail = 'mailto:elizaplnva@gmail.com';
   @media (hover: hover) and (pointer: fine) { .sc-twin:hover .tw { transform: scale(.975); } .sc-twin:hover .tw:hover { transform: scale(1.035); z-index: 2; } }
   .sc-twin img { position: absolute; left: 0; top: 0; width: 100%; height: auto; }
   .sc-twin .tw:first-child img { top: 8%; border-radius: 12px 12px 0 0; }
+  .sc-screen.full { grid-template-columns: 1fr; }
+  .sc-full img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.22,1,.36,1); }
+  @media (hover: hover) and (pointer: fine) { .sc-full:hover img { transform: scale(1.02); } }
   .sc-slide { display: grid; place-items: center; container-type: size; }
   .sc-slide img { width: min(100cqw - 8cqw, (100cqh - 8cqw) * 16 / 9); height: auto; border-radius: 12px; transition: transform .55s cubic-bezier(.22,1,.36,1); }
   @media (hover: hover) and (pointer: fine) { .sc-slide:hover img { transform: scale(1.025); } }
@@ -105,15 +109,11 @@ const mail = 'mailto:elizaplnva@gmail.com';
   .sc-next span { font-size: 13px; opacity: .75; }
   .sc-next b { font-size: 30px; font-weight: 700; letter-spacing: -.035em; }
   @media (hover: hover) and (pointer: fine) { .sc-next:hover { background: #c6ef7e; color: #13230f; } }
-  .sc-card { position: absolute; left: 24px; bottom: 32px; z-index: 3; width: min(380px, 32vw); padding: 18px 20px; border-radius: 12px; background: var(--sel); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); opacity: 0; transform: translateY(8px); pointer-events: none; transition: opacity .25s ease-out, transform .25s ease-out; }
-  /* intro: text card is at most half the width of the screenshot it sits on */
-  .sc-screen.intro .sc-card { width: max(210px, calc((100vw - var(--menu) - 8px) * .19 - 6px)); padding: 14px 16px; }
-  .sc-screen.intro .sc-card h2 { font-size: 17px; }
-  .sc-screen.intro .sc-card p { font-size: 13px; }
+  .sc-card { position: absolute; left: 24px; bottom: 32px; z-index: 3; width: calc((100vw - var(--menu) - 8px) / 2); padding: 22px 26px; border-radius: 12px; background: var(--sel); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); opacity: 0; transform: translateY(8px); pointer-events: none; transition: opacity .25s ease-out, transform .25s ease-out; }
   .about-on .sc-card { opacity: 1; transform: none; pointer-events: auto; }
-  .sc-card h2 { margin: 0 0 8px; font-size: 22px; line-height: 1.15; font-weight: 700; letter-spacing: -.03em; }
+  .sc-card h2 { margin: 0 0 10px; font-size: clamp(22px, 2vw, 30px); line-height: 1.15; font-weight: 700; letter-spacing: -.03em; }
   .sc-card h2 em { font-style: normal; color: #a9e08e; }
-  .sc-card p { margin: 0; color: #d8d4cd; font-size: 14px; line-height: 1.45; }
+  .sc-card p { margin: 0; color: #d8d4cd; font-size: clamp(14px, 1.1vw, 17px); line-height: 1.45; }
   .sc-btn { display: inline-block; margin-top: 14px; padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,.12); font-size: 13px; transition: background .3s, color .3s; }
   @media (prefers-reduced-motion: reduce) { .sc * { transition: none !important; transform: none !important; } }
   @media (max-width: 767px) {
