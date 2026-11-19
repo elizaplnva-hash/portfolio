@@ -26,7 +26,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
         {x.kind === 'intro' && <div class="sc-cell sc-twin">{x.twin!.map((t, k) => <div class="tw"><img src={t} alt={k === 0 ? x.alt : ''} decoding="async" /></div>)}</div>}
         {x.kind === 'full' && <div class="sc-cell sc-full"><img src={x.src} alt={x.alt} decoding="async" /></div>}
         {x.kind === 'slide' && <div class="sc-cell sc-slide"><img src={x.src} alt={x.alt} decoding="async" /></div>}
-        {(x.kind === 'v2a' || x.kind === 'v3s' || x.kind === 'v2s' || x.kind === 'v4d' || x.kind === 'v3c') && x.cells!.map((p) => <div class:list={['sc-cell', 'sc-ph', { fit: p.fit }]} style={p.bg ? `background:${p.bg}` : undefined}>{p.src ? <img src={p.src} alt={p.alt ?? ''} decoding="async" style={p.pos ? `object-position:${p.pos}` : undefined} /> : <><b>{p.label}</b><span>{p.spec}</span></>}</div>)}
+        {(x.kind === 'v2a' || x.kind === 'v3s' || x.kind === 'v2s' || x.kind === 'v3h' || x.kind === 'v4d' || x.kind === 'v3c') && x.cells!.map((p) => <div class:list={['sc-cell', 'sc-ph', { fit: p.fit }]} style={p.bg ? `background:${p.bg}` : undefined}>{p.src ? <img src={p.src} alt={p.alt ?? ''} decoding="async" style={p.pos ? `object-position:${p.pos}` : undefined} /> : <><b>{p.label}</b><span>{p.spec}</span></>}</div>)}
         {x.kind === 'outro' && <>
           <div class="sc-cell sc-cta">
             <h2>Let’s make your brand work beyond the logo</h2>
@@ -99,8 +99,10 @@ const mail = 'mailto:elizaplnva@gmail.com';
   .sc-slide img { width: min(100cqw - 8cqw, (100cqh - 8cqw) * 16 / 9); height: auto; border-radius: 12px; transition: transform .55s cubic-bezier(.22,1,.36,1); }
   @media (hover: hover) and (pointer: fine) { .sc-slide:hover img { transform: scale(1.025); } }
   .sc-screen.v2a { grid-template-columns: 1fr 1fr; }
+  .sc-screen.v3h { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
+  .sc-screen.v3h .sc-ph:nth-child(3) { grid-column: 2; grid-row: 1 / 3; }
   .sc-screen.v2s { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
-  .sc-ph.fit img { inset: 0; margin: auto; width: auto; height: 100%; max-width: 100%; -webkit-mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%); mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%); }
+  .sc-ph.fit img { object-fit: contain; }
   .sc-screen.v3s { grid-template-columns: 7fr 4fr; grid-template-rows: 1fr 1fr; }
   .sc-screen.v3s .sc-ph:nth-child(1) { grid-column: 1; grid-row: 1; }
   .sc-screen.v3s .sc-ph:nth-child(2) { grid-column: 1; grid-row: 2; }
