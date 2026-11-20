@@ -27,7 +27,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
   <div class="sc-main" tabindex="-1">
     {s.screens.map((x) => (
       <section class:list={['sc-screen', x.kind]} id={x.id} data-ch={x.ch ?? x.nav} style={`--tone:${x.tone}`}>
-        {x.kind === 'intro' && <div class:list={['sc-cell', 'sc-twin', { pages: x.pages }]}>{x.twin!.map((t, k) => <div class="tw"><img src={t} alt={k === 0 ? x.alt : ''} decoding="async" style={x.cut && k === 1 ? `transform:translateY(-${x.cut}%)` : undefined} /></div>)}</div>}
+        {x.kind === 'intro' && <div class:list={['sc-cell', 'sc-twin', { pages: x.pages, flush: x.cut }]}>{x.twin!.map((t, k) => <div class="tw"><img src={t} alt={k === 0 ? x.alt : ''} decoding="async" style={x.cut && k === 1 ? `transform:translateY(-${x.cut}%)` : undefined} /></div>)}</div>}
         {x.kind === 'full' && <div class="sc-cell sc-full"><img src={x.src} alt={x.alt} decoding="async" /></div>}
         {x.kind === 'slide' && <div class="sc-cell sc-slide"><img src={x.src} alt={x.alt} decoding="async" /></div>}
         {(x.kind === 'v2a' || x.kind === 'v3s' || x.kind === 'v2s' || x.kind === 'v3h' || x.kind === 'v3l' || x.kind === 'v4d' || x.kind === 'v3c') && x.cells!.map((p) => <div class:list={['sc-cell', 'sc-ph', { fit: p.fit }]} style={p.bg ? `background:${p.bg}` : undefined}>{p.src ? <img src={p.src} alt={p.alt ?? ''} decoding="async" style={p.pos ? `object-position:${p.pos}` : undefined} /> : <><b>{p.label}</b><span>{p.spec}</span></>}</div>)}
@@ -96,7 +96,8 @@ const mail = 'mailto:elizaplnva@gmail.com';
   .sc-twin { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: minmax(0, 1fr); gap: 24px; padding: 0 12%; overflow: hidden; }
   .sc-twin .tw { position: relative; overflow: hidden; align-self: start; height: calc(100% + 12vh); transform-origin: 50% 0; transition: transform .55s cubic-bezier(.22,1,.36,1); }
   @media (hover: hover) and (pointer: fine) { .sc-twin:hover .tw { transform: scale(.975); } .sc-twin:hover .tw:hover { transform: scale(1.035); z-index: 2; } }
-  .sc-twin.pages .tw { margin-top: 6vh; border-radius: 40px 40px 0 0; }
+  .sc-twin.pages .tw { margin-top: 6vh; border-radius: 10px 10px 0 0; }
+  .sc-twin.pages.flush .tw:last-child { margin-top: 0; border-radius: 0; }
   .sc-twin.pages .tw img, .sc-twin.pages .tw:first-child img { top: 0; border-radius: 0; }
   .sc-twin img { position: absolute; left: 0; top: 0; width: 100%; height: auto; }
   .sc-twin .tw:first-child img { top: 8%; border-radius: 12px 12px 0 0; }
