@@ -39,7 +39,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
           </div>
           <div class="sc-tiles"><NextCase current={c} /></div>
         </>}
-        {x.title && <div class="sc-card" aria-live="polite">
+        {x.title && <div class:list={['sc-card', { wide: x.id === s.screens[0].id }]} aria-live="polite">
           <div class="sc-hd"><h2 set:html={x.title} />{x.link && <a class="sc-btn" href={x.link.href} target="_blank" rel="noopener">{x.link.label}</a>}</div>
           <p>{x.lede}</p>
           {x.id === s.screens[0].id && <ul class="sc-cred">{s.about.credits.map((m) => <li><span class="ic" set:html={icon(credIcon[m.label] ?? 'circle')} aria-hidden="true" /><span class="lb">{m.label}</span>{m.value}</li>)}</ul>}
@@ -113,7 +113,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
   .sc-screen.v3l .sc-ph:nth-child(1) { grid-column: 1; grid-row: 1 / 3; }
   .sc-cred { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 14px 0 0; padding: 12px 0 0; border-top: 1px solid rgba(255,255,255,.12); list-style: none; font-size: 12.5px; color: #e8e4dd; }
   .sc-cred li { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
-  .sc-cred li:last-child { flex-basis: 100%; }
+  @media (min-width: 769px) { .sc-card.wide { width: min(calc(100% - 48px), 820px); } }
   .sc-cred .lb { color: #a8a39b; }
   .sc-cred .ic { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: rgba(169,224,142,.16); color: #a9e08e; }
   .sc-cred .ic svg { width: 12px; height: 12px; }
