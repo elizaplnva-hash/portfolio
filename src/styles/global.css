@@ -184,7 +184,8 @@ a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .case h2 { font-size: 18px; font-weight: 500; line-height: 1.08; letter-spacing: -.015em; }
 .case.big .art { aspect-ratio: 4 / 3; }
 .case.big .art > img { object-position: 50% 0; }
-.case.big .art > img[alt^="Sequoia"] { object-position: 50% 60%; }
+.case.big .art > img[alt^="Sequoia"] { object-fit: contain; object-position: 50% 50%; position: relative; z-index: 1; }
+.case.big .art:has(> img[alt^="Sequoia"])::before { content: ""; position: absolute; inset: -8%; background: url('/images/seq-van-hero.webp') 50% 50% / cover; filter: blur(22px) brightness(.8); }
 .case.big .meta { padding: 0 14px 8px; gap: 10px; }
 .case.big h2 { font-size: 28px; line-height: 1; letter-spacing: -.025em; }
 .case .meta p { margin: 0; font-size: 15px; font-weight: 500; letter-spacing: -.015em; line-height: 1.3; color: var(--muted); }
