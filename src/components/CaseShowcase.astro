@@ -28,13 +28,14 @@ const mail = 'mailto:elizaplnva@gmail.com';
     {s.screens.map((x) => (
       <section class:list={['sc-screen', x.kind]} id={x.id} data-ch={x.ch ?? x.nav} style={`--tone:${x.tone}`}>
         {x.kind === 'intro' && <div class:list={['sc-cell', 'sc-twin', { pages: x.pages, flush: x.cut, fill: x.fill }]}>{x.twin!.map((t, k) => <div class="tw"><img src={t} alt={k === 0 ? x.alt : ''} decoding="async" style={x.cut && k === 1 ? `transform:translateY(-${x.cut}%)` : undefined} /></div>)}</div>}
+        {x.kind === 'soon' && <div class="sc-cell sc-soon"><b>{c.name}</b></div>}
         {x.kind === 'full' && <div class:list={['sc-cell', 'sc-full', { fit: x.fit }]}><img src={x.src} alt={x.alt} decoding="async" /></div>}
         {x.kind === 'slide' && <div class="sc-cell sc-slide"><img src={x.src} alt={x.alt} decoding="async" /></div>}
         {(x.kind === 'v2a' || x.kind === 'v3s' || x.kind === 'v2s' || x.kind === 'v3h' || x.kind === 'v3l' || x.kind === 'v4d' || x.kind === 'v3c') && x.cells!.map((p) => <div class:list={['sc-cell', 'sc-ph', { fit: p.fit }]} style={p.bg ? `background:${p.bg}` : undefined}>{p.src ? <img src={p.src} alt={p.alt ?? ''} decoding="async" style={p.pos ? `object-position:${p.pos}` : undefined} /> : <><b>{p.label}</b><span>{p.spec}</span></>}</div>)}
         {x.kind === 'outro' && <>
           <div class="sc-cell sc-cta">
-            <h2>Every touchpoint from <em>one brand book</em></h2>
-            <p>Stickers, apparel, the van and the website now look like one company.</p>
+            <h2 set:html={s.closing?.title ?? 'Every touchpoint from <em>one brand book</em>'} />
+            <p>{s.closing?.lede ?? 'Stickers, apparel, the van and the website now look like one company.'}</p>
             <a class="sc-btn" href={mail}>Let’s talk</a>
           </div>
           <div class="sc-tiles"><NextCase current={c} /></div>
@@ -105,6 +106,8 @@ const mail = 'mailto:elizaplnva@gmail.com';
   .sc-twin img { position: absolute; left: 0; top: 0; width: 100%; height: auto; }
   .sc-twin .tw:first-child img { top: 8%; border-radius: 12px 12px 0 0; }
   .sc-screen.full { grid-template-columns: 1fr; }
+  .sc-soon { background: var(--tone); display: grid; place-content: center; text-align: center; color: #fff; }
+  .sc-soon b { font-size: clamp(48px, 9vw, 150px); font-weight: 700; letter-spacing: -.04em; opacity: .9; }
   .sc-full.fit { background: var(--tone); }
   .sc-full.fit img { object-fit: contain; }
   .sc-full img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.22,1,.36,1); }

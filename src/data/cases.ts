@@ -6,8 +6,8 @@ export type Visual =
   | { layout: 'single'; items: Ph[] }          // one big image
   | { layout: 'stack'; items: Ph[] }           // two small on top, one wide below
   | { layout: 'row'; items: Ph[] };            // three phones in a row
-export interface ShowScreen { id: string; nav: string; ch?: string; kind: 'intro' | 'full' | 'slide' | 'v2a' | 'v3s' | 'v2s' | 'v3h' | 'v3l' | 'v4d' | 'v3c' | 'outro'; tone: string; title?: string; lede?: string; link?: { label: string; href: string }; twin?: string[]; pages?: boolean; cut?: number; fit?: boolean; fill?: boolean; src?: string; alt?: string; cells?: { label?: string; spec?: string; src?: string; alt?: string; pos?: string; fit?: boolean; bg?: string }[]; caption?: string }
-export interface Show { oneLiner: string; meta: { label: string; value: string }[]; about: { text: string; credits: { label: string; value: string }[] }; screens: ShowScreen[]; next?: { slug: string; name: string } }
+export interface ShowScreen { id: string; nav: string; ch?: string; kind: 'soon' | 'intro' | 'full' | 'slide' | 'v2a' | 'v3s' | 'v2s' | 'v3h' | 'v3l' | 'v4d' | 'v3c' | 'outro'; tone: string; title?: string; lede?: string; link?: { label: string; href: string }; twin?: string[]; pages?: boolean; cut?: number; fit?: boolean; fill?: boolean; src?: string; alt?: string; cells?: { label?: string; spec?: string; src?: string; alt?: string; pos?: string; fit?: boolean; bg?: string }[]; caption?: string }
+export interface Show { oneLiner: string; meta: { label: string; value: string }[]; about: { text: string; credits: { label: string; value: string }[] }; screens: ShowScreen[]; closing?: { title: string; lede: string }; next?: { slug: string; name: string } }
 export interface Ph { label: string; spec: string; src?: string; srcs?: string[]; combo?: string[]; audit?: { name: string; logo: string; phone: string; cards: { tag: 'Sending' | 'Swap' | 'Risk exposure' | 'Clarity'; text: string }[] }[]; reviews?: { tag: string; text: string; source: 'appstore' | 'reddit' | 'github'; meta: string; from?: string }[]; evid?: { top: { lead: string; source?: string; items: { value: string; scope?: string; text: string }[] }; frames: { ratio?: string; shots: { src: string; name: string; alt: string; logo: string }[]; plan?: { week: string; name: string; line: string; tags: string[]; color: string }[]; finds?: { kind: 'first' | 'deeper'; tag: string; icon: string; text: string }[] }[] }; soft?: boolean; pan?: { src: string; wide?: boolean; alt?: string; marks?: { n: number; x: number; y: number }[] }[]; scroll?: boolean; sys?: boolean; cost?: { on: number; total: number; value: string; text: string; ring: number; ringText: string; source: string }; stages?: { items: { value: string; icon?: string; stage: string; metric: string; what: string; how: string }[]; note?: string }; hyps?: { saw: string; q: string; a: string; icon?: string }[]; stats?: { lead: string; items: { value: string; text: string; label?: string }[]; source?: string; nopct?: boolean }; metrics?: { title: string; items: { value: string; label: string; note: string; wide?: boolean; pair?: { before: number; after: number; max: number; unit: string } }[] }[]; scope?: { name: string; why: string; d: 'keep' | 'limit' | 'cut' }[]; compare?: { cols: string[]; rows: { label: string; a: boolean | 'part'; b: boolean | 'part' }[]; note?: string }; zoom?: boolean; pad?: boolean; bleed?: boolean; peek?: boolean; twin?: { src: string }[]; slide?: boolean; pn?: string; dm?: boolean; wipph?: boolean; big?: boolean; noconf?: boolean; cut?: string; chain?: { icon: string; label: string }[]; flat?: boolean; trio?: { src?: string; label?: string; icon?: string; facts?: { caption: string; items: { value: string; label: string }[] } }[]; alt?: string; flip?: boolean; matrix?: { title: string; cols: { name: string; logo: string }[]; groups: { label: string; rows: { label: string; v: boolean[] }[] }[] }; voices?: { num: string; label: string; quote: string; who: string; sub?: string; tag: string; tagIcon: string }[]; finds?: { icon: string; cat: string; level: 'catastrophe' | 'major' | 'minor'; score: string; title: string; text: string; src: string; pos?: string; alt?: string }[] }   // srcs = transparent device renders composed on the tint
 
 export type Block =
@@ -820,6 +820,27 @@ export const cases: CaseData[] = [
     ] },
   { slug: 'ben-ai', side: 'back', name: 'Ben AI', tags: ['AI SaaS', 'Web design'], headline: 'A brand and product system for an award-winning AI startup', color: '#7b61ff', image: '/images/ben-tablets.webp', facts: facts.slice(0, 3), highlights, summary,
     accent: '#8b78ff', fill: '#8b78ff',
+    show: {
+      oneLiner: 'Website and visual system for an AI autoresponder',
+      meta: [{ label: 'Client', value: 'Ben AI' }, { label: 'Year', value: '2024–2025' }, { label: 'Discipline', value: 'Web, brand' }],
+      about: { text: 'Ben AI was growing past its first website. I led the redesign of the site and the visual system behind it, from the product pages for each lead source to print for events. The product later won a Yelp industry award.', credits: [{ label: 'Role', value: 'Lead Designer' }, { label: 'Timeline', value: '2024–2025' }, { label: 'Responsibilities', value: 'Web design, UX, visual system' }] },
+      closing: { title: 'From the first reply to a <em>Yelp innovation award</em>', lede: 'Ben AI won Best in Innovation at the Yelp Advertising Partner Awards in 2025.' },
+      screens: [
+        { id: 'intro', ch: 'Story', nav: 'Story', kind: 'full', tone: '#1C1630', title: 'Redesigning an AI autoresponder that outgrew its first version', lede: 'Ben AI answers customer leads for home-service businesses. The first site no longer matched the product, so I redesigned the website and the visual system behind it.', src: '/images/ben-tablets.webp', alt: 'Three tablets showing the Ben AI product pages' },
+        { id: 'leads', ch: 'Channels', nav: 'Channels', kind: 'full', tone: '#2A1F40', title: 'Every page starts where the lead comes from', lede: 'Customers meet Ben through Yelp leads, Yelp ads and Thumbtack. Each channel gets its own section, so a visitor sees their own source first.', src: '/images/ben-yelp-leads.webp', alt: 'Ben AI page: Turn Yelp Leads Into Booked Jobs' },
+        { id: 'ads', ch: 'Channels', nav: 'Channels', kind: 'full', tone: '#2A1F40', src: '/images/ben-yelp-ads.webp', alt: 'Ben AI page: Yelp Ads Campaign Management System' },
+        { id: 'thumbtack', ch: 'Channels', nav: 'Channels', kind: 'full', tone: '#17303A', src: '/images/ben-thumbtack.webp', alt: 'Ben AI page: Win More Thumbtack Jobs' },
+        { id: 'chat', ch: 'Channels', nav: 'Channels', kind: 'full', tone: '#2A1F40', src: '/images/ben-website.webp', alt: 'Ben AI page: Your Website’s 24/7 Assistant' },
+        { id: 'convert', ch: 'Trust', nav: 'Trust', kind: 'full', tone: '#2A1F40', title: 'Proof before the price', lede: 'The award, an owner’s quote and client logos come before the plans, so a sceptical visitor meets other contractors first.', src: '/images/ben-convert.webp', alt: 'Ben AI page: Convert Visitors Into Real Customers' },
+        { id: 'recognition', ch: 'Trust', nav: 'Trust', kind: 'full', tone: '#3A2A22', src: '/images/ben-recognition.webp', alt: 'Ben AI page: We Received Industry Recognition, and Ben Supports Every Job' },
+        { id: 'why', ch: 'Trust', nav: 'Trust', kind: 'full', tone: '#2A1F40', src: '/images/ben-why-ben.webp', alt: 'Ben AI page: Not Just Smart, Human-Smart' },
+        { id: 'clients', ch: 'Trust', nav: 'Trust', kind: 'full', tone: '#2A1F40', src: '/images/ben-clients.webp', alt: 'Ben AI page: client quote and logos, and Start Turning Leads Into Booked Jobs' },
+        { id: 'pricing', ch: 'Trust', nav: 'Trust', kind: 'full', tone: '#2A1F40', src: '/images/ben-pricing.webp', alt: 'Ben AI page: Plans That Grow With Your Business' },
+        { id: 'results', ch: 'Trust', nav: 'Trust', kind: 'full', tone: '#2A1F40', src: '/images/ben-results.webp', alt: 'Ben AI page: The Results Speak For Ben' },
+        { id: 'print', ch: 'Print', nav: 'Print', kind: 'full', tone: '#1C1630', title: 'One line from the site to the trade show', lede: 'The brochure, banner and cards carry the website’s gradient and its “never miss a Yelp lead” line, so the booth and the site read as one product.', src: '/images/ben-print.webp', alt: 'Ben AI print: a brochure, an event banner and business cards' },
+        { id: 'outcome', ch: 'Next', nav: 'Next', kind: 'outro', tone: '#1C1630' },
+      ],
+    },
     screens: [
     { id: 'overview', nav: 'Overview', wide: true, title: ['Ben AI'],
       lede: 'A complete website redesign for an AI tool that outgrew its first version, and went on to win a Yelp industry award.',
@@ -862,12 +883,35 @@ export const cases: CaseData[] = [
   },
   { slug: 'reboot-hub', side: 'back', name: 'Re:Boot Hub', tags: ['Consulting', 'Brandbook'], headline: 'A brand built on speed, structure and truth', color: '#e8ff3a', highlights,
     summary: 'A brand identity and brandbook for a consulting hub: logo concepts first, then the full system once the client chose a direction.',
-    facts: [{ label: 'Role', value: 'Brand Designer' }, { label: 'Deliverables', value: 'Logo concepts, brandbook' }, { label: 'Type', value: 'Gotham, Open Sans' }] },
+    facts: [{ label: 'Role', value: 'Brand Designer' }, { label: 'Deliverables', value: 'Logo concepts, brandbook' }, { label: 'Type', value: 'Gotham, Open Sans' }],
+    show: {
+      oneLiner: 'Brand identity and brandbook for a consulting hub',
+      meta: [{ label: 'Client', value: 'Re:Boot Hub' }, { label: 'Discipline', value: 'Brand' }],
+      about: { text: 'A brand identity and brandbook for a consulting hub: logo concepts first, then the full system once the client chose a direction. The full case is being written up.', credits: [{ label: 'Role', value: 'Brand Designer' }, { label: 'Responsibilities', value: 'Logo concepts, brandbook' }] },
+      closing: { title: 'This case is <em>in progress</em>', lede: 'More work is on the way. Until then, say hello.' },
+      screens: [
+        { id: 'soon', ch: 'Soon', nav: 'Soon', kind: 'soon', tone: '#2A2D12', title: 'Case in progress', lede: 'The brandbook is being written up. Check back soon.' },
+        { id: 'outcome', ch: 'Next', nav: 'Next', kind: 'outro', tone: '#2A2D12' },
+      ],
+    } },
+  { slug: 'fantabase', side: 'back', name: 'Fantabase', tags: ['Brand'], headline: 'Case coming soon', color: '#ff7a3d', highlights,
+    summary: 'A brand project, the case is being written up.',
+    facts: [],
+    show: {
+      oneLiner: 'Case in progress',
+      meta: [{ label: 'Client', value: 'Fantabase' }],
+      about: { text: 'This case is being written up. More soon.', credits: [] },
+      closing: { title: 'This case is <em>in progress</em>', lede: 'More work is on the way. Until then, say hello.' },
+      screens: [
+        { id: 'soon', ch: 'Soon', nav: 'Soon', kind: 'soon', tone: '#3A2314', title: 'Case in progress', lede: 'This project is being written up. Check back soon.' },
+        { id: 'outcome', ch: 'Next', nav: 'Next', kind: 'outro', tone: '#3A2314' },
+      ],
+    } },
   { slug: 'bobyard', side: 'back', name: 'Bobyard', tags: ['Construction AI', 'Illustration'], headline: 'Illustration and visuals for a construction-AI startup', color: '#e8541e', facts: facts.slice(0, 3), highlights, summary },
 ];
 
 // cases whose pages exist but are not on the home sheet yet
 for (const c of cases) { tidyDeep(c.screens); c.headline = tidyDeep(c.headline, "headline"); }
 
-const parked = new Set(['world-of-colors', 'reboot-hub', 'bobyard']);
+const parked = new Set(['world-of-colors', 'bobyard']);
 export const bySide = (side: Side) => cases.filter((c) => c.side === side && !parked.has(c.slug));
