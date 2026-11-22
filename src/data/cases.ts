@@ -831,10 +831,7 @@ export const cases: CaseData[] = [
           { src: '/images/ben-logo-1.webp', bg: '#050505', alt: 'Ben AI logo direction: a robot head with ears, shown as an app icon and on light and dark' },
           { src: '/images/ben-logo-2.webp', bg: '#050505', alt: 'Ben AI logo direction: a speech bubble with eyes, shown as an app icon and on light and dark' },
           { src: '/images/ben-logo-3.webp', bg: '#050505', alt: 'Ben AI logo direction: a round mascot with a speech-bubble mouth, shown as an app icon and on light and dark' }] },
-        { id: 'mark', ch: 'Logo', nav: 'Logo', kind: 'v3c', tone: '#1C1630', title: 'A face that’s mid-reply', lede: 'The client chose the speech bubble with eyes.', cells: [
-          { src: '/images/ben-final.webp', fit: true, bg: '#ffffff', alt: 'The final Ben AI logo, a gradient speech bubble with two eyes, on a construction grid' },
-          { src: '/images/ben-palette.webp', fit: true, bg: '#ffffff', alt: 'Ben AI colour palette: neutrals, red, green, blue and violet with their gradients and tints' },
-          { src: '/images/ben-aa.webp', fit: true, bg: '#000000', alt: 'The Ben AI typeface specimen' }] },
+        { id: 'mark', ch: 'Logo', nav: 'Logo', kind: 'full', fit: true, tone: '#ffffff', title: 'A face that’s mid-reply', lede: 'The client chose the speech bubble with eyes.', src: '/images/ben-colors.webp', alt: 'The final Ben AI logo, a gradient speech bubble with two eyes, on a construction grid, with six brand colours and their hex codes' },
         { id: 'heroes', ch: 'Website', nav: 'Website', kind: 'v3h', tone: '#1C1630', title: 'Every page starts with a lead', lede: 'One page per channel.', cells: [
           { src: '/images/ben-lap-respond.webp', alt: 'Ben AI home page on a laptop: Respond To Every Lead' },
           { src: '/images/ben-lap-smarter.webp', alt: 'Ben AI Yelp Ads page on a laptop: Smarter Yelp Ads' },
