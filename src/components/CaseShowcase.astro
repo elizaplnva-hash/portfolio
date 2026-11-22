@@ -31,7 +31,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
         {x.kind === 'soon' && <div class="sc-cell sc-soon"><b>{c.name}</b></div>}
         {x.kind === 'full' && <div class:list={['sc-cell', 'sc-full', { fit: x.fit }]}><img src={x.src} alt={x.alt} decoding="async" /></div>}
         {x.kind === 'slide' && <div class="sc-cell sc-slide"><img src={x.src} alt={x.alt} decoding="async" /></div>}
-        {(x.kind === 'v2a' || x.kind === 'v3s' || x.kind === 'v2s' || x.kind === 'v3h' || x.kind === 'v3l' || x.kind === 'v4d' || x.kind === 'v3c' || x.kind === 'v3k') && x.cells!.map((p) => <div class:list={['sc-cell', 'sc-ph', { fit: p.fit }]} style={p.bg ? `background:${p.bg}` : undefined}>{p.src ? <img src={p.src} alt={p.alt ?? ''} decoding="async" style={p.pos ? `object-position:${p.pos}` : undefined} /> : <><b>{p.label}</b><span>{p.spec}</span></>}</div>)}
+        {(x.kind === 'v2a' || x.kind === 'v3s' || x.kind === 'v2s' || x.kind === 'v3h' || x.kind === 'v3l' || x.kind === 'v4d' || x.kind === 'v3c' || x.kind === 'v3k' || x.kind === 'v4g') && x.cells!.map((p) => <div class:list={['sc-cell', 'sc-ph', { fit: p.fit }]} style={p.bg ? `background:${p.bg}` : undefined}>{p.src ? <img src={p.src} alt={p.alt ?? ''} decoding="async" style={p.pos ? `object-position:${p.pos}` : undefined} /> : <><b>{p.label}</b><span>{p.spec}</span></>}</div>)}
         {x.kind === 'outro' && <>
           <div class="sc-cell sc-cta">
             <h2 set:html={s.closing?.title ?? 'Every touchpoint from <em>one brand book</em>'} />
@@ -137,6 +137,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
   .sc-screen.v4d { grid-template-columns: repeat(3, 1fr); grid-template-rows: 3fr 2fr; }
   .sc-screen.v3c { grid-template-columns: 1fr 1fr; grid-template-rows: 3fr 2fr; }
   .sc-screen.v3k { grid-template-columns: repeat(3, 1fr); }
+  .sc-screen.v4g { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
   .sc-screen.v4d .sc-ph:first-child, .sc-screen.v3c .sc-ph:first-child { grid-column: 1 / -1; }
   .sc-screen.outro { grid-template-columns: 6fr 5fr; }
   .sc-cta { background: #1c1b1a; padding: 48px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; text-align: left; padding-left: 28px; }

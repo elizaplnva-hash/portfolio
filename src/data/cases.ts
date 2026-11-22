@@ -827,10 +827,11 @@ export const cases: CaseData[] = [
       closing: { title: 'A brand that <em>answers first</em>', lede: 'Ben AI later won Best in Innovation at the Yelp Advertising Partner Awards, 2025.' },
       screens: [
         { id: 'intro', ch: 'Story', nav: 'Story', kind: 'full', fit: true, tone: '#0c0b10', title: 'Never miss a lead', lede: 'Ben AI is an AI assistant that answers leads from Yelp, Thumbtack and website chat for plumbers, HVAC and other home-service businesses. The client came to Danart to launch it: a logo, a brand and a website that make AI feel simple and safe for owners who don’t trust it.', src: '/images/ben-banner.webp', alt: 'Ben AI event banner on a fence: Never miss a Yelp lead, with the speech-bubble logo' },
-        { id: 'logos', ch: 'Logo', nav: 'Logo', kind: 'v3k', tone: '#050505', title: 'Faces for one assistant', lede: 'Three of the four directions we tested as app icons.', cells: [
-          { src: '/images/ben-logo-1.webp', bg: '#050505', alt: 'Ben AI logo direction: a robot head with ears, shown as an app icon and on light and dark' },
-          { src: '/images/ben-logo-2.webp', bg: '#050505', alt: 'Ben AI logo direction: a speech bubble with eyes, shown as an app icon and on light and dark' },
-          { src: '/images/ben-logo-3.webp', bg: '#050505', alt: 'Ben AI logo direction: a round mascot with a speech-bubble mouth, shown as an app icon and on light and dark' }] },
+        { id: 'logos', ch: 'Logo', nav: 'Logo', kind: 'v4g', tone: '#242322', title: 'Four faces for one assistant', lede: 'A robot, a chat bubble, a mascot and a blue robot. I worked on the logo with the team, and the client chose one.', cells: [
+          { src: '/images/ben-concept-1.webp', bg: '#ffffff', alt: 'Ben AI logo direction: a robot head with ears and a speech-bubble face, on white' },
+          { src: '/images/ben-concept-2.webp', bg: '#242322', alt: 'Ben AI logo direction: a gradient speech bubble with two eyes, on dark' },
+          { src: '/images/ben-concept-3.webp', bg: '#242322', alt: 'Ben AI logo direction: a round mascot with a speech-bubble mouth, on dark' },
+          { src: '/images/ben-concept-4.webp', bg: '#ffffff', alt: 'Ben AI logo direction: a blue robot head with an antenna, on white' }] },
         { id: 'mark', ch: 'Logo', nav: 'Logo', kind: 'full', tone: '#ffffff', title: 'A face that’s mid-reply', lede: 'The client chose the speech bubble with eyes.', src: '/images/ben-colors.webp', alt: 'The final Ben AI logo, a gradient speech bubble with two eyes, on a construction grid, with six brand colours and their hex codes' },
         { id: 'heroes', ch: 'Website', nav: 'Website', kind: 'v3h', tone: '#1C1630', title: 'Every page starts with a lead', lede: 'One page per channel.', cells: [
           { src: '/images/ben-lap-respond.webp', alt: 'Ben AI home page on a laptop: Respond To Every Lead' },
