@@ -818,20 +818,20 @@ export const cases: CaseData[] = [
       lede: 'Another designer finished the build. I reviewed it and gave references and feedback.',
       visual: { layout: 'single', items: [{ label: 'Review', spec: 'Figma comments on the other designer’s layout' }] } },
     ] },
-  { slug: 'ben-ai', side: 'back', name: 'Ben AI', tags: ['AI SaaS', 'Brand identity', 'Website design'], headline: 'A brand that makes an AI assistant feel safe to home-service owners', color: '#7b61ff', image: '/images/ben-tablets.webp', facts: facts.slice(0, 3), highlights, summary,
-    accent: '#8b78ff', fill: '#8b78ff',
+  { slug: 'ben-ai', side: 'back', name: 'Ben AI', tags: ['AI SaaS', 'Brand', 'Website'], headline: 'A brand that makes an AI assistant feel safe to home-service owners', color: '#EF5A5A', image: '/images/ben-tablets.webp', facts: facts.slice(0, 3), highlights, summary,
+    accent: '#EF5A5A', fill: '#EF5A5A',
     show: {
       oneLiner: 'Brand, website and print for an AI assistant that answers leads',
       meta: [{ label: 'Client', value: 'Ben AI' }, { label: 'Year', value: '2025–2026' }, { label: 'Discipline', value: 'Brand, web, print' }, { label: 'Agency', value: 'Danart' }],
       about: { text: 'Ben AI answers leads for home-service businesses. At Danart I led the design of its brand and website, from the first launch in July 2025 to a second phase in January 2026, after the product won Yelp’s Best in Innovation award. I worked with an art director and an SEO specialist.', credits: [{ label: 'Role', value: 'Lead Designer' }, { label: 'Timeline', value: 'July 2025 – January 2026' }, { label: 'Responsibilities', value: 'Brand, website, motion, print' }] },
       closing: { title: 'A brand that <em>answers first</em>', lede: 'Ben AI later won Best in Innovation at the Yelp Advertising Partner Awards, 2025.' },
       screens: [
-        { id: 'intro', ch: 'Story', nav: 'Story', kind: 'full', fit: true, tone: '#0c0b10', title: 'Never miss a lead', lede: 'A brand that answers first, for an AI assistant home-service owners can trust.', src: '/images/ben-banner.webp', alt: 'Ben AI event banner on a fence: Never miss a Yelp lead, with the speech-bubble logo' },
+        { id: 'intro', ch: 'Story', nav: 'Story', kind: 'full', fit: true, tone: '#0c0b10', title: 'Never miss a lead', lede: 'Ben AI is an AI assistant that answers leads from Yelp, Thumbtack and website chat for plumbers, HVAC and other home-service businesses. The client came to Danart to launch it: a logo, a brand and a website that make AI feel simple and safe for owners who don’t trust it.', src: '/images/ben-banner.webp', alt: 'Ben AI event banner on a fence: Never miss a Yelp lead, with the speech-bubble logo' },
         { id: 'logos', ch: 'Logo', nav: 'Logo', kind: 'v3k', tone: '#050505', title: 'Faces for one assistant', lede: 'Three of the four directions we tested as app icons.', cells: [
           { src: '/images/ben-logo-1.webp', bg: '#050505', alt: 'Ben AI logo direction: a robot head with ears, shown as an app icon and on light and dark' },
           { src: '/images/ben-logo-2.webp', bg: '#050505', alt: 'Ben AI logo direction: a speech bubble with eyes, shown as an app icon and on light and dark' },
           { src: '/images/ben-logo-3.webp', bg: '#050505', alt: 'Ben AI logo direction: a round mascot with a speech-bubble mouth, shown as an app icon and on light and dark' }] },
-        { id: 'mark', ch: 'Logo', nav: 'Logo', kind: 'full', fit: true, tone: '#ffffff', title: 'A face that’s mid-reply', lede: 'The client chose the speech bubble with eyes.', src: '/images/ben-colors.webp', alt: 'The final Ben AI logo, a gradient speech bubble with two eyes, on a construction grid, with six brand colours and their hex codes' },
+        { id: 'mark', ch: 'Logo', nav: 'Logo', kind: 'full', tone: '#ffffff', title: 'A face that’s mid-reply', lede: 'The client chose the speech bubble with eyes.', src: '/images/ben-colors.webp', alt: 'The final Ben AI logo, a gradient speech bubble with two eyes, on a construction grid, with six brand colours and their hex codes' },
         { id: 'heroes', ch: 'Website', nav: 'Website', kind: 'v3h', tone: '#1C1630', title: 'Every page starts with a lead', lede: 'One page per channel.', cells: [
           { src: '/images/ben-lap-respond.webp', alt: 'Ben AI home page on a laptop: Respond To Every Lead' },
           { src: '/images/ben-lap-smarter.webp', alt: 'Ben AI Yelp Ads page on a laptop: Smarter Yelp Ads' },
