@@ -754,7 +754,7 @@ export const cases: CaseData[] = [
   { slug: 'jam', side: 'front', name: 'Jam Social', tags: ['Consumer', 'Networking', 'Mobile app'], headline: 'Reopen rate up 2.5× after the first scan', color: '#6b8cff', image: '/images/jam-home.webp', phones: ['/images/jam-phone-lock.webp', '/images/jam-phone-analytics.webp'], facts, highlights, summary, ...jam },
   { slug: 'lapunzel', side: 'front', name: 'Lapunzel', tags: ['E-commerce', 'Conversion', 'UX research'], headline: 'Product-page exits down 20%', color: '#8A3FD0', image: '/images/lap-hero.webp', phones: ['/images/lap-phone-home.webp', '/images/lap-phone-product.webp'], facts, highlights, summary, ...lapunzel },
   { slug: 'world-of-colors', side: 'back', name: 'World of Colors', tags: ['Brand', 'Website'], headline: '[Headline: what was hard and what we achieved]', color: '#ff5a36', facts: facts.slice(0, 3), highlights, summary },
-  { slug: 'sequoia', side: 'back', light: true, name: 'Sequoia', tags: ['Home services', 'Brand book and print', 'Website design'], headline: 'Rebranding a plumbing company as it goes independent', color: '#2f7d63', image: '/images/seq-van-hero.webp', big: true, facts: facts.slice(0, 3), highlights, summary,
+  { slug: 'sequoia', side: 'back', light: true, name: 'Sequoia', tags: ['Home services', 'Brand book and print', 'Website design'], headline: 'Rebranding a plumbing company', color: '#2f7d63', image: '/images/seq-van-hero.webp', big: true, facts: facts.slice(0, 3), highlights, summary,
     accent: '#2f7a55', fill: '#2f7a55', tint: '#2f7a55', panel: '#2f7a55',
     closing: { title: 'Every touchpoint from one brand book', lede: 'Stickers, apparel, the van and the website now look like one company. The client was happy with how it came together.' },
     show: {
@@ -818,7 +818,7 @@ export const cases: CaseData[] = [
       lede: 'Another designer finished the build. I reviewed it and gave references and feedback.',
       visual: { layout: 'single', items: [{ label: 'Review', spec: 'Figma comments on the other designer’s layout' }] } },
     ] },
-  { slug: 'ben-ai', side: 'back', name: 'Ben AI', tags: ['AI SaaS', 'Brand', 'Website'], headline: 'A brand that makes an AI assistant feel safe to home-service owners', color: '#EF5A5A', image: '/images/ben-monitors.webp', facts: facts.slice(0, 3), highlights, summary,
+  { slug: 'ben-ai', side: 'back', name: 'Ben AI', tags: ['AI SaaS', 'Brand', 'Website'], headline: 'A brand that makes AI feel safe', color: '#EF5A5A', image: '/images/ben-monitors.webp', facts: facts.slice(0, 3), highlights, summary,
     accent: '#EF5A5A', fill: '#EF5A5A',
     show: {
       oneLiner: 'Brand, website and print for an AI assistant that answers leads',
@@ -884,7 +884,7 @@ export const cases: CaseData[] = [
 
   ],
   },
-  { slug: 'reboot-hub', side: 'back', name: 'Re:Boot Hub', tags: ['Consulting', 'Brandbook'], headline: 'A brand built on speed, structure and truth', color: '#e8ff3a', highlights,
+  { slug: 'reboot-hub', side: 'back', name: 'Re:Boot Hub', tags: ['Consulting', 'Brandbook'], headline: 'A brand built on speed and truth', color: '#e8ff3a', highlights,
     summary: 'A brand identity and brandbook for a consulting hub: logo concepts first, then the full system once the client chose a direction.',
     facts: [{ label: 'Role', value: 'Brand Designer' }, { label: 'Deliverables', value: 'Logo concepts, brandbook' }, { label: 'Type', value: 'Gotham, Open Sans' }],
     show: {
