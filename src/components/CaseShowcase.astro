@@ -14,7 +14,7 @@ const credIcon: Record<string, string> = { Role: 'briefcase', Collaboration: 'us
 const face = { src: '/images/eliza-dark.webp', pos: '50% 12%' };
 const mail = 'mailto:elizaplnva@gmail.com';
 ---
-<div class="sc" data-sc>
+<div class="sc" data-sc style={c.slug === 'ben-ai' ? '--acc:#EF5A5A;--acc-ink:#1a0b0d;--acc-soft:#FF8F8F;--acc-tg:#EF5A5A;--acc-bg:rgba(239,90,90,.18)' : undefined}>
   <aside class="sc-menu">
     <div class="sc-top">
       <a class="sc-back" href={home}>Back</a>
@@ -77,7 +77,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
 
 <style is:global>
   html:has(.sc), body:has(.sc) { background: #0b0b0a; overflow: hidden; }
-  .sc { --ink: #f2f2f2; --muted: #8f8a83; --chip: #262523; --sel: rgba(66, 64, 61, .82); --menu: 200px; --gap: 8px; position: fixed; inset: 0; display: grid; grid-template-columns: var(--menu) 1fr; color: var(--ink); font-family: 'Manrope Variable', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -.02em; }
+  .sc { --ink: #f2f2f2; --muted: #8f8a83; --chip: #262523; --sel: rgba(66, 64, 61, .82); --acc: #c6ef7e; --acc-ink: #13230f; --acc-soft: #a9e08e; --acc-tg: #6fb04a; --acc-bg: rgba(169,224,142,.16); --menu: 200px; --gap: 8px; position: fixed; inset: 0; display: grid; grid-template-columns: var(--menu) 1fr; color: var(--ink); font-family: 'Manrope Variable', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -.02em; }
   .sc a { color: inherit; text-decoration: none; }
   .sc-menu { display: flex; flex-direction: column; justify-content: space-between; padding: 24px 14px 20px; min-height: 0; }
   .sc-top { display: flex; gap: 6px; align-items: center; }
@@ -85,7 +85,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
   .sc-about-sw { display: flex; align-items: center; gap: 8px; padding: 6px 6px 6px 12px; border: 0; color: var(--ink); font: inherit; font-size: 14px; cursor: pointer; }
   .sc-about-sw i { width: 28px; height: 18px; border-radius: 999px; background: #3a3835; position: relative; transition: background .3s; }
   .sc-about-sw i::after { content: ''; position: absolute; top: 3px; left: 3px; width: 12px; height: 12px; border-radius: 50%; background: #f2f2f2; transition: transform .3s; }
-  .sc-about-sw[aria-checked='true'] i { background: #6fb04a; }
+  .sc-about-sw[aria-checked='true'] i { background: var(--acc-tg); }
   .sc-about-sw[aria-checked='true'] i::after { transform: translateX(10px); }
   .sc-nav { display: flex; flex-direction: column; gap: 2px; }
   .sc-nav a { padding: 7px 12px; border-radius: 999px; font-size: 14px; color: var(--muted); transition: background .3s, color .3s; }
@@ -93,7 +93,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
   .sc-me { display: flex; align-items: center; gap: 8px; }
   .sc-me .face { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; flex: none; }
   .sc-me .face img { width: 100%; height: 100%; object-fit: cover; }
-  @media (hover: hover) and (pointer: fine) { .sc-back:hover, .sc-about-sw:hover, .sc-talk:hover, .sc-btn:hover { background: #c6ef7e; color: #13230f; } .sc-nav a:not(.on):hover { color: var(--ink); } }
+  @media (hover: hover) and (pointer: fine) { .sc-back:hover, .sc-about-sw:hover, .sc-talk:hover, .sc-btn:hover { background: var(--acc); color: var(--acc-ink); } .sc-nav a:not(.on):hover { color: var(--ink); } }
   .sc-main { height: 100dvh; overflow-y: auto; scroll-snap-type: y mandatory; scrollbar-width: none; }
   .sc-main::-webkit-scrollbar { display: none; }
   .sc-screen { height: 100dvh; min-height: 600px; scroll-snap-align: start; padding: var(--gap) var(--gap) var(--gap) 0; display: grid; gap: var(--gap); position: relative; }
@@ -130,7 +130,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
   .sc-cred li { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
   @media (min-width: 769px) { .sc-card.wide { width: fit-content; max-width: min(calc(100% - 48px), 820px); } .sc-card.wide p { text-wrap: pretty; } }
   .sc-cred .lb { color: #a8a39b; }
-  .sc-cred .ic { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: rgba(169,224,142,.16); color: #a9e08e; }
+  .sc-cred .ic { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--acc-bg); color: var(--acc-soft); }
   .sc-cred .ic svg { width: 12px; height: 12px; }
   .sc-cred .ic svg:not([fill='none']) { fill: currentColor; }
   .sc-cred .ic svg[fill='none'] { stroke-width: 2.4; }
@@ -147,7 +147,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
   .sc-screen.v3k { grid-template-columns: repeat(3, 1fr); }
   .sc-screen.stack { grid-template-columns: 1fr; }
   .sc-stack { container-type: size; }
-  .sk { --w: min(100cqw - 360px, (100cqh - 290px) * 1.466); position: absolute; margin: 0; width: var(--w); aspect-ratio: 1900 / 1296; left: calc(40px + var(--i) * (100cqw - 80px - var(--w)) / 2); top: calc(40px + var(--i) * (100cqh - 80px - var(--w) / 1.466) / 2); z-index: calc(var(--i) + 1); transform: scale(.96); outline: 0; transition: transform .6s cubic-bezier(.22,1,.36,1); }
+  .sk { --w: min(100cqw - 408px, (100cqh - 296px) * 1.466); --sx: min((100cqw - 208px - var(--w)) / 2, 130px); --sy: min((100cqh - 96px - var(--w) / 1.466) / 2, 130px); position: absolute; margin: 0; width: var(--w); aspect-ratio: 1900 / 1296; left: calc(50cqw - var(--w) / 2 + (var(--i) - 1) * var(--sx)); top: calc(50cqh - var(--w) / 2.932 + (var(--i) - 1) * var(--sy)); z-index: calc(var(--i) + 1); transform: scale(.96); outline: 0; transition: transform .6s cubic-bezier(.22,1,.36,1); }
   .sk:first-child { transform-origin: 0 0; } .sk:last-child { transform-origin: 100% 100%; }
   .sk.on { z-index: 5; transform: scale(1.04); }
   .sk .pg { position: absolute; inset: 0; border-radius: 16px; overflow: hidden; background: #fff; box-shadow: 0 24px 48px -24px rgba(0,0,0,.5); }
@@ -159,7 +159,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
   .sc-screen.outro { grid-template-columns: 6fr 5fr; }
   .sc-cta { background: #1c1b1a; padding: 48px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; text-align: left; padding-left: 28px; }
   .sc-cta h2 { margin: 0 0 18px; max-width: 13em; font-size: clamp(32px, 3.4vw, 50px); line-height: 1.04; font-weight: 700; letter-spacing: -.045em; text-wrap: balance; }
-  .sc-cta h2 em { font-style: normal; color: #a9e08e; }
+  .sc-cta h2 em { font-style: normal; color: var(--acc-soft); }
   .sc-cta p { margin: 0 0 28px; max-width: 420px; color: #b8b3ab; font-size: 16px; line-height: 1.45; text-wrap: balance; }
   .sc-cta .sc-btn { margin: 0; padding: 12px 22px; font-size: 15px; background: var(--chip); }
   .sc-tiles { min-height: 0; }
@@ -185,13 +185,13 @@ const mail = 'mailto:elizaplnva@gmail.com';
   .sc-next span, .sc-next b { position: relative; }
   .sc-next span { font-size: 13px; opacity: .75; }
   .sc-next b { font-size: clamp(20px, 1.9vw, 28px); line-height: 1.1; font-weight: 700; letter-spacing: -.035em; }
-  @media (hover: hover) and (pointer: fine) { .sc-next:hover { background: #c6ef7e; color: #13230f; } }
+  @media (hover: hover) and (pointer: fine) { .sc-next:hover { background: var(--acc); color: var(--acc-ink); } }
   .sc-card { position: absolute; left: 24px; bottom: 32px; z-index: 3; width: calc((100% - 8px) / 2 - 24px); padding: 24px 28px; border-radius: 12px; background: var(--sel); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); opacity: 0; transform: translateY(8px); pointer-events: none; transition: opacity .25s ease-out, transform .25s ease-out; }
   .about-on .sc-card { opacity: 1; transform: none; pointer-events: auto; }
   .sc-hd { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin: 0 0 10px; }
   .sc-hd .sc-btn { margin: 0; flex: none; white-space: nowrap; }
   .sc-card h2 { margin: 0; font-size: clamp(22px, 2vw, 30px); line-height: 1.15; font-weight: 700; letter-spacing: -.03em; }
-  .sc-card h2 em { font-style: normal; color: #a9e08e; }
+  .sc-card h2 em { font-style: normal; color: var(--acc-soft); }
   .sc-card p { margin: 0; color: #d8d4cd; font-size: clamp(14px, 1.1vw, 17px); line-height: 1.45; }
   .sc-btn { display: inline-block; margin-top: 14px; padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,.12); font-size: 13px; transition: background .3s, color .3s; }
   @media (prefers-reduced-motion: reduce) { .sc * { transition: none !important; transform: none !important; } }
