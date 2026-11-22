@@ -28,7 +28,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
     {s.screens.map((x) => (
       <section class:list={['sc-screen', x.kind, { solo: x.cells?.length === 1 }]} id={x.id} data-ch={x.ch ?? x.nav} style={`--tone:${x.tone}`}>
         {x.links && <div class="sc-links">{x.links.map((l) => <a class="sc-btn" href={l.href} target="_blank" rel="noopener">{l.label}</a>)}</div>}
-        {x.kind === 'intro' && <div class:list={['sc-cell', 'sc-twin', { pages: x.pages, flush: x.cut || x.flush, fill: x.fill, fitcol: x.flush, flushleft: x.flushLeft, flushboth: x.flushBoth, cols: x.cols }]} style={x.asp ? `--asp:${x.asp}${x.flushLeft || x.flushBoth ? ';--off:0px' : ''}` : undefined}>{x.twin!.map((t, k) => <div class="tw"><img src={t} alt={k === 0 ? x.alt : ''} decoding="async" style={x.cut && k === 1 ? `transform:translateY(-${x.cut}%)` : undefined} /></div>)}</div>}
+        {x.kind === 'intro' && <div class:list={['sc-cell', 'sc-twin', { pages: x.pages, flush: x.cut || x.flush, fill: x.fill, fitcol: x.flush, flushleft: x.flushLeft, flushboth: x.flushBoth, cols: x.cols, swap: x.swap }]} style={x.asp ? `--asp:${x.asp}${x.flushLeft || x.flushBoth ? ';--off:0px' : ''}` : undefined}>{x.twin!.map((t, k) => <div class="tw"><img src={t} alt={k === 0 ? x.alt : ''} decoding="async" style={x.cut && k === 1 ? `transform:translateY(-${x.cut}%)` : undefined} /></div>)}</div>}
         {x.kind === 'soon' && <div class="sc-cell sc-soon"><b>{c.name}</b></div>}
         {x.kind === 'full' && <div class:list={['sc-cell', 'sc-full', { fit: x.fit, padded: x.pad, zoom: x.zoom }]}><img src={x.src} alt={x.alt} decoding="async" /></div>}
         {x.kind === 'slide' && <div class="sc-cell sc-slide"><img src={x.src} alt={x.alt} decoding="async" /></div>}
@@ -111,6 +111,9 @@ const mail = 'mailto:elizaplnva@gmail.com';
   .sc-twin.cols { padding: 0; gap: 24px; justify-content: center; grid-template-columns: repeat(2, min(calc((100vw - 208px) / 2 - 40px), calc((max(100dvh, 600px) - 16px) / 1.23))); }
   .sc-twin.cols .tw { height: 100%; margin: 0; border-radius: 0; background: #fff; transform-origin: 50% 0; transition: transform .5s cubic-bezier(.22,1,.36,1); }
   .sc-twin.cols .tw:last-child { margin-top: 6vh; height: calc(100% - 6vh); border-radius: 10px 10px 0 0; transform-origin: 50% 100%; }
+  .sc-twin.cols.swap .tw:first-child { margin-top: 6vh; height: calc(100% - 6vh); border-radius: 10px 10px 0 0; transform-origin: 50% 100%; }
+  .sc-twin.cols.swap .tw:last-child { margin-top: 0; height: auto; align-self: start; border-radius: 0 0 10px 10px; transform-origin: 50% 0; }
+  .sc-twin.cols.swap .tw:last-child img { position: static; height: auto; display: block; object-fit: initial; }
   .sc-twin.cols .tw img, .sc-twin.cols .tw:first-child img { inset: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; border-radius: 0; }
   @media (hover: hover) and (pointer: fine) { .sc-twin.cols:hover .tw { transform: none; } .sc-twin.cols:hover .tw:hover { transform: scale(1.02); } }
   .sc-twin.fill { padding: 0; gap: 8px; }
