@@ -1,0 +1,79 @@
+---
+import Base from '../../layouts/Base.astro';
+import { works, skills, projectCount } from '../../data/works';
+const caseHref = (w: (typeof works)[number]) => (w.caseSlug ? `/work/${w.caseSlug}` : '');
+---
+<Base title="All work · Eliza Popelinova" side="back" description="Single works by skill: brand, print, web and product design.">
+  <main class="work-page">
+    <div class="wp-head">
+      <a class="wp-back" href="/brand">← Back</a>
+      <div class="wp-chips" role="group" aria-label="Skills">
+        <button type="button" data-skill="all" aria-pressed="true">All<i>{works.length}</i></button>
+        {skills.map((k) => <button type="button" data-skill={k.slug} aria-pressed="false">{k.name}<i>{k.count}</i></button>)}
+      </div>
+      <span class="wp-count" id="wp-count" aria-live="polite">{works.length} works from {projectCount} projects</span>
+    </div>
+    <div class="wp-grid" id="wp-grid">
+      {works.map((w, i) => (
+        <button type="button" class="wp-item" data-i={i} data-skill={w.skill.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')} data-project={w.project} data-role={w.role} data-note={w.note} data-case={caseHref(w)} data-side={w.side} aria-label={`${w.alt}. Open`}>
+          <img src={w.src} alt={w.alt} loading={i < 8 ? 'eager' : 'lazy'} decoding="async" />
+          <span class="wp-tags"><span>{w.project}</span><span>{w.skill}</span>{w.role === 'contributed' && <span>Contributed</span>}</span>
+        </button>
+      ))}
+    </div>
+  </main>
+  <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Work">
+    <div class="lb-stage"><div class="lb-fig"><img id="lb-img" alt="" /><span class="lb-tags" id="lb-tags"></span></div></div>
+    <div class="lb-bar">
+      <strong id="lb-project"></strong>
+      <p id="lb-note"></p>
+      <a id="lb-open" href="/brand">Open case →</a>
+      <button class="ghost" type="button" id="lb-prev" aria-label="Previous">←</button>
+      <button class="ghost" type="button" id="lb-next" aria-label="Next">→</button>
+      <button class="ghost" type="button" id="lb-close">Close</button>
+    </div>
+  </div>
+  <script is:inline>
+    (function () {
+      var chips = [].slice.call(document.querySelectorAll('.wp-chips button'));
+      var items = [].slice.call(document.querySelectorAll('.wp-item'));
+      var count = document.getElementById('wp-count');
+      var cur = 'all';
+      function apply(slug, push) {
+        cur = slug;
+        var shown = [], projs = {};
+        items.forEach(function (el) { var ok = slug === 'all' || el.dataset.skill === slug; el.hidden = !ok; if (ok) { shown.push(el); projs[el.dataset.project] = 1; } });
+        chips.forEach(function (c) { c.setAttribute('aria-pressed', c.dataset.skill === slug ? 'true' : 'false'); });
+        count.textContent = shown.length + ' works from ' + Object.keys(projs).length + ' projects';
+        if (push) { try { history.replaceState(null, '', slug === 'all' ? location.pathname : location.pathname + '?skill=' + slug); } catch (e) {} }
+      }
+      chips.forEach(function (c) { c.addEventListener('click', function () { apply(c.dataset.skill, true); }); });
+      var q = new URLSearchParams(location.search).get('skill');
+      apply(q && chips.some(function (c) { return c.dataset.skill === q; }) ? q : 'all', false);
+
+      var lb = document.getElementById('lb'), img = document.getElementById('lb-img'), pos = 0, list = [];
+      function visible() { return items.filter(function (e) { return !e.hidden; }); }
+      function show(n) {
+        pos = (n + list.length) % list.length; var el = list[pos], src = el.querySelector('img');
+        img.src = src.currentSrc || src.src; img.alt = src.alt;
+        document.getElementById('lb-project').textContent = el.dataset.project;
+        document.getElementById('lb-note').textContent = el.dataset.note;
+        var t = document.getElementById('lb-tags'); t.innerHTML = '';
+        [el.dataset.project, el.querySelectorAll('.wp-tags span')[1].textContent].concat(el.dataset.role === 'contributed' ? ['Contributed'] : []).forEach(function (x) { var s = document.createElement('span'); s.textContent = x; t.appendChild(s); });
+        var a = document.getElementById('lb-open'); a.hidden = !el.dataset.case; a.href = el.dataset.case || '#';
+        a.textContent = el.dataset.side === 'product' ? 'Open product case →' : 'Open case →';
+      }
+      function open(el) { list = visible(); show(list.indexOf(el)); lb.classList.add('on'); document.body.style.overflow = 'hidden'; document.getElementById('lb-close').focus(); }
+      function close() { lb.classList.remove('on'); document.body.style.overflow = ''; }
+      items.forEach(function (el) { el.addEventListener('click', function () { open(el); }); });
+      document.getElementById('lb-prev').onclick = function () { show(pos - 1); };
+      document.getElementById('lb-next').onclick = function () { show(pos + 1); };
+      document.getElementById('lb-close').onclick = close;
+      lb.addEventListener('click', function (e) { if (e.target === lb || e.target.classList.contains('lb-stage')) close(); });
+      addEventListener('keydown', function (e) {
+        if (!lb.classList.contains('on')) return;
+        if (e.key === 'Escape') close(); else if (e.key === 'ArrowLeft') show(pos - 1); else if (e.key === 'ArrowRight') show(pos + 1);
+      });
+    })();
+  </script>
+</Base>

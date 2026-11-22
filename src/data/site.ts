@@ -16,6 +16,7 @@ export interface Case {
   href: string;
   big?: boolean;
   sub?: string;
+  hideName?: boolean;
 }
 
 export interface Social { label: string; href: string; kind: 'linkedin' | 'instagram' | 'behance' | 'email' | 'cv'; }
@@ -27,7 +28,7 @@ const socials: Record<string, Social> = {
   cv: { label: 'CV', href: '/Eliza_Popelinova_Senior_Product_Designer_Resume.pdf', kind: 'cv' },
 };
 
-const toTile = (c: CaseData): Case => ({ name: c.name, tags: c.tags, headline: c.headline, color: c.color, image: c.image, phones: c.phones, desk: c.desk, mark: c.mark, sub: c.sub, big: c.big, slug: c.slug, href: `/work/${c.slug}` });
+const toTile = (c: CaseData): Case => ({ name: c.name, tags: c.tags, headline: c.headline, color: c.color, image: c.image, phones: c.phones, desk: c.desk, mark: c.mark, sub: c.sub, big: c.big, hideName: c.hideName, slug: c.slug, href: `/work/${c.slug}` });
 
 const process = [
   { title: 'Research', text: 'I never skip it. Who is already on the market, how they look, what they changed and how it worked.', tags: ['Market scan', 'Competitor audit', 'Reference search', 'Interviews', 'Surveys'] },

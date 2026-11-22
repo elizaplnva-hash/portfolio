@@ -1,6 +1,7 @@
 ---
 import { sides, type Side } from '../data/site';
 import Icon from './Icon.astro';
+import { skills as workSkills, works } from '../data/works';
 interface Props { side: Side; }
 const { side } = Astro.props;
 const s = sides[side];
@@ -32,20 +33,32 @@ const hues = ['#E0408F', '#5B6EF0', '#8A3FD0', '#22A55E'];
     </nav>
   </section>
 
+{side === 'back' ? (
+    <section class="tile skillsTile" aria-labelledby="sk-h">
+      <h2 id="sk-h" class="tag">Skills</h2>
+      <ul class="sk-list">
+        {workSkills.slice(0, 7).map((k) => (
+          <li><a href={`/brand/work?skill=${k.slug}`}><span>{k.name}</span><i>{k.count}</i></a></li>
+        ))}
+      </ul>
+      <a class="sk-all" href="/brand/work">All work <i>{works.length}</i></a>
+    </section>
+  ) : (
   <section class="tile process" aria-labelledby="proc-h">
-    <h2 id="proc-h" class="tag">My process</h2>
-    <ol class="steps">
-      <span class="pframe" aria-hidden="true"></span>
-      {s.process.map((p, i) => (
-        <li tabindex="0">
-          <Icon kind={['search', 'bulb', 'pencil', 'flag'][i] as any} size={15} />
-          <b>{p.title}</b>
-          <p>{p.text}</p>
-          <ul>{p.tags.map((t) => <li>{t}</li>)}</ul>
-        </li>
-      ))}
-    </ol>
-  </section>
+      <h2 id="proc-h" class="tag">My process</h2>
+      <ol class="steps">
+        <span class="pframe" aria-hidden="true"></span>
+        {s.process.map((p, i) => (
+          <li tabindex="0">
+            <Icon kind={['search', 'bulb', 'pencil', 'flag'][i] as any} size={15} />
+            <b>{p.title}</b>
+            <p>{p.text}</p>
+            <ul>{p.tags.map((t) => <li>{t}</li>)}</ul>
+          </li>
+        ))}
+      </ol>
+    </section>
+  )}
 
   {list.map((c, i) => (
     <a href={c.href} class:list={['tile', 'case', `case-${i + 1}`, { big: c.big }]} style={`--c:${c.color}`}>
