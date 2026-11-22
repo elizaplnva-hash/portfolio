@@ -6,6 +6,10 @@ import NextCase from './NextCase.astro';
 const { c } = Astro.props as { c: Case };
 const s = c.show!;
 const home = '/brand';
+const themes: Record<string, string> = {
+  'ben-ai': '--acc:#EF5A5A;--acc-ink:#1a0b0d;--acc-soft:#FF8F8F;--acc-tg:#EF5A5A;--acc-bg:rgba(239,90,90,.18)',
+  'insider-talks': '--acc:#8b78ff;--acc-ink:#120a2b;--acc-soft:#b9adff;--acc-tg:#8b78ff;--acc-bg:rgba(139,120,255,.2)',
+};
 const list = bySide(c.side);
 const nextCase = list[(list.findIndex((k) => k.slug === c.slug) + 1) % list.length];
 const nextCs = nextCase && nextCase.slug !== c.slug ? nextCase : undefined;
@@ -14,7 +18,7 @@ const credIcon: Record<string, string> = { Role: 'briefcase', Collaboration: 'us
 const face = { src: '/images/eliza-dark.webp', pos: '50% 12%' };
 const mail = 'mailto:elizaplnva@gmail.com';
 ---
-<div class="sc" data-sc style={c.slug === 'ben-ai' ? '--acc:#EF5A5A;--acc-ink:#1a0b0d;--acc-soft:#FF8F8F;--acc-tg:#EF5A5A;--acc-bg:rgba(239,90,90,.18)' : undefined}>
+<div class="sc" data-sc style={themes[c.slug]}>
   <aside class="sc-menu">
     <div class="sc-top">
       <a class="sc-back" href={home}>Back</a>
@@ -31,6 +35,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
         {x.kind === 'intro' && <div class:list={['sc-cell', 'sc-twin', { pages: x.pages, flush: x.cut || x.flush, fill: x.fill, fitcol: x.flush, flushleft: x.flushLeft, flushboth: x.flushBoth, cols: x.cols, swap: x.swap }]} style={x.asp ? `--asp:${x.asp}${x.flushLeft || x.flushBoth ? ';--off:0px' : ''}` : undefined}>{x.twin!.map((t, k) => <div class="tw"><img src={t} alt={k === 0 ? x.alt : ''} decoding="async" style={x.cut && k === 1 ? `transform:translateY(-${x.cut}%)` : undefined} /></div>)}</div>}
         {x.kind === 'soon' && <div class="sc-cell sc-soon"><b>{c.name}</b></div>}
         {x.kind === 'full' && <div class:list={['sc-cell', 'sc-full', { fit: x.fit, padded: x.pad, zoom: x.zoom }]}><img src={x.src} alt={x.alt} decoding="async" /></div>}
+        {x.kind === 'pair' && <div class="sc-cell sc-pair">{x.cells!.map((p) => <img class="pi" src={p.src} alt={p.alt ?? ''} loading="lazy" decoding="async" tabindex="0" />)}</div>}
         {x.kind === 'grid' && <div class="sc-cell sc-ig"><div class="ig">{x.cells!.map((p) => <div class="ig-i" tabindex="0"><img src={p.src} alt={p.alt ?? ''} loading="lazy" decoding="async" /></div>)}</div></div>}
         {x.kind === 'slide' && <div class="sc-cell sc-slide"><img src={x.src} alt={x.alt} decoding="async" /></div>}
         {(x.kind === 'v2a' || x.kind === 'v3s' || x.kind === 'v2s' || x.kind === 'v3h' || x.kind === 'v3l' || x.kind === 'v4d' || x.kind === 'v3c' || x.kind === 'v3k' || x.kind === 'v4g') && x.cells!.map((p) => <div class:list={['sc-cell', 'sc-ph', { fit: p.fit }]} style={p.bg ? `background:${p.bg}` : undefined}>{p.src ? <img src={p.src} alt={p.alt ?? ''} decoding="async" style={p.pos ? `object-position:${p.pos}` : undefined} /> : <><b>{p.label}</b><span>{p.spec}</span></>}</div>)}
@@ -140,12 +145,21 @@ const mail = 'mailto:elizaplnva@gmail.com';
   .sc-slide { display: grid; place-items: center; container-type: size; }
   .sc-slide img { width: min(100cqw - 8cqw, (100cqh - 8cqw) * 16 / 9); height: auto; border-radius: 12px; transition: transform .55s cubic-bezier(.22,1,.36,1); }
   @media (hover: hover) and (pointer: fine) { .sc-slide:hover img { transform: scale(1.025); } }
+  .sc-screen.pair { grid-template-columns: 1fr; }
+  .sc-pair { --h: calc((100dvh - 2 * var(--gap) - 2 * 28px - 16px) / 2); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; }
+  .sc-pair .pi { display: block; width: min(calc(100% - 56px), calc(var(--h) * 16 / 9)); aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; outline: none; transition: transform .55s cubic-bezier(.22,1,.36,1), opacity .55s ease-out; }
+  .sc-pair .pi:focus-visible { box-shadow: 0 0 0 2px var(--acc); }
+  @media (hover: hover) and (pointer: fine) {
+    .sc-pair:has(.pi:is(:hover, :focus-visible)) .pi:not(:is(:hover, :focus-visible)) { transform: scale(.93); opacity: .75; }
+    .sc-pair .pi:is(:hover, :focus-visible) { transform: scale(1.07); z-index: 2; }
+  }
+  @media (prefers-reduced-motion: reduce) { .sc-pair .pi { transition: none; } .sc-pair .pi:is(:hover, :focus-visible), .sc-pair:has(.pi:is(:hover, :focus-visible)) .pi:not(:is(:hover, :focus-visible)) { transform: none; } }
   .sc-screen.grid { grid-template-columns: 1fr; }
   .sc-ig { display: grid; place-items: center; }
   .sc-ig .ig { --g: 10px; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--g); width: min(calc(100% - 48px), calc((100dvh - 16px - 48px - var(--g)) * 1.2 + 2 * var(--g))); }
   .sc-ig .ig-i { aspect-ratio: 4 / 5; border-radius: 10px; overflow: hidden; position: relative; background: #111; outline: none; transition: transform .5s cubic-bezier(.22,1,.36,1), filter .5s ease-out, opacity .5s ease-out; }
   .sc-ig .ig-i img { display: block; width: 100%; height: 100%; object-fit: cover; }
-  .sc-ig .ig-i:focus-visible { box-shadow: 0 0 0 2px #c6ef7e; }
+  .sc-ig .ig-i:focus-visible { box-shadow: 0 0 0 2px var(--acc); }
   @media (hover: hover) and (pointer: fine) {
     .sc-ig .ig:has(.ig-i:is(:hover, :focus-visible)) .ig-i:not(:is(:hover, :focus-visible)) { filter: grayscale(1) brightness(.45); opacity: .85; }
     .sc-ig .ig-i:is(:hover, :focus-visible) { transform: scale(1.05); z-index: 2; }
