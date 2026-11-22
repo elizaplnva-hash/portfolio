@@ -31,6 +31,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
         {x.kind === 'intro' && <div class:list={['sc-cell', 'sc-twin', { pages: x.pages, flush: x.cut || x.flush, fill: x.fill, fitcol: x.flush, flushleft: x.flushLeft, flushboth: x.flushBoth, cols: x.cols, swap: x.swap }]} style={x.asp ? `--asp:${x.asp}${x.flushLeft || x.flushBoth ? ';--off:0px' : ''}` : undefined}>{x.twin!.map((t, k) => <div class="tw"><img src={t} alt={k === 0 ? x.alt : ''} decoding="async" style={x.cut && k === 1 ? `transform:translateY(-${x.cut}%)` : undefined} /></div>)}</div>}
         {x.kind === 'soon' && <div class="sc-cell sc-soon"><b>{c.name}</b></div>}
         {x.kind === 'full' && <div class:list={['sc-cell', 'sc-full', { fit: x.fit, padded: x.pad, zoom: x.zoom }]}><img src={x.src} alt={x.alt} decoding="async" /></div>}
+        {x.kind === 'grid' && <div class="sc-cell sc-ig"><div class="ig">{x.cells!.map((p) => <div class="ig-i" tabindex="0"><img src={p.src} alt={p.alt ?? ''} loading="lazy" decoding="async" /></div>)}</div></div>}
         {x.kind === 'slide' && <div class="sc-cell sc-slide"><img src={x.src} alt={x.alt} decoding="async" /></div>}
         {(x.kind === 'v2a' || x.kind === 'v3s' || x.kind === 'v2s' || x.kind === 'v3h' || x.kind === 'v3l' || x.kind === 'v4d' || x.kind === 'v3c' || x.kind === 'v3k' || x.kind === 'v4g') && x.cells!.map((p) => <div class:list={['sc-cell', 'sc-ph', { fit: p.fit }]} style={p.bg ? `background:${p.bg}` : undefined}>{p.src ? <img src={p.src} alt={p.alt ?? ''} decoding="async" style={p.pos ? `object-position:${p.pos}` : undefined} /> : <><b>{p.label}</b><span>{p.spec}</span></>}</div>)}
         {x.kind === 'stack' && <div class="sc-cell sc-stack">{x.cells!.map((p, i) => <figure class:list={['sk', { on: i === 0 }]} tabindex="0" style={`--i:${i};--c:${p.bg}`}><div class="pg"><img src={p.src} alt={p.alt ?? ''} decoding="async" /></div></figure>)}</div>}
@@ -139,6 +140,17 @@ const mail = 'mailto:elizaplnva@gmail.com';
   .sc-slide { display: grid; place-items: center; container-type: size; }
   .sc-slide img { width: min(100cqw - 8cqw, (100cqh - 8cqw) * 16 / 9); height: auto; border-radius: 12px; transition: transform .55s cubic-bezier(.22,1,.36,1); }
   @media (hover: hover) and (pointer: fine) { .sc-slide:hover img { transform: scale(1.025); } }
+  .sc-screen.grid { grid-template-columns: 1fr; }
+  .sc-ig { display: grid; place-items: center; }
+  .sc-ig .ig { --g: 10px; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--g); width: min(calc(100% - 48px), calc((100dvh - 16px - 48px - var(--g)) * 1.2 + 2 * var(--g))); }
+  .sc-ig .ig-i { aspect-ratio: 4 / 5; border-radius: 10px; overflow: hidden; position: relative; background: #111; outline: none; transition: transform .5s cubic-bezier(.22,1,.36,1), filter .5s ease-out, opacity .5s ease-out; }
+  .sc-ig .ig-i img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .sc-ig .ig-i:focus-visible { box-shadow: 0 0 0 2px #c6ef7e; }
+  @media (hover: hover) and (pointer: fine) {
+    .sc-ig .ig:has(.ig-i:is(:hover, :focus-visible)) .ig-i:not(:is(:hover, :focus-visible)) { filter: grayscale(1) brightness(.45); opacity: .85; }
+    .sc-ig .ig-i:is(:hover, :focus-visible) { transform: scale(1.05); z-index: 2; }
+  }
+  @media (prefers-reduced-motion: reduce) { .sc-ig .ig-i { transition: none; } .sc-ig .ig-i:is(:hover, :focus-visible) { transform: none; } }
   .sc-screen.v2a { grid-template-columns: 1fr 1fr; }
   .sc-screen.v2a.solo { grid-template-columns: 1fr; }
   .sc-screen.v3h { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
