@@ -818,7 +818,7 @@ export const cases: CaseData[] = [
       lede: 'Another designer finished the build. I reviewed it and gave references and feedback.',
       visual: { layout: 'single', items: [{ label: 'Review', spec: 'Figma comments on the other designer’s layout' }] } },
     ] },
-  { slug: 'ben-ai', side: 'back', name: 'Ben AI', tags: ['AI SaaS', 'Brand', 'Website'], headline: 'A brand that makes AI feel safe', color: '#EF5A5A', image: '/images/ben-monitors.webp', facts: facts.slice(0, 3), highlights, summary,
+  { slug: 'ben-ai', side: 'back', name: 'Ben AI', tags: ['AI SaaS', 'Brand', 'Website'], headline: 'A brand that makes AI feel safe', color: '#EF5A5A', image: '/images/ben-monitors-tile.webp', facts: facts.slice(0, 3), highlights, summary,
     accent: '#EF5A5A', fill: '#EF5A5A',
     show: {
       oneLiner: 'Brand, website and print for an AI that answers leads',
