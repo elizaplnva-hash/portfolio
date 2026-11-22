@@ -61,6 +61,7 @@ export interface CaseData { show?: Show;
   noNameTag?: boolean;        // case page: don't show the product name as the first tag
   mark?: string;              // name written behind the cover, if shorter than the product name
   desk?: boolean;             // cover is a monitor + a phone
+  hideName?: boolean;         // home tile: do not show the name as the first tag
   phones?: string[];          // layered home cover: transparent phone renders over a tinted fill
   big?: boolean;              // large tile on home
   facts: { label: string; value: string }[];   // role, timeline, platform...
@@ -884,7 +885,7 @@ export const cases: CaseData[] = [
 
   ],
   },
-  { slug: 'insider-talks', side: 'back', name: 'Toporin', tags: ['Webinar series', 'Presentation', 'Social'], headline: 'A visual identity for a recurring webinar series', color: '#6d4bd6', image: '/images/insider-hero.webp', facts: facts.slice(0, 3), highlights,
+  { slug: 'insider-talks', side: 'back', name: 'Toporin', tags: ['Webinar series', 'Presentation', 'Social'], headline: 'A visual identity for webinars', hideName: true, color: '#6d4bd6', image: '/images/insider-hero.webp', facts: facts.slice(0, 3), highlights,
     summary: 'A visual system for a series, not a single event.',
     accent: '#8b78ff', fill: '#8b78ff',
     show: {

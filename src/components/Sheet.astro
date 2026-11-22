@@ -55,7 +55,7 @@ const hues = ['#E0408F', '#5B6EF0', '#8A3FD0', '#22A55E'];
             {c.phones.map((src, k) => <img class:list={['phone', `phone-${k + 1}`]} src={src} alt={k === 0 ? `${c.name} screens` : ''} loading="lazy" />)}
           </div>
         ) : c.image && <img src={c.image} alt={`${c.name} cover`} loading="lazy" />}
-        <div class="tags"><span>{c.name}</span>{c.tags.map((t) => <span>{t}</span>)}</div>
+        <div class="tags">{!c.hideName && <span>{c.name}</span>}{c.tags.map((t) => <span>{t}</span>)}</div>
       </div>
       <div class="meta">
         <h2>{c.headline}</h2>
