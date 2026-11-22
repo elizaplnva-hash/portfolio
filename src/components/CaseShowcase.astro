@@ -32,6 +32,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
         {x.kind === 'full' && <div class:list={['sc-cell', 'sc-full', { fit: x.fit }]}><img src={x.src} alt={x.alt} decoding="async" /></div>}
         {x.kind === 'slide' && <div class="sc-cell sc-slide"><img src={x.src} alt={x.alt} decoding="async" /></div>}
         {(x.kind === 'v2a' || x.kind === 'v3s' || x.kind === 'v2s' || x.kind === 'v3h' || x.kind === 'v3l' || x.kind === 'v4d' || x.kind === 'v3c' || x.kind === 'v3k' || x.kind === 'v4g') && x.cells!.map((p) => <div class:list={['sc-cell', 'sc-ph', { fit: p.fit }]} style={p.bg ? `background:${p.bg}` : undefined}>{p.src ? <img src={p.src} alt={p.alt ?? ''} decoding="async" style={p.pos ? `object-position:${p.pos}` : undefined} /> : <><b>{p.label}</b><span>{p.spec}</span></>}</div>)}
+        {x.kind === 'stack' && <div class="sc-cell sc-stack">{x.cells!.map((p, i) => <figure class:list={['sk', { on: i === 0 }]} tabindex="0" style={`--i:${i};--c:${p.bg}`}><div class="pg"><img src={p.src} alt={p.alt ?? ''} decoding="async" /></div></figure>)}</div>}
         {x.kind === 'outro' && <>
           <div class="sc-cell sc-cta">
             <h2 set:html={s.closing?.title ?? 'Every touchpoint from <em>one brand book</em>'} />
@@ -64,6 +65,11 @@ const mail = 'mailto:elizaplnva@gmail.com';
     if (matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)').matches) root.querySelectorAll<HTMLElement>('.next .turn').forEach((turn) => {
       turn.addEventListener('pointermove', (e) => { const r = turn.getBoundingClientRect(); const d = Math.hypot(r.right - e.clientX, r.bottom - e.clientY) / Math.hypot(r.width, r.height); turn.style.setProperty('--curl', Math.round(58 + 70 * Math.max(0, 1 - d * 1.4)) + 'px'); });
       turn.addEventListener('pointerleave', () => turn.style.setProperty('--curl', '58px'));
+    });
+    root.querySelectorAll<HTMLElement>('.sc-stack').forEach((st) => {
+      const cards = [...st.querySelectorAll<HTMLElement>('.sk')];
+      const pick = (k: HTMLElement) => cards.forEach((o) => o.classList.toggle('on', o === k));
+      cards.forEach((k) => { k.addEventListener('pointerenter', () => pick(k)); k.addEventListener('focus', () => pick(k)); });
     });
     links.forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); document.getElementById(a.dataset.for!)?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); }));
   }
@@ -122,7 +128,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
   .sc-screen.v3l .sc-ph:nth-child(1) { grid-column: 1; grid-row: 1 / 3; }
   .sc-cred { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 14px 0 0; padding: 12px 0 0; border-top: 1px solid rgba(255,255,255,.12); list-style: none; font-size: 12.5px; color: #e8e4dd; }
   .sc-cred li { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
-  @media (min-width: 769px) { .sc-card.wide { width: min(calc(100% - 48px), 820px); } }
+  @media (min-width: 769px) { .sc-card.wide { width: fit-content; max-width: min(calc(100% - 48px), 820px); } .sc-card.wide p { text-wrap: pretty; } }
   .sc-cred .lb { color: #a8a39b; }
   .sc-cred .ic { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: rgba(169,224,142,.16); color: #a9e08e; }
   .sc-cred .ic svg { width: 12px; height: 12px; }
@@ -130,6 +136,8 @@ const mail = 'mailto:elizaplnva@gmail.com';
   .sc-cred .ic svg[fill='none'] { stroke-width: 2.4; }
   .sc-screen.v2s { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
   .sc-ph.fit img { object-fit: contain; }
+  .sc-screen.v3c .sc-ph.fit img, .sc-screen.v3h .sc-ph.fit img, .sc-screen.v2a .sc-ph.fit img { inset: 0; margin: auto; width: auto; height: auto; max-width: calc(100% - 64px); max-height: calc(100% - 64px); border-radius: 12px; }
+  .sc-screen.v2a .sc-ph:first-child.fit img { inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; border-radius: 0; object-fit: contain; }
   .sc-screen.v3s { grid-template-columns: 7fr 4fr; grid-template-rows: 1fr 1fr; }
   .sc-screen.v3s .sc-ph:nth-child(1) { grid-column: 1; grid-row: 1; }
   .sc-screen.v3s .sc-ph:nth-child(2) { grid-column: 1; grid-row: 2; }
@@ -137,6 +145,15 @@ const mail = 'mailto:elizaplnva@gmail.com';
   .sc-screen.v4d { grid-template-columns: repeat(3, 1fr); grid-template-rows: 3fr 2fr; }
   .sc-screen.v3c { grid-template-columns: 1fr 1fr; grid-template-rows: 3fr 2fr; }
   .sc-screen.v3k { grid-template-columns: repeat(3, 1fr); }
+  .sc-screen.stack { grid-template-columns: 1fr; }
+  .sc-stack { container-type: size; }
+  .sk { --w: min(100cqw - 360px, (100cqh - 290px) * 1.466); position: absolute; margin: 0; width: var(--w); aspect-ratio: 1900 / 1296; left: calc(40px + var(--i) * (100cqw - 80px - var(--w)) / 2); top: calc(40px + var(--i) * (100cqh - 80px - var(--w) / 1.466) / 2); z-index: calc(var(--i) + 1); transform: scale(.96); outline: 0; transition: transform .6s cubic-bezier(.22,1,.36,1); }
+  .sk:first-child { transform-origin: 0 0; } .sk:last-child { transform-origin: 100% 100%; }
+  .sk.on { z-index: 5; transform: scale(1.04); }
+  .sk .pg { position: absolute; inset: 0; border-radius: 16px; overflow: hidden; background: #fff; box-shadow: 0 24px 48px -24px rgba(0,0,0,.5); }
+  .sk .pg img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .sk .pg::after { content: ''; position: absolute; inset: 0; background: #34333b; opacity: .6; transition: opacity .5s ease-out; }
+  .sk.on .pg::after { opacity: 0; }
   .sc-screen.v4g { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
   .sc-screen.v4d .sc-ph:first-child, .sc-screen.v3c .sc-ph:first-child { grid-column: 1 / -1; }
   .sc-screen.outro { grid-template-columns: 6fr 5fr; }
@@ -187,6 +204,9 @@ const mail = 'mailto:elizaplnva@gmail.com';
     .sc-screen { height: auto; min-height: 0; padding: 8px; grid-template-columns: 1fr !important; grid-template-rows: none !important; }
     .sc-cell { min-height: 280px; }
     .sc-cell.sc-twin { min-height: 460px; }
+    .sc-stack { container-type: normal; display: grid; gap: 8px; padding: 8px; }
+    .sk { position: relative; left: auto; top: auto; width: auto; transform: none !important; }
+    .sk .pg::after { display: none; }
     .sc-screen .sc-ph:first-child { grid-column: auto !important; }
     .sc-card { position: static; width: auto; margin-top: 4px; display: none; }
     .about-on .sc-card { display: block; }
