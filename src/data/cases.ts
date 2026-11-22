@@ -827,7 +827,10 @@ export const cases: CaseData[] = [
       closing: { title: 'A brand that <em>answers first</em>', lede: 'Ben AI later won Best in Innovation at the Yelp Advertising Partner Awards, 2025.' },
       screens: [
         { id: 'intro', ch: 'Story', nav: 'Story', kind: 'full', fit: true, tone: '#0c0b10', title: 'Never miss a lead', lede: 'A brand that answers first, for an AI assistant home-service owners can trust.', src: '/images/ben-banner.webp', alt: 'Ben AI event banner on a fence: Never miss a Yelp lead, with the speech-bubble logo' },
-        { id: 'logos', ch: 'Logo', nav: 'Logo', kind: 'full', fit: true, tone: '#050505', title: 'Four faces for one assistant', lede: 'A robot, a mascot and a chat bubble, each tested as an app icon.', src: '/images/ben-logos.webp', alt: 'Four Ben AI logo directions shown as app icons on light and dark backgrounds' },
+        { id: 'logos', ch: 'Logo', nav: 'Logo', kind: 'v3k', tone: '#050505', title: 'Faces for one assistant', lede: 'Three of the four directions we tested as app icons.', cells: [
+          { src: '/images/ben-logo-1.webp', bg: '#050505', alt: 'Ben AI logo direction: a robot head with ears, shown as an app icon and on light and dark' },
+          { src: '/images/ben-logo-2.webp', bg: '#050505', alt: 'Ben AI logo direction: a speech bubble with eyes, shown as an app icon and on light and dark' },
+          { src: '/images/ben-logo-3.webp', bg: '#050505', alt: 'Ben AI logo direction: a round mascot with a speech-bubble mouth, shown as an app icon and on light and dark' }] },
         { id: 'mark', ch: 'Logo', nav: 'Logo', kind: 'v3c', tone: '#1C1630', title: 'A face that’s mid-reply', lede: 'The client chose the speech bubble with eyes.', cells: [
           { src: '/images/ben-final.webp', fit: true, bg: '#ffffff', alt: 'The final Ben AI logo, a gradient speech bubble with two eyes, on a construction grid' },
           { src: '/images/ben-palette.webp', fit: true, bg: '#ffffff', alt: 'Ben AI colour palette: neutrals, red, green, blue and violet with their gradients and tints' },
