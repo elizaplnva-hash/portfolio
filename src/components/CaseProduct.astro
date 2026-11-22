@@ -21,7 +21,7 @@ interface Props { c: CaseData; }
 const { c } = Astro.props;
 
 // the same four cards, in the same order, on every case
-const metaRank: Record<string, number> = { Role: 0, Collaboration: 1, Timeline: 2, Responsibilities: 3 };
+const metaRank: Record<string, number> = { Role: 0, Responsibilities: 1, Collaboration: 2, Timeline: 3 };
 const metaName: Record<string, string> = { Team: 'Collaboration', Scope: 'Responsibilities' };
 const metaOrder = <T extends { label: string }>(items: T[]) => items.map((m) => ({ ...m, label: metaName[m.label] ?? m.label })).sort((a, b) => (metaRank[a.label] ?? 9) - (metaRank[b.label] ?? 9));
 

@@ -113,9 +113,9 @@ const pinkwallet: Partial<CaseData> = {
       ],
       blocks: [{ type: 'meta', items: [
         { label: 'Role', value: 'Product Designer' },
+        { label: 'Responsibilities', value: 'Product architecture\nUX/UI, design system' },
         { label: 'Collaboration', value: 'Design Manager at Danart\n(client and review)\nClient development team' },
         { label: 'Timeline', value: '8 weeks\nLaunched July 2026' },
-        { label: 'Responsibilities', value: 'Product architecture\nUX/UI, design system' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'The Wallet home in both themes', spec: '', srcs: ['/images/pw-home-dark.webp', '/images/pw-home-light.webp'], alt: 'The PinkWallet home screen in the dark and the light theme' }] } },
 
@@ -393,9 +393,9 @@ const lapunzel: Partial<CaseData> = {
       lede: 'We all want the best for our pets. Online, that’s hard to judge: you can’t read the label in your hand or ask a clerk, and you’re paying a premium for a brand you don’t know yet.\nLapunzel is a young brand making vegan pet cosmetics: shampoos, balms, tonics, perfumes and tooth gel.\nI led UX for a team of three designers, from the first research call to the redesign, so that shoppers felt sure enough to order.',
       blocks: [{ type: 'meta', items: [
         { label: 'Role', value: 'UX Lead\nFreelance project' },
+        { label: 'Responsibilities', value: 'Research, prioritization\nDelivery, usability testing' },
         { label: 'Collaboration', value: '3 designers\nBrand owner, stakeholder' },
         { label: 'Timeline', value: '4 weeks\nSpring 2024' },
-        { label: 'Responsibilities', value: 'Research, prioritization\nDelivery, usability testing' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'Product page and catalogue', spec: '', srcs: ['/images/lap-ov-product.webp', '/images/lap-ov-list.webp'], flip: true, alt: 'The Lapunzel product page and the shampoos and conditioners list on a phone' }] } },
 
@@ -574,9 +574,9 @@ const greenCredit: Partial<CaseData> = {
       ],
       blocks: [{ type: 'meta', items: [
         { label: 'Role', value: 'Lead Product Designer\nDanart Agency' },
+        { label: 'Responsibilities', value: 'Strategy, UX/UI\nDesign system, AI workflow' },
         { label: 'Collaboration', value: 'Design Manager\nJunior Designer\nDeveloper, contract' },
         { label: 'Timeline', value: '6 weeks, planned 8\nHanded off July 2026' },
-        { label: 'Responsibilities', value: 'Strategy, UX/UI\nDesign system, AI workflow' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'Dashboard and mobile', spec: '', combo: ['/images/gcs-dash.webp', '/images/gcs-mob.webp'], dm: true, alt: 'The Green Credit Score dashboard on the web, with the same dashboard on a phone in front of it' }] } },
 
@@ -760,7 +760,7 @@ export const cases: CaseData[] = [
       closing: { title: 'Every touchpoint from <em>one brand book</em>', lede: 'I’d bring the same order to your brand, from the van to the website.' },
       oneLiner: 'Brand book, print, merch and website for a plumbing company',
       meta: [{ label: 'Client', value: 'Sequoia Plumbing' }, { label: 'Year', value: '2026' }, { label: 'Discipline', value: 'Brand, web' }, { label: 'Agency', value: 'Danart' }],
-      about: { text: 'Sequoia’s plumbing side was growing and going independent, and its brand had to follow. The agency team designed the identity. I built the brand book and mockups, designed the stickers and apparel, helped with the van wrap and business cards, and led the website layouts.', credits: [{ label: 'Role', value: 'Brand & Web Designer' }, { label: 'Timeline', value: 'July 2026' }, { label: 'Responsibilities', value: 'Brand book, mockups, print, website' }] },
+      about: { text: 'Sequoia’s plumbing side was growing and going independent, and its brand had to follow. The agency team designed the identity. I built the brand book and mockups, designed the stickers and apparel, helped with the van wrap and business cards, and led the website layouts.', credits: [{ label: 'Role', value: 'Brand & Web Designer' }, { label: 'Responsibilities', value: 'Brand book, mockups, print, website' }, { label: 'Timeline', value: 'July 2026' }] },
       next: { slug: 'ben-ai', name: 'Ben AI' },
       screens: [
         { id: 'intro', ch: 'Story', nav: 'Story', kind: 'full', tone: '#1F5A40', title: 'Rebranding a plumbing company as it goes independent', lede: 'Sequoia Plumbing was breaking away from its parent company and needed an identity of its own: brand, print, crew wear and website.', src: '/images/seq-van-hero.webp', alt: 'Sequoia van wrap: green and white livery with services list, logo, phone number and website' },
@@ -784,9 +784,9 @@ export const cases: CaseData[] = [
       links: [{ label: 'Visit website', href: 'https://www.sequoiaplumbingandair.com/' }],
       blocks: [{ type: 'meta', items: [
         { label: 'Role', value: 'Brand & Web Designer' },
+        { label: 'Responsibilities', value: 'Brand book, mockups, print, website' },
         { label: 'Collaboration', value: '3 designers, Danart' },
         { label: 'Timeline', value: 'July 2026' },
-        { label: 'Responsibilities', value: 'Brand book, mockups, print, website' },
       ] }],
       visual: { layout: 'single', items: [{ label: 'Website', twin: [{ src: '/images/seq-home-1.webp' }, { src: '/images/seq-home-2.webp' }], alt: 'The Sequoia Plumbing website: the home page with the branded van and offers, and below it the services section' }] } },
     { id: 'challenge', nav: 'Challenge', title: ['An established business,', 'a dated look'],
@@ -823,7 +823,7 @@ export const cases: CaseData[] = [
     show: {
       oneLiner: 'Brand, website and print for an AI that answers leads',
       meta: [{ label: 'Client', value: 'Ben AI' }, { label: 'Year', value: '2025–2026' }, { label: 'Discipline', value: 'Brand, web, print' }, { label: 'Agency', value: 'Danart' }],
-      about: { text: 'Ben AI replies to leads from Yelp, Thumbtack and website chat for home-service businesses. As Lead Designer at Danart, I created its brand and website for the July 2025 launch and led the second phase in January 2026.', credits: [{ label: 'Role', value: 'Lead Designer' }, { label: 'Timeline', value: 'July 2025 – January 2026' }, { label: 'Responsibilities', value: 'Brand, website, motion, print' }] },
+      about: { text: 'Ben AI replies to leads from Yelp, Thumbtack and website chat for home-service businesses. As Lead Designer at Danart, I created its brand and website for the July 2025 launch and led the second phase in January 2026.', credits: [{ label: 'Role', value: 'Lead Designer' }, { label: 'Responsibilities', value: 'Brand, website, motion, print' }, { label: 'Timeline', value: 'July 2025 – January 2026' }] },
       closing: { title: 'Trust first, <em>then the technology</em>', lede: 'I’d design your brand and your website the same way.' },
       screens: [
         { id: 'intro', ch: 'Story', nav: 'Story', kind: 'v2a', tone: '#0c0b10', title: 'Making AI feel human', links: [{ label: 'Behance case study', href: 'https://www.behance.net/gallery/246929869/AI-AUTORESPONDER-WEB-AND-BRAND-DESIGN' }, { label: 'Live website', href: 'https://ben24.ai' }], lede: 'Its buyers run plumbing and HVAC companies and judge a tool by booked jobs. The brand had to win their trust before any word about the technology.', cells: [
@@ -890,7 +890,7 @@ export const cases: CaseData[] = [
     show: {
       oneLiner: 'Presentation and social templates in one cohesive system',
       meta: [{ label: 'Client', value: 'Toporin' }, { label: 'Year', value: '2026' }, { label: 'Discipline', value: 'Brand, presentation, social' }],
-      about: { text: 'Toporin needed a visual foundation for a webinar series, consistent across YouTube, Telegram and Instagram, yet flexible enough to support future episodes.\nI defined the brief and visual direction, guided a junior designer through the core layouts, reviewed the work and refined the final designs.', credits: [{ label: 'Role', value: 'Design Manager' }, { label: 'Responsibilities', value: 'Brief, art direction, design review, final refinement' }, { label: 'Collaboration', value: 'Junior Designer' }] },
+      about: { text: 'Toporin needed a visual foundation for a webinar series, consistent across YouTube, Telegram and Instagram, yet flexible enough to support future episodes.\nI defined the brief and visual direction, guided a junior designer through the core layouts, reviewed the work and refined the final designs.', credits: [{ label: 'Role', value: 'Lead Designer' }, { label: 'Responsibilities', value: 'Brief, art direction, design review, final refinement' }, { label: 'Collaboration', value: 'Junior Designer' }] },
       closing: { title: 'Built for <em>every episode</em> that follows', lede: 'New topics and speaker images, same visual foundation. Reusable templates keep the series recognizable without starting the design process from scratch.' },
       screens: [
         { id: 'intro', ch: 'Story', nav: 'Story', kind: 'full', tone: '#1a0d38', src: '/images/insider-hero.webp', alt: 'A tablet on dark stone blocks showing the Insider Talks cover slide', title: 'One identity, built to return', lede: 'Toporin needed a visual foundation for a webinar series, consistent across YouTube, Telegram and Instagram, yet flexible enough to support future episodes.\nI defined the brief and visual direction, guided a junior designer through the core layouts, reviewed the work and refined the final designs.' },
