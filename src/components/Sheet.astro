@@ -4,6 +4,8 @@ import Icon from './Icon.astro';
 interface Props { side: Side; }
 const { side } = Astro.props;
 const s = sides[side];
+// brand side: five cases at most, and the fifth takes the turn tile's place
+const list = side === 'back' ? s.cases.slice(0, 5) : s.cases;
 // case colours only, so no new accent appears
 const hues = ['#E0408F', '#5B6EF0', '#8A3FD0', '#22A55E'];
 ---
@@ -18,7 +20,7 @@ const hues = ['#E0408F', '#5B6EF0', '#8A3FD0', '#22A55E'];
   </div>
 
   <section class="tile pitch">
-    <div class="tags-row"><span class="tag">Intro</span></div>
+    <div class="tags-row"><span class="tag">Intro</span>{side === 'back' && <a class="tag side" href={s.turn.href} aria-label={s.turn.label}>Product work</a>}</div>
     <div class="lead">
       <h2 class="role" set:html={s.role} />
       <p class="sub">{s.pitchSub}</p>
@@ -45,7 +47,7 @@ const hues = ['#E0408F', '#5B6EF0', '#8A3FD0', '#22A55E'];
     </ol>
   </section>
 
-  {s.cases.map((c, i) => (
+  {list.map((c, i) => (
     <a href={c.href} class:list={['tile', 'case', `case-${i + 1}`, { big: c.big }]} style={`--c:${c.color}`}>
       <div class="art" style={`view-transition-name:vt-${c.slug}`}>
         {c.phones ? (
@@ -62,11 +64,13 @@ const hues = ['#E0408F', '#5B6EF0', '#8A3FD0', '#22A55E'];
     </a>
   ))}
 
-  <a href={s.turn.href} class="tile turn" aria-label={s.turn.label}>
-    <small>{s.turn.small}</small>
-    <h2>{s.turn.big}</h2>
-    <span class="curl" aria-hidden="true"></span>
-  </a>
+  {side === 'front' && (
+    <a href={s.turn.href} class="tile turn" aria-label={s.turn.label}>
+      <small>{s.turn.small}</small>
+      <h2>{s.turn.big}</h2>
+      <span class="curl" aria-hidden="true"></span>
+    </a>
+  )}
 </main>
 <script>
   // devices hang just below the tag row, so measure it per cover
