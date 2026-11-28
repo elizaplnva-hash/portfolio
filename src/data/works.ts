@@ -8,6 +8,7 @@ const P = '/images/';
 const seq = (src: string, alt: string, skill: string, note: string, role: Work['role'] = 'mine'): Work => ({ src: P + src, alt, project: 'Sequoia', skill, role, note, caseSlug: 'sequoia', side: 'brand' });
 const ben = (src: string, alt: string, skill: string, note: string, role: Work['role'] = 'mine'): Work => ({ src: P + src, alt, project: 'Ben AI', skill, role, note, caseSlug: 'ben-ai', side: 'brand' });
 const tor = (src: string, alt: string, skill: string, note: string): Work => ({ src: P + src, alt, project: 'Insider Talks', skill, role: 'contributed', note, caseSlug: 'insider-talks', side: 'brand' });
+const reb = (src: string, alt: string, skill: string, note: string, role: Work['role'] = 'mine'): Work => ({ src: P + src, alt, project: 'Re:Boot Hub', skill, role, note, caseSlug: 'reboot-hub', side: 'brand' });
 const prod = (src: string, alt: string, project: string, caseSlug: string, note: string, skill = 'Product design'): Work => ({ src: P + src, alt, project, skill, role: 'mine', note, caseSlug, side: 'product' });
 
 export const works: Work[] = [
@@ -62,6 +63,13 @@ export const works: Work[] = [
   tor('insider-p-first.webp', 'Instagram post: first reply always wins', 'Social media', 'Vertical post template.'),
   tor('insider-p-invite.webp', 'Instagram post: you are invited to Insider Talks', 'Social media', 'Vertical post template.'),
   tor('insider-p-handles.webp', 'Instagram post: how AI actually handles leads', 'Social media', 'Vertical post template.'),
+  // Re:Boot Hub
+  reb('reb-p1.webp', 'Re:Boot Hub brand guidelines cover and welcome page', 'Brand book', 'Brand book, built and laid out by me.'),
+  reb('reb-p4.webp', 'Re:Boot Hub logo with a toggle in place of the o', 'Logo', 'Presented the logo concept to the client and helped refine the mark.', 'contributed'),
+  reb('reb-p5.webp', 'Re:Boot Hub logo rules: safe zone, variations, prohibitions', 'Brand book', 'Logo rules in the brand book.'),
+  reb('reb-p6.webp', 'Re:Boot Hub typography and colour palette', 'Colour & type', 'Type and colour pages of the brand book.'),
+  reb('reb-p8.webp', 'Re:Boot Hub print goods, favicon, LinkedIn and merch', 'Merch & apparel', 'Applications in the brand book.'),
+  reb('reb-p9.webp', 'Re:Boot Hub sweatshirt and business card on a monitor', 'Business cards', 'Branded items in the brand book.'),
 ];
 
 const slug = (s: string) => s.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
