@@ -7,7 +7,7 @@ export type Work = {
 const P = '/images/';
 const seq = (src: string, alt: string, skill: string, note: string, role: Work['role'] = 'mine'): Work => ({ src: P + src, alt, project: 'Sequoia', skill, role, note, caseSlug: 'sequoia', side: 'brand' });
 const ben = (src: string, alt: string, skill: string, note: string, role: Work['role'] = 'mine'): Work => ({ src: P + src, alt, project: 'Ben AI', skill, role, note, caseSlug: 'ben-ai', side: 'brand' });
-const tor = (src: string, alt: string, skill: string, note: string): Work => ({ src: P + src, alt, project: 'Toporin', skill, role: 'contributed', note, caseSlug: 'insider-talks', side: 'brand' });
+const tor = (src: string, alt: string, skill: string, note: string): Work => ({ src: P + src, alt, project: 'Insider Talks', skill, role: 'contributed', note, caseSlug: 'insider-talks', side: 'brand' });
 const prod = (src: string, alt: string, project: string, caseSlug: string, note: string, skill = 'Product design'): Work => ({ src: P + src, alt, project, skill, role: 'mine', note, caseSlug, side: 'product' });
 
 export const works: Work[] = [
@@ -55,7 +55,7 @@ export const works: Work[] = [
   ben('ben-print-cards.webp', 'Ben AI business cards', 'Business cards', 'Cards.'),
   ben('ben-banner.webp', 'Ben AI street banner: never miss a Yelp lead', 'Signage', 'Event banner.'),
 
-  // Toporin
+  // Insider Talks
   tor('insider-s1.webp', 'Insider Talks title slide', 'Presentations & decks', 'I set the direction; a designer on my team built the basics.'),
   tor('insider-s3.webp', 'Insider Talks slide with three large numbers', 'Presentations & decks', 'Deck slide.'),
   tor('insider-s4.webp', 'Insider Talks slide: speed turns leads into revenue', 'Presentations & decks', 'Deck slide.'),

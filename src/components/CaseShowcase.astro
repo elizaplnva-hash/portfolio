@@ -33,7 +33,7 @@ const mail = 'mailto:elizaplnva@gmail.com';
       <section class:list={['sc-screen', x.kind, { solo: x.cells?.length === 1 }]} id={x.id} data-ch={x.ch ?? x.nav} style={`--tone:${x.tone}`}>
         {x.links && <div class="sc-links">{x.links.map((l) => <a class="sc-btn" href={l.href} target="_blank" rel="noopener">{l.label}</a>)}</div>}
         {x.kind === 'intro' && <div class:list={['sc-cell', 'sc-twin', { pages: x.pages, flush: x.cut || x.flush, fill: x.fill, fitcol: x.flush, flushleft: x.flushLeft, flushboth: x.flushBoth, cols: x.cols, swap: x.swap }]} style={x.asp ? `--asp:${x.asp}${x.flushLeft || x.flushBoth ? ';--off:0px' : ''}` : undefined}>{x.twin!.map((t, k) => <div class="tw"><img src={t} alt={k === 0 ? x.alt : ''} decoding="async" style={x.cut && k === 1 ? `transform:translateY(-${x.cut}%)` : undefined} /></div>)}</div>}
-        {x.kind === 'soon' && <div class="sc-cell sc-soon"><b>{c.name}</b></div>}
+        {x.kind === 'soon' && <div class:list={['sc-cell', 'sc-soon', { 'sc-wip': x.label }]}><b>{x.label ?? c.name}</b></div>}
         {x.kind === 'full' && <div class:list={['sc-cell', 'sc-full', { fit: x.fit, padded: x.pad, zoom: x.zoom }]}><img src={x.src} alt={x.alt} decoding="async" /></div>}
         {x.kind === 'pair' && <div class="sc-cell sc-pair">{x.cells!.map((p) => <img class="pi" src={p.src} alt={p.alt ?? ''} loading="lazy" decoding="async" tabindex="0" />)}</div>}
         {x.kind === 'grid' && <div class="sc-cell sc-ig"><div class="ig">{x.cells!.map((p) => <div class="ig-i" tabindex="0"><img src={p.src} alt={p.alt ?? ''} loading="lazy" decoding="async" /></div>)}</div></div>}
@@ -134,6 +134,9 @@ const mail = 'mailto:elizaplnva@gmail.com';
   .sc-screen.full { grid-template-columns: 1fr; }
   .sc-soon { background: var(--tone); display: grid; place-content: center; text-align: center; color: #fff; }
   .sc-soon b { font-size: clamp(48px, 9vw, 150px); font-weight: 700; letter-spacing: -.04em; opacity: .9; }
+  .sc-soon.sc-wip b { font-size: clamp(36px, 6vw, 96px); color: rgba(255,255,255,.55); animation: scwip 2.4s ease-in-out infinite alternate; }
+  @keyframes scwip { from { opacity: .45; } to { opacity: .9; } }
+  @media (prefers-reduced-motion: reduce) { .sc-soon.sc-wip b { animation: none; } }
   .sc-full.fit { background: var(--tone); }
   .sc-full.fit img { object-fit: contain; }
   .sc-full.zoom img { animation: sc-zoom 9s ease-in-out infinite; }
